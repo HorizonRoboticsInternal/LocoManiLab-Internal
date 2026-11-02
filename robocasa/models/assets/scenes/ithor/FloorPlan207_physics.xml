@@ -1,0 +1,922 @@
+<mujoco model="FloorPlan207_physics">
+  <compiler angle="radian" autolimits="true" boundmass="0" balanceinertia="true" />
+
+  <option impratio="10" gravity="0 0 -9.8" integrator="implicitfast" cone="elliptic" jacobian="sparse" noslip_iterations="4">
+    <flag energy="enable" multiccd="enable" contact="enable" warmstart="enable" />
+  </option>
+
+  <size njmax="5000" nconmax="5000" />
+
+  <visual>
+    <global offwidth="1280" offheight="720" />
+    <quality shadowsize="16384" />
+    <headlight ambient="0.35 0.35 0.35" />
+    <map znear="0.001" />
+    <scale contactwidth="0.0587219" contactheight="0.0587219" jointlength="0.469775" jointwidth="0.0587219" framelength="0.352331" framewidth="0.0293609" />
+  </visual>
+
+  <default>
+    <default class="/">
+      <default class="__VISUAL_MJT__">
+        <geom contype="0" conaffinity="0" group="0" mass="1e-08" />
+      </default>
+      <default class="__STRUCTURAL_MJT__">
+        <geom contype="8" conaffinity="15" group="4" friction="0.9 0.9 0.001" solref="0.025 1.0" solimp="0.998 0.998 0.001 0.5 2.0" density="500.0" />
+        <default class="__STRUCTURAL_WALL_MJT__">
+          <geom group="3" />
+        </default>
+      </default>
+      <default class="__DYNAMIC_MJT__">
+        <geom conaffinity="15" group="4" friction="0.9 0.9 0.001" solref="0.025 1.0" solimp="0.998 0.998 0.001 0.5 2.0" density="500.0" contype="1" />
+      </default>
+      <default class="__ARTICULABLE_DYNAMIC_MJT__">
+        <geom contype="0" conaffinity="7" group="4" friction="0.9 0.9 0.001" solref="0.025 1.0" solimp="0.998 0.998 0.001 0.5 2.0" density="500.0" />
+      </default>
+    </default>
+    </default>
+
+  <asset>
+    <texture type="2d" name="Couch2CushionsMatVar3" file="../../objects/thor/Living Room Objects/Sofas/Prefabs/Sofa_207_1/Couch2_CouchCushionsMat_AlbedoTransparency.png" />
+    <texture type="2d" name="Couch2FrameMatVar3" file="../../objects/thor/Living Room Objects/Sofas/Prefabs/Sofa_207_1/Couch2_CouchFrameMat_AlbedoTransparency.png" />
+    <texture type="2d" name="ArmChair2CushionsMatVar3" file="../../objects/thor/Living Room Objects/Armchair/Prefabs/Armchair_207_1/ArmChair2_CouchCushionsMat_AlbedoTransparency.png" />
+    <texture type="2d" name="ArmChair2FrameMatVar3" file="../../objects/thor/Living Room Objects/Armchair/Prefabs/Armchair_207_1/ArmChair2_CouchFrameMat_AlbedoTransparency.png" />
+    <texture type="2d" name="DarkWoodSmooth2" file="../../objects/thor/Living Room and Bedroom Objects/CoffeeTable/Prefabs/Coffee_Table_207_1/WoodGrains1.png" />
+    <texture type="2d" name="GenericStainlessSteel" file="../../objects/thor/Common Objects/SideTable/Prefabs/Side_Table_207_1/TexturesCom_Medieval Metal_albedo_S.png" />
+    <texture type="2d" name="Cardboard_Mat1" file="../../objects/thor/Living Room and Bedroom Objects/Box_Full/Prefabs/Box_7/Cardboard_AlbedoTransparency.png" />
+    <texture type="2d" name="GREYGRANITE" file="../../objects/thor/Miscellaneous Objects/Statue/Prefabs/Dog_Statue_4/marbleBase1.png" />
+    <texture type="2d" name="Television_Secondary1_Mat" file="../../objects/thor/Living Room Objects/Television/Prefabs/Television_7/HammeredMetal_AlbedoTransparency.png" />
+    <texture type="2d" name="HousePlant_Leaves2B_Mat" file="../../objects/thor/Living Room Objects/HousePlant/Prefabs/Houseplant_7/HousePlant2_DefaultMaterial_AlbedoTransparency.png" />
+    <texture type="2d" name="PillowC_AO" file="../../objects/thor/Textures/PillowC_AO.png" />
+    <texture type="2d" name="Laptop_Detail_Mat" file="../../objects/thor/Living Room and Bedroom Objects/Laptop_Full/Prefabs/Laptop_7/Laptop_Detail_AlbedoTransparency.png" />
+    <texture type="2d" name="Laptop_Secondary2_Mat" file="../../objects/thor/Living Room and Bedroom Objects/Laptop_Full/Prefabs/Laptop_7/BrushedIron_AlbedoTransparency.png" />
+    <texture type="2d" name="Laptop_Primary2_Mat" file="../../objects/thor/Living Room and Bedroom Objects/Laptop_Full/Prefabs/Laptop_7/BrushedIron_AlbedoTransparency.png" />
+    <texture type="2d" name="Laptop_Touchpad_Mat" file="../../objects/thor/Living Room and Bedroom Objects/Laptop_Full/Prefabs/Laptop_7/BrushedAluminum_AlbedoTransparency.png" />
+    <texture type="2d" name="Bin_Decal_Mat" file="../../objects/thor/Kitchen Objects/GarbageCan/Prefabs/bin_7/Bin_Decal_AlbedoTransparency.png" />
+    <texture type="2d" name="Floor_Lamp_Shade2_Mat" file="../../objects/thor/Living Room Objects/FloorLamp/Prefabs/Floor_Lamp_7/TexturesCom_FabricPlain0072_seamless_albedo_S.png" />
+    <texture type="2d" name="Floor_Lamp_Secondary2_Mat" file="../../objects/thor/Living Room Objects/FloorLamp/Prefabs/Floor_Lamp_7/BrushedAluminum_AlbedoTransparency.png" />
+    <texture type="2d" name="BedroomFloor1" file="FloorPlan207_physics/Structural/mesh_6d4a1a8e/TexturesCom_WoodFine0038_1_seamless_albedo_S.png" />
+    <texture type="2d" name="Cream_wood" file="FloorPlan207_physics/Structural/FP207:Base15_fd7291d0/HammeredMetal_MetallicSmoothness.png" />
+    <texture type="2d" name="convergence" file="FloorPlan207_physics/Structural/FP207:Base15_fd7291d0/convergence.png" />
+    <texture type="2d" name="DarkWood2" file="FloorPlan207_physics/Structural/FP207:Base15_fd7291d0/DarkWood2.png" />
+    <texture type="2d" name="john-singer-sargent-beach-scene" file="FloorPlan207_physics/Structural/FP207:Base11_bb339f39/1396294258-john-singer-sargent-beach-scene-1880.png" />
+    <texture type="2d" name="BrushedIron_AlbedoTransparency" file="FloorPlan207_physics/Structural/FP207:StandardKnob1_8314f400/BrushedIron_AlbedoTransparency.png" />
+    <texture type="2d" name="TexturesCom_WoodFine0050_1_seamless_S_white" file="FloorPlan207_physics/Structural/FP207:StandardDoor1_f8973a1a/TexturesCom_WoodWhite.png" />
+    <texture type="2d" name="DrywallEggshell" file="FloorPlan207_physics/Structural/Walls_8a2d9ba1/WallDrywallWhite.png" />
+    <material name="material_Couch2CushionsMatVar3" texture="Couch2CushionsMatVar3" rgba="0.161765 0.161765 0.161765 1" />
+    <material name="material_Metal_chrome_mat" rgba="0.829 0.829 0.829 1" />
+    <material name="material_Couch2FrameMatVar3" texture="Couch2FrameMatVar3" rgba="0.110294 0.110294 0.110294 1" />
+    <material name="material_ArmChair2CushionsMatVar3" texture="ArmChair2CushionsMatVar3" rgba="0.198529 0.198529 0.198529 1" />
+    <material name="material_ArmChair2FrameMatVar3" texture="ArmChair2FrameMatVar3" rgba="0.0588235 0.0522611 0.0480104 1" />
+    <material name="material_DarkWoodSmooth2" texture="DarkWoodSmooth2" rgba="0.122641 0.0908241 0.0908241 1" />
+    <material name="material_GenericStainlessSteel" texture="GenericStainlessSteel" />
+    <material name="material_Glass_Detailed_Frosted_Mat" rgba="0.477941 0.477941 0.477941 0.5" />
+    <material name="material_Cardboard_Mat1" texture="Cardboard_Mat1" rgba="1 0.975 0.955882 1" />
+    <material name="material_Glass_Blue_Mat" rgba="0.225184 0.276433 0.360294 0.822" />
+    <material name="material_Brass_Mat" rgba="0.757353 0.639065 0.144788 1" />
+    <material name="material_GREYGRANITE" texture="GREYGRANITE" rgba="0.709613 0.709613 0.772059 1" />
+    <material name="material_Porcelain_Yellow_Mat" rgba="0.985294 0.691105 0.0579585 1" />
+    <material name="material_StainlessSteel_Dull" rgba="0.816176 0.816176 0.816176 1" />
+    <material name="material_TealPlasitc" rgba="0.20918 0.536765 0.408685 1" />
+    <material name="material_WhitePlastic" />
+    <material name="material_LightBlueRubber" rgba="0.338668 0.718733 0.794118 1" />
+    <material name="material_television_backup_mat" rgba="0.5 0.5 0.5 1" />
+    <material name="material_Television_Speakers_Mat" rgba="0.566176 0.566176 0.566176 1" />
+    <material name="material_Television_Screen_Off_Mat" rgba="0 0 0 1" />
+    <material name="material_Television_Secondary1_Mat" texture="Television_Secondary1_Mat" rgba="0.727022 0.77931 0.830882 1" />
+    <material name="material_Television_Primary1_Mat" rgba="0.198529 0.198529 0.198529 1" />
+    <material name="material_HousePlant_Pot_Secondary1_Mat" rgba="0.00735295 0.00735295 0.00735295 1" />
+    <material name="material_HousePlant_Leaves2B_Mat" texture="HousePlant_Leaves2B_Mat" rgba="0.658976 0.845588 0 1" />
+    <material name="material_HousePlant_Pot_Primary3A_Mat" rgba="0.102941 0.0362069 0 1" />
+    <material name="material_Pillow7_Mat" texture="PillowC_AO" rgba="0.121486 0.428891 0.786765 1" />
+    <material name="material_Laptop_Decals_Off_Mat" rgba="1 1 1 0.5" />
+    <material name="material_Laptop_Detail_Mat" texture="Laptop_Detail_Mat" />
+    <material name="material_Laptop_Screen_Off_Mat" rgba="0.00560449 0.00560449 0.00560449 1" />
+    <material name="material_Laptop_Secondary2_Mat" texture="Laptop_Secondary2_Mat" rgba="0.154412 0.154412 0.154412 1" />
+    <material name="material_Laptop_Primary2_Mat" texture="Laptop_Primary2_Mat" rgba="0.433823 0.433823 0.433823 1" />
+    <material name="material_Laptop_Touchpad_Mat" texture="Laptop_Touchpad_Mat" rgba="0.56542 0.589868 0.610294 1" />
+    <material name="material_Light_Switch_Hole_Mat" rgba="0 0 0 1" />
+    <material name="material_Light_Switch_Secondary_Mat" rgba="0.955882 0.955882 0.955882 1" />
+    <material name="material_Light_Switch_Primary5_Mat" rgba="0 0 0 1" />
+    <material name="material_Bin_Decal_Mat" texture="Bin_Decal_Mat" />
+    <material name="material_Bin_Secondary3_Mat" rgba="0.409856 0.441177 0.350346 1" />
+    <material name="material_Bin_Primary3_Mat" rgba="0.347809 0.470588 0.294118 1" />
+    <material name="material_Floor_Lamp_Light_Mat" rgba="5.18917 5.07597 3.84293 1" />
+    <material name="material_Floor_Lamp_Shade2_Mat" texture="Floor_Lamp_Shade2_Mat" rgba="0.896226 0.890361 0.57071 1" />
+    <material name="material_Floor_Lamp_Secondary2_Mat" texture="Floor_Lamp_Secondary2_Mat" rgba="0.485294 0.485294 0.485294 1" />
+    <material name="material_Floor_Lamp_Primary2_Mat" rgba="0.919118 0.715626 0.669064 1" />
+    <material name="material_Brass" rgba="0.757353 0.639065 0.144788 1" />
+    <material name="material_BedroomFloor1" texture="BedroomFloor1" rgba="1 0.911765 0.911765 1" />
+    <material name="material_WhiteWoodClean" />
+    <material name="material_Glass_Detailed_Lit_High_Mat" rgba="1 1 1 0.1" />
+    <material name="material_Cream_wood" texture="Cream_wood" rgba="1 0.977941 0.977941 1" />
+    <material name="material_convergence" texture="convergence" />
+    <material name="material_DarkWood2" texture="DarkWood2" />
+    <material name="material_john-singer-sargent-beach-scene" texture="john-singer-sargent-beach-scene" />
+    <material name="material_Drywall" rgba="0.8 0.8 0.8 1" />
+    <material name="material_Light2" rgba="1 0.944118 0.860294 1" />
+    <material name="material_BrushedIron_AlbedoTransparency" texture="BrushedIron_AlbedoTransparency" />
+    <material name="material_TexturesCom_WoodFine0050_1_seamless_S_white" texture="TexturesCom_WoodFine0050_1_seamless_S_white" rgba="0.933824 0.859761 0.617971 1" />
+    <material name="material_DrywallEggshell" texture="DrywallEggshell" rgba="0.926471 0.878926 0.7766 1" />
+    <mesh name="Sofa_207_1_sofa_207_0" content_type="model/obj" file="../../objects/thor/Living Room Objects/Sofas/Prefabs/Sofa_207_1/Sofa_207_1_sofa_207/Sofa_207_1_sofa_207_0.obj" />
+    <mesh name="Sofa_207_1_sofa_207_1" content_type="model/obj" file="../../objects/thor/Living Room Objects/Sofas/Prefabs/Sofa_207_1/Sofa_207_1_sofa_207/Sofa_207_1_sofa_207_1.obj" />
+    <mesh name="Sofa_207_1_sofa_207_2" content_type="model/obj" file="../../objects/thor/Living Room Objects/Sofas/Prefabs/Sofa_207_1/Sofa_207_1_sofa_207/Sofa_207_1_sofa_207_2.obj" />
+    <mesh name="Sofa_207_1_sofa_207_0_collision_0" content_type="model/obj" file="../../objects/thor/Living Room Objects/Sofas/Prefabs/Sofa_207_1/Sofa_207_1_sofa_207/Sofa_207_1_sofa_207_0/Sofa_207_1_sofa_207_0_collision_0.obj" />
+    <mesh name="Sofa_207_1_sofa_207_0_collision_1" content_type="model/obj" file="../../objects/thor/Living Room Objects/Sofas/Prefabs/Sofa_207_1/Sofa_207_1_sofa_207/Sofa_207_1_sofa_207_0/Sofa_207_1_sofa_207_0_collision_1.obj" />
+    <mesh name="Sofa_207_1_sofa_207_0_collision_3" content_type="model/obj" file="../../objects/thor/Living Room Objects/Sofas/Prefabs/Sofa_207_1/Sofa_207_1_sofa_207/Sofa_207_1_sofa_207_0/Sofa_207_1_sofa_207_0_collision_3.obj" />
+    <mesh name="Sofa_207_1_sofa_207_0_collision_2" content_type="model/obj" file="../../objects/thor/Living Room Objects/Sofas/Prefabs/Sofa_207_1/Sofa_207_1_sofa_207/Sofa_207_1_sofa_207_0/Sofa_207_1_sofa_207_0_collision_2.obj" />
+    <mesh name="Sofa_207_1_sofa_207_1_collision_2" content_type="model/obj" file="../../objects/thor/Living Room Objects/Sofas/Prefabs/Sofa_207_1/Sofa_207_1_sofa_207/Sofa_207_1_sofa_207_1/Sofa_207_1_sofa_207_1_collision_2.obj" />
+    <mesh name="Sofa_207_1_sofa_207_1_collision_1" content_type="model/obj" file="../../objects/thor/Living Room Objects/Sofas/Prefabs/Sofa_207_1/Sofa_207_1_sofa_207/Sofa_207_1_sofa_207_1/Sofa_207_1_sofa_207_1_collision_1.obj" />
+    <mesh name="Sofa_207_1_sofa_207_1_collision_0" content_type="model/obj" file="../../objects/thor/Living Room Objects/Sofas/Prefabs/Sofa_207_1/Sofa_207_1_sofa_207/Sofa_207_1_sofa_207_1/Sofa_207_1_sofa_207_1_collision_0.obj" />
+    <mesh name="Sofa_207_1_sofa_207_1_collision_3" content_type="model/obj" file="../../objects/thor/Living Room Objects/Sofas/Prefabs/Sofa_207_1/Sofa_207_1_sofa_207/Sofa_207_1_sofa_207_1/Sofa_207_1_sofa_207_1_collision_3.obj" />
+    <mesh name="Sofa_207_1_sofa_207_2_collision_6" content_type="model/obj" file="../../objects/thor/Living Room Objects/Sofas/Prefabs/Sofa_207_1/Sofa_207_1_sofa_207/Sofa_207_1_sofa_207_2/Sofa_207_1_sofa_207_2_collision_6.obj" />
+    <mesh name="Sofa_207_1_sofa_207_2_collision_1" content_type="model/obj" file="../../objects/thor/Living Room Objects/Sofas/Prefabs/Sofa_207_1/Sofa_207_1_sofa_207/Sofa_207_1_sofa_207_2/Sofa_207_1_sofa_207_2_collision_1.obj" />
+    <mesh name="Sofa_207_1_sofa_207_2_collision_3" content_type="model/obj" file="../../objects/thor/Living Room Objects/Sofas/Prefabs/Sofa_207_1/Sofa_207_1_sofa_207/Sofa_207_1_sofa_207_2/Sofa_207_1_sofa_207_2_collision_3.obj" />
+    <mesh name="Sofa_207_1_sofa_207_2_collision_0" content_type="model/obj" file="../../objects/thor/Living Room Objects/Sofas/Prefabs/Sofa_207_1/Sofa_207_1_sofa_207/Sofa_207_1_sofa_207_2/Sofa_207_1_sofa_207_2_collision_0.obj" />
+    <mesh name="Sofa_207_1_sofa_207_2_collision_7" content_type="model/obj" file="../../objects/thor/Living Room Objects/Sofas/Prefabs/Sofa_207_1/Sofa_207_1_sofa_207/Sofa_207_1_sofa_207_2/Sofa_207_1_sofa_207_2_collision_7.obj" />
+    <mesh name="Sofa_207_1_sofa_207_2_collision_4" content_type="model/obj" file="../../objects/thor/Living Room Objects/Sofas/Prefabs/Sofa_207_1/Sofa_207_1_sofa_207/Sofa_207_1_sofa_207_2/Sofa_207_1_sofa_207_2_collision_4.obj" />
+    <mesh name="Sofa_207_1_sofa_207_2_collision_2" content_type="model/obj" file="../../objects/thor/Living Room Objects/Sofas/Prefabs/Sofa_207_1/Sofa_207_1_sofa_207/Sofa_207_1_sofa_207_2/Sofa_207_1_sofa_207_2_collision_2.obj" />
+    <mesh name="Sofa_207_1_sofa_207_2_collision_5" content_type="model/obj" file="../../objects/thor/Living Room Objects/Sofas/Prefabs/Sofa_207_1/Sofa_207_1_sofa_207/Sofa_207_1_sofa_207_2/Sofa_207_1_sofa_207_2_collision_5.obj" />
+    <mesh name="Sofa_207_1_sofa_207_2_collision_8" content_type="model/obj" file="../../objects/thor/Living Room Objects/Sofas/Prefabs/Sofa_207_1/Sofa_207_1_sofa_207/Sofa_207_1_sofa_207_2/Sofa_207_1_sofa_207_2_collision_8.obj" />
+    <mesh name="Armchair_207_1_armchair_207_0" content_type="model/obj" file="../../objects/thor/Living Room Objects/Armchair/Prefabs/Armchair_207_1/Armchair_207_1_armchair_207/Armchair_207_1_armchair_207_0.obj" />
+    <mesh name="Armchair_207_1_armchair_207_1" content_type="model/obj" file="../../objects/thor/Living Room Objects/Armchair/Prefabs/Armchair_207_1/Armchair_207_1_armchair_207/Armchair_207_1_armchair_207_1.obj" />
+    <mesh name="Armchair_207_1_armchair_207_2" content_type="model/obj" file="../../objects/thor/Living Room Objects/Armchair/Prefabs/Armchair_207_1/Armchair_207_1_armchair_207/Armchair_207_1_armchair_207_2.obj" />
+    <mesh name="Armchair_207_1_armchair_207_3" content_type="model/obj" file="../../objects/thor/Living Room Objects/Armchair/Prefabs/Armchair_207_1/Armchair_207_1_armchair_207/Armchair_207_1_armchair_207_3.obj" />
+    <mesh name="Coffee_Table_207_1_FP207:CoffeeTable" content_type="model/obj" file="../../objects/thor/Living Room and Bedroom Objects/CoffeeTable/Prefabs/Coffee_Table_207_1/Coffee_Table_207_1_FP207CoffeeTable/Coffee_Table_207_1_FP207CoffeeTable.obj" />
+    <mesh name="Side_Table_207_1_FP207:SideTable_0" content_type="model/obj" file="../../objects/thor/Common Objects/SideTable/Prefabs/Side_Table_207_1/Side_Table_207_1_FP207SideTable/Side_Table_207_1_FP207SideTable_0.obj" />
+    <mesh name="Side_Table_207_1_FP207:SideTable_1" content_type="model/obj" file="../../objects/thor/Common Objects/SideTable/Prefabs/Side_Table_207_1/Side_Table_207_1_FP207SideTable/Side_Table_207_1_FP207SideTable_1.obj" />
+    <mesh name="Box_7_box_7_flap_outer_1" content_type="model/obj" file="../../objects/thor/Living Room and Bedroom Objects/Box_Full/Prefabs/Box_7/Box_7_box_7_flap_outer_1/Box_7_box_7_flap_outer_1.obj" scale="0.653796 0.653798 0.653797" />
+    <mesh name="Box_7_box_7" content_type="model/obj" file="../../objects/thor/Living Room and Bedroom Objects/Box_Full/Prefabs/Box_7/Box_7_box_7/Box_7_box_7.obj" scale="0.653796 0.653796 0.653796" />
+    <mesh name="Box_7_box_7_flap_outer_2" content_type="model/obj" file="../../objects/thor/Living Room and Bedroom Objects/Box_Full/Prefabs/Box_7/Box_7_box_7_flap_outer_2/Box_7_box_7_flap_outer_2.obj" scale="0.653796 0.653798 0.653797" />
+    <mesh name="Box_7_box_7_flap_inner_2" content_type="model/obj" file="../../objects/thor/Living Room and Bedroom Objects/Box_Full/Prefabs/Box_7/Box_7_box_7_flap_inner_2/Box_7_box_7_flap_inner_2.obj" scale="0.653798 0.653798 0.653796" />
+    <mesh name="Box_7_box_7_flap_inner_1" content_type="model/obj" file="../../objects/thor/Living Room and Bedroom Objects/Box_Full/Prefabs/Box_7/Box_7_box_7_flap_inner_1/Box_7_box_7_flap_inner_1.obj" scale="0.653796 0.653796 0.653796" />
+    <mesh name="Vase_Open_2_vase_open" content_type="model/obj" file="../../objects/thor/Miscellaneous Objects/Vase/Prefabs/Vase_Open_2/Vase_Open_2_vase_open/Vase_Open_2_vase_open.obj" />
+    <mesh name="Vase_Medium_5_vase_medium" content_type="model/obj" file="../../objects/thor/Miscellaneous Objects/Vase/Prefabs/Vase_Medium_5/Vase_Medium_5_vase_medium/Vase_Medium_5_vase_medium.obj" />
+    <mesh name="Vase_Medium_5_vase_medium_collision_2" content_type="model/obj" file="../../objects/thor/Miscellaneous Objects/Vase/Prefabs/Vase_Medium_5/Vase_Medium_5_vase_medium/Vase_Medium_5_vase_medium/Vase_Medium_5_vase_medium_collision_2.obj" />
+    <mesh name="Vase_Medium_5_vase_medium_collision_9" content_type="model/obj" file="../../objects/thor/Miscellaneous Objects/Vase/Prefabs/Vase_Medium_5/Vase_Medium_5_vase_medium/Vase_Medium_5_vase_medium/Vase_Medium_5_vase_medium_collision_9.obj" />
+    <mesh name="Vase_Medium_5_vase_medium_collision_7" content_type="model/obj" file="../../objects/thor/Miscellaneous Objects/Vase/Prefabs/Vase_Medium_5/Vase_Medium_5_vase_medium/Vase_Medium_5_vase_medium/Vase_Medium_5_vase_medium_collision_7.obj" />
+    <mesh name="Vase_Medium_5_vase_medium_collision_6" content_type="model/obj" file="../../objects/thor/Miscellaneous Objects/Vase/Prefabs/Vase_Medium_5/Vase_Medium_5_vase_medium/Vase_Medium_5_vase_medium/Vase_Medium_5_vase_medium_collision_6.obj" />
+    <mesh name="Vase_Medium_5_vase_medium_collision_12" content_type="model/obj" file="../../objects/thor/Miscellaneous Objects/Vase/Prefabs/Vase_Medium_5/Vase_Medium_5_vase_medium/Vase_Medium_5_vase_medium/Vase_Medium_5_vase_medium_collision_12.obj" />
+    <mesh name="Vase_Medium_5_vase_medium_collision_19" content_type="model/obj" file="../../objects/thor/Miscellaneous Objects/Vase/Prefabs/Vase_Medium_5/Vase_Medium_5_vase_medium/Vase_Medium_5_vase_medium/Vase_Medium_5_vase_medium_collision_19.obj" />
+    <mesh name="Vase_Medium_5_vase_medium_collision_11" content_type="model/obj" file="../../objects/thor/Miscellaneous Objects/Vase/Prefabs/Vase_Medium_5/Vase_Medium_5_vase_medium/Vase_Medium_5_vase_medium/Vase_Medium_5_vase_medium_collision_11.obj" />
+    <mesh name="Vase_Medium_5_vase_medium_collision_21" content_type="model/obj" file="../../objects/thor/Miscellaneous Objects/Vase/Prefabs/Vase_Medium_5/Vase_Medium_5_vase_medium/Vase_Medium_5_vase_medium/Vase_Medium_5_vase_medium_collision_21.obj" />
+    <mesh name="Vase_Medium_5_vase_medium_collision_16" content_type="model/obj" file="../../objects/thor/Miscellaneous Objects/Vase/Prefabs/Vase_Medium_5/Vase_Medium_5_vase_medium/Vase_Medium_5_vase_medium/Vase_Medium_5_vase_medium_collision_16.obj" />
+    <mesh name="Vase_Medium_5_vase_medium_collision_10" content_type="model/obj" file="../../objects/thor/Miscellaneous Objects/Vase/Prefabs/Vase_Medium_5/Vase_Medium_5_vase_medium/Vase_Medium_5_vase_medium/Vase_Medium_5_vase_medium_collision_10.obj" />
+    <mesh name="Vase_Medium_5_vase_medium_collision_13" content_type="model/obj" file="../../objects/thor/Miscellaneous Objects/Vase/Prefabs/Vase_Medium_5/Vase_Medium_5_vase_medium/Vase_Medium_5_vase_medium/Vase_Medium_5_vase_medium_collision_13.obj" />
+    <mesh name="Vase_Medium_5_vase_medium_collision_18" content_type="model/obj" file="../../objects/thor/Miscellaneous Objects/Vase/Prefabs/Vase_Medium_5/Vase_Medium_5_vase_medium/Vase_Medium_5_vase_medium/Vase_Medium_5_vase_medium_collision_18.obj" />
+    <mesh name="Vase_Medium_5_vase_medium_collision_8" content_type="model/obj" file="../../objects/thor/Miscellaneous Objects/Vase/Prefabs/Vase_Medium_5/Vase_Medium_5_vase_medium/Vase_Medium_5_vase_medium/Vase_Medium_5_vase_medium_collision_8.obj" />
+    <mesh name="Vase_Medium_5_vase_medium_collision_15" content_type="model/obj" file="../../objects/thor/Miscellaneous Objects/Vase/Prefabs/Vase_Medium_5/Vase_Medium_5_vase_medium/Vase_Medium_5_vase_medium/Vase_Medium_5_vase_medium_collision_15.obj" />
+    <mesh name="Vase_Medium_5_vase_medium_collision_1" content_type="model/obj" file="../../objects/thor/Miscellaneous Objects/Vase/Prefabs/Vase_Medium_5/Vase_Medium_5_vase_medium/Vase_Medium_5_vase_medium/Vase_Medium_5_vase_medium_collision_1.obj" />
+    <mesh name="Vase_Medium_5_vase_medium_collision_14" content_type="model/obj" file="../../objects/thor/Miscellaneous Objects/Vase/Prefabs/Vase_Medium_5/Vase_Medium_5_vase_medium/Vase_Medium_5_vase_medium/Vase_Medium_5_vase_medium_collision_14.obj" />
+    <mesh name="Vase_Medium_5_vase_medium_collision_5" content_type="model/obj" file="../../objects/thor/Miscellaneous Objects/Vase/Prefabs/Vase_Medium_5/Vase_Medium_5_vase_medium/Vase_Medium_5_vase_medium/Vase_Medium_5_vase_medium_collision_5.obj" />
+    <mesh name="Vase_Medium_5_vase_medium_collision_23" content_type="model/obj" file="../../objects/thor/Miscellaneous Objects/Vase/Prefabs/Vase_Medium_5/Vase_Medium_5_vase_medium/Vase_Medium_5_vase_medium/Vase_Medium_5_vase_medium_collision_23.obj" />
+    <mesh name="Vase_Medium_5_vase_medium_collision_0" content_type="model/obj" file="../../objects/thor/Miscellaneous Objects/Vase/Prefabs/Vase_Medium_5/Vase_Medium_5_vase_medium/Vase_Medium_5_vase_medium/Vase_Medium_5_vase_medium_collision_0.obj" />
+    <mesh name="Vase_Medium_5_vase_medium_collision_22" content_type="model/obj" file="../../objects/thor/Miscellaneous Objects/Vase/Prefabs/Vase_Medium_5/Vase_Medium_5_vase_medium/Vase_Medium_5_vase_medium/Vase_Medium_5_vase_medium_collision_22.obj" />
+    <mesh name="Vase_Medium_5_vase_medium_collision_4" content_type="model/obj" file="../../objects/thor/Miscellaneous Objects/Vase/Prefabs/Vase_Medium_5/Vase_Medium_5_vase_medium/Vase_Medium_5_vase_medium/Vase_Medium_5_vase_medium_collision_4.obj" />
+    <mesh name="Vase_Medium_5_vase_medium_collision_24" content_type="model/obj" file="../../objects/thor/Miscellaneous Objects/Vase/Prefabs/Vase_Medium_5/Vase_Medium_5_vase_medium/Vase_Medium_5_vase_medium/Vase_Medium_5_vase_medium_collision_24.obj" />
+    <mesh name="Vase_Medium_5_vase_medium_collision_17" content_type="model/obj" file="../../objects/thor/Miscellaneous Objects/Vase/Prefabs/Vase_Medium_5/Vase_Medium_5_vase_medium/Vase_Medium_5_vase_medium/Vase_Medium_5_vase_medium_collision_17.obj" />
+    <mesh name="Vase_Medium_5_vase_medium_collision_20" content_type="model/obj" file="../../objects/thor/Miscellaneous Objects/Vase/Prefabs/Vase_Medium_5/Vase_Medium_5_vase_medium/Vase_Medium_5_vase_medium/Vase_Medium_5_vase_medium_collision_20.obj" />
+    <mesh name="Dog_Statue_4_dog_statue" content_type="model/obj" file="../../objects/thor/Miscellaneous Objects/Statue/Prefabs/Dog_Statue_4/Dog_Statue_4_dog_statue/Dog_Statue_4_dog_statue.obj" />
+    <mesh name="Vase_Medium_4_vase_medium" content_type="model/obj" file="../../objects/thor/Miscellaneous Objects/Vase/Prefabs/Vase_Medium_4/Vase_Medium_4_vase_medium/Vase_Medium_4_vase_medium.obj" />
+    <mesh name="Vase_Medium_4_vase_medium_collision_9" content_type="model/obj" file="../../objects/thor/Miscellaneous Objects/Vase/Prefabs/Vase_Medium_4/Vase_Medium_4_vase_medium/Vase_Medium_4_vase_medium/Vase_Medium_4_vase_medium_collision_9.obj" />
+    <mesh name="Vase_Medium_4_vase_medium_collision_15" content_type="model/obj" file="../../objects/thor/Miscellaneous Objects/Vase/Prefabs/Vase_Medium_4/Vase_Medium_4_vase_medium/Vase_Medium_4_vase_medium/Vase_Medium_4_vase_medium_collision_15.obj" />
+    <mesh name="Vase_Medium_4_vase_medium_collision_17" content_type="model/obj" file="../../objects/thor/Miscellaneous Objects/Vase/Prefabs/Vase_Medium_4/Vase_Medium_4_vase_medium/Vase_Medium_4_vase_medium/Vase_Medium_4_vase_medium_collision_17.obj" />
+    <mesh name="Vase_Medium_4_vase_medium_collision_18" content_type="model/obj" file="../../objects/thor/Miscellaneous Objects/Vase/Prefabs/Vase_Medium_4/Vase_Medium_4_vase_medium/Vase_Medium_4_vase_medium/Vase_Medium_4_vase_medium_collision_18.obj" />
+    <mesh name="Vase_Medium_4_vase_medium_collision_0" content_type="model/obj" file="../../objects/thor/Miscellaneous Objects/Vase/Prefabs/Vase_Medium_4/Vase_Medium_4_vase_medium/Vase_Medium_4_vase_medium/Vase_Medium_4_vase_medium_collision_0.obj" />
+    <mesh name="Vase_Medium_4_vase_medium_collision_19" content_type="model/obj" file="../../objects/thor/Miscellaneous Objects/Vase/Prefabs/Vase_Medium_4/Vase_Medium_4_vase_medium/Vase_Medium_4_vase_medium/Vase_Medium_4_vase_medium_collision_19.obj" />
+    <mesh name="Vase_Medium_4_vase_medium_collision_13" content_type="model/obj" file="../../objects/thor/Miscellaneous Objects/Vase/Prefabs/Vase_Medium_4/Vase_Medium_4_vase_medium/Vase_Medium_4_vase_medium/Vase_Medium_4_vase_medium_collision_13.obj" />
+    <mesh name="Vase_Medium_4_vase_medium_collision_12" content_type="model/obj" file="../../objects/thor/Miscellaneous Objects/Vase/Prefabs/Vase_Medium_4/Vase_Medium_4_vase_medium/Vase_Medium_4_vase_medium/Vase_Medium_4_vase_medium_collision_12.obj" />
+    <mesh name="Vase_Medium_4_vase_medium_collision_16" content_type="model/obj" file="../../objects/thor/Miscellaneous Objects/Vase/Prefabs/Vase_Medium_4/Vase_Medium_4_vase_medium/Vase_Medium_4_vase_medium/Vase_Medium_4_vase_medium_collision_16.obj" />
+    <mesh name="Vase_Medium_4_vase_medium_collision_21" content_type="model/obj" file="../../objects/thor/Miscellaneous Objects/Vase/Prefabs/Vase_Medium_4/Vase_Medium_4_vase_medium/Vase_Medium_4_vase_medium/Vase_Medium_4_vase_medium_collision_21.obj" />
+    <mesh name="Vase_Medium_4_vase_medium_collision_1" content_type="model/obj" file="../../objects/thor/Miscellaneous Objects/Vase/Prefabs/Vase_Medium_4/Vase_Medium_4_vase_medium/Vase_Medium_4_vase_medium/Vase_Medium_4_vase_medium_collision_1.obj" />
+    <mesh name="Vase_Medium_4_vase_medium_collision_4" content_type="model/obj" file="../../objects/thor/Miscellaneous Objects/Vase/Prefabs/Vase_Medium_4/Vase_Medium_4_vase_medium/Vase_Medium_4_vase_medium/Vase_Medium_4_vase_medium_collision_4.obj" />
+    <mesh name="Vase_Medium_4_vase_medium_collision_8" content_type="model/obj" file="../../objects/thor/Miscellaneous Objects/Vase/Prefabs/Vase_Medium_4/Vase_Medium_4_vase_medium/Vase_Medium_4_vase_medium/Vase_Medium_4_vase_medium_collision_8.obj" />
+    <mesh name="Vase_Medium_4_vase_medium_collision_2" content_type="model/obj" file="../../objects/thor/Miscellaneous Objects/Vase/Prefabs/Vase_Medium_4/Vase_Medium_4_vase_medium/Vase_Medium_4_vase_medium/Vase_Medium_4_vase_medium_collision_2.obj" />
+    <mesh name="Vase_Medium_4_vase_medium_collision_22" content_type="model/obj" file="../../objects/thor/Miscellaneous Objects/Vase/Prefabs/Vase_Medium_4/Vase_Medium_4_vase_medium/Vase_Medium_4_vase_medium/Vase_Medium_4_vase_medium_collision_22.obj" />
+    <mesh name="Vase_Medium_4_vase_medium_collision_11" content_type="model/obj" file="../../objects/thor/Miscellaneous Objects/Vase/Prefabs/Vase_Medium_4/Vase_Medium_4_vase_medium/Vase_Medium_4_vase_medium/Vase_Medium_4_vase_medium_collision_11.obj" />
+    <mesh name="Vase_Medium_4_vase_medium_collision_7" content_type="model/obj" file="../../objects/thor/Miscellaneous Objects/Vase/Prefabs/Vase_Medium_4/Vase_Medium_4_vase_medium/Vase_Medium_4_vase_medium/Vase_Medium_4_vase_medium_collision_7.obj" />
+    <mesh name="Vase_Medium_4_vase_medium_collision_20" content_type="model/obj" file="../../objects/thor/Miscellaneous Objects/Vase/Prefabs/Vase_Medium_4/Vase_Medium_4_vase_medium/Vase_Medium_4_vase_medium/Vase_Medium_4_vase_medium_collision_20.obj" />
+    <mesh name="Vase_Medium_4_vase_medium_collision_24" content_type="model/obj" file="../../objects/thor/Miscellaneous Objects/Vase/Prefabs/Vase_Medium_4/Vase_Medium_4_vase_medium/Vase_Medium_4_vase_medium/Vase_Medium_4_vase_medium_collision_24.obj" />
+    <mesh name="Vase_Medium_4_vase_medium_collision_23" content_type="model/obj" file="../../objects/thor/Miscellaneous Objects/Vase/Prefabs/Vase_Medium_4/Vase_Medium_4_vase_medium/Vase_Medium_4_vase_medium/Vase_Medium_4_vase_medium_collision_23.obj" />
+    <mesh name="Vase_Medium_4_vase_medium_collision_14" content_type="model/obj" file="../../objects/thor/Miscellaneous Objects/Vase/Prefabs/Vase_Medium_4/Vase_Medium_4_vase_medium/Vase_Medium_4_vase_medium/Vase_Medium_4_vase_medium_collision_14.obj" />
+    <mesh name="Vase_Medium_4_vase_medium_collision_6" content_type="model/obj" file="../../objects/thor/Miscellaneous Objects/Vase/Prefabs/Vase_Medium_4/Vase_Medium_4_vase_medium/Vase_Medium_4_vase_medium/Vase_Medium_4_vase_medium_collision_6.obj" />
+    <mesh name="Vase_Medium_4_vase_medium_collision_10" content_type="model/obj" file="../../objects/thor/Miscellaneous Objects/Vase/Prefabs/Vase_Medium_4/Vase_Medium_4_vase_medium/Vase_Medium_4_vase_medium/Vase_Medium_4_vase_medium_collision_10.obj" />
+    <mesh name="Vase_Medium_4_vase_medium_collision_5" content_type="model/obj" file="../../objects/thor/Miscellaneous Objects/Vase/Prefabs/Vase_Medium_4/Vase_Medium_4_vase_medium/Vase_Medium_4_vase_medium/Vase_Medium_4_vase_medium_collision_5.obj" />
+    <mesh name="Remote_1_RemoteBody1" content_type="model/obj" file="../../objects/thor/Living Room Objects/Remotes/Prefabs/Remote_1/Remote_1_RemoteBody1/Remote_1_RemoteBody1.obj" />
+    <mesh name="Remote_1_RemoteButtons1_0" content_type="model/obj" file="../../objects/thor/Living Room Objects/Remotes/Prefabs/Remote_1/Remote_1_RemoteButtons1/Remote_1_RemoteButtons1_0.obj" />
+    <mesh name="Remote_1_RemoteButtons1_1" content_type="model/obj" file="../../objects/thor/Living Room Objects/Remotes/Prefabs/Remote_1/Remote_1_RemoteButtons1/Remote_1_RemoteButtons1_1.obj" />
+    <mesh name="Remote_1_RemoteButtons1_2" content_type="model/obj" file="../../objects/thor/Living Room Objects/Remotes/Prefabs/Remote_1/Remote_1_RemoteButtons1/Remote_1_RemoteButtons1_2.obj" />
+    <mesh name="Remote_1_RemoteButtons1_3" content_type="model/obj" file="../../objects/thor/Living Room Objects/Remotes/Prefabs/Remote_1/Remote_1_RemoteButtons1/Remote_1_RemoteButtons1_3.obj" />
+    <mesh name="Television_7_television_7_0" content_type="model/obj" file="../../objects/thor/Living Room Objects/Television/Prefabs/Television_7/Television_7_television_7/Television_7_television_7_0.obj" inertia="shell" />
+    <mesh name="Television_7_television_7_1" content_type="model/obj" file="../../objects/thor/Living Room Objects/Television/Prefabs/Television_7/Television_7_television_7/Television_7_television_7_1.obj" />
+    <mesh name="Television_7_television_7_2" content_type="model/obj" file="../../objects/thor/Living Room Objects/Television/Prefabs/Television_7/Television_7_television_7/Television_7_television_7_2.obj" />
+    <mesh name="Television_7_television_7_3" content_type="model/obj" file="../../objects/thor/Living Room Objects/Television/Prefabs/Television_7/Television_7_television_7/Television_7_television_7_3.obj" />
+    <mesh name="Television_7_television_7_4" content_type="model/obj" file="../../objects/thor/Living Room Objects/Television/Prefabs/Television_7/Television_7_television_7/Television_7_television_7_4.obj" />
+    <mesh name="Television_7_television_stand_7_0" content_type="model/obj" file="../../objects/thor/Living Room Objects/Television/Prefabs/Television_7/Television_7_television_stand_7/Television_7_television_stand_7_0.obj" inertia="shell" />
+    <mesh name="Television_7_television_stand_7_1" content_type="model/obj" file="../../objects/thor/Living Room Objects/Television/Prefabs/Television_7/Television_7_television_stand_7/Television_7_television_stand_7_1.obj" inertia="shell" />
+    <mesh name="Television_7_television_stand_7_2" content_type="model/obj" file="../../objects/thor/Living Room Objects/Television/Prefabs/Television_7/Television_7_television_stand_7/Television_7_television_stand_7_2.obj" inertia="shell" />
+    <mesh name="Television_7_television_stand_7_3" content_type="model/obj" file="../../objects/thor/Living Room Objects/Television/Prefabs/Television_7/Television_7_television_stand_7/Television_7_television_stand_7_3.obj" />
+    <mesh name="Television_7_television_stand_7_4" content_type="model/obj" file="../../objects/thor/Living Room Objects/Television/Prefabs/Television_7/Television_7_television_stand_7/Television_7_television_stand_7_4.obj" />
+    <mesh name="Television_7_television_7_0_collision_0" content_type="model/obj" file="../../objects/thor/Living Room Objects/Television/Prefabs/Television_7/Television_7_television_7/Television_7_television_7_0/Television_7_television_7_0_collision_0.obj" />
+    <mesh name="Television_7_television_7_1_collision_0" content_type="model/obj" file="../../objects/thor/Living Room Objects/Television/Prefabs/Television_7/Television_7_television_7/Television_7_television_7_1/Television_7_television_7_1_collision_0.obj" />
+    <mesh name="Television_7_television_7_1_collision_1" content_type="model/obj" file="../../objects/thor/Living Room Objects/Television/Prefabs/Television_7/Television_7_television_7/Television_7_television_7_1/Television_7_television_7_1_collision_1.obj" />
+    <mesh name="Television_7_television_7_2_collision_0" content_type="model/obj" file="../../objects/thor/Living Room Objects/Television/Prefabs/Television_7/Television_7_television_7/Television_7_television_7_2/Television_7_television_7_2_collision_0.obj" />
+    <mesh name="Television_7_television_7_2_collision_1" content_type="model/obj" file="../../objects/thor/Living Room Objects/Television/Prefabs/Television_7/Television_7_television_7/Television_7_television_7_2/Television_7_television_7_2_collision_1.obj" />
+    <mesh name="Television_7_television_7_3_collision_1" content_type="model/obj" file="../../objects/thor/Living Room Objects/Television/Prefabs/Television_7/Television_7_television_7/Television_7_television_7_3/Television_7_television_7_3_collision_1.obj" />
+    <mesh name="Television_7_television_7_3_collision_5" content_type="model/obj" file="../../objects/thor/Living Room Objects/Television/Prefabs/Television_7/Television_7_television_7/Television_7_television_7_3/Television_7_television_7_3_collision_5.obj" />
+    <mesh name="Television_7_television_7_3_collision_4" content_type="model/obj" file="../../objects/thor/Living Room Objects/Television/Prefabs/Television_7/Television_7_television_7/Television_7_television_7_3/Television_7_television_7_3_collision_4.obj" />
+    <mesh name="Television_7_television_7_3_collision_7" content_type="model/obj" file="../../objects/thor/Living Room Objects/Television/Prefabs/Television_7/Television_7_television_7/Television_7_television_7_3/Television_7_television_7_3_collision_7.obj" />
+    <mesh name="Television_7_television_7_3_collision_2" content_type="model/obj" file="../../objects/thor/Living Room Objects/Television/Prefabs/Television_7/Television_7_television_7/Television_7_television_7_3/Television_7_television_7_3_collision_2.obj" />
+    <mesh name="Television_7_television_7_3_collision_8" content_type="model/obj" file="../../objects/thor/Living Room Objects/Television/Prefabs/Television_7/Television_7_television_7/Television_7_television_7_3/Television_7_television_7_3_collision_8.obj" />
+    <mesh name="Television_7_television_7_3_collision_3" content_type="model/obj" file="../../objects/thor/Living Room Objects/Television/Prefabs/Television_7/Television_7_television_7/Television_7_television_7_3/Television_7_television_7_3_collision_3.obj" />
+    <mesh name="Television_7_television_7_3_collision_6" content_type="model/obj" file="../../objects/thor/Living Room Objects/Television/Prefabs/Television_7/Television_7_television_7/Television_7_television_7_3/Television_7_television_7_3_collision_6.obj" />
+    <mesh name="Television_7_television_7_3_collision_0" content_type="model/obj" file="../../objects/thor/Living Room Objects/Television/Prefabs/Television_7/Television_7_television_7/Television_7_television_7_3/Television_7_television_7_3_collision_0.obj" />
+    <mesh name="Television_7_television_7_4_collision_4" content_type="model/obj" file="../../objects/thor/Living Room Objects/Television/Prefabs/Television_7/Television_7_television_7/Television_7_television_7_4/Television_7_television_7_4_collision_4.obj" />
+    <mesh name="Television_7_television_7_4_collision_5" content_type="model/obj" file="../../objects/thor/Living Room Objects/Television/Prefabs/Television_7/Television_7_television_7/Television_7_television_7_4/Television_7_television_7_4_collision_5.obj" />
+    <mesh name="Television_7_television_7_4_collision_2" content_type="model/obj" file="../../objects/thor/Living Room Objects/Television/Prefabs/Television_7/Television_7_television_7/Television_7_television_7_4/Television_7_television_7_4_collision_2.obj" />
+    <mesh name="Television_7_television_7_4_collision_10" content_type="model/obj" file="../../objects/thor/Living Room Objects/Television/Prefabs/Television_7/Television_7_television_7/Television_7_television_7_4/Television_7_television_7_4_collision_10.obj" />
+    <mesh name="Television_7_television_7_4_collision_1" content_type="model/obj" file="../../objects/thor/Living Room Objects/Television/Prefabs/Television_7/Television_7_television_7/Television_7_television_7_4/Television_7_television_7_4_collision_1.obj" />
+    <mesh name="Television_7_television_7_4_collision_3" content_type="model/obj" file="../../objects/thor/Living Room Objects/Television/Prefabs/Television_7/Television_7_television_7/Television_7_television_7_4/Television_7_television_7_4_collision_3.obj" />
+    <mesh name="Television_7_television_7_4_collision_8" content_type="model/obj" file="../../objects/thor/Living Room Objects/Television/Prefabs/Television_7/Television_7_television_7/Television_7_television_7_4/Television_7_television_7_4_collision_8.obj" />
+    <mesh name="Television_7_television_7_4_collision_7" content_type="model/obj" file="../../objects/thor/Living Room Objects/Television/Prefabs/Television_7/Television_7_television_7/Television_7_television_7_4/Television_7_television_7_4_collision_7.obj" />
+    <mesh name="Television_7_television_7_4_collision_9" content_type="model/obj" file="../../objects/thor/Living Room Objects/Television/Prefabs/Television_7/Television_7_television_7/Television_7_television_7_4/Television_7_television_7_4_collision_9.obj" />
+    <mesh name="Television_7_television_7_4_collision_0" content_type="model/obj" file="../../objects/thor/Living Room Objects/Television/Prefabs/Television_7/Television_7_television_7/Television_7_television_7_4/Television_7_television_7_4_collision_0.obj" />
+    <mesh name="Television_7_television_7_4_collision_6" content_type="model/obj" file="../../objects/thor/Living Room Objects/Television/Prefabs/Television_7/Television_7_television_7/Television_7_television_7_4/Television_7_television_7_4_collision_6.obj" />
+    <mesh name="Television_7_television_stand_7_0_collision_0" content_type="model/obj" file="../../objects/thor/Living Room Objects/Television/Prefabs/Television_7/Television_7_television_stand_7/Television_7_television_stand_7_0/Television_7_television_stand_7_0_collision_0.obj" />
+    <mesh name="Television_7_television_stand_7_1_collision_0" content_type="model/obj" file="../../objects/thor/Living Room Objects/Television/Prefabs/Television_7/Television_7_television_stand_7/Television_7_television_stand_7_1/Television_7_television_stand_7_1_collision_0.obj" />
+    <mesh name="Television_7_television_stand_7_2_collision_0" content_type="model/obj" file="../../objects/thor/Living Room Objects/Television/Prefabs/Television_7/Television_7_television_stand_7/Television_7_television_stand_7_2/Television_7_television_stand_7_2_collision_0.obj" />
+    <mesh name="Television_7_television_stand_7_3_collision_0" content_type="model/obj" file="../../objects/thor/Living Room Objects/Television/Prefabs/Television_7/Television_7_television_stand_7/Television_7_television_stand_7_3/Television_7_television_stand_7_3_collision_0.obj" />
+    <mesh name="Television_7_television_stand_7_4_collision_1" content_type="model/obj" file="../../objects/thor/Living Room Objects/Television/Prefabs/Television_7/Television_7_television_stand_7/Television_7_television_stand_7_4/Television_7_television_stand_7_4_collision_1.obj" />
+    <mesh name="Television_7_television_stand_7_4_collision_5" content_type="model/obj" file="../../objects/thor/Living Room Objects/Television/Prefabs/Television_7/Television_7_television_stand_7/Television_7_television_stand_7_4/Television_7_television_stand_7_4_collision_5.obj" />
+    <mesh name="Television_7_television_stand_7_4_collision_6" content_type="model/obj" file="../../objects/thor/Living Room Objects/Television/Prefabs/Television_7/Television_7_television_stand_7/Television_7_television_stand_7_4/Television_7_television_stand_7_4_collision_6.obj" />
+    <mesh name="Television_7_television_stand_7_4_collision_8" content_type="model/obj" file="../../objects/thor/Living Room Objects/Television/Prefabs/Television_7/Television_7_television_stand_7/Television_7_television_stand_7_4/Television_7_television_stand_7_4_collision_8.obj" />
+    <mesh name="Television_7_television_stand_7_4_collision_3" content_type="model/obj" file="../../objects/thor/Living Room Objects/Television/Prefabs/Television_7/Television_7_television_stand_7/Television_7_television_stand_7_4/Television_7_television_stand_7_4_collision_3.obj" />
+    <mesh name="Television_7_television_stand_7_4_collision_7" content_type="model/obj" file="../../objects/thor/Living Room Objects/Television/Prefabs/Television_7/Television_7_television_stand_7/Television_7_television_stand_7_4/Television_7_television_stand_7_4_collision_7.obj" />
+    <mesh name="Television_7_television_stand_7_4_collision_0" content_type="model/obj" file="../../objects/thor/Living Room Objects/Television/Prefabs/Television_7/Television_7_television_stand_7/Television_7_television_stand_7_4/Television_7_television_stand_7_4_collision_0.obj" />
+    <mesh name="Television_7_television_stand_7_4_collision_4" content_type="model/obj" file="../../objects/thor/Living Room Objects/Television/Prefabs/Television_7/Television_7_television_stand_7/Television_7_television_stand_7_4/Television_7_television_stand_7_4_collision_4.obj" />
+    <mesh name="Television_7_television_stand_7_4_collision_9" content_type="model/obj" file="../../objects/thor/Living Room Objects/Television/Prefabs/Television_7/Television_7_television_stand_7/Television_7_television_stand_7_4/Television_7_television_stand_7_4_collision_9.obj" />
+    <mesh name="Television_7_television_stand_7_4_collision_2" content_type="model/obj" file="../../objects/thor/Living Room Objects/Television/Prefabs/Television_7/Television_7_television_stand_7/Television_7_television_stand_7_4/Television_7_television_stand_7_4_collision_2.obj" />
+    <mesh name="Houseplant_7_houseplant_7_0" content_type="model/obj" file="../../objects/thor/Living Room Objects/HousePlant/Prefabs/Houseplant_7/Houseplant_7_houseplant_7/Houseplant_7_houseplant_7_0.obj" inertia="shell" />
+    <mesh name="Houseplant_7_houseplant_7_1" content_type="model/obj" file="../../objects/thor/Living Room Objects/HousePlant/Prefabs/Houseplant_7/Houseplant_7_houseplant_7/Houseplant_7_houseplant_7_1.obj" />
+    <mesh name="Houseplant_7_houseplant_7_2" content_type="model/obj" file="../../objects/thor/Living Room Objects/HousePlant/Prefabs/Houseplant_7/Houseplant_7_houseplant_7/Houseplant_7_houseplant_7_2.obj" inertia="shell" />
+    <mesh name="Houseplant_7_houseplant_7_3" content_type="model/obj" file="../../objects/thor/Living Room Objects/HousePlant/Prefabs/Houseplant_7/Houseplant_7_houseplant_7/Houseplant_7_houseplant_7_3.obj" />
+    <mesh name="pillow_7_pillow_7" content_type="model/obj" file="../../objects/thor/Living Room and Bedroom Objects/Pillow/Prefabs/pillow_7/pillow_7_pillow_7/pillow_7_pillow_7.obj" />
+    <mesh name="pillow_7_pillow_7_collision_0" content_type="model/obj" file="../../objects/thor/Living Room and Bedroom Objects/Pillow/Prefabs/pillow_7/pillow_7_pillow_7/pillow_7_pillow_7/pillow_7_pillow_7_collision_0.obj" />
+    <mesh name="Laptop_7_laptop_lid_7_0" content_type="model/obj" file="../../objects/thor/Living Room and Bedroom Objects/Laptop_Full/Prefabs/Laptop_7/Laptop_7_laptop_lid_7/Laptop_7_laptop_lid_7_0.obj" inertia="shell" />
+    <mesh name="Laptop_7_laptop_lid_7_1" content_type="model/obj" file="../../objects/thor/Living Room and Bedroom Objects/Laptop_Full/Prefabs/Laptop_7/Laptop_7_laptop_lid_7/Laptop_7_laptop_lid_7_1.obj" />
+    <mesh name="Laptop_7_laptop_lid_7_2" content_type="model/obj" file="../../objects/thor/Living Room and Bedroom Objects/Laptop_Full/Prefabs/Laptop_7/Laptop_7_laptop_lid_7/Laptop_7_laptop_lid_7_2.obj" />
+    <mesh name="Laptop_7_laptop_lid_7_3" content_type="model/obj" file="../../objects/thor/Living Room and Bedroom Objects/Laptop_Full/Prefabs/Laptop_7/Laptop_7_laptop_lid_7/Laptop_7_laptop_lid_7_3.obj" inertia="shell" />
+    <mesh name="Laptop_7_laptop_lid_7_4" content_type="model/obj" file="../../objects/thor/Living Room and Bedroom Objects/Laptop_Full/Prefabs/Laptop_7/Laptop_7_laptop_lid_7/Laptop_7_laptop_lid_7_4.obj" inertia="shell" />
+    <mesh name="Laptop_7_laptop_lid_7_5" content_type="model/obj" file="../../objects/thor/Living Room and Bedroom Objects/Laptop_Full/Prefabs/Laptop_7/Laptop_7_laptop_lid_7/Laptop_7_laptop_lid_7_5.obj" />
+    <mesh name="Laptop_7_laptop_7_0" content_type="model/obj" file="../../objects/thor/Living Room and Bedroom Objects/Laptop_Full/Prefabs/Laptop_7/Laptop_7_laptop_7/Laptop_7_laptop_7_0.obj" inertia="shell" />
+    <mesh name="Laptop_7_laptop_7_1" content_type="model/obj" file="../../objects/thor/Living Room and Bedroom Objects/Laptop_Full/Prefabs/Laptop_7/Laptop_7_laptop_7/Laptop_7_laptop_7_1.obj" />
+    <mesh name="Laptop_7_laptop_7_2" content_type="model/obj" file="../../objects/thor/Living Room and Bedroom Objects/Laptop_Full/Prefabs/Laptop_7/Laptop_7_laptop_7/Laptop_7_laptop_7_2.obj" inertia="shell" />
+    <mesh name="Laptop_7_laptop_7_3" content_type="model/obj" file="../../objects/thor/Living Room and Bedroom Objects/Laptop_Full/Prefabs/Laptop_7/Laptop_7_laptop_7/Laptop_7_laptop_7_3.obj" />
+    <mesh name="Laptop_7_laptop_7_4" content_type="model/obj" file="../../objects/thor/Living Room and Bedroom Objects/Laptop_Full/Prefabs/Laptop_7/Laptop_7_laptop_7/Laptop_7_laptop_7_4.obj" />
+    <mesh name="Laptop_7_laptop_7_5" content_type="model/obj" file="../../objects/thor/Living Room and Bedroom Objects/Laptop_Full/Prefabs/Laptop_7/Laptop_7_laptop_7/Laptop_7_laptop_7_5.obj" />
+    <mesh name="Light_Switch_7_light_switch_11_0" content_type="model/obj" file="../../objects/thor/Bathroom Objects/LightSwitch/Prefabs/Light_Switch_7/Light_Switch_7_light_switch_11/Light_Switch_7_light_switch_11_0.obj" inertia="shell" />
+    <mesh name="Light_Switch_7_light_switch_11_1" content_type="model/obj" file="../../objects/thor/Bathroom Objects/LightSwitch/Prefabs/Light_Switch_7/Light_Switch_7_light_switch_11/Light_Switch_7_light_switch_11_1.obj" />
+    <mesh name="Light_Switch_7_light_switch_11_2" content_type="model/obj" file="../../objects/thor/Bathroom Objects/LightSwitch/Prefabs/Light_Switch_7/Light_Switch_7_light_switch_11/Light_Switch_7_light_switch_11_2.obj" />
+    <mesh name="Light_Switch_7_light_switch_dial_11_0" content_type="model/obj" file="../../objects/thor/Bathroom Objects/LightSwitch/Prefabs/Light_Switch_7/Light_Switch_7_light_switch_dial_11/Light_Switch_7_light_switch_dial_11_0.obj" inertia="shell" />
+    <mesh name="Light_Switch_7_light_switch_dial_11_1" content_type="model/obj" file="../../objects/thor/Bathroom Objects/LightSwitch/Prefabs/Light_Switch_7/Light_Switch_7_light_switch_dial_11/Light_Switch_7_light_switch_dial_11_1.obj" />
+    <mesh name="Light_Switch_7_light_switch_dial_11_2" content_type="model/obj" file="../../objects/thor/Bathroom Objects/LightSwitch/Prefabs/Light_Switch_7/Light_Switch_7_light_switch_dial_11/Light_Switch_7_light_switch_dial_11_2.obj" inertia="shell" />
+    <mesh name="bin_7_bin_7_0" content_type="model/obj" file="../../objects/thor/Kitchen Objects/GarbageCan/Prefabs/bin_7/bin_7_bin_7/bin_7_bin_7_0.obj" />
+    <mesh name="bin_7_bin_7_1" content_type="model/obj" file="../../objects/thor/Kitchen Objects/GarbageCan/Prefabs/bin_7/bin_7_bin_7/bin_7_bin_7_1.obj" />
+    <mesh name="bin_7_bin_7_2" content_type="model/obj" file="../../objects/thor/Kitchen Objects/GarbageCan/Prefabs/bin_7/bin_7_bin_7/bin_7_bin_7_2.obj" />
+    <mesh name="Floor_Lamp_7_floor_lamp_7_0" content_type="model/obj" file="../../objects/thor/Living Room Objects/FloorLamp/Prefabs/Floor_Lamp_7/Floor_Lamp_7_floor_lamp_7/Floor_Lamp_7_floor_lamp_7_0.obj" />
+    <mesh name="Floor_Lamp_7_floor_lamp_7_1" content_type="model/obj" file="../../objects/thor/Living Room Objects/FloorLamp/Prefabs/Floor_Lamp_7/Floor_Lamp_7_floor_lamp_7/Floor_Lamp_7_floor_lamp_7_1.obj" />
+    <mesh name="Floor_Lamp_7_floor_lamp_7_2" content_type="model/obj" file="../../objects/thor/Living Room Objects/FloorLamp/Prefabs/Floor_Lamp_7/Floor_Lamp_7_floor_lamp_7/Floor_Lamp_7_floor_lamp_7_2.obj" />
+    <mesh name="Floor_Lamp_7_floor_lamp_7_3" content_type="model/obj" file="../../objects/thor/Living Room Objects/FloorLamp/Prefabs/Floor_Lamp_7/Floor_Lamp_7_floor_lamp_7/Floor_Lamp_7_floor_lamp_7_3.obj" />
+    <mesh name="Shelving_Unit_206_2_mesh_0" content_type="model/obj" file="../../objects/thor/Common Objects/ShelvingUnit/Prefabs/Shelving_Unit_206_2/Shelving_Unit_206_2_mesh/Shelving_Unit_206_2_mesh_0.obj" />
+    <mesh name="Shelving_Unit_206_2_mesh_1" content_type="model/obj" file="../../objects/thor/Common Objects/ShelvingUnit/Prefabs/Shelving_Unit_206_2/Shelving_Unit_206_2_mesh/Shelving_Unit_206_2_mesh_1.obj" />
+    <mesh name="Shelving_Unit_206_2_Mesh_00" content_type="model/obj" file="../../objects/thor/Common Objects/ShelvingUnit/Prefabs/Shelving_Unit_206_2/Shelving_Unit_206_2_Mesh_00/Shelving_Unit_206_2_Mesh_00.obj" />
+    <mesh name="Shelving_Unit_206_2_handle_2_600mm_00_0" content_type="model/obj" file="../../objects/thor/Common Objects/ShelvingUnit/Prefabs/Shelving_Unit_206_2/Shelving_Unit_206_2_handle_2_600mm_00/Shelving_Unit_206_2_handle_2_600mm_00_0.obj" />
+    <mesh name="Shelving_Unit_206_2_handle_2_600mm_00_1" content_type="model/obj" file="../../objects/thor/Common Objects/ShelvingUnit/Prefabs/Shelving_Unit_206_2/Shelving_Unit_206_2_handle_2_600mm_00/Shelving_Unit_206_2_handle_2_600mm_00_1.obj" />
+    <mesh name="Shelving_Unit_206_2_Mesh_01" content_type="model/obj" file="../../objects/thor/Common Objects/ShelvingUnit/Prefabs/Shelving_Unit_206_2/Shelving_Unit_206_2_Mesh_01/Shelving_Unit_206_2_Mesh_01.obj" />
+    <mesh name="Shelving_Unit_206_2_handle_2_600mm_01_0" content_type="model/obj" file="../../objects/thor/Common Objects/ShelvingUnit/Prefabs/Shelving_Unit_206_2/Shelving_Unit_206_2_handle_2_600mm_01/Shelving_Unit_206_2_handle_2_600mm_01_0.obj" />
+    <mesh name="Shelving_Unit_206_2_handle_2_600mm_01_1" content_type="model/obj" file="../../objects/thor/Common Objects/ShelvingUnit/Prefabs/Shelving_Unit_206_2/Shelving_Unit_206_2_handle_2_600mm_01/Shelving_Unit_206_2_handle_2_600mm_01_1.obj" />
+    <mesh name="TV_Stand_206_1_tv_stand_206_0" content_type="model/obj" file="../../objects/thor/Living Room Objects/TVStand/Prefabs/TV_Stand_206_1/TV_Stand_206_1_tv_stand_206/TV_Stand_206_1_tv_stand_206_0.obj" />
+    <mesh name="TV_Stand_206_1_tv_stand_206_1" content_type="model/obj" file="../../objects/thor/Living Room Objects/TVStand/Prefabs/TV_Stand_206_1/TV_Stand_206_1_tv_stand_206/TV_Stand_206_1_tv_stand_206_1.obj" />
+    <mesh name="mesh_6d4a1a8e_mesh_6d4a1a8e" content_type="model/obj" file="FloorPlan207_physics/Structural/mesh_6d4a1a8e/mesh_6d4a1a8e_mesh_6d4a1a8e/mesh_6d4a1a8e_mesh_6d4a1a8e.obj" />
+    <mesh name="FP207:polySurface1_287f97ef_FP207:polySurface1_287f97ef" content_type="model/obj" file="FloorPlan207_physics/Structural/FP207:polySurface1_287f97ef/FP207:polySurface1_287f97ef_FP207:polySurface1_287f97ef/FP207:polySurface1_287f97ef_FP207:polySurface1_287f97ef.obj" />
+    <mesh name="FP207:polySurface1_287f97ef_FP207:polySurface2_c0fe33d1" content_type="model/obj" file="FloorPlan207_physics/Structural/FP207:polySurface1_287f97ef/FP207:polySurface1_287f97ef_FP207:polySurface2_c0fe33d1/FP207:polySurface1_287f97ef_FP207:polySurface2_c0fe33d1.obj" />
+    <mesh name="FP207:Base15_fd7291d0_FP207:Base15_fd7291d0_0" content_type="model/obj" file="FloorPlan207_physics/Structural/FP207:Base15_fd7291d0/FP207:Base15_fd7291d0_FP207:Base15_fd7291d0/FP207:Base15_fd7291d0_FP207:Base15_fd7291d0_0.obj" inertia="shell" />
+    <mesh name="FP207:Base15_fd7291d0_FP207:Base15_fd7291d0_1" content_type="model/obj" file="FloorPlan207_physics/Structural/FP207:Base15_fd7291d0/FP207:Base15_fd7291d0_FP207:Base15_fd7291d0/FP207:Base15_fd7291d0_FP207:Base15_fd7291d0_1.obj" inertia="shell" />
+    <mesh name="FP207:Base15_fd7291d0_FP207:Base15_fd7291d0_2" content_type="model/obj" file="FloorPlan207_physics/Structural/FP207:Base15_fd7291d0/FP207:Base15_fd7291d0_FP207:Base15_fd7291d0/FP207:Base15_fd7291d0_FP207:Base15_fd7291d0_2.obj" />
+    <mesh name="FP207:Base11_bb339f39_FP207:Base11_bb339f39_0" content_type="model/obj" file="FloorPlan207_physics/Structural/FP207:Base11_bb339f39/FP207:Base11_bb339f39_FP207:Base11_bb339f39/FP207:Base11_bb339f39_FP207:Base11_bb339f39_0.obj" inertia="shell" />
+    <mesh name="FP207:Base11_bb339f39_FP207:Base11_bb339f39_1" content_type="model/obj" file="FloorPlan207_physics/Structural/FP207:Base11_bb339f39/FP207:Base11_bb339f39_FP207:Base11_bb339f39/FP207:Base11_bb339f39_FP207:Base11_bb339f39_1.obj" />
+    <mesh name="Painting_8c4e2d8a_FP207:Base11_bb339f39_0" content_type="model/obj" file="FloorPlan207_physics/Structural/Painting_8c4e2d8a/Painting_8c4e2d8a_FP207:Base11_bb339f39/Painting_8c4e2d8a_FP207:Base11_bb339f39_0.obj" inertia="shell" />
+    <mesh name="Painting_8c4e2d8a_FP207:Base11_bb339f39_1" content_type="model/obj" file="FloorPlan207_physics/Structural/Painting_8c4e2d8a/Painting_8c4e2d8a_FP207:Base11_bb339f39/Painting_8c4e2d8a_FP207:Base11_bb339f39_1.obj" />
+    <mesh name="Painting_f097443e_FP207:Base15_fd7291d0_0" content_type="model/obj" file="FloorPlan207_physics/Structural/Painting_f097443e/Painting_f097443e_FP207:Base15_fd7291d0/Painting_f097443e_FP207:Base15_fd7291d0_0.obj" inertia="shell" />
+    <mesh name="Painting_f097443e_FP207:Base15_fd7291d0_1" content_type="model/obj" file="FloorPlan207_physics/Structural/Painting_f097443e/Painting_f097443e_FP207:Base15_fd7291d0/Painting_f097443e_FP207:Base15_fd7291d0_1.obj" inertia="shell" />
+    <mesh name="Painting_f097443e_FP207:Base15_fd7291d0_2" content_type="model/obj" file="FloorPlan207_physics/Structural/Painting_f097443e/Painting_f097443e_FP207:Base15_fd7291d0/Painting_f097443e_FP207:Base15_fd7291d0_2.obj" />
+    <mesh name="Window_37ba4408_FP207:polySurface1_287f97ef" content_type="model/obj" file="FloorPlan207_physics/Structural/Window_37ba4408/Window_37ba4408_FP207:polySurface1_287f97ef/Window_37ba4408_FP207:polySurface1_287f97ef.obj" />
+    <mesh name="Window_37ba4408_FP207:polySurface2_c0fe33d1" content_type="model/obj" file="FloorPlan207_physics/Structural/Window_37ba4408/Window_37ba4408_FP207:polySurface2_c0fe33d1/Window_37ba4408_FP207:polySurface2_c0fe33d1.obj" />
+    <mesh name="Ceiling_369db823_Ceiling_369db823" content_type="model/obj" file="FloorPlan207_physics/Structural/Ceiling_369db823/Ceiling_369db823_Ceiling_369db823/Ceiling_369db823_Ceiling_369db823.obj" />
+    <mesh name="FP207:LightFixture4_016a62c9_FP207:LightFixture4_016a62c9_0" content_type="model/obj" file="FloorPlan207_physics/Structural/FP207:LightFixture4_016a62c9/FP207:LightFixture4_016a62c9_FP207:LightFixture4_016a62c9/FP207:LightFixture4_016a62c9_FP207:LightFixture4_016a62c9_0.obj" />
+    <mesh name="FP207:LightFixture4_016a62c9_FP207:LightFixture4_016a62c9_1" content_type="model/obj" file="FloorPlan207_physics/Structural/FP207:LightFixture4_016a62c9/FP207:LightFixture4_016a62c9_FP207:LightFixture4_016a62c9/FP207:LightFixture4_016a62c9_FP207:LightFixture4_016a62c9_1.obj" />
+    <mesh name="FP207:LightFixture4_016a62c9_FP207:LightFixture4_016a62c9_2" content_type="model/obj" file="FloorPlan207_physics/Structural/FP207:LightFixture4_016a62c9/FP207:LightFixture4_016a62c9_FP207:LightFixture4_016a62c9/FP207:LightFixture4_016a62c9_FP207:LightFixture4_016a62c9_2.obj" />
+    <mesh name="FP207:LightFixture4_8bd55b35_FP207:LightFixture4__8bd55b35_0" content_type="model/obj" file="FloorPlan207_physics/Structural/FP207:LightFixture4_8bd55b35/FP207:LightFixture4_8bd55b35_FP207:LightFixture4__8bd55b35/FP207:LightFixture4_8bd55b35_FP207:LightFixture4__8bd55b35_0.obj" />
+    <mesh name="FP207:LightFixture4_8bd55b35_FP207:LightFixture4__8bd55b35_1" content_type="model/obj" file="FloorPlan207_physics/Structural/FP207:LightFixture4_8bd55b35/FP207:LightFixture4_8bd55b35_FP207:LightFixture4__8bd55b35/FP207:LightFixture4_8bd55b35_FP207:LightFixture4__8bd55b35_1.obj" />
+    <mesh name="FP207:LightFixture4_8bd55b35_FP207:LightFixture4__8bd55b35_2" content_type="model/obj" file="FloorPlan207_physics/Structural/FP207:LightFixture4_8bd55b35/FP207:LightFixture4_8bd55b35_FP207:LightFixture4__8bd55b35/FP207:LightFixture4_8bd55b35_FP207:LightFixture4__8bd55b35_2.obj" />
+    <mesh name="FP207:StandardKnob1_8314f400_FP207:StandardKnob1_8314f400" content_type="model/obj" file="FloorPlan207_physics/Structural/FP207:StandardKnob1_8314f400/FP207:StandardKnob1_8314f400_FP207:StandardKnob1_8314f400/FP207:StandardKnob1_8314f400_FP207:StandardKnob1_8314f400.obj" />
+    <mesh name="FP207:StandardDoorFrame1_b83f439b_FP207:StandardDoorFrame1_b83f439b" content_type="model/obj" file="FloorPlan207_physics/Structural/FP207:StandardDoorFrame1_b83f439b/FP207:StandardDoorFrame1_b83f439b_FP207:StandardDoorFrame1_b83f439b/FP207:StandardDoorFrame1_b83f439b_FP207:StandardDoorFrame1_b83f439b.obj" />
+    <mesh name="FP207:StandardDoor1_f8973a1a_FP207:StandardDoor1_f8973a1a" content_type="model/obj" file="FloorPlan207_physics/Structural/FP207:StandardDoor1_f8973a1a/FP207:StandardDoor1_f8973a1a_FP207:StandardDoor1_f8973a1a/FP207:StandardDoor1_f8973a1a_FP207:StandardDoor1_f8973a1a.obj" />
+    <mesh name="Walls_8a2d9ba1_Walls_8a2d9ba1_0" content_type="model/obj" file="FloorPlan207_physics/Structural/Walls_8a2d9ba1/Walls_8a2d9ba1_Walls_8a2d9ba1/Walls_8a2d9ba1_Walls_8a2d9ba1_0.obj" />
+    <mesh name="Walls_8a2d9ba1_Walls_8a2d9ba1_1" content_type="model/obj" file="FloorPlan207_physics/Structural/Walls_8a2d9ba1/Walls_8a2d9ba1_Walls_8a2d9ba1/Walls_8a2d9ba1_Walls_8a2d9ba1_1.obj" />
+    <mesh name="Floor_0d809d9e_mesh_6d4a1a8e" content_type="model/obj" file="FloorPlan207_physics/Structural/Floor_0d809d9e/Floor_0d809d9e_mesh_6d4a1a8e/Floor_0d809d9e_mesh_6d4a1a8e.obj" />
+  </asset>
+
+  <worldbody>
+    <geom name="floor" class="__STRUCTURAL_MJT__" size="0 0 0.01" type="plane" solimp="0.9 0.95" />
+    <light pos="1 -1 1.5" dir="-0.57735 0.57735 -0.57735" directional="true" diffuse="0.5 0.5 0.5" />
+    <body name="sofa_a2687f0964896efdc3d4021afe0b833b_1_0_0" pos="-1.4451154876717143 0.42022567792905297 0.413062035641849" quat="0.5000119622995012 0.4999779661751482 0.49997896326465363 0.5000311062219703">
+      <joint name="sofa_a2687f0964896efdc3d4021afe0b833b_1_0_0_jntfree_0" class="/" type="free" limited="false" actuatorfrclimited="false" damping="0.001" frictionloss="0.001" />
+      <body name="sofa_a2687f0964896efdc3d4021afe0b833b_1_1_0" pos="0.00037 -0.39997 0.0038">
+        <geom name="sofa_a2687f0964896efdc3d4021afe0b833b_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Couch2CushionsMatVar3" mesh="Sofa_207_1_sofa_207_0" />
+        <geom name="sofa_a2687f0964896efdc3d4021afe0b833b_1_1_0_visual_1" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Metal_chrome_mat" mesh="Sofa_207_1_sofa_207_1" />
+        <geom name="sofa_a2687f0964896efdc3d4021afe0b833b_1_1_0_visual_2" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Couch2FrameMatVar3" mesh="Sofa_207_1_sofa_207_2" />
+        <geom name="sofa_a2687f0964896efdc3d4021afe0b833b_1_1_0_collision_3" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="13.217" rgba="0.288334 0.0128819 0.804456 1" mesh="Sofa_207_1_sofa_207_0_collision_0" />
+        <geom name="sofa_a2687f0964896efdc3d4021afe0b833b_1_1_0_collision_4" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="13.217" rgba="0.53044 0.428692 0.583811 1" mesh="Sofa_207_1_sofa_207_0_collision_1" />
+        <geom name="sofa_a2687f0964896efdc3d4021afe0b833b_1_1_0_collision_5" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="13.217" rgba="0.350468 0.319196 0.47496 1" mesh="Sofa_207_1_sofa_207_0_collision_3" />
+        <geom name="sofa_a2687f0964896efdc3d4021afe0b833b_1_1_0_collision_6" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="13.217" rgba="0.00520746 0.845607 0.386277 1" mesh="Sofa_207_1_sofa_207_0_collision_2" />
+        <geom name="sofa_a2687f0964896efdc3d4021afe0b833b_1_1_0_collision_7" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="13.217" rgba="0.126211 0.0581616 0.812769 1" mesh="Sofa_207_1_sofa_207_1_collision_2" />
+        <geom name="sofa_a2687f0964896efdc3d4021afe0b833b_1_1_0_collision_8" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="13.217" rgba="0.331794 0.812896 0.776343 1" mesh="Sofa_207_1_sofa_207_1_collision_1" />
+        <geom name="sofa_a2687f0964896efdc3d4021afe0b833b_1_1_0_collision_9" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="13.217" rgba="0.317313 0.490197 0.952375 1" mesh="Sofa_207_1_sofa_207_1_collision_0" />
+        <geom name="sofa_a2687f0964896efdc3d4021afe0b833b_1_1_0_collision_10" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="13.217" rgba="0.838179 0.937522 0.250025 1" mesh="Sofa_207_1_sofa_207_1_collision_3" />
+        <geom name="sofa_a2687f0964896efdc3d4021afe0b833b_1_1_0_collision_11" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="13.217" rgba="0.0987234 0.622296 0.158313 1" mesh="Sofa_207_1_sofa_207_2_collision_6" />
+        <geom name="sofa_a2687f0964896efdc3d4021afe0b833b_1_1_0_collision_12" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="13.217" rgba="0.871544 0.983479 0.560983 1" mesh="Sofa_207_1_sofa_207_2_collision_1" />
+        <geom name="sofa_a2687f0964896efdc3d4021afe0b833b_1_1_0_collision_13" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="13.217" rgba="0.556991 0.220302 0.799418 1" mesh="Sofa_207_1_sofa_207_2_collision_3" />
+        <geom name="sofa_a2687f0964896efdc3d4021afe0b833b_1_1_0_collision_14" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="13.217" rgba="0.431833 0.0742802 0.0888474 1" mesh="Sofa_207_1_sofa_207_2_collision_0" />
+        <geom name="sofa_a2687f0964896efdc3d4021afe0b833b_1_1_0_collision_15" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="13.217" rgba="0.309523 0.00884837 0.497098 1" mesh="Sofa_207_1_sofa_207_2_collision_7" />
+        <geom name="sofa_a2687f0964896efdc3d4021afe0b833b_1_1_0_collision_16" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="13.217" rgba="0.497746 0.620891 0.00999668 1" mesh="Sofa_207_1_sofa_207_2_collision_4" />
+        <geom name="sofa_a2687f0964896efdc3d4021afe0b833b_1_1_0_collision_17" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="13.217" rgba="0.0814202 0.689749 0.344324 1" mesh="Sofa_207_1_sofa_207_2_collision_2" />
+        <geom name="sofa_a2687f0964896efdc3d4021afe0b833b_1_1_0_collision_18" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="13.217" rgba="0.465219 0.741432 0.40855 1" mesh="Sofa_207_1_sofa_207_2_collision_5" />
+        <geom name="sofa_a2687f0964896efdc3d4021afe0b833b_1_1_0_collision_19" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="13.217" rgba="0.918428 0.716789 0.495255 1" mesh="Sofa_207_1_sofa_207_2_collision_8" />
+        <site name="sofa_a2687f0964896efdc3d4021afe0b833b_1_1_0_sofa207ReceptacleCollider0_0" class="/" pos="0.02 0.555476 0.129449" quat="0 1 0 0" size="0.814823 0.228447 0.314592" group="5" type="box" rgba="1 0 0 1" />
+      </body>
+    </body>
+    <body name="armchair_13c0f2a658906aa60131790d71d09d01_1_0_0" pos="-0.6329988471504571 2.1940102345517944 0.36257804541178956" quat="0.7071070098798541 0.7071065524931212 2.4960901510244006e-07 -6.115814994763388e-08">
+      <joint name="armchair_13c0f2a658906aa60131790d71d09d01_1_0_0_jntfree_0" class="/" type="free" limited="false" actuatorfrclimited="false" damping="0.001" frictionloss="0.001" />
+      <body name="armchair_13c0f2a658906aa60131790d71d09d01_1_1_0" pos="-0.0035 -0.35687 0.00575">
+        <geom name="armchair_13c0f2a658906aa60131790d71d09d01_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" mesh="Armchair_207_1_armchair_207_0" />
+        <geom name="armchair_13c0f2a658906aa60131790d71d09d01_1_1_0_visual_1" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_ArmChair2CushionsMatVar3" mesh="Armchair_207_1_armchair_207_1" />
+        <geom name="armchair_13c0f2a658906aa60131790d71d09d01_1_1_0_visual_2" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Metal_chrome_mat" mesh="Armchair_207_1_armchair_207_2" />
+        <geom name="armchair_13c0f2a658906aa60131790d71d09d01_1_1_0_visual_3" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_ArmChair2FrameMatVar3" mesh="Armchair_207_1_armchair_207_3" />
+        <geom name="armchair_13c0f2a658906aa60131790d71d09d01_1_1_0_collision_4" class="__DYNAMIC_MJT__" size="0.33125 0.104219 0.283281" pos="0 0.211 0.0949998" quat="0 1 0 0" type="box" density="119.942" rgba="0 1 0 1" />
+        <geom name="armchair_13c0f2a658906aa60131790d71d09d01_1_1_0_collision_5" class="__DYNAMIC_MJT__" size="0.33125 0.078855 0.218427" pos="0 0.488 -0.222" quat="-0.607168 0.794573 0 0" type="box" density="119.942" rgba="0 1 0 1" />
+        <geom name="armchair_13c0f2a658906aa60131790d71d09d01_1_1_0_collision_6" class="__DYNAMIC_MJT__" size="0.0288809 0.0325151 0.378201" pos="0.346 0.648252 -0.00942081" quat="0 1 0 0" type="box" density="119.942" rgba="0 1 0 1" />
+        <geom name="armchair_13c0f2a658906aa60131790d71d09d01_1_1_0_collision_7" class="__DYNAMIC_MJT__" size="0.0288809 0.0325151 0.378077" pos="-0.353 0.648252 -0.00954521" quat="0 1 0 0" type="box" density="119.942" rgba="0 1 0 1" />
+        <geom name="armchair_13c0f2a658906aa60131790d71d09d01_1_1_0_collision_8" class="__DYNAMIC_MJT__" size="0.0490975 0.0517286 0.0503201" pos="0.291 0.046 -0.307" quat="0 1 0 0" type="box" density="119.942" rgba="0 1 0 1" />
+        <geom name="armchair_13c0f2a658906aa60131790d71d09d01_1_1_0_collision_9" class="__DYNAMIC_MJT__" size="0.0490975 0.0517286 0.0503201" pos="0.291 0.046 0.278" quat="0 1 0 0" type="box" density="119.942" rgba="0 1 0 1" />
+        <geom name="armchair_13c0f2a658906aa60131790d71d09d01_1_1_0_collision_10" class="__DYNAMIC_MJT__" size="0.0490975 0.0517286 0.0503201" pos="-0.296 0.046 -0.307" quat="0 1 0 0" type="box" density="119.942" rgba="0 1 0 1" />
+        <geom name="armchair_13c0f2a658906aa60131790d71d09d01_1_1_0_collision_11" class="__DYNAMIC_MJT__" size="0.0490975 0.0517286 0.0503201" pos="-0.296 0.046 0.278" quat="0 1 0 0" type="box" density="119.942" rgba="0 1 0 1" />
+        <geom name="armchair_13c0f2a658906aa60131790d71d09d01_1_1_0_collision_12" class="__DYNAMIC_MJT__" size="0.0288809 0.0453298 0.377981" pos="0.346 0.136 -0.00964051" quat="0 1 0 0" type="box" density="119.942" rgba="0 1 0 1" />
+        <geom name="armchair_13c0f2a658906aa60131790d71d09d01_1_1_0_collision_13" class="__DYNAMIC_MJT__" size="0.0288809 0.0453299 0.377981" pos="-0.353 0.136 -0.00964057" quat="0 1 0 0" type="box" density="119.942" rgba="0 1 0 1" />
+        <geom name="armchair_13c0f2a658906aa60131790d71d09d01_1_1_0_collision_14" class="__DYNAMIC_MJT__" size="0.0288809 0.0356972 0.294574" pos="0.346 0.385669 0.333" quat="-0.707107 0.707107 0 0" type="box" density="119.942" rgba="0 1 0 1" />
+        <geom name="armchair_13c0f2a658906aa60131790d71d09d01_1_1_0_collision_15" class="__DYNAMIC_MJT__" size="0.0288809 0.0356973 0.294574" pos="-0.353 0.385669 0.333" quat="-0.707107 0.707107 0 0" type="box" density="119.942" rgba="0 1 0 1" />
+        <geom name="armchair_13c0f2a658906aa60131790d71d09d01_1_1_0_collision_16" class="__DYNAMIC_MJT__" size="0.0288809 0.0267729 0.294574" pos="0.346 0.385669 -0.363" quat="-0.707107 0.707107 0 0" type="box" density="119.942" rgba="0 1 0 1" />
+        <geom name="armchair_13c0f2a658906aa60131790d71d09d01_1_1_0_collision_17" class="__DYNAMIC_MJT__" size="0.0288809 0.0267729 0.294574" pos="-0.353 0.385669 -0.363" quat="-0.707107 0.707107 0 0" type="box" density="119.942" rgba="0 1 0 1" />
+        <site name="armchair_13c0f2a658906aa60131790d71d09d01_1_1_0_armchair207ReceptacleCollider0_0" class="/" pos="4.04315e-08 0.412947 0.0616661" quat="0 3.27826e-07 0 1" size="0.311346 0.128947 0.311666" group="5" type="box" rgba="1 0 0 1" />
+      </body>
+    </body>
+    <body name="armchair_13c0f2a658906aa60131790d71d09d01_2_0_0" pos="0.3970011546588965 2.194000234551825 0.36257804541173616" quat="0.7071070098798464 0.7071065524930908 3.437655295232735e-07 3.299905110303589e-08">
+      <joint name="armchair_13c0f2a658906aa60131790d71d09d01_2_0_0_jntfree_0" class="/" type="free" limited="false" actuatorfrclimited="false" damping="0.001" frictionloss="0.001" />
+      <body name="armchair_13c0f2a658906aa60131790d71d09d01_2_1_0" pos="-0.0035 -0.35687 0.00575">
+        <geom name="armchair_13c0f2a658906aa60131790d71d09d01_2_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" mesh="Armchair_207_1_armchair_207_0" />
+        <geom name="armchair_13c0f2a658906aa60131790d71d09d01_2_1_0_visual_1" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_ArmChair2CushionsMatVar3" mesh="Armchair_207_1_armchair_207_1" />
+        <geom name="armchair_13c0f2a658906aa60131790d71d09d01_2_1_0_visual_2" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Metal_chrome_mat" mesh="Armchair_207_1_armchair_207_2" />
+        <geom name="armchair_13c0f2a658906aa60131790d71d09d01_2_1_0_visual_3" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_ArmChair2FrameMatVar3" mesh="Armchair_207_1_armchair_207_3" />
+        <geom name="armchair_13c0f2a658906aa60131790d71d09d01_2_1_0_collision_4" class="__DYNAMIC_MJT__" size="0.33125 0.104219 0.283281" pos="0 0.211 0.0949998" quat="0 1 0 0" type="box" density="119.942" rgba="0 1 0 1" />
+        <geom name="armchair_13c0f2a658906aa60131790d71d09d01_2_1_0_collision_5" class="__DYNAMIC_MJT__" size="0.33125 0.078855 0.218427" pos="0 0.488 -0.222" quat="-0.607168 0.794573 0 0" type="box" density="119.942" rgba="0 1 0 1" />
+        <geom name="armchair_13c0f2a658906aa60131790d71d09d01_2_1_0_collision_6" class="__DYNAMIC_MJT__" size="0.0288809 0.0325151 0.378201" pos="0.346 0.648252 -0.00942081" quat="0 1 0 0" type="box" density="119.942" rgba="0 1 0 1" />
+        <geom name="armchair_13c0f2a658906aa60131790d71d09d01_2_1_0_collision_7" class="__DYNAMIC_MJT__" size="0.0288809 0.0325151 0.378077" pos="-0.353 0.648252 -0.00954521" quat="0 1 0 0" type="box" density="119.942" rgba="0 1 0 1" />
+        <geom name="armchair_13c0f2a658906aa60131790d71d09d01_2_1_0_collision_8" class="__DYNAMIC_MJT__" size="0.0490975 0.0517286 0.0503201" pos="0.291 0.046 -0.307" quat="0 1 0 0" type="box" density="119.942" rgba="0 1 0 1" />
+        <geom name="armchair_13c0f2a658906aa60131790d71d09d01_2_1_0_collision_9" class="__DYNAMIC_MJT__" size="0.0490975 0.0517286 0.0503201" pos="0.291 0.046 0.278" quat="0 1 0 0" type="box" density="119.942" rgba="0 1 0 1" />
+        <geom name="armchair_13c0f2a658906aa60131790d71d09d01_2_1_0_collision_10" class="__DYNAMIC_MJT__" size="0.0490975 0.0517286 0.0503201" pos="-0.296 0.046 -0.307" quat="0 1 0 0" type="box" density="119.942" rgba="0 1 0 1" />
+        <geom name="armchair_13c0f2a658906aa60131790d71d09d01_2_1_0_collision_11" class="__DYNAMIC_MJT__" size="0.0490975 0.0517286 0.0503201" pos="-0.296 0.046 0.278" quat="0 1 0 0" type="box" density="119.942" rgba="0 1 0 1" />
+        <geom name="armchair_13c0f2a658906aa60131790d71d09d01_2_1_0_collision_12" class="__DYNAMIC_MJT__" size="0.0288809 0.0453298 0.377981" pos="0.346 0.136 -0.00964051" quat="0 1 0 0" type="box" density="119.942" rgba="0 1 0 1" />
+        <geom name="armchair_13c0f2a658906aa60131790d71d09d01_2_1_0_collision_13" class="__DYNAMIC_MJT__" size="0.0288809 0.0453299 0.377981" pos="-0.353 0.136 -0.00964057" quat="0 1 0 0" type="box" density="119.942" rgba="0 1 0 1" />
+        <geom name="armchair_13c0f2a658906aa60131790d71d09d01_2_1_0_collision_14" class="__DYNAMIC_MJT__" size="0.0288809 0.0356972 0.294574" pos="0.346 0.385669 0.333" quat="-0.707107 0.707107 0 0" type="box" density="119.942" rgba="0 1 0 1" />
+        <geom name="armchair_13c0f2a658906aa60131790d71d09d01_2_1_0_collision_15" class="__DYNAMIC_MJT__" size="0.0288809 0.0356973 0.294574" pos="-0.353 0.385669 0.333" quat="-0.707107 0.707107 0 0" type="box" density="119.942" rgba="0 1 0 1" />
+        <geom name="armchair_13c0f2a658906aa60131790d71d09d01_2_1_0_collision_16" class="__DYNAMIC_MJT__" size="0.0288809 0.0267729 0.294574" pos="0.346 0.385669 -0.363" quat="-0.707107 0.707107 0 0" type="box" density="119.942" rgba="0 1 0 1" />
+        <geom name="armchair_13c0f2a658906aa60131790d71d09d01_2_1_0_collision_17" class="__DYNAMIC_MJT__" size="0.0288809 0.0267729 0.294574" pos="-0.353 0.385669 -0.363" quat="-0.707107 0.707107 0 0" type="box" density="119.942" rgba="0 1 0 1" />
+        <site name="armchair_13c0f2a658906aa60131790d71d09d01_2_1_0_armchair207ReceptacleCollider0_0" class="/" pos="4.04315e-08 0.412947 0.0616661" quat="0 3.27826e-07 0 1" size="0.311346 0.128947 0.311666" group="5" type="box" rgba="1 0 0 1" />
+      </body>
+    </body>
+    <body name="coffeetable_6579da1c689d7a6c22c86ed4bdda132c_1_0_0" pos="-0.14999975491939216 0.42100215449436473 0.23546577371236357" quat="-0.4999974282675757 -0.49999837008187265 0.5000027875811198 0.5000014140503913">
+      <joint name="coffeetable_6579da1c689d7a6c22c86ed4bdda132c_1_0_0_jntfree_0" type="free" limited="false" actuatorfrclimited="false" damping="0.001" frictionloss="0.001" />
+      <body name="coffeetable_6579da1c689d7a6c22c86ed4bdda132c_1_1_0" pos="0.00077 -0.23519 0.00394">
+        <geom name="coffeetable_6579da1c689d7a6c22c86ed4bdda132c_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_DarkWoodSmooth2" mesh="Coffee_Table_207_1_FP207:CoffeeTable" />
+        <geom name="coffeetable_6579da1c689d7a6c22c86ed4bdda132c_1_1_0_collision_1" class="__DYNAMIC_MJT__" size="0.705583 0.0172053 0.336349" pos="0.000276368 0.453474 -0.00465546" quat="0 1.87755e-06 0 1" type="box" density="379.68" rgba="0 1 0 1" />
+        <geom name="coffeetable_6579da1c689d7a6c22c86ed4bdda132c_1_1_0_collision_2" class="__DYNAMIC_MJT__" size="0.0174197 0.233496 0.0170421" pos="-0.681709 0.233197 0.311113" quat="0 1.87755e-06 0 1" type="box" density="379.68" rgba="0 1 0 1" />
+        <geom name="coffeetable_6579da1c689d7a6c22c86ed4bdda132c_1_1_0_collision_3" class="__DYNAMIC_MJT__" size="0.0174197 0.233496 0.0170421" pos="-0.681711 0.233197 -0.320418" quat="0 1.87755e-06 0 1" type="box" density="379.68" rgba="0 1 0 1" />
+        <geom name="coffeetable_6579da1c689d7a6c22c86ed4bdda132c_1_1_0_collision_4" class="__DYNAMIC_MJT__" size="0.0174197 0.233496 0.0170421" pos="0.689425 0.233197 0.311107" quat="0 1.87755e-06 0 1" type="box" density="379.68" rgba="0 1 0 1" />
+        <geom name="coffeetable_6579da1c689d7a6c22c86ed4bdda132c_1_1_0_collision_5" class="__DYNAMIC_MJT__" size="0.0174197 0.233496 0.0170421" pos="0.689423 0.233197 -0.320424" quat="0 1.87755e-06 0 1" type="box" density="379.68" rgba="0 1 0 1" />
+        <geom name="coffeetable_6579da1c689d7a6c22c86ed4bdda132c_1_1_0_collision_6" class="__DYNAMIC_MJT__" size="0.0164932 0.0118286 0.336349" pos="0.689748 0.133614 -0.0046581" quat="0 1.87755e-06 0 1" type="box" density="379.68" rgba="0 1 0 1" />
+        <geom name="coffeetable_6579da1c689d7a6c22c86ed4bdda132c_1_1_0_collision_7" class="__DYNAMIC_MJT__" size="0.0164932 0.0118286 0.336349" pos="-0.685134 0.133614 -0.00465294" quat="0 1.87755e-06 0 1" type="box" density="379.68" rgba="0 1 0 1" />
+        <geom name="coffeetable_6579da1c689d7a6c22c86ed4bdda132c_1_1_0_collision_8" class="__DYNAMIC_MJT__" size="0.705583 0.0109218 0.015239" pos="0.000277616 0.132528 0.317893" quat="0 1.87755e-06 0 1" type="box" density="379.68" rgba="0 1 0 1" />
+        <site name="coffeetable_6579da1c689d7a6c22c86ed4bdda132c_1_1_0_FP207:CoffeeTableReceptacle0_0" class="/" pos="0.00259986 0.548978 -0.00505977" quat="0 1.87755e-06 0 1" size="0.705385 0.0821764 0.332375" group="5" type="box" rgba="1 0 0 1" />
+      </body>
+    </body>
+    <body name="stand_1879e196938d72c399114c2f3e7d385d_1_0_0" pos="-1.568018535911771 1.8187068575182934 0.23952853615021544" quat="0.5000254630430578 0.49996954627597884 0.4999917946285718 0.500013194235179">
+      <joint name="stand_1879e196938d72c399114c2f3e7d385d_1_0_0_jntfree_0" type="free" limited="false" actuatorfrclimited="false" damping="0.001" frictionloss="0.001" />
+      <body name="stand_1879e196938d72c399114c2f3e7d385d_1_1_0" pos="0.00285 -0.24237 -0.00919">
+        <geom name="stand_1879e196938d72c399114c2f3e7d385d_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_GenericStainlessSteel" mesh="Side_Table_207_1_FP207:SideTable_0" />
+        <geom name="stand_1879e196938d72c399114c2f3e7d385d_1_1_0_visual_1" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Glass_Detailed_Frosted_Mat" mesh="Side_Table_207_1_FP207:SideTable_1" />
+        <geom name="stand_1879e196938d72c399114c2f3e7d385d_1_1_0_collision_2" class="__DYNAMIC_MJT__" size="0.259375 0.0164714 0.259375" pos="0 0.465471 0" quat="0 0.707107 0 -0.707107" type="box" density="286.878" rgba="0 1 0 1" />
+        <geom name="stand_1879e196938d72c399114c2f3e7d385d_1_1_0_collision_3" class="__DYNAMIC_MJT__" size="0.0500001 0.0164714 0.153125" pos="4.7195e-08 0.465471 0.2918" quat="0 0.707107 0 -0.707107" type="box" density="286.878" rgba="0 1 0 1" />
+        <geom name="stand_1879e196938d72c399114c2f3e7d385d_1_1_0_collision_4" class="__DYNAMIC_MJT__" size="0.0500001 0.0164714 0.153125" pos="-4.79221e-08 0.465471 -0.304" quat="0 0.707107 0 -0.707107" type="box" density="286.878" rgba="0 1 0 1" />
+        <geom name="stand_1879e196938d72c399114c2f3e7d385d_1_1_0_collision_5" class="__DYNAMIC_MJT__" size="0.05 0.0164714 0.153125" pos="0.3095 0.465471 -0.0149" quat="0 1 0 -8.9407e-07" type="box" density="286.878" rgba="0 1 0 1" />
+        <geom name="stand_1879e196938d72c399114c2f3e7d385d_1_1_0_collision_6" class="__DYNAMIC_MJT__" size="0.05 0.0164714 0.153125" pos="-0.3056 0.465471 -0.0148999" quat="0 1 0 -8.9407e-07" type="box" density="286.878" rgba="0 1 0 1" />
+        <geom name="stand_1879e196938d72c399114c2f3e7d385d_1_1_0_collision_7" class="__DYNAMIC_MJT__" size="0.05 0.0164714 0.12737" pos="-0.2239 0.465471 0.2074" quat="0 0.923879 0 -0.382684" type="box" density="286.878" rgba="0 1 0 1" />
+        <geom name="stand_1879e196938d72c399114c2f3e7d385d_1_1_0_collision_8" class="__DYNAMIC_MJT__" size="0.05 0.0164714 0.12737" pos="0.2347 0.465471 -0.2093" quat="0 0.923879 0 -0.382684" type="box" density="286.878" rgba="0 1 0 1" />
+        <geom name="stand_1879e196938d72c399114c2f3e7d385d_1_1_0_collision_9" class="__DYNAMIC_MJT__" size="0.0500001 0.0164714 0.12737" pos="0.2237 0.465471 0.2164" quat="0 0.92388 0 0.382682" type="box" density="286.878" rgba="0 1 0 1" />
+        <geom name="stand_1879e196938d72c399114c2f3e7d385d_1_1_0_collision_10" class="__DYNAMIC_MJT__" size="0.0500001 0.0164714 0.12737" pos="-0.2229 0.465471 -0.2262" quat="0 0.92388 0 0.382682" type="box" density="286.878" rgba="0 1 0 1" />
+        <geom name="stand_1879e196938d72c399114c2f3e7d385d_1_1_0_collision_11" class="__DYNAMIC_MJT__" size="0.0636622 0.228129 0.0133628" pos="-0.2993 0.230929 -0.1275" quat="0 0.976791 0 0.214194" type="box" density="286.878" rgba="0 1 0 1" />
+        <geom name="stand_1879e196938d72c399114c2f3e7d385d_1_1_0_collision_12" class="__DYNAMIC_MJT__" size="0.0636601 0.22813 0.0133628" pos="0.00180005 0.23093 0.3087" quat="0 0.707659 0 0.706555" type="box" density="286.878" rgba="0 1 0 1" />
+        <geom name="stand_1879e196938d72c399114c2f3e7d385d_1_1_0_collision_13" class="__DYNAMIC_MJT__" size="0.0636602 0.22813 0.0133628" pos="0.3042 0.23093 -0.1296" quat="4.77924e-08 0.182852 4.77179e-08 0.98314" type="box" density="286.878" rgba="0 1 0 1" />
+        <site name="stand_1879e196938d72c399114c2f3e7d385d_1_1_0_FP207:SideTableReceptacle0_0" class="/" pos="0 0.520756 0" quat="0 0.707107 0 -0.707107" size="0.259375 0.0387563 0.259375" group="5" type="box" rgba="1 0 0 1" />
+      </body>
+    </body>
+
+    <body name="vase_6cb319ff57e79d3745bd6ac29c8adb3d_1_0_0" pos="-1.7770743125505741 -1.7765597277690952 1.4403043488428071" quat="-0.002489767697410339 -0.002544044818924334 0.7071029972188392 0.7071016052993412">
+      <joint name="vase_6cb319ff57e79d3745bd6ac29c8adb3d_1_0_0_jntfree_0" class="/" type="free" limited="false" actuatorfrclimited="false" damping="0.001" frictionloss="0.001" />
+      <body name="vase_6cb319ff57e79d3745bd6ac29c8adb3d_1_1_0" pos="0 -0.12291 0">
+        <geom name="vase_6cb319ff57e79d3745bd6ac29c8adb3d_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Glass_Blue_Mat" mesh="Vase_Open_2_vase_open" />
+        <geom name="vase_6cb319ff57e79d3745bd6ac29c8adb3d_1_1_0_collision_1" class="__DYNAMIC_MJT__" size="0.0223187 0.0186519 0.0552844" pos="0 0.0195376 0" quat="0 1 0 0" type="box" density="90.4855" rgba="0 1 0 1" />
+        <geom name="vase_6cb319ff57e79d3745bd6ac29c8adb3d_1_1_0_collision_2" class="__DYNAMIC_MJT__" size="0.0223187 0.0186519 0.0552844" pos="0 0.0195376 0" quat="0 0.92388 0 0.382683" type="box" density="90.4855" rgba="0 1 0 1" />
+        <geom name="vase_6cb319ff57e79d3745bd6ac29c8adb3d_1_1_0_collision_3" class="__DYNAMIC_MJT__" size="0.0223187 0.0186519 0.0552844" pos="0 0.0195376 0" quat="0 0.382685 0 0.923879" type="box" density="90.4855" rgba="0 1 0 1" />
+        <geom name="vase_6cb319ff57e79d3745bd6ac29c8adb3d_1_1_0_collision_4" class="__DYNAMIC_MJT__" size="0.0223187 0.0186519 0.0552844" pos="0 0.0195376 0" quat="0 0.707108 0 0.707106" type="box" density="90.4855" rgba="0 1 0 1" />
+        <geom name="vase_6cb319ff57e79d3745bd6ac29c8adb3d_1_1_0_collision_5" class="__DYNAMIC_MJT__" size="0.0305374 0.0223306 0.0756423" pos="0 0.0582466 0" quat="0 1 0 0" type="box" density="90.4855" rgba="0 1 0 1" />
+        <geom name="vase_6cb319ff57e79d3745bd6ac29c8adb3d_1_1_0_collision_6" class="__DYNAMIC_MJT__" size="0.0305374 0.0223306 0.0756423" pos="0 0.0582466 0" quat="0 0.92388 0 0.382683" type="box" density="90.4855" rgba="0 1 0 1" />
+        <geom name="vase_6cb319ff57e79d3745bd6ac29c8adb3d_1_1_0_collision_7" class="__DYNAMIC_MJT__" size="0.0305374 0.0223306 0.0756423" pos="0 0.0582466 0" quat="0 0.382685 0 0.923879" type="box" density="90.4855" rgba="0 1 0 1" />
+        <geom name="vase_6cb319ff57e79d3745bd6ac29c8adb3d_1_1_0_collision_8" class="__DYNAMIC_MJT__" size="0.0305374 0.0223306 0.0756423" pos="0 0.0582466 0" quat="0 0.707108 0 0.707106" type="box" density="90.4855" rgba="0 1 0 1" />
+        <geom name="vase_6cb319ff57e79d3745bd6ac29c8adb3d_1_1_0_collision_9" class="__DYNAMIC_MJT__" size="0.0381932 0.0439077 0.0946062" pos="0 0.122458 0" quat="0 1 0 0" type="box" density="90.4855" rgba="0 1 0 1" />
+        <geom name="vase_6cb319ff57e79d3745bd6ac29c8adb3d_1_1_0_collision_10" class="__DYNAMIC_MJT__" size="0.0381932 0.0439077 0.0946061" pos="0 0.122458 0" quat="0 0.92388 0 0.382683" type="box" density="90.4855" rgba="0 1 0 1" />
+        <geom name="vase_6cb319ff57e79d3745bd6ac29c8adb3d_1_1_0_collision_11" class="__DYNAMIC_MJT__" size="0.0381932 0.0439077 0.0946061" pos="0 0.122458 0" quat="0 0.382685 0 0.923879" type="box" density="90.4855" rgba="0 1 0 1" />
+        <geom name="vase_6cb319ff57e79d3745bd6ac29c8adb3d_1_1_0_collision_12" class="__DYNAMIC_MJT__" size="0.0381932 0.0439077 0.0946061" pos="0 0.122458 0" quat="0 0.707108 0 0.707106" type="box" density="90.4855" rgba="0 1 0 1" />
+        <geom name="vase_6cb319ff57e79d3745bd6ac29c8adb3d_1_1_0_collision_13" class="__DYNAMIC_MJT__" size="0.0296211 0.0165701 0.0733727" pos="0 0.228361 0" quat="0 1 0 0" type="box" density="90.4855" rgba="0 1 0 1" />
+        <geom name="vase_6cb319ff57e79d3745bd6ac29c8adb3d_1_1_0_collision_14" class="__DYNAMIC_MJT__" size="0.0296211 0.0165701 0.0733727" pos="0 0.228361 0" quat="0 0.92388 0 0.382683" type="box" density="90.4855" rgba="0 1 0 1" />
+        <geom name="vase_6cb319ff57e79d3745bd6ac29c8adb3d_1_1_0_collision_15" class="__DYNAMIC_MJT__" size="0.0296211 0.0165701 0.0733726" pos="0 0.228361 0" quat="0 0.382685 0 0.923879" type="box" density="90.4855" rgba="0 1 0 1" />
+        <geom name="vase_6cb319ff57e79d3745bd6ac29c8adb3d_1_1_0_collision_16" class="__DYNAMIC_MJT__" size="0.0296211 0.0165701 0.0733727" pos="0 0.228361 0" quat="0 0.707108 0 0.707106" type="box" density="90.4855" rgba="0 1 0 1" />
+        <geom name="vase_6cb319ff57e79d3745bd6ac29c8adb3d_1_1_0_collision_17" class="__DYNAMIC_MJT__" size="0.0357434 0.0240463 0.0885379" pos="0 0.189216 0" quat="0 1 0 0" type="box" density="90.4855" rgba="0 1 0 1" />
+        <geom name="vase_6cb319ff57e79d3745bd6ac29c8adb3d_1_1_0_collision_18" class="__DYNAMIC_MJT__" size="0.0357434 0.0240463 0.0885379" pos="0 0.189216 0" quat="0 0.92388 0 0.382683" type="box" density="90.4855" rgba="0 1 0 1" />
+        <geom name="vase_6cb319ff57e79d3745bd6ac29c8adb3d_1_1_0_collision_19" class="__DYNAMIC_MJT__" size="0.0357434 0.0240463 0.0885379" pos="0 0.189216 0" quat="0 0.382685 0 0.923879" type="box" density="90.4855" rgba="0 1 0 1" />
+        <geom name="vase_6cb319ff57e79d3745bd6ac29c8adb3d_1_1_0_collision_20" class="__DYNAMIC_MJT__" size="0.0357434 0.0240463 0.0885379" pos="0 0.189216 0" quat="0 0.707108 0 0.707106" type="box" density="90.4855" rgba="0 1 0 1" />
+      </body>
+    </body>
+    <body name="vase_d568e4c5c2948c69c05d527517276b06_1_0_0" pos="-1.761612362881139 -1.437825503644408 1.4136825323159288" quat="0.0009596143213678432 0.00048059484253838095 0.7061029715143126 0.7081083545528966">
+      <joint name="vase_d568e4c5c2948c69c05d527517276b06_1_0_0_jntfree_0" class="/" type="free" limited="false" actuatorfrclimited="false" damping="0.001" frictionloss="0.001" />
+      <body name="vase_d568e4c5c2948c69c05d527517276b06_1_1_0" pos="0 -0.09446 0">
+        <geom name="vase_d568e4c5c2948c69c05d527517276b06_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Brass_Mat" mesh="Vase_Medium_5_vase_medium" />
+        <geom name="vase_d568e4c5c2948c69c05d527517276b06_1_1_0_collision_1" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="193.161" rgba="0.41983 0.31713 0.630332 1" mesh="Vase_Medium_5_vase_medium_collision_2" />
+        <geom name="vase_d568e4c5c2948c69c05d527517276b06_1_1_0_collision_2" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="193.161" rgba="0.385161 0.195185 0.368333 1" mesh="Vase_Medium_5_vase_medium_collision_9" />
+        <geom name="vase_d568e4c5c2948c69c05d527517276b06_1_1_0_collision_3" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="193.161" rgba="0.629272 0.0362223 0.171965 1" mesh="Vase_Medium_5_vase_medium_collision_7" />
+        <geom name="vase_d568e4c5c2948c69c05d527517276b06_1_1_0_collision_4" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="193.161" rgba="0.754987 0.866991 0.0186184 1" mesh="Vase_Medium_5_vase_medium_collision_6" />
+        <geom name="vase_d568e4c5c2948c69c05d527517276b06_1_1_0_collision_5" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="193.161" rgba="0.496949 0.976255 0.908241 1" mesh="Vase_Medium_5_vase_medium_collision_12" />
+        <geom name="vase_d568e4c5c2948c69c05d527517276b06_1_1_0_collision_6" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="193.161" rgba="0.0960073 0.145726 0.622599 1" mesh="Vase_Medium_5_vase_medium_collision_19" />
+        <geom name="vase_d568e4c5c2948c69c05d527517276b06_1_1_0_collision_7" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="193.161" rgba="0.675824 0.80187 0.869924 1" mesh="Vase_Medium_5_vase_medium_collision_11" />
+        <geom name="vase_d568e4c5c2948c69c05d527517276b06_1_1_0_collision_8" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="193.161" rgba="0.616758 0.492636 0.548154 1" mesh="Vase_Medium_5_vase_medium_collision_21" />
+        <geom name="vase_d568e4c5c2948c69c05d527517276b06_1_1_0_collision_9" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="193.161" rgba="0.217206 0.130098 0.294542 1" mesh="Vase_Medium_5_vase_medium_collision_16" />
+        <geom name="vase_d568e4c5c2948c69c05d527517276b06_1_1_0_collision_10" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="193.161" rgba="0.847715 0.607118 0.30889 1" mesh="Vase_Medium_5_vase_medium_collision_10" />
+        <geom name="vase_d568e4c5c2948c69c05d527517276b06_1_1_0_collision_11" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="193.161" rgba="0.715635 0.537134 0.734769 1" mesh="Vase_Medium_5_vase_medium_collision_13" />
+        <geom name="vase_d568e4c5c2948c69c05d527517276b06_1_1_0_collision_12" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="193.161" rgba="0.449175 0.908455 0.367697 1" mesh="Vase_Medium_5_vase_medium_collision_18" />
+        <geom name="vase_d568e4c5c2948c69c05d527517276b06_1_1_0_collision_13" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="193.161" rgba="0.523314 0.12635 0.897853 1" mesh="Vase_Medium_5_vase_medium_collision_8" />
+        <geom name="vase_d568e4c5c2948c69c05d527517276b06_1_1_0_collision_14" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="193.161" rgba="0.168953 0.143711 0.552038 1" mesh="Vase_Medium_5_vase_medium_collision_15" />
+        <geom name="vase_d568e4c5c2948c69c05d527517276b06_1_1_0_collision_15" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="193.161" rgba="0.97517 0.736721 0.0581816 1" mesh="Vase_Medium_5_vase_medium_collision_1" />
+        <geom name="vase_d568e4c5c2948c69c05d527517276b06_1_1_0_collision_16" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="193.161" rgba="0.0928888 0.0898846 0.417122 1" mesh="Vase_Medium_5_vase_medium_collision_14" />
+        <geom name="vase_d568e4c5c2948c69c05d527517276b06_1_1_0_collision_17" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="193.161" rgba="0.35832 0.913706 0.333227 1" mesh="Vase_Medium_5_vase_medium_collision_5" />
+        <geom name="vase_d568e4c5c2948c69c05d527517276b06_1_1_0_collision_18" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="193.161" rgba="0.466221 0.89837 0.589459 1" mesh="Vase_Medium_5_vase_medium_collision_23" />
+        <geom name="vase_d568e4c5c2948c69c05d527517276b06_1_1_0_collision_19" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="193.161" rgba="0.0342701 0.496386 0.0820019 1" mesh="Vase_Medium_5_vase_medium_collision_0" />
+        <geom name="vase_d568e4c5c2948c69c05d527517276b06_1_1_0_collision_20" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="193.161" rgba="0.40583 0.150519 0.233659 1" mesh="Vase_Medium_5_vase_medium_collision_22" />
+        <geom name="vase_d568e4c5c2948c69c05d527517276b06_1_1_0_collision_21" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="193.161" rgba="0.298553 0.0933897 0.359809 1" mesh="Vase_Medium_5_vase_medium_collision_4" />
+        <geom name="vase_d568e4c5c2948c69c05d527517276b06_1_1_0_collision_22" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="193.161" rgba="0.406314 0.152734 0.536022 1" mesh="Vase_Medium_5_vase_medium_collision_24" />
+        <geom name="vase_d568e4c5c2948c69c05d527517276b06_1_1_0_collision_23" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="193.161" rgba="0.721807 0.0528717 0.267017 1" mesh="Vase_Medium_5_vase_medium_collision_17" />
+        <geom name="vase_d568e4c5c2948c69c05d527517276b06_1_1_0_collision_24" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="193.161" rgba="0.234723 0.158626 0.608439 1" mesh="Vase_Medium_5_vase_medium_collision_20" />
+      </body>
+    </body>
+    <body name="statue_471c14e34f25254596949023334325a4_1_0_0" pos="1.4721673853575605 -0.14641736504794226 0.2708919728832993" quat="0.5048844610939194 0.5011347921629851 0.503592972751568 0.49025474890602">
+      <joint name="statue_471c14e34f25254596949023334325a4_1_0_0_jntfree_0" class="/" type="free" limited="false" actuatorfrclimited="false" damping="0.001" frictionloss="0.001" />
+      <body name="statue_471c14e34f25254596949023334325a4_1_1_0" pos="0.02256 -0.09922 -0.02769" quat="1 0 -1.04308e-07 0">
+        <geom name="statue_471c14e34f25254596949023334325a4_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_GREYGRANITE" mesh="Dog_Statue_4_dog_statue" />
+        <geom name="statue_471c14e34f25254596949023334325a4_1_1_0_collision_1" class="__DYNAMIC_MJT__" size="0.0362969 0.0722179" pos="0.0157892 0.083224 0.00148365" quat="0.392187 -0.392184 -0.588379 0.588381" type="capsule" density="2565.66" rgba="0 1 0 1" />
+        <geom name="statue_471c14e34f25254596949023334325a4_1_1_0_collision_2" class="__DYNAMIC_MJT__" size="0.00805017 0.0230186" pos="-0.0899522 0.0949797 0.00148427" quat="0.669325 -0.669324 -0.228044 0.228047" type="capsule" density="2565.66" rgba="0 1 0 1" />
+        <geom name="statue_471c14e34f25254596949023334325a4_1_1_0_collision_3" class="__DYNAMIC_MJT__" size="0.0240958 0.0261213" pos="0.0837939 0.163831 0.0193891" quat="0.929598 -0.341737 0.0476415 -0.129588" type="capsule" density="2565.66" rgba="0 1 0 1" />
+        <geom name="statue_471c14e34f25254596949023334325a4_1_1_0_collision_4" class="__DYNAMIC_MJT__" size="0.016021 0.0153276" pos="0.103902 0.173163 0.0632756" quat="0.722102 -0.150875 0.211513 -0.641146" type="capsule" density="2565.66" rgba="0 1 0 1" />
+        <geom name="statue_471c14e34f25254596949023334325a4_1_1_0_collision_5" class="__DYNAMIC_MJT__" size="0.00877531 0.0177804" pos="-0.0252141 0.00680888 0.0252606" quat="0.549072 -0.553071 -0.444584 0.441562" type="capsule" density="2565.66" rgba="0 1 0 1" />
+        <geom name="statue_471c14e34f25254596949023334325a4_1_1_0_collision_6" class="__DYNAMIC_MJT__" size="0.0130961 0.0115044" pos="-0.0334074 0.0333311 0.0251559" quat="0.293545 -0.298471 -0.642625 0.641701" type="capsule" density="2565.66" rgba="0 1 0 1" />
+        <geom name="statue_471c14e34f25254596949023334325a4_1_1_0_collision_7" class="__DYNAMIC_MJT__" size="0.00872604 0.0195566" pos="-0.0170104 0.0081865 -0.0248377" quat="0.513802 -0.518018 -0.484915 0.482205" type="capsule" density="2565.66" rgba="0 1 0 1" />
+        <geom name="statue_471c14e34f25254596949023334325a4_1_1_0_collision_8" class="__DYNAMIC_MJT__" size="0.0144764 0.0101241" pos="-0.0299503 0.0330694 -0.0226783" quat="0.212013 -0.217016 -0.673933 0.673624" type="capsule" density="2565.66" rgba="0 1 0 1" />
+        <geom name="statue_471c14e34f25254596949023334325a4_1_1_0_collision_9" class="__DYNAMIC_MJT__" size="0.0110798 0.0279045" pos="0.0782681 0.0548785 -0.0226073" quat="0.0887365 -0.0229624 -0.732059 0.675046" type="capsule" density="2565.66" rgba="0 1 0 1" />
+        <geom name="statue_471c14e34f25254596949023334325a4_1_1_0_collision_10" class="__DYNAMIC_MJT__" size="0.0109899 0.00750428" pos="0.0805595 0.0113559 -0.0252579" quat="-0.269938 0.300702 -0.686235 0.604808" type="capsule" density="2565.66" rgba="0 1 0 1" />
+        <geom name="statue_471c14e34f25254596949023334325a4_1_1_0_collision_11" class="__DYNAMIC_MJT__" size="0.013388 0.0114495" pos="0.0988453 0.0773582 0.0254833" quat="-0.107881 0.107885 -0.698829 0.698828" type="capsule" density="2565.66" rgba="0 1 0 1" />
+        <geom name="statue_471c14e34f25254596949023334325a4_1_1_0_collision_12" class="__DYNAMIC_MJT__" size="0.0101448 0.0259917" pos="0.125619 0.043261 0.0276337" quat="-0.338605 0.321314 -0.608746 0.641508" type="capsule" density="2565.66" rgba="0 1 0 1" />
+        <geom name="statue_471c14e34f25254596949023334325a4_1_1_0_collision_13" class="__DYNAMIC_MJT__" size="0.00994297 0.00907463" pos="0.14582 0.0159322 0.032" quat="0.707107 0.707107 -7.3757e-08 7.3757e-08" type="capsule" density="2565.66" rgba="0 1 0 1" />
+      </body>
+    </body>
+    <body name="vase_0db9e9dc4d41a9e8ceaa58f142da5baa_1_0_0" pos="-1.7067005477001844 -1.7521561550920708 1.712261149848597" quat="-0.17633604523834487 -0.17714340843199816 0.68331589005253 0.6860067101716376">
+      <joint name="vase_0db9e9dc4d41a9e8ceaa58f142da5baa_1_0_0_jntfree_0" class="/" type="free" limited="false" actuatorfrclimited="false" damping="0.001" frictionloss="0.001" />
+      <body name="vase_0db9e9dc4d41a9e8ceaa58f142da5baa_1_1_0" pos="0 -0.09446 0">
+        <geom name="vase_0db9e9dc4d41a9e8ceaa58f142da5baa_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Porcelain_Yellow_Mat" mesh="Vase_Medium_4_vase_medium" />
+        <geom name="vase_0db9e9dc4d41a9e8ceaa58f142da5baa_1_1_0_collision_1" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="193.161" rgba="0.231051 0.843317 0.872314 1" mesh="Vase_Medium_4_vase_medium_collision_9" />
+        <geom name="vase_0db9e9dc4d41a9e8ceaa58f142da5baa_1_1_0_collision_2" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="193.161" rgba="0.769936 0.929781 0.671085 1" mesh="Vase_Medium_4_vase_medium_collision_15" />
+        <geom name="vase_0db9e9dc4d41a9e8ceaa58f142da5baa_1_1_0_collision_3" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="193.161" rgba="0.342072 0.336926 0.94279 1" mesh="Vase_Medium_4_vase_medium_collision_17" />
+        <geom name="vase_0db9e9dc4d41a9e8ceaa58f142da5baa_1_1_0_collision_4" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="193.161" rgba="0.732187 0.30094 0.837771 1" mesh="Vase_Medium_4_vase_medium_collision_18" />
+        <geom name="vase_0db9e9dc4d41a9e8ceaa58f142da5baa_1_1_0_collision_5" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="193.161" rgba="0.221041 0.215575 0.684765 1" mesh="Vase_Medium_4_vase_medium_collision_0" />
+        <geom name="vase_0db9e9dc4d41a9e8ceaa58f142da5baa_1_1_0_collision_6" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="193.161" rgba="0.98188 0.109835 0.780442 1" mesh="Vase_Medium_4_vase_medium_collision_19" />
+        <geom name="vase_0db9e9dc4d41a9e8ceaa58f142da5baa_1_1_0_collision_7" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="193.161" rgba="0.087601 0.945423 0.863089 1" mesh="Vase_Medium_4_vase_medium_collision_13" />
+        <geom name="vase_0db9e9dc4d41a9e8ceaa58f142da5baa_1_1_0_collision_8" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="193.161" rgba="0.408132 0.888785 0.265027 1" mesh="Vase_Medium_4_vase_medium_collision_12" />
+        <geom name="vase_0db9e9dc4d41a9e8ceaa58f142da5baa_1_1_0_collision_9" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="193.161" rgba="0.44126 0.560995 0.39286 1" mesh="Vase_Medium_4_vase_medium_collision_16" />
+        <geom name="vase_0db9e9dc4d41a9e8ceaa58f142da5baa_1_1_0_collision_10" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="193.161" rgba="0.575969 0.308713 0.26191 1" mesh="Vase_Medium_4_vase_medium_collision_21" />
+        <geom name="vase_0db9e9dc4d41a9e8ceaa58f142da5baa_1_1_0_collision_11" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="193.161" rgba="0.247969 0.633933 0.673731 1" mesh="Vase_Medium_4_vase_medium_collision_1" />
+        <geom name="vase_0db9e9dc4d41a9e8ceaa58f142da5baa_1_1_0_collision_12" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="193.161" rgba="0.746536 0.398994 0.744132 1" mesh="Vase_Medium_4_vase_medium_collision_4" />
+        <geom name="vase_0db9e9dc4d41a9e8ceaa58f142da5baa_1_1_0_collision_13" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="193.161" rgba="0.936322 0.421548 0.0894511 1" mesh="Vase_Medium_4_vase_medium_collision_8" />
+        <geom name="vase_0db9e9dc4d41a9e8ceaa58f142da5baa_1_1_0_collision_14" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="193.161" rgba="0.821129 0.409187 0.467905 1" mesh="Vase_Medium_4_vase_medium_collision_2" />
+        <geom name="vase_0db9e9dc4d41a9e8ceaa58f142da5baa_1_1_0_collision_15" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="193.161" rgba="0.626213 0.764987 0.0315983 1" mesh="Vase_Medium_4_vase_medium_collision_22" />
+        <geom name="vase_0db9e9dc4d41a9e8ceaa58f142da5baa_1_1_0_collision_16" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="193.161" rgba="0.726412 0.451385 0.710829 1" mesh="Vase_Medium_4_vase_medium_collision_11" />
+        <geom name="vase_0db9e9dc4d41a9e8ceaa58f142da5baa_1_1_0_collision_17" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="193.161" rgba="0.280124 0.475973 0.442882 1" mesh="Vase_Medium_4_vase_medium_collision_7" />
+        <geom name="vase_0db9e9dc4d41a9e8ceaa58f142da5baa_1_1_0_collision_18" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="193.161" rgba="0.637807 0.461431 0.434565 1" mesh="Vase_Medium_4_vase_medium_collision_20" />
+        <geom name="vase_0db9e9dc4d41a9e8ceaa58f142da5baa_1_1_0_collision_19" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="193.161" rgba="0.630726 0.882738 0.465852 1" mesh="Vase_Medium_4_vase_medium_collision_24" />
+        <geom name="vase_0db9e9dc4d41a9e8ceaa58f142da5baa_1_1_0_collision_20" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="193.161" rgba="0.747642 0.206442 0.248241 1" mesh="Vase_Medium_4_vase_medium_collision_23" />
+        <geom name="vase_0db9e9dc4d41a9e8ceaa58f142da5baa_1_1_0_collision_21" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="193.161" rgba="0.0917117 0.441623 0.618775 1" mesh="Vase_Medium_4_vase_medium_collision_14" />
+        <geom name="vase_0db9e9dc4d41a9e8ceaa58f142da5baa_1_1_0_collision_22" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="193.161" rgba="0.578196 0.209974 0.369678 1" mesh="Vase_Medium_4_vase_medium_collision_6" />
+        <geom name="vase_0db9e9dc4d41a9e8ceaa58f142da5baa_1_1_0_collision_23" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="193.161" rgba="0.937736 0.0610126 0.800023 1" mesh="Vase_Medium_4_vase_medium_collision_10" />
+        <geom name="vase_0db9e9dc4d41a9e8ceaa58f142da5baa_1_1_0_collision_24" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="193.161" rgba="0.735303 0.175105 0.724286 1" mesh="Vase_Medium_4_vase_medium_collision_5" />
+      </body>
+    </body>
+    <body name="remotecontrol_9e0a946ebd9862fe7ffbf14025fdf9f9_1_0_0" pos="1.513395400389479 -0.21325384793829782 0.7614626121583125" quat="-0.00011222966121482435 -0.0001253118663268816 0.7070983061393054 0.7071152361223485">
+      <joint name="remotecontrol_9e0a946ebd9862fe7ffbf14025fdf9f9_1_0_0_jntfree_0" class="/" type="free" limited="false" actuatorfrclimited="false" damping="0.001" frictionloss="0.001" />
+      <body name="remotecontrol_9e0a946ebd9862fe7ffbf14025fdf9f9_1_1_0" pos="0 -0.00152 0.00039" quat="2.95043e-06 0 1 0">
+        <geom name="remotecontrol_9e0a946ebd9862fe7ffbf14025fdf9f9_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_StainlessSteel_Dull" mesh="Remote_1_RemoteBody1" />
+        <geom name="remotecontrol_9e0a946ebd9862fe7ffbf14025fdf9f9_1_1_0_collision_1" class="__DYNAMIC_MJT__" size="0.0340105 0.00932214 0.0793806" pos="0 0 0.0280239" quat="0 2.95043e-06 0 -1" type="box" density="394.366" rgba="0 1 0 1" />
+        <geom name="remotecontrol_9e0a946ebd9862fe7ffbf14025fdf9f9_1_1_0_collision_2" class="__DYNAMIC_MJT__" size="0.0324964 0.0070687 0.0284222" pos="0 0 -0.0797715" quat="0 2.95043e-06 0 -1" type="box" density="394.366" rgba="0 1 0 1" />
+      </body>
+      <body name="remotecontrol_9e0a946ebd9862fe7ffbf14025fdf9f9_1_2_0" pos="0 -0.00762 0.00039">
+        <geom name="remotecontrol_9e0a946ebd9862fe7ffbf14025fdf9f9_1_2_0_visual_3" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_TealPlasitc" mesh="Remote_1_RemoteButtons1_0" />
+        <geom name="remotecontrol_9e0a946ebd9862fe7ffbf14025fdf9f9_1_2_0_visual_4" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_WhitePlastic" mesh="Remote_1_RemoteButtons1_1" />
+        <geom name="remotecontrol_9e0a946ebd9862fe7ffbf14025fdf9f9_1_2_0_visual_5" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_TealPlasitc" mesh="Remote_1_RemoteButtons1_2" />
+        <geom name="remotecontrol_9e0a946ebd9862fe7ffbf14025fdf9f9_1_2_0_visual_6" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_LightBlueRubber" mesh="Remote_1_RemoteButtons1_3" />
+      </body>
+    </body>
+    <body name="television_cc824f11c83cf1c9fd0ca76257ceea1f_1_0_0" pos="1.82606 0.248074 1.18015" quat="-0.499976 -0.500018 0.499982 0.500024">
+      <body name="television_cc824f11c83cf1c9fd0ca76257ceea1f_1_1_0" pos="0 0.06097 -0.05272">
+        <geom name="television_cc824f11c83cf1c9fd0ca76257ceea1f_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_television_backup_mat" mesh="Television_7_television_7_0" />
+        <geom name="television_cc824f11c83cf1c9fd0ca76257ceea1f_1_1_0_visual_1" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Television_Speakers_Mat" mesh="Television_7_television_7_1" />
+        <geom name="television_cc824f11c83cf1c9fd0ca76257ceea1f_1_1_0_visual_2" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Television_Screen_Off_Mat" mesh="Television_7_television_7_2" />
+        <geom name="television_cc824f11c83cf1c9fd0ca76257ceea1f_1_1_0_visual_3" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Television_Secondary1_Mat" mesh="Television_7_television_7_3" />
+        <geom name="television_cc824f11c83cf1c9fd0ca76257ceea1f_1_1_0_visual_4" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Television_Primary1_Mat" mesh="Television_7_television_7_4" />
+        <geom name="television_cc824f11c83cf1c9fd0ca76257ceea1f_1_1_0_collision_5" class="__STRUCTURAL_MJT__" type="mesh" margin="0.001" density="81.567" rgba="0.657747 0.418759 0.825106 1" mesh="Television_7_television_7_0_collision_0" />
+        <geom name="television_cc824f11c83cf1c9fd0ca76257ceea1f_1_1_0_collision_6" class="__STRUCTURAL_MJT__" type="mesh" margin="0.001" density="81.567" rgba="0.2971 0.776865 0.559194 1" mesh="Television_7_television_7_1_collision_0" />
+        <geom name="television_cc824f11c83cf1c9fd0ca76257ceea1f_1_1_0_collision_7" class="__STRUCTURAL_MJT__" type="mesh" margin="0.001" density="81.567" rgba="0.24623 0.459361 0.0443768 1" mesh="Television_7_television_7_1_collision_1" />
+        <geom name="television_cc824f11c83cf1c9fd0ca76257ceea1f_1_1_0_collision_8" class="__STRUCTURAL_MJT__" type="mesh" margin="0.001" density="81.567" rgba="0.104341 0.364457 0.771568 1" mesh="Television_7_television_7_2_collision_0" />
+        <geom name="television_cc824f11c83cf1c9fd0ca76257ceea1f_1_1_0_collision_9" class="__STRUCTURAL_MJT__" type="mesh" margin="0.001" density="81.567" rgba="0.65458 0.865338 0.530519 1" mesh="Television_7_television_7_2_collision_1" />
+        <geom name="television_cc824f11c83cf1c9fd0ca76257ceea1f_1_1_0_collision_10" class="__STRUCTURAL_MJT__" type="mesh" margin="0.001" density="81.567" rgba="0.230404 0.36516 0.0748003 1" mesh="Television_7_television_7_3_collision_1" />
+        <geom name="television_cc824f11c83cf1c9fd0ca76257ceea1f_1_1_0_collision_11" class="__STRUCTURAL_MJT__" type="mesh" margin="0.001" density="81.567" rgba="0.884896 0.649628 0.761147 1" mesh="Television_7_television_7_3_collision_5" />
+        <geom name="television_cc824f11c83cf1c9fd0ca76257ceea1f_1_1_0_collision_12" class="__STRUCTURAL_MJT__" type="mesh" margin="0.001" density="81.567" rgba="0.981755 0.63075 0.899961 1" mesh="Television_7_television_7_3_collision_4" />
+        <geom name="television_cc824f11c83cf1c9fd0ca76257ceea1f_1_1_0_collision_13" class="__STRUCTURAL_MJT__" type="mesh" margin="0.001" density="81.567" rgba="0.642744 0.614108 0.328051 1" mesh="Television_7_television_7_3_collision_7" />
+        <geom name="television_cc824f11c83cf1c9fd0ca76257ceea1f_1_1_0_collision_14" class="__STRUCTURAL_MJT__" type="mesh" margin="0.001" density="81.567" rgba="0.99297 0.184738 0.497976 1" mesh="Television_7_television_7_3_collision_2" />
+        <geom name="television_cc824f11c83cf1c9fd0ca76257ceea1f_1_1_0_collision_15" class="__STRUCTURAL_MJT__" type="mesh" margin="0.001" density="81.567" rgba="0.386465 0.0918803 0.169283 1" mesh="Television_7_television_7_3_collision_8" />
+        <geom name="television_cc824f11c83cf1c9fd0ca76257ceea1f_1_1_0_collision_16" class="__STRUCTURAL_MJT__" type="mesh" margin="0.001" density="81.567" rgba="0.645476 0.89174 0.850184 1" mesh="Television_7_television_7_3_collision_3" />
+        <geom name="television_cc824f11c83cf1c9fd0ca76257ceea1f_1_1_0_collision_17" class="__STRUCTURAL_MJT__" type="mesh" margin="0.001" density="81.567" rgba="0.271867 0.714549 0.2341 1" mesh="Television_7_television_7_3_collision_6" />
+        <geom name="television_cc824f11c83cf1c9fd0ca76257ceea1f_1_1_0_collision_18" class="__STRUCTURAL_MJT__" type="mesh" margin="0.001" density="81.567" rgba="0.110366 0.536214 0.390692 1" mesh="Television_7_television_7_3_collision_0" />
+        <geom name="television_cc824f11c83cf1c9fd0ca76257ceea1f_1_1_0_collision_19" class="__STRUCTURAL_MJT__" type="mesh" margin="0.001" density="81.567" rgba="0.651704 0.97918 0.132404 1" mesh="Television_7_television_7_4_collision_4" />
+        <geom name="television_cc824f11c83cf1c9fd0ca76257ceea1f_1_1_0_collision_20" class="__STRUCTURAL_MJT__" type="mesh" margin="0.001" density="81.567" rgba="0.784327 0.284496 0.598289 1" mesh="Television_7_television_7_4_collision_5" />
+        <geom name="television_cc824f11c83cf1c9fd0ca76257ceea1f_1_1_0_collision_21" class="__STRUCTURAL_MJT__" type="mesh" margin="0.001" density="81.567" rgba="0.824928 0.785187 0.842872 1" mesh="Television_7_television_7_4_collision_2" />
+        <geom name="television_cc824f11c83cf1c9fd0ca76257ceea1f_1_1_0_collision_22" class="__STRUCTURAL_MJT__" type="mesh" margin="0.001" density="81.567" rgba="0.862657 0.428161 0.743716 1" mesh="Television_7_television_7_4_collision_10" />
+        <geom name="television_cc824f11c83cf1c9fd0ca76257ceea1f_1_1_0_collision_23" class="__STRUCTURAL_MJT__" type="mesh" margin="0.001" density="81.567" rgba="0.123947 0.760756 0.774848 1" mesh="Television_7_television_7_4_collision_1" />
+        <geom name="television_cc824f11c83cf1c9fd0ca76257ceea1f_1_1_0_collision_24" class="__STRUCTURAL_MJT__" type="mesh" margin="0.001" density="81.567" rgba="0.391224 0.16769 0.839607 1" mesh="Television_7_television_7_4_collision_3" />
+        <geom name="television_cc824f11c83cf1c9fd0ca76257ceea1f_1_1_0_collision_25" class="__STRUCTURAL_MJT__" type="mesh" margin="0.001" density="81.567" rgba="0.25374 0.662896 0.764328 1" mesh="Television_7_television_7_4_collision_8" />
+        <geom name="television_cc824f11c83cf1c9fd0ca76257ceea1f_1_1_0_collision_26" class="__STRUCTURAL_MJT__" type="mesh" margin="0.001" density="81.567" rgba="0.0811407 0.13331 0.244524 1" mesh="Television_7_television_7_4_collision_7" />
+        <geom name="television_cc824f11c83cf1c9fd0ca76257ceea1f_1_1_0_collision_27" class="__STRUCTURAL_MJT__" type="mesh" margin="0.001" density="81.567" rgba="0.790204 0.686063 0.105841 1" mesh="Television_7_television_7_4_collision_9" />
+        <geom name="television_cc824f11c83cf1c9fd0ca76257ceea1f_1_1_0_collision_28" class="__STRUCTURAL_MJT__" type="mesh" margin="0.001" density="81.567" rgba="0.418036 0.117882 0.167059 1" mesh="Television_7_television_7_4_collision_0" />
+        <geom name="television_cc824f11c83cf1c9fd0ca76257ceea1f_1_1_0_collision_29" class="__STRUCTURAL_MJT__" type="mesh" margin="0.001" density="81.567" rgba="0.84613 0.0779182 0.161391 1" mesh="Television_7_television_7_4_collision_6" />
+      </body>
+      <body name="television_cc824f11c83cf1c9fd0ca76257ceea1f_1_2_0" pos="0 -0.425438 -0.0527865">
+        <geom name="television_cc824f11c83cf1c9fd0ca76257ceea1f_1_2_0_visual_30" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Television_Screen_Off_Mat" mesh="Television_7_television_stand_7_0" />
+        <geom name="television_cc824f11c83cf1c9fd0ca76257ceea1f_1_2_0_visual_31" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Television_Screen_Off_Mat" mesh="Television_7_television_stand_7_1" />
+        <geom name="television_cc824f11c83cf1c9fd0ca76257ceea1f_1_2_0_visual_32" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Television_Screen_Off_Mat" mesh="Television_7_television_stand_7_2" />
+        <geom name="television_cc824f11c83cf1c9fd0ca76257ceea1f_1_2_0_visual_33" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Television_Secondary1_Mat" mesh="Television_7_television_stand_7_3" />
+        <geom name="television_cc824f11c83cf1c9fd0ca76257ceea1f_1_2_0_visual_34" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Television_Primary1_Mat" mesh="Television_7_television_stand_7_4" />
+        <geom name="television_cc824f11c83cf1c9fd0ca76257ceea1f_1_2_0_collision_35" class="__STRUCTURAL_MJT__" type="mesh" margin="0.001" density="81.567" rgba="0.645294 0.895096 0.704641 1" mesh="Television_7_television_stand_7_0_collision_0" />
+        <geom name="television_cc824f11c83cf1c9fd0ca76257ceea1f_1_2_0_collision_36" class="__STRUCTURAL_MJT__" type="mesh" margin="0.001" density="81.567" rgba="0.534424 0.126217 0.489233 1" mesh="Television_7_television_stand_7_1_collision_0" />
+        <geom name="television_cc824f11c83cf1c9fd0ca76257ceea1f_1_2_0_collision_37" class="__STRUCTURAL_MJT__" type="mesh" margin="0.001" density="81.567" rgba="0.660488 0.921004 0.322434 1" mesh="Television_7_television_stand_7_2_collision_0" />
+        <geom name="television_cc824f11c83cf1c9fd0ca76257ceea1f_1_2_0_collision_38" class="__STRUCTURAL_MJT__" type="mesh" margin="0.001" density="81.567" rgba="0.804416 0.317656 0.910609 1" mesh="Television_7_television_stand_7_3_collision_0" />
+        <geom name="television_cc824f11c83cf1c9fd0ca76257ceea1f_1_2_0_collision_39" class="__STRUCTURAL_MJT__" type="mesh" margin="0.001" density="81.567" rgba="0.351481 0.421499 0.982648 1" mesh="Television_7_television_stand_7_4_collision_1" />
+        <geom name="television_cc824f11c83cf1c9fd0ca76257ceea1f_1_2_0_collision_40" class="__STRUCTURAL_MJT__" type="mesh" margin="0.001" density="81.567" rgba="0.290371 0.826485 0.359371 1" mesh="Television_7_television_stand_7_4_collision_5" />
+        <geom name="television_cc824f11c83cf1c9fd0ca76257ceea1f_1_2_0_collision_41" class="__STRUCTURAL_MJT__" type="mesh" margin="0.001" density="81.567" rgba="0.222808 0.0560964 0.251319 1" mesh="Television_7_television_stand_7_4_collision_6" />
+        <geom name="television_cc824f11c83cf1c9fd0ca76257ceea1f_1_2_0_collision_42" class="__STRUCTURAL_MJT__" type="mesh" margin="0.001" density="81.567" rgba="0.410994 0.335633 0.657055 1" mesh="Television_7_television_stand_7_4_collision_8" />
+        <geom name="television_cc824f11c83cf1c9fd0ca76257ceea1f_1_2_0_collision_43" class="__STRUCTURAL_MJT__" type="mesh" margin="0.001" density="81.567" rgba="0.638804 0.83346 0.278161 1" mesh="Television_7_television_stand_7_4_collision_3" />
+        <geom name="television_cc824f11c83cf1c9fd0ca76257ceea1f_1_2_0_collision_44" class="__STRUCTURAL_MJT__" type="mesh" margin="0.001" density="81.567" rgba="0.241638 0.0340994 0.271456 1" mesh="Television_7_television_stand_7_4_collision_7" />
+        <geom name="television_cc824f11c83cf1c9fd0ca76257ceea1f_1_2_0_collision_45" class="__STRUCTURAL_MJT__" type="mesh" margin="0.001" density="81.567" rgba="0.420016 0.0884815 0.67447 1" mesh="Television_7_television_stand_7_4_collision_0" />
+        <geom name="television_cc824f11c83cf1c9fd0ca76257ceea1f_1_2_0_collision_46" class="__STRUCTURAL_MJT__" type="mesh" margin="0.001" density="81.567" rgba="0.110608 0.759592 0.296021 1" mesh="Television_7_television_stand_7_4_collision_4" />
+        <geom name="television_cc824f11c83cf1c9fd0ca76257ceea1f_1_2_0_collision_47" class="__STRUCTURAL_MJT__" type="mesh" margin="0.001" density="81.567" rgba="0.915848 0.914852 0.109238 1" mesh="Television_7_television_stand_7_4_collision_9" />
+        <geom name="television_cc824f11c83cf1c9fd0ca76257ceea1f_1_2_0_collision_48" class="__STRUCTURAL_MJT__" type="mesh" margin="0.001" density="81.567" rgba="0.0621718 0.156896 0.161057 1" mesh="Television_7_television_stand_7_4_collision_2" />
+      </body>
+    </body>
+    <body name="electricswitch_1dcfbff6317add0290c9786c536a687b_1_0_0" pos="-2 3.92 1.333" quat="0.5 0.5 0.5 0.5">
+      <body name="electricswitch_1dcfbff6317add0290c9786c536a687b_1_1_0">
+        <geom name="electricswitch_1dcfbff6317add0290c9786c536a687b_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Light_Switch_Hole_Mat" mesh="Light_Switch_7_light_switch_11_0" />
+        <geom name="electricswitch_1dcfbff6317add0290c9786c536a687b_1_1_0_visual_1" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Light_Switch_Secondary_Mat" mesh="Light_Switch_7_light_switch_11_1" />
+        <geom name="electricswitch_1dcfbff6317add0290c9786c536a687b_1_1_0_visual_2" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Light_Switch_Primary5_Mat" mesh="Light_Switch_7_light_switch_11_2" />
+        <geom name="electricswitch_1dcfbff6317add0290c9786c536a687b_1_1_0_collision_3" class="__STRUCTURAL_MJT__" size="0.0441806 0.080267 0.0105669" pos="0 0 0.0105669" quat="0 1 0 0" type="box" rgba="0 1 0 1" />
+      </body>
+      <body name="electricswitch_1dcfbff6317add0290c9786c536a687b_1_2_0" pos="0 7.7707e-10 0.0182538">
+        <geom name="electricswitch_1dcfbff6317add0290c9786c536a687b_1_2_0_visual_4" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Light_Switch_Primary5_Mat" mesh="Light_Switch_7_light_switch_dial_11_0" />
+        <geom name="electricswitch_1dcfbff6317add0290c9786c536a687b_1_2_0_visual_5" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Light_Switch_Secondary_Mat" mesh="Light_Switch_7_light_switch_dial_11_1" />
+        <geom name="electricswitch_1dcfbff6317add0290c9786c536a687b_1_2_0_visual_6" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Light_Switch_Primary5_Mat" mesh="Light_Switch_7_light_switch_dial_11_2" />
+      </body>
+    </body>
+    <body name="ashcan_965d41839e41b171cfe112b7e6e7e5d7_1_0_0" pos="1.7673117062927897 3.877993729284219 0.2793415125770776" quat="-8.137897063734886e-07 4.37626585608545e-06 0.7070988381431782 0.7071147241266826">
+      <joint name="ashcan_965d41839e41b171cfe112b7e6e7e5d7_1_0_0_jntfree_0" class="/" type="free" limited="false" actuatorfrclimited="false" damping="0.001" frictionloss="0.001" />
+      <body name="ashcan_965d41839e41b171cfe112b7e6e7e5d7_1_1_0" pos="-0.00105 -0.28123 -0.00103">
+        <geom name="ashcan_965d41839e41b171cfe112b7e6e7e5d7_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Bin_Decal_Mat" mesh="bin_7_bin_7_0" />
+        <geom name="ashcan_965d41839e41b171cfe112b7e6e7e5d7_1_1_0_visual_1" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Bin_Secondary3_Mat" mesh="bin_7_bin_7_1" />
+        <geom name="ashcan_965d41839e41b171cfe112b7e6e7e5d7_1_1_0_visual_2" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Bin_Primary3_Mat" mesh="bin_7_bin_7_2" />
+        <geom name="ashcan_965d41839e41b171cfe112b7e6e7e5d7_1_1_0_collision_3" class="__DYNAMIC_MJT__" size="0.176353 0.278863 0.0156072" pos="0 0.281796 0.135589" quat="0 1 0 0" type="box" density="38.9881" rgba="0 1 0 1" />
+        <geom name="ashcan_965d41839e41b171cfe112b7e6e7e5d7_1_1_0_collision_4" class="__DYNAMIC_MJT__" size="0.17838 0.278862 0.0168069" pos="0 0.281796 -0.132329" quat="0 1 0 0" type="box" density="38.9881" rgba="0 1 0 1" />
+        <geom name="ashcan_965d41839e41b171cfe112b7e6e7e5d7_1_1_0_collision_5" class="__DYNAMIC_MJT__" size="0.119596 0.278862 0.019538" pos="0.183245 0.281796 0.00479453" quat="0 0.707107 0 0.707107" type="box" density="38.9881" rgba="0 1 0 1" />
+        <geom name="ashcan_965d41839e41b171cfe112b7e6e7e5d7_1_1_0_collision_6" class="__DYNAMIC_MJT__" size="0.115111 0.278862 0.0220204" pos="-0.183245 0.281796 0.00479453" quat="0 0.707107 0 0.707107" type="box" density="38.9881" rgba="0 1 0 1" />
+        <geom name="ashcan_965d41839e41b171cfe112b7e6e7e5d7_1_1_0_collision_7" class="__DYNAMIC_MJT__" size="0.10287 0.0904481 0.198522" pos="0.00243246 0.0922548 0.00479453" quat="0 0.707107 0 0.707107" type="box" density="38.9881" rgba="0 1 0 1" />
+        <site name="ashcan_965d41839e41b171cfe112b7e6e7e5d7_1_1_0_ReceptacleCollider0_0" class="/" pos="0 0.2708 0" quat="0 1 0 0" size="0.155164 0.230057 0.104618" group="5" type="box" rgba="1 0 0 1" />
+      </body>
+    </body>
+    <body name="floorlamp_5a2c599fcb0f563c8281171022a1d219_1_0_0" pos="1.228946189743097 3.7449169081737943 0.9325438562059742" quat="4.256009407488928e-05 4.611802858927269e-05 0.7071073605454425 0.7071061990424234">
+      <joint name="floorlamp_5a2c599fcb0f563c8281171022a1d219_1_0_0_jntfree_0" class="/" type="free" limited="false" actuatorfrclimited="false" damping="0.001" frictionloss="0.001" />
+      <body name="floorlamp_5a2c599fcb0f563c8281171022a1d219_1_1_0" pos="-0.00313 -0.9322 -0.00101">
+        <geom name="floorlamp_5a2c599fcb0f563c8281171022a1d219_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Floor_Lamp_Light_Mat" mesh="Floor_Lamp_7_floor_lamp_7_0" />
+        <geom name="floorlamp_5a2c599fcb0f563c8281171022a1d219_1_1_0_visual_1" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Floor_Lamp_Shade2_Mat" mesh="Floor_Lamp_7_floor_lamp_7_1" />
+        <geom name="floorlamp_5a2c599fcb0f563c8281171022a1d219_1_1_0_visual_2" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Floor_Lamp_Secondary2_Mat" mesh="Floor_Lamp_7_floor_lamp_7_2" />
+        <geom name="floorlamp_5a2c599fcb0f563c8281171022a1d219_1_1_0_visual_3" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Floor_Lamp_Primary2_Mat" mesh="Floor_Lamp_7_floor_lamp_7_3" />
+        <geom name="floorlamp_5a2c599fcb0f563c8281171022a1d219_1_1_0_collision_4" class="__DYNAMIC_MJT__" size="0.124573 0.0210433 0.0939286" pos="-0.115062 1.76864 0.000999928" quat="-0.46988 0.528406 0.46988 0.528406" type="box" density="93.65" rgba="0 1 0 1" />
+        <geom name="floorlamp_5a2c599fcb0f563c8281171022a1d219_1_1_0_collision_5" class="__DYNAMIC_MJT__" size="0.233164 0.0214129 0.0789284" pos="-0.00312042 1.45213 0.198393" quat="0.515774 -0.856725 1.81794e-06 4.03821e-06" type="box" density="93.65" rgba="0 1 0 1" />
+        <geom name="floorlamp_5a2c599fcb0f563c8281171022a1d219_1_1_0_collision_6" class="__DYNAMIC_MJT__" size="0.165009 0.0217903 0.0807783" pos="0.139266 1.59887 0.000999928" quat="0.436662 -0.556168 0.436664 0.556172" type="box" density="93.65" rgba="0 1 0 1" />
+        <geom name="floorlamp_5a2c599fcb0f563c8281171022a1d219_1_1_0_collision_7" class="__DYNAMIC_MJT__" size="0.233164 0.0214129 0.0789285" pos="0.194273 1.45213 0.000999928" quat="0.364707 -0.605793 0.364708 0.605798" type="box" density="93.65" rgba="0 1 0 1" />
+        <geom name="floorlamp_5a2c599fcb0f563c8281171022a1d219_1_1_0_collision_8" class="__DYNAMIC_MJT__" size="0.233164 0.0214128 0.0789285" pos="-0.00312424 1.45173 -0.196398" quat="-5.36442e-07 1.77324e-06 0.515774 0.856725" type="box" density="93.65" rgba="0 1 0 1" />
+        <geom name="floorlamp_5a2c599fcb0f563c8281171022a1d219_1_1_0_collision_9" class="__DYNAMIC_MJT__" size="0.124573 0.0210433 0.0939286" pos="0.108818 1.76904 0.000999928" quat="0.469879 -0.528404 0.469882 0.528408" type="box" density="93.65" rgba="0 1 0 1" />
+        <geom name="floorlamp_5a2c599fcb0f563c8281171022a1d219_1_1_0_collision_10" class="__DYNAMIC_MJT__" size="0.124573 0.0210433 0.0939287" pos="-0.0031209 1.76904 0.112937" quat="0.664511 -0.747278 2.563e-06 3.54648e-06" type="box" density="93.65" rgba="0 1 0 1" />
+        <geom name="floorlamp_5a2c599fcb0f563c8281171022a1d219_1_1_0_collision_11" class="__DYNAMIC_MJT__" size="0.165009 0.0217903 0.0807784" pos="-0.00312424 1.59846 -0.141391" quat="-7.45058e-07 1.60933e-06 0.617535 0.786544" type="box" density="93.65" rgba="0 1 0 1" />
+        <geom name="floorlamp_5a2c599fcb0f563c8281171022a1d219_1_1_0_collision_12" class="__DYNAMIC_MJT__" size="0.165009 0.0217903 0.0807784" pos="-0.0031209 1.59887 0.143386" quat="0.617535 -0.786543 2.26498e-06 3.63588e-06" type="box" density="93.65" rgba="0 1 0 1" />
+        <geom name="floorlamp_5a2c599fcb0f563c8281171022a1d219_1_1_0_collision_13" class="__DYNAMIC_MJT__" size="0.165009 0.0217903 0.0807784" pos="-0.14551 1.59846 0.000999928" quat="-0.436663 0.556171 0.436663 0.55617" type="box" density="93.65" rgba="0 1 0 1" />
+        <geom name="floorlamp_5a2c599fcb0f563c8281171022a1d219_1_1_0_collision_14" class="__DYNAMIC_MJT__" size="0.124573 0.0210433 0.0939286" pos="-0.00312424 1.76864 -0.110943" quat="-9.83477e-07 1.63913e-06 0.664511 0.747279" type="box" density="93.65" rgba="0 1 0 1" />
+        <geom name="floorlamp_5a2c599fcb0f563c8281171022a1d219_1_1_0_collision_15" class="__DYNAMIC_MJT__" size="0.233164 0.0214128 0.0789285" pos="-0.200517 1.45173 0.000999928" quat="-0.364707 0.605796 0.364708 0.605795" type="box" density="93.65" rgba="0 1 0 1" />
+        <geom name="floorlamp_5a2c599fcb0f563c8281171022a1d219_1_1_0_collision_16" class="__DYNAMIC_MJT__" size="0.0375116 0.485214 0.0375116" pos="0 0.542636 0" quat="0 1 0 0" type="box" density="93.65" rgba="0 1 0 1" />
+        <geom name="floorlamp_5a2c599fcb0f563c8281171022a1d219_1_1_0_collision_17" class="__DYNAMIC_MJT__" size="0.0920518 0.134542 0.0795755" pos="0 1.15444 0" quat="0 1 0 0" type="box" density="93.65" rgba="0 1 0 1" />
+        <geom name="floorlamp_5a2c599fcb0f563c8281171022a1d219_1_1_0_collision_18" class="__DYNAMIC_MJT__" size="0.111773 0.0287595 0.111822" pos="0 1.12718 0" quat="0 1 0 0" type="box" density="93.65" rgba="0 1 0 1" />
+        <geom name="floorlamp_5a2c599fcb0f563c8281171022a1d219_1_1_0_collision_19" class="__DYNAMIC_MJT__" size="0.0235468 0.185311 0.0255369" pos="0 1.4778 0" quat="0 1 0 0" type="box" density="93.65" rgba="0 1 0 1" />
+        <geom name="floorlamp_5a2c599fcb0f563c8281171022a1d219_1_1_0_collision_20" class="__DYNAMIC_MJT__" size="0.167212 0.0293295 0.165501" pos="0 0.028904 0" quat="0 1 0 0" type="box" density="93.65" rgba="0 1 0 1" />
+      </body>
+    </body>
+    <body name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_0_0" pos="-1.7866650891285105 -1.592525242644258 1.1012815348207896" quat="0.507831232303866 0.5077922771284195 0.49204501849234056 0.4920834711330426">
+      <joint name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_0_0_jntfree_0" type="free" limited="false" actuatorfrclimited="false" damping="0.001" frictionloss="0.001" />
+      <body name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_1_0" pos="0 -1.10016 -0.01905">
+        <geom name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Metal_chrome_mat" mesh="Shelving_Unit_206_2_mesh_0" />
+        <geom name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_1_0_visual_1" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_DarkWoodSmooth2" mesh="Shelving_Unit_206_2_mesh_1" />
+        <geom name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_1_0_collision_2" class="__DYNAMIC_MJT__" size="0.33296 0.0176412 0.148588" pos="0 0.16 0" quat="0 1 0 0" type="box" density="450" rgba="0 1 0 1" />
+        <geom name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_1_0_collision_3" class="__DYNAMIC_MJT__" size="0.0133242 0.0758829 0.0104814" pos="0.2947 0.0747417 0.1152" quat="0 1 0 0" type="box" density="450" rgba="0 1 0 1" />
+        <geom name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_1_0_collision_4" class="__DYNAMIC_MJT__" size="0.0133242 0.0758829 0.0104814" pos="0.2947 0.0747417 -0.1191" quat="0 1 0 0" type="box" density="450" rgba="0 1 0 1" />
+        <geom name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_1_0_collision_5" class="__DYNAMIC_MJT__" size="0.0133242 0.0758829 0.0104814" pos="-0.2953 0.0747417 0.1152" quat="0 1 0 0" type="box" density="450" rgba="0 1 0 1" />
+        <geom name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_1_0_collision_6" class="__DYNAMIC_MJT__" size="0.0133242 0.0758829 0.0104814" pos="-0.2953 0.0747417 -0.1191" quat="0 1 0 0" type="box" density="450" rgba="0 1 0 1" />
+        <geom name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_1_0_collision_7" class="__DYNAMIC_MJT__" size="0.324636 0.0167591 0.148588" pos="0 1.3004 0" quat="0 1 0 0" type="box" density="450" rgba="0 1 0 1" />
+        <geom name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_1_0_collision_8" class="__DYNAMIC_MJT__" size="0.324636 0.0167591 0.148588" pos="0 1.599 0" quat="0 1 0 0" type="box" density="450" rgba="0 1 0 1" />
+        <geom name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_1_0_collision_9" class="__DYNAMIC_MJT__" size="0.324636 0.0167591 0.148588" pos="0 1.8843 0" quat="0 1 0 0" type="box" density="450" rgba="0 1 0 1" />
+        <geom name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_1_0_collision_10" class="__DYNAMIC_MJT__" size="0.324636 0.0126636 0.148588" pos="0 2.18768 0" quat="0 1 0 0" type="box" density="450" rgba="0 1 0 1" />
+        <geom name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_1_0_collision_11" class="__DYNAMIC_MJT__" size="0.013959 1.02568 0.150592" pos="-0.3136 1.17444 0" quat="0 1 0 0" type="box" density="450" rgba="0 1 0 1" />
+        <geom name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_1_0_collision_12" class="__DYNAMIC_MJT__" size="0.013959 1.02568 0.150592" pos="0.3115 1.17444 0" quat="0 1 0 0" type="box" density="450" rgba="0 1 0 1" />
+        <geom name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_1_0_collision_13" class="__DYNAMIC_MJT__" size="0.328798 1.02245 0.0222883" pos="0 1.179 -0.13" quat="0 1 0 0" type="box" density="450" rgba="0 1 0 1" />
+        <site name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_1_0_meshReceptacle0_0" class="/" pos="0.000840441 1.45075 0.02" quat="0 1 0 0" size="0.300702 0.132487 0.127442" group="5" type="box" rgba="1 0 0 1" />
+        <site name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_1_0_meshReceptacle1_1" class="/" pos="0 1.74223 0.02" quat="0 1 0 0" size="0.296992 0.124083 0.12744" group="5" type="box" rgba="1 0 0 1" />
+        <site name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_1_0_meshReceptacle2_2" class="/" pos="-0.0010598 2.0412 0.02" quat="0 1 0 0" size="0.296992 0.134143 0.12744" group="5" type="box" rgba="1 0 0 1" />
+        <site name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_1_0_meshReceptacle3_3" class="/" pos="-0.0105598 0.723368 0.02" quat="0 1 0 0" size="0.293325 0.548209 0.12744" group="5" type="box" rgba="1 0 0 1" />
+        <body name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_2_0" pos="-0.3025 0.736252 0.149197">
+          <joint name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_2_0_joint_1" class="/" pos="0 0 0" axis="0 -1 0" range="0 1.5708" damping="0.1" frictionloss="1.1" />
+          <geom name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_2_0_visual_14" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_DarkWoodSmooth2" mesh="Shelving_Unit_206_2_Mesh_00" />
+          <geom name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_2_0_collision_15" class="__DYNAMIC_MJT__" size="0.153743 0.555041 0.01355" pos="0.148743 -0.00811356 -0.00722311" quat="0 1 0 0" type="box" density="100" rgba="0 1 0 1" />
+          <body name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_3_0" pos="0.278 0 0" quat="0.707107 0 0 0.707107">
+            <geom name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_3_0_visual_16" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Brass" mesh="Shelving_Unit_206_2_handle_2_600mm_00_0" />
+            <geom name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_3_0_visual_17" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Metal_chrome_mat" mesh="Shelving_Unit_206_2_handle_2_600mm_00_1" />
+            <geom name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_3_0_collision_18" class="__DYNAMIC_MJT__" size="0.00587503 0.293587" pos="0 0 0.0337" quat="0.5 0.5 -0.5 -0.5" type="capsule" rgba="0 1 0 1" />
+            <geom name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_3_0_collision_19" class="__DYNAMIC_MJT__" size="0.00239715 0.00306816 0.00273187" pos="-0.29765 6.38069e-09 0.0384347" quat="0 1 0 0" type="box" rgba="0 1 0 1" />
+            <geom name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_3_0_collision_20" class="__DYNAMIC_MJT__" size="0.00239715 0.00306453 0.00762165" pos="-0.29765 -8.83575e-05 0.0336299" quat="0.382683 0.92388 2.93139e-08 1.29533e-09" type="box" rgba="0 1 0 1" />
+            <geom name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_3_0_collision_21" class="__DYNAMIC_MJT__" size="0.00239715 0.00607892 0.00756422" pos="-0.29765 -8.69568e-05 0.0307671" quat="0.707106 0.707107 -7.23118e-09 1.38421e-08" type="box" rgba="0 1 0 1" />
+            <geom name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_3_0_collision_22" class="__DYNAMIC_MJT__" size="0.00239715 0.00306453 0.00762165" pos="-0.29765 7.01015e-05 0.0336117" quat="-0.382684 0.923879 2.93139e-08 -1.2954e-09" type="box" rgba="0 1 0 1" />
+            <geom name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_3_0_collision_23" class="__DYNAMIC_MJT__" size="0.00219732 0.0123803 0.00731066" pos="-0.29765 -8.99966e-05 0.0123911" quat="0.707106 0.707107 -7.23118e-09 1.38421e-08" type="box" rgba="0 1 0 1" />
+            <geom name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_3_0_collision_24" class="__DYNAMIC_MJT__" size="0.00239715 0.00306816 0.00273187" pos="0.29753 -6.40213e-09 0.0384347" quat="0 1 0 0" type="box" rgba="0 1 0 1" />
+            <geom name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_3_0_collision_25" class="__DYNAMIC_MJT__" size="0.00239715 0.00306453 0.00762165" pos="0.29753 -8.83703e-05 0.0336299" quat="0.382683 0.92388 2.93139e-08 1.29533e-09" type="box" rgba="0 1 0 1" />
+            <geom name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_3_0_collision_26" class="__DYNAMIC_MJT__" size="0.00239715 0.00607892 0.00756422" pos="0.29753 -8.69696e-05 0.0307671" quat="0.707106 0.707107 -7.23118e-09 1.38421e-08" type="box" rgba="0 1 0 1" />
+            <geom name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_3_0_collision_27" class="__DYNAMIC_MJT__" size="0.00239715 0.00306453 0.00762165" pos="0.29753 7.00887e-05 0.0336117" quat="-0.382684 0.923879 2.93139e-08 -1.2954e-09" type="box" rgba="0 1 0 1" />
+            <geom name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_3_0_collision_28" class="__DYNAMIC_MJT__" size="0.00219732 0.0123803 0.00731066" pos="0.29753 -9.00094e-05 0.0123911" quat="0.707106 0.707107 -7.23118e-09 1.38421e-08" type="box" rgba="0 1 0 1" />
+          </body>
+        </body>
+        <body name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_4_0" pos="0.3025 0.736248 0.1492">
+          <joint name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_4_0_Mesh011_2" class="/" pos="0 0 0" axis="0 -1 0" range="-1.5708 0" damping="0.1" frictionloss="1.1" />
+          <geom name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_4_0_visual_29" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_DarkWoodSmooth2" mesh="Shelving_Unit_206_2_Mesh_01" />
+          <geom name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_4_0_collision_30" class="__DYNAMIC_MJT__" size="0.151816 0.555072 0.014548" pos="-0.150441 -0.00820112 -0.00742459" quat="0 1 0 0" type="box" density="100" rgba="0 1 0 1" />
+          <body name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_5_0" pos="-0.276 0 0" quat="0.707107 0 0 0.707107">
+            <geom name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_5_0_visual_31" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Brass" mesh="Shelving_Unit_206_2_handle_2_600mm_01_0" />
+            <geom name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_5_0_visual_32" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Metal_chrome_mat" mesh="Shelving_Unit_206_2_handle_2_600mm_01_1" />
+            <geom name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_5_0_collision_33" class="__DYNAMIC_MJT__" size="0.00587503 0.293587" pos="0 0 0.0337" quat="0.5 0.5 -0.5 -0.5" type="capsule" rgba="0 1 0 1" />
+            <geom name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_5_0_collision_34" class="__DYNAMIC_MJT__" size="0.00239715 0.00306816 0.00273187" pos="-0.29765 6.38069e-09 0.0384347" quat="0 1 0 0" type="box" rgba="0 1 0 1" />
+            <geom name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_5_0_collision_35" class="__DYNAMIC_MJT__" size="0.00239715 0.00306453 0.00762165" pos="-0.29765 -8.83575e-05 0.0336299" quat="0.382683 0.92388 2.93139e-08 1.29533e-09" type="box" rgba="0 1 0 1" />
+            <geom name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_5_0_collision_36" class="__DYNAMIC_MJT__" size="0.00239715 0.00607892 0.00756422" pos="-0.29765 -8.69568e-05 0.0307671" quat="0.707106 0.707107 -7.23118e-09 1.38421e-08" type="box" rgba="0 1 0 1" />
+            <geom name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_5_0_collision_37" class="__DYNAMIC_MJT__" size="0.00239715 0.00306453 0.00762165" pos="-0.29765 7.01015e-05 0.0336117" quat="-0.382684 0.923879 2.93139e-08 -1.2954e-09" type="box" rgba="0 1 0 1" />
+            <geom name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_5_0_collision_38" class="__DYNAMIC_MJT__" size="0.00219732 0.0123803 0.00731066" pos="-0.29765 -8.99966e-05 0.0123911" quat="0.707106 0.707107 -7.23118e-09 1.38421e-08" type="box" rgba="0 1 0 1" />
+            <geom name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_5_0_collision_39" class="__DYNAMIC_MJT__" size="0.00239715 0.00306816 0.00273187" pos="0.29753 -6.40214e-09 0.0384347" quat="0 1 0 0" type="box" rgba="0 1 0 1" />
+            <geom name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_5_0_collision_40" class="__DYNAMIC_MJT__" size="0.00239715 0.00306453 0.00762165" pos="0.29753 -8.83703e-05 0.0336299" quat="0.382683 0.92388 2.93139e-08 1.29533e-09" type="box" rgba="0 1 0 1" />
+            <geom name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_5_0_collision_41" class="__DYNAMIC_MJT__" size="0.00239715 0.00607892 0.00756422" pos="0.29753 -8.69696e-05 0.0307671" quat="0.707106 0.707107 -7.23118e-09 1.38421e-08" type="box" rgba="0 1 0 1" />
+            <geom name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_5_0_collision_42" class="__DYNAMIC_MJT__" size="0.00239715 0.00306453 0.00762165" pos="0.29753 7.00887e-05 0.0336117" quat="-0.382684 0.923879 2.93139e-08 -1.2954e-09" type="box" rgba="0 1 0 1" />
+            <geom name="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_5_0_collision_43" class="__DYNAMIC_MJT__" size="0.00219732 0.0123803 0.00731066" pos="0.29753 -9.00094e-05 0.0123911" quat="0.707106 0.707107 -7.23118e-09 1.38421e-08" type="box" rgba="0 1 0 1" />
+          </body>
+        </body>
+      </body>
+    </body>
+    <body name="stand_a649b94a02f784c3cd77980808bf8778_1_0_0" pos="1.6688349189225873 0.24302468505228908 0.3743794592130658" quat="-0.500083970443917 -0.4999129459446936 0.4998732597450925 0.500129776331864">
+      <joint name="stand_a649b94a02f784c3cd77980808bf8778_1_0_0_jntfree_0" class="/" type="free" limited="false" actuatorfrclimited="false" damping="0.001" frictionloss="0.001" />
+      <body name="stand_a649b94a02f784c3cd77980808bf8778_1_1_0" pos="0.00136 -0.37683 0.00483">
+        <geom name="stand_a649b94a02f784c3cd77980808bf8778_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Metal_chrome_mat" mesh="TV_Stand_206_1_tv_stand_206_0" />
+        <geom name="stand_a649b94a02f784c3cd77980808bf8778_1_1_0_visual_1" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_DarkWoodSmooth2" mesh="TV_Stand_206_1_tv_stand_206_1" />
+        <geom name="stand_a649b94a02f784c3cd77980808bf8778_1_1_0_collision_2" class="__DYNAMIC_MJT__" size="0.602425 0.0120836 0.301755" pos="0.00135514 0.741 -0.00484102" quat="0 1 0 0" type="box" density="177.025" rgba="0 1 0 1" />
+        <geom name="stand_a649b94a02f784c3cd77980808bf8778_1_1_0_collision_3" class="__DYNAMIC_MJT__" size="0.602425 0.0120836 0.301755" pos="0.00135514 0.156 -0.00484102" quat="0 1 0 0" type="box" density="177.025" rgba="0 1 0 1" />
+        <geom name="stand_a649b94a02f784c3cd77980808bf8778_1_1_0_collision_4" class="__DYNAMIC_MJT__" size="0.225157 0.0120836 0.274904" pos="-0.364594 0.399 -0.00396535" quat="0 1 0 0" type="box" density="177.025" rgba="0 1 0 1" />
+        <geom name="stand_a649b94a02f784c3cd77980808bf8778_1_1_0_collision_5" class="__DYNAMIC_MJT__" size="0.225156 0.0120836 0.274904" pos="-0.364594 0.5521 -0.00396535" quat="0 1 0 0" type="box" density="177.025" rgba="0 1 0 1" />
+        <geom name="stand_a649b94a02f784c3cd77980808bf8778_1_1_0_collision_6" class="__DYNAMIC_MJT__" size="0.225156 0.0120836 0.274904" pos="0.369906 0.4572 -0.00396535" quat="0 1 0 0" type="box" density="177.025" rgba="0 1 0 1" />
+        <geom name="stand_a649b94a02f784c3cd77980808bf8778_1_1_0_collision_7" class="__DYNAMIC_MJT__" size="0.0122148 0.302614 0.280647" pos="-0.144494 0.444 -0.00415264" quat="0 1 0 0" type="box" density="177.025" rgba="0 1 0 1" />
+        <geom name="stand_a649b94a02f784c3cd77980808bf8778_1_1_0_collision_8" class="__DYNAMIC_MJT__" size="0.0122148 0.302614 0.280647" pos="0.147506 0.444 -0.00415264" quat="0 1 0 0" type="box" density="177.025" rgba="0 1 0 1" />
+        <geom name="stand_a649b94a02f784c3cd77980808bf8778_1_1_0_collision_9" class="__DYNAMIC_MJT__" size="0.0122148 0.302614 0.280647" pos="0.587506 0.444 -0.00415264" quat="0 1 0 0" type="box" density="177.025" rgba="0 1 0 1" />
+        <geom name="stand_a649b94a02f784c3cd77980808bf8778_1_1_0_collision_10" class="__DYNAMIC_MJT__" size="0.0122148 0.302614 0.280647" pos="-0.588494 0.444 -0.00415264" quat="0 1 0 0" type="box" density="177.025" rgba="0 1 0 1" />
+        <geom name="stand_a649b94a02f784c3cd77980808bf8778_1_1_0_collision_11" class="__DYNAMIC_MJT__" size="0.00979403 0.0716327 0.0107285" pos="-0.5701 0.0722 0.2673" quat="0 1 0 0" type="box" density="177.025" rgba="0 1 0 1" />
+        <geom name="stand_a649b94a02f784c3cd77980808bf8778_1_1_0_collision_12" class="__DYNAMIC_MJT__" size="0.00979403 0.0716327 0.0107285" pos="-0.5701 0.0722 -0.2722" quat="0 1 0 0" type="box" density="177.025" rgba="0 1 0 1" />
+        <geom name="stand_a649b94a02f784c3cd77980808bf8778_1_1_0_collision_13" class="__DYNAMIC_MJT__" size="0.00979403 0.0716327 0.0107285" pos="-0.001 0.0722 0.2673" quat="0 1 0 0" type="box" density="177.025" rgba="0 1 0 1" />
+        <geom name="stand_a649b94a02f784c3cd77980808bf8778_1_1_0_collision_14" class="__DYNAMIC_MJT__" size="0.00979403 0.0716327 0.0107285" pos="-0.000999987 0.0722 -0.2722" quat="0 1 0 0" type="box" density="177.025" rgba="0 1 0 1" />
+        <geom name="stand_a649b94a02f784c3cd77980808bf8778_1_1_0_collision_15" class="__DYNAMIC_MJT__" size="0.00979403 0.0716327 0.0107285" pos="0.569 0.0722 0.2673" quat="0 1 0 0" type="box" density="177.025" rgba="0 1 0 1" />
+        <geom name="stand_a649b94a02f784c3cd77980808bf8778_1_1_0_collision_16" class="__DYNAMIC_MJT__" size="0.00979403 0.0716327 0.0107285" pos="0.569 0.0722 -0.2722" quat="0 1 0 0" type="box" density="177.025" rgba="0 1 0 1" />
+        <geom name="stand_a649b94a02f784c3cd77980808bf8778_1_1_0_collision_17" class="__DYNAMIC_MJT__" size="0.602425 0.316401 0.0172638" pos="0.00135517 0.436655 -0.284141" quat="0 1 0 0" type="box" density="177.025" rgba="0 1 0 1" />
+        <site name="stand_a649b94a02f784c3cd77980808bf8778_1_1_0_tvstand206ReceptacleCollider0_0" class="/" pos="0.00146884 0.801477 -0.00680649" quat="0 1 0 0" size="0.600587 0.051477 0.300273" group="5" type="box" rgba="1 0 0 1" />
+      </body>
+    </body>
+    <body name="mesh_4d9f7f1da5a7decacb1ac88f4048f190_1_0_0" quat="0 0 0.707107 0.707107">
+      <body name="mesh_4d9f7f1da5a7decacb1ac88f4048f190_1_1_0">
+        <geom name="mesh_4d9f7f1da5a7decacb1ac88f4048f190_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_BedroomFloor1" mesh="mesh_6d4a1a8e_mesh_6d4a1a8e" />
+      </body>
+    </body>
+    <body name="quaddecalspawnplane_213c69849536a244d0842b16304735ca_1_0_0" quat="0 0 0.707107 0.707107" />
+    <body name="fp207:polysurface1_28f004e0adc161b85bce13321ba47deb_1_0_0" quat="0 0 0.707107 0.707107">
+      <body name="fp207:polysurface1_28f004e0adc161b85bce13321ba47deb_1_1_0">
+        <geom name="fp207:polysurface1_28f004e0adc161b85bce13321ba47deb_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_WhiteWoodClean" mesh="FP207:polySurface1_287f97ef_FP207:polySurface1_287f97ef" />
+        <geom name="fp207:polysurface1_28f004e0adc161b85bce13321ba47deb_1_1_0_collision_1" class="__STRUCTURAL_MJT__" size="0.374294 0.0211621 0.629495" pos="0.204151 1.495 -1.94079" quat="-0.707107 0.707107 0 0" type="box" rgba="0 1 0 1" />
+      </body>
+      <body name="fp207:polysurface1_28f004e0adc161b85bce13321ba47deb_1_2_0">
+        <geom name="fp207:polysurface1_28f004e0adc161b85bce13321ba47deb_1_2_0_visual_2" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Glass_Detailed_Lit_High_Mat" mesh="FP207:polySurface1_287f97ef_FP207:polySurface2_c0fe33d1" />
+      </body>
+    </body>
+    <body name="fp207:base15_a2e06a1829a43755996467e2018a4a4a_1_0_0" quat="0 0 0.707107 0.707107">
+      <body name="fp207:base15_a2e06a1829a43755996467e2018a4a4a_1_1_0">
+        <geom name="fp207:base15_a2e06a1829a43755996467e2018a4a4a_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Cream_wood" mesh="FP207:Base15_fd7291d0_FP207:Base15_fd7291d0_0" />
+        <geom name="fp207:base15_a2e06a1829a43755996467e2018a4a4a_1_1_0_visual_1" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_convergence" mesh="FP207:Base15_fd7291d0_FP207:Base15_fd7291d0_1" />
+        <geom name="fp207:base15_a2e06a1829a43755996467e2018a4a4a_1_1_0_visual_2" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_DarkWood2" mesh="FP207:Base15_fd7291d0_FP207:Base15_fd7291d0_2" />
+        <geom name="fp207:base15_a2e06a1829a43755996467e2018a4a4a_1_1_0_collision_3" class="__STRUCTURAL_MJT__" size="0.589352 0.0445517 0.421999" pos="1.96521 1.577 0.44399" quat="-0.5 0.5 -0.5 -0.5" type="box" rgba="0 1 0 1" />
+      </body>
+    </body>
+    <body name="fp207:base11_f7605669dfa37614ebab13a489f0281b_1_0_0" quat="0 0 0.707107 0.707107">
+      <body name="fp207:base11_f7605669dfa37614ebab13a489f0281b_1_1_0">
+        <geom name="fp207:base11_f7605669dfa37614ebab13a489f0281b_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_john-singer-sargent-beach-scene" mesh="FP207:Base11_bb339f39_FP207:Base11_bb339f39_0" />
+        <geom name="fp207:base11_f7605669dfa37614ebab13a489f0281b_1_1_0_visual_1" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_DarkWoodSmooth2" mesh="FP207:Base11_bb339f39_FP207:Base11_bb339f39_1" />
+        <geom name="fp207:base11_f7605669dfa37614ebab13a489f0281b_1_1_0_collision_2" class="__STRUCTURAL_MJT__" size="0.815515 0.0445517 0.501124" pos="0.0614199 1.579 4.01521" quat="-0.707107 0.707107 4.9817e-07 3.8743e-07" type="box" rgba="0 1 0 1" />
+      </body>
+    </body>
+    <body name="painting_fce0c0f9706a1f05c51ad423647bd398_1_0_0" quat="0 0 0.707107 0.707107">
+      <body name="painting_fce0c0f9706a1f05c51ad423647bd398_1_1_0">
+        <geom name="painting_fce0c0f9706a1f05c51ad423647bd398_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_john-singer-sargent-beach-scene" mesh="Painting_8c4e2d8a_FP207:Base11_bb339f39_0" />
+        <geom name="painting_fce0c0f9706a1f05c51ad423647bd398_1_1_0_visual_1" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_DarkWoodSmooth2" mesh="Painting_8c4e2d8a_FP207:Base11_bb339f39_1" />
+        <geom name="painting_fce0c0f9706a1f05c51ad423647bd398_1_1_0_collision_2" class="__STRUCTURAL_MJT__" size="0.815515 0.0445517 0.501124" pos="0.0614199 1.579 4.01521" quat="-0.707107 0.707107 4.9817e-07 3.8743e-07" type="box" rgba="0 1 0 1" />
+      </body>
+    </body>
+    <body name="painting_cb503664ae299b2bc2e685918ba7cb3b_1_0_0" quat="0 0 0.707107 0.707107">
+      <body name="painting_cb503664ae299b2bc2e685918ba7cb3b_1_1_0">
+        <geom name="painting_cb503664ae299b2bc2e685918ba7cb3b_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Cream_wood" mesh="Painting_f097443e_FP207:Base15_fd7291d0_0" />
+        <geom name="painting_cb503664ae299b2bc2e685918ba7cb3b_1_1_0_visual_1" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_convergence" mesh="Painting_f097443e_FP207:Base15_fd7291d0_1" />
+        <geom name="painting_cb503664ae299b2bc2e685918ba7cb3b_1_1_0_visual_2" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_DarkWood2" mesh="Painting_f097443e_FP207:Base15_fd7291d0_2" />
+        <geom name="painting_cb503664ae299b2bc2e685918ba7cb3b_1_1_0_collision_3" class="__STRUCTURAL_MJT__" size="0.589352 0.0445517 0.421999" pos="1.96521 1.577 0.44399" quat="-0.5 0.5 -0.5 -0.5" type="box" rgba="0 1 0 1" />
+      </body>
+    </body>
+    <body name="window_1b6b96ab3d9338e0df46f7b3316a79e8_1_0_0" quat="0 0 0.707107 0.707107">
+      <body name="window_1b6b96ab3d9338e0df46f7b3316a79e8_1_1_0">
+        <geom name="window_1b6b96ab3d9338e0df46f7b3316a79e8_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_WhiteWoodClean" mesh="Window_37ba4408_FP207:polySurface1_287f97ef" />
+        <geom name="window_1b6b96ab3d9338e0df46f7b3316a79e8_1_1_0_collision_1" class="__STRUCTURAL_MJT__" size="0.374294 0.0211621 0.629495" pos="0.204151 1.495 -1.94079" quat="-0.707107 0.707107 0 0" type="box" rgba="0 1 0 1" />
+      </body>
+      <body name="window_1b6b96ab3d9338e0df46f7b3316a79e8_1_2_0">
+        <geom name="window_1b6b96ab3d9338e0df46f7b3316a79e8_1_2_0_visual_2" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Glass_Detailed_Lit_High_Mat" mesh="Window_37ba4408_FP207:polySurface2_c0fe33d1" />
+      </body>
+    </body>
+    <body name="ceiling_d1a767fa8131a2993feb8f579cc127a8_1_0_0" quat="0 0 0.707107 0.707107">
+      <body name="ceiling_d1a767fa8131a2993feb8f579cc127a8_1_1_0">
+        <geom name="ceiling_d1a767fa8131a2993feb8f579cc127a8_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Drywall" mesh="Ceiling_369db823_Ceiling_369db823" />
+        <geom name="ceiling_d1a767fa8131a2993feb8f579cc127a8_1_1_0_collision_1" class="__STRUCTURAL_MJT__" size="2.20862 0.103284 3.1888" pos="0.000490606 2.59842 1.06188" quat="0 1 0 0" type="box" rgba="0 1 0 1" />
+      </body>
+    </body>
+    <body name="fp207:lightfixture4_c9b1f7b9b6e38754b848a8a623d68c2a_1_0_0" quat="0 0 0.707107 0.707107">
+      <body name="fp207:lightfixture4_c9b1f7b9b6e38754b848a8a623d68c2a_1_1_0">
+        <geom name="fp207:lightfixture4_c9b1f7b9b6e38754b848a8a623d68c2a_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Brass_Mat" mesh="FP207:LightFixture4_016a62c9_FP207:LightFixture4_016a62c9_0" />
+        <geom name="fp207:lightfixture4_c9b1f7b9b6e38754b848a8a623d68c2a_1_1_0_visual_1" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Metal_chrome_mat" mesh="FP207:LightFixture4_016a62c9_FP207:LightFixture4_016a62c9_1" />
+        <geom name="fp207:lightfixture4_c9b1f7b9b6e38754b848a8a623d68c2a_1_1_0_visual_2" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Light2" mesh="FP207:LightFixture4_016a62c9_FP207:LightFixture4_016a62c9_2" />
+        <geom name="fp207:lightfixture4_c9b1f7b9b6e38754b848a8a623d68c2a_1_1_0_collision_3" class="__STRUCTURAL_MJT__" size="0.0332196 0.0624997 0.0165889" pos="0.0702329 2.3786 -0.286542" quat="0.707107 0.707107 0 0" type="box" rgba="0 1 0 1" />
+        <geom name="fp207:lightfixture4_c9b1f7b9b6e38754b848a8a623d68c2a_1_1_0_collision_4" class="__STRUCTURAL_MJT__" size="0.0713702 0.010337 0.0515989" pos="0.0702329 2.39905 -0.183646" quat="0.193591 0.981082 0 0" type="box" rgba="0 1 0 1" />
+        <geom name="fp207:lightfixture4_c9b1f7b9b6e38754b848a8a623d68c2a_1_1_0_collision_5" class="__STRUCTURAL_MJT__" size="0.0871929 0.0170526 0.0514379" pos="0.0702329 2.45967 -0.12336" quat="0.450938 0.892555 -6.94057e-09 -4.11869e-09" type="box" rgba="0 1 0 1" />
+        <geom name="fp207:lightfixture4_c9b1f7b9b6e38754b848a8a623d68c2a_1_1_0_collision_6" class="__STRUCTURAL_MJT__" size="0.0713703 0.010337 0.0515989" pos="0.0697671 2.39905 -0.387572" quat="0 0 -0.193591 0.981082" type="box" rgba="0 1 0 1" />
+        <geom name="fp207:lightfixture4_c9b1f7b9b6e38754b848a8a623d68c2a_1_1_0_collision_7" class="__STRUCTURAL_MJT__" size="0.0871929 0.0170526 0.0514379" pos="0.0697671 2.45967 -0.447859" quat="-6.94057e-09 4.11868e-09 -0.450938 0.892556" type="box" rgba="0 1 0 1" />
+        <geom name="fp207:lightfixture4_c9b1f7b9b6e38754b848a8a623d68c2a_1_1_0_collision_8" class="__STRUCTURAL_MJT__" size="0.0713702 0.010337 0.0515989" pos="-0.0319629 2.39905 -0.285377" quat="0.136889 0.69373 -0.136889 0.69373" type="box" rgba="0 1 0 1" />
+        <geom name="fp207:lightfixture4_c9b1f7b9b6e38754b848a8a623d68c2a_1_1_0_collision_9" class="__STRUCTURAL_MJT__" size="0.0871929 0.0170526 0.0514379" pos="-0.0921863 2.45967 -0.285377" quat="0.318861 0.631132 -0.318861 0.631132" type="box" rgba="0 1 0 1" />
+        <geom name="fp207:lightfixture4_c9b1f7b9b6e38754b848a8a623d68c2a_1_1_0_collision_10" class="__STRUCTURAL_MJT__" size="0.0713702 0.010337 0.0515989" pos="0.171963 2.39905 -0.285842" quat="-0.136889 -0.69373 -0.136889 0.69373" type="box" rgba="0 1 0 1" />
+        <geom name="fp207:lightfixture4_c9b1f7b9b6e38754b848a8a623d68c2a_1_1_0_collision_11" class="__STRUCTURAL_MJT__" size="0.0871929 0.0170526 0.0514379" pos="0.232186 2.45967 -0.285842" quat="-0.318861 -0.631132 -0.318861 0.631132" type="box" rgba="0 1 0 1" />
+        <geom name="fp207:lightfixture4_c9b1f7b9b6e38754b848a8a623d68c2a_1_1_0_collision_12" class="__STRUCTURAL_MJT__" size="0.0713702 0.010337 0.0515989" pos="-0.00193393 2.39905 -0.213317" quat="0.178855 0.906402 -0.074084 0.375444" type="box" rgba="0 1 0 1" />
+        <geom name="fp207:lightfixture4_c9b1f7b9b6e38754b848a8a623d68c2a_1_1_0_collision_13" class="__STRUCTURAL_MJT__" size="0.0871929 0.0170526 0.0514379" pos="-0.0445183 2.45967 -0.170705" quat="0.416612 0.824614 -0.172566 0.341566" type="box" rgba="0 1 0 1" />
+        <geom name="fp207:lightfixture4_c9b1f7b9b6e38754b848a8a623d68c2a_1_1_0_collision_14" class="__STRUCTURAL_MJT__" size="0.0713703 0.010337 0.0515989" pos="0.141934 2.39905 -0.357902" quat="-0.0740839 -0.375444 -0.178855 0.906402" type="box" rgba="0 1 0 1" />
+        <geom name="fp207:lightfixture4_c9b1f7b9b6e38754b848a8a623d68c2a_1_1_0_collision_15" class="__STRUCTURAL_MJT__" size="0.0871929 0.0170526 0.0514379" pos="0.184518 2.45967 -0.400514" quat="-0.172566 -0.341566 -0.416612 0.824614" type="box" rgba="0 1 0 1" />
+        <geom name="fp207:lightfixture4_c9b1f7b9b6e38754b848a8a623d68c2a_1_1_0_collision_16" class="__STRUCTURAL_MJT__" size="0.0713703 0.010337 0.0515989" pos="-0.00226339 2.39905 -0.357572" quat="0.074084 0.375444 -0.178855 0.906402" type="box" rgba="0 1 0 1" />
+        <geom name="fp207:lightfixture4_c9b1f7b9b6e38754b848a8a623d68c2a_1_1_0_collision_17" class="__STRUCTURAL_MJT__" size="0.0871929 0.0170526 0.0514379" pos="-0.0448477 2.45967 -0.400185" quat="0.172566 0.341566 -0.416612 0.824614" type="box" rgba="0 1 0 1" />
+        <geom name="fp207:lightfixture4_c9b1f7b9b6e38754b848a8a623d68c2a_1_1_0_collision_18" class="__STRUCTURAL_MJT__" size="0.0713702 0.010337 0.0515989" pos="0.142264 2.39905 -0.213646" quat="-0.178854 -0.906402 -0.074084 0.375444" type="box" rgba="0 1 0 1" />
+        <geom name="fp207:lightfixture4_c9b1f7b9b6e38754b848a8a623d68c2a_1_1_0_collision_19" class="__STRUCTURAL_MJT__" size="0.0871929 0.0170526 0.0514379" pos="0.184848 2.45967 -0.171034" quat="-0.416612 -0.824614 -0.172566 0.341566" type="box" rgba="0 1 0 1" />
+      </body>
+    </body>
+    <body name="fp207:lightfixture4_7627986f2b8cfdfe24951373e0730d07_1_0_0" quat="0 0 0.707107 0.707107">
+      <body name="fp207:lightfixture4_7627986f2b8cfdfe24951373e0730d07_1_1_0">
+        <geom name="fp207:lightfixture4_7627986f2b8cfdfe24951373e0730d07_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Brass_Mat" mesh="FP207:LightFixture4_8bd55b35_FP207:LightFixture4__8bd55b35_0" />
+        <geom name="fp207:lightfixture4_7627986f2b8cfdfe24951373e0730d07_1_1_0_visual_1" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Metal_chrome_mat" mesh="FP207:LightFixture4_8bd55b35_FP207:LightFixture4__8bd55b35_1" />
+        <geom name="fp207:lightfixture4_7627986f2b8cfdfe24951373e0730d07_1_1_0_visual_2" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Light2" mesh="FP207:LightFixture4_8bd55b35_FP207:LightFixture4__8bd55b35_2" />
+        <geom name="fp207:lightfixture4_7627986f2b8cfdfe24951373e0730d07_1_1_0_collision_3" class="__STRUCTURAL_MJT__" size="0.0332196 0.0624997 0.0165889" pos="0.0702329 2.3786 2.63707" quat="0.707107 0.707107 0 0" type="box" rgba="0 1 0 1" />
+        <geom name="fp207:lightfixture4_7627986f2b8cfdfe24951373e0730d07_1_1_0_collision_4" class="__STRUCTURAL_MJT__" size="0.0713702 0.010337 0.0515989" pos="0.0702329 2.39905 2.73996" quat="0.193591 0.981082 0 0" type="box" rgba="0 1 0 1" />
+        <geom name="fp207:lightfixture4_7627986f2b8cfdfe24951373e0730d07_1_1_0_collision_5" class="__STRUCTURAL_MJT__" size="0.0871929 0.0170526 0.0514379" pos="0.0702329 2.45967 2.80025" quat="0.450938 0.892555 -6.94057e-09 -4.11869e-09" type="box" rgba="0 1 0 1" />
+        <geom name="fp207:lightfixture4_7627986f2b8cfdfe24951373e0730d07_1_1_0_collision_6" class="__STRUCTURAL_MJT__" size="0.0713703 0.010337 0.0515989" pos="0.0697671 2.39905 2.53604" quat="0 0 -0.193591 0.981082" type="box" rgba="0 1 0 1" />
+        <geom name="fp207:lightfixture4_7627986f2b8cfdfe24951373e0730d07_1_1_0_collision_7" class="__STRUCTURAL_MJT__" size="0.0871929 0.0170526 0.0514379" pos="0.0697671 2.45967 2.47575" quat="-6.94057e-09 4.11868e-09 -0.450938 0.892556" type="box" rgba="0 1 0 1" />
+        <geom name="fp207:lightfixture4_7627986f2b8cfdfe24951373e0730d07_1_1_0_collision_8" class="__STRUCTURAL_MJT__" size="0.0713702 0.010337 0.0515989" pos="-0.0319629 2.39905 2.63823" quat="0.136889 0.69373 -0.136889 0.69373" type="box" rgba="0 1 0 1" />
+        <geom name="fp207:lightfixture4_7627986f2b8cfdfe24951373e0730d07_1_1_0_collision_9" class="__STRUCTURAL_MJT__" size="0.0871929 0.0170526 0.0514379" pos="-0.0921863 2.45967 2.63823" quat="0.318861 0.631132 -0.318861 0.631132" type="box" rgba="0 1 0 1" />
+        <geom name="fp207:lightfixture4_7627986f2b8cfdfe24951373e0730d07_1_1_0_collision_10" class="__STRUCTURAL_MJT__" size="0.0713702 0.010337 0.0515989" pos="0.171963 2.39905 2.63777" quat="-0.136889 -0.69373 -0.136889 0.69373" type="box" rgba="0 1 0 1" />
+        <geom name="fp207:lightfixture4_7627986f2b8cfdfe24951373e0730d07_1_1_0_collision_11" class="__STRUCTURAL_MJT__" size="0.0871929 0.0170526 0.0514379" pos="0.232186 2.45967 2.63777" quat="-0.318861 -0.631132 -0.318861 0.631132" type="box" rgba="0 1 0 1" />
+        <geom name="fp207:lightfixture4_7627986f2b8cfdfe24951373e0730d07_1_1_0_collision_12" class="__STRUCTURAL_MJT__" size="0.0713702 0.010337 0.0515989" pos="-0.00193393 2.39905 2.71029" quat="0.178855 0.906402 -0.074084 0.375444" type="box" rgba="0 1 0 1" />
+        <geom name="fp207:lightfixture4_7627986f2b8cfdfe24951373e0730d07_1_1_0_collision_13" class="__STRUCTURAL_MJT__" size="0.0871929 0.0170526 0.0514379" pos="-0.0445183 2.45967 2.7529" quat="0.416612 0.824614 -0.172566 0.341566" type="box" rgba="0 1 0 1" />
+        <geom name="fp207:lightfixture4_7627986f2b8cfdfe24951373e0730d07_1_1_0_collision_14" class="__STRUCTURAL_MJT__" size="0.0713703 0.010337 0.0515989" pos="0.141934 2.39905 2.56571" quat="-0.0740839 -0.375444 -0.178855 0.906402" type="box" rgba="0 1 0 1" />
+        <geom name="fp207:lightfixture4_7627986f2b8cfdfe24951373e0730d07_1_1_0_collision_15" class="__STRUCTURAL_MJT__" size="0.0871929 0.0170526 0.0514379" pos="0.184518 2.45967 2.5231" quat="-0.172566 -0.341566 -0.416612 0.824614" type="box" rgba="0 1 0 1" />
+        <geom name="fp207:lightfixture4_7627986f2b8cfdfe24951373e0730d07_1_1_0_collision_16" class="__STRUCTURAL_MJT__" size="0.0713703 0.010337 0.0515989" pos="-0.00226339 2.39905 2.56604" quat="0.074084 0.375444 -0.178855 0.906402" type="box" rgba="0 1 0 1" />
+        <geom name="fp207:lightfixture4_7627986f2b8cfdfe24951373e0730d07_1_1_0_collision_17" class="__STRUCTURAL_MJT__" size="0.0871929 0.0170526 0.0514379" pos="-0.0448477 2.45967 2.52342" quat="0.172566 0.341566 -0.416612 0.824614" type="box" rgba="0 1 0 1" />
+        <geom name="fp207:lightfixture4_7627986f2b8cfdfe24951373e0730d07_1_1_0_collision_18" class="__STRUCTURAL_MJT__" size="0.0713702 0.010337 0.0515989" pos="0.142264 2.39905 2.70996" quat="-0.178854 -0.906402 -0.074084 0.375444" type="box" rgba="0 1 0 1" />
+        <geom name="fp207:lightfixture4_7627986f2b8cfdfe24951373e0730d07_1_1_0_collision_19" class="__STRUCTURAL_MJT__" size="0.0871929 0.0170526 0.0514379" pos="0.184848 2.45967 2.75257" quat="-0.416612 -0.824614 -0.172566 0.341566" type="box" rgba="0 1 0 1" />
+      </body>
+    </body>
+    <body name="fp207:standardknob1_ae4fd26d331820d0d23e4a7d37755d09_1_0_0" quat="0 0 0.707107 0.707107">
+      <body name="fp207:standardknob1_ae4fd26d331820d0d23e4a7d37755d09_1_1_0">
+        <geom name="fp207:standardknob1_ae4fd26d331820d0d23e4a7d37755d09_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_BrushedIron_AlbedoTransparency" mesh="FP207:StandardKnob1_8314f400_FP207:StandardKnob1_8314f400" />
+        <geom name="fp207:standardknob1_ae4fd26d331820d0d23e4a7d37755d09_1_1_0_collision_1" class="__STRUCTURAL_MJT__" size="0.0297901 0.0834241 0.0266516" pos="2.0496 0.887 3.68818" quat="0 0.707108 0 -0.707106" type="box" rgba="0 1 0 1" />
+        <geom name="fp207:standardknob1_ae4fd26d331820d0d23e4a7d37755d09_1_1_0_collision_2" class="__STRUCTURAL_MJT__" size="0.0122087 0.0121626 0.0459254" pos="2.0496 0.907867 3.6877" quat="0 0.707108 0 -0.707106" type="box" rgba="0 1 0 1" />
+        <geom name="fp207:standardknob1_ae4fd26d331820d0d23e4a7d37755d09_1_1_0_collision_3" class="__STRUCTURAL_MJT__" size="0.0209801 1e-05" pos="2.0953 0.9077 3.68786" quat="0.500001 0.500001 0.499999 -0.499999" type="capsule" rgba="0 1 0 1" />
+        <geom name="fp207:standardknob1_ae4fd26d331820d0d23e4a7d37755d09_1_1_0_collision_4" class="__STRUCTURAL_MJT__" size="0.0211464 1e-05" pos="2.0069 0.9102 3.68776" quat="0.500001 0.500001 0.499999 -0.499999" type="capsule" rgba="0 1 0 1" />
+      </body>
+    </body>
+    <body name="fp207:standarddoorframe1_9a8565e2ac54c4c3b32a5e3cbe67ae1d_1_0_0" quat="0 0 0.707107 0.707107">
+      <body name="fp207:standarddoorframe1_9a8565e2ac54c4c3b32a5e3cbe67ae1d_1_1_0">
+        <geom name="fp207:standarddoorframe1_9a8565e2ac54c4c3b32a5e3cbe67ae1d_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_WhiteWoodClean" mesh="FP207:StandardDoorFrame1_b83f439b_FP207:StandardDoorFrame1_b83f439b" />
+        <geom name="fp207:standarddoorframe1_9a8565e2ac54c4c3b32a5e3cbe67ae1d_1_1_0_collision_1" class="__ARTICULABLE_DYNAMIC_MJT__" size="0.0185506 1.02272 0.0785632" pos="2.05 1.01898 2.8549" quat="0 0.707107 0 0.707107" type="box" rgba="0 1 0 1" />
+        <geom name="fp207:standarddoorframe1_9a8565e2ac54c4c3b32a5e3cbe67ae1d_1_1_0_collision_2" class="__ARTICULABLE_DYNAMIC_MJT__" size="0.0197047 1.02272 0.0785632" pos="2.05 1.01898 3.74429" quat="0 0.707107 0 0.707107" type="box" rgba="0 1 0 1" />
+        <geom name="fp207:standarddoorframe1_9a8565e2ac54c4c3b32a5e3cbe67ae1d_1_1_0_collision_3" class="__ARTICULABLE_DYNAMIC_MJT__" size="0.464926 0.0211321 0.0785632" pos="2.05 2.02093 3.3" quat="0 0.707107 0 0.707107" type="box" rgba="0 1 0 1" />
+      </body>
+    </body>
+    <body name="fp207:standarddoor1_47a5dc2560ca3f6baddf2a0fc4c055ce_1_0_0" quat="0 0 0.707107 0.707107">
+      <body name="fp207:standarddoor1_47a5dc2560ca3f6baddf2a0fc4c055ce_1_1_0">
+        <geom name="fp207:standarddoor1_47a5dc2560ca3f6baddf2a0fc4c055ce_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_TexturesCom_WoodFine0050_1_seamless_S_white" mesh="FP207:StandardDoor1_f8973a1a_FP207:StandardDoor1_f8973a1a" />
+        <geom name="fp207:standarddoor1_47a5dc2560ca3f6baddf2a0fc4c055ce_1_1_0_collision_1" class="__ARTICULABLE_DYNAMIC_MJT__" size="0.429745 0.999753 0.0278866" pos="2.05 1.0016 3.3" quat="0 0.707107 0 0.707107" type="box" rgba="0 1 0 1" />
+      </body>
+    </body>
+    <body name="walls_74909e2b468b49ac865b6255bd63f60d_1_0_0" quat="0 0 0.707107 0.707107">
+      <body name="walls_74909e2b468b49ac865b6255bd63f60d_1_1_0">
+        <geom name="walls_74909e2b468b49ac865b6255bd63f60d_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_WhiteWoodClean" mesh="Walls_8a2d9ba1_Walls_8a2d9ba1_0" />
+        <geom name="walls_74909e2b468b49ac865b6255bd63f60d_1_1_0_visual_1" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_DrywallEggshell" mesh="Walls_8a2d9ba1_Walls_8a2d9ba1_1" />
+        <geom name="walls_74909e2b468b49ac865b6255bd63f60d_1_1_0_collision_2" class="__STRUCTURAL_MJT__" size="0.0523543 1.24838 3.10591" pos="-2.05492 1.24351 1.05136" quat="0 1 0 0" type="box" rgba="0 1 0 1" />
+        <geom name="walls_74909e2b468b49ac865b6255bd63f60d_1_1_0_collision_3" class="__STRUCTURAL_MJT__" size="2.10781 1.24838 0.0579896" pos="0.000529528 1.24351 4.09927" quat="0 1 0 0" type="box" rgba="0 1 0 1" />
+        <geom name="walls_74909e2b468b49ac865b6255bd63f60d_1_1_0_collision_4" class="__STRUCTURAL_MJT__" size="0.0605546 1.24838 0.200607" pos="2.04778 1.24351 3.95666" quat="0 1 0 0" type="box" rgba="0 1 0 1" />
+        <geom name="walls_74909e2b468b49ac865b6255bd63f60d_1_1_0_collision_5" class="__STRUCTURAL_MJT__" size="0.0605545 0.234292 0.462576" pos="2.04778 2.2576 3.30731" quat="0 1 0 0" type="box" rgba="0 1 0 1" />
+        <geom name="walls_74909e2b468b49ac865b6255bd63f60d_1_1_0_collision_6" class="__STRUCTURAL_MJT__" size="0.0605545 1.24838 2.46826" pos="2.04778 1.24351 0.410595" quat="0 1 0 0" type="box" rgba="0 1 0 1" />
+        <geom name="walls_74909e2b468b49ac865b6255bd63f60d_1_1_0_collision_7" class="__STRUCTURAL_MJT__" size="0.792938 1.24838 0.0619481" pos="1.3154 1.24351 -1.99572" quat="0 1 0 0" type="box" rgba="0 1 0 1" />
+        <geom name="walls_74909e2b468b49ac865b6255bd63f60d_1_1_0_collision_8" class="__STRUCTURAL_MJT__" size="0.357422 0.201676 0.0619481" pos="0.191839 2.29022 -1.99572" quat="0 1 0 0" type="box" rgba="0 1 0 1" />
+        <geom name="walls_74909e2b468b49ac865b6255bd63f60d_1_1_0_collision_9" class="__STRUCTURAL_MJT__" size="0.350102 0.454203 0.0619481" pos="0.199159 0.449336 -1.99572" quat="0 1 0 0" type="box" rgba="0 1 0 1" />
+        <geom name="walls_74909e2b468b49ac865b6255bd63f60d_1_1_0_collision_10" class="__STRUCTURAL_MJT__" size="0.992511 1.24838 0.0619481" pos="-1.10933 1.24351 -1.99572" quat="0 1 0 0" type="box" rgba="0 1 0 1" />
+      </body>
+    </body>
+    <body name="floor_dd7a79f94dd6271a7306f1a504ea6944_1_0_0" quat="0 0 0.707107 0.707107">
+      <body name="floor_dd7a79f94dd6271a7306f1a504ea6944_1_1_0">
+        <geom name="floor_dd7a79f94dd6271a7306f1a504ea6944_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_BedroomFloor1" mesh="Floor_0d809d9e_mesh_6d4a1a8e" />
+      </body>
+    </body>
+  </worldbody>
+
+  <contact>
+    <exclude name="mjt_pair_11" body1="electricswitch_1dcfbff6317add0290c9786c536a687b_1_1_0" body2="electricswitch_1dcfbff6317add0290c9786c536a687b_1_2_0" />
+    <exclude name="mjt_pair_12" body1="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_1_0" body2="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_2_0" />
+    <exclude name="mjt_pair_13" body1="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_1_0" body2="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_3_0" />
+    <exclude name="mjt_pair_14" body1="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_1_0" body2="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_4_0" />
+    <exclude name="mjt_pair_15" body1="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_1_0" body2="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_5_0" />
+    <exclude name="mjt_pair_16" body1="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_2_0" body2="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_3_0" />
+    <exclude name="mjt_pair_17" body1="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_2_0" body2="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_4_0" />
+    <exclude name="mjt_pair_18" body1="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_2_0" body2="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_5_0" />
+    <exclude name="mjt_pair_19" body1="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_3_0" body2="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_4_0" />
+    <exclude name="mjt_pair_20" body1="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_3_0" body2="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_5_0" />
+    <exclude name="mjt_pair_21" body1="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_4_0" body2="shelf_0a78b8f55b17f1c15c6d47e7e4506c27_1_5_0" />
+  </contact>
+</mujoco>

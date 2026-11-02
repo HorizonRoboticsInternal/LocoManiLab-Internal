@@ -13,7 +13,15 @@ long_description = "".join(lines)
 
 setup(
     name="robocasa",
-    packages=[package for package in find_packages() if package.startswith("robocasa")],
+    packages=[
+        package
+        for package in find_packages()
+        # g1_bridge (the host-agnostic teleop + recording layer) is no longer
+        # shipped from here -- it moved into the g1_backend distribution, which
+        # this repo already installs for the sim2real runtime. What stays is
+        # robocasa.g1_host: the robosuite/MuJoCo half of the G1 bridge.
+        if package.startswith("robocasa")
+    ],
     install_requires=[
         "numpy==2.2.5",
         "numba==0.61.2",
@@ -30,16 +38,24 @@ setup(
         "h5py",
         "lxml",
         "hidapi",
-        "tianshou==0.4.10",
         "lerobot==0.3.3",
         "gymnasium",
+        # Required by g1_bridge's vendored WHOLE_BODY_G1 (SONIC) stack
+        # (g1_bridge/vendored/wbt/), loaded when that controller is constructed.
+        "onnxruntime",
+        "loguru",
+        # Required by robocasa/scripts/download_g1_checkpoints.py, which fetches
+        # the G1 policy checkpoints from the Hub into the g1_backend repo's
+        # checkpoints/. Currently satisfied only transitively (via lerobot), and
+        # a documented setup step must not rely on a transitive dependency.
+        "huggingface_hub>=0.30",
     ],
     eager_resources=["*"],
     include_package_data=True,
     python_requires=">=3",
-    description="RoboCasa365: A Large-Scale Simulation Framework for Training and Benchmarking Generalist Robots",
+    description="G1 humanoid benchmark built on RoboCasa365 and robosuite",
     author="Soroush Nasiriany, Sepehr Nasiriany, Abhiram Maddukuri, Yuke Zhu",
-    url="https://github.com/robocasa/robocasa",
+    url="https://github.com/LocoManiLab/humanoid_benchmark",
     author_email="abhicm@utexas.edu",
     version="1.0.1",
     long_description=long_description,

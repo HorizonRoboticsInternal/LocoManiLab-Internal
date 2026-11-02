@@ -107,9 +107,6 @@ CAM_CONFIGS = dict(
             parent_body="robot0_right_hand",
         ),
     ),
-    ### Add robot specific configs here ####
-    PandaMobile=dict(),
-    GR1FixedLowerBody=dict(),
 )
 
 COTRAIN_CAM_CONFIGS = dict(

@@ -1,0 +1,33 @@
+<mujoco model="box_5">
+  <compiler angle="radian"/>
+
+  <default>
+    <default class="visual"><geom group="1" contype="0" conaffinity="0"/></default>
+    <default class="collision"><geom group="0" rgba="0 0 0 0" friction="0.8 0.03 0.01"/></default>
+    <default class="region"><geom group="1" contype="0" conaffinity="0" rgba="0 1 0 0" mass="0"/></default>
+  </default>
+
+  <asset>
+    <texture type="2d" name="box_5_diffuse" file="texture_pbr_20250901.png"/>
+    <texture type="2d" name="box_5_metallic" file="texture_pbr_20250901_metallic.png"/>
+    <texture type="2d" name="box_5_roughness" file="texture_pbr_20250901_roughness.png"/>
+    <texture type="2d" name="box_5_normal" file="texture_pbr_20250901_normal.png"/>
+    <material name="box_5_material" texture="box_5_diffuse" specular="0.6" reflectance="0.1"/>
+    <mesh name="box_5_mesh" content_type="model/obj" file="cd13a0f4e8ea5a44db771050678f40d1.obj"
+          scale="0.30 0.30 0.30"/>
+  </asset>
+
+  <worldbody>
+    <body>
+      <body name="object">
+        <geom name="visual" class="visual" type="mesh" material="box_5_material"
+              mesh="box_5_mesh" quat="0.7071068 0.7071068 0 0"/>
+        <geom name="collision" class="collision" type="mesh" mesh="box_5_mesh"
+              quat="0.7071068 0.7071068 0 0" mass="2"/>
+        <geom name="reg_bbox" class="region" type="box"
+              pos="0.00681975 0.0011412 0.04547895"
+              size="0.09951165 0.151332 0.04547895"/>
+      </body>
+    </body>
+  </worldbody>
+</mujoco>

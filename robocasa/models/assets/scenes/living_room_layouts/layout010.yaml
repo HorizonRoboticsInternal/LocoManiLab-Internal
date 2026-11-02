@@ -1,0 +1,25 @@
+# Living-room layout 010: symmetric arrangement with two flanking side tables.
+# Left and right side tables sit on opposite sides of the sofa, enabling tasks
+# that require left/right spatial disambiguation.  Multiple clear walking lanes
+# exist between all four furniture pieces.
+furniture:
+  - name: sofa
+    type: sofa
+    pos: [-2.2, 0.0]
+    z_rot: 1.5708
+  - name: coffee_table
+    type: coffee_table
+    pos: [-0.8, 0.0]
+    z_rot: 0.0
+  - name: tv_stand
+    type: tv_stand
+    pos: [2.3, 0.0]
+    z_rot: -1.5708
+  - name: left_table
+    type: side_table
+    pos: [-1.8, -1.8]
+    z_rot: 0.0
+  - name: right_table
+    type: side_table
+    pos: [-1.8, 1.8]
+    z_rot: 0.0

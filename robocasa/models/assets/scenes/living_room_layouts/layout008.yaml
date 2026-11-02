@@ -1,0 +1,41 @@
+# Living-room layout 008: Densely cluttered scene for hard navigation.
+# 7 large furniture pieces -- only floor-standing items (no countertop
+# appliances that would look out of place on the floor).
+furniture:
+  # --- back wall (-x side) ---
+  - name: sofa_back
+    type: sofa
+    pos: [0.0, 0]
+    z_rot: -1.5708
+
+  - name: tv_stand_left
+    type: tv_stand
+    pos: [-2.8, 0.0]
+    z_rot: 1.5708
+
+  # --- centre obstacles (block the straight path) ---
+  - name: coffee_table_front
+    type: coffee_table
+    pos: [-1.5, 0.0]
+    z_rot: -1.5708
+
+  # --- side tables scattered as path blockers ---
+  - name: origin_table
+    type: side_table
+    pos: [2.2, -1.5]
+    z_rot: 0.0
+
+  - name: big_fridge
+    type: fridge
+    pos: [2.5, -2.5]
+    z_rot: -1.5708
+
+  - name: stove_main
+    type: stove
+    pos: [2.5, 0.0]
+    z_rot: -1.5708
+
+  - name: dishwasher_main
+    type: dishwasher
+    pos: [2.5, -1.0]
+    z_rot: -1.5708

@@ -1,0 +1,603 @@
+scenes:
+  FloorPlan302:
+    supports:
+    - center:
+      - -1.1123399
+      - -1.03910509
+      - 0.79416828
+      half_xy:
+      - 0.28
+      - 0.85
+      yaw: 0.0
+      body_name: desk_1dfd15002b86c91d09864a62db22f582_1_1_0
+      id: bedroom_main_desk
+  FloorPlan323:
+    supports:
+    - center:
+      - 2.1919432
+      - -3.22778699
+      - 0.89565204
+      half_xy:
+      - 0.65
+      - 0.25
+      yaw: 0.0
+      body_name: desk_1ed6a935dd0a4444353607d92b2011c9_1_1_0
+      id: bedroom_main_desk
+  FloorPlan1:
+    supports:
+    - center:
+      - -1.853
+      - -0.3491
+      - 0.9
+      half_xy:
+      - 0.3
+      - 0.7
+      yaw: 0.0
+      body_name: standardcounterheightwidth_63e81a44be2e417bdef7ec44364879f9_1_1_0
+      id: support_1
+    - center:
+      - -0.053
+      - 0.0009
+      - 1.1
+      half_xy:
+      - 0.55
+      - 1.0
+      yaw: 0.0
+      body_name: standardislandheight_7cc63329b1f0a38cd8c2450298404ab3_1_1_0
+      id: support_2
+    - center:
+      - -1.453
+      - -2.4991
+      - 0.9
+      half_xy:
+      - 0.65
+      - 0.25
+      yaw: 0.0
+      body_name: standardcounterheightwidth_63e81a44be2e417bdef7ec44364879f9_1_1_0
+      id: support_3
+    - center:
+      - 0.697
+      - -2.4991
+      - 0.9
+      half_xy:
+      - 0.45
+      - 0.27
+      yaw: 0.0
+      body_name: standardcounterheightwidth_63e81a44be2e417bdef7ec44364879f9_1_1_0
+      id: support_4
+  FloorPlan2:
+    supports:
+    - center:
+      - -0.0002
+      - 0.479
+      - 0.93
+      half_xy:
+      - 0.4
+      - 0.85
+      yaw: 0.0
+      body_name: standardislandheight2_995732688a6e6929a1511a42529be49d_1_1_0
+      id: support_1
+    - center:
+      - -0.8502
+      - -1.451
+      - 0.9
+      half_xy:
+      - 0.28
+      - 0.3
+      yaw: 0.0
+      body_name: standardcounterheightwidth_a6325d5e960b33a763a25283d497d390_1_1_0
+      id: support_2
+    - center:
+      - 1.1998
+      - -1.451
+      - 0.9
+      half_xy:
+      - 0.51
+      - 0.3
+      yaw: 0.0
+      body_name: standardcounterheightwidth_a6325d5e960b33a763a25283d497d390_1_1_0
+      id: support_3
+    - center:
+      - 1.7998
+      - 1.249
+      - 0.9
+      half_xy:
+      - 0.21
+      - 0.19
+      yaw: 0.0
+      body_name: standardcounterheightwidth_a6325d5e960b33a763a25283d497d390_1_1_0
+      id: support_4
+  FloorPlan3:
+    supports:
+    - center:
+      - -1.7917
+      - 1.5738
+      - 1.32
+      half_xy:
+      - 0.4
+      - 0.74
+      yaw: 0.0
+      body_name: cube_f309c322bbdde8142a2b7b4c3ec1df16_1_1_0
+      id: support_1
+    - center:
+      - -1.7917
+      - -1.9262
+      - 1.32
+      half_xy:
+      - 0.4
+      - 0.49
+      yaw: 0.0
+      body_name: cube_f309c322bbdde8142a2b7b4c3ec1df16_1_1_0
+      id: support_2
+    - center:
+      - 0.7083
+      - -1.9262
+      - 1.32
+      half_xy:
+      - 0.15
+      - 0.99
+      yaw: 0.0
+      body_name: cube_f309c322bbdde8142a2b7b4c3ec1df16_1_1_0
+      id: support_3
+  FloorPlan4:
+    supports:
+    - center:
+      - -0.5923
+      - 2.5059
+      - 1.05
+      half_xy:
+      - 0.45
+      - 0.8
+      yaw: 0.0
+      body_name: mesh_8536bdce77dec9e28d192c65eb2fcfcf_1_1_0
+      id: support_1
+    - center:
+      - -2.2923
+      - 0.3859
+      - 1.11
+      half_xy:
+      - 0.45
+      - 0.3
+      yaw: 0.0
+      body_name: countertop_acc54fda3f5628795ea0655266c7f7ac_1_1_0
+      id: support_2
+    - center:
+      - -1.3723
+      - 0.3859
+      - 0.92
+      half_xy:
+      - 0.33
+      - 0.2
+      yaw: 0.0
+      body_name: sinkmesh_81e7f1164c7f76e389c2f20a868c1842_1_1_0
+      id: support_3
+  FloorPlan5:
+    supports:
+    - center:
+      - -0.2969
+      - 0.1789
+      - 0.9
+      half_xy:
+      - 0.45
+      - 0.2
+      yaw: 0.0
+      body_name: standardcounterheightwidth_63924beb9f8ad5419a9d501f8fb6109d_1_1_0
+      id: support_1
+    - center:
+      - 1.2031
+      - -1.9711
+      - 0.9
+      half_xy:
+      - 0.35
+      - 0.27
+      yaw: 0.0
+      body_name: standardcounterheightwidth_63924beb9f8ad5419a9d501f8fb6109d_1_1_0
+      id: support_2
+  FloorPlan6:
+    supports:
+    - center:
+      - -2.44
+      - 0.9637
+      - 0.9
+      half_xy:
+      - 0.3
+      - 1.1
+      yaw: 0.0
+      body_name: standardcounterheightwidth_44de877a3aa8e5dabb2910d9dfe04417_1_1_0
+      id: support_1
+    - center:
+      - -0.34
+      - 1.0637
+      - 0.9
+      half_xy:
+      - 0.5
+      - 0.86
+      yaw: 0.0
+      body_name: standardislandheight1_7c08be53b4896629d8fc3f92975e3685_1_1_0
+      id: support_2
+  FloorPlan7:
+    supports:
+    - center:
+      - -1.8684
+      - -0.265
+      - 0.9
+      half_xy:
+      - 0.4
+      - 0.9
+      yaw: 0.0
+      body_name: standardcounterheightwidth_50dbbcf9c0f3ed35c015fcf8cb77460d_1_1_0
+      id: support_1
+    - center:
+      - -2.6184
+      - 2.835
+      - 0.85
+      half_xy:
+      - 0.25
+      - 0.25
+      yaw: 0.0
+      body_name: diningtable_a1271102e7d3313087397a337003b3b7_1_1_0
+      id: support_2
+  FloorPlan8:
+    supports:
+    - center:
+      - -2.0804
+      - 0.2732
+      - 0.9
+      half_xy:
+      - 0.4
+      - 0.3
+      yaw: 0.0
+      body_name: standardcounterheightwidth(3)_50886066f17d8007f5dff7e4a99f8cba_1_1_0
+      id: support_1
+    - center:
+      - 1.1696
+      - -0.2768
+      - 0.89
+      half_xy:
+      - 0.31
+      - 0.9
+      yaw: 0.0
+      body_name: standardcounterheightwidth(2)_137213d1cd03ad41dee158cc3dfc6e1f_1_1_0
+      id: support_2
+  FloorPlan9:
+    supports:
+    - center:
+      - 1.8911
+      - 1.2118
+      - 0.9
+      half_xy:
+      - 0.9
+      - 0.25
+      yaw: 0.0
+      body_name: standardcounterheightwidth_ed37a871258c234380a2541833bd4f90_1_1_0
+      id: support_1
+  FloorPlan10:
+    supports:
+    - center:
+      - 0.9224
+      - -0.313
+      - 0.9
+      half_xy:
+      - 0.3
+      - 0.5
+      yaw: 0.0
+      body_name: standardcounterheightwidth_6b7045892d4f8139edd00c4e95cefcac_1_1_0
+      id: support_1
+    - center:
+      - -0.9276
+      - 0.087
+      - 0.92
+      half_xy:
+      - 0.5
+      - 0.3
+      yaw: 0.0
+      body_name: standardislandheight2_0c24efb129f24c400d3953de5b6ca7ed_1_1_0
+      id: support_2
+    - center:
+      - -0.9276
+      - -1.383
+      - 0.92
+      half_xy:
+      - 0.5
+      - 0.3
+      yaw: 0.0
+      body_name: standardislandheight2_0c24efb129f24c400d3953de5b6ca7ed_1_1_0
+      id: support_3
+  FloorPlan11:
+    supports:
+    - center:
+      - 1.5253
+      - -1.66
+      - 0.9
+      half_xy:
+      - 0.41
+      - 0.31
+      yaw: 0.0
+      body_name: standardcounterheightwidth_db9f674d62892bac725c188d7417ebf7_1_1_0
+      id: support_1
+    - center:
+      - -0.2647
+      - -1.66
+      - 0.9
+      half_xy:
+      - 0.31
+      - 0.31
+      yaw: 0.0
+      body_name: standardcounterheightwidth_db9f674d62892bac725c188d7417ebf7_1_1_0
+      id: support_2
+    - center:
+      - -2.1547
+      - 0.44
+      - 0.95
+      half_xy:
+      - 0.31
+      - 0.31
+      yaw: 0.0
+      body_name: diningtable_c587120d46e86fcffc3997332bbc2427_1_1_0
+      id: support_3
+  FloorPlan12:
+    supports:
+    - center:
+      - 1.5139
+      - 0.9058
+      - 0.93
+      half_xy:
+      - 0.27
+      - 0.25
+      yaw: 0.0
+      body_name: baseboard_e09da1d8859400defced37636bed9aea_1_1_0
+      id: support_1
+    - center:
+      - -0.9861
+      - 2.4058
+      - 0.93
+      half_xy:
+      - 0.27
+      - 0.25
+      yaw: 0.0
+      body_name: cube_a1559e560e025f8fe61bb9370bfa66a8_1_1_0
+      id: support_2
+  FloorPlan13:
+    supports:
+    - center:
+      - -3.5065
+      - 5.3114
+      - 0.91
+      half_xy:
+      - 0.42
+      - 0.25
+      yaw: 0.0
+      body_name: cube_28bb627bc9e066517f3364bc0f231df9_1_1_0
+      id: support_1
+    - center:
+      - -1.8765
+      - 1.8114
+      - 0.91
+      half_xy:
+      - 0.29
+      - 0.25
+      yaw: 0.0
+      body_name: cube_28bb627bc9e066517f3364bc0f231df9_1_1_0
+      id: support_2
+  FloorPlan14:
+    supports:
+    - center:
+      - 0.5199
+      - 0.9735
+      - 0.9
+      half_xy:
+      - 0.5
+      - 0.3
+      yaw: 0.0
+      body_name: standardcounterheightwidth_4222f2308b444751400244386df869e4_1_1_0
+      id: support_1
+  FloorPlan15:
+    supports:
+    - center:
+      - -2.5
+      - 3.8744
+      - 0.9
+      half_xy:
+      - 0.38
+      - 0.4
+      yaw: 0.0
+      body_name: cube_18b45173e303535ea85c5a6ce4d15b1f_1_1_0
+      id: support_1
+    - center:
+      - -3.4
+      - 1.3744
+      - 0.9
+      half_xy:
+      - 0.33
+      - 0.3
+      yaw: 0.0
+      body_name: cube_18b45173e303535ea85c5a6ce4d15b1f_1_1_0
+      id: support_2
+    - center:
+      - -1.4
+      - 0.3344
+      - 0.86
+      half_xy:
+      - 0.48
+      - 0.3
+      yaw: 0.0
+      body_name: diningtable_66a98315ac722a439c35ad98c2c33f80_1_1_0
+      id: support_3
+  FloorPlan401:
+    supports:
+    - center:
+      - -0.689
+      - 1.895
+      - 0.6226
+      half_xy:
+      - 0.1
+      - 0.1
+      yaw: 0.0
+      body_name: bathtub_9781a96b8b12595998faeb2a78f2911e_1_0_0
+      id: bathtub_north_rim
+    - center:
+      - -0.78
+      - 0.7
+      - 0.63
+      half_xy:
+      - 0.12
+      - 0.28
+      yaw: 0.0
+      body_name: bathtub_9781a96b8b12595998faeb2a78f2911e_1_0_0
+      id: scrub_brush_bathtub_rim
+  FloorPlan405:
+    supports:
+    - center:
+      - -1.09
+      - 0.83
+      - 0.55
+      half_xy:
+      - 0.1
+      - 0.5
+      yaw: 0.0
+      body_name: bathtub_130810c2273407e7e112a6cb5304788c_1_0_0
+      id: scrub_brush_bathtub_rim
+  FloorPlan407:
+    supports:
+    - center:
+      - 0.54
+      - -1.08
+      - 0.62
+      half_xy:
+      - 0.08
+      - 0.45
+      yaw: 0.0
+      body_name: bathtub_36a9e0e98ddd8b6819db31f2881814cc_1_0_0
+      id: scrub_brush_bathtub_rim
+  FloorPlan415:
+    supports:
+    - center:
+      - -2.22
+      - -0.83
+      - 0.51
+      half_xy:
+      - 0.09
+      - 0.5
+      yaw: 0.0
+      body_name: bathtub_dd4ed2bf1179cb65087f950fe418df56_1_0_0
+      id: scrub_brush_bathtub_rim
+  train_9:
+    supports:
+    - center:
+      - 0.9622
+      - 3.751
+      - 0.66
+      half_xy:
+      - 0.4
+      - 0.82
+      yaw: 0.0
+      body_name: diningtable_ccf909fdcb2bcd7c1441fe7740cecd0b_1_1_3
+      id: support_1
+    - center:
+      - 1.1722
+      - 7.171
+      - 0.94
+      half_xy:
+      - 0.67
+      - 0.28
+      yaw: 0.0
+      body_name: countertop_a67cbb1daecb6af2b388f43e55e61512_1_1_2
+      id: support_2
+  train_8:
+    supports:
+    - center:
+      - 5.99
+      - 2.839
+      - 0.63
+      half_xy:
+      - 0.35
+      - 0.67
+      yaw: 0.0
+      body_name: diningtable_b997464921c422dcd5a063ee61222fc1_1_1_2
+      id: support_1
+    - center:
+      - 0.5
+      - 2.589
+      - 0.64
+      half_xy:
+      - 0.45
+      - 0.87
+      yaw: 0.0
+      body_name: diningtable_42f858e8b4141d3513dab93ae465958d_1_1_3
+      id: support_2
+    - center:
+      - 4.75
+      - 0.339
+      - 0.94
+      half_xy:
+      - 0.45
+      - 0.27
+      yaw: 0.0
+      body_name: countertop_de11c0d944825196dce187269d835f7d_1_1_2
+      id: support_3
+  train_18:
+    supports:
+    - center:
+      - 4.6125
+      - 5.2647
+      - 0.95
+      half_xy:
+      - 0.35
+      - 1.4
+      yaw: 0.0
+      body_name: countertop_cf5d58067a56a919da3f8d75b2d87f53_1_1_6
+      id: support_1
+  train_0:
+    supports:
+    - center:
+      - 11.8307
+      - 7.0165
+      - 0.75
+      half_xy:
+      - 0.3
+      - 0.55
+      yaw: 0.0
+      body_name: diningtable_9c02a064c4b425976de085d4eaaa59cb_1_1_6
+      id: support_1
+    - center:
+      - 12.3307
+      - 9.7665
+      - 0.95
+      half_xy:
+      - 0.25
+      - 0.7
+      yaw: 0.0
+      body_name: countertop_d78a12e6334da555c6476e95fa418167_1_1_6
+      id: support_2
+  train_3:
+    supports:
+    - center:
+      - 3.1355
+      - 4.9918
+      - 0.94
+      half_xy:
+      - 0.25
+      - 0.85
+      yaw: 0.0
+      body_name: countertop_69b3f961475324e78e62712dca967ad6_1_1_6
+      id: support_1
+    - center:
+      - 0.9055
+      - 7.2718
+      - 0.74
+      half_xy:
+      - 0.41
+      - 0.85
+      yaw: 0.0
+      body_name: diningtable_089acb80b74f0348b7337b13ac73b412_1_1_6
+      id: support_2
+    - center:
+      - 6.5555
+      - 1.3318
+      - 1.12
+      half_xy:
+      - 0.3
+      - 1.09
+      yaw: 0.0
+      body_name: chestofdrawers_1cd6d294aeca0b72a858eb7b093b1779_1_1_2
+      id: support_3

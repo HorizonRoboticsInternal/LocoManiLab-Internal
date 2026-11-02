@@ -6,6 +6,7 @@ from robocasa.scripts.dataset_scripts.playback_dataset_hdf5 import (
     get_env_metadata_from_dataset,
 )
 from robosuite.controllers import load_composite_controller_config
+from robosuite.utils.log_utils import ROBOSUITE_DEFAULT_LOGGER
 from robosuite.utils.transform_utils import rotate_2d_point
 import robosuite.utils.transform_utils as T
 from robosuite.utils.mjcf_utils import (
@@ -26,6 +27,7 @@ from copy import deepcopy
 import gymnasium as gym
 
 from robocasa.utils.errors import PlacementError, SamplingError
+from robocasa.utils.robot_utils import DEFAULT_CAMERA, DEFAULT_ROBOT, validate_g1_robots
 import robocasa.macros as macros
 import robocasa.utils.object_utils as OU
 from robocasa.utils.placement_samplers import (
@@ -36,14 +38,33 @@ from robocasa.utils.placement_samplers import (
 from robocasa.models.objects.objects import MJCFObject
 
 _ROBOT_POS_OFFSETS: dict[str, list[float]] = {
-    "GR1FloatingBody": [0, 0, 0.97],
-    "GR1": [0, 0, 0.97],
-    "GR1FixedLowerBody": [0, 0, 0.97],
     "G1FloatingBody": [0, -0.33, 0],
     "G1": [0, -0.33, 0],
     "G1FixedLowerBody": [0, -0.33, 0],
-    "GoogleRobot": [0, 0, 0],
 }
+
+#: Floating-base robots whose spawn height is snapped so their feet start ON the
+#: floor. The table above places every G1 variant at z=0 regardless of the stance
+#: its initial joint angles actually imply, so the robot spawns airborne by
+#: whatever that mismatch happens to be (measured: 1.4 cm for the amo backend,
+#: which teleports the legs to its own default pose, 3.7 cm for sonic) and drops
+#: onto the floor inside ``_reset_internal``'s own settle loop. The landing
+#: impulse makes it slide: measured ~3.8-4.8 cm of xy drift by the time
+#: ``env.reset()`` returns, settling to ~2 cm off the intended spawn point.
+#:
+#: Snapping removes the drop rather than compensating for it, and does so by
+#: measuring the robot's actual geometry (see ``_snap_freejoint_to_ground``)
+#: instead of hardcoding a per-robot height, because the stance -- and therefore
+#: the correct z -- differs per backend.
+#:
+_GROUND_SNAP_ROBOTS = {
+    "G1FloatingBody",
+}
+
+#: How far below the nominal spawn z to look for the floor.
+_GROUND_SNAP_MAX_DROP = 0.25
+#: Bisection resolution, i.e. how much foot/floor gap is left behind.
+_GROUND_SNAP_TOL = 1e-4
 
 KITCHEN_SCENES_5X5 = [
     (layout, style) for layout in [11, 15, 18, 40, 50] for style in [14, 28, 34, 46, 58]
@@ -53,16 +74,11 @@ KITCHEN_SCENES_5X1 = [
     (layout, style) for layout in [11, 15, 18, 40, 50] for style in [34]
 ]
 
-
 def create_env(
     env_name,
     # robosuite-related configs
-    robots="PandaOmron",
-    camera_names=[
-        "robot0_agentview_left",
-        "robot0_agentview_right",
-        "robot0_eye_in_hand",
-    ],
+    robots=DEFAULT_ROBOT,
+    camera_names=None,
     camera_widths=128,
     camera_heights=128,
     seed=None,
@@ -76,12 +92,107 @@ def create_env(
     layout_and_style_ids=None,
     layout_ids=None,
     style_ids=None,
+    render_offscreen=None,
     **kwargs,
 ):
+    robot_name = validate_g1_robots(robots)
+    if camera_names is None:
+        camera_names = [DEFAULT_CAMERA]
+    if render_offscreen is None:
+        render_offscreen = not render_onscreen
     controller_config = load_composite_controller_config(
         controller=None,
-        robot=robots if isinstance(robots, str) else robots[0],
+        robot=robot_name,
     )
+
+    # Living-room envs take a trimmed kwarg set (they don't accept the
+    # kitchen-only flags generative_textures / randomize_cameras /
+    # translucent_robot / use_object_obs) and a simpler split: only the
+    # object-instance split varies for now -- scene-level train/test is deferred
+    # until there are more living-room layouts/styles to hold out. (Local import
+    # to avoid an import cycle: robocasa.environments imports living_room which
+    # imports this module.)
+    from robocasa.environments import ALL_LIVING_ROOM_ENVIRONMENTS
+
+    if env_name in ALL_LIVING_ROOM_ENVIRONMENTS:
+        if split == "target":
+            obj_instance_split = "target"
+        elif split == "pretrain":
+            obj_instance_split = "pretrain"
+        elif split == "all":
+            obj_instance_split = None
+        elif split is None:
+            pass  # use the caller-provided obj_instance_split (default None)
+        else:
+            raise ValueError('split must be one of {None, "all", "pretrain", "target"}')
+
+        lr_camera_depths = kwargs.pop("camera_depths", False)
+        # Only forward scene ids the caller actually set, so a task's pinned
+        # default (e.g. CarryObjectToTable -> layout 4 / style 3) is respected
+        # when no scene is requested. Living-room tasks can require a specific
+        # layout's furniture, so we must not blanket-override to None here.
+        scene_kw = {}
+        if layout_and_style_ids is not None:
+            scene_kw["layout_and_style_ids"] = layout_and_style_ids
+        if layout_ids is not None:
+            scene_kw["layout_ids"] = layout_ids
+        if style_ids is not None:
+            scene_kw["style_ids"] = style_ids
+        return robosuite.make(
+            env_name=env_name,
+            robots=robots,
+            controller_configs=controller_config,
+            camera_names=camera_names,
+            camera_widths=camera_widths,
+            camera_heights=camera_heights,
+            has_renderer=render_onscreen,
+            has_offscreen_renderer=render_offscreen,
+            ignore_done=True,
+            use_camera_obs=render_offscreen,
+            camera_depths=lr_camera_depths,
+            seed=seed,
+            obj_instance_split=obj_instance_split,
+            **scene_kw,
+            **kwargs,
+        )
+
+    # MolmoSpaces envs (iTHOR + ProcTHOR): same trimmed kwarg set as
+    # living-room, plus ``scene_ids`` for FloorPlan / scene selection.
+    from robocasa.environments import ALL_MOLMOSPACES_ENVIRONMENTS
+
+    if env_name in ALL_MOLMOSPACES_ENVIRONMENTS:
+        if split == "target":
+            obj_instance_split = "target"
+        elif split == "pretrain":
+            obj_instance_split = "pretrain"
+        elif split == "all":
+            obj_instance_split = None
+        elif split is None:
+            pass
+        else:
+            raise ValueError('split must be one of {None, "all", "pretrain", "target"}')
+
+        ithor_camera_depths = kwargs.pop("camera_depths", False)
+        scene_kw = {}
+        if "scene_ids" in kwargs:
+            scene_kw["scene_ids"] = kwargs.pop("scene_ids")
+        return robosuite.make(
+            env_name=env_name,
+            robots=robots,
+            controller_configs=controller_config,
+            camera_names=camera_names,
+            camera_widths=camera_widths,
+            camera_heights=camera_heights,
+            has_renderer=render_onscreen,
+            has_offscreen_renderer=render_offscreen,
+            ignore_done=True,
+            use_camera_obs=render_offscreen,
+            camera_depths=ithor_camera_depths,
+            seed=seed,
+            obj_instance_split=obj_instance_split,
+            **scene_kw,
+            **kwargs,
+        )
 
     if split == "target":
         obj_instance_split = "target"
@@ -119,10 +230,10 @@ def create_env(
         camera_widths=camera_widths,
         camera_heights=camera_heights,
         has_renderer=render_onscreen,
-        has_offscreen_renderer=(not render_onscreen),
+        has_offscreen_renderer=render_offscreen,
         ignore_done=True,
         use_object_obs=True,
-        use_camera_obs=(not render_onscreen),
+        use_camera_obs=render_offscreen,
         camera_depths=camera_depths,
         seed=seed,
         obj_instance_split=obj_instance_split,
@@ -139,23 +250,8 @@ def create_env(
     return env
 
 
-def convert_action(action):
-    """
-    Converts input action (np.array) to format expected by gym env (dict)
-    """
-    action = action.copy()
-    output_action = {
-        "action.end_effector_position": action[0:3],
-        "action.end_effector_rotation": action[3:6],
-        "action.gripper_close": action[6:7],
-        "action.base_motion": action[7:11],
-        "action.control_mode": action[11:12],
-    }
-    return output_action
-
-
 def run_random_rollouts(
-    env, num_rollouts, num_steps, video_path=None, camera_name="robot0_agentview_center"
+    env, num_rollouts, num_steps, video_path=None, camera_name=DEFAULT_CAMERA
 ):
     assert isinstance(env, gym.Env), f"Must use gym environment! Used type {type(env)}"
     video_writer = None
@@ -170,8 +266,6 @@ def run_random_rollouts(
         for step_i in range(num_steps):
             # sample and execute random action
             action = env.action_space.sample()
-            # zero out the base actions to prevent excessive jitter
-            action["action.base_motion"][:] = 0.0
             obs, reward, terminated, truncated, info = env.step(action)
 
             if video_writer is not None:
@@ -180,7 +274,7 @@ def run_random_rollouts(
                 )[::-1]
                 video_writer.append_data(video_img)
 
-            if info["success"]:
+            if info.get("success", False):
                 num_success_rollouts += 1
                 break
 
@@ -1548,6 +1642,11 @@ def generate_random_robot_pos(env, anchor_pos, anchor_ori, pos_dev_x, pos_dev_y)
 
 
 def set_robot_to_position(env, global_pos):
+    # Fixed-base humanoid robots (no mobile_yaw joint) skip xy randomization;
+    # the robot's MJCF-declared pos sticks.
+    if "mobilebase0_joint_mobile_forward" not in env.sim.model.joint_names:
+        return
+
     local_pos = np.matmul(
         T.matrix_inverse(T.euler2mat(env.init_robot_base_ori_anchor)), global_pos
     )
@@ -1584,6 +1683,160 @@ def set_robot_to_position(env, global_pos):
         env.sim.forward()
 
 
+def _robot_geom_ids(env):
+    """Every geom belonging to robot 0, by naming prefix."""
+    model = env.sim.model
+    prefix = env.robots[0].robot_model.naming_prefix
+    ids = set()
+    for g in range(model.ngeom):
+        body = model.body_id2name(model.geom_bodyid[g])
+        if body and body.startswith(prefix):
+            ids.add(g)
+    return ids
+
+
+def _robot_penetrates_scene(env, geom_ids):
+    """True if any robot geom is interpenetrating something that is not the
+    robot. Self-collisions are ignored (the XOR): a G1 whose arms touch its own
+    torso must not read as "on the floor"."""
+    data = env.sim.data
+    for i in range(data.ncon):
+        c = data.contact[i]
+        if c.dist < 0 and ((c.geom1 in geom_ids) != (c.geom2 in geom_ids)):
+            return True
+    return False
+
+
+def _apply_controller_spawn_pose(env):
+    """Set the robot's joints to the stance its controller will actually hold.
+
+    Optional protocol: a composite controller may expose ``spawn_joint_targets()``
+    returning ``(qpos_addr, qvel_addr, angle)`` triples (see
+    ``robocasa.g1_host.bridge.G1BridgeComposite``). Controllers without it
+    -- including WHOLE_BODY_G1 -- keep the MJCF ``init_qpos`` stance, so this is
+    additive.
+
+    The point is the pairing with ``_snap_freejoint_to_ground``: the ground snap
+    measures where the feet are, so it can only be right if the legs are already
+    in the pose the episode starts with. Applied here, before the snap.
+
+    Returns the number of joints written.
+    """
+    controller = getattr(env.robots[0], "composite_controller", None)
+    targets = getattr(controller, "spawn_joint_targets", None)
+    if targets is None:
+        return 0
+    try:
+        triples = targets()
+    except Exception as e:  # a spawn tweak must never break env construction
+        ROBOSUITE_DEFAULT_LOGGER.warning(
+            f"spawn_joint_targets() failed ({e}); keeping the MJCF spawn stance."
+        )
+        return 0
+
+    data = env.sim.data
+    for qpos_addr, qvel_addr, angle in triples:
+        data.qpos[qpos_addr] = angle
+        data.qvel[qvel_addr] = 0.0
+    if triples:
+        env.sim.forward()
+    return len(triples)
+
+
+def _root_free_joint_qpos_addr(env, robot):
+    """qpos address of the freejoint on this robot's root body, or None."""
+    root_id = env.sim.model.body_name2id(robot.robot_model.root_body)
+    for j_id in range(env.sim.model.njnt):
+        if (
+            env.sim.model.jnt_type[j_id] == 0            # mjJNT_FREE
+            and env.sim.model.jnt_bodyid[j_id] == root_id
+        ):
+            return env.sim.model.jnt_qposadr[j_id]
+    return None
+
+
+def settle_robot_spawn(env):
+    """Put a floating-base robot on the floor in its controller's loaded stance.
+
+    For environments that place the robot at model-build time (the IThor family
+    does it via ``robot_model.set_base_xpos``) instead of going through
+    ``set_robot_base``. Those never ran the spawn-pose/ground-snap pair at all,
+    so the robot started in the MJCF stance at whatever height the base offset
+    implied and then fell and sagged into the floor: measured 7.8-10.5mm of foot
+    penetration in the first handful of steps, with the pelvis ending 2.5-6cm
+    below where it spawned.
+
+    Leaves xy and heading alone -- the environment has already decided those --
+    and only re-poses the joints and re-measures z.
+    """
+    if not env.robots:
+        return 0
+    robot = env.robots[0]
+    if robot.robot_model.__class__.__name__ not in _GROUND_SNAP_ROBOTS:
+        return 0
+    free_qpos_addr = _root_free_joint_qpos_addr(env, robot)
+    if free_qpos_addr is None:
+        return 0
+    posed = _apply_controller_spawn_pose(env)
+    dropped = _snap_freejoint_to_ground(env, free_qpos_addr)
+    ROBOSUITE_DEFAULT_LOGGER.info(
+        f"spawn: posed {posed} joints in the controller stance, "
+        f"snapped {'%.4f m' % dropped if dropped is not None else 'not applied'}"
+    )
+    return posed
+
+
+def _snap_freejoint_to_ground(env, free_qpos_addr):
+    """Lower a floating-base robot until it just touches the floor.
+
+    Bisects the root z between the nominal spawn height and
+    ``_GROUND_SNAP_MAX_DROP`` below it, looking for the exact height at which
+    the robot starts to interpenetrate the scene -- i.e. contact onset. Only
+    ``sim.forward()`` is used, so this is pure kinematics + collision detection:
+    no integration, nothing moves, no dynamics are stepped.
+
+    Measuring beats hardcoding here because the correct z depends on the stance
+    the initial joint angles produce, which differs per controller backend (the
+    amo backend teleports the legs to its own default pose before this runs).
+
+    Returns the applied offset in metres, or None when the spawn was left alone:
+    the robot is already touching something, or nothing is within reach below it
+    (e.g. spawned over a hole). Both cases keep the previous behaviour rather
+    than moving the robot somewhere unverified.
+    """
+    sim = env.sim
+    geom_ids = _robot_geom_ids(env)
+    if not geom_ids:
+        return None
+
+    z0 = float(sim.data.qpos[free_qpos_addr + 2])
+    sim.forward()
+    if _robot_penetrates_scene(env, geom_ids):
+        return None
+
+    lo = z0 - _GROUND_SNAP_MAX_DROP
+    sim.data.qpos[free_qpos_addr + 2] = lo
+    sim.forward()
+    if not _robot_penetrates_scene(env, geom_ids):
+        sim.data.qpos[free_qpos_addr + 2] = z0
+        sim.forward()
+        return None
+
+    hi = z0  # known clear
+    while hi - lo > _GROUND_SNAP_TOL:
+        mid = 0.5 * (lo + hi)
+        sim.data.qpos[free_qpos_addr + 2] = mid
+        sim.forward()
+        if _robot_penetrates_scene(env, geom_ids):
+            lo = mid
+        else:
+            hi = mid
+
+    sim.data.qpos[free_qpos_addr + 2] = hi
+    sim.forward()
+    return hi - z0
+
+
 def set_robot_base(
     env,
     anchor_pos,
@@ -1600,9 +1853,55 @@ def set_robot_base(
         RandomizationError: If the robot cannot be placed without collisions.
     """
     assert len(env.robots) == 1
-    # assert isinstance(self.robots[0].robot_model, PandaOmron) or isinstance(
-    #     self.robots[0].robot_model, GR1FloatingBody
-    # )
+    # Humanoid without a wheel-base mobile_yaw joint.  Two sub-cases:
+    #   - floating base (has a freejoint at the root) -> write to that freejoint's qpos
+    #   - fixed base (no joint at all)               -> rewrite model.body_pos
+    # kitchen.py placed the root body at (10, 10, anchor_z) as a placeholder,
+    # expecting a mobile base to move it back at reset time.
+    if "mobilebase0_joint_mobile_yaw" not in env.sim.model.joint_names:
+        robot = env.robots[0]
+        root_body_name = robot.robot_model.correct_naming(robot.robot_model._root_body)
+        root_id = env.sim.model.body_name2id(root_body_name)
+        target_pos = np.array(anchor_pos) - robot.robot_model.bottom_offset
+
+        # Look for a freejoint attached directly to the root body.
+        free_qpos_addr = None
+        for j_id in range(env.sim.model.njnt):
+            if (
+                env.sim.model.jnt_type[j_id] == 0
+                and env.sim.model.jnt_bodyid[j_id] == root_id
+            ):
+                # type 0 == mjJNT_FREE
+                free_qpos_addr = env.sim.model.jnt_qposadr[j_id]
+                break
+
+        if free_qpos_addr is not None:
+            # Floating base: pose = [x, y, z, qw, qx, qy, qz]
+            env.sim.data.qpos[free_qpos_addr + 0] = target_pos[0]
+            env.sim.data.qpos[free_qpos_addr + 1] = target_pos[1]
+            env.sim.data.qpos[free_qpos_addr + 2] = target_pos[2]
+            env.sim.data.qpos[free_qpos_addr + 3] = 1.0
+            env.sim.data.qpos[free_qpos_addr + 4] = 0.0
+            env.sim.data.qpos[free_qpos_addr + 5] = 0.0
+            env.sim.data.qpos[free_qpos_addr + 6] = 0.0
+        else:
+            # Fixed base: move the root body itself (body_pos is the world pos).
+            env.sim.model.body_pos[root_id] = target_pos
+
+        env.sim.forward()
+
+        # Start the episode in the configuration the robot is going to settle
+        # into: first the controller's own standing stance, then the height at
+        # which that stance's feet touch the floor. Order matters -- the snap
+        # measures foot geometry, so the legs have to be posed first.
+        if (
+            free_qpos_addr is not None
+            and robot.robot_model.__class__.__name__ in _GROUND_SNAP_ROBOTS
+        ):
+            _apply_controller_spawn_pose(env)
+            _snap_freejoint_to_ground(env, free_qpos_addr)
+
+        return np.array(anchor_pos)
 
     with no_collision(env.sim):
         env.sim.data.qpos[

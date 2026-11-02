@@ -1,0 +1,5 @@
+default:
+  xml: fixtures/articulated/Asset124
+
+Asset124:
+  xml: fixtures/articulated/Asset124

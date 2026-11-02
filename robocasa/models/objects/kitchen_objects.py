@@ -377,6 +377,18 @@ OBJ_CATEGORIES = dict(
             ],
         ),
     ),
+    teddy_bear=dict(
+        types=("toy", "decoration"),
+        graspable=True,
+        washable=False,
+        microwavable=False,
+        cookable=False,
+        fridgable=False,
+        freezable=False,
+        lightwheel=dict(
+            scale=0.75,
+        ),
+    ),
     canned_food=dict(
         types=("packaged_food"),
         graspable=True,
@@ -2827,6 +2839,18 @@ OBJ_CATEGORIES = dict(
         freezable=True,
         lightwheel=dict(
             scale=1.05,
+        ),
+    ),
+    pillow=dict(
+        types=("decoration"),
+        graspable=True,
+        washable=False,
+        microwavable=False,
+        cookable=False,
+        fridgable=False,
+        freezable=False,
+        lightwheel=dict(
+            scale=1.0,
         ),
     ),
     kebab_skewer=dict(

@@ -1,0 +1,1122 @@
+{
+    "objects": {
+        "doorway_382ed3c32751e6380da3a04b5b218883_1_0_0": {
+            "hash_name": "doorway_382ed3c32751e6380da3a04b5b218883_1_0_0",
+            "asset_id": "Doorway_3",
+            "object_id": "door|0|exterior|room0",
+            "category": "Doorway",
+            "object_enum": "thor_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "doorway_382ed3c32751e6380da3a04b5b218883_1_0_0": "Doorway_3",
+                    "doorway_382ed3c32751e6380da3a04b5b218883_1_1_0": "Doorway_3_doorway_3",
+                    "doorway_382ed3c32751e6380da3a04b5b218883_1_2_0": "Doorway_3_doorway_door_3",
+                    "doorway_382ed3c32751e6380da3a04b5b218883_1_3_0": "Doorway_3_doorway_handle_3"
+                },
+                "joints": {
+                    "doorway_382ed3c32751e6380da3a04b5b218883_1_2_0_doorwaydoor3joint0_0": "Doorway_3_doorway_door_3_joint_0"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": []
+        },
+        "window_a28de649e905dd78e94d2b9193dab852_1_0_0": {
+            "hash_name": "window_a28de649e905dd78e94d2b9193dab852_1_0_0",
+            "asset_id": "Window_Fixed_96x48",
+            "object_id": "window|wall|room0|east|2|0|0",
+            "category": "Window",
+            "object_enum": "thor_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "window_a28de649e905dd78e94d2b9193dab852_1_0_0": "Window_Fixed_96x48",
+                    "window_a28de649e905dd78e94d2b9193dab852_1_1_0": "Window_Fixed_96x48_window_fixed_96x48"
+                },
+                "joints": {},
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": []
+        },
+        "window_a28de649e905dd78e94d2b9193dab852_2_0_0": {
+            "hash_name": "window_a28de649e905dd78e94d2b9193dab852_2_0_0",
+            "asset_id": "Window_Fixed_96x48",
+            "object_id": "window|wall|room0|east|2|1|1",
+            "category": "Window",
+            "object_enum": "thor_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "window_a28de649e905dd78e94d2b9193dab852_2_0_0": "Window_Fixed_96x48",
+                    "window_a28de649e905dd78e94d2b9193dab852_2_1_0": "Window_Fixed_96x48_window_fixed_96x48"
+                },
+                "joints": {},
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_45dadf1d294c461195e92c1cdeb8aabf_1_0_0": {
+            "hash_name": "obja_45dadf1d294c461195e92c1cdeb8aabf_1_0_0",
+            "asset_id": "Desk_313_2",
+            "object_id": "large0 (room0)|room0",
+            "category": "Desk",
+            "object_enum": "thor_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "obja_45dadf1d294c461195e92c1cdeb8aabf_1_0_0": "Desk_313_2",
+                    "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_1_0": "Desk_313_2_DeskMesh",
+                    "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_2_0": "Desk_313_2_Mesh_01",
+                    "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_3_0": "Desk_313_2_Mesh_02",
+                    "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_4_0": "Desk_313_2_Mesh_03",
+                    "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_5_0": "Desk_313_2_Mesh_04",
+                    "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_6_0": "Desk_313_2_Mesh_05",
+                    "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_7_0": "Desk_313_2_Mesh_06"
+                },
+                "joints": {
+                    "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_2_0_joint_0": "Desk_313_2_joint",
+                    "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_3_0_Mesh021_1": "Desk_313_2_Mesh_02__1",
+                    "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_4_0_Mesh031_2": "Desk_313_2_Mesh_03__1",
+                    "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_5_0_Mesh041_3": "Desk_313_2_Mesh_04__1",
+                    "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_6_0_Mesh051_4": "Desk_313_2_Mesh_05__1",
+                    "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_7_0_Mesh061_5": "Desk_313_2_Mesh_06__1"
+                },
+                "sites": {
+                    "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_1_0_DeskMeshReceptacle0_0": "Desk_313_2_DeskMesh_Receptacle_0",
+                    "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_1_0_DeskMeshReceptacle1_1": "Desk_313_2_DeskMesh_Receptacle_1",
+                    "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_1_0_DeskMeshReceptacle2_2": "Desk_313_2_DeskMesh_Receptacle_2",
+                    "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_1_0_DeskMeshReceptacle3_3": "Desk_313_2_DeskMesh_Receptacle_3",
+                    "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_1_0_DeskMeshReceptacle4_4": "Desk_313_2_DeskMesh_Receptacle_4",
+                    "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_1_0_DeskMeshReceptacle5_5": "Desk_313_2_DeskMesh_Receptacle_5",
+                    "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_1_0_DeskMeshReceptacle6_6": "Desk_313_2_DeskMesh_Receptacle_6",
+                    "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_2_0_Mesh01Receptacle0_7": "Desk_313_2_Mesh_01_Receptacle_0",
+                    "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_3_0_Mesh02Receptacle0_8": "Desk_313_2_Mesh_02_Receptacle_0",
+                    "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_4_0_Mesh03Receptacle0_9": "Desk_313_2_Mesh_03_Receptacle_0",
+                    "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_5_0_Mesh04Receptacle0_10": "Desk_313_2_Mesh_04_Receptacle_0",
+                    "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_6_0_Mesh05Receptacle0_11": "Desk_313_2_Mesh_05_Receptacle_0",
+                    "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_7_0_Mesh06Receptacle0_12": "Desk_313_2_Mesh_06_Receptacle_0"
+                }
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": [
+                "obja_60535bda2ed44b1fb2f0f0a600992f35_1_0_0",
+                "obja_b2252ce43fc24673a1305fb1218a2edf_1_0_0",
+                "obja_b183e6af5d324e03913a4ca835fb291d_1_0_0",
+                "obja_8e4f71b51ecc41488c0bd05491217797_1_0_0",
+                "obja_60535bda2ed44b1fb2f0f0a600992f35_2_0_0",
+                "book_eab27083dc2af09e5318b1561feedf50_1_0_0",
+                "obja_60535bda2ed44b1fb2f0f0a600992f35_3_0_0"
+            ]
+        },
+        "obja_60535bda2ed44b1fb2f0f0a600992f35_1_0_0": {
+            "hash_name": "obja_60535bda2ed44b1fb2f0f0a600992f35_1_0_0",
+            "asset_id": "60535bda2ed44b1fb2f0f0a600992f35",
+            "object_id": "small10|large0 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_60535bda2ed44b1fb2f0f0a600992f35_1_0_0": "60535bda2ed44b1fb2f0f0a600992f35"
+                },
+                "joints": {
+                    "obja_60535bda2ed44b1fb2f0f0a600992f35_1_0_0_jntfree_0": "60535bda2ed44b1fb2f0f0a600992f35_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "obja_45dadf1d294c461195e92c1cdeb8aabf_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_b2252ce43fc24673a1305fb1218a2edf_1_0_0": {
+            "hash_name": "obja_b2252ce43fc24673a1305fb1218a2edf_1_0_0",
+            "asset_id": "b2252ce43fc24673a1305fb1218a2edf",
+            "object_id": "small11|large0 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_b2252ce43fc24673a1305fb1218a2edf_1_0_0": "b2252ce43fc24673a1305fb1218a2edf"
+                },
+                "joints": {
+                    "obja_b2252ce43fc24673a1305fb1218a2edf_1_0_0_jntfree_0": "b2252ce43fc24673a1305fb1218a2edf_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "obja_45dadf1d294c461195e92c1cdeb8aabf_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_b183e6af5d324e03913a4ca835fb291d_1_0_0": {
+            "hash_name": "obja_b183e6af5d324e03913a4ca835fb291d_1_0_0",
+            "asset_id": "b183e6af5d324e03913a4ca835fb291d",
+            "object_id": "small12|large0 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_b183e6af5d324e03913a4ca835fb291d_1_0_0": "b183e6af5d324e03913a4ca835fb291d"
+                },
+                "joints": {
+                    "obja_b183e6af5d324e03913a4ca835fb291d_1_0_0_jntfree_0": "b183e6af5d324e03913a4ca835fb291d_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "obja_45dadf1d294c461195e92c1cdeb8aabf_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_8e4f71b51ecc41488c0bd05491217797_1_0_0": {
+            "hash_name": "obja_8e4f71b51ecc41488c0bd05491217797_1_0_0",
+            "asset_id": "8e4f71b51ecc41488c0bd05491217797",
+            "object_id": "small13|large0 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_8e4f71b51ecc41488c0bd05491217797_1_0_0": "8e4f71b51ecc41488c0bd05491217797"
+                },
+                "joints": {
+                    "obja_8e4f71b51ecc41488c0bd05491217797_1_0_0_jntfree_0": "8e4f71b51ecc41488c0bd05491217797_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "obja_45dadf1d294c461195e92c1cdeb8aabf_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_60535bda2ed44b1fb2f0f0a600992f35_2_0_0": {
+            "hash_name": "obja_60535bda2ed44b1fb2f0f0a600992f35_2_0_0",
+            "asset_id": "60535bda2ed44b1fb2f0f0a600992f35",
+            "object_id": "small14|large0 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_60535bda2ed44b1fb2f0f0a600992f35_2_0_0": "60535bda2ed44b1fb2f0f0a600992f35"
+                },
+                "joints": {
+                    "obja_60535bda2ed44b1fb2f0f0a600992f35_2_0_0_jntfree_0": "60535bda2ed44b1fb2f0f0a600992f35_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "obja_45dadf1d294c461195e92c1cdeb8aabf_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "book_eab27083dc2af09e5318b1561feedf50_1_0_0": {
+            "hash_name": "book_eab27083dc2af09e5318b1561feedf50_1_0_0",
+            "asset_id": "Book_7",
+            "object_id": "small15|large0 (room0)",
+            "category": "Book",
+            "object_enum": "thor_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "book_eab27083dc2af09e5318b1561feedf50_1_0_0": "Book_7",
+                    "book_eab27083dc2af09e5318b1561feedf50_1_1_0": "Book_7_book_front_7",
+                    "book_eab27083dc2af09e5318b1561feedf50_1_2_0": "Book_7_book_7"
+                },
+                "joints": {
+                    "book_eab27083dc2af09e5318b1561feedf50_1_0_0_jntfree_0": "Book_7_free"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "obja_45dadf1d294c461195e92c1cdeb8aabf_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_60535bda2ed44b1fb2f0f0a600992f35_3_0_0": {
+            "hash_name": "obja_60535bda2ed44b1fb2f0f0a600992f35_3_0_0",
+            "asset_id": "60535bda2ed44b1fb2f0f0a600992f35",
+            "object_id": "small16|large0 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_60535bda2ed44b1fb2f0f0a600992f35_3_0_0": "60535bda2ed44b1fb2f0f0a600992f35"
+                },
+                "joints": {
+                    "obja_60535bda2ed44b1fb2f0f0a600992f35_3_0_0_jntfree_0": "60535bda2ed44b1fb2f0f0a600992f35_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "obja_45dadf1d294c461195e92c1cdeb8aabf_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_fbf8c023871b45bba37d45db56d1b5f0_1_0_0": {
+            "hash_name": "obja_fbf8c023871b45bba37d45db56d1b5f0_1_0_0",
+            "asset_id": "fbf8c023871b45bba37d45db56d1b5f0",
+            "object_id": "large1 (room0)|room0",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "obja_fbf8c023871b45bba37d45db56d1b5f0_1_0_0": "fbf8c023871b45bba37d45db56d1b5f0"
+                },
+                "joints": {},
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_fbf8c023871b45bba37d45db56d1b5f0_2_0_0": {
+            "hash_name": "obja_fbf8c023871b45bba37d45db56d1b5f0_2_0_0",
+            "asset_id": "fbf8c023871b45bba37d45db56d1b5f0",
+            "object_id": "large2 (room0)|room0",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "obja_fbf8c023871b45bba37d45db56d1b5f0_2_0_0": "fbf8c023871b45bba37d45db56d1b5f0"
+                },
+                "joints": {},
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_fbf8c023871b45bba37d45db56d1b5f0_3_0_0": {
+            "hash_name": "obja_fbf8c023871b45bba37d45db56d1b5f0_3_0_0",
+            "asset_id": "fbf8c023871b45bba37d45db56d1b5f0",
+            "object_id": "large3 (room0)|room0",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "obja_fbf8c023871b45bba37d45db56d1b5f0_3_0_0": "fbf8c023871b45bba37d45db56d1b5f0"
+                },
+                "joints": {},
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_fbf8c023871b45bba37d45db56d1b5f0_4_0_0": {
+            "hash_name": "obja_fbf8c023871b45bba37d45db56d1b5f0_4_0_0",
+            "asset_id": "fbf8c023871b45bba37d45db56d1b5f0",
+            "object_id": "large4 (room0)|room0",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "obja_fbf8c023871b45bba37d45db56d1b5f0_4_0_0": "fbf8c023871b45bba37d45db56d1b5f0"
+                },
+                "joints": {},
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": []
+        },
+        "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_0_0": {
+            "hash_name": "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_0_0",
+            "asset_id": "Dresser_217_1",
+            "object_id": "large5 (room0)|room0",
+            "category": "Dresser",
+            "object_enum": "thor_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_0_0": "Dresser_217_1",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_1_0": "Dresser_217_1_DresserMesh",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_2_0": "Dresser_217_1_CabinetDoorMesh_01",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_3_0": "Dresser_217_1_dresser_door_217_1_handle",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_4_0": "Dresser_217_1_CabinetDoorMesh_02",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_5_0": "Dresser_217_1_dresser_door_217_2_handle",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_6_0": "Dresser_217_1_CabinetDoorMesh_03",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_7_0": "Dresser_217_1_dresser_door_217_3_handle",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_8_0": "Dresser_217_1_CabinetDoorMesh_04",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_9_0": "Dresser_217_1_dresser_door_217_4_handle",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_10_0": "Dresser_217_1_DrawerMesh_01",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_11_0": "Dresser_217_1_handle_2_178mm_01",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_12_0": "Dresser_217_1_DrawerMesh_02",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_13_0": "Dresser_217_1_handle_2_178mm_02",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_14_0": "Dresser_217_1_DrawerMesh_03",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_15_0": "Dresser_217_1_handle_2_178mm_03",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_16_0": "Dresser_217_1_DrawerMesh_04",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_17_0": "Dresser_217_1_handle_2_178mm_04"
+                },
+                "joints": {
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_2_0_joint_0": "Dresser_217_1_joint",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_4_0_CabinetDoorMesh021_1": "Dresser_217_1_CabinetDoorMesh_02__1",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_6_0_CabinetDoorMesh031_2": "Dresser_217_1_CabinetDoorMesh_03__1",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_8_0_CabinetDoorMesh041_3": "Dresser_217_1_CabinetDoorMesh_04__1",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_10_0_DrawerMesh011_4": "Dresser_217_1_DrawerMesh_01__1",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_12_0_DrawerMesh021_5": "Dresser_217_1_DrawerMesh_02__1",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_14_0_DrawerMesh031_6": "Dresser_217_1_DrawerMesh_03__1",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_16_0_DrawerMesh041_7": "Dresser_217_1_DrawerMesh_04__1"
+                },
+                "sites": {
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_1_0_DresserMeshReceptacle0_0": "Dresser_217_1_DresserMesh_Receptacle_0",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_1_0_DresserMeshReceptacle1_1": "Dresser_217_1_DresserMesh_Receptacle_1",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_1_0_DresserMeshReceptacle2_2": "Dresser_217_1_DresserMesh_Receptacle_2",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_1_0_DresserMeshReceptacle3_3": "Dresser_217_1_DresserMesh_Receptacle_3",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_1_0_DresserMeshReceptacle4_4": "Dresser_217_1_DresserMesh_Receptacle_4",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_10_0_DrawerMesh01Receptacle0_5": "Dresser_217_1_DrawerMesh_01_Receptacle_0",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_12_0_DrawerMesh02Receptacle0_6": "Dresser_217_1_DrawerMesh_02_Receptacle_0",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_14_0_DrawerMesh03Receptacle0_7": "Dresser_217_1_DrawerMesh_03_Receptacle_0",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_16_0_DrawerMesh04Receptacle0_8": "Dresser_217_1_DrawerMesh_04_Receptacle_0"
+                }
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": [
+                "obja_27e4472ffcdb4b49b9feda691ded2704_1_0_0",
+                "obja_eae4c90cff974dbea1b0d5c613d1a0a4_1_0_0",
+                "book_fde77405a8546edd1a9cd35621b51508_1_0_0",
+                "obja_2310d4b54ce94376b61dac041f2f5977_1_0_0"
+            ]
+        },
+        "obja_27e4472ffcdb4b49b9feda691ded2704_1_0_0": {
+            "hash_name": "obja_27e4472ffcdb4b49b9feda691ded2704_1_0_0",
+            "asset_id": "27e4472ffcdb4b49b9feda691ded2704",
+            "object_id": "small6|large5 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_27e4472ffcdb4b49b9feda691ded2704_1_0_0": "27e4472ffcdb4b49b9feda691ded2704"
+                },
+                "joints": {
+                    "obja_27e4472ffcdb4b49b9feda691ded2704_1_0_0_jntfree_0": "27e4472ffcdb4b49b9feda691ded2704_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_eae4c90cff974dbea1b0d5c613d1a0a4_1_0_0": {
+            "hash_name": "obja_eae4c90cff974dbea1b0d5c613d1a0a4_1_0_0",
+            "asset_id": "eae4c90cff974dbea1b0d5c613d1a0a4",
+            "object_id": "small7|large5 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_eae4c90cff974dbea1b0d5c613d1a0a4_1_0_0": "eae4c90cff974dbea1b0d5c613d1a0a4"
+                },
+                "joints": {
+                    "obja_eae4c90cff974dbea1b0d5c613d1a0a4_1_0_0_jntfree_0": "eae4c90cff974dbea1b0d5c613d1a0a4_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "book_fde77405a8546edd1a9cd35621b51508_1_0_0": {
+            "hash_name": "book_fde77405a8546edd1a9cd35621b51508_1_0_0",
+            "asset_id": "Book_18",
+            "object_id": "small8|large5 (room0)",
+            "category": "Book",
+            "object_enum": "thor_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "book_fde77405a8546edd1a9cd35621b51508_1_0_0": "Book_18",
+                    "book_fde77405a8546edd1a9cd35621b51508_1_1_0": "Book_18_book_18",
+                    "book_fde77405a8546edd1a9cd35621b51508_1_2_0": "Book_18_book_front_18"
+                },
+                "joints": {
+                    "book_fde77405a8546edd1a9cd35621b51508_1_0_0_jntfree_0": "Book_18_free"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_2310d4b54ce94376b61dac041f2f5977_1_0_0": {
+            "hash_name": "obja_2310d4b54ce94376b61dac041f2f5977_1_0_0",
+            "asset_id": "2310d4b54ce94376b61dac041f2f5977",
+            "object_id": "small9|large5 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_2310d4b54ce94376b61dac041f2f5977_1_0_0": "2310d4b54ce94376b61dac041f2f5977"
+                },
+                "joints": {
+                    "obja_2310d4b54ce94376b61dac041f2f5977_1_0_0_jntfree_0": "2310d4b54ce94376b61dac041f2f5977_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_262bf1ce75564566bb4e6456fc83ea00_1_0_0": {
+            "hash_name": "obja_262bf1ce75564566bb4e6456fc83ea00_1_0_0",
+            "asset_id": "262bf1ce75564566bb4e6456fc83ea00",
+            "object_id": "large6 (room0)|room0",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "obja_262bf1ce75564566bb4e6456fc83ea00_1_0_0": "262bf1ce75564566bb4e6456fc83ea00"
+                },
+                "joints": {},
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": [
+                "obja_633c1bd465464504a2e521f40203f075_1_0_0",
+                "obja_882570773518422db20b430ce3afe225_1_0_0",
+                "obja_6ae82ca345a0452bacc2571026a801b9_1_0_0",
+                "obja_8351b90974164794afcc7d59f7366ed7_1_0_0",
+                "obja_882570773518422db20b430ce3afe225_2_0_0",
+                "obja_539728553e314ede87d9c4e9fa129641_1_0_0",
+                "obja_882570773518422db20b430ce3afe225_3_0_0"
+            ]
+        },
+        "obja_633c1bd465464504a2e521f40203f075_1_0_0": {
+            "hash_name": "obja_633c1bd465464504a2e521f40203f075_1_0_0",
+            "asset_id": "633c1bd465464504a2e521f40203f075",
+            "object_id": "small17|large6 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_633c1bd465464504a2e521f40203f075_1_0_0": "633c1bd465464504a2e521f40203f075"
+                },
+                "joints": {
+                    "obja_633c1bd465464504a2e521f40203f075_1_0_0_jntfree_0": "633c1bd465464504a2e521f40203f075_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "obja_262bf1ce75564566bb4e6456fc83ea00_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_882570773518422db20b430ce3afe225_1_0_0": {
+            "hash_name": "obja_882570773518422db20b430ce3afe225_1_0_0",
+            "asset_id": "882570773518422db20b430ce3afe225",
+            "object_id": "small18|large6 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_882570773518422db20b430ce3afe225_1_0_0": "882570773518422db20b430ce3afe225"
+                },
+                "joints": {
+                    "obja_882570773518422db20b430ce3afe225_1_0_0_jntfree_0": "882570773518422db20b430ce3afe225_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "obja_262bf1ce75564566bb4e6456fc83ea00_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_6ae82ca345a0452bacc2571026a801b9_1_0_0": {
+            "hash_name": "obja_6ae82ca345a0452bacc2571026a801b9_1_0_0",
+            "asset_id": "6ae82ca345a0452bacc2571026a801b9",
+            "object_id": "small19|large6 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_6ae82ca345a0452bacc2571026a801b9_1_0_0": "6ae82ca345a0452bacc2571026a801b9"
+                },
+                "joints": {
+                    "obja_6ae82ca345a0452bacc2571026a801b9_1_0_0_jntfree_0": "6ae82ca345a0452bacc2571026a801b9_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "obja_262bf1ce75564566bb4e6456fc83ea00_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_8351b90974164794afcc7d59f7366ed7_1_0_0": {
+            "hash_name": "obja_8351b90974164794afcc7d59f7366ed7_1_0_0",
+            "asset_id": "8351b90974164794afcc7d59f7366ed7",
+            "object_id": "small20|large6 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_8351b90974164794afcc7d59f7366ed7_1_0_0": "8351b90974164794afcc7d59f7366ed7"
+                },
+                "joints": {
+                    "obja_8351b90974164794afcc7d59f7366ed7_1_0_0_jntfree_0": "8351b90974164794afcc7d59f7366ed7_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "obja_262bf1ce75564566bb4e6456fc83ea00_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_882570773518422db20b430ce3afe225_2_0_0": {
+            "hash_name": "obja_882570773518422db20b430ce3afe225_2_0_0",
+            "asset_id": "882570773518422db20b430ce3afe225",
+            "object_id": "small21|large6 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_882570773518422db20b430ce3afe225_2_0_0": "882570773518422db20b430ce3afe225"
+                },
+                "joints": {
+                    "obja_882570773518422db20b430ce3afe225_2_0_0_jntfree_0": "882570773518422db20b430ce3afe225_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "obja_262bf1ce75564566bb4e6456fc83ea00_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_539728553e314ede87d9c4e9fa129641_1_0_0": {
+            "hash_name": "obja_539728553e314ede87d9c4e9fa129641_1_0_0",
+            "asset_id": "539728553e314ede87d9c4e9fa129641",
+            "object_id": "small22|large6 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_539728553e314ede87d9c4e9fa129641_1_0_0": "539728553e314ede87d9c4e9fa129641"
+                },
+                "joints": {
+                    "obja_539728553e314ede87d9c4e9fa129641_1_0_0_jntfree_0": "539728553e314ede87d9c4e9fa129641_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "obja_262bf1ce75564566bb4e6456fc83ea00_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_882570773518422db20b430ce3afe225_3_0_0": {
+            "hash_name": "obja_882570773518422db20b430ce3afe225_3_0_0",
+            "asset_id": "882570773518422db20b430ce3afe225",
+            "object_id": "small23|large6 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_882570773518422db20b430ce3afe225_3_0_0": "882570773518422db20b430ce3afe225"
+                },
+                "joints": {
+                    "obja_882570773518422db20b430ce3afe225_3_0_0_jntfree_0": "882570773518422db20b430ce3afe225_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "obja_262bf1ce75564566bb4e6456fc83ea00_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_262bf1ce75564566bb4e6456fc83ea00_2_0_0": {
+            "hash_name": "obja_262bf1ce75564566bb4e6456fc83ea00_2_0_0",
+            "asset_id": "262bf1ce75564566bb4e6456fc83ea00",
+            "object_id": "large7 (room0)|room0",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "obja_262bf1ce75564566bb4e6456fc83ea00_2_0_0": "262bf1ce75564566bb4e6456fc83ea00"
+                },
+                "joints": {},
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": [
+                "obja_882570773518422db20b430ce3afe225_4_0_0",
+                "obja_07824b0800ed436e8d4a26dc059fdeb2_1_0_0",
+                "obja_882570773518422db20b430ce3afe225_5_0_0",
+                "obja_e55514b2057c4ad7853722d0cdcf52f7_1_0_0",
+                "obja_4bbc77f3057c41a98191efa2469d4ab0_1_0_0",
+                "obja_6ae82ca345a0452bacc2571026a801b9_2_0_0"
+            ]
+        },
+        "obja_882570773518422db20b430ce3afe225_4_0_0": {
+            "hash_name": "obja_882570773518422db20b430ce3afe225_4_0_0",
+            "asset_id": "882570773518422db20b430ce3afe225",
+            "object_id": "small24|large7 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_882570773518422db20b430ce3afe225_4_0_0": "882570773518422db20b430ce3afe225"
+                },
+                "joints": {
+                    "obja_882570773518422db20b430ce3afe225_4_0_0_jntfree_0": "882570773518422db20b430ce3afe225_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "obja_262bf1ce75564566bb4e6456fc83ea00_2_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_07824b0800ed436e8d4a26dc059fdeb2_1_0_0": {
+            "hash_name": "obja_07824b0800ed436e8d4a26dc059fdeb2_1_0_0",
+            "asset_id": "07824b0800ed436e8d4a26dc059fdeb2",
+            "object_id": "small25|large7 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_07824b0800ed436e8d4a26dc059fdeb2_1_0_0": "07824b0800ed436e8d4a26dc059fdeb2"
+                },
+                "joints": {
+                    "obja_07824b0800ed436e8d4a26dc059fdeb2_1_0_0_jntfree_0": "07824b0800ed436e8d4a26dc059fdeb2_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "obja_262bf1ce75564566bb4e6456fc83ea00_2_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_882570773518422db20b430ce3afe225_5_0_0": {
+            "hash_name": "obja_882570773518422db20b430ce3afe225_5_0_0",
+            "asset_id": "882570773518422db20b430ce3afe225",
+            "object_id": "small26|large7 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_882570773518422db20b430ce3afe225_5_0_0": "882570773518422db20b430ce3afe225"
+                },
+                "joints": {
+                    "obja_882570773518422db20b430ce3afe225_5_0_0_jntfree_0": "882570773518422db20b430ce3afe225_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "obja_262bf1ce75564566bb4e6456fc83ea00_2_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_e55514b2057c4ad7853722d0cdcf52f7_1_0_0": {
+            "hash_name": "obja_e55514b2057c4ad7853722d0cdcf52f7_1_0_0",
+            "asset_id": "e55514b2057c4ad7853722d0cdcf52f7",
+            "object_id": "small27|large7 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_e55514b2057c4ad7853722d0cdcf52f7_1_0_0": "e55514b2057c4ad7853722d0cdcf52f7"
+                },
+                "joints": {
+                    "obja_e55514b2057c4ad7853722d0cdcf52f7_1_0_0_jntfree_0": "e55514b2057c4ad7853722d0cdcf52f7_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "obja_262bf1ce75564566bb4e6456fc83ea00_2_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_4bbc77f3057c41a98191efa2469d4ab0_1_0_0": {
+            "hash_name": "obja_4bbc77f3057c41a98191efa2469d4ab0_1_0_0",
+            "asset_id": "4bbc77f3057c41a98191efa2469d4ab0",
+            "object_id": "small28|large7 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_4bbc77f3057c41a98191efa2469d4ab0_1_0_0": "4bbc77f3057c41a98191efa2469d4ab0"
+                },
+                "joints": {
+                    "obja_4bbc77f3057c41a98191efa2469d4ab0_1_0_0_jntfree_0": "4bbc77f3057c41a98191efa2469d4ab0_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "obja_262bf1ce75564566bb4e6456fc83ea00_2_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_6ae82ca345a0452bacc2571026a801b9_2_0_0": {
+            "hash_name": "obja_6ae82ca345a0452bacc2571026a801b9_2_0_0",
+            "asset_id": "6ae82ca345a0452bacc2571026a801b9",
+            "object_id": "small29|large7 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_6ae82ca345a0452bacc2571026a801b9_2_0_0": "6ae82ca345a0452bacc2571026a801b9"
+                },
+                "joints": {
+                    "obja_6ae82ca345a0452bacc2571026a801b9_2_0_0_jntfree_0": "6ae82ca345a0452bacc2571026a801b9_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "obja_262bf1ce75564566bb4e6456fc83ea00_2_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "shelf_cb210cde73055d16858af3c54bc507d0_1_0_0": {
+            "hash_name": "shelf_cb210cde73055d16858af3c54bc507d0_1_0_0",
+            "asset_id": "Shelving_Unit_219_1",
+            "object_id": "large8 (room0)|room0",
+            "category": "ShelvingUnit",
+            "object_enum": "thor_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "shelf_cb210cde73055d16858af3c54bc507d0_1_0_0": "Shelving_Unit_219_1",
+                    "shelf_cb210cde73055d16858af3c54bc507d0_1_1_0": "Shelving_Unit_219_1_mesh"
+                },
+                "joints": {},
+                "sites": {
+                    "shelf_cb210cde73055d16858af3c54bc507d0_1_1_0_meshReceptacle0_0": "Shelving_Unit_219_1_mesh_Receptacle_0",
+                    "shelf_cb210cde73055d16858af3c54bc507d0_1_1_0_meshReceptacle1_1": "Shelving_Unit_219_1_mesh_Receptacle_1",
+                    "shelf_cb210cde73055d16858af3c54bc507d0_1_1_0_meshReceptacle2_2": "Shelving_Unit_219_1_mesh_Receptacle_2",
+                    "shelf_cb210cde73055d16858af3c54bc507d0_1_1_0_meshReceptacle3_3": "Shelving_Unit_219_1_mesh_Receptacle_3"
+                }
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": []
+        },
+        "shelf_cb210cde73055d16858af3c54bc507d0_2_0_0": {
+            "hash_name": "shelf_cb210cde73055d16858af3c54bc507d0_2_0_0",
+            "asset_id": "Shelving_Unit_219_1",
+            "object_id": "large9 (room0)|room0",
+            "category": "ShelvingUnit",
+            "object_enum": "thor_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "shelf_cb210cde73055d16858af3c54bc507d0_2_0_0": "Shelving_Unit_219_1",
+                    "shelf_cb210cde73055d16858af3c54bc507d0_2_1_0": "Shelving_Unit_219_1_mesh"
+                },
+                "joints": {},
+                "sites": {
+                    "shelf_cb210cde73055d16858af3c54bc507d0_2_1_0_meshReceptacle0_0": "Shelving_Unit_219_1_mesh_Receptacle_0",
+                    "shelf_cb210cde73055d16858af3c54bc507d0_2_1_0_meshReceptacle1_1": "Shelving_Unit_219_1_mesh_Receptacle_1",
+                    "shelf_cb210cde73055d16858af3c54bc507d0_2_1_0_meshReceptacle2_2": "Shelving_Unit_219_1_mesh_Receptacle_2",
+                    "shelf_cb210cde73055d16858af3c54bc507d0_2_1_0_meshReceptacle3_3": "Shelving_Unit_219_1_mesh_Receptacle_3"
+                }
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_b3162717c56f4c299d1440d85a71f8cf_1_0_0": {
+            "hash_name": "obja_b3162717c56f4c299d1440d85a71f8cf_1_0_0",
+            "asset_id": "b3162717c56f4c299d1440d85a71f8cf",
+            "object_id": "large10 (room0)|room0",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "obja_b3162717c56f4c299d1440d85a71f8cf_1_0_0": "b3162717c56f4c299d1440d85a71f8cf"
+                },
+                "joints": {},
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_b3162717c56f4c299d1440d85a71f8cf_2_0_0": {
+            "hash_name": "obja_b3162717c56f4c299d1440d85a71f8cf_2_0_0",
+            "asset_id": "b3162717c56f4c299d1440d85a71f8cf",
+            "object_id": "large11 (room0)|room0",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "obja_b3162717c56f4c299d1440d85a71f8cf_2_0_0": "b3162717c56f4c299d1440d85a71f8cf"
+                },
+                "joints": {},
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_b3162717c56f4c299d1440d85a71f8cf_3_0_0": {
+            "hash_name": "obja_b3162717c56f4c299d1440d85a71f8cf_3_0_0",
+            "asset_id": "b3162717c56f4c299d1440d85a71f8cf",
+            "object_id": "large12 (room0)|room0",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "obja_b3162717c56f4c299d1440d85a71f8cf_3_0_0": "b3162717c56f4c299d1440d85a71f8cf"
+                },
+                "joints": {},
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": []
+        },
+        "coffeetable_f6dab2d0f620c73e4a7f319f5d4af03d_1_0_0": {
+            "hash_name": "coffeetable_f6dab2d0f620c73e4a7f319f5d4af03d_1_0_0",
+            "asset_id": "Coffee_Table_214_1",
+            "object_id": "large13 (room0)|room0",
+            "category": "CoffeeTable",
+            "object_enum": "thor_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "coffeetable_f6dab2d0f620c73e4a7f319f5d4af03d_1_0_0": "Coffee_Table_214_1",
+                    "coffeetable_f6dab2d0f620c73e4a7f319f5d4af03d_1_1_0": "Coffee_Table_214_1_Mesh"
+                },
+                "joints": {},
+                "sites": {
+                    "coffeetable_f6dab2d0f620c73e4a7f319f5d4af03d_1_1_0_MeshReceptacle0_0": "Coffee_Table_214_1_Mesh_Receptacle_0"
+                }
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": [
+                "obja_528a83a41ce547199fc1be3bfec5c0f6_1_0_0",
+                "obja_ff5fba06ff304f359523ae3445edbd0a_1_0_0",
+                "book_4c0a9bcf4dc2da801a5112001149a7cd_1_0_0",
+                "obja_b183e6af5d324e03913a4ca835fb291d_2_0_0",
+                "obja_5a23dc2a96c24931ba1683decf323fbd_1_0_0",
+                "obja_b183e6af5d324e03913a4ca835fb291d_3_0_0"
+            ]
+        },
+        "obja_528a83a41ce547199fc1be3bfec5c0f6_1_0_0": {
+            "hash_name": "obja_528a83a41ce547199fc1be3bfec5c0f6_1_0_0",
+            "asset_id": "528a83a41ce547199fc1be3bfec5c0f6",
+            "object_id": "small0|large13 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_528a83a41ce547199fc1be3bfec5c0f6_1_0_0": "528a83a41ce547199fc1be3bfec5c0f6"
+                },
+                "joints": {
+                    "obja_528a83a41ce547199fc1be3bfec5c0f6_1_0_0_jntfree_0": "528a83a41ce547199fc1be3bfec5c0f6_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "coffeetable_f6dab2d0f620c73e4a7f319f5d4af03d_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_ff5fba06ff304f359523ae3445edbd0a_1_0_0": {
+            "hash_name": "obja_ff5fba06ff304f359523ae3445edbd0a_1_0_0",
+            "asset_id": "ff5fba06ff304f359523ae3445edbd0a",
+            "object_id": "small1|large13 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_ff5fba06ff304f359523ae3445edbd0a_1_0_0": "ff5fba06ff304f359523ae3445edbd0a"
+                },
+                "joints": {
+                    "obja_ff5fba06ff304f359523ae3445edbd0a_1_0_0_jntfree_0": "ff5fba06ff304f359523ae3445edbd0a_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "coffeetable_f6dab2d0f620c73e4a7f319f5d4af03d_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "book_4c0a9bcf4dc2da801a5112001149a7cd_1_0_0": {
+            "hash_name": "book_4c0a9bcf4dc2da801a5112001149a7cd_1_0_0",
+            "asset_id": "Book_24",
+            "object_id": "small2|large13 (room0)",
+            "category": "Book",
+            "object_enum": "thor_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "book_4c0a9bcf4dc2da801a5112001149a7cd_1_0_0": "Book_24",
+                    "book_4c0a9bcf4dc2da801a5112001149a7cd_1_1_0": "Book_24_book_front_24",
+                    "book_4c0a9bcf4dc2da801a5112001149a7cd_1_2_0": "Book_24_book_24"
+                },
+                "joints": {
+                    "book_4c0a9bcf4dc2da801a5112001149a7cd_1_0_0_jntfree_0": "Book_24_free"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "coffeetable_f6dab2d0f620c73e4a7f319f5d4af03d_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_b183e6af5d324e03913a4ca835fb291d_2_0_0": {
+            "hash_name": "obja_b183e6af5d324e03913a4ca835fb291d_2_0_0",
+            "asset_id": "b183e6af5d324e03913a4ca835fb291d",
+            "object_id": "small3|large13 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_b183e6af5d324e03913a4ca835fb291d_2_0_0": "b183e6af5d324e03913a4ca835fb291d"
+                },
+                "joints": {
+                    "obja_b183e6af5d324e03913a4ca835fb291d_2_0_0_jntfree_0": "b183e6af5d324e03913a4ca835fb291d_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "coffeetable_f6dab2d0f620c73e4a7f319f5d4af03d_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_5a23dc2a96c24931ba1683decf323fbd_1_0_0": {
+            "hash_name": "obja_5a23dc2a96c24931ba1683decf323fbd_1_0_0",
+            "asset_id": "5a23dc2a96c24931ba1683decf323fbd",
+            "object_id": "small4|large13 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_5a23dc2a96c24931ba1683decf323fbd_1_0_0": "5a23dc2a96c24931ba1683decf323fbd"
+                },
+                "joints": {
+                    "obja_5a23dc2a96c24931ba1683decf323fbd_1_0_0_jntfree_0": "5a23dc2a96c24931ba1683decf323fbd_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "coffeetable_f6dab2d0f620c73e4a7f319f5d4af03d_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_b183e6af5d324e03913a4ca835fb291d_3_0_0": {
+            "hash_name": "obja_b183e6af5d324e03913a4ca835fb291d_3_0_0",
+            "asset_id": "b183e6af5d324e03913a4ca835fb291d",
+            "object_id": "small5|large13 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_b183e6af5d324e03913a4ca835fb291d_3_0_0": "b183e6af5d324e03913a4ca835fb291d"
+                },
+                "joints": {
+                    "obja_b183e6af5d324e03913a4ca835fb291d_3_0_0_jntfree_0": "b183e6af5d324e03913a4ca835fb291d_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "coffeetable_f6dab2d0f620c73e4a7f319f5d4af03d_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_faa14b36f95348dd930fdd3a0675bca5_1_0_0": {
+            "hash_name": "obja_faa14b36f95348dd930fdd3a0675bca5_1_0_0",
+            "asset_id": "faa14b36f95348dd930fdd3a0675bca5",
+            "object_id": "large14 (room0)|room0",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "obja_faa14b36f95348dd930fdd3a0675bca5_1_0_0": "faa14b36f95348dd930fdd3a0675bca5"
+                },
+                "joints": {},
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_ea7765a5886147aeb5f8f12edc51c421_1_0_0": {
+            "hash_name": "obja_ea7765a5886147aeb5f8f12edc51c421_1_0_0",
+            "asset_id": "ea7765a5886147aeb5f8f12edc51c421",
+            "object_id": "large15 (room0)|room0",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "obja_ea7765a5886147aeb5f8f12edc51c421_1_0_0": "ea7765a5886147aeb5f8f12edc51c421"
+                },
+                "joints": {},
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": []
+        }
+    }
+}

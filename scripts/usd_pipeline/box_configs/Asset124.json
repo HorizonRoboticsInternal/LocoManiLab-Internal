@@ -1,0 +1,14 @@
+{
+  "_comment": "Top-loading cooker (baked with --extra-rot-x -90, lid on top, cavity opens up). Bowl housing: floor + 4 side walls topping out at z=0.04 (below lid z>=0.045) + thin lid slab.",
+  "asset": "robocasa/models/assets/fixtures/articulated/Asset124",
+  "body": [
+    {"name": "body_floor", "pos": [0.0,    0.0,   -0.1075], "size": [0.128,  0.157,  0.0125]},
+    {"name": "body_xneg",  "pos": [-0.1155, 0.0,  -0.040],  "size": [0.0125, 0.157,  0.080]},
+    {"name": "body_xpos",  "pos": [0.1155,  0.0,  -0.040],  "size": [0.0125, 0.157,  0.080]},
+    {"name": "body_yneg",  "pos": [0.0,    -0.1445, -0.040], "size": [0.103, 0.0125, 0.080]},
+    {"name": "body_ypos",  "pos": [0.0,     0.1445, -0.040], "size": [0.103, 0.0125, 0.080]}
+  ],
+  "door": [
+    {"name": "door_col", "pos": [0.0, 0.001, 0.0825], "size": [0.115, 0.142, 0.035]}
+  ]
+}

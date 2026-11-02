@@ -1,0 +1,3839 @@
+scenes:
+  FloorPlan3:
+    cup_from_stool_to_sink:
+      robot_pose: {pos: [-0.35, -1.0889, 0.18], yaw: 0.0}
+      hold_seconds: 1.0
+      stool_xy: [0.25, -1.0889]
+      sink_volume:
+        center: [-1.825, -0.534, 1.18]
+        half_size: [0.34, 0.28, 0.22]
+        tolerance: [0.02, 0.02, 0.02]
+    bread_off_plate_then_apple_on_plate:
+      robot_pose: {pos: [-0.80, -0.05, 0.18], yaw: 3.141592653589793}
+      hold_seconds: 1.0
+      plate_xy: [-1.65, 0.05]
+      apple_xy: [-1.50, -0.17]
+      counter_top_z: 1.3129
+      bread_support_z_tolerance: 0.015
+      apple_plate_xy_tolerance: 0.14
+      bread_target:
+        center: [-1.8215, 1.088, 1.42]
+        half_size: [0.4925, 1.309, 0.16]
+        tolerance: [0.02, 0.02, 0.02]
+    wine_bottle_onto_stool:
+      robot_pose: {pos: [-0.15, -1.0889, 0.18], yaw: 0.0}
+      stool_xy: [-0.15, -1.70]
+      bottle_xy: [0.72, -1.0141]
+      hold_seconds: 1.0
+      height_tolerance: 0.04
+      footprint_tolerance: 0.02
+      max_linear_speed: 0.04
+      max_angular_speed: 0.20
+    egg_into_jar:
+      robot_pose: {pos: [-0.9, -1.3185, 0.18], yaw: 3.141592653589793}
+      hold_seconds: 1.0
+  FloorPlan8:
+    canned_drink_into_fridge_then_close_door:
+      robot_pose: {pos: [-1.68, -1.05, 0.05], yaw: -1.5707963267948966}
+      hold_seconds: 1.0
+      target_fixture: FloorPlan8:Fridge_8_13
+      target_joint: refrigerator_ec2560351e8a1c4640bff019f44a5d70_1_6_0_fridgefreezerdoor14b5bfef821_4
+      fridge_receptacle_regions:
+        - FloorPlan8:Fridge_8_13:region:receptacle:7
+        - FloorPlan8:Fridge_8_13:region:receptacle:8
+        - FloorPlan8:Fridge_8_13:region:receptacle:9
+        - FloorPlan8:Fridge_8_13:region:receptacle:10
+        - FloorPlan8:Fridge_8_13:region:receptacle:11
+        - FloorPlan8:Fridge_8_13:region:receptacle:12
+      init_open_fraction: 1.00
+      success_open_fraction: 0.80
+      success_close_fraction: 0.10
+      can_xy: [-1.68, -1.39]
+      can_support_z: 0.901
+      can_region_center_tolerance: [0.06, 0.06, 0.06]
+    pan_to_right_burner_then_egg_into_pan:
+      robot_pose: {pos: [-1.32, -1.05, 0.05], yaw: -1.5707963267948966}
+      hold_seconds: 1.0
+      min_overlap_ratio: 0.70
+      egg_xy: [-1.68, -1.39]
+      egg_support_z: 0.901
+      egg_in_pan_tolerance: 0.015
+    pan_left_to_right_burner:
+      robot_pose: {pos: [-1.245, -0.95, 0.05], yaw: -1.5707963267948966}
+      hold_seconds: 1.0
+      min_overlap_ratio: 0.70
+    sponge_into_open_drawer:
+      robot_pose: {pos: [0.05, -1.05, 0.05], yaw: -1.5707963267948966}
+      init_open_fraction: 1.0
+      hold_seconds: 1.0
+      sponge_xy: [0.05, -1.45]
+      sponge_quat: [-0.4996985842995545, -0.5003017231718947, 0.4999341359587609, 0.5000653660706964]
+      sponge_support_geom: "standardcounterheightwidth(2)_137213d1cd03ad41dee158cc3dfc6e1f_1_1_0_collision_25"
+  FloorPlan6:
+    open_close_low_microwave:
+      hold_seconds: 1.0
+      robot_pose: {pos: [0.595, -0.138, 0.0], yaw: 3.141592653589793}
+      table_center: [-0.05, -0.138, 0.45]
+      table_half_xy: [0.25, 0.43]
+      target_fixture: FloorPlan6:Microwave_6_11
+      target_joint: microwaveoven_94c1f1873dc48017d6aead36235e7315_1_2_0_joint_1
+      microwave_body: microwaveoven_94c1f1873dc48017d6aead36235e7315_1_0_0
+      microwave_pos: [-0.05, -0.138, 0.628945]
+      microwave_quat: [0.5, 0.5, 0.5, 0.5]
+      microwave_receptacle_site: microwaveoven_94c1f1873dc48017d6aead36235e7315_1_1_0_bodymeshff9bc377Receptacle0_0
+      init_open_fraction: 0.0
+      success_open_fraction: 0.4
+      success_close_fraction: 0.1
+    put_apple_in_low_microwave:
+      hold_seconds: 1.0
+      robot_pose: {pos: [0.595, -0.138, 0.0], yaw: 3.141592653589793}
+      table_center: [-0.05, -0.138, 0.45]
+      table_half_xy: [0.25, 0.43]
+      target_fixture: FloorPlan6:Microwave_6_11
+      target_joint: microwaveoven_94c1f1873dc48017d6aead36235e7315_1_2_0_joint_1
+      microwave_body: microwaveoven_94c1f1873dc48017d6aead36235e7315_1_0_0
+      microwave_pos: [-0.05, -0.138, 0.628945]
+      microwave_quat: [0.5, 0.5, 0.5, 0.5]
+      microwave_receptacle_site: microwaveoven_94c1f1873dc48017d6aead36235e7315_1_1_0_bodymeshff9bc377Receptacle0_0
+      init_open_fraction: 0.0
+      success_open_fraction: 0.4
+      success_close_fraction: 0.1
+      apple_pos: [-0.00694, -0.19618, 0.80611315]
+    open_low_microwave_and_lift_apple:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [0.64983, 0.19815, 0.0]
+        yaw: -3.00063
+      table_center: [-0.05, -0.138, 0.45]
+      table_half_xy: [0.25, 0.43]
+      target_fixture: FloorPlan6:Microwave_6_11
+      target_joint: microwaveoven_94c1f1873dc48017d6aead36235e7315_1_2_0_joint_1
+      microwave_body: microwaveoven_94c1f1873dc48017d6aead36235e7315_1_0_0
+      microwave_pos: [-0.05, -0.138, 0.628945]
+      microwave_quat: [0.5, 0.5, 0.5, 0.5]
+      microwave_receptacle_site: microwaveoven_94c1f1873dc48017d6aead36235e7315_1_1_0_bodymeshff9bc377Receptacle0_0
+      init_open_fraction: 0.2
+      apple_inside_xy: [-0.00862, -0.19827]
+      success_open_fraction: 0.4
+      success_close_fraction: 0.1
+      initial_inside_tolerance: 0.01
+    take_apple_from_open_low_microwave_to_top:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [0.38426, -0.10209, 0.0]
+        yaw: -3.05039
+      table_center: [-0.05, -0.138, 0.45]
+      table_half_xy: [0.25, 0.43]
+      target_fixture: FloorPlan6:Microwave_6_11
+      target_joint: microwaveoven_94c1f1873dc48017d6aead36235e7315_1_2_0_joint_1
+      microwave_body: microwaveoven_94c1f1873dc48017d6aead36235e7315_1_0_0
+      microwave_pos: [-0.05, -0.138, 0.628945]
+      microwave_quat: [0.5, 0.5, 0.5, 0.5]
+      microwave_receptacle_site: microwaveoven_94c1f1873dc48017d6aead36235e7315_1_1_0_bodymeshff9bc377Receptacle0_0
+      init_open_fraction: 1.0
+      apple_inside_xy: [-0.00862, -0.19827]
+      success_open_fraction: 0.4
+      success_close_fraction: 0.1
+      initial_inside_tolerance: 0.01
+      apple_top_pos: [-0.00694, -0.19618, 0.80611315]
+    close_then_open_low_microwave:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [0.64983, 0.19815, 0.0]
+        yaw: -3.00063
+      table_center: [-0.05, -0.138, 0.45]
+      table_half_xy: [0.25, 0.43]
+      target_fixture: FloorPlan6:Microwave_6_11
+      target_joint: microwaveoven_94c1f1873dc48017d6aead36235e7315_1_2_0_joint_1
+      microwave_body: microwaveoven_94c1f1873dc48017d6aead36235e7315_1_0_0
+      microwave_pos: [-0.05, -0.138, 0.628945]
+      microwave_quat: [0.5, 0.5, 0.5, 0.5]
+      microwave_receptacle_site: microwaveoven_94c1f1873dc48017d6aead36235e7315_1_1_0_bodymeshff9bc377Receptacle0_0
+      init_open_fraction: 0.8
+      success_open_fraction: 0.4
+      success_close_fraction: 0.1
+    open_low_microwave_and_put_apple_inside:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [0.595, -0.138, 0.0]
+        yaw: 3.141592653589793
+      table_center: [-0.05, -0.138, 0.45]
+      table_half_xy: [0.25, 0.43]
+      target_fixture: FloorPlan6:Microwave_6_11
+      target_joint: microwaveoven_94c1f1873dc48017d6aead36235e7315_1_2_0_joint_1
+      microwave_body: microwaveoven_94c1f1873dc48017d6aead36235e7315_1_0_0
+      microwave_pos: [-0.05, -0.138, 0.628945]
+      microwave_quat: [0.5, 0.5, 0.5, 0.5]
+      microwave_receptacle_site: microwaveoven_94c1f1873dc48017d6aead36235e7315_1_1_0_bodymeshff9bc377Receptacle0_0
+      init_open_fraction: 0.0
+      success_open_fraction: 0.4
+      success_close_fraction: 0.1
+      apple_top_pos: [-0.00694, -0.19618, 0.80611315]
+    bend_and_put_apple_on_plate:
+      hold_seconds: 1.0
+      robot_pose: {pos: [0.595, -0.138, 0.0], yaw: 3.141592653589793}
+      table_center: [-0.05, -0.138, 0.45]
+      table_half_xy: [0.30, 0.45]
+      plate_pos: [0.10, -0.318, 0.45]
+      apple_pos: [0.10, 0.042, 0.45]
+    approach_table_and_stand_canned_drink_upright:
+      show_support: false
+      hold_seconds: 1.0
+      upright_tolerance_degrees: 15.0
+      support_z_tolerance: 0.04
+      release_distance: 0.18
+      robot_pose:
+        pos: [0.595, -0.138, 0.0]
+        yaw: 2.7487
+      support_region:
+        center: [-2.347, 0.387, 0.9]
+        half_xy: [0.26, 0.7]
+        yaw: 0.0
+        body_name: standardcounterheightwidth_44de877a3aa8e5dabb2910d9dfe04417_1_1_0
+      can_pos: [-2.237, 0.537, 0.934]
+      can_quat: [0.7071067811865476, 0.7071067811865475, 0.0, 0.0]
+      approach_fixture: FloorPlan6:StandardCounterHeightWidth_ddc1292f_43
+      approach_distance: 0.35
+      minimum_start_distance: 0.5
+    approach_stove_and_put_pan:
+      show_target_region: false
+      hold_seconds: 1.0
+      support_z_tolerance: 0.05
+      pan_base_local_xy: [0.0, 0.001]
+      pan_base_radius: 0.067
+      robot_pose:
+        pos: [0.595, -0.138, 0.0]
+        yaw: -0.067509
+      target_region:
+        center: [1.512, -0.2, 0.94]
+        half_xy: [0.5, 0.4]
+        yaw: 0.0
+        body_name: base_c28443e23ffd5195308a26f7f3883e7b_1_0_0
+      pan_pos: [1.35, -0.78, 0.9]
+      pan_quat: [0.4926988149835928, 0.0, 0.0, -0.8701999067534789]
+      approach_fixture: FloorPlan6:Base_a04208d4_36
+      approach_distance: 0.35
+      minimum_start_distance: 0.5
+    approach_sink_and_put_bowl:
+      hold_seconds: 1.0
+      show_target_region: false
+      robot_pose:
+        pos: [0.595, -0.138, 0.0]
+        yaw: -1.039948
+      object_pos: [0.841, -1.27, 0.9]
+      sink_fixture: FloorPlan6:Sink_b2d22375_39
+      sink_region:
+        center: [1.136, -1.34, 0.8326]
+        half_size: [0.19, 0.19, 0.15]
+        yaw: -0.7853981633974483
+      approach_fixture: FloorPlan6:Sink_b2d22375_39
+      approach_distance: 0.35
+      minimum_start_distance: 0.5
+    approach_sink_and_put_cup:
+      hold_seconds: 1.0
+      show_target_region: false
+      robot_pose:
+        pos: [0.595, -0.138, 0.0]
+        yaw: -1.039948
+      object_pos: [0.841, -1.27, 0.9]
+      sink_fixture: FloorPlan6:Sink_b2d22375_39
+      sink_region:
+        center: [1.136, -1.34, 0.8326]
+        half_size: [0.19, 0.19, 0.15]
+        yaw: -0.7853981633974483
+      approach_fixture: FloorPlan6:Sink_b2d22375_39
+      approach_distance: 0.35
+      minimum_start_distance: 0.5
+    approach_drawer_and_open:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan6:Drawer_774be50d_20
+      target_joint: drawer_8e04efd64dfaf16f4a7c5c0401429069_1_1_0_joint_0
+      robot_pose:
+        pos: [0.595, -0.138, 0.0]
+        yaw: 2.94266
+      init_open_fraction: 0.2
+      success_open_fraction: 0.8
+      approach_fixture: FloorPlan6:Drawer_774be50d_20
+      approach_distance: 0.35
+      minimum_start_distance: 0.5
+    approach_drawer_and_close:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan6:Drawer_774be50d_20
+      target_joint: drawer_8e04efd64dfaf16f4a7c5c0401429069_1_1_0_joint_0
+      robot_pose:
+        pos: [0.595, -0.138, 0.0]
+        yaw: 2.94266
+      init_open_fraction: 0.8
+      success_close_fraction: 0.2
+      approach_fixture: FloorPlan6:Drawer_774be50d_20
+      approach_distance: 0.35
+      minimum_start_distance: 0.5
+    approach_cabinet_and_open:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan6:Cabinet_a7a3ae61_25
+      target_joint: cabinet_8e914641db1d847413868365be624ad4_1_1_0_joint_0
+      robot_pose:
+        pos: [0.595, -0.138, 0.0]
+        yaw: 3.10139
+      init_open_fraction: 0.1
+      success_open_fraction: 0.5
+      approach_fixture: FloorPlan6:Cabinet_a7a3ae61_25
+      approach_distance: 0.35
+      minimum_start_distance: 0.5
+    approach_cabinet_and_close:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan6:Cabinet_a7a3ae61_25
+      target_joint: cabinet_8e914641db1d847413868365be624ad4_1_1_0_joint_0
+      robot_pose:
+        pos: [0.595, -0.138, 0.0]
+        yaw: 3.10139
+      init_open_fraction: 0.5
+      success_close_fraction: 0.1
+      approach_fixture: FloorPlan6:Cabinet_a7a3ae61_25
+      approach_distance: 0.35
+      minimum_start_distance: 0.5
+    pan_table_to_stove:
+      show_target_region: false
+      hold_seconds: 1.0
+      support_z_tolerance: 0.05
+      pan_base_local_xy: [0.0, 0.001]
+      pan_base_radius: 0.067
+      robot_pose: {pos: [0.85, -0.42, 0.0], yaw: 0.0}
+      target_region:
+        center: [1.512, -0.20, 0.94]
+        half_xy: [0.50, 0.40]
+        yaw: 0.0
+        body_name: base_c28443e23ffd5195308a26f7f3883e7b_1_0_0
+      pan_pos: [1.35, -0.78, 0.90]
+      pan_quat: [0.4926988149835928, 0.0, 0.0, -0.8701999067534789]
+    stand_canned_drink_upright:
+      show_support: false
+      hold_seconds: 1.0
+      upright_tolerance_degrees: 15.0
+      support_z_tolerance: 0.04
+      release_distance: 0.18
+      robot_pose:
+        pos: [-1.80, 0.537, 0.0]
+        yaw: 3.141592653589793
+      support_region:
+        center: [-2.347, 0.387, 0.900]
+        half_xy: [0.26, 0.70]
+        yaw: 0.0
+        body_name: standardcounterheightwidth_44de877a3aa8e5dabb2910d9dfe04417_1_1_0
+      can_pos: [-2.237, 0.537, 0.934]
+      can_quat: [0.7071067811865476, 0.7071067811865475, 0.0, 0.0]
+    lift_eggplant:
+      hold_seconds: 1.0
+      lift_height: 0.3
+      robot_pose: {pos: [-1.80, 0.537, 0.0], yaw: 3.141592653589793}
+      support_region: {center: [-2.347, 0.387, 0.900], half_xy: [0.26, 0.70], yaw: 0.0, body_name: standardcounterheightwidth_44de877a3aa8e5dabb2910d9dfe04417_1_1_0}
+      object_pos: [-2.237, 0.537, 0.934]
+      object_quat: [1.0, 0.0, 0.0, 0.0]
+    lift_plate:
+      hold_seconds: 1.0
+      lift_height: 0.3
+      robot_pose: {pos: [-1.80, 0.537, 0.0], yaw: 3.141592653589793}
+      support_region: {center: [-2.347, 0.387, 0.900], half_xy: [0.26, 0.70], yaw: 0.0, body_name: standardcounterheightwidth_44de877a3aa8e5dabb2910d9dfe04417_1_1_0}
+      object_pos: [-2.237, 0.537, 0.934]
+      object_quat: [1.0, 0.0, 0.0, 0.0]
+    lift_salt_shaker:
+      hold_seconds: 1.0
+      lift_height: 0.3
+      robot_pose: {pos: [-1.80, 0.537, 0.0], yaw: 3.141592653589793}
+      support_region: {center: [-2.347, 0.387, 0.900], half_xy: [0.26, 0.70], yaw: 0.0, body_name: standardcounterheightwidth_44de877a3aa8e5dabb2910d9dfe04417_1_1_0}
+      object_pos: [-2.237, 0.537, 0.934]
+      object_quat: [1.0, 0.0, 0.0, 0.0]
+    approach_fridge:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan6:Fridge_6_10
+      robot_pose:
+        pos: [0.0, -0.75, 0.0]
+        yaw: 3.141592653589793
+      target_xy: [-2.479, -0.7569]
+      target_tolerance: [1.0, 1.0]
+    approach_dishwasher:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan6:dishwasher_FP6
+      robot_pose:
+        pos: [0.134519, -0.140532, 0.0]
+        yaw: -1.351483260678257
+      target_xy: [0.442, -1.520]
+      target_tolerance: [0.7, 0.7]
+    approach_oven:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan6:oven_FP6_1_2
+      robot_pose:
+        pos: [0.134519, -0.140532, 0.0]
+        yaw: 0.0003798694694255991
+      target_xy: [1.535, -0.140]
+      target_tolerance: [0.7, 0.7]
+    approach_table:
+      target_fixture: FloorPlan6:StandardCounterHeightWidth_ddc1292f_43
+      support_body: standardcounterheightwidth_44de877a3aa8e5dabb2910d9dfe04417_1_1_0
+      robot_pose: {pos: [0.595, -0.138, 0.0], yaw: 2.7487}
+      approach_distance: 0.35
+      minimum_start_distance: 0.55
+    approach_table_and_lift_apple:
+      hold_seconds: 1.0
+      lift_height: 0.3
+      target_fixture: FloorPlan6:StandardCounterHeightWidth_ddc1292f_43
+      support_body: standardcounterheightwidth_44de877a3aa8e5dabb2910d9dfe04417_1_1_0
+      robot_pose: {pos: [0.595, -0.138, 0.0], yaw: 2.7487}
+      approach_distance: 0.35
+      minimum_start_distance: 0.55
+      support_region: {center: [-2.347, 0.387, 0.900], half_xy: [0.26, 0.70], yaw: 0.0, body_name: standardcounterheightwidth_44de877a3aa8e5dabb2910d9dfe04417_1_1_0}
+      object_pos: [-2.237, 0.537, 0.934]
+      object_quat: [1.0, 0.0, 0.0, 0.0]
+    approach_table_and_lift_salt_shaker:
+      hold_seconds: 1.0
+      lift_height: 0.3
+      target_fixture: FloorPlan6:StandardCounterHeightWidth_ddc1292f_43
+      support_body: standardcounterheightwidth_44de877a3aa8e5dabb2910d9dfe04417_1_1_0
+      robot_pose: {pos: [0.595, -0.138, 0.0], yaw: 2.7487}
+      approach_distance: 0.35
+      minimum_start_distance: 0.55
+      support_region: {center: [-2.347, 0.387, 0.900], half_xy: [0.26, 0.70], yaw: 0.0, body_name: standardcounterheightwidth_44de877a3aa8e5dabb2910d9dfe04417_1_1_0}
+      object_pos: [-2.237, 0.537, 0.934]
+      object_quat: [1.0, 0.0, 0.0, 0.0]
+    approach_table_and_lift_bowl:
+      hold_seconds: 1.0
+      lift_height: 0.3
+      target_fixture: FloorPlan6:StandardCounterHeightWidth_ddc1292f_43
+      support_body: standardcounterheightwidth_44de877a3aa8e5dabb2910d9dfe04417_1_1_0
+      robot_pose: {pos: [0.595, -0.138, 0.0], yaw: 2.7487}
+      approach_distance: 0.35
+      minimum_start_distance: 0.55
+      support_region: {center: [-2.347, 0.387, 0.900], half_xy: [0.26, 0.70], yaw: 0.0, body_name: standardcounterheightwidth_44de877a3aa8e5dabb2910d9dfe04417_1_1_0}
+      object_pos: [-2.237, 0.537, 0.934]
+      object_quat: [1.0, 0.0, 0.0, 0.0]
+    approach_table_and_put_apple_on_plate:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan6:StandardCounterHeightWidth_ddc1292f_43
+      support_body: standardcounterheightwidth_44de877a3aa8e5dabb2910d9dfe04417_1_1_0
+      robot_pose: {pos: [0.595, -0.138, 0.0], yaw: 2.7487}
+      approach_distance: 0.35
+      minimum_start_distance: 0.55
+      plate_pos: [-2.237, 0.397, 0.934]
+      source_pos: [-2.237, 0.697, 0.934]
+    approach_table_and_put_bread_on_plate:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan6:StandardCounterHeightWidth_ddc1292f_43
+      support_body: standardcounterheightwidth_44de877a3aa8e5dabb2910d9dfe04417_1_1_0
+      robot_pose: {pos: [0.595, -0.138, 0.0], yaw: 2.7487}
+      approach_distance: 0.35
+      minimum_start_distance: 0.55
+      plate_pos: [-2.237, 0.397, 0.934]
+      source_pos: [-2.237, 0.697, 0.934]
+    approach_table_and_put_cheese_on_plate:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan6:StandardCounterHeightWidth_ddc1292f_43
+      support_body: standardcounterheightwidth_44de877a3aa8e5dabb2910d9dfe04417_1_1_0
+      robot_pose: {pos: [0.595, -0.138, 0.0], yaw: 2.7487}
+      approach_distance: 0.35
+      minimum_start_distance: 0.55
+      plate_pos: [-2.237, 0.397, 0.934]
+      source_pos: [-2.237, 0.697, 0.934]
+    approach_table_and_put_mug_on_plate:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan6:StandardCounterHeightWidth_ddc1292f_43
+      support_body: standardcounterheightwidth_44de877a3aa8e5dabb2910d9dfe04417_1_1_0
+      robot_pose: {pos: [0.595, -0.138, 0.0], yaw: 2.7487}
+      approach_distance: 0.35
+      minimum_start_distance: 0.55
+      plate_pos: [-2.237, 0.397, 0.934]
+      source_pos: [-2.237, 0.697, 0.934]
+    approach_open_fridge:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan6:Fridge_6_10
+      target_joint: refrigerator_499a7ea0591eb6b83faae667ac7ccdfa_1_4_0_FridgeDoorMeshbd78cd441_1
+      robot_pose:
+        pos: [-0.027, -0.664, 0.0]
+        yaw: 3.141592653589793
+      init_open_fraction: 0.0
+      success_open_fraction: 0.4
+      success_distance: 0.75
+    approach_open_oven:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan6:oven_FP6_1_2
+      target_joint: oven_20843bf6028a4c4dc03fe92a79c35837_1_4_0_door1_1
+      robot_pose:
+        pos: [-0.921, -0.183, 0.0]
+        yaw: 0.0
+      init_open_fraction: 0.0
+      success_open_fraction: 0.4
+      success_distance: 0.75
+    drawer_pnp:
+      hold_seconds: 1.0
+      show_target_region: false
+      target_fixture: FloorPlan6:Drawer_774be50d_20
+      target_joint: drawer_8e04efd64dfaf16f4a7c5c0401429069_1_1_0_joint_0
+      robot_pose:
+        pos: [-1.80, 0.437, 0.0]
+        yaw: 3.141592653589793
+      init_open_fraction: 0.2
+      success_open_fraction: 0.8
+      success_close_fraction: 0.20
+      drawer_receptacle_region: FloorPlan6:Drawer_774be50d_20:region:receptacle:0
+      apple_pos: [-2.15, 0.437, 0.9524]
+    open_drawer_take_apple:
+      hold_seconds: 1.0
+      show_target_region: false
+      target_fixture: FloorPlan6:Drawer_774be50d_20
+      target_joint: drawer_8e04efd64dfaf16f4a7c5c0401429069_1_1_0_joint_0
+      robot_pose:
+        pos: [-1.80, 0.437, 0.0]
+        yaw: 3.141592653589793
+      init_open_fraction: 0.2
+      success_open_fraction: 0.8
+      drawer_receptacle_region: FloorPlan6:Drawer_774be50d_20:region:receptacle:0
+      apple_pos: [-2.2879, 0.4391, 0.80]
+      target_region:
+        center: [-2.347, 0.387, 0.915]
+        half_xy: [0.26, 0.7]
+        z_tolerance: 0.04
+        yaw: 0.0
+    cabinet_open_close_cycle:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [-1.6, 0.06, 0.0]
+        yaw: 3.141592653589793
+      target_fixture: FloorPlan6:Cabinet_a7a3ae61_25
+      target_joint: cabinet_8e914641db1d847413868365be624ad4_1_1_0_joint_0
+      success_open_fraction: 0.8
+      success_close_fraction: 0.2
+      init_open_fraction: 0.2
+    cabinet_close_open_cycle:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [-1.6, 0.06, 0.0]
+        yaw: 3.141592653589793
+      target_fixture: FloorPlan6:Cabinet_a7a3ae61_25
+      target_joint: cabinet_8e914641db1d847413868365be624ad4_1_1_0_joint_0
+      success_open_fraction: 0.8
+      success_close_fraction: 0.2
+      init_open_fraction: 0.8
+    apple_cabinet_pnp:
+      hold_seconds: 1.0
+      show_target_region: false
+      target_fixture: FloorPlan6:Cabinet_a7a3ae61_25
+      target_joint: cabinet_8e914641db1d847413868365be624ad4_1_1_0_joint_0
+      robot_pose:
+        pos: [-1.60, 0.06, 0.0]
+        yaw: 3.141592653589793
+      init_open_fraction: 0.6
+      success_close_fraction: 0.08
+      cabinet_receptacle_region: FloorPlan6:StandardCounterHeightWidth_ddc1292f_43:region:receptacle:9
+      apple_pos: [-2.20, 0.06, 0.9524]
+    apple_on_plate:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [-1.85, 0.537, 0.0]
+        yaw: 3.141592653589793
+      plate_pos: [-2.237, 0.397, 0.934]
+      apple_pos: [-2.237, 0.697, 0.934]
+    apple_banana_plate_swap:
+      hold_seconds: 1.0
+      show_target_region: false
+      robot_pose:
+        pos: [-1.80, 0.437, 0.0]
+        yaw: 3.141592653589793
+      support_region:
+        center: [-2.347, 0.387, 0.900]
+        half_xy: [0.26, 0.7]
+        z_tolerance: 0.10
+        yaw: 0.0
+        body_name: standardcounterheightwidth_44de877a3aa8e5dabb2910d9dfe04417_1_1_0
+      plate_pos: [-2.237, 0.397, 0.934]
+      banana_pos: [-2.237, 0.697, 0.934]
+    cup_stack:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [-1.85, 0.537, 0.0]
+        yaw: 3.141592653589793
+      cup_1_pos: [-2.237, 0.397, 0.934]
+      cup_2_pos: [-2.237, 0.697, 0.934]
+    bowl_to_sink:
+      hold_seconds: 1.0
+      show_target_region: false
+      robot_pose:
+        pos: [0.814, -0.862, 0.0]
+        yaw: -0.7853981633974483
+      object_pos: [0.841, -1.270, 0.900]
+      sink_fixture: FloorPlan6:Sink_b2d22375_39
+      sink_region:
+        center: [1.136, -1.340, 0.8326]
+        half_size: [0.19, 0.19, 0.15]
+        yaw: -0.7853981633974483
+    pack_produce_into_box:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [-1.80, 0.437, 0.0]
+        yaw: 3.141592653589793
+      support_region:
+        center: [-0.34, 1.0637, 0.9]
+        half_xy: [0.50, 0.86]
+        yaw: 0.0
+        body_name: standardislandheight1_7c08be53b4896629d8fc3f92975e3685_1_1_0
+      box_pos: [-2.249, 0.454, 0.934]
+      box_yaw: 0.0
+      apple_pos: [-2.249, 0.254, 0.934]
+      banana_pos: [-2.249, 0.654, 0.934]
+    apple_into_box:
+      hold_seconds: 1.0
+      robot_pose: {pos: [-1.80, 0.437, 0.0], yaw: 3.141592653589793}
+      support_region: {center: [-0.34, 1.0637, 0.9], half_xy: [0.50, 0.86], yaw: 0.0, body_name: standardislandheight1_7c08be53b4896629d8fc3f92975e3685_1_1_0}
+      box_pos: [-2.249, 0.454, 0.934]
+      box_yaw: 0.0
+      object_pos: [-2.249, 0.654, 0.934]
+    cup_into_box:
+      hold_seconds: 1.0
+      robot_pose: {pos: [-1.80, 0.437, 0.0], yaw: 3.141592653589793}
+      support_region: {center: [-0.34, 1.0637, 0.9], half_xy: [0.50, 0.86], yaw: 0.0, body_name: standardislandheight1_7c08be53b4896629d8fc3f92975e3685_1_1_0}
+      box_pos: [-2.249, 0.454, 0.934]
+      box_yaw: 0.0
+      object_pos: [-2.249, 0.654, 0.934]
+    statue_into_box:
+      hold_seconds: 1.0
+      robot_pose: {pos: [-1.80, 0.437, 0.0], yaw: 3.141592653589793}
+      support_region: {center: [-0.34, 1.0637, 0.9], half_xy: [0.50, 0.86], yaw: 0.0, body_name: standardislandheight1_7c08be53b4896629d8fc3f92975e3685_1_1_0}
+      box_pos: [-2.249, 0.454, 0.934]
+      box_yaw: 0.0
+      object_pos: [-2.249, 0.654, 0.934]
+      object_quat: [0.7071067811865476, 0.7071067811865475, 0.0, 0.0]
+    banana_basket_to_table:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [-1.85, 1.0, 0.0]
+        yaw: 3.141592653589793
+      target_region:
+        center: [-0.34, 1.0637, 0.9]
+        half_xy: [0.50, 0.86]
+        yaw: 0.0
+        body_name: standardislandheight1_7c08be53b4896629d8fc3f92975e3685_1_1_0
+      basket_pos: [-2.35, 0.95, 0.9524]
+      banana_pos: [-2.35, 0.95, 0.9624]
+      show_target_region: false
+    take_statue_from_cabinet:
+      hold_seconds: 1.0
+      robot_pose: {pos: [-1.60, 0.06, 0.0], yaw: 3.141592653589793}
+      target_fixture: FloorPlan6:Cabinet_a7a3ae61_25
+      target_joint: cabinet_8e914641db1d847413868365be624ad4_1_1_0_joint_0
+      init_open_fraction: 0.60
+      success_close_fraction: 0.20
+      cabinet_receptacle_region: FloorPlan6:StandardCounterHeightWidth_ddc1292f_43:region:receptacle:9
+      statue_pos: [-2.3106, -0.0230999, 0.070478]
+      statue_quat: [0.7071067811865476, 0.7071067811865475, 0.0, 0.0]
+      table_fixture: FloorPlan6:StandardCounterHeightWidth_ddc1292f_43
+      success_region:
+        center: [-2.20, 0.06, 0.99]
+        half_size: [0.20, 0.20, 0.06]
+        yaw: 0.0
+    open_fridge:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan6:Fridge_6_10
+      target_joint: refrigerator_499a7ea0591eb6b83faae667ac7ccdfa_1_4_0_FridgeDoorMeshbd78cd441_1
+      robot_pose:
+        pos: [-1.60, -0.75, 0.0]
+        yaw: 3.141592653589793
+      init_open_fraction: 0.10
+      success_open_fraction: 0.50
+    close_fridge:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan6:Fridge_6_10
+      target_joint: refrigerator_499a7ea0591eb6b83faae667ac7ccdfa_1_4_0_FridgeDoorMeshbd78cd441_1
+      robot_pose:
+        pos: [-1.396, -0.305, 0.0]
+        yaw: 3.60
+      init_open_fraction: 0.30
+      success_close_fraction: 0.10
+    open_cabinet:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan6:Cabinet_a7a3ae61_25
+      target_joint: cabinet_8e914641db1d847413868365be624ad4_1_1_0_joint_0
+      robot_pose:
+        pos: [-1.691, -0.008, 0.0]
+        yaw: 3.141592653589793
+      init_open_fraction: 0.10
+      success_open_fraction: 0.50
+    close_cabinet:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan6:Cabinet_a7a3ae61_25
+      target_joint: cabinet_8e914641db1d847413868365be624ad4_1_1_0_joint_0
+      robot_pose:
+        pos: [-1.60, 0.06, 0.0]
+        yaw: 3.141592653589793
+      init_open_fraction: 0.50
+      success_close_fraction: 0.10
+    open_drawer:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan6:Drawer_774be50d_20
+      target_joint: drawer_8e04efd64dfaf16f4a7c5c0401429069_1_1_0_joint_0
+      robot_pose:
+        pos: [-1.60, 0.437, 0.0]
+        yaw: 3.141592653589793
+      init_open_fraction: 0.20
+      success_open_fraction: 0.80
+    close_drawer:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan6:Drawer_774be50d_20
+      target_joint: drawer_8e04efd64dfaf16f4a7c5c0401429069_1_1_0_joint_0
+      robot_pose:
+        pos: [-1.60, 0.437, 0.0]
+        yaw: 3.141592653589793
+      init_open_fraction: 0.80
+      success_close_fraction: 0.20
+    open_oven:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan6:oven_FP6_1_2
+      target_joint: oven_20843bf6028a4c4dc03fe92a79c35837_1_4_0_door1_1
+      robot_pose:
+        pos: [0.75, -0.14, 0.0]
+        yaw: 0.0
+      init_open_fraction: 0.10
+      success_open_fraction: 0.50
+    close_oven:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan6:oven_FP6_1_2
+      target_joint: oven_20843bf6028a4c4dc03fe92a79c35837_1_4_0_door1_1
+      robot_pose:
+        pos: [0.595, -0.138, 0.0]
+        yaw: 0.0
+      init_open_fraction: 0.20
+      success_close_fraction: 0.10
+    oven_then_fridge:
+      stages:
+        - FloorPlan6:oven_FP6_1_2
+        - FloorPlan6:Fridge_6_10
+      robot_pose:
+        pos: [0.134519, -0.140532, 0.0]
+        yaw: -0.174533
+    fridge_then_oven:
+      stages:
+        - FloorPlan6:Fridge_6_10
+        - FloorPlan6:oven_FP6_1_2
+      robot_pose:
+        pos: [0.134519, -0.140532, 0.0]
+        yaw: -0.174533
+    fridge_then_dishwasher:
+      stages:
+        - FloorPlan6:Fridge_6_10
+        - FloorPlan6:dishwasher_FP6
+      robot_pose:
+        pos: [0.134519, -0.140532, 0.0]
+        yaw: -0.174533
+    dishwasher_then_fridge:
+      stages:
+        - FloorPlan6:dishwasher_FP6
+        - FloorPlan6:Fridge_6_10
+      robot_pose:
+        pos: [0.134519, -0.140532, 0.0]
+        yaw: -0.174533
+    oven_then_dishwasher:
+      stages:
+        - FloorPlan6:oven_FP6_1_2
+        - FloorPlan6:dishwasher_FP6
+      robot_pose:
+        pos: [0.134519, -0.140532, 0.0]
+        yaw: -0.174533
+    dishwasher_then_oven:
+      stages:
+        - FloorPlan6:dishwasher_FP6
+        - FloorPlan6:oven_FP6_1_2
+      robot_pose:
+        pos: [0.134519, -0.140532, 0.0]
+        yaw: -0.174533
+
+    approach_drawer_and_open_close:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan6:Drawer_774be50d_20
+      target_joint: drawer_8e04efd64dfaf16f4a7c5c0401429069_1_1_0_joint_0
+      robot_pose:
+        pos: [0.595, -0.138, 0.0]
+        yaw: 2.94266
+      init_open_fraction: 0.2
+      success_open_fraction: 0.8
+      navigation_goal_pose:
+        pos: [-1.6, 0.437, 0.0]
+        yaw: 3.141592653589793
+      navigation_xy_tolerance: 0.15
+      navigation_yaw_tolerance: 0.35
+      success_close_fraction: 0.2
+      open_hold_seconds: 1.0
+    approach_cabinet_and_open_close:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan6:Cabinet_a7a3ae61_25
+      target_joint: cabinet_8e914641db1d847413868365be624ad4_1_1_0_joint_0
+      robot_pose:
+        pos: [0.595, -0.138, 0.0]
+        yaw: 3.10139
+      init_open_fraction: 0.1
+      success_open_fraction: 0.5
+      navigation_goal_pose:
+        pos: [-1.691, -0.008, 0.0]
+        yaw: 3.141592653589793
+      navigation_xy_tolerance: 0.15
+      navigation_yaw_tolerance: 0.35
+      success_close_fraction: 0.1
+      open_hold_seconds: 1.0
+  FloorPlan7:
+    open_close_low_microwave:
+      hold_seconds: 1.0
+      robot_pose: {pos: [-0.225, 0.21, 0.0], yaw: 0.0}
+      table_center: [0.42, 0.21, 0.45]
+      table_half_xy: [0.25, 0.43]
+      target_fixture: FloorPlan7:Microwave_7_9
+      target_joint: microwaveoven_767c757f720a4dd00cf9e57e060ce02d_1_2_0_joint_1
+      microwave_body: microwaveoven_767c757f720a4dd00cf9e57e060ce02d_1_0_0
+      microwave_pos: [0.42, 0.21, 0.62848]
+      microwave_quat: [0.5, 0.5, -0.5, -0.5]
+      microwave_receptacle_site: microwaveoven_767c757f720a4dd00cf9e57e060ce02d_1_1_0_bodymesh0d3e2672Receptacle0_0
+      init_open_fraction: 0.0
+      success_open_fraction: 0.4
+      success_close_fraction: 0.1
+    put_apple_in_low_microwave:
+      hold_seconds: 1.0
+      robot_pose: {pos: [-0.225, 0.21, 0.0], yaw: 0.0}
+      table_center: [0.42, 0.21, 0.45]
+      table_half_xy: [0.25, 0.43]
+      target_fixture: FloorPlan7:Microwave_7_9
+      target_joint: microwaveoven_767c757f720a4dd00cf9e57e060ce02d_1_2_0_joint_1
+      microwave_body: microwaveoven_767c757f720a4dd00cf9e57e060ce02d_1_0_0
+      microwave_pos: [0.42, 0.21, 0.62848]
+      microwave_quat: [0.5, 0.5, -0.5, -0.5]
+      microwave_receptacle_site: microwaveoven_767c757f720a4dd00cf9e57e060ce02d_1_1_0_bodymesh0d3e2672Receptacle0_0
+      init_open_fraction: 0.0
+      success_open_fraction: 0.4
+      success_close_fraction: 0.1
+      apple_pos: [0.383725, 0.268795, 0.8062063]
+    open_low_microwave_and_lift_apple:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [-0.11764, -0.15459, 0.0]
+        yaw: 0.14091
+      table_center: [0.42, 0.21, 0.45]
+      table_half_xy: [0.25, 0.43]
+      target_fixture: FloorPlan7:Microwave_7_9
+      target_joint: microwaveoven_767c757f720a4dd00cf9e57e060ce02d_1_2_0_joint_1
+      microwave_body: microwaveoven_767c757f720a4dd00cf9e57e060ce02d_1_0_0
+      microwave_pos: [0.42, 0.21, 0.62848]
+      microwave_quat: [0.5, 0.5, -0.5, -0.5]
+      microwave_receptacle_site: microwaveoven_767c757f720a4dd00cf9e57e060ce02d_1_1_0_bodymesh0d3e2672Receptacle0_0
+      init_open_fraction: 0.2
+      apple_inside_xy: [0.38002, 0.26946]
+      success_open_fraction: 0.4
+      success_close_fraction: 0.1
+    take_apple_from_open_low_microwave_to_top:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [-0.01292, 0.17357, 0.0]
+        yaw: 0.09047
+      table_center: [0.42, 0.21, 0.45]
+      table_half_xy: [0.25, 0.43]
+      target_fixture: FloorPlan7:Microwave_7_9
+      target_joint: microwaveoven_767c757f720a4dd00cf9e57e060ce02d_1_2_0_joint_1
+      microwave_body: microwaveoven_767c757f720a4dd00cf9e57e060ce02d_1_0_0
+      microwave_pos: [0.42, 0.21, 0.62848]
+      microwave_quat: [0.5, 0.5, -0.5, -0.5]
+      microwave_receptacle_site: microwaveoven_767c757f720a4dd00cf9e57e060ce02d_1_1_0_bodymesh0d3e2672Receptacle0_0
+      init_open_fraction: 1.0
+      apple_inside_xy: [0.38002, 0.26946]
+      success_open_fraction: 0.4
+      success_close_fraction: 0.1
+      apple_top_pos: [0.383725, 0.268795, 0.8062063]
+    close_then_open_low_microwave:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [-0.11764, -0.15459, 0.0]
+        yaw: 0.14091
+      table_center: [0.42, 0.21, 0.45]
+      table_half_xy: [0.25, 0.43]
+      target_fixture: FloorPlan7:Microwave_7_9
+      target_joint: microwaveoven_767c757f720a4dd00cf9e57e060ce02d_1_2_0_joint_1
+      microwave_body: microwaveoven_767c757f720a4dd00cf9e57e060ce02d_1_0_0
+      microwave_pos: [0.42, 0.21, 0.62848]
+      microwave_quat: [0.5, 0.5, -0.5, -0.5]
+      microwave_receptacle_site: microwaveoven_767c757f720a4dd00cf9e57e060ce02d_1_1_0_bodymesh0d3e2672Receptacle0_0
+      init_open_fraction: 0.8
+      success_open_fraction: 0.4
+      success_close_fraction: 0.1
+    open_low_microwave_and_put_apple_inside:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [-0.225, 0.21, 0.0]
+        yaw: 0.0
+      table_center: [0.42, 0.21, 0.45]
+      table_half_xy: [0.25, 0.43]
+      target_fixture: FloorPlan7:Microwave_7_9
+      target_joint: microwaveoven_767c757f720a4dd00cf9e57e060ce02d_1_2_0_joint_1
+      microwave_body: microwaveoven_767c757f720a4dd00cf9e57e060ce02d_1_0_0
+      microwave_pos: [0.42, 0.21, 0.62848]
+      microwave_quat: [0.5, 0.5, -0.5, -0.5]
+      microwave_receptacle_site: microwaveoven_767c757f720a4dd00cf9e57e060ce02d_1_1_0_bodymesh0d3e2672Receptacle0_0
+      init_open_fraction: 0.0
+      success_open_fraction: 0.4
+      success_close_fraction: 0.1
+      apple_top_pos: [0.383725, 0.268795, 0.8062063]
+    bend_and_put_apple_on_plate:
+      hold_seconds: 1.0
+      robot_pose: {pos: [-0.225, 0.21, 0.0], yaw: 0.0}
+      table_center: [0.42, 0.21, 0.45]
+      table_half_xy: [0.30, 0.45]
+      plate_pos: [0.27, 0.03, 0.45]
+      apple_pos: [0.27, 0.39, 0.45]
+    approach_table_and_stand_canned_drink_upright:
+      show_support: false
+      hold_seconds: 1.0
+      upright_tolerance_degrees: 15.0
+      support_z_tolerance: 0.04
+      release_distance: 0.18
+      robot_pose:
+        pos: [-0.226629, 0.210121, 0.0]
+        yaw: -1.702486
+      support_region:
+        center: [-1.823, -0.414, 0.9150614]
+        half_xy: [0.4, 0.95]
+        yaw: 0.0
+        body_name: standardcounterheightwidth_50dbbcf9c0f3ed35c015fcf8cb77460d_1_0_0
+      can_pos: [-1.48, -0.65, 0.9150614]
+      can_quat: [0.7071067811865476, 0.7071067811865475, 0.0, 0.0]
+      approach_fixture: FloorPlan7:StandardCounterHeightWidth_d610e478_57
+      approach_distance: 0.35
+      minimum_start_distance: 0.5
+    approach_stove_and_put_pan:
+      show_target_region: false
+      hold_seconds: 1.0
+      support_z_tolerance: 0.05
+      pan_base_local_xy: [0.0, 0.001]
+      pan_base_radius: 0.067
+      robot_pose:
+        pos: [-0.226629, 0.210121, 0.0]
+        yaw: -0.933719
+      target_region:
+        center: [1.104, -1.588, 0.947]
+        half_xy: [0.35, 0.55]
+        yaw: 0.0
+        body_name: mesh_1b2727cec3336a179e9f3fbcff81d87c_1_0_0
+      pan_pos: [0.617, -1.273, 0.905]
+      pan_quat: [0.07726036202731572, 0.0, 0.0, 0.99701095102281]
+      approach_fixture: FloorPlan7:Mesh_b8c1eeeb_33
+      approach_distance: 0.35
+      minimum_start_distance: 0.5
+    approach_sink_and_put_bowl:
+      hold_seconds: 1.0
+      show_target_region: false
+      robot_pose:
+        pos: [-0.226629, 0.210121, 0.0]
+        yaw: -1.498787
+      object_pos: [0.156, -1.239, 0.95]
+      sink_fixture: FloorPlan7:Sink_53169595_38
+      sink_region:
+        center: [-0.19815070894008782, -1.5709866140794446, 0.8030299760038857]
+        half_size: [0.2385953041088275, 0.3123021244048565, 0.19931917791574577]
+        yaw: -1.5367381904100628
+      approach_fixture: FloorPlan7:Sink_53169595_38
+      approach_distance: 0.35
+      minimum_start_distance: 0.5
+    approach_sink_and_put_cup:
+      hold_seconds: 1.0
+      show_target_region: false
+      robot_pose:
+        pos: [-0.226629, 0.210121, 0.0]
+        yaw: -1.498787
+      object_pos: [0.156, -1.239, 0.95]
+      sink_fixture: FloorPlan7:Sink_53169595_38
+      sink_region:
+        center: [-0.19815070894008782, -1.5709866140794446, 0.8030299760038857]
+        half_size: [0.2385953041088275, 0.3123021244048565, 0.19931917791574577]
+        yaw: -1.5367381904100628
+      approach_fixture: FloorPlan7:Sink_53169595_38
+      approach_distance: 0.35
+      minimum_start_distance: 0.5
+    approach_drawer_and_open:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan7:Drawer_7b1e3e99_20
+      target_joint: drawer_246f9a99792964d8780e19a551c61012_1_1_0_joint_0
+      robot_pose:
+        pos: [-0.226629, 0.210121, 0.0]
+        yaw: -2.457895
+      init_open_fraction: 0.2
+      success_open_fraction: 0.8
+      approach_fixture: FloorPlan7:Drawer_7b1e3e99_20
+      approach_distance: 0.35
+      minimum_start_distance: 0.5
+    approach_drawer_and_close:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan7:Drawer_7b1e3e99_20
+      target_joint: drawer_246f9a99792964d8780e19a551c61012_1_1_0_joint_0
+      robot_pose:
+        pos: [-0.226629, 0.210121, 0.0]
+        yaw: -2.457895
+      init_open_fraction: 0.8
+      success_close_fraction: 0.2
+      approach_fixture: FloorPlan7:Drawer_7b1e3e99_20
+      approach_distance: 0.35
+      minimum_start_distance: 0.5
+    approach_cabinet_and_open:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan7:Cabinet_acb62db2_15
+      target_joint: cabinet_43310d5deaba168dc21fe5b0e2c4f5ec_1_1_0_joint_0
+      robot_pose:
+        pos: [-0.226629, 0.210121, 0.0]
+        yaw: -1.656339
+      init_open_fraction: 0.1
+      success_open_fraction: 0.5
+      approach_fixture: FloorPlan7:Cabinet_acb62db2_15
+      approach_distance: 0.35
+      minimum_start_distance: 0.5
+    approach_cabinet_and_close:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan7:Cabinet_acb62db2_15
+      target_joint: cabinet_43310d5deaba168dc21fe5b0e2c4f5ec_1_1_0_joint_0
+      robot_pose:
+        pos: [-0.226629, 0.210121, 0.0]
+        yaw: -1.656339
+      init_open_fraction: 0.5
+      success_close_fraction: 0.1
+      approach_fixture: FloorPlan7:Cabinet_acb62db2_15
+      approach_distance: 0.35
+      minimum_start_distance: 0.5
+    pan_table_to_stove:
+      show_target_region: false
+      hold_seconds: 1.0
+      support_z_tolerance: 0.05
+      pan_base_local_xy: [0.0, 0.001]
+      pan_base_radius: 0.067
+      robot_pose: {pos: [0.75, -0.92, 0.0], yaw: -1.5707963267948966}
+      target_region:
+        center: [1.104, -1.588, 0.947]
+        half_xy: [0.35, 0.55]
+        yaw: 0.0
+        body_name: mesh_1b2727cec3336a179e9f3fbcff81d87c_1_0_0
+      pan_pos: [0.617, -1.273, 0.905]
+      pan_quat: [0.07726036202731572, 0.0, 0.0, 0.99701095102281]
+    stand_canned_drink_upright:
+      show_support: false
+      hold_seconds: 1.0
+      upright_tolerance_degrees: 15.0
+      support_z_tolerance: 0.04
+      release_distance: 0.18
+      robot_pose:
+        pos: [-1.10, -0.65, 0.0]
+        yaw: 3.141592653589793
+      support_region:
+        center: [-1.823, -0.414, 0.9150614]
+        half_xy: [0.40, 0.95]
+        yaw: 0.0
+        body_name: standardcounterheightwidth_50dbbcf9c0f3ed35c015fcf8cb77460d_1_0_0
+      can_pos: [-1.480, -0.65, 0.9150614]
+      can_quat: [0.7071067811865476, 0.7071067811865475, 0.0, 0.0]
+    lift_eggplant:
+      hold_seconds: 1.0
+      lift_height: 0.3
+      robot_pose: {pos: [-1.10, -0.65, 0.0], yaw: 3.141592653589793}
+      support_region: {center: [-1.823, -0.414, 0.9150614], half_xy: [0.40, 0.95], yaw: 0.0, body_name: standardcounterheightwidth_50dbbcf9c0f3ed35c015fcf8cb77460d_1_0_0}
+      object_pos: [-1.480, -0.65, 0.9150614]
+      object_quat: [1.0, 0.0, 0.0, 0.0]
+    lift_plate:
+      hold_seconds: 1.0
+      lift_height: 0.3
+      robot_pose: {pos: [-1.10, -0.65, 0.0], yaw: 3.141592653589793}
+      support_region: {center: [-1.823, -0.414, 0.9150614], half_xy: [0.40, 0.95], yaw: 0.0, body_name: standardcounterheightwidth_50dbbcf9c0f3ed35c015fcf8cb77460d_1_0_0}
+      object_pos: [-1.480, -0.65, 0.9150614]
+      object_quat: [1.0, 0.0, 0.0, 0.0]
+    lift_salt_shaker:
+      hold_seconds: 1.0
+      lift_height: 0.3
+      robot_pose: {pos: [-1.10, -0.65, 0.0], yaw: 3.141592653589793}
+      support_region: {center: [-1.823, -0.414, 0.9150614], half_xy: [0.40, 0.95], yaw: 0.0, body_name: standardcounterheightwidth_50dbbcf9c0f3ed35c015fcf8cb77460d_1_0_0}
+      object_pos: [-1.480, -0.65, 0.9150614]
+      object_quat: [1.0, 0.0, 0.0, 0.0]
+    approach_fridge:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan7:Fridge_7_10
+      robot_pose:
+        pos: [-0.22662869985073247, 0.010120779382334355, 0.0]
+        yaw: 1.494124535355927
+      target_xy: [-0.07044772817187789, 2.0431346013200633]
+      target_tolerance: [1.0, 1.0]
+    approach_dishwasher:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan7:dishwasher_FP7
+      robot_pose:
+        pos: [2.730618, -1.569671, 0.0]
+        yaw: 3.1126265990694595
+      target_xy: [-1.020, -1.461]
+      target_tolerance: [0.7, 0.7]
+    approach_oven:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan7:oven_FP7_0
+      robot_pose:
+        pos: [2.730618, -1.569671, 0.0]
+        yaw: -3.138836420668877
+      target_xy: [1.160, -1.574]
+      target_tolerance: [0.7, 0.7]
+    approach_table:
+      target_fixture: FloorPlan7:StandardCounterHeightWidth_d610e478_57
+      support_body: standardcounterheightwidth_50dbbcf9c0f3ed35c015fcf8cb77460d_1_0_0
+      robot_pose: {pos: [-0.226629, 0.210121, 0.0], yaw: -1.702486}
+      approach_distance: 0.35
+      minimum_start_distance: 0.85
+    approach_table_and_lift_apple:
+      hold_seconds: 1.0
+      lift_height: 0.3
+      target_fixture: FloorPlan7:StandardCounterHeightWidth_d610e478_57
+      support_body: standardcounterheightwidth_50dbbcf9c0f3ed35c015fcf8cb77460d_1_0_0
+      robot_pose: {pos: [-0.226629, 0.210121, 0.0], yaw: -1.702486}
+      approach_distance: 0.35
+      minimum_start_distance: 0.85
+      support_region: {center: [-1.823, -0.414, 0.9150614], half_xy: [0.40, 0.95], yaw: 0.0, body_name: standardcounterheightwidth_50dbbcf9c0f3ed35c015fcf8cb77460d_1_0_0}
+      object_pos: [-1.480, -0.650, 0.9150614]
+      object_quat: [1.0, 0.0, 0.0, 0.0]
+    approach_table_and_lift_salt_shaker:
+      hold_seconds: 1.0
+      lift_height: 0.3
+      target_fixture: FloorPlan7:StandardCounterHeightWidth_d610e478_57
+      support_body: standardcounterheightwidth_50dbbcf9c0f3ed35c015fcf8cb77460d_1_0_0
+      robot_pose: {pos: [-0.226629, 0.210121, 0.0], yaw: -1.702486}
+      approach_distance: 0.35
+      minimum_start_distance: 0.85
+      support_region: {center: [-1.823, -0.414, 0.9150614], half_xy: [0.40, 0.95], yaw: 0.0, body_name: standardcounterheightwidth_50dbbcf9c0f3ed35c015fcf8cb77460d_1_0_0}
+      object_pos: [-1.480, -0.650, 0.9150614]
+      object_quat: [1.0, 0.0, 0.0, 0.0]
+    approach_table_and_lift_bowl:
+      hold_seconds: 1.0
+      lift_height: 0.3
+      target_fixture: FloorPlan7:StandardCounterHeightWidth_d610e478_57
+      support_body: standardcounterheightwidth_50dbbcf9c0f3ed35c015fcf8cb77460d_1_0_0
+      robot_pose: {pos: [-0.226629, 0.210121, 0.0], yaw: -1.702486}
+      approach_distance: 0.35
+      minimum_start_distance: 0.85
+      support_region: {center: [-1.823, -0.414, 0.9150614], half_xy: [0.40, 0.95], yaw: 0.0, body_name: standardcounterheightwidth_50dbbcf9c0f3ed35c015fcf8cb77460d_1_0_0}
+      object_pos: [-1.480, -0.650, 0.9150614]
+      object_quat: [1.0, 0.0, 0.0, 0.0]
+    approach_table_and_put_apple_on_plate:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan7:StandardCounterHeightWidth_d610e478_57
+      support_body: standardcounterheightwidth_50dbbcf9c0f3ed35c015fcf8cb77460d_1_0_0
+      robot_pose: {pos: [-0.226629, 0.210121, 0.0], yaw: -1.702486}
+      approach_distance: 0.35
+      minimum_start_distance: 0.85
+      plate_pos: [-1.480, -0.100, 0.9150614]
+      source_pos: [-1.475, 0.180, 0.9150614]
+    approach_table_and_put_bread_on_plate:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan7:StandardCounterHeightWidth_d610e478_57
+      support_body: standardcounterheightwidth_50dbbcf9c0f3ed35c015fcf8cb77460d_1_0_0
+      robot_pose: {pos: [-0.226629, 0.210121, 0.0], yaw: -1.702486}
+      approach_distance: 0.35
+      minimum_start_distance: 0.85
+      plate_pos: [-1.480, -0.100, 0.9150614]
+      source_pos: [-1.475, 0.180, 0.9150614]
+    approach_table_and_put_cheese_on_plate:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan7:StandardCounterHeightWidth_d610e478_57
+      support_body: standardcounterheightwidth_50dbbcf9c0f3ed35c015fcf8cb77460d_1_0_0
+      robot_pose: {pos: [-0.226629, 0.210121, 0.0], yaw: -1.702486}
+      approach_distance: 0.35
+      minimum_start_distance: 0.85
+      plate_pos: [-1.480, -0.100, 0.9150614]
+      source_pos: [-1.475, 0.180, 0.9150614]
+    approach_table_and_put_mug_on_plate:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan7:StandardCounterHeightWidth_d610e478_57
+      support_body: standardcounterheightwidth_50dbbcf9c0f3ed35c015fcf8cb77460d_1_0_0
+      robot_pose: {pos: [-0.226629, 0.210121, 0.0], yaw: -1.702486}
+      approach_distance: 0.35
+      minimum_start_distance: 0.85
+      plate_pos: [-1.480, -0.100, 0.9150614]
+      source_pos: [-1.475, 0.180, 0.9150614]
+    approach_open_fridge:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan7:Fridge_7_10
+      target_joint: refrigerator_052445ca39904e584e5753b093be412d_1_6_0_Mesh57e9bd7c1_3
+      robot_pose:
+        pos: [-0.7, 1.206594553757814, 0.0]
+        yaw: 1.494124535355927
+      init_open_fraction: 0.0
+      success_open_fraction: 0.4
+      success_distance: 0.75
+    approach_open_oven:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan7:oven_FP7_0
+      target_joint: oven_750184c2038558656be458a1a39f8772_1_4_0_doorde4b52231_1
+      robot_pose:
+        pos: [1.1, -0.675, 0.0]
+        yaw: -1.5707963267948966
+      init_open_fraction: 0.0
+      success_open_fraction: 0.4
+      success_distance: 0.75
+    drawer_pnp:
+      hold_seconds: 1.0
+      show_target_region: false
+      target_fixture: FloorPlan7:Drawer_7b1e3e99_20
+      target_joint: drawer_246f9a99792964d8780e19a551c61012_1_1_0_joint_0
+      robot_pose:
+        pos: [-1.0879042162645591, -0.82, 0.0]
+        yaw: -3.141592653589793
+      init_open_fraction: 0.2
+      success_open_fraction: 0.8
+      success_close_fraction: 0.20
+      drawer_receptacle_region: FloorPlan7:Drawer_7b1e3e99_20:region:receptacle:0
+      apple_pos: [-1.44, -0.72, 0.9150614]
+    open_drawer_take_apple:
+      hold_seconds: 1.0
+      show_target_region: false
+      target_fixture: FloorPlan7:Drawer_7b1e3e99_20
+      target_joint: drawer_246f9a99792964d8780e19a551c61012_1_1_0_joint_0
+      robot_pose:
+        pos: [-1.0879042162645591, -0.82, 0.0]
+        yaw: -3.141592653589793
+      init_open_fraction: 0.2
+      success_open_fraction: 0.8
+      drawer_receptacle_region: FloorPlan7:Drawer_7b1e3e99_20:region:receptacle:0
+      apple_pos: [-1.6493, -0.9309, 0.720]
+      target_region:
+        center: [-1.70, -0.65, 0.9150614]
+        half_xy: [0.33, 0.50]
+        z_tolerance: 0.04
+        yaw: 0.0
+    cabinet_open_close_cycle:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [-0.2996741877618765, -0.6790505925489935, 0.0]
+        yaw: -1.6621233860495348
+      target_fixture: FloorPlan7:Cabinet_acb62db2_15
+      target_joint: cabinet_43310d5deaba168dc21fe5b0e2c4f5ec_1_1_0_joint_0
+      success_open_fraction: 0.8
+      success_close_fraction: 0.2
+      init_open_fraction: 0.2
+    cabinet_close_open_cycle:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [-0.2996741877618765, -0.6790505925489935, 0.0]
+        yaw: -1.6621233860495348
+      target_fixture: FloorPlan7:Cabinet_acb62db2_15
+      target_joint: cabinet_43310d5deaba168dc21fe5b0e2c4f5ec_1_1_0_joint_0
+      success_open_fraction: 0.8
+      success_close_fraction: 0.2
+      init_open_fraction: 0.8
+    apple_cabinet_pnp:
+      hold_seconds: 1.0
+      show_target_region: false
+      target_fixture: FloorPlan7:Cabinet_b8962d2f_14
+      target_joint: cabinet_e582d1edc53deac8e90d312c8e514aad_1_1_0_joint_0
+      robot_pose:
+        pos: [-1.05, -0.50, 0.0]
+        yaw: -2.1
+      init_open_fraction: 0.6
+      success_close_fraction: 0.08
+      cabinet_receptacle_region: FloorPlan7:StandardCounterHeightWidth_d610e478_57:region:receptacle:6
+      apple_pos: [-1.44, -0.60, 0.9150614]
+    apple_on_plate:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [-1.15, 0.0, 0.0]
+        yaw: 3.141592653589793
+      plate_pos: [-1.480, -0.10, 0.9150614]
+      apple_pos: [-1.475, 0.18, 0.9150614]
+    apple_banana_plate_swap:
+      hold_seconds: 1.0
+      show_target_region: false
+      robot_pose:
+        pos: [-1.15, 0.0, 0.0]
+        yaw: 3.141592653589793
+      support_region:
+        center: [-1.823, -0.414, 0.9150614]
+        half_xy: [0.4, 0.95]
+        z_tolerance: 0.10
+        yaw: 0.0
+        body_name: standardcounterheightwidth_50dbbcf9c0f3ed35c015fcf8cb77460d_1_0_0
+      plate_pos: [-1.480, -0.10, 0.9150614]
+      banana_pos: [-1.475, 0.18, 0.9150614]
+    cup_stack:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [-1.15, 0.0, 0.0]
+        yaw: 3.141592653589793
+      cup_1_pos: [-1.50, -0.2074484321294343, 0.9150614]
+      cup_2_pos: [-1.50, 0.2, 0.9150614]
+    bowl_to_sink:
+      hold_seconds: 1.0
+      show_target_region: false
+      robot_pose:
+        pos: [-0.11958410016657128, -0.9419121669280107, 0.0]
+        yaw: -1.5367381904100628
+      object_pos: [0.156, -1.239, 0.95]
+      sink_fixture: FloorPlan7:Sink_53169595_38
+      sink_region:
+        center: [-0.19815070894008782, -1.5709866140794446, 0.8030299760038857]
+        half_size: [0.2385953041088275, 0.3123021244048565, 0.19931917791574577]
+        yaw: -1.5367381904100628
+    pack_produce_into_box:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [-1.1684, -0.265, 0.0]
+        yaw: 3.141592653589793
+      support_region:
+        center: [-1.8684, -0.265, 0.9]
+        half_xy: [0.4, 0.9]
+        yaw: 0.0
+        body_name: standardcounterheightwidth_50dbbcf9c0f3ed35c015fcf8cb77460d_1_1_0
+      box_pos: [-1.5546554, -0.265, 0.91]
+      box_yaw: 0.0
+      apple_pos: [-1.5546554, -0.0, 0.91]
+      banana_pos: [-1.5546554, -0.5552583, 0.91]
+    apple_into_box:
+      hold_seconds: 1.0
+      robot_pose: {pos: [-1.1684, -0.265, 0.0], yaw: 3.141592653589793}
+      support_region: {center: [-1.8684, -0.265, 0.9], half_xy: [0.4, 0.9], yaw: 0.0, body_name: standardcounterheightwidth_50dbbcf9c0f3ed35c015fcf8cb77460d_1_1_0}
+      box_pos: [-1.5546554, -0.265, 0.91]
+      box_yaw: 0.0
+      object_pos: [-1.5546554, -0.0, 0.91]
+    cup_into_box:
+      hold_seconds: 1.0
+      robot_pose: {pos: [-1.1684, -0.265, 0.0], yaw: 3.141592653589793}
+      support_region: {center: [-1.8684, -0.265, 0.9], half_xy: [0.4, 0.9], yaw: 0.0, body_name: standardcounterheightwidth_50dbbcf9c0f3ed35c015fcf8cb77460d_1_1_0}
+      box_pos: [-1.5546554, -0.265, 0.91]
+      box_yaw: 0.0
+      object_pos: [-1.5546554, -0.0, 0.91]
+    statue_into_box:
+      hold_seconds: 1.0
+      robot_pose: {pos: [-1.1684, -0.265, 0.0], yaw: 3.141592653589793}
+      support_region: {center: [-1.8684, -0.265, 0.9], half_xy: [0.4, 0.9], yaw: 0.0, body_name: standardcounterheightwidth_50dbbcf9c0f3ed35c015fcf8cb77460d_1_1_0}
+      box_pos: [-1.5546554, -0.265, 0.91]
+      box_yaw: 0.0
+      object_pos: [-1.5546554, -0.0, 0.91]
+      object_quat: [0.7071067811865476, 0.7071067811865475, 0.0, 0.0]
+    banana_basket_to_table:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [-1.1684, -0.265, 0.0]
+        yaw: 3.141592653589793
+      target_region:
+        center: [-1.224, -1.490, 0.89]
+        half_xy: [0.50, 0.25]
+        yaw: 0.0
+        body_name: standardcounterheightwidth_50dbbcf9c0f3ed35c015fcf8cb77460d_1_1_0
+      basket_pos: [-1.5774, -0.265, 0.91]
+      banana_pos: [-1.5774, -0.265, 0.92]
+      show_target_region: false
+    coffee_drink_to_trash:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [-1.151, 0.65, 0.0]
+        yaw: 3.141592653589793
+      source_pos: [-1.503, 0.60, 0.927]
+      trash_fixture: FloorPlan7:bin_7_8
+      trash_region: FloorPlan7:bin_7_8:region:receptacle:0
+      trash_body_pos: [-1.617, 0.898, 0.28]
+    take_statue_from_cabinet:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [-1.04436869, -0.45833084, 0.0]
+        yaw: -1.5707963267948966
+      target_fixture: FloorPlan7:Cabinet_b8962d2f_14
+      target_joint: cabinet_e582d1edc53deac8e90d312c8e514aad_1_1_0_joint_0
+      init_open_fraction: 0.60
+      success_close_fraction: 0.20
+      cabinet_receptacle_region: FloorPlan7:StandardCounterHeightWidth_d610e478_57:region:receptacle:6
+      statue_pos: [-1.64966, -0.9165, 0.075578]
+      statue_quat: [0.7071067811865476, 0.7071067811865475, 0.0, 0.0]
+      table_fixture: FloorPlan7:StandardCounterHeightWidth_d610e478_57
+      success_region:
+        center: [-1.70, -0.65, 0.96]
+        half_size: [0.33, 0.50, 0.06]
+        yaw: 0.0
+    approach_cabinet_and_store_statue:
+      hold_seconds: 1.0
+      robot_pose: {pos: [-0.226629, 0.210121, 0.0], yaw: -2.399025}
+      navigation_distance: 0.35
+      target_fixture: FloorPlan7:Cabinet_b8962d2f_14
+      target_joint: cabinet_e582d1edc53deac8e90d312c8e514aad_1_1_0_joint_0
+      init_open_fraction: 0.60
+      success_close_fraction: 0.08
+      cabinet_receptacle_region: FloorPlan7:StandardCounterHeightWidth_d610e478_57:region:receptacle:6
+      statue_pos: [-1.44, -0.60, 0.9150614]
+      statue_quat: [0.7071067811865476, 0.7071067811865475, 0.0, 0.0]
+    open_fridge:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan7:Fridge_7_10
+      target_joint: refrigerator_052445ca39904e584e5753b093be412d_1_6_0_Mesh57e9bd7c1_3
+      robot_pose:
+        pos: [-0.7038298346757674, 1.156741445867169, 0.0]
+        yaw: 1.494124535355927
+      init_open_fraction: 0.10
+      success_open_fraction: 0.50
+    close_fridge:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan7:Fridge_7_10
+      target_joint: refrigerator_052445ca39904e584e5753b093be412d_1_6_0_Mesh57e9bd7c1_3
+      robot_pose:
+        pos: [-0.88, 1.43, 0.0]
+        yaw: 0.75
+      init_open_fraction: 0.30
+      success_close_fraction: 0.10
+    open_cabinet:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan7:Cabinet_acb62db2_15
+      target_joint: cabinet_43310d5deaba168dc21fe5b0e2c4f5ec_1_1_0_joint_0
+      robot_pose:
+        pos: [-0.2996741877618765, -0.6790505925489935, 0.0]
+        yaw: -1.6621233860495348
+      init_open_fraction: 0.10
+      success_open_fraction: 0.50
+    close_cabinet:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan7:Cabinet_acb62db2_15
+      target_joint: cabinet_43310d5deaba168dc21fe5b0e2c4f5ec_1_1_0_joint_0
+      robot_pose:
+        pos: [-0.2996741877618765, -0.6790505925489935, 0.0]
+        yaw: -1.6621233860495348
+      init_open_fraction: 0.50
+      success_close_fraction: 0.10
+    open_drawer:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan7:Drawer_7b1e3e99_20
+      target_joint: drawer_246f9a99792964d8780e19a551c61012_1_1_0_joint_0
+      robot_pose:
+        pos: [-1.0879042162645591, -0.82, 0.0]
+        yaw: -3.141592653589793
+      init_open_fraction: 0.20
+      success_open_fraction: 0.80
+    close_drawer:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan7:Drawer_7b1e3e99_20
+      target_joint: drawer_246f9a99792964d8780e19a551c61012_1_1_0_joint_0
+      robot_pose:
+        pos: [-0.9879042162645591, -0.82, 0.0]
+        yaw: -3.141592653589793
+      init_open_fraction: 0.80
+      success_close_fraction: 0.20
+    open_oven:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan7:oven_FP7_0
+      target_joint: oven_750184c2038558656be458a1a39f8772_1_4_0_doorde4b52231_1
+      robot_pose:
+        pos: [1.1, -0.675, 0.0]
+        yaw: -1.5707963267948966
+      init_open_fraction: 0.10
+      success_open_fraction: 0.50
+    close_oven:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan7:oven_FP7_0
+      target_joint: oven_750184c2038558656be458a1a39f8772_1_4_0_doorde4b52231_1
+      robot_pose:
+        pos: [1.1, -0.6247039702235228, 0.0]
+        yaw: -1.5707963267948966
+      init_open_fraction: 0.20
+      success_close_fraction: 0.10
+    oven_then_fridge:
+      stages:
+        - FloorPlan7:oven_FP7_0
+        - FloorPlan7:Fridge_7_10
+      robot_pose:
+        pos: [2.730618, -1.569671, 0.0]
+        yaw: 3.141593
+    fridge_then_oven:
+      stages:
+        - FloorPlan7:Fridge_7_10
+        - FloorPlan7:oven_FP7_0
+      robot_pose:
+        pos: [2.730618, -1.569671, 0.0]
+        yaw: 3.141593
+    fridge_then_dishwasher:
+      stages:
+        - FloorPlan7:Fridge_7_10
+        - FloorPlan7:dishwasher_FP7
+      robot_pose:
+        pos: [2.730618, -1.569671, 0.0]
+        yaw: 3.141593
+    dishwasher_then_fridge:
+      stages:
+        - FloorPlan7:dishwasher_FP7
+        - FloorPlan7:Fridge_7_10
+      robot_pose:
+        pos: [2.730618, -1.569671, 0.0]
+        yaw: 3.141593
+    oven_then_dishwasher:
+      stages:
+        - FloorPlan7:oven_FP7_0
+        - FloorPlan7:dishwasher_FP7
+      robot_pose:
+        pos: [2.730618, -1.569671, 0.0]
+        yaw: 3.141593
+    dishwasher_then_oven:
+      stages:
+        - FloorPlan7:dishwasher_FP7
+        - FloorPlan7:oven_FP7_0
+      robot_pose:
+        pos: [2.730618, -1.569671, 0.0]
+        yaw: 3.141593
+
+    approach_drawer_and_open_close:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan7:Drawer_7b1e3e99_20
+      target_joint: drawer_246f9a99792964d8780e19a551c61012_1_1_0_joint_0
+      robot_pose:
+        pos: [-0.226629, 0.210121, 0.0]
+        yaw: -2.457895
+      init_open_fraction: 0.2
+      success_open_fraction: 0.8
+      navigation_goal_pose:
+        pos: [-1.0879042162645591, -0.82, 0.0]
+        yaw: -3.141592653589793
+      navigation_xy_tolerance: 0.15
+      navigation_yaw_tolerance: 0.35
+      success_close_fraction: 0.2
+      open_hold_seconds: 1.0
+    approach_cabinet_and_open_close:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan7:Cabinet_acb62db2_15
+      target_joint: cabinet_43310d5deaba168dc21fe5b0e2c4f5ec_1_1_0_joint_0
+      robot_pose:
+        pos: [-0.226629, 0.210121, 0.0]
+        yaw: -1.656339
+      init_open_fraction: 0.1
+      success_open_fraction: 0.5
+      navigation_goal_pose:
+        pos: [-0.2996741877618765, -0.6790505925489935, 0.0]
+        yaw: -1.6621233860495348
+      navigation_xy_tolerance: 0.15
+      navigation_yaw_tolerance: 0.35
+      success_close_fraction: 0.1
+      open_hold_seconds: 1.0
+    pick_apple_and_turn_to_trash:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [-1.15, 0.0, 0.0]
+        yaw: 3.141592653589793
+      apple_pos: [-1.475, 0.18, 0.9150614]
+      source_fixture: FloorPlan7:StandardCounterHeightWidth_d610e478_57
+      trash_fixture: FloorPlan7:bin_7_8
+      trash_region: FloorPlan7:bin_7_8:region:receptacle:0
+      trash_body_pos: [-0.54897, 0.00105, 0.28]
+    open_drawer_and_turn_apple_to_trash:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [-1.0879042162645591, -0.82, 0.0]
+        yaw: -3.141592653589793
+      apple_pos: [-1.6493, -0.9309, 0.72]
+      target_fixture: FloorPlan7:Drawer_7b1e3e99_20
+      target_joint: drawer_246f9a99792964d8780e19a551c61012_1_1_0_joint_0
+      init_open_fraction: 0.2
+      success_open_fraction: 0.8
+      source_fixture: FloorPlan7:Drawer_7b1e3e99_20
+      trash_fixture: FloorPlan7:bin_7_8
+      trash_region: FloorPlan7:bin_7_8:region:receptacle:0
+      trash_body_pos: [-0.486874, -0.81895, 0.28]
+  FloorPlan13:
+    canned_drink_into_pan:
+      robot_pose: {pos: [-2.12, 2.55, 0.05], yaw: -1.5707963267948966}
+      support_region:
+        center: [-1.95, 2.02, 0.94]
+        half_xy: [0.20, 0.07]
+        yaw: 0.0
+        body_name: cube_28bb627bc9e066517f3364bc0f231df9_1_1_0
+      can_pos: [-1.95, 2.02, 1.00]
+      can_quat: [1.0, 0.0, 0.0, 0.0]
+      hold_seconds: 1.0
+      containment_tolerance: 0.015
+    open_close_low_microwave:
+      hold_seconds: 1.0
+      robot_pose: {pos: [-1.95, 3.20, 0.0], yaw: 3.141592653589793}
+      table_center: [-2.595, 3.20, 0.45]
+      table_half_xy: [0.25, 0.43]
+      target_fixture: FloorPlan13:Microwave_13_8
+      target_joint: microwaveoven_d685e2c81c1a4e1b74cb482c247f5f17_1_2_0_joint_1
+      microwave_body: microwaveoven_d685e2c81c1a4e1b74cb482c247f5f17_1_0_0
+      microwave_pos: [-2.595, 3.20, 0.63154]
+      microwave_quat: [0.5, 0.5, 0.5, 0.5]
+      microwave_receptacle_site: microwaveoven_d685e2c81c1a4e1b74cb482c247f5f17_1_1_0_bodymeshd286d122Receptacle0_0
+      init_open_fraction: 0.0
+      success_open_fraction: 0.4
+      success_close_fraction: 0.1
+    put_apple_in_low_microwave:
+      hold_seconds: 1.0
+      robot_pose: {pos: [-1.95, 3.20, 0.0], yaw: 3.141592653589793}
+      table_center: [-2.595, 3.20, 0.45]
+      table_half_xy: [0.25, 0.43]
+      target_fixture: FloorPlan13:Microwave_13_8
+      target_joint: microwaveoven_d685e2c81c1a4e1b74cb482c247f5f17_1_2_0_joint_1
+      microwave_body: microwaveoven_d685e2c81c1a4e1b74cb482c247f5f17_1_0_0
+      microwave_pos: [-2.595, 3.20, 0.63154]
+      microwave_quat: [0.5, 0.5, 0.5, 0.5]
+      microwave_receptacle_site: microwaveoven_d685e2c81c1a4e1b74cb482c247f5f17_1_1_0_bodymeshd286d122Receptacle0_0
+      init_open_fraction: 0.0
+      success_open_fraction: 0.4
+      success_close_fraction: 0.1
+      apple_pos: [-2.550, 3.1435, 0.80544]
+    open_low_microwave_and_lift_apple:
+      hold_seconds: 1.0
+      robot_pose: {pos: [-2.05554, 3.56620, 0.0], yaw: -3.00486}
+      table_center: [-2.595, 3.20, 0.45]
+      table_half_xy: [0.25, 0.43]
+      target_fixture: FloorPlan13:Microwave_13_8
+      target_joint: microwaveoven_d685e2c81c1a4e1b74cb482c247f5f17_1_2_0_joint_1
+      microwave_body: microwaveoven_d685e2c81c1a4e1b74cb482c247f5f17_1_0_0
+      microwave_pos: [-2.595, 3.20, 0.63154]
+      microwave_quat: [0.5, 0.5, 0.5, 0.5]
+      microwave_receptacle_site: microwaveoven_d685e2c81c1a4e1b74cb482c247f5f17_1_1_0_bodymeshd286d122Receptacle0_0
+      init_open_fraction: 0.2
+      apple_inside_xy: [-2.56019, 3.14347]
+      success_open_fraction: 0.4
+      success_close_fraction: 0.1
+    take_apple_from_open_low_microwave_to_top:
+      hold_seconds: 1.0
+      robot_pose: {pos: [-2.15904, 3.19529, 0.0], yaw: 3.12116}
+      table_center: [-2.595, 3.20, 0.45]
+      table_half_xy: [0.25, 0.43]
+      target_fixture: FloorPlan13:Microwave_13_8
+      target_joint: microwaveoven_d685e2c81c1a4e1b74cb482c247f5f17_1_2_0_joint_1
+      microwave_body: microwaveoven_d685e2c81c1a4e1b74cb482c247f5f17_1_0_0
+      microwave_pos: [-2.595, 3.20, 0.63154]
+      microwave_quat: [0.5, 0.5, 0.5, 0.5]
+      microwave_receptacle_site: microwaveoven_d685e2c81c1a4e1b74cb482c247f5f17_1_1_0_bodymeshd286d122Receptacle0_0
+      init_open_fraction: 1.0
+      apple_inside_xy: [-2.56019, 3.14347]
+      success_open_fraction: 0.4
+      success_close_fraction: 0.1
+      apple_top_pos: [-2.550, 3.1435, 0.80544]
+    close_then_open_low_microwave:
+      hold_seconds: 1.0
+      robot_pose: {pos: [-1.75, 3.20, 0.0], yaw: 3.141592653589793}
+      table_center: [-2.595, 3.20, 0.45]
+      table_half_xy: [0.25, 0.43]
+      target_fixture: FloorPlan13:Microwave_13_8
+      target_joint: microwaveoven_d685e2c81c1a4e1b74cb482c247f5f17_1_2_0_joint_1
+      microwave_body: microwaveoven_d685e2c81c1a4e1b74cb482c247f5f17_1_0_0
+      microwave_pos: [-2.595, 3.20, 0.63154]
+      microwave_quat: [0.5, 0.5, 0.5, 0.5]
+      microwave_receptacle_site: microwaveoven_d685e2c81c1a4e1b74cb482c247f5f17_1_1_0_bodymeshd286d122Receptacle0_0
+      init_open_fraction: 0.8
+      success_open_fraction: 0.4
+      success_close_fraction: 0.1
+    open_low_microwave_and_put_apple_inside:
+      hold_seconds: 1.0
+      robot_pose: {pos: [-1.95, 3.20, 0.0], yaw: 3.141592653589793}
+      table_center: [-2.595, 3.20, 0.45]
+      table_half_xy: [0.25, 0.43]
+      target_fixture: FloorPlan13:Microwave_13_8
+      target_joint: microwaveoven_d685e2c81c1a4e1b74cb482c247f5f17_1_2_0_joint_1
+      microwave_body: microwaveoven_d685e2c81c1a4e1b74cb482c247f5f17_1_0_0
+      microwave_pos: [-2.595, 3.20, 0.63154]
+      microwave_quat: [0.5, 0.5, 0.5, 0.5]
+      microwave_receptacle_site: microwaveoven_d685e2c81c1a4e1b74cb482c247f5f17_1_1_0_bodymeshd286d122Receptacle0_0
+      init_open_fraction: 0.0
+      success_open_fraction: 0.4
+      success_close_fraction: 0.1
+      apple_top_pos: [-2.550, 3.1435, 0.80544]
+    bend_and_put_apple_on_plate:
+      hold_seconds: 1.0
+      robot_pose: {pos: [-1.95, 3.20, 0.0], yaw: 3.141592653589793}
+      table_center: [-2.595, 3.20, 0.45]
+      table_half_xy: [0.30, 0.45]
+      plate_pos: [-2.445, 3.02, 0.45]
+      apple_pos: [-2.445, 3.38, 0.45]
+    approach_table_and_stand_canned_drink_upright:
+      show_support: false
+      hold_seconds: 1.0
+      upright_tolerance_degrees: 15.0
+      support_z_tolerance: 0.04
+      release_distance: 0.18
+      robot_pose:
+        pos: [-1.95, 3.2, 0.0]
+        yaw: -0.5
+      support_region:
+        center: [-3.5065, 5.2614, 0.91]
+        half_xy: [0.42, 0.25]
+        yaw: 0.0
+        body_name: cube_28bb627bc9e066517f3364bc0f231df9_1_1_0
+      can_pos: [-3.5065, 5.07765, 0.92]
+      can_quat: [0.7071067811865476, 0.0, 0.7071067811865475, 0.0]
+      approach_fixture: FloorPlan13:Cube_690_5eeacdcb_71
+      approach_distance: 0.35
+      minimum_start_distance: 0.5
+    approach_stove_and_put_pan:
+      show_target_region: false
+      hold_seconds: 1.0
+      support_z_tolerance: 0.05
+      pan_base_local_xy: [0.0, 0.001]
+      pan_base_radius: 0.067
+      robot_pose:
+        pos: [-1.95, 3.2, 0.0]
+        yaw: -2.078212
+      target_region:
+        center: [-2.695, 1.86, 0.94]
+        half_xy: [0.42, 0.36]
+        yaw: 0.0
+        body_name: mesh_196af524c522154a556643dc019bfe63_1_0_0
+      pan_pos: [-3.28, 1.95, 0.91]
+      pan_quat: [0.2589738662060803, 0.0, 0.0, 0.9658843288004394]
+      approach_fixture: FloorPlan13:Mesh_911ad0a5_44
+      approach_distance: 0.35
+      minimum_start_distance: 0.5
+    approach_sink_and_put_bowl:
+      hold_seconds: 1.0
+      show_target_region: false
+      robot_pose:
+        pos: [-1.95, 3.2, 0.0]
+        yaw: 3.100323
+      object_pos: [-4.071, 3.715, 0.92]
+      sink_fixture: FloorPlan13:Sink_40b659c7_48
+      sink_region:
+        center: [-4.1827, 3.292194999999999, 0.8120529276280428]
+        half_size: [0.22763800719961025, 0.33510550941299355, 0.08584705768537271]
+        yaw: -2.851982379181337
+      approach_fixture: FloorPlan13:Sink_40b659c7_48
+      approach_distance: 0.35
+      minimum_start_distance: 0.5
+    approach_sink_and_put_cup:
+      hold_seconds: 1.0
+      show_target_region: false
+      robot_pose:
+        pos: [-1.95, 3.2, 0.0]
+        yaw: 3.100323
+      object_pos: [-4.071, 3.715, 0.92]
+      sink_fixture: FloorPlan13:Sink_40b659c7_48
+      sink_region:
+        center: [-4.1827, 3.292194999999999, 0.8120529276280428]
+        half_size: [0.22763800719961025, 0.33510550941299355, 0.08584705768537271]
+        yaw: -2.851982379181337
+      approach_fixture: FloorPlan13:Sink_40b659c7_48
+      approach_distance: 0.35
+      minimum_start_distance: 0.5
+    approach_drawer_and_open:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan13:Drawer_7f6923d8_17
+      target_joint: drawer_008c0c0a7bc73471bf35f5fb3a98c586_1_1_0_joint_0
+      robot_pose:
+        pos: [-1.95, 3.2, 0.0]
+        yaw: 2.141643
+      init_open_fraction: 0.2
+      success_open_fraction: 0.8
+      approach_fixture: FloorPlan13:Drawer_7f6923d8_17
+      approach_distance: 0.35
+      minimum_start_distance: 0.5
+    approach_drawer_and_close:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan13:Drawer_7f6923d8_17
+      target_joint: drawer_008c0c0a7bc73471bf35f5fb3a98c586_1_1_0_joint_0
+      robot_pose:
+        pos: [-1.95, 3.2, 0.0]
+        yaw: 2.141643
+      init_open_fraction: 0.8
+      success_close_fraction: 0.2
+      approach_fixture: FloorPlan13:Drawer_7f6923d8_17
+      approach_distance: 0.35
+      minimum_start_distance: 0.5
+    approach_cabinet_and_open:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan13:Cabinet_e09fba8d_21
+      target_joint: cabinet_8c2ce27a39ca69c241fab69d5f21bd53_1_1_0_joint_0
+      robot_pose:
+        pos: [-1.95, 3.2, 0.0]
+        yaw: 2.172653
+      init_open_fraction: 0.1
+      success_open_fraction: 0.5
+      approach_fixture: FloorPlan13:Cabinet_e09fba8d_21
+      approach_distance: 0.35
+      minimum_start_distance: 0.5
+    approach_cabinet_and_close:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan13:Cabinet_e09fba8d_21
+      target_joint: cabinet_8c2ce27a39ca69c241fab69d5f21bd53_1_1_0_joint_0
+      robot_pose:
+        pos: [-1.95, 3.2, 0.0]
+        yaw: 2.172653
+      init_open_fraction: 0.5
+      success_close_fraction: 0.1
+      approach_fixture: FloorPlan13:Cabinet_e09fba8d_21
+      approach_distance: 0.35
+      minimum_start_distance: 0.5
+    pan_table_to_stove:
+      show_target_region: false
+      hold_seconds: 1.0
+      support_z_tolerance: 0.05
+      pan_base_local_xy: [0.0, 0.001]
+      pan_base_radius: 0.067
+      robot_pose: {pos: [-3.00, 2.52, 0.0], yaw: -1.5707963267948966}
+      target_region:
+        center: [-2.695, 1.86, 0.94]
+        half_xy: [0.42, 0.36]
+        yaw: 0.0
+        body_name: mesh_196af524c522154a556643dc019bfe63_1_0_0
+      pan_pos: [-3.28, 1.95, 0.91]
+      pan_quat: [0.2589738662060803, 0.0, 0.0, 0.9658843288004394]
+    stand_canned_drink_upright:
+      show_support: false
+      hold_seconds: 1.0
+      upright_tolerance_degrees: 15.0
+      support_z_tolerance: 0.04
+      release_distance: 0.18
+      robot_pose:
+        pos: [-3.5065, 4.7114, 0.0]
+        yaw: 1.5707963267948966
+      support_region:
+        center: [-3.5065, 5.2614, 0.91]
+        half_xy: [0.42, 0.25]
+        yaw: 0.0
+        body_name: cube_28bb627bc9e066517f3364bc0f231df9_1_1_0
+      can_pos: [-3.5065, 5.07765, 0.92]
+      can_quat: [0.7071067811865476, 0.0, 0.7071067811865475, 0.0]
+    lift_eggplant:
+      hold_seconds: 1.0
+      lift_height: 0.3
+      robot_pose: {pos: [-3.5065, 4.7114, 0.0], yaw: 1.5707963267948966}
+      support_region: {center: [-3.5065, 5.2614, 0.91], half_xy: [0.42, 0.25], yaw: 0.0, body_name: cube_28bb627bc9e066517f3364bc0f231df9_1_1_0}
+      object_pos: [-3.5065, 5.07765, 0.92]
+      object_quat: [1.0, 0.0, 0.0, 0.0]
+    lift_plate:
+      hold_seconds: 1.0
+      lift_height: 0.3
+      robot_pose: {pos: [-3.5065, 4.7114, 0.0], yaw: 1.5707963267948966}
+      support_region: {center: [-3.5065, 5.2614, 0.91], half_xy: [0.42, 0.25], yaw: 0.0, body_name: cube_28bb627bc9e066517f3364bc0f231df9_1_1_0}
+      object_pos: [-3.5065, 5.07765, 0.92]
+      object_quat: [1.0, 0.0, 0.0, 0.0]
+    lift_salt_shaker:
+      hold_seconds: 1.0
+      lift_height: 0.3
+      robot_pose: {pos: [-3.5065, 4.7114, 0.0], yaw: 1.5707963267948966}
+      support_region: {center: [-3.5065, 5.2614, 0.91], half_xy: [0.42, 0.25], yaw: 0.0, body_name: cube_28bb627bc9e066517f3364bc0f231df9_1_1_0}
+      object_pos: [-3.5065, 5.07765, 0.92]
+      object_quat: [1.0, 0.0, 0.0, 0.0]
+    approach_fridge:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan13:Fridge_13_9
+      robot_pose:
+        pos: [-2.4525105172645785, 3.7947375055150316, 0.0]
+        yaw: -0.086425548944698
+      target_xy: [-0.3778134001580609, 3.6149828936892656]
+      target_tolerance: [1.0, 1.0]
+    approach_dishwasher:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan13:dishwasher_FP13
+      robot_pose:
+        pos: [-2.675, 3.917, 0.0]
+        yaw: 3.085594558762831
+      target_xy: [-4.227, 4.004]
+      target_tolerance: [0.7, 0.7]
+    approach_oven:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan13:oven_FP13_0
+      robot_pose:
+        pos: [-2.675, 3.917, 0.0]
+        yaw: -1.5782072583114306
+      target_xy: [-2.690, 1.893]
+      target_tolerance: [0.7, 0.7]
+    approach_table:
+      target_fixture: FloorPlan13:Cube_690_5eeacdcb_71
+      support_body: cube_28bb627bc9e066517f3364bc0f231df9_1_1_0
+      robot_pose: {pos: [-1.95, 3.20, 0.0], yaw: 2.2}
+      approach_distance: 0.35
+      minimum_start_distance: 0.75
+    approach_table_and_lift_apple:
+      hold_seconds: 1.0
+      lift_height: 0.3
+      target_fixture: FloorPlan13:Cube_690_5eeacdcb_71
+      support_body: cube_28bb627bc9e066517f3364bc0f231df9_1_1_0
+      robot_pose: {pos: [-1.95, 3.20, 0.0], yaw: 2.0}
+      approach_distance: 0.35
+      minimum_start_distance: 0.75
+      support_region: {center: [-3.5065, 5.2614, 0.91], half_xy: [0.42, 0.25], yaw: 0.0, body_name: cube_28bb627bc9e066517f3364bc0f231df9_1_1_0}
+      object_pos: [-3.5065, 5.07765, 0.92]
+      object_quat: [1.0, 0.0, 0.0, 0.0]
+    approach_table_and_lift_salt_shaker:
+      hold_seconds: 1.0
+      lift_height: 0.3
+      target_fixture: FloorPlan13:Cube_690_5eeacdcb_71
+      support_body: cube_28bb627bc9e066517f3364bc0f231df9_1_1_0
+      robot_pose: {pos: [-1.95, 3.20, 0.0], yaw: 2.2}
+      approach_distance: 0.35
+      minimum_start_distance: 0.75
+      support_region: {center: [-3.5065, 5.2614, 0.91], half_xy: [0.42, 0.25], yaw: 0.0, body_name: cube_28bb627bc9e066517f3364bc0f231df9_1_1_0}
+      object_pos: [-3.5065, 5.07765, 0.92]
+      object_quat: [1.0, 0.0, 0.0, 0.0]
+    approach_table_and_lift_bowl:
+      hold_seconds: 1.0
+      lift_height: 0.3
+      target_fixture: FloorPlan13:Cube_690_5eeacdcb_71
+      support_body: cube_28bb627bc9e066517f3364bc0f231df9_1_1_0
+      robot_pose: {pos: [-1.95, 3.20, 0.0], yaw: 2.2}
+      approach_distance: 0.35
+      minimum_start_distance: 0.75
+      support_region: {center: [-3.5065, 5.2614, 0.91], half_xy: [0.42, 0.25], yaw: 0.0, body_name: cube_28bb627bc9e066517f3364bc0f231df9_1_1_0}
+      object_pos: [-3.5065, 5.07765, 0.92]
+      object_quat: [1.0, 0.0, 0.0, 0.0]
+    approach_table_and_put_apple_on_plate:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan13:Cube_690_5eeacdcb_71
+      support_body: cube_28bb627bc9e066517f3364bc0f231df9_1_1_0
+      robot_pose: {pos: [-1.95, 3.20, 0.0], yaw: 2.2}
+      approach_distance: 0.35
+      minimum_start_distance: 0.75
+      plate_pos: [-3.6415, 5.15, 0.92]
+      source_pos: [-3.3715, 5.10, 0.92]
+    approach_table_and_put_bread_on_plate:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan13:Cube_690_5eeacdcb_71
+      support_body: cube_28bb627bc9e066517f3364bc0f231df9_1_1_0
+      robot_pose: {pos: [-1.95, 3.20, 0.0], yaw: 2.2}
+      approach_distance: 0.35
+      minimum_start_distance: 0.75
+      plate_pos: [-3.6415, 5.15, 0.92]
+      source_pos: [-3.3715, 5.10, 0.92]
+    approach_table_and_put_cheese_on_plate:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan13:Cube_690_5eeacdcb_71
+      support_body: cube_28bb627bc9e066517f3364bc0f231df9_1_1_0
+      robot_pose: {pos: [-1.95, 3.20, 0.0], yaw: 2.2}
+      approach_distance: 0.35
+      minimum_start_distance: 0.75
+      plate_pos: [-3.6415, 5.15, 0.92]
+      source_pos: [-3.3715, 5.10, 0.92]
+    approach_table_and_put_mug_on_plate:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan13:Cube_690_5eeacdcb_71
+      support_body: cube_28bb627bc9e066517f3364bc0f231df9_1_1_0
+      robot_pose: {pos: [-1.95, 3.20, 0.0], yaw: 2.2}
+      approach_distance: 0.35
+      minimum_start_distance: 0.75
+      plate_pos: [-3.6415, 5.15, 0.92]
+      source_pos: [-3.3715, 5.10, 0.92]
+    approach_open_fridge:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan13:Fridge_13_9
+      target_joint: refrigerator_14a808d19515703c7e4cc20a5049143a_1_6_0_Mesh93c90bee1_3
+      robot_pose:
+        pos: [-1.5060562627654583, 3.712735407124108, 0.0]
+        yaw: -0.08642554894469812
+      init_open_fraction: 0.0
+      success_open_fraction: 0.4
+      success_distance: 0.75
+    approach_open_oven:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan13:oven_FP13_0
+      target_joint: oven_25827471c7fc4d1b055b68eb7fa4b621_1_4_0_door1_1
+      robot_pose:
+        pos: [-2.584407571813643, 5.8902121742551325, 0.0]
+        yaw: -1.6783840874563207
+      init_open_fraction: 0.0
+      success_open_fraction: 0.4
+      success_distance: 0.75
+    drawer_pnp:
+      hold_seconds: 1.0
+      show_target_region: false
+      target_fixture: FloorPlan13:Drawer_7f6923d8_17
+      target_joint: drawer_008c0c0a7bc73471bf35f5fb3a98c586_1_1_0_joint_0
+      robot_pose:
+        pos: [-2.7274303857646777, 4.95, 0.0]
+        yaw: 3.00
+      init_open_fraction: 0.2
+      success_open_fraction: 0.8
+      success_close_fraction: 0.20
+      drawer_receptacle_region: FloorPlan13:Drawer_7f6923d8_17:region:receptacle:0
+      apple_pos: [-3.10, 5.15, 0.92]
+    canned_drink_drawer_cycle:
+      hold_seconds: 1.0
+      show_target_region: false
+      target_fixture: FloorPlan13:Drawer_7f6923d8_17
+      target_joint: drawer_008c0c0a7bc73471bf35f5fb3a98c586_1_1_0_joint_0
+      robot_pose:
+        pos: [-3.1874303857646777, 4.65, 0.0]
+        yaw: 1.5707963267948966
+      init_open_fraction: 0.0
+      success_open_fraction: 0.80
+      success_close_fraction: 0.20
+      drawer_receptacle_region: FloorPlan13:Drawer_7f6923d8_17:region:receptacle:0
+      support_region:
+        center: [-3.5065, 5.2614, 0.91]
+        half_xy: [0.42, 0.25]
+        yaw: 0.0
+        body_name: cube_28bb627bc9e066517f3364bc0f231df9_1_1_0
+      can_pos: [-3.35, 5.15, 0.92]
+      can_quat: [1.0, 0.0, 0.0, 0.0]
+    open_drawer_take_apple:
+      hold_seconds: 1.0
+      show_target_region: false
+      target_fixture: FloorPlan13:Drawer_7f6923d8_17
+      target_joint: drawer_008c0c0a7bc73471bf35f5fb3a98c586_1_1_0_joint_0
+      robot_pose:
+        pos: [-3.19418, 4.656894668758918, 0.0]
+        yaw: 1.5707963267948966
+      init_open_fraction: 0.2
+      success_open_fraction: 0.8
+      drawer_receptacle_region: FloorPlan13:Drawer_7f6923d8_17:region:receptacle:0
+      apple_pos: [-3.19418, 5.1626, 0.745]
+      target_region:
+        center: [-3.5065, 5.25, 0.92]
+        half_xy: [0.50, 0.30]
+        z_tolerance: 0.04
+        yaw: 0.0
+    apple_cabinet_pnp:
+      hold_seconds: 1.0
+      show_target_region: false
+      target_fixture: FloorPlan13:Cabinet_e09fba8d_21
+      target_joint: cabinet_8c2ce27a39ca69c241fab69d5f21bd53_1_1_0_joint_0
+      robot_pose:
+        pos: [-3.466, 4.657, 0.0]
+        yaw: 1.0
+      init_open_fraction: 1.0
+      success_close_fraction: 0.08
+      cabinet_receptacle_region: FloorPlan13:Cube_668_0baddea2_54:region:receptacle:1
+      apple_pos: [-3.296, 5.122, 1.002]
+    apple_on_plate:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [-3.5065, 4.6614, 0.0]
+        yaw: 1.5707963267948966
+      plate_pos: [-3.6415, 5.15, 0.92]
+      apple_pos: [-3.3715, 5.10, 0.92]
+    apple_banana_plate_swap:
+      hold_seconds: 1.0
+      show_target_region: false
+      robot_pose:
+        pos: [-3.5065, 4.6614, 0.0]
+        yaw: 1.5707963267948966
+      support_region:
+        center: [-3.5715, 5.15, 0.91]
+        half_xy: [0.45, 0.12]
+        z_tolerance: 0.10
+        yaw: 0.0
+        body_name: cube_28bb627bc9e066517f3364bc0f231df9_1_1_0
+      plate_pos: [-3.6415, 5.15, 0.92]
+      banana_pos: [-3.3715, 5.15, 0.92]
+    cup_stack:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [-3.5065, 4.6614, 0.0]
+        yaw: 1.5707963267948966
+      cup_1_pos: [-3.5815, 5.07765, 0.92]
+      cup_2_pos: [-3.4315, 5.07765, 0.92]
+    bowl_to_sink:
+      hold_seconds: 1.0
+      show_target_region: false
+      robot_pose:
+        pos: [-3.55, 3.585, 0.0]
+        yaw: -3.141592653589793
+      object_pos: [-4.071, 3.715, 0.920]
+      sink_fixture: FloorPlan13:Sink_40b659c7_48
+      sink_region:
+        center: [-4.1827, 3.292194999999999, 0.8120529276280428]
+        half_size: [0.22763800719961025, 0.33510550941299355, 0.08584705768537271]
+        yaw: -2.851982379181337
+    pack_produce_into_box:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [-3.5065, 4.7614, 0.0]
+        yaw: 1.5707963267948966
+      support_region:
+        center: [-3.5065, 5.3114, 0.91]
+        half_xy: [0.42, 0.25]
+        yaw: 0.0
+        body_name: cube_28bb627bc9e066517f3364bc0f231df9_1_1_0
+      box_pos: [-3.5065, 5.1366906, 0.92]
+      box_yaw: 0.0
+      apple_pos: [-3.2677543, 5.1366906, 0.92]
+      banana_pos: [-3.7998220, 5.1366906, 0.92]
+    apple_into_box:
+      hold_seconds: 1.0
+      robot_pose: {pos: [-3.5065, 4.7614, 0.0], yaw: 1.5707963267948966}
+      support_region: {center: [-3.5065, 5.3114, 0.91], half_xy: [0.42, 0.25], yaw: 0.0, body_name: cube_28bb627bc9e066517f3364bc0f231df9_1_1_0}
+      box_pos: [-3.5065, 5.1366906, 0.92]
+      box_yaw: 0.0
+      object_pos: [-3.2677543, 5.1366906, 0.92]
+    cup_into_box:
+      hold_seconds: 1.0
+      robot_pose: {pos: [-3.5065, 4.7614, 0.0], yaw: 1.5707963267948966}
+      support_region: {center: [-3.5065, 5.3114, 0.91], half_xy: [0.42, 0.25], yaw: 0.0, body_name: cube_28bb627bc9e066517f3364bc0f231df9_1_1_0}
+      box_pos: [-3.5065, 5.1366906, 0.92]
+      box_yaw: 0.0
+      object_pos: [-3.2677543, 5.1366906, 0.92]
+    statue_into_box:
+      hold_seconds: 1.0
+      robot_pose: {pos: [-3.5065, 4.7614, 0.0], yaw: 1.5707963267948966}
+      support_region: {center: [-3.5065, 5.3114, 0.91], half_xy: [0.42, 0.25], yaw: 0.0, body_name: cube_28bb627bc9e066517f3364bc0f231df9_1_1_0}
+      box_pos: [-3.5065, 5.1366906, 0.92]
+      box_yaw: 0.0
+      object_pos: [-3.2677543, 5.1366906, 0.92]
+      object_quat: [0.7071067811865476, 0.7071067811865475, 0.0, 0.0]
+    banana_basket_to_table:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [-3.5029, 4.6783, 0.0]
+        yaw: 1.48353
+      target_region:
+        center: [-4.2, 4.6783, 0.91]
+        half_xy: [0.25, 0.50]
+        yaw: 0.0
+        body_name: cube_28bb627bc9e066517f3364bc0f231df9_1_1_0
+      basket_pos: [-3.5029, 5.09939955, 0.92]
+      banana_pos: [-3.5029, 5.09939955, 0.93]
+      show_target_region: false
+    coffee_drink_to_trash:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [-3.5065, 4.7114, 0.0]
+        yaw: 1.5707963267948966
+      source_pos: [-3.5065, 5.14927267785, 0.97810073125]
+      trash_fixture: FloorPlan13:bin_13_6
+      trash_region: FloorPlan13:bin_13_6:region:receptacle:0
+      trash_body_pos: [-2.318, 4.680, 0.28901164699768234]
+    store_apple_in_fridge:
+      hold_seconds: 1.0
+      robot_pose: {pos: [-3.689698052, 4.781801948, 0.0], yaw: 0.785398163397}
+      navigation_distance: 0.35
+      target_fixture: FloorPlan13:Fridge_13_9
+      target_joint: refrigerator_14a808d19515703c7e4cc20a5049143a_1_6_0_Mesh93c90bee1_3
+      init_open_fraction: 0.10
+      success_open_fraction: 0.50
+      success_close_fraction: 0.10
+      fridge_receptacle_region: FloorPlan13:Fridge_13_9:region:receptacle:0
+      apple_pos: [-3.3715, 5.10, 0.92]
+    drawer_open_close_cycle:
+      hold_seconds: 1.0
+      robot_pose: {pos: [-3.527695575, 4.758016974, 0.0], yaw: 0.523598775598}
+      target_fixture: FloorPlan13:Drawer_7f6923d8_17
+      target_joint: drawer_008c0c0a7bc73471bf35f5fb3a98c586_1_1_0_joint_0
+      init_open_fraction: 0.20
+      success_open_fraction: 0.80
+      success_close_fraction: 0.20
+    cabinet_open_close_cycle:
+      hold_seconds: 1.0
+      robot_pose: {pos: [-3.466, 4.657, 0.0], yaw: 1.0}
+      target_fixture: FloorPlan13:Cabinet_e09fba8d_21
+      target_joint: cabinet_8c2ce27a39ca69c241fab69d5f21bd53_1_1_0_joint_0
+      init_open_fraction: 0.20
+      success_open_fraction: 0.80
+      success_close_fraction: 0.20
+    cabinet_close_open_cycle:
+      hold_seconds: 1.0
+      robot_pose: {pos: [-3.466, 4.657, 0.0], yaw: 1.0}
+      target_fixture: FloorPlan13:Cabinet_e09fba8d_21
+      target_joint: cabinet_8c2ce27a39ca69c241fab69d5f21bd53_1_1_0_joint_0
+      init_open_fraction: 0.80
+      success_open_fraction: 0.80
+      success_close_fraction: 0.20
+    bowl_to_sink_then_apple_on_plate:
+      hold_seconds: 1.0
+      robot_pose: {pos: [-3.55, 3.585, 0.0], yaw: -3.141592653589793}
+      navigation_distance: 0.35
+      bowl_pos: [-4.071, 3.715, 0.92]
+      sink_fixture: FloorPlan13:Sink_40b659c7_48
+      sink_region:
+        center: [-4.1827, 3.292194999999999, 0.8120529276280428]
+        half_size: [0.22763800719961025, 0.33510550941299355, 0.08584705768537271]
+        yaw: -2.851982379181337
+      table_fixture: FloorPlan13:Cube_690_5eeacdcb_71
+      plate_pos: [-3.6415, 5.15, 0.92]
+      apple_pos: [-3.3715, 5.10, 0.92]
+    take_statue_from_cabinet:
+      hold_seconds: 1.0
+      robot_pose: {pos: [-3.466, 4.657, 0.0], yaw: 1.0}
+      target_fixture: FloorPlan13:Cabinet_e09fba8d_21
+      target_joint: cabinet_8c2ce27a39ca69c241fab69d5f21bd53_1_1_0_joint_0
+      init_open_fraction: 1.0
+      success_close_fraction: 0.20
+      cabinet_receptacle_region: FloorPlan13:Cube_668_0baddea2_54:region:receptacle:1
+      statue_pos: [-3.2016, 5.19399, 0.035525]
+      statue_quat: [0.7071067811865476, 0.7071067811865475, 0.0, 0.0]
+      table_fixture: FloorPlan13:Cube_690_5eeacdcb_71
+      success_region:
+        center: [-3.5065, 5.2614, 0.96]
+        half_size: [0.42, 0.25, 0.06]
+        yaw: 0.0
+    approach_cabinet_and_store_statue:
+      hold_seconds: 1.0
+      robot_pose: {pos: [-1.95, 3.20, 0.0], yaw: 2.172653}
+      navigation_distance: 0.35
+      target_fixture: FloorPlan13:Cabinet_e09fba8d_21
+      target_joint: cabinet_8c2ce27a39ca69c241fab69d5f21bd53_1_1_0_joint_0
+      init_open_fraction: 1.0
+      success_close_fraction: 0.08
+      cabinet_receptacle_region: FloorPlan13:Cube_668_0baddea2_54:region:receptacle:1
+      statue_pos: [-3.296, 5.122, 1.002]
+      statue_quat: [0.7071067811865476, 0.7071067811865475, 0.0, 0.0]
+    open_fridge:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan13:Fridge_13_9
+      target_joint: refrigerator_14a808d19515703c7e4cc20a5049143a_1_6_0_Mesh93c90bee1_3
+      robot_pose:
+        pos: [-1.2060562627654583, 3.812735407124108, 0.0]
+        yaw: -0.08642554894469812
+      init_open_fraction: 0.10
+      success_open_fraction: 0.50
+    close_fridge:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan13:Fridge_13_9
+      target_joint: refrigerator_14a808d19515703c7e4cc20a5049143a_1_6_0_Mesh93c90bee1_3
+      robot_pose:
+        pos: [-1.5060562627654583, 3.712735407124108, 0.0]
+        yaw: -0.08642554894469812
+      init_open_fraction: 0.30
+      success_close_fraction: 0.10
+    open_cabinet:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan13:Cabinet_e09fba8d_21
+      target_joint: cabinet_8c2ce27a39ca69c241fab69d5f21bd53_1_1_0_joint_0
+      robot_pose:
+        pos: [-2.9641324421703845, 4.617088138320601, 0.0]
+        yaw: 2.0986369056807703
+      init_open_fraction: 0.10
+      success_open_fraction: 0.50
+    close_cabinet:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan13:Cabinet_e09fba8d_21
+      target_joint: cabinet_8c2ce27a39ca69c241fab69d5f21bd53_1_1_0_joint_0
+      robot_pose:
+        pos: [-3.2885820921446315, 4.587503630716542, 0.0]
+        yaw: 1.5707963267948966
+      init_open_fraction: 0.50
+      success_close_fraction: 0.10
+    open_drawer:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan13:Drawer_7f6923d8_17
+      target_joint: drawer_008c0c0a7bc73471bf35f5fb3a98c586_1_1_0_joint_0
+      robot_pose:
+        pos: [-3.1874303857646777, 4.65, 0.0]
+        yaw: 1.5707963267948966
+      init_open_fraction: 0.20
+      success_open_fraction: 0.80
+    close_drawer:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan13:Drawer_7f6923d8_17
+      target_joint: drawer_008c0c0a7bc73471bf35f5fb3a98c586_1_1_0_joint_0
+      robot_pose:
+        pos: [-3.1874303857646777, 4.65, 0.0]
+        yaw: 1.5707963267948966
+      init_open_fraction: 0.80
+      success_close_fraction: 0.20
+    open_oven:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan13:oven_FP13_0
+      target_joint: oven_25827471c7fc4d1b055b68eb7fa4b621_1_4_0_door1_1
+      robot_pose:
+        pos: [-2.584407571813643, 2.8902121742551325, 0.0]
+        yaw: -1.6783840874563207
+      init_open_fraction: 0.10
+      success_open_fraction: 0.50
+    close_oven:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan13:oven_FP13_0
+      target_joint: oven_25827471c7fc4d1b055b68eb7fa4b621_1_4_0_door1_1
+      robot_pose:
+        pos: [-2.5951456041904337, 2.7494218017372197, 0.0]
+        yaw: -1.6783840874563207
+      init_open_fraction: 0.20
+      success_close_fraction: 0.10
+    oven_then_fridge:
+      stages:
+        - FloorPlan13:oven_FP13_0
+        - FloorPlan13:Fridge_13_9
+      robot_pose:
+        pos: [-2.675, 3.917, 0.0]
+        yaw: -0.589049
+    fridge_then_oven:
+      stages:
+        - FloorPlan13:Fridge_13_9
+        - FloorPlan13:oven_FP13_0
+      robot_pose:
+        pos: [-2.675, 3.917, 0.0]
+        yaw: -0.589049
+    fridge_then_dishwasher:
+      stages:
+        - FloorPlan13:Fridge_13_9
+        - FloorPlan13:dishwasher_FP13
+      robot_pose:
+        pos: [-2.675, 3.917, 0.0]
+        yaw: -0.589049
+    dishwasher_then_fridge:
+      stages:
+        - FloorPlan13:dishwasher_FP13
+        - FloorPlan13:Fridge_13_9
+      robot_pose:
+        pos: [-2.675, 3.917, 0.0]
+        yaw: 3.1415926
+    oven_then_dishwasher:
+      stages:
+        - FloorPlan13:oven_FP13_0
+        - FloorPlan13:dishwasher_FP13
+      robot_pose:
+        pos: [-2.675, 3.917, 0.0]
+        yaw: -0.589049
+    dishwasher_then_oven:
+      stages:
+        - FloorPlan13:dishwasher_FP13
+        - FloorPlan13:oven_FP13_0
+      robot_pose:
+        pos: [-2.675, 3.917, 0.0]
+        yaw: 3.1415926
+
+    approach_drawer_and_open_close:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan13:Drawer_7f6923d8_17
+      target_joint: drawer_008c0c0a7bc73471bf35f5fb3a98c586_1_1_0_joint_0
+      robot_pose:
+        pos: [-1.95, 3.2, 0.0]
+        yaw: 2.141643
+      init_open_fraction: 0.2
+      success_open_fraction: 0.8
+      navigation_goal_pose:
+        pos: [-3.1874303857646775, 4.65, 0.0]
+        yaw: 1.5707963267948966
+      navigation_xy_tolerance: 0.15
+      navigation_yaw_tolerance: 0.35
+      success_close_fraction: 0.2
+      open_hold_seconds: 1.0
+    approach_cabinet_and_open_close:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan13:Cabinet_e09fba8d_21
+      target_joint: cabinet_8c2ce27a39ca69c241fab69d5f21bd53_1_1_0_joint_0
+      robot_pose:
+        pos: [-1.95, 3.2, 0.0]
+        yaw: 2.172653
+      init_open_fraction: 0.1
+      success_open_fraction: 0.5
+      navigation_goal_pose:
+        pos: [-2.9641324421703845, 4.617088138320601, 0.0]
+        yaw: 2.0986369056807703
+      navigation_xy_tolerance: 0.15
+      navigation_yaw_tolerance: 0.35
+      success_close_fraction: 0.1
+      open_hold_seconds: 1.0
+    pick_apple_and_turn_to_trash:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [-3.5065, 4.6614, 0.0]
+        yaw: 1.5707963267948966
+      apple_pos: [-3.3715, 5.1, 0.92]
+      source_fixture: FloorPlan13:Cube_690_5eeacdcb_71
+      trash_fixture: FloorPlan13:bin_13_6
+      trash_region: FloorPlan13:bin_13_6:region:receptacle:0
+      trash_body_pos: [-3.50611, 4.06419, 0.28901164699768234]
+    open_drawer_and_turn_apple_to_trash:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [-3.19418, 4.656894668758918, 0.0]
+        yaw: 1.5707963267948966
+      apple_pos: [-3.19418, 5.1626, 0.745]
+      target_fixture: FloorPlan13:Drawer_7f6923d8_17
+      target_joint: drawer_008c0c0a7bc73471bf35f5fb3a98c586_1_1_0_joint_0
+      init_open_fraction: 0.2
+      success_open_fraction: 0.8
+      source_fixture: FloorPlan13:Drawer_7f6923d8_17
+      trash_fixture: FloorPlan13:bin_13_6
+      trash_region: FloorPlan13:bin_13_6:region:receptacle:0
+      trash_body_pos: [-3.19379, 4.059685, 0.28901164699768234]
+  FloorPlan24:
+    open_close_low_microwave:
+      hold_seconds: 1.0
+      robot_pose: {pos: [-0.2, 2.6, 0.0], yaw: 3.141592653589793}
+      table_center: [-0.845, 2.6, 0.45]
+      table_half_xy: [0.25, 0.43]
+      target_fixture: FloorPlan24:Microwave_24_13
+      target_joint: microwaveoven_a9ac76781bff2a063a8345fe83f2b494_1_2_0_joint_1
+      microwave_body: microwaveoven_a9ac76781bff2a063a8345fe83f2b494_1_0_0
+      microwave_pos: [-0.845, 2.6, 0.651896]
+      microwave_quat: [0.5, 0.5, 0.5, 0.5]
+      microwave_receptacle_site: microwaveoven_a9ac76781bff2a063a8345fe83f2b494_1_1_0_bodymesh61dcf908Receptacle0_0
+      init_open_fraction: 0.0
+      success_open_fraction: 0.4
+      success_close_fraction: 0.1
+    put_apple_in_low_microwave:
+      hold_seconds: 1.0
+      robot_pose: {pos: [-0.2, 2.6, 0.0], yaw: 3.141592653589793}
+      table_center: [-0.845, 2.6, 0.45]
+      table_half_xy: [0.25, 0.43]
+      target_fixture: FloorPlan24:Microwave_24_13
+      target_joint: microwaveoven_a9ac76781bff2a063a8345fe83f2b494_1_2_0_joint_1
+      microwave_body: microwaveoven_a9ac76781bff2a063a8345fe83f2b494_1_0_0
+      microwave_pos: [-0.845, 2.6, 0.651896]
+      microwave_quat: [0.5, 0.5, 0.5, 0.5]
+      microwave_receptacle_site: microwaveoven_a9ac76781bff2a063a8345fe83f2b494_1_1_0_bodymesh61dcf908Receptacle0_0
+      init_open_fraction: 0.0
+      success_open_fraction: 0.4
+      success_close_fraction: 0.1
+      apple_pos: [-0.809645, 2.54163, 0.85240821]
+    open_low_microwave_and_lift_apple:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [-0.30910, 2.96434, 0.0]
+        yaw: -2.9985
+      table_center: [-0.845, 2.6, 0.45]
+      table_half_xy: [0.25, 0.43]
+      target_fixture: FloorPlan24:Microwave_24_13
+      target_joint: microwaveoven_a9ac76781bff2a063a8345fe83f2b494_1_2_0_joint_1
+      microwave_body: microwaveoven_a9ac76781bff2a063a8345fe83f2b494_1_0_0
+      microwave_pos: [-0.845, 2.6, 0.651896]
+      microwave_quat: [0.5, 0.5, 0.5, 0.5]
+      microwave_receptacle_site: microwaveoven_a9ac76781bff2a063a8345fe83f2b494_1_1_0_bodymesh61dcf908Receptacle0_0
+      init_open_fraction: 0.2
+      apple_inside_xy: [-0.80825, 2.5388]
+      success_open_fraction: 0.4
+      success_close_fraction: 0.1
+      initial_inside_tolerance: 0.02
+    take_apple_from_open_low_microwave_to_top:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [-0.41560, 2.63591, 0.0]
+        yaw: -3.04804
+      table_center: [-0.845, 2.6, 0.45]
+      table_half_xy: [0.25, 0.43]
+      target_fixture: FloorPlan24:Microwave_24_13
+      target_joint: microwaveoven_a9ac76781bff2a063a8345fe83f2b494_1_2_0_joint_1
+      microwave_body: microwaveoven_a9ac76781bff2a063a8345fe83f2b494_1_0_0
+      microwave_pos: [-0.845, 2.6, 0.651896]
+      microwave_quat: [0.5, 0.5, 0.5, 0.5]
+      microwave_receptacle_site: microwaveoven_a9ac76781bff2a063a8345fe83f2b494_1_1_0_bodymesh61dcf908Receptacle0_0
+      init_open_fraction: 1.0
+      apple_inside_xy: [-0.80825, 2.5388]
+      success_open_fraction: 0.4
+      success_close_fraction: 0.1
+      initial_inside_tolerance: 0.02
+      apple_top_pos: [-0.809645, 2.54163, 0.85240821]
+      # The native FloorPlan24 microwave has gaps in its top collision mesh.
+      # This task-only, shallow guard keeps released apples on the visible top.
+      apple_top_collision_guard:
+        center: [-0.845, 2.60, 0.847]
+        half_size: [0.115, 0.105, 0.002]
+    close_then_open_low_microwave:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [-0.30910, 2.96434, 0.0]
+        yaw: -2.9985
+      table_center: [-0.845, 2.6, 0.45]
+      table_half_xy: [0.25, 0.43]
+      target_fixture: FloorPlan24:Microwave_24_13
+      target_joint: microwaveoven_a9ac76781bff2a063a8345fe83f2b494_1_2_0_joint_1
+      microwave_body: microwaveoven_a9ac76781bff2a063a8345fe83f2b494_1_0_0
+      microwave_pos: [-0.845, 2.6, 0.651896]
+      microwave_quat: [0.5, 0.5, 0.5, 0.5]
+      microwave_receptacle_site: microwaveoven_a9ac76781bff2a063a8345fe83f2b494_1_1_0_bodymesh61dcf908Receptacle0_0
+      init_open_fraction: 0.8
+      success_open_fraction: 0.4
+      success_close_fraction: 0.1
+    open_low_microwave_and_put_apple_inside:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [-0.2, 2.6, 0.0]
+        yaw: 3.141592653589793
+      table_center: [-0.845, 2.6, 0.45]
+      table_half_xy: [0.25, 0.43]
+      target_fixture: FloorPlan24:Microwave_24_13
+      target_joint: microwaveoven_a9ac76781bff2a063a8345fe83f2b494_1_2_0_joint_1
+      microwave_body: microwaveoven_a9ac76781bff2a063a8345fe83f2b494_1_0_0
+      microwave_pos: [-0.845, 2.6, 0.651896]
+      microwave_quat: [0.5, 0.5, 0.5, 0.5]
+      microwave_receptacle_site: microwaveoven_a9ac76781bff2a063a8345fe83f2b494_1_1_0_bodymesh61dcf908Receptacle0_0
+      init_open_fraction: 0.0
+      success_open_fraction: 0.4
+      success_close_fraction: 0.1
+      apple_top_pos: [-0.809645, 2.54163, 0.85240821]
+    bend_and_put_apple_on_plate:
+      hold_seconds: 1.0
+      robot_pose: {pos: [-0.20, 2.60, 0.0], yaw: 3.141592653589793}
+      table_center: [-0.845, 2.60, 0.45]
+      table_half_xy: [0.30, 0.45]
+      plate_pos: [-0.695, 2.42, 0.45]
+      apple_pos: [-0.695, 2.78, 0.45]
+    approach_table_and_stand_canned_drink_upright:
+      show_support: false
+      hold_seconds: 1.0
+      upright_tolerance_degrees: 15.0
+      support_z_tolerance: 0.04
+      release_distance: 0.18
+      robot_pose:
+        pos: [-1.5, 3.192, 0.0]
+        yaw: -1.280972
+      support_region:
+        center: [-0.9104929262996503, 1.2051929486344064, 0.7051112278843826]
+        half_xy: [0.4, 0.3]
+        yaw: 0.0
+        body_name: diningtable_0a462aa94ded95b9713578ea44eea3d8_1_0_0
+      can_pos: [-0.9104929262996503, 1.5, 0.8051112278843826]
+      can_quat: [0.7071067811865476, 0.0, 0.7071067811865475, 0.0]
+      approach_fixture: FloorPlan24:Dining_Table_21_1_28
+      approach_distance: 0.35
+      minimum_start_distance: 0.5
+    approach_stove_and_put_pan:
+      show_target_region: false
+      hold_seconds: 1.0
+      support_z_tolerance: 0.05
+      pan_base_local_xy: [0.0, 0.01]
+      pan_base_radius: 0.067
+      robot_pose:
+        pos: [-1.5, 3.192, 0.0]
+        yaw: -0.617917
+      target_region:
+        center: [0.775, 1.575, 0.87]
+        half_xy: [0.36, 0.36]
+        yaw: 0.0
+        body_name: mesh_002cea4110c0dfec19e756415fc6782b_1_0_0
+      pan_pos: [0.72, 1.05, 0.84]
+      pan_quat: [0.7983486481160276, 0.0, 0.0, -0.6021955131444531]
+      approach_fixture: FloorPlan24:Mesh_3b302073_36
+      approach_distance: 0.35
+      minimum_start_distance: 0.5
+    approach_sink_and_put_bowl:
+      hold_seconds: 1.0
+      show_target_region: false
+      robot_pose:
+        pos: [0.0, 1.25, 0.0]
+        yaw: 2.135113
+      object_pos: [-1.218, 3.542, 0.812]
+      sink_fixture: FloorPlan24:Sink_2a544275_30
+      sink_region:
+        center: [-1.6036605704057223, 3.783509806518305, 0.7277820036477509]
+        half_size: [0.4500370214465277, 0.2272678065183058, 0.07202245762695736]
+        yaw: 0.0
+      approach_fixture: FloorPlan24:Sink_2a544275_30
+      approach_distance: 0.35
+      minimum_start_distance: 0.5
+    approach_sink_and_put_cup:
+      hold_seconds: 1.0
+      show_target_region: false
+      robot_pose:
+        pos: [0.0, 1.25, 0.0]
+        yaw: 2.135113
+      object_pos: [-1.218, 3.542, 0.812]
+      sink_fixture: FloorPlan24:Sink_2a544275_30
+      sink_region:
+        center: [-1.6036605704057223, 3.783509806518305, 0.7277820036477509]
+        half_size: [0.4500370214465277, 0.2272678065183058, 0.07202245762695736]
+        yaw: 0.0
+      approach_fixture: FloorPlan24:Sink_2a544275_30
+      approach_distance: 0.35
+      minimum_start_distance: 0.5
+    approach_drawer_and_open:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan24:Drawer_4a91ad3a_26
+      target_joint: drawer_6188a72032c0f7ab853929812b0ac668_1_1_0_joint_0
+      robot_pose:
+        pos: [-1.5, 3.192, 0.0]
+        yaw: -0.289587
+      init_open_fraction: 0.2
+      success_open_fraction: 0.8
+      approach_fixture: FloorPlan24:Drawer_4a91ad3a_26
+      approach_distance: 0.35
+      minimum_start_distance: 0.5
+    approach_drawer_and_close:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan24:Drawer_4a91ad3a_26
+      target_joint: drawer_6188a72032c0f7ab853929812b0ac668_1_1_0_joint_0
+      robot_pose:
+        pos: [-1.5, 3.192, 0.0]
+        yaw: -0.289587
+      init_open_fraction: 0.8
+      success_close_fraction: 0.2
+      approach_fixture: FloorPlan24:Drawer_4a91ad3a_26
+      approach_distance: 0.35
+      minimum_start_distance: 0.5
+    approach_cabinet_and_open:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan24:Cabinet_4c1ca2f0_23
+      target_joint: cabinet_e221d936dcabf508245d72a9bca3615e_1_1_0_joint_0
+      robot_pose:
+        pos: [0.0, 1.25, 0.0]
+        yaw: 2.109547
+      init_open_fraction: 0.1
+      success_open_fraction: 0.5
+      approach_fixture: FloorPlan24:Cabinet_4c1ca2f0_23
+      approach_distance: 0.35
+      minimum_start_distance: 0.5
+    approach_cabinet_and_close:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan24:Cabinet_4c1ca2f0_23
+      target_joint: cabinet_e221d936dcabf508245d72a9bca3615e_1_1_0_joint_0
+      robot_pose:
+        pos: [0.0, 1.25, 0.0]
+        yaw: 2.109547
+      init_open_fraction: 0.5
+      success_close_fraction: 0.1
+      approach_fixture: FloorPlan24:Cabinet_4c1ca2f0_23
+      approach_distance: 0.35
+      minimum_start_distance: 0.5
+    pan_table_to_stove:
+      show_target_region: false
+      hold_seconds: 1.0
+      support_z_tolerance: 0.05
+      pan_base_local_xy: [0.0, 0.01]
+      pan_base_radius: 0.067
+      robot_pose: {pos: [0.12, 1.20, 0.0], yaw: 0.0}
+      target_region:
+        center: [0.775, 1.575, 0.87]
+        half_xy: [0.36, 0.36]
+        yaw: 0.0
+        body_name: mesh_002cea4110c0dfec19e756415fc6782b_1_0_0
+      pan_pos: [0.72, 1.05, 0.84]
+      pan_quat: [0.7983486481160276, 0.0, 0.0, -0.6021955131444531]
+    stand_canned_drink_upright:
+      show_support: false
+      hold_seconds: 1.0
+      upright_tolerance_degrees: 15.0
+      support_z_tolerance: 0.04
+      release_distance: 0.18
+      robot_pose:
+        pos: [-0.9104929262996503, 1.8274602338889185, 0.0]
+        yaw: -1.5707963267948966
+      support_region:
+        center: [-0.9104929262996503, 1.2051929486344064, 0.7051112278843826]
+        half_xy: [0.40, 0.30]
+        yaw: 0.0
+        body_name: diningtable_0a462aa94ded95b9713578ea44eea3d8_1_0_0
+      can_pos: [-0.9104929262996503, 1.50, 0.8051112278843826]
+      can_quat: [0.7071067811865476, 0.0, 0.7071067811865475, 0.0]
+    lift_eggplant:
+      hold_seconds: 1.0
+      lift_height: 0.3
+      robot_pose: {pos: [-0.9104929262996503, 1.8274602338889185, 0.0], yaw: -1.5707963267948966}
+      support_region: {center: [-0.9104929262996503, 1.2051929486344064, 0.7051112278843826], half_xy: [0.40, 0.30], yaw: 0.0, body_name: diningtable_0a462aa94ded95b9713578ea44eea3d8_1_0_0}
+      object_pos: [-0.9104929262996503, 1.50, 0.8051112278843826]
+      object_quat: [1.0, 0.0, 0.0, 0.0]
+    lift_plate:
+      hold_seconds: 1.0
+      lift_height: 0.3
+      robot_pose: {pos: [-0.9104929262996503, 1.8274602338889185, 0.0], yaw: -1.5707963267948966}
+      support_region: {center: [-0.9104929262996503, 1.2051929486344064, 0.7051112278843826], half_xy: [0.40, 0.30], yaw: 0.0, body_name: diningtable_0a462aa94ded95b9713578ea44eea3d8_1_0_0}
+      object_pos: [-0.9104929262996503, 1.50, 0.8051112278843826]
+      object_quat: [1.0, 0.0, 0.0, 0.0]
+    lift_salt_shaker:
+      hold_seconds: 1.0
+      lift_height: 0.3
+      robot_pose: {pos: [-0.9104929262996503, 1.8274602338889185, 0.0], yaw: -1.5707963267948966}
+      support_region: {center: [-0.9104929262996503, 1.2051929486344064, 0.7051112278843826], half_xy: [0.40, 0.30], yaw: 0.0, body_name: diningtable_0a462aa94ded95b9713578ea44eea3d8_1_0_0}
+      object_pos: [-0.9104929262996503, 1.50, 0.8051112278843826]
+      object_quat: [1.0, 0.0, 0.0, 0.0]
+    approach_fridge:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan24:Fridge_24_12
+      robot_pose:
+        pos: [-0.2516879605045248, 2.5540688940619014, 0.0]
+        yaw: -2.956908521056353
+      target_xy: [-2.5073272400754454, 2.132686309821889]
+      target_tolerance: [1.0, 1.0]
+    approach_oven:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan24:oven_FP24_0
+      robot_pose:
+        pos: [-1.263775, 2.867758, 0.0]
+        yaw: -0.5642866872202402
+      target_xy: [0.755, 1.590]
+      target_tolerance: [0.7, 0.7]
+    approach_table:
+      target_fixture: FloorPlan24:Dining_Table_21_1_28
+      support_body: diningtable_0a462aa94ded95b9713578ea44eea3d8_1_0_0
+      robot_pose: {pos: [-1.5, 3.192, 0.0], yaw: -1.280972}
+      approach_distance: 0.35
+      minimum_start_distance: 1.15
+    approach_table_and_lift_apple:
+      hold_seconds: 1.0
+      lift_height: 0.3
+      target_fixture: FloorPlan24:Dining_Table_21_1_28
+      support_body: diningtable_0a462aa94ded95b9713578ea44eea3d8_1_0_0
+      robot_pose: {pos: [-1.5, 3.192, 0.0], yaw: -1.280972}
+      approach_distance: 0.35
+      minimum_start_distance: 1.15
+      support_region: {center: [-0.9104929262996503, 1.2051929486344064, 0.7051112278843826], half_xy: [0.40, 0.30], yaw: 0.0, body_name: diningtable_0a462aa94ded95b9713578ea44eea3d8_1_0_0}
+      object_pos: [-0.9104929262996503, 1.5, 0.8051112278843826]
+      object_quat: [1.0, 0.0, 0.0, 0.0]
+    approach_table_and_lift_salt_shaker:
+      hold_seconds: 1.0
+      lift_height: 0.3
+      target_fixture: FloorPlan24:Dining_Table_21_1_28
+      support_body: diningtable_0a462aa94ded95b9713578ea44eea3d8_1_0_0
+      robot_pose: {pos: [-1.5, 3.192, 0.0], yaw: -1.280972}
+      approach_distance: 0.35
+      minimum_start_distance: 1.15
+      support_region: {center: [-0.9104929262996503, 1.2051929486344064, 0.7051112278843826], half_xy: [0.40, 0.30], yaw: 0.0, body_name: diningtable_0a462aa94ded95b9713578ea44eea3d8_1_0_0}
+      object_pos: [-0.9104929262996503, 1.5, 0.8051112278843826]
+      object_quat: [1.0, 0.0, 0.0, 0.0]
+    approach_table_and_lift_bowl:
+      hold_seconds: 1.0
+      lift_height: 0.3
+      target_fixture: FloorPlan24:Dining_Table_21_1_28
+      support_body: diningtable_0a462aa94ded95b9713578ea44eea3d8_1_0_0
+      robot_pose: {pos: [-1.5, 3.192, 0.0], yaw: -1.280972}
+      approach_distance: 0.35
+      minimum_start_distance: 1.15
+      support_region: {center: [-0.9104929262996503, 1.2051929486344064, 0.7051112278843826], half_xy: [0.40, 0.30], yaw: 0.0, body_name: diningtable_0a462aa94ded95b9713578ea44eea3d8_1_0_0}
+      object_pos: [-0.9104929262996503, 1.5, 0.8051112278843826]
+      object_quat: [1.0, 0.0, 0.0, 0.0]
+    approach_table_and_put_apple_on_plate:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan24:Dining_Table_21_1_28
+      support_body: diningtable_0a462aa94ded95b9713578ea44eea3d8_1_0_0
+      robot_pose: {pos: [-1.5, 3.192, 0.0], yaw: -1.280972}
+      approach_distance: 0.35
+      minimum_start_distance: 1.15
+      plate_pos: [-0.7755, 1.45, 0.8051112278843826]
+      source_pos: [-1.0455, 1.45, 0.8051112278843826]
+    approach_table_and_put_bread_on_plate:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan24:Dining_Table_21_1_28
+      support_body: diningtable_0a462aa94ded95b9713578ea44eea3d8_1_0_0
+      robot_pose: {pos: [-1.5, 3.192, 0.0], yaw: -1.280972}
+      approach_distance: 0.35
+      minimum_start_distance: 1.15
+      plate_pos: [-0.7755, 1.45, 0.8051112278843826]
+      source_pos: [-1.0455, 1.45, 0.8051112278843826]
+    approach_table_and_put_cheese_on_plate:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan24:Dining_Table_21_1_28
+      support_body: diningtable_0a462aa94ded95b9713578ea44eea3d8_1_0_0
+      robot_pose: {pos: [-1.5, 3.192, 0.0], yaw: -1.280972}
+      approach_distance: 0.35
+      minimum_start_distance: 1.15
+      plate_pos: [-0.7755, 1.45, 0.8051112278843826]
+      source_pos: [-1.0455, 1.45, 0.8051112278843826]
+    approach_table_and_put_mug_on_plate:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan24:Dining_Table_21_1_28
+      support_body: diningtable_0a462aa94ded95b9713578ea44eea3d8_1_0_0
+      robot_pose: {pos: [-1.5, 3.192, 0.0], yaw: -1.280972}
+      approach_distance: 0.35
+      minimum_start_distance: 1.15
+      plate_pos: [-0.7755, 1.45, 0.8051112278843826]
+      source_pos: [-1.0455, 1.45, 0.8051112278843826]
+    approach_open_fridge:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan24:Fridge_24_12
+      target_joint: refrigerator_70e2053608febd954f1738a98646cfd4_1_6_0_Meshe5c8eb0f1_3
+      robot_pose:
+        pos: [-1.6770297017683942, 2.2877966262402576, 0.0]
+        yaw: -2.9569085210563526
+      init_open_fraction: 0.0
+      success_open_fraction: 0.4
+      success_distance: 0.75
+    approach_open_oven:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan24:oven_FP24_2_1
+      target_joint: oven_34c2af9f0968a89a3571a86d19d1fdd2_1_2_0_joint_0
+      robot_pose:
+        pos: [-1.7273514498232205, 2.633104223816179, 0.0]
+        yaw: 2.905292927005832
+      init_open_fraction: 0.0
+      success_open_fraction: 0.4
+      success_distance: 0.75
+    drawer_pnp:
+      hold_seconds: 1.0
+      show_target_region: false
+      target_fixture: FloorPlan24:Drawer_4a91ad3a_26
+      target_joint: drawer_6188a72032c0f7ab853929812b0ac668_1_1_0_joint_0
+      robot_pose:
+        pos: [0.30, 2.493862050296526, 0.0]
+        yaw: 0.06182086223522546
+      init_open_fraction: 0.2
+      success_open_fraction: 0.8
+      success_close_fraction: 0.20
+      drawer_receptacle_region: FloorPlan24:Drawer_4a91ad3a_26:region:receptacle:0
+      apple_pos: [0.669, 2.602, 0.89]
+    open_drawer_take_apple:
+      hold_seconds: 1.0
+      show_target_region: false
+      target_fixture: FloorPlan24:Drawer_4a91ad3a_26
+      target_joint: drawer_6188a72032c0f7ab853929812b0ac668_1_1_0_joint_0
+      robot_pose:
+        pos: [0.07959135612808288, 2.493862050296526, 0.0]
+        yaw: 0.0
+      init_open_fraction: 0.2
+      success_open_fraction: 0.8
+      drawer_receptacle_region: FloorPlan24:Drawer_4a91ad3a_26:region:receptacle:0
+      apple_pos: [0.736715, 2.532619, 0.692]
+      target_region:
+        center: [0.80, 2.35, 0.8061]
+        half_xy: [0.30, 0.30]
+        z_tolerance: 0.04
+        yaw: 0.0
+    cabinet_open_close_cycle:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [-1.661399, 3.120008, 0.0]
+        yaw: 0.981748
+      target_fixture: FloorPlan24:Cabinet_4c1ca2f0_23
+      target_joint: cabinet_e221d936dcabf508245d72a9bca3615e_1_1_0_joint_0
+      success_open_fraction: 0.8
+      success_close_fraction: 0.2
+      init_open_fraction: 0.2
+    cabinet_close_open_cycle:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [-1.661399, 3.120008, 0.0]
+        yaw: 0.981748
+      target_fixture: FloorPlan24:Cabinet_4c1ca2f0_23
+      target_joint: cabinet_e221d936dcabf508245d72a9bca3615e_1_1_0_joint_0
+      success_open_fraction: 0.8
+      success_close_fraction: 0.2
+      init_open_fraction: 0.8
+    apple_cabinet_pnp:
+      hold_seconds: 1.0
+      show_target_region: false
+      target_fixture: FloorPlan24:Cabinet_4c1ca2f0_23
+      target_joint: cabinet_e221d936dcabf508245d72a9bca3615e_1_1_0_joint_0
+      robot_pose:
+        pos: [-1.58, 3.08, 0.0]
+        yaw: 0.85
+      init_open_fraction: 0.8
+      success_close_fraction: 0.08
+      cabinet_receptacle_region: FloorPlan24:Cube_298_07fd652a_53:region:receptacle:13
+      apple_pos: [-1.50, 3.567, 0.830]
+    apple_on_plate:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [-0.9104929262996503, 1.8774602338889184, 0.0]
+        yaw: -1.5707963267948966
+      plate_pos: [-0.7755, 1.45, 0.8051112278843826]
+      apple_pos: [-1.0455, 1.45, 0.8051112278843826]
+    apple_banana_plate_swap:
+      hold_seconds: 1.0
+      show_target_region: false
+      robot_pose:
+        pos: [-0.9104929262996503, 1.8774602338889184, 0.0]
+        yaw: -1.5707963267948966
+      support_region:
+        center: [-0.85, 1.45, 0.75]
+        half_xy: [0.40, 0.16]
+        z_tolerance: 0.10
+        yaw: 0.0
+        body_name: diningtable_0a462aa94ded95b9713578ea44eea3d8_1_0_0
+      plate_pos: [-0.7755, 1.45, 0.8051112278843826]
+      banana_pos: [-1.0455, 1.45, 0.8051112278843826]
+    cup_stack:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [-0.9104929262996503, 1.7774602338889184, 0.0]
+        yaw: -1.5707963267948966
+      cup_1_pos: [-1.0154929262996502, 1.4379429486344064, 0.8051112278843826]
+      cup_2_pos: [-0.7354929262996503, 1.4379429486344064, 0.8051112278843826]
+    bowl_to_sink:
+      hold_seconds: 1.0
+      show_target_region: false
+      robot_pose:
+        pos: [-1.500, 3.192, 0.0]
+        yaw: 1.5707963267948966
+      object_pos: [-1.218, 3.542, 0.812]
+      sink_fixture: FloorPlan24:Sink_2a544275_30
+      sink_region:
+        center: [-1.6036605704057223, 3.783509806518305, 0.7277820036477509]
+        half_size: [0.4500370214465277, 0.2272678065183058, 0.07202245762695736]
+        yaw: 0.0
+    pack_produce_into_box:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [-0.9104929262996503, 1.8774602338889184, 0.0]
+        yaw: -1.5707963267948966
+      support_region:
+        center: [-0.8818177777777849, 1.2197222222222224, 0.7216332897940405]
+        half_xy: [0.3697222222222208, 0.2697222222222223]
+        yaw: 0.0
+        body_name: diningtable_0a462aa94ded95b9713578ea44eea3d8_1_0_0
+      box_pos: [-0.8818178, 1.4141538, 0.7316333]
+      box_yaw: 0.0
+      apple_pos: [-1.1206282, 1.4141538, 0.7316333]
+      banana_pos: [-0.5871442, 1.4141538, 0.7316333]
+    apple_into_box:
+      hold_seconds: 1.0
+      robot_pose: {pos: [-0.9104929262996503, 1.8774602338889184, 0.0], yaw: -1.5707963267948966}
+      support_region: {center: [-0.8818177777777849, 1.2197222222222224, 0.7216332897940405], half_xy: [0.3697222222222208, 0.2697222222222223], yaw: 0.0, body_name: diningtable_0a462aa94ded95b9713578ea44eea3d8_1_0_0}
+      box_pos: [-0.8818178, 1.4141538, 0.7316333]
+      box_yaw: 0.0
+      object_pos: [-1.1206282, 1.4141538, 0.7316333]
+    cup_into_box:
+      hold_seconds: 1.0
+      robot_pose: {pos: [-0.9104929262996503, 1.8774602338889184, 0.0], yaw: -1.5707963267948966}
+      support_region: {center: [-0.8818177777777849, 1.2197222222222224, 0.7216332897940405], half_xy: [0.3697222222222208, 0.2697222222222223], yaw: 0.0, body_name: diningtable_0a462aa94ded95b9713578ea44eea3d8_1_0_0}
+      box_pos: [-0.8818178, 1.4141538, 0.7316333]
+      box_yaw: 0.0
+      object_pos: [-1.1206282, 1.4141538, 0.7316333]
+    statue_into_box:
+      hold_seconds: 1.0
+      robot_pose: {pos: [-0.9104929262996503, 1.8774602338889184, 0.0], yaw: -1.5707963267948966}
+      support_region: {center: [-0.8818177777777849, 1.2197222222222224, 0.7216332897940405], half_xy: [0.3697222222222208, 0.2697222222222223], yaw: 0.0, body_name: diningtable_0a462aa94ded95b9713578ea44eea3d8_1_0_0}
+      box_pos: [-0.8818178, 1.4141538, 0.7316333]
+      box_yaw: 0.0
+      object_pos: [-1.1206282, 1.4141538, 0.7316333]
+      object_quat: [0.7071067811865476, 0.7071067811865475, 0.0, 0.0]
+    banana_basket_to_table:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [-0.9104929262996503, 1.8774602338889184, 0.0]
+        yaw: -1.5707963267948966
+      target_region:
+        center: [0.738, 2.381, 0.833]
+        half_xy: [0.30, 0.35]
+        yaw: 0.0
+        body_name: cube_6cc54ad598e0fd7d884f34ce446b4928_1_1_0
+      basket_pos: [-0.929, 1.428, 0.765]
+      banana_pos: [-0.929, 1.428, 0.775]
+      show_target_region: false
+    coffee_drink_to_trash:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [-0.8818177777777849, 1.8394444444444447, 0.0]
+        yaw: -1.5707963267948966
+      source_pos: [-0.8818177777777849, 1.4067981756944448, 0.7824606224970074]
+      trash_fixture: FloorPlan24:bin_24_11
+      trash_region: FloorPlan24:bin_24_11:region:receptacle:0
+      trash_body_pos: [-0.280, 1.454, 0.25]
+    take_statue_from_cabinet:
+      hold_seconds: 1.0
+      robot_pose: {pos: [-1.58, 3.08, 0.0], yaw: 0.85}
+      target_fixture: FloorPlan24:Cabinet_4c1ca2f0_23
+      target_joint: cabinet_e221d936dcabf508245d72a9bca3615e_1_1_0_joint_0
+      init_open_fraction: 0.80
+      success_close_fraction: 0.20
+      cabinet_receptacle_region: FloorPlan24:Cube_298_07fd652a_53:region:receptacle:13
+      statue_pos: [-1.34377, 3.6746, 0.084288]
+      statue_quat: [0.7071067811865476, 0.7071067811865475, 0.0, 0.0]
+      table_fixture: FloorPlan24:Cube_298_07fd652a_53
+      success_region:
+        center: [-1.50, 3.567, 0.87]
+        half_size: [0.20, 0.20, 0.06]
+        yaw: 0.0
+    store_apple_in_fridge:
+      hold_seconds: 1.0
+      robot_pose: {pos: [-0.9104929262996503, 1.8774602338889184, 0.0], yaw: -1.5707963267948966}
+      navigation_distance: 0.35
+      target_fixture: FloorPlan24:Fridge_24_12
+      target_joint: refrigerator_70e2053608febd954f1738a98646cfd4_1_6_0_Meshe5c8eb0f1_3
+      init_open_fraction: 0.10
+      success_open_fraction: 0.50
+      success_close_fraction: 0.10
+      fridge_receptacle_region: FloorPlan24:Fridge_24_12:region:receptacle:0
+      apple_pos: [-1.0455, 1.45, 0.8051112278843826]
+    drawer_open_close_cycle:
+      hold_seconds: 1.0
+      robot_pose: {pos: [0.07959135612808288, 2.493862050296526, 0.0], yaw: 0.06182086223522546}
+      target_fixture: FloorPlan24:Drawer_4a91ad3a_26
+      target_joint: drawer_6188a72032c0f7ab853929812b0ac668_1_1_0_joint_0
+      init_open_fraction: 0.20
+      success_open_fraction: 0.80
+      success_close_fraction: 0.20
+    bowl_to_sink_then_apple_on_plate:
+      hold_seconds: 1.0
+      robot_pose: {pos: [-1.500842712474619, 3.259157287525381, 0.0], yaw: 0.785398163397448}
+      navigation_distance: 0.35
+      bowl_pos: [-1.218, 3.542, 0.812]
+      sink_fixture: FloorPlan24:Sink_2a544275_30
+      sink_region:
+        center: [-1.6036605704057223, 3.783509806518305, 0.7277820036477509]
+        half_size: [0.4500370214465277, 0.2272678065183058, 0.07202245762695736]
+        yaw: 0.0
+      table_fixture: FloorPlan24:Dining_Table_21_1_28
+      plate_pos: [-0.7755, 1.45, 0.8051112278843826]
+      apple_pos: [-1.0455, 1.45, 0.8051112278843826]
+    open_fridge:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan24:Fridge_24_12
+      target_joint: refrigerator_70e2053608febd954f1738a98646cfd4_1_6_0_Meshe5c8eb0f1_3
+      robot_pose:
+        pos: [-1.6770297017683942, 2.2877966262402576, 0.0]
+        yaw: -2.9569085210563526
+      init_open_fraction: 0.10
+      success_open_fraction: 0.50
+    close_fridge:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan24:Fridge_24_12
+      target_joint: refrigerator_70e2053608febd954f1738a98646cfd4_1_6_0_Meshe5c8eb0f1_3
+      robot_pose:
+        pos: [-1.4312811256884168, 2.3337056379336447, 0.0]
+        yaw: -2.9569085210563526
+      init_open_fraction: 0.30
+      success_close_fraction: 0.10
+    open_cabinet:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan24:Cabinet_4c1ca2f0_23
+      target_joint: cabinet_e221d936dcabf508245d72a9bca3615e_1_1_0_joint_0
+      robot_pose:
+        pos: [-1.1688390171170822, 3.080412673876426, 0.0]
+        yaw: 1.9674206399700964
+      init_open_fraction: 0.10
+      success_open_fraction: 0.50
+    close_cabinet:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan24:Cabinet_4c1ca2f0_23
+      target_joint: cabinet_e221d936dcabf508245d72a9bca3615e_1_1_0_joint_0
+      robot_pose:
+        pos: [-1.4108929797183447, 3.042057129174437, 0.0]
+        yaw: 1.5707963267948966
+      init_open_fraction: 0.50
+      success_close_fraction: 0.10
+    open_drawer:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan24:Drawer_4a91ad3a_26
+      target_joint: drawer_6188a72032c0f7ab853929812b0ac668_1_1_0_joint_0
+      robot_pose:
+        pos: [0.07959135612808288, 2.493862050296526, 0.0]
+        yaw: 0.06182086223522546
+      init_open_fraction: 0.20
+      success_open_fraction: 0.80
+    close_drawer:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan24:Drawer_4a91ad3a_26
+      target_joint: drawer_6188a72032c0f7ab853929812b0ac668_1_1_0_joint_0
+      robot_pose:
+        pos: [0.07959135612808291, 2.493862050296526, 0.0]
+        yaw: 0.06182086223522515
+      init_open_fraction: 0.80
+      success_close_fraction: 0.20
+    open_oven:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan24:oven_FP24_2_1
+      target_joint: oven_34c2af9f0968a89a3571a86d19d1fdd2_1_2_0_joint_0
+      robot_pose:
+        pos: [-1.7273514498232205, 2.633104223816179, 0.0]
+        yaw: 2.905292927005832
+      init_open_fraction: 0.10
+      success_open_fraction: 0.50
+    close_oven:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan24:oven_FP24_2_1
+      target_joint: oven_34c2af9f0968a89a3571a86d19d1fdd2_1_2_0_joint_0
+      robot_pose:
+        pos: [-2.0, 2.90, 0.0]
+        yaw: 3.141592653589793
+      init_open_fraction: 0.20
+      success_close_fraction: 0.10
+    oven_then_fridge:
+      stages:
+        - FloorPlan24:oven_FP24_0
+        - FloorPlan24:Fridge_24_12
+      robot_pose:
+        pos: [-1.263775, 2.867758, 0.0]
+        yaw: -0.5544493430401705
+    fridge_then_oven:
+      stages:
+        - FloorPlan24:Fridge_24_12
+        - FloorPlan24:oven_FP24_0
+      robot_pose:
+        pos: [-1.0, 3.1, 0.0]
+        yaw: -2.571045336646057
+
+    approach_drawer_and_open_close:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan24:Drawer_4a91ad3a_26
+      target_joint: drawer_6188a72032c0f7ab853929812b0ac668_1_1_0_joint_0
+      robot_pose:
+        pos: [-1.5, 3.192, 0.0]
+        yaw: -0.289587
+      init_open_fraction: 0.2
+      success_open_fraction: 0.8
+      navigation_goal_pose:
+        pos: [0.07959135612808288, 2.493862050296526, 0.0]
+        yaw: 0.06182086223522546
+      navigation_xy_tolerance: 0.15
+      navigation_yaw_tolerance: 0.35
+      success_close_fraction: 0.2
+      open_hold_seconds: 1.0
+    approach_cabinet_and_open_close:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan24:Cabinet_4c1ca2f0_23
+      target_joint: cabinet_e221d936dcabf508245d72a9bca3615e_1_1_0_joint_0
+      robot_pose:
+        pos: [0.0, 1.25, 0.0]
+        yaw: 2.109547
+      init_open_fraction: 0.1
+      success_open_fraction: 0.5
+      navigation_goal_pose:
+        pos: [-1.1688390171170822, 3.080412673876426, 0.0]
+        yaw: 1.9674206399700964
+      navigation_xy_tolerance: 0.15
+      navigation_yaw_tolerance: 0.35
+      success_close_fraction: 0.1
+      open_hold_seconds: 1.0
+    pick_apple_and_turn_to_trash:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [-0.9104929262996503, 1.8774602338889184, 0.0]
+        yaw: -1.5707963267948966
+      apple_pos: [-1.0455, 1.45, 0.8051112278843826]
+      apple_support_z: 0.7051112278843826
+      source_fixture: FloorPlan24:Dining_Table_21_1_28
+      trash_fixture: FloorPlan24:bin_24_11
+      trash_region: FloorPlan24:bin_24_11:region:receptacle:0
+      trash_body_pos: [-0.910493, 2.47686, 0.25]
+    open_drawer_and_turn_apple_to_trash:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [0.07959135612808288, 2.493862050296526, 0.0]
+        yaw: 0.0
+      apple_pos: [0.736715, 2.532619, 0.692]
+      target_fixture: FloorPlan24:Drawer_4a91ad3a_26
+      target_joint: drawer_6188a72032c0f7ab853929812b0ac668_1_1_0_joint_0
+      init_open_fraction: 0.2
+      success_open_fraction: 0.8
+      source_fixture: FloorPlan24:Drawer_4a91ad3a_26
+      trash_fixture: FloorPlan24:bin_24_11
+      trash_region: FloorPlan24:bin_24_11:region:receptacle:0
+      trash_body_pos: [-0.520409, 2.493262, 0.25]
+  FloorPlan25:
+    salt_shaker_stool_to_sink_counter:
+      robot_pose: {pos: [-1.0, 0.92, 0.05], yaw: -1.5707963267948966}
+      stool_xy: [-1.46, 0.92]
+      salt_xy: [-1.46, 0.92]
+      hold_seconds: 1.0
+      height_tolerance: 0.03
+    open_close_low_microwave:
+      hold_seconds: 1.0
+      robot_pose: {pos: [-1.55, 1.15, 0.0], yaw: 1.5707963267948966}
+      table_center: [-1.55, 1.795, 0.45]
+      table_half_xy: [0.43, 0.25]
+      target_fixture: FloorPlan25:Microwave_25_15
+      target_joint: microwaveoven_a0deccac0176ab81e419cf343a4e877c_1_2_0_joint_1
+      microwave_body: microwaveoven_a0deccac0176ab81e419cf343a4e877c_1_0_0
+      microwave_pos: [-1.55, 1.795, 0.651789]
+      microwave_quat: [0.70710678, 0.70710678, 0.0, 0.0]
+      microwave_receptacle_site: microwaveoven_a0deccac0176ab81e419cf343a4e877c_1_1_0_bodymeshc94b7b8fReceptacle0_0
+      init_open_fraction: 0.0
+      success_open_fraction: 0.4
+      success_close_fraction: 0.1
+    put_apple_in_low_microwave:
+      hold_seconds: 1.0
+      robot_pose: {pos: [-1.55, 1.15, 0.0], yaw: 1.5707963267948966}
+      table_center: [-1.55, 1.795, 0.45]
+      table_half_xy: [0.43, 0.25]
+      target_fixture: FloorPlan25:Microwave_25_15
+      target_joint: microwaveoven_a0deccac0176ab81e419cf343a4e877c_1_2_0_joint_1
+      microwave_body: microwaveoven_a0deccac0176ab81e419cf343a4e877c_1_0_0
+      microwave_pos: [-1.55, 1.795, 0.651789]
+      microwave_quat: [0.70710678, 0.70710678, 0.0, 0.0]
+      microwave_receptacle_site: microwaveoven_a0deccac0176ab81e419cf343a4e877c_1_1_0_bodymeshc94b7b8fReceptacle0_0
+      init_open_fraction: 0.0
+      success_open_fraction: 0.4
+      success_close_fraction: 0.1
+      apple_pos: [-1.60971, 1.76051, 0.85287334]
+    open_low_microwave_and_lift_apple:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [-1.36119, 1.17143, 0.0]
+        yaw: 1.30099
+      table_center: [-1.55, 1.795, 0.45]
+      table_half_xy: [0.43, 0.25]
+      target_fixture: FloorPlan25:Microwave_25_15
+      target_joint: microwaveoven_a0deccac0176ab81e419cf343a4e877c_1_2_0_joint_1
+      microwave_body: microwaveoven_a0deccac0176ab81e419cf343a4e877c_1_0_0
+      microwave_pos: [-1.55, 1.795, 0.651789]
+      microwave_quat: [0.70710678, 0.70710678, 0.0, 0.0]
+      microwave_receptacle_site: microwaveoven_a0deccac0176ab81e419cf343a4e877c_1_1_0_bodymeshc94b7b8fReceptacle0_0
+      init_open_fraction: 0.2
+      apple_inside_xy: [-1.6147, 1.75546]
+      success_open_fraction: 0.4
+      success_close_fraction: 0.1
+    take_apple_from_open_low_microwave_to_top:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [-1.56187, 1.12482, 0.0]
+        yaw: 1.55941
+      table_center: [-1.55, 1.795, 0.45]
+      table_half_xy: [0.43, 0.25]
+      target_fixture: FloorPlan25:Microwave_25_15
+      target_joint: microwaveoven_a0deccac0176ab81e419cf343a4e877c_1_2_0_joint_1
+      microwave_body: microwaveoven_a0deccac0176ab81e419cf343a4e877c_1_0_0
+      microwave_pos: [-1.55, 1.795, 0.651789]
+      microwave_quat: [0.70710678, 0.70710678, 0.0, 0.0]
+      microwave_receptacle_site: microwaveoven_a0deccac0176ab81e419cf343a4e877c_1_1_0_bodymeshc94b7b8fReceptacle0_0
+      init_open_fraction: 1.0
+      apple_inside_xy: [-1.6147, 1.75546]
+      success_open_fraction: 0.4
+      success_close_fraction: 0.1
+      apple_top_pos: [-1.60971, 1.76051, 0.85287334]
+    close_then_open_low_microwave:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [-1.36119, 1.17143, 0.0]
+        yaw: 1.30099
+      table_center: [-1.55, 1.795, 0.45]
+      table_half_xy: [0.43, 0.25]
+      target_fixture: FloorPlan25:Microwave_25_15
+      target_joint: microwaveoven_a0deccac0176ab81e419cf343a4e877c_1_2_0_joint_1
+      microwave_body: microwaveoven_a0deccac0176ab81e419cf343a4e877c_1_0_0
+      microwave_pos: [-1.55, 1.795, 0.651789]
+      microwave_quat: [0.70710678, 0.70710678, 0.0, 0.0]
+      microwave_receptacle_site: microwaveoven_a0deccac0176ab81e419cf343a4e877c_1_1_0_bodymeshc94b7b8fReceptacle0_0
+      init_open_fraction: 0.8
+      success_open_fraction: 0.4
+      success_close_fraction: 0.1
+    open_low_microwave_and_put_apple_inside:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [-1.63957, 1.280427, 0.0]
+        yaw: 0.981748
+      table_center: [-1.55, 1.795, 0.45]
+      table_half_xy: [0.43, 0.25]
+      target_fixture: FloorPlan25:Microwave_25_15
+      target_joint: microwaveoven_a0deccac0176ab81e419cf343a4e877c_1_2_0_joint_1
+      microwave_body: microwaveoven_a0deccac0176ab81e419cf343a4e877c_1_0_0
+      microwave_pos: [-1.55, 1.795, 0.651789]
+      microwave_quat: [0.70710678, 0.70710678, 0.0, 0.0]
+      microwave_receptacle_site: microwaveoven_a0deccac0176ab81e419cf343a4e877c_1_1_0_bodymeshc94b7b8fReceptacle0_0
+      init_open_fraction: 0.0
+      success_open_fraction: 0.4
+      success_close_fraction: 0.1
+      apple_top_pos: [-1.60971, 1.76051, 0.85287334]
+    bend_and_put_apple_on_plate:
+      hold_seconds: 1.0
+      robot_pose: {pos: [-1.55, 1.15, 0.0], yaw: 1.5707963267948966}
+      table_center: [-1.55, 1.795, 0.45]
+      table_half_xy: [0.45, 0.30]
+      plate_pos: [-1.73, 1.645, 0.45]
+      apple_pos: [-1.37, 1.645, 0.45]
+    approach_table_and_stand_canned_drink_upright:
+      show_support: false
+      hold_seconds: 1.0
+      upright_tolerance_degrees: 15.0
+      support_z_tolerance: 0.04
+      release_distance: 0.18
+      robot_pose:
+        pos: [-1.61176, 1.465753, 0.0]
+        yaw: -1.459238
+      support_region:
+        center: [-0.985, 0.43, 0.814844]
+        half_xy: [0.31, 0.18]
+        yaw: 0.0
+        body_name: sphere_c8fc031a3410345444c5efceccbb63f3_1_0_0
+      can_pos: [-1.0, 0.505, 0.824844]
+      can_quat: [0.7071067811865476, 0.0, 0.7071067811865475, 0.0]
+      approach_fixture: FloorPlan25:Sphere_019_d683a7e0_44
+      approach_distance: 0.35
+      minimum_start_distance: 0.5
+    approach_stove_and_put_pan:
+      show_target_region: false
+      hold_seconds: 1.0
+      support_z_tolerance: 0.05
+      pan_base_local_xy: [0.0, 0.001]
+      pan_base_radius: 0.067
+      robot_pose:
+        pos: [-1.61176, 1.465753, 0.0]
+        yaw: 0.324423
+      target_region:
+        center: [-0.38, 1.88, 0.83]
+        half_xy: [0.36, 0.36]
+        yaw: 0.0
+        body_name: base_d34fe6d422f45d03f8180969697a7e26_1_0_0
+      pan_pos: [-0.42, 1.3, 0.795]
+      pan_quat: [0.7182374422274201, 0.0, 0.0, -0.6957980860728299]
+      approach_fixture: FloorPlan25:Base_3c626b56_31
+      approach_distance: 0.35
+      minimum_start_distance: 0.5
+    approach_sink_and_put_bowl:
+      hold_seconds: 1.0
+      show_target_region: false
+      robot_pose:
+        pos: [-1.61176, 1.465753, 0.0]
+        yaw: -1.661257
+      object_pos: [-1.12, 0.43, 0.812]
+      sink_fixture: FloorPlan25:Sink_5aa7166b_33
+      sink_region:
+        center: [-1.7186143938412115, 0.2877546796212804, 0.7297487664408837]
+        half_size: [0.45003199929631044, 0.22726813295497425, 0.07081338795076808]
+        yaw: 3.141592653589793
+      approach_fixture: FloorPlan25:Sink_5aa7166b_33
+      approach_distance: 0.35
+      minimum_start_distance: 0.5
+    approach_sink_and_put_cup:
+      hold_seconds: 1.0
+      show_target_region: false
+      robot_pose:
+        pos: [-1.61176, 1.465753, 0.0]
+        yaw: -1.661257
+      object_pos: [-1.12, 0.43, 0.812]
+      sink_fixture: FloorPlan25:Sink_5aa7166b_33
+      sink_region:
+        center: [-1.7186143938412115, 0.2877546796212804, 0.7297487664408837]
+        half_size: [0.45003199929631044, 0.22726813295497425, 0.07081338795076808]
+        yaw: 3.141592653589793
+      approach_fixture: FloorPlan25:Sink_5aa7166b_33
+      approach_distance: 0.35
+      minimum_start_distance: 0.5
+    approach_drawer_and_open:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan25:Drawer_f8e34777_10
+      target_joint: drawer_37e2cd4a9d3453d138906e22e3636341_1_1_0_joint_0
+      robot_pose:
+        pos: [-1.61176, 1.465753, 0.0]
+        yaw: -1.136903
+      init_open_fraction: 0.2
+      success_open_fraction: 0.8
+      approach_fixture: FloorPlan25:Drawer_f8e34777_10
+      approach_distance: 0.35
+      minimum_start_distance: 0.5
+    approach_drawer_and_close:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan25:Drawer_f8e34777_10
+      target_joint: drawer_37e2cd4a9d3453d138906e22e3636341_1_1_0_joint_0
+      robot_pose:
+        pos: [-1.61176, 1.465753, 0.0]
+        yaw: -1.136903
+      init_open_fraction: 0.8
+      success_close_fraction: 0.2
+      approach_fixture: FloorPlan25:Drawer_f8e34777_10
+      approach_distance: 0.35
+      minimum_start_distance: 0.5
+    approach_cabinet_and_open:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan25:Cabinet_8256c8ad_16
+      target_joint: cabinet_f3de54fca559e75e00723d506dda7765_1_1_0_joint_0
+      robot_pose:
+        pos: [-1.5, 2.5, 0.0]
+        yaw: -1.582211
+      init_open_fraction: 0.1
+      success_open_fraction: 0.5
+      approach_fixture: FloorPlan25:Cabinet_8256c8ad_16
+      approach_distance: 0.35
+      minimum_start_distance: 0.5
+    approach_cabinet_and_close:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan25:Cabinet_8256c8ad_16
+      target_joint: cabinet_f3de54fca559e75e00723d506dda7765_1_1_0_joint_0
+      robot_pose:
+        pos: [-1.5, 2.5, 0.0]
+        yaw: -1.582211
+      init_open_fraction: 0.5
+      success_close_fraction: 0.1
+      approach_fixture: FloorPlan25:Cabinet_8256c8ad_16
+      approach_distance: 0.35
+      minimum_start_distance: 0.5
+    pan_table_to_stove:
+      show_target_region: false
+      hold_seconds: 1.0
+      support_z_tolerance: 0.05
+      pan_base_local_xy: [0.0, 0.001]
+      pan_base_radius: 0.067
+      robot_pose: {pos: [-1.05, 1.48, 0.0], yaw: 0.0}
+      target_region:
+        center: [-0.38, 1.88, 0.83]
+        half_xy: [0.36, 0.36]
+        yaw: 0.0
+        body_name: base_d34fe6d422f45d03f8180969697a7e26_1_0_0
+      pan_pos: [-0.42, 1.30, 0.795]
+      pan_quat: [0.7182374422274201, 0.0, 0.0, -0.6957980860728299]
+    stand_canned_drink_upright:
+      show_support: false
+      hold_seconds: 1.0
+      upright_tolerance_degrees: 15.0
+      support_z_tolerance: 0.04
+      release_distance: 0.18
+      robot_pose:
+        pos: [-1.0, 0.9, 0.0]
+        yaw: -1.5707963267948966
+      support_region:
+        center: [-0.985, 0.43, 0.814844]
+        half_xy: [0.31, 0.18]
+        yaw: 0.0
+        body_name: sphere_c8fc031a3410345444c5efceccbb63f3_1_0_0
+      can_pos: [-1.0, 0.505, 0.824844]
+      can_quat: [0.7071067811865476, 0.0, 0.7071067811865475, 0.0]
+    lift_eggplant:
+      hold_seconds: 1.0
+      lift_height: 0.3
+      robot_pose: {pos: [-1.0, 0.9, 0.0], yaw: -1.5707963267948966}
+      support_region: {center: [-0.985, 0.43, 0.814844], half_xy: [0.31, 0.18], yaw: 0.0, body_name: sphere_c8fc031a3410345444c5efceccbb63f3_1_0_0}
+      object_pos: [-1.0, 0.505, 0.824844]
+      object_quat: [1.0, 0.0, 0.0, 0.0]
+    lift_plate:
+      hold_seconds: 1.0
+      lift_height: 0.3
+      robot_pose: {pos: [-1.0, 0.9, 0.0], yaw: -1.5707963267948966}
+      support_region: {center: [-0.985, 0.43, 0.814844], half_xy: [0.31, 0.18], yaw: 0.0, body_name: sphere_c8fc031a3410345444c5efceccbb63f3_1_0_0}
+      object_pos: [-1.0, 0.505, 0.824844]
+      object_quat: [1.0, 0.0, 0.0, 0.0]
+    lift_salt_shaker:
+      hold_seconds: 1.0
+      lift_height: 0.3
+      robot_pose: {pos: [-1.0, 0.9, 0.0], yaw: -1.5707963267948966}
+      support_region: {center: [-0.985, 0.43, 0.814844], half_xy: [0.31, 0.18], yaw: 0.0, body_name: sphere_c8fc031a3410345444c5efceccbb63f3_1_0_0}
+      object_pos: [-1.0, 0.505, 0.824844]
+      object_quat: [1.0, 0.0, 0.0, 0.0]
+    approach_fridge:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan25:Fridge_25_16
+      robot_pose:
+        pos: [-1.2502, 0.8984, 0.0]
+        yaw: 2.4086236299459673
+      target_xy: [-2.5684544645564373, 2.0851963327855207]
+      target_tolerance: [0.7, 0.7]
+    approach_dishwasher:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan25:dishwasher_FP25
+      robot_pose:
+        pos: [-1.693992, 0.971969, 0.0]
+        yaw: 3.077776741007524
+      target_xy: [-2.696, 1.036]
+      target_tolerance: [0.7, 0.7]
+    approach_oven:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan25:oven_FP25_1
+      robot_pose:
+        pos: [-1.693992, 0.971969, 0.0]
+        yaw: 0.6117304695953478
+      target_xy: [-0.401, 1.879]
+      target_tolerance: [0.7, 0.7]
+    approach_table:
+      target_fixture: FloorPlan25:Sphere_019_d683a7e0_44
+      support_body: sphere_c8fc031a3410345444c5efceccbb63f3_1_0_0
+      robot_pose: {pos: [-1.61176, 1.465753, 0.0], yaw: -1.459238}
+      approach_distance: 0.35
+      minimum_start_distance: 0.65
+    approach_table_and_lift_apple:
+      hold_seconds: 1.0
+      lift_height: 0.3
+      target_fixture: FloorPlan25:Sphere_019_d683a7e0_44
+      support_body: sphere_c8fc031a3410345444c5efceccbb63f3_1_0_0
+      robot_pose: {pos: [-1.25, 2.45, 0.0], yaw: -1.4403531274106511}
+      approach_distance: 0.35
+      minimum_start_distance: 0.50
+      support_region: {center: [-0.985, 0.43, 0.814844], half_xy: [0.31, 0.18], yaw: 0.0, body_name: sphere_c8fc031a3410345444c5efceccbb63f3_1_0_0}
+      object_pos: [-1.0, 0.505, 0.824844]
+      object_quat: [1.0, 0.0, 0.0, 0.0]
+    approach_table_and_lift_salt_shaker:
+      hold_seconds: 1.0
+      lift_height: 0.3
+      target_fixture: FloorPlan25:Sphere_019_d683a7e0_44
+      support_body: sphere_c8fc031a3410345444c5efceccbb63f3_1_0_0
+      robot_pose: {pos: [-1.25, 2.45, 0.0], yaw: -1.4403531274106511}
+      approach_distance: 0.35
+      minimum_start_distance: 0.50
+      support_region: {center: [-0.985, 0.43, 0.814844], half_xy: [0.31, 0.18], yaw: 0.0, body_name: sphere_c8fc031a3410345444c5efceccbb63f3_1_0_0}
+      object_pos: [-1.0, 0.505, 0.824844]
+      object_quat: [1.0, 0.0, 0.0, 0.0]
+    approach_table_and_lift_bowl:
+      hold_seconds: 1.0
+      lift_height: 0.3
+      target_fixture: FloorPlan25:Sphere_019_d683a7e0_44
+      support_body: sphere_c8fc031a3410345444c5efceccbb63f3_1_0_0
+      robot_pose: {pos: [-1.25, 2.45, 0.0], yaw: -1.4403531274106511}
+      approach_distance: 0.35
+      minimum_start_distance: 0.50
+      support_region: {center: [-0.985, 0.43, 0.814844], half_xy: [0.31, 0.18], yaw: 0.0, body_name: sphere_c8fc031a3410345444c5efceccbb63f3_1_0_0}
+      object_pos: [-1.0, 0.505, 0.824844]
+      object_quat: [1.0, 0.0, 0.0, 0.0]
+    approach_table_and_put_apple_on_plate:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan25:Sphere_019_d683a7e0_44
+      support_body: sphere_c8fc031a3410345444c5efceccbb63f3_1_0_0
+      robot_pose: {pos: [-1.25, 2.45, 0.0], yaw: -1.4403531274106511}
+      approach_distance: 0.35
+      minimum_start_distance: 0.50
+      plate_pos: [-0.85, 0.43, 0.824844]
+      source_pos: [-1.12, 0.43, 0.824844]
+    approach_table_and_put_bread_on_plate:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan25:Sphere_019_d683a7e0_44
+      support_body: sphere_c8fc031a3410345444c5efceccbb63f3_1_0_0
+      robot_pose: {pos: [-1.25, 2.45, 0.0], yaw: -1.4403531274106511}
+      approach_distance: 0.35
+      minimum_start_distance: 0.50
+      plate_pos: [-0.85, 0.43, 0.824844]
+      source_pos: [-1.12, 0.43, 0.824844]
+    approach_table_and_put_cheese_on_plate:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan25:Sphere_019_d683a7e0_44
+      support_body: sphere_c8fc031a3410345444c5efceccbb63f3_1_0_0
+      robot_pose: {pos: [-1.25, 2.45, 0.0], yaw: -1.4403531274106511}
+      approach_distance: 0.35
+      minimum_start_distance: 0.50
+      plate_pos: [-0.85, 0.43, 0.824844]
+      source_pos: [-1.12, 0.43, 0.824844]
+    approach_table_and_put_mug_on_plate:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan25:Sphere_019_d683a7e0_44
+      support_body: sphere_c8fc031a3410345444c5efceccbb63f3_1_0_0
+      robot_pose: {pos: [-1.25, 2.45, 0.0], yaw: -1.4403531274106511}
+      approach_distance: 0.35
+      minimum_start_distance: 0.50
+      plate_pos: [-0.85, 0.43, 0.824844]
+      source_pos: [-1.12, 0.43, 0.824844]
+    approach_open_fridge:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan25:Fridge_25_16
+      target_joint: refrigerator_5ab34dac351f0bd42073c9b554da6317_1_2_0_joint_0
+      robot_pose:
+        pos: [-1.00, 0.90, 0.0]
+        yaw: 3.141592653589793
+      init_open_fraction: 0.0
+      success_open_fraction: 0.4
+      success_distance: 0.75
+    approach_open_oven:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan25:oven_FP25_1
+      target_joint: oven_5b5f5cac4c61d7694dadaf2771e19a4e_1_4_0_door1_1
+      robot_pose:
+        pos: [-2.00, 1.693, 0.0]
+        yaw: 0.0
+      init_open_fraction: 0.0
+      success_open_fraction: 0.4
+      success_distance: 0.75
+    drawer_pnp:
+      hold_seconds: 1.0
+      show_target_region: false
+      target_fixture: FloorPlan25:Drawer_3188120f_9
+      target_joint: drawer_f673a1e971c6a4e596ce925f1744e25f_1_1_0_joint_0
+      robot_pose:
+        pos: [-0.813, 1.204, 0.0]
+        yaw: 0.0
+      init_open_fraction: 0.2
+      success_open_fraction: 0.8
+      success_close_fraction: 0.20
+      drawer_receptacle_region: FloorPlan25:Drawer_3188120f_9:region:receptacle:0
+      apple_pos: [-0.486, 1.204, 0.816]
+    open_drawer_take_apple:
+      hold_seconds: 1.0
+      show_target_region: false
+      target_fixture: FloorPlan25:Drawer_f8e34777_10
+      target_joint: drawer_37e2cd4a9d3453d138906e22e3636341_1_1_0_joint_0
+      robot_pose:
+        pos: [-1.263740921081968, 0.93, 0.0]
+        yaw: -1.5707963267948966
+      init_open_fraction: 0.2
+      success_open_fraction: 0.8
+      drawer_receptacle_region: FloorPlan25:Drawer_f8e34777_10:region:receptacle:0
+      apple_pos: [-1.13349, 0.410965, 0.699]
+      target_region:
+        center: [-1.0, 0.40, 0.8166]
+        half_xy: [0.35, 0.21]
+        z_tolerance: 0.04
+        yaw: 0.0
+    cabinet_open_close_cycle:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [-1.5027512011657445, 1.1191051021446736, 0.0]
+        yaw: -1.606534153742726
+      target_fixture: FloorPlan25:Cabinet_8256c8ad_16
+      target_joint: cabinet_f3de54fca559e75e00723d506dda7765_1_1_0_joint_0
+      success_open_fraction: 0.8
+      success_close_fraction: 0.2
+      init_open_fraction: 0.2
+    cabinet_close_open_cycle:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [-1.5027512011657445, 1.1191051021446736, 0.0]
+        yaw: -1.606534153742726
+      target_fixture: FloorPlan25:Cabinet_8256c8ad_16
+      target_joint: cabinet_f3de54fca559e75e00723d506dda7765_1_1_0_joint_0
+      success_open_fraction: 0.8
+      success_close_fraction: 0.2
+      init_open_fraction: 0.8
+    apple_cabinet_pnp:
+      hold_seconds: 1.0
+      show_target_region: false
+      target_fixture: FloorPlan25:Cabinet_8256c8ad_16
+      target_joint: cabinet_f3de54fca559e75e00723d506dda7765_1_1_0_joint_0
+      robot_pose:
+        pos: [-1.800, 0.920, 0.0]
+        yaw: -0.78
+      init_open_fraction: 1.0
+      success_close_fraction: 0.08
+      cabinet_receptacle_region: FloorPlan25:Cube_224_f4d9a342_37:region:receptacle:4
+      apple_pos: [-1.673, 0.503, 0.871]
+    apple_on_plate:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [-1.00, 0.90, 0.0]
+        yaw: -1.5707963267948966
+      plate_pos: [-0.85, 0.43, 0.824844]
+      apple_pos: [-1.12, 0.43, 0.824844]
+    canned_drink_from_fridge_to_trash:
+      hold_seconds: 1.0
+      robot_pose: {pos: [-1.85, 2.50, 0.0], yaw: -2.74}
+      target_fixture: FloorPlan25:Fridge_25_16
+      target_joint: refrigerator_5ab34dac351f0bd42073c9b554da6317_1_2_0_joint_0
+      init_open_fraction: 1.0
+      success_open_fraction: 0.50
+      fridge_receptacle_region: FloorPlan25:Fridge_25_16:region:receptacle:0
+      can_xy: [-2.50, 2.22]
+      trash_fixture: FloorPlan25:bin_25_13
+      trash_region: FloorPlan25:bin_25_13:region:receptacle:0
+      stool_xy: [-1.46, 0.92]
+    apple_banana_plate_swap:
+      hold_seconds: 1.0
+      show_target_region: false
+      robot_pose:
+        pos: [-1.00, 0.90, 0.0]
+        yaw: -1.5707963267948966
+      support_region:
+        center: [-0.95, 0.43, 0.814844]
+        half_xy: [0.40, 0.12]
+        z_tolerance: 0.10
+        yaw: 0.0
+        body_name: sphere_c8fc031a3410345444c5efceccbb63f3_1_0_0
+      plate_pos: [-0.85, 0.43, 0.824844]
+      banana_pos: [-1.12, 0.43, 0.824844]
+    cup_stack:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [-1.0, 0.9, 0.0]
+        yaw: -1.5707963267948966
+      cup_1_pos: [-1.06, 0.505, 0.824844]
+      cup_2_pos: [-0.91, 0.50515, 0.824844]
+    bowl_to_sink:
+      hold_seconds: 1.0
+      show_target_region: false
+      robot_pose:
+        pos: [-1.4556426526175806, 0.8882282092126825, 0.0]
+        yaw: -1.5707963267948966
+      object_pos: [-1.12, 0.43, 0.812]
+      sink_fixture: FloorPlan25:Sink_5aa7166b_33
+      sink_region:
+        center: [-1.7186143938412115, 0.2877546796212804, 0.7297487664408837]
+        half_size: [0.45003199929631044, 0.22726813295497425, 0.07081338795076808]
+        yaw: 3.141592653589793
+    pack_produce_into_box:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [-1.00, 0.90, 0.0]
+        yaw: -1.5707963267948966
+      support_region:
+        center: [-0.985, 0.43, 0.814844]
+        half_xy: [0.31, 0.18]
+        yaw: 0.0
+        body_name: sphere_c8fc031a3410345444c5efceccbb63f3_1_0_0
+      box_pos: [-0.985, 0.43, 0.824844]
+      box_yaw: 0.0
+      apple_pos: [-0.72, 0.43, 0.824844]
+      banana_pos: [-1.25, 0.43, 0.824844]
+    apple_into_box:
+      hold_seconds: 1.0
+      robot_pose: {pos: [-1.00, 0.90, 0.0], yaw: -1.5707963267948966}
+      support_region: {center: [-0.985, 0.43, 0.814844], half_xy: [0.31, 0.18], yaw: 0.0, body_name: sphere_c8fc031a3410345444c5efceccbb63f3_1_0_0}
+      box_pos: [-0.985, 0.43, 0.824844]
+      box_yaw: 0.0
+      object_pos: [-1.25, 0.43, 0.824844]
+    cup_into_box:
+      hold_seconds: 1.0
+      robot_pose: {pos: [-1.00, 0.90, 0.0], yaw: -1.5707963267948966}
+      support_region: {center: [-0.985, 0.43, 0.814844], half_xy: [0.31, 0.18], yaw: 0.0, body_name: sphere_c8fc031a3410345444c5efceccbb63f3_1_0_0}
+      box_pos: [-0.985, 0.43, 0.824844]
+      box_yaw: 0.0
+      object_pos: [-1.25, 0.43, 0.824844]
+    statue_into_box:
+      hold_seconds: 1.0
+      robot_pose: {pos: [-1.00, 0.90, 0.0], yaw: -1.5707963267948966}
+      support_region: {center: [-0.985, 0.43, 0.814844], half_xy: [0.31, 0.18], yaw: 0.0, body_name: sphere_c8fc031a3410345444c5efceccbb63f3_1_0_0}
+      box_pos: [-0.985, 0.43, 0.824844]
+      box_yaw: 0.0
+      object_pos: [-1.25, 0.43, 0.824844]
+      object_quat: [0.7071067811865476, 0.7071067811865475, 0.0, 0.0]
+    banana_basket_to_table:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [-1.00, 0.90, 0.0]
+        yaw: -1.5707963267948966
+      target_region:
+        center: [-0.328, 1.119, 0.818]
+        half_xy: [0.30, 0.30]
+        yaw: 0.0
+        body_name: sphere_c8fc031a3410345444c5efceccbb63f3_1_1_0
+      basket_pos: [-1.12, 0.43, 0.824844]
+      banana_pos: [-1.12, 0.43, 0.834844]
+      show_target_region: false
+    coffee_drink_to_trash:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [-1.00, 0.90, 0.0]
+        yaw: -1.5707963267948966
+      source_pos: [-1.121, 0.515, 0.872344]
+      trash_fixture: FloorPlan25:bin_25_13
+      trash_region: FloorPlan25:bin_25_13:region:receptacle:0
+      trash_body_pos: [-1.690, 0.943, 0.2631335568652238]
+    take_statue_from_cabinet:
+      hold_seconds: 1.0
+      robot_pose: {pos: [-1.800, 0.920, 0.0], yaw: -0.78}
+      target_fixture: FloorPlan25:Cabinet_8256c8ad_16
+      target_joint: cabinet_f3de54fca559e75e00723d506dda7765_1_1_0_joint_0
+      init_open_fraction: 1.0
+      success_close_fraction: 0.20
+      cabinet_receptacle_region: FloorPlan25:Cube_224_f4d9a342_37:region:receptacle:4
+      statue_pos: [-1.5228, 0.401696, 0.081308]
+      statue_quat: [0.7071067811865476, 0.7071067811865475, 0.0, 0.0]
+      table_fixture: FloorPlan25:Cube_224_f4d9a342_37
+      success_region:
+        center: [-1.673, 0.503, 0.91]
+        half_size: [0.20, 0.20, 0.06]
+        yaw: 0.0
+    store_apple_in_fridge:
+      hold_seconds: 1.0
+      robot_pose: {pos: [-0.766446609, 0.783553391, 0.0], yaw: -2.356194490192}
+      navigation_distance: 0.35
+      target_fixture: FloorPlan25:Fridge_25_16
+      target_joint: refrigerator_5ab34dac351f0bd42073c9b554da6317_1_2_0_joint_0
+      init_open_fraction: 0.10
+      success_open_fraction: 0.50
+      success_close_fraction: 0.10
+      fridge_receptacle_region: FloorPlan25:Fridge_25_16:region:receptacle:0
+      apple_pos: [-1.12, 0.43, 0.824844]
+    drawer_open_close_cycle:
+      hold_seconds: 1.0
+      robot_pose: {pos: [-0.787084838, 0.833698665, 0.0], yaw: -2.617993877991}
+      target_fixture: FloorPlan25:Drawer_f8e34777_10
+      target_joint: drawer_37e2cd4a9d3453d138906e22e3636341_1_1_0_joint_0
+      init_open_fraction: 0.20
+      success_open_fraction: 0.80
+      success_close_fraction: 0.20
+    open_fridge:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan25:Fridge_25_16
+      target_joint: refrigerator_5ab34dac351f0bd42073c9b554da6317_1_2_0_joint_0
+      robot_pose:
+        pos: [-1.821612011843662, 1.6016282686149679, 0.0]
+        yaw: 2.566988631617232
+      init_open_fraction: 0.10
+      success_open_fraction: 0.50
+    close_fridge:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan25:Fridge_25_16
+      target_joint: refrigerator_5ab34dac351f0bd42073c9b554da6317_1_2_0_joint_0
+      robot_pose:
+        pos: [-1.6117601160310104, 1.4657526570290913, 0.0]
+        yaw: 2.566988631617232
+      init_open_fraction: 0.30
+      success_close_fraction: 0.10
+    open_cabinet:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan25:Cabinet_8256c8ad_16
+      target_joint: cabinet_f3de54fca559e75e00723d506dda7765_1_1_0_joint_0
+      robot_pose:
+        pos: [-1.5081107341788744, 0.9692008813706035, 0.0]
+        yaw: -1.606534153742726
+      init_open_fraction: 0.10
+      success_open_fraction: 0.50
+    close_cabinet:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan25:Cabinet_8256c8ad_16
+      target_joint: cabinet_f3de54fca559e75e00723d506dda7765_1_1_0_joint_0
+      robot_pose:
+        pos: [-1.5027512011657445, 1.1191051021446736, 0.0]
+        yaw: -1.606534153742726
+      init_open_fraction: 0.50
+      success_close_fraction: 0.10
+    open_drawer:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan25:Drawer_f8e34777_10
+      target_joint: drawer_37e2cd4a9d3453d138906e22e3636341_1_1_0_joint_0
+      robot_pose:
+        pos: [-1.363740921081968, 0.95, 0.0]
+        yaw: -1.3107939428175867
+      init_open_fraction: 0.20
+      success_open_fraction: 0.80
+    close_drawer:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan25:Drawer_f8e34777_10
+      target_joint: drawer_37e2cd4a9d3453d138906e22e3636341_1_1_0_joint_0
+      robot_pose:
+        pos: [-1.363740921081968, 1.045244128440676, 0.0]
+        yaw: -1.2107939428175867
+      init_open_fraction: 0.80
+      success_close_fraction: 0.20
+    open_oven:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan25:oven_FP25_1
+      target_joint: oven_5b5f5cac4c61d7694dadaf2771e19a4e_1_4_0_door1_1
+      robot_pose:
+        pos: [-1.15, 1.693, 0.0]
+        yaw: 0.0
+      init_open_fraction: 0.10
+      success_open_fraction: 0.50
+    close_oven:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan25:oven_FP25_1
+      target_joint: oven_5b5f5cac4c61d7694dadaf2771e19a4e_1_4_0_door1_1
+      robot_pose:
+        pos: [-1.22, 1.693, 0.0]
+        yaw: 0.0
+      init_open_fraction: 0.20
+      success_close_fraction: 0.10
+    oven_then_fridge:
+      stages:
+        - FloorPlan25:oven_FP25_1
+        - FloorPlan25:Fridge_25_16
+      robot_pose:
+        pos: [-1.693992, 0.971969, 0.0]
+        yaw: 0.589049
+    fridge_then_oven:
+      stages:
+        - FloorPlan25:Fridge_25_16
+        - FloorPlan25:oven_FP25_1
+      robot_pose:
+        pos: [-1.693992, 0.971969, 0.0]
+        yaw: 0.589049
+    fridge_then_dishwasher:
+      stages:
+        - FloorPlan25:Fridge_25_16
+        - FloorPlan25:dishwasher_FP25
+      robot_pose:
+        pos: [-1.693992, 0.971969, 0.0]
+        yaw: 0.589049
+    dishwasher_then_fridge:
+      stages:
+        - FloorPlan25:dishwasher_FP25
+        - FloorPlan25:Fridge_25_16
+      robot_pose:
+        pos: [-1.693992, 0.971969, 0.0]
+        yaw: 0.589049
+    oven_then_dishwasher:
+      stages:
+        - FloorPlan25:oven_FP25_1
+        - FloorPlan25:dishwasher_FP25
+      robot_pose:
+        pos: [-1.693992, 0.971969, 0.0]
+        yaw: 0.589049
+    dishwasher_then_oven:
+      stages:
+        - FloorPlan25:dishwasher_FP25
+        - FloorPlan25:oven_FP25_1
+      robot_pose:
+        pos: [-1.693992, 0.971969, 0.0]
+        yaw: 0.589049
+    approach_drawer_and_open_close:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan25:Drawer_f8e34777_10
+      target_joint: drawer_37e2cd4a9d3453d138906e22e3636341_1_1_0_joint_0
+      robot_pose:
+        pos: [-1.61176, 1.465753, 0.0]
+        yaw: -1.136903
+      init_open_fraction: 0.2
+      success_open_fraction: 0.8
+      navigation_goal_pose:
+        pos: [-1.363740921081968, 0.95, 0.0]
+        yaw: -1.3107939428175868
+      navigation_xy_tolerance: 0.15
+      navigation_yaw_tolerance: 0.35
+      success_close_fraction: 0.2
+      open_hold_seconds: 1.0
+    approach_cabinet_and_open_close:
+      hold_seconds: 1.0
+      target_fixture: FloorPlan25:Cabinet_8256c8ad_16
+      target_joint: cabinet_f3de54fca559e75e00723d506dda7765_1_1_0_joint_0
+      robot_pose:
+        pos: [-1.5, 2.5, 0.0]
+        yaw: -1.582211
+      init_open_fraction: 0.1
+      success_open_fraction: 0.5
+      navigation_goal_pose:
+        pos: [-1.5081107341788744, 0.9692008813706035, 0.0]
+        yaw: -1.606534153742726
+      navigation_xy_tolerance: 0.15
+      navigation_yaw_tolerance: 0.35
+      success_close_fraction: 0.1
+      open_hold_seconds: 1.0
+    pick_apple_and_turn_to_trash:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [-1.0, 0.9, 0.0]
+        yaw: -1.5707963267948966
+      apple_pos: [-1.12, 0.43, 0.824844]
+      source_fixture: FloorPlan25:Sphere_019_d683a7e0_44
+      trash_fixture: FloorPlan25:bin_25_13
+      trash_region: FloorPlan25:bin_25_13:region:receptacle:0
+      trash_body_pos: [-1.0, 1.5, 0.2631335568652238]
+    open_drawer_and_turn_apple_to_trash:
+      hold_seconds: 1.0
+      robot_pose:
+        pos: [-1.263740921081968, 0.93, 0.0]
+        yaw: -1.5707963267948966
+      apple_pos: [-1.13349, 0.410965, 0.699]
+      target_fixture: FloorPlan25:Drawer_f8e34777_10
+      target_joint: drawer_37e2cd4a9d3453d138906e22e3636341_1_1_0_joint_0
+      init_open_fraction: 0.2
+      success_open_fraction: 0.8
+      source_fixture: FloorPlan25:Drawer_f8e34777_10
+      trash_fixture: FloorPlan25:bin_25_13
+      trash_region: FloorPlan25:bin_25_13:region:receptacle:0
+      trash_body_pos: [-1.263741, 1.45, 0.2631335568652238]

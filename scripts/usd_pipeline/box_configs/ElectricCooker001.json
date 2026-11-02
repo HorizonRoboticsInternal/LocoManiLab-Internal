@@ -1,0 +1,14 @@
+{
+  "_comment": "Front-opening cooker: 5-wall hollow housing (open front) + one door slab. Interior cavity (local frame): x +-0.068, y[-0.04,+0.057], z +-0.083.",
+  "asset": "robocasa/models/assets/fixtures/articulated/ElectricCooker001",
+  "body": [
+    {"name": "body_back",  "pos": [0.0,    0.0805,  0.0],   "size": [0.123,  0.0235, 0.151]},
+    {"name": "body_left",  "pos": [-0.0955, 0.0085, 0.0],   "size": [0.0275, 0.0485, 0.151]},
+    {"name": "body_right", "pos": [0.0955,  0.0085, 0.0],   "size": [0.0275, 0.0485, 0.151]},
+    {"name": "body_floor", "pos": [0.0,     0.0085, -0.117], "size": [0.068, 0.0485, 0.034]},
+    {"name": "body_top",   "pos": [0.0,     0.0085, 0.117],  "size": [0.068, 0.0485, 0.034]}
+  ],
+  "door": [
+    {"name": "door_col", "pos": [0.0, -0.082, 0.0105], "size": [0.111, 0.022, 0.1305]}
+  ]
+}

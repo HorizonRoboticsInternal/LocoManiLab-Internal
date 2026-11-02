@@ -1,0 +1,7 @@
+# Living-room layout 007 (TabletopPickPlace): an empty room. The task builds its
+# single pick/place surface itself in _setup_model -- one kitchen Counter (clean
+# box collision) directly in FRONT of the robot -- so nothing is declared here.
+# Robot spawns at the origin facing +x and never moves: the whole task is an
+# upper-body tabletop pick-and-place (pick the mug, place it on the plate), so
+# this is the simplest possible scene. Empty -> very light, fast rendering.
+furniture: []

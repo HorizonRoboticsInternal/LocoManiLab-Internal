@@ -1,0 +1,16 @@
+# Living-room layout 003 (used by the ApproachSofa navigation task): sofa against
+# the -x wall facing into the room, coffee table + TV off to one side so there's
+# a clear walking lane down the middle for the robot to approach the sofa.
+furniture:
+  - name: sofa
+    type: sofa
+    pos: [-2.5, 0.0]
+    z_rot: 1.5708        # 2.0 m width along y, seat faces +x (toward the room)
+  - name: coffee_table
+    type: coffee_table
+    pos: [-0.8, 1.4]     # off the central lane
+    z_rot: 0.0
+  - name: tv_stand
+    type: tv_stand
+    pos: [2.5, 1.2]
+    z_rot: -1.5708

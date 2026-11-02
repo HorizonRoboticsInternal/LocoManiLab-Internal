@@ -25,8 +25,20 @@ from robocasa.models.fixtures.stove import Stove, Stovetop
 from robocasa.models.fixtures.oven import Oven
 from robocasa.models.fixtures.microwave import Microwave
 from robocasa.models.fixtures.dish_rack import DishRack
+from robocasa.models.fixtures.conveyor_belt import ConveyorBeltFixture
+from robocasa.models.fixtures.articulated import ArticulatedObject
+from robocasa.models.fixtures.shelf import Shelf
 
 from robocasa.models.fixtures.fixture_stack import FixtureStack
 from robocasa.models.fixtures.windows import WindowProc, Window
+from robocasa.models.fixtures.furniture import (
+    Furniture,
+    Sofa,
+    CoffeeTable,
+    TVStand,
+    SideTable,
+    FurnitureType,
+    furniture_is_type,
+)
 
 from robocasa.models.fixtures.fixture_utils import fixture_is_type

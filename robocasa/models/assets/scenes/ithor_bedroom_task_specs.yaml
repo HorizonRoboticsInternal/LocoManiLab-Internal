@@ -1,0 +1,782 @@
+scenes:
+  FloorPlan302:
+    approach_bed:
+      fixture: FloorPlan302:Bed_2_5
+      start_pose: {xy: [-0.90, 0.90], yaw: -0.734327}
+      minimum_start_distance: 1.25
+      remove_fixtures: []
+      lang: walk to the bed
+    approach_desk:
+      fixture: FloorPlan302:Desk_302_1_19
+      start_pose: {xy: [0.75, 0.60], yaw: -2.340163}
+      minimum_start_distance: 1.35
+      remove_fixtures: []
+      lang: walk to the desk
+    approach_hamper_lid:
+      fixture: FloorPlan302:spawned:task_laundry_hamper
+      start_pose: {xy: [-0.90, 0.90], yaw: -1.084}
+      minimum_start_distance: 1.20
+      operation_pose: {xy: [0.00, -0.20], yaw: -1.5707963268}
+      remove_fixtures: []
+    approach_storage:
+      fixture: FloorPlan302:Safe_18_1_16
+      start_pose: {xy: [-0.45, -0.60], yaw: 0.609252}
+      minimum_start_distance: 1.50
+      remove_fixtures: []
+      lang: walk to the safe
+    drawer:
+      fixture: FloorPlan302:Side_Table_302_1_1_20
+      joint: stand_3dd929e987652b8ff80d3776ae51182e_1_2_0_joint_1
+      target: drawer
+      lang: "{verb} the bedside drawer"
+    top_drawer:
+      fixture: FloorPlan302:Side_Table_302_2_1_17
+      joint: stand_ff4dc8c26a171f1ee525b510e1af7754_1_2_0_joint_1
+      target: top drawer of the bedside table
+      lang: "{verb} the top drawer of the bedside table"
+    laptop:
+      fixture_mode: existing
+      behaviors: [open, close]
+      fixture: FloorPlan302:Laptop_2_8
+      joint: laptop_5ffa33a3308c6355c2dd6972f3f5c950_1_1_0_laptoplid2joint0_1
+      target: laptop lid
+      lang: "{verb} the laptop lid"
+    workspace:
+      fixture: FloorPlan302:Side_Table_302_1_1_20
+      region: FloorPlan302:Side_Table_302_1_1_20:region:support:1
+      laptop_seating: [FloorPlan302:Chair_205_4_18]
+      remove_fixtures: [FloorPlan302:Desk_Lamp_2_10]
+    grasp_workspace:
+      fixture: FloorPlan302:manual_support:bedroom_main_desk
+      region: FloorPlan302:manual_support:bedroom_main_desk:region:support
+      seating: [FloorPlan302:Chair_205_4_18]
+      remove_fixtures:
+        - FloorPlan302:Book_2_0
+        - FloorPlan302:Cellphone_2_14
+        - FloorPlan302:Laptop_2_8
+        - FloorPlan302:Pen_2_1
+      approach_direction: [0.0, 1.0]
+      operation_normal_distance: 0.40
+    secondary_workspace: &bed_walk_302
+      fixture: FloorPlan302:manual_support:bedroom_main_desk
+      region: FloorPlan302:manual_support:bedroom_main_desk:region:support
+      far_start_pose: {xy: [0.30, -0.10], yaw: -2.554794}
+      minimum_start_distance: 0.70
+      approach_distance: 0.35
+      seating: [FloorPlan302:Chair_205_4_18]
+      remove_fixtures:
+        - FloorPlan302:Book_2_0
+        - FloorPlan302:Cellphone_2_14
+        - FloorPlan302:Laptop_2_8
+        - FloorPlan302:Pen_2_1
+      approach_direction: [1.0, 0.0]
+    lift_basket:
+      fixture: FloorPlan302:manual_support:bedroom_main_desk
+      region: FloorPlan302:manual_support:bedroom_main_desk:region:support
+      remove_fixtures:
+        - FloorPlan302:Chair_205_4_18
+        - FloorPlan302:Book_2_0
+        - FloorPlan302:Cellphone_2_14
+        - FloorPlan302:Laptop_2_8
+        - FloorPlan302:Pen_2_1
+      lang: pick up the basket and lift it
+    lift_basket_from_floor:
+      basket_xy: [-0.25, -0.50]
+      basket_quat: [1.0, 0.0, 0.0, 0.0]
+      stool_model: /objects/lightwheel/stool/Stool005/model.xml
+      stool_scale: [1.15, 0.90, 0.30]
+      stool_xy: [-0.25, -0.50]
+      stool_yaw: 0.0
+      stool_top_half_xy: [0.176, 0.137]
+      stool_floor_probe_below: 0.01
+      robot_pose: {xy: [-0.25, -1.05], yaw: 1.5707963268}
+      staging_robot_pose: {xy: [-0.25, -1.20], yaw: 1.5707963268}
+      source_horizontal_distance: 0.55
+      remove_fixtures: []
+      lang: pick up the basket from the low bedroom stool
+    hamper_lid:
+      fixture_mode: spawn_asset
+      fixture: FloorPlan302:spawned:task_laundry_hamper
+      asset: /objects/thor/Miscellaneous Objects/LaundryHamper/Prefabs/Laundry_Hamper_1_1/Laundry_Hamper_1_1.xml
+      asset_id: Laundry_Hamper_1_1
+      spawn_name: task_laundry_hamper
+      spawn_root_pos: [0.00, -0.80, 0.0]
+      spawn_quat: [0.7071067812, 0.7071067812, 0.0, 0.0]
+      joint: task_laundry_hamper_Laundry_Hamper_1_1_laundry_hamper_lid_1_joint_0
+      target: laundry hamper lid
+      lang: "{verb} the laundry hamper lid"
+      hamper_floor_probe_below: 0.08
+      hamper_robot_pose: {xy: [0.00, -0.20], yaw: -1.5707963268}
+      hamper_robot_clearances:
+        FloorPlan302:spawned:task_laundry_hamper: 0.08
+    box_flap:
+      fixture_mode: spawn_asset
+      fixture: FloorPlan302:spawned:task_box
+      asset: /objects/thor/Living Room and Bedroom Objects/Box_Full/Prefabs/Box_10/Box_10.xml
+      asset_id: Box_10
+      spawn_name: task_box
+      spawn_root_pos: [-0.25, -0.50, 0.0]
+      spawn_quat: [0.7071067812, 0.7071067812, 0.0, 0.0]
+      joint: task_box_Box_10_box_10_flap_outer_1_joint_0
+      closed_qpos: -2.93938
+      open_qpos: 0.0
+      open_start_qpos: -1.3843677664
+      target: outer box flap
+      lang: "{verb} the outer flap of the floor box"
+      box_floor_xy: [-0.25, -0.50]
+      box_floor_probe_below: 0.08
+      remove_fixtures: []
+      robot_outward_direction: [0.0, 1.0]
+      robot_center_distance: 0.55
+      minimum_target_right_offset: 0.05
+    can_into_basket:
+      lang: put the can in the basket
+    mug_into_basket:
+      lang: put the mug in the basket
+    boxed_food_into_basket:
+      lang: put the boxed food in the basket
+    safe_door:
+      fixture: FloorPlan302:Safe_18_1_16
+      joint: safe_5ea0563319e8e09ddd8f7b0099388eb0_1_2_0_safedoor18joint0_1
+      target: safe door
+      lang: "{verb} the safe door"
+      safe_z_offset: 0.425
+      safe_xy: [-0.20, 0.45]
+      safe_pedestal_half_xy: [0.36, 0.20]
+      safe_support_probe_below: 0.22
+      safe_robot_xy: [-1.00, 0.45]
+      safe_robot_min_clearance: 0.06
+    open_safe_door:
+      fixture: FloorPlan302:Safe_18_1_16
+      joint: safe_5ea0563319e8e09ddd8f7b0099388eb0_1_2_0_safedoor18joint0_1
+      target: safe door
+      lang: "{verb} the safe door"
+      safe_xy: [0.305, 1.075]
+      safe_yaw_delta: 1.5707963268
+      safe_support_fixture: FloorPlan302:Side_Table_302_1_1_20
+      safe_support_region: FloorPlan302:Side_Table_302_1_1_20:region:support:1
+      safe_support_probe_below: 0.30
+      remove_fixtures:
+        - FloorPlan302:Desk_Lamp_2_10
+      safe_robot_xy: [0.305, 0.175]
+      safe_robot_min_clearance: 0.06
+
+  FloorPlan306:
+    approach_bed:
+      fixture: FloorPlan306:Bed_6_9
+      start_pose: {xy: [-0.75, 0.60], yaw: -0.499158}
+      minimum_start_distance: 1.65
+      remove_fixtures: []
+      lang: walk to the bed
+    approach_desk:
+      fixture: FloorPlan306:Desk_306_1_10
+      start_pose: {xy: [2.85, 0.30], yaw: -2.660245}
+      minimum_start_distance: 2.60
+      remove_fixtures: []
+      lang: walk to the desk
+    approach_hamper_lid:
+      fixture: FloorPlan306:Laundry_Hamper_1_1_14
+      start_pose: {xy: [2.85, 0.30], yaw: -2.516810}
+      minimum_start_distance: 2.40
+      remove_fixtures: []
+    approach_storage:
+      fixture: FloorPlan306:Laundry_Hamper_1_1_14
+      start_pose: {xy: [2.85, 0.30], yaw: -2.516810}
+      minimum_start_distance: 2.40
+      remove_fixtures: []
+      lang: walk to the laundry hamper
+    drawer:
+      fixture: FloorPlan306:Desk_306_1_10
+      joint: desk_44f91d1e2686c899e1e24e9891ac1866_1_2_0_joint_1
+      target: drawer
+      lang: "{verb} the desk drawer"
+    top_drawer:
+      fixture: FloorPlan306:Side_Table_306_1_15
+      joint: stand_789e1bee5ebbeabb503337b46417ac81_1_2_0_joint_1
+      target: top drawer of the bedside table
+      lang: "{verb} the top drawer of the bedside table"
+    laptop:
+      fixture_mode: existing
+      behaviors: [open, close]
+      fixture: FloorPlan306:Laptop_6_2
+      joint: laptop_37298a0f7beecee5eae4b34479050dcc_1_1_0_laptoplid6joint0_1
+      target: laptop lid
+      lang: "{verb} the laptop lid"
+    workspace:
+      fixture: FloorPlan306:Desk_306_1_10
+      region: FloorPlan306:Desk_306_1_10:region:support:4
+      seating: [FloorPlan306:Chair_204_7_5]
+      laptop_seating: [FloorPlan306:Chair_204_7_5]
+      laptop_obstructions: [FloorPlan306:Laundry_Hamper_1_1_14]
+      remove_fixtures:
+        - FloorPlan306:Book_6_6
+        - FloorPlan306:Cellphone_2_0
+        - FloorPlan306:Desk_Lamp_7_1
+        - FloorPlan306:Laptop_6_2
+        - FloorPlan306:Pen_2_4
+        - FloorPlan306:Pencil_1_3
+        - FloorPlan306:mesh_56f6c64a_3
+      approach_direction: [0.0, 1.0]
+      laptop_long_edge_approach_hint: [0.0, 1.0]
+      laptop_hand_geometry_clearance: 0.12
+    grasp_workspace:
+      fixture: FloorPlan306:Desk_306_1_10
+      region: FloorPlan306:Desk_306_1_10:region:support:4
+      seating: [FloorPlan306:Chair_204_7_5]
+      remove_fixtures:
+        - FloorPlan306:Book_6_6
+        - FloorPlan306:Cellphone_2_0
+        - FloorPlan306:Desk_Lamp_7_1
+        - FloorPlan306:Laundry_Hamper_1_1_14
+        - FloorPlan306:Laptop_6_2
+        - FloorPlan306:Pen_2_4
+        - FloorPlan306:Pencil_1_3
+        - FloorPlan306:mesh_56f6c64a_3
+      approach_direction: [0.0, 1.0]
+      operation_normal_distance: 0.60
+    secondary_workspace: &bed_walk_306
+      fixture: FloorPlan306:Desk_306_1_10
+      region: FloorPlan306:Desk_306_1_10:region:support:4
+      far_start_pose: {xy: [1.490599, 0.001626], yaw: -2.480747}
+      minimum_start_distance: 0.70
+      approach_distance: 0.35
+      seating: [FloorPlan306:Chair_204_7_5]
+      remove_fixtures:
+        - FloorPlan306:Book_6_6
+        - FloorPlan306:Cellphone_2_0
+        - FloorPlan306:Desk_Lamp_7_1
+        - FloorPlan306:Laptop_6_2
+        - FloorPlan306:Pen_2_4
+        - FloorPlan306:Pencil_1_3
+        - FloorPlan306:mesh_56f6c64a_3
+      approach_direction: [0.0, 1.0]
+    lift_basket:
+      fixture: FloorPlan306:Desk_306_1_10
+      region: FloorPlan306:Desk_306_1_10:region:support:4
+      remove_fixtures:
+        - FloorPlan306:Chair_204_7_5
+        - FloorPlan306:Book_6_6
+        - FloorPlan306:Cellphone_2_0
+        - FloorPlan306:Desk_Lamp_7_1
+        - FloorPlan306:Laptop_6_2
+        - FloorPlan306:Pen_2_4
+        - FloorPlan306:Pencil_1_3
+        - FloorPlan306:mesh_56f6c64a_3
+      lang: pick up the basket and lift it
+    lift_basket_from_floor:
+      basket_xy: [1.20, 0.00]
+      basket_quat: [1.0, 0.0, 0.0, 0.0]
+      stool_model: /objects/lightwheel/stool/Stool005/model.xml
+      stool_scale: [1.15, 0.90, 0.30]
+      stool_xy: [1.20, 0.00]
+      stool_yaw: 0.0
+      stool_top_half_xy: [0.176, 0.137]
+      stool_floor_probe_below: 0.01
+      robot_pose: {xy: [1.20, 0.55], yaw: -1.5707963268}
+      staging_robot_pose: {xy: [1.20, 0.70], yaw: -1.5707963268}
+      source_horizontal_distance: 0.55
+      remove_fixtures: []
+      lang: pick up the basket from the low bedroom stool
+    can_into_basket:
+      lang: put the can in the basket
+    mug_into_basket:
+      lang: put the mug in the basket
+    boxed_food_into_basket:
+      lang: put the boxed food in the basket
+    hamper_lid:
+      fixture_mode: existing
+      fixture: FloorPlan306:Laundry_Hamper_1_1_14
+      joint: clotheshamper_d64de34edf8e2b0c57365ca6d0ead653_1_1_0_laundryhamperlid1joint0_1
+      target: laundry hamper lid
+      lang: "{verb} the laundry hamper lid"
+      hamper_floor_probe_below: 0.08
+      hamper_robot_pose: {xy: [0.774725, -0.965884], yaw: -2.233756}
+      hamper_robot_clearances:
+        FloorPlan306:Laundry_Hamper_1_1_14: 0.08
+        FloorPlan306:AirConditioner_b71184a7_15: 0.25
+        FloorPlan306:Bed_6_9: 0.10
+        FloorPlan306:Desk_306_1_10: 0.10
+    box_flap:
+      fixture_mode: spawn_asset
+      fixture: FloorPlan306:spawned:task_box
+      asset: /objects/thor/Living Room and Bedroom Objects/Box_Full/Prefabs/Box_10/Box_10.xml
+      asset_id: Box_10
+      spawn_name: task_box
+      spawn_root_pos: [1.20, 0.00, 0.0]
+      spawn_quat: [0.0, 0.0, 0.7071067812, 0.7071067812]
+      joint: task_box_Box_10_box_10_flap_outer_1_joint_0
+      closed_qpos: -2.93938
+      open_qpos: 0.0
+      open_start_qpos: -1.3843677664
+      target: outer box flap
+      lang: "{verb} the outer flap of the floor box"
+      box_floor_xy: [1.20, 0.00]
+      box_floor_probe_below: 0.08
+      remove_fixtures: []
+      robot_outward_direction: [0.0, -1.0]
+      robot_center_distance: 0.55
+      minimum_target_right_offset: 0.05
+
+  FloorPlan310:
+    approach_bed:
+      fixture: FloorPlan310:Bed_10_6
+      start_pose: {xy: [0.60, -1.90], yaw: 1.335}
+      minimum_start_distance: 1.00
+      remove_fixtures: []
+      lang: walk to the bed
+    approach_desk:
+      fixture: FloorPlan310:Desk_310_1_18
+      start_pose: {xy: [0.65, -0.70], yaw: -2.486158}
+      minimum_start_distance: 0.70
+      remove_fixtures: []
+      lang: walk to the desk
+    approach_hamper_lid:
+      fixture: FloorPlan310:spawned:task_laundry_hamper
+      start_pose: {xy: [0.65, -1.00], yaw: 2.5329033463}
+      minimum_start_distance: 1.20
+      remove_fixtures: []
+    approach_storage:
+      fixture: FloorPlan310:Side_Table_310_1_17
+      start_pose: {xy: [-1.35, -0.75], yaw: -0.079549}
+      minimum_start_distance: 2.30
+      remove_fixtures: []
+      lang: walk to the bedroom's only two-drawer bedside table
+    drawer:
+      fixture: FloorPlan310:Side_Table_310_1_17
+      joint: stand_21c2dbc17d6b5fd8ef5b1c9d0ab918f1_1_2_0_joint_1
+      target: drawer
+      lang: "{verb} the bedside drawer"
+    laptop:
+      fixture_mode: existing
+      behaviors: [open, close]
+      fixture: FloorPlan310:Laptop_10_11
+      joint: laptop_eda04ab11f8d317fb199266842d466ed_1_1_0_laptoplid10joint0_1
+      target: laptop lid
+      lang: "{verb} the laptop lid"
+    workspace:
+      fixture: FloorPlan310:Desk_310_1_18
+      region: FloorPlan310:Desk_310_1_18:region:receptacle:0
+      seating: [FloorPlan310:Chair_204_2_16]
+      laptop_seating: [FloorPlan310:Chair_204_2_16]
+      remove_fixtures:
+        - FloorPlan310:Book_10_1
+        - FloorPlan310:CD_1_5
+        - FloorPlan310:Cellphone_2_0
+        - FloorPlan310:FP310:poster_57e37774_1
+        - FloorPlan310:Laptop_10_11
+        - FloorPlan310:Pen_2_4
+        - FloorPlan310:Pencil_5_3
+        - FloorPlan310:Poster_f315cbca_10
+    grasp_workspace:
+      fixture: FloorPlan310:Desk_310_1_18
+      region: FloorPlan310:Desk_310_1_18:region:receptacle:0
+      seating: [FloorPlan310:Chair_204_2_16]
+      remove_fixtures:
+        - FloorPlan310:Book_10_1
+        - FloorPlan310:CD_1_5
+        - FloorPlan310:Cellphone_2_0
+        - FloorPlan310:FP310:poster_57e37774_1
+        - FloorPlan310:Laptop_10_11
+        - FloorPlan310:Pen_2_4
+        - FloorPlan310:Pencil_5_3
+        - FloorPlan310:Poster_f315cbca_10
+      approach_direction: [0.0, 1.0]
+      operation_normal_distance: 0.40
+    secondary_workspace: &bed_walk_310
+      fixture: FloorPlan310:Desk_310_1_18
+      region: FloorPlan310:Desk_310_1_18:region:receptacle:0
+      far_start_pose: {xy: [0.65, -0.70], yaw: -2.486158}
+      minimum_start_distance: 0.70
+      approach_distance: 0.35
+      seating: [FloorPlan310:Chair_204_2_16]
+      remove_fixtures:
+        - FloorPlan310:Book_10_1
+        - FloorPlan310:CD_1_5
+        - FloorPlan310:Cellphone_2_0
+        - FloorPlan310:FP310:poster_57e37774_1
+        - FloorPlan310:Laptop_10_11
+        - FloorPlan310:Pen_2_4
+        - FloorPlan310:Pencil_5_3
+        - FloorPlan310:Poster_f315cbca_10
+      approach_direction: [0.0, 1.0]
+    lift_basket:
+      fixture: FloorPlan310:Desk_310_1_18
+      region: FloorPlan310:Desk_310_1_18:region:receptacle:0
+      remove_fixtures:
+        - FloorPlan310:Chair_204_2_16
+        - FloorPlan310:Book_10_1
+        - FloorPlan310:CD_1_5
+        - FloorPlan310:Cellphone_2_0
+        - FloorPlan310:FP310:poster_57e37774_1
+        - FloorPlan310:Laptop_10_11
+        - FloorPlan310:Pen_2_4
+        - FloorPlan310:Pencil_5_3
+        - FloorPlan310:Poster_f315cbca_10
+      lang: pick up the basket and lift it
+    lift_basket_from_floor:
+      basket_xy: [-1.00, 0.15]
+      basket_quat: [1.0, 0.0, 0.0, 0.0]
+      stool_model: /objects/lightwheel/stool/Stool005/model.xml
+      stool_scale: [1.15, 0.90, 0.30]
+      stool_xy: [-1.00, 0.15]
+      stool_yaw: 0.0
+      stool_top_half_xy: [0.176, 0.137]
+      stool_floor_probe_below: 0.01
+      robot_pose: {xy: [-1.00, 0.70], yaw: -1.5707963268}
+      staging_robot_pose: {xy: [-1.00, 0.85], yaw: -1.5707963268}
+      source_horizontal_distance: 0.55
+      remove_fixtures: []
+      lang: pick up the basket from the low bedroom stool
+    hamper_lid:
+      fixture_mode: spawn_asset
+      fixture: FloorPlan310:spawned:task_laundry_hamper
+      asset: /objects/thor/Miscellaneous Objects/LaundryHamper/Prefabs/Laundry_Hamper_1_1/Laundry_Hamper_1_1.xml
+      asset_id: Laundry_Hamper_1_1
+      spawn_name: task_laundry_hamper
+      spawn_root_pos: [-1.00, 0.15, 0.0]
+      spawn_quat: [0.7071067812, 0.7071067812, 0.0, 0.0]
+      joint: task_laundry_hamper_Laundry_Hamper_1_1_laundry_hamper_lid_1_joint_0
+      target: laundry hamper lid
+      lang: "{verb} the laundry hamper lid"
+      hamper_floor_probe_below: 0.08
+      hamper_robot_pose: {xy: [-1.00, -0.45], yaw: 1.5707963268}
+      hamper_robot_clearances:
+        FloorPlan310:spawned:task_laundry_hamper: 0.08
+    can_into_basket:
+      lang: put the can in the basket
+    mug_into_basket:
+      lang: put the mug in the basket
+    boxed_food_into_basket:
+      lang: put the boxed food in the basket
+    box_flap:
+      fixture_mode: existing
+      fixture: FloorPlan310:Box_10_2
+      joint: box_7c54a26cba93093ca8aceb6fbac82646_1_4_0_box10flapouter1joint0_3
+      closed_qpos: -2.93938
+      open_qpos: 0.0
+      open_start_qpos: -1.3843677664
+      target: outer box flap
+      lang: "{verb} the outer flap of the box"
+      box_floor_xy: [-1.00, 0.15]
+      box_floor_probe_below: 0.08
+      remove_fixtures:
+        - FloorPlan310:BaseballBat_2_14
+        - FloorPlan310:Tennis_Racquet_3_15
+      robot_outward_direction: [0.0, -1.0]
+      robot_center_distance: 0.55
+      minimum_target_right_offset: 0.05
+
+  FloorPlan315:
+    approach_trash_can:
+      fixture: FloorPlan315:bin_15_6
+      bin_region: FloorPlan315:bin_15_6:region:receptacle:0
+      robot_root_height: 0.10
+      start_pose: {xy: [-0.75, -0.55], yaw: -1.9540}
+      minimum_start_distance: 2.50
+      remove_fixtures: []
+    can_into_trash_can:
+      fixture: FloorPlan315:bin_15_6
+      bin_bottom_geoms:
+        - ashcan_27ba7c49bbccf220f68beea1b3ff0f8e_1_1_0_collision_7
+      bin_region: FloorPlan315:bin_15_6:region:receptacle:0
+      robot_root_height: 0.10
+      source_fixture: FloorPlan315:Desk_315_1_18
+      source_region: FloorPlan315:Desk_315_1_18:region:support:1
+      source_xy: [-1.62, -3.63]
+      robot_pose: {xy: [-1.65, -3.25], yaw: -1.80}
+  FloorPlan323:
+    approach_bed:
+      fixture: FloorPlan323:Bed_23_11
+      start_pose: {xy: [1.50, 1.35], yaw: -2.349079}
+      minimum_start_distance: 2.50
+      remove_fixtures: []
+      lang: walk to the bed
+    approach_bedside_window:
+      fixture: FloorPlan323:Window_89624b90_14
+      start_pose: {xy: [1.50, 1.35], yaw: -2.000552}
+      robot_root_height: 0.10
+      minimum_start_distance: 4.00
+      remove_fixtures: []
+      lang: walk to the window beside the bed
+    approach_desk:
+      fixture: FloorPlan323:Desk_323_1_17
+      start_pose: {xy: [0.00, 1.35], yaw: -1.124490}
+      minimum_start_distance: 4.00
+      remove_fixtures: []
+      lang: walk to the desk
+    approach_hamper_lid:
+      fixture: FloorPlan323:spawned:task_laundry_hamper
+      start_pose: {xy: [0.15, 1.35], yaw: -1.5707963268}
+      minimum_start_distance: 2.00
+      operation_pose: {xy: [0.15, -1.95], yaw: 1.5707963268}
+      remove_fixtures: []
+    approach_storage:
+      fixture: FloorPlan323:Dresser_323_1_21
+      start_pose: {xy: [0.30, -2.85], yaw: 1.075583}
+      minimum_start_distance: 3.90
+      remove_fixtures: []
+      lang: walk to the dresser
+    drawer:
+      fixture: FloorPlan323:Dresser_323_1_21
+      joint: chestofdrawers_9914e3ee808f971815a2b3c7d5b7d308_1_2_0_joint_1
+      target: drawer
+      lang: "{verb} the dresser drawer"
+    top_drawer:
+      fixture: FloorPlan323:Side_Table_302_1_5_22
+      joint: stand_ea63f84ad6a9306dd5bfefe095742a7d_2_2_0_joint_1
+      target: top drawer of the bedside table
+      lang: "{verb} the top drawer of the bedside table"
+    laptop:
+      fixture_mode: existing
+      behaviors: [open, close]
+      fixture: FloorPlan323:Laptop_23_9
+      joint: laptop_cbde6e76ea643b6890e068551d14cb29_1_2_0_laptoplid23joint0_1
+      target: laptop lid
+      lang: "{verb} the laptop lid"
+    workspace:
+      fixture: FloorPlan323:Side_Table_302_1_5_18
+      region: FloorPlan323:Side_Table_302_1_5_18:region:support:1
+      remove_fixtures:
+        - FloorPlan323:Cellphone_5_2
+        - FloorPlan323:Desk_Lamp_1_15
+        - FloorPlan323:Mug_3_0
+    grasp_workspace:
+      fixture: FloorPlan323:manual_support:bedroom_main_desk
+      region: FloorPlan323:manual_support:bedroom_main_desk:region:support
+      seating: [FloorPlan323:Chair_007_2_20]
+      remove_fixtures:
+        - FloorPlan323:Book_23_3
+        - FloorPlan323:Bowl_23_1
+        - FloorPlan323:Desk_Lamp_3_14
+      approach_direction: [0.0, 1.0]
+      workspace_lateral_offset: -0.20
+      operation_normal_distance: 0.40
+    secondary_workspace: &bed_walk_323
+      fixture: FloorPlan323:manual_support:bedroom_main_desk
+      region: FloorPlan323:manual_support:bedroom_main_desk:region:support
+      far_start_pose: {xy: [-0.952473, -3.260913], yaw: 0.010535}
+      minimum_start_distance: 0.70
+      approach_distance: 0.35
+      seating: [FloorPlan323:Chair_007_2_20]
+      remove_fixtures:
+        - FloorPlan323:Book_23_3
+        - FloorPlan323:Bowl_23_1
+        - FloorPlan323:Desk_Lamp_3_14
+      approach_direction: [0.0, 1.0]
+    lift_basket:
+      fixture: FloorPlan323:manual_support:bedroom_main_desk
+      region: FloorPlan323:manual_support:bedroom_main_desk:region:support
+      remove_fixtures:
+        - FloorPlan323:Chair_007_2_20
+        - FloorPlan323:Book_23_3
+        - FloorPlan323:Bowl_23_1
+        - FloorPlan323:Desk_Lamp_3_14
+      lang: pick up the basket and lift it
+    lift_basket_from_floor:
+      basket_xy: [0.00, -1.20]
+      basket_quat: [1.0, 0.0, 0.0, 0.0]
+      stool_model: /objects/lightwheel/stool/Stool005/model.xml
+      stool_scale: [1.15, 0.90, 0.30]
+      stool_xy: [0.00, -1.20]
+      stool_yaw: 0.0
+      stool_top_half_xy: [0.176, 0.137]
+      stool_floor_probe_below: 0.01
+      robot_pose: {xy: [0.00, -0.65], yaw: -1.5707963268}
+      staging_robot_pose: {xy: [0.00, -0.50], yaw: -1.5707963268}
+      source_horizontal_distance: 0.55
+      remove_fixtures: []
+      lang: pick up the basket from the low bedroom stool
+    hamper_lid:
+      fixture_mode: spawn_asset
+      fixture: FloorPlan323:spawned:task_laundry_hamper
+      asset: /objects/thor/Miscellaneous Objects/LaundryHamper/Prefabs/Laundry_Hamper_1_1/Laundry_Hamper_1_1.xml
+      asset_id: Laundry_Hamper_1_1
+      spawn_name: task_laundry_hamper
+      spawn_root_pos: [0.15, -1.35, 0.0]
+      spawn_quat: [0.7071067812, 0.7071067812, 0.0, 0.0]
+      joint: task_laundry_hamper_Laundry_Hamper_1_1_laundry_hamper_lid_1_joint_0
+      target: laundry hamper lid
+      lang: "{verb} the laundry hamper lid"
+      hamper_floor_probe_below: 0.08
+      spawn_robot_pose: {xy: [0.15, -1.95], yaw: 1.5707963268}
+      hamper_robot_pose: {xy: [0.15, -1.95], yaw: 1.5707963268}
+      hamper_robot_clearances:
+        FloorPlan323:spawned:task_laundry_hamper: 0.08
+    box_flap:
+      fixture_mode: spawn_asset
+      fixture: FloorPlan323:spawned:task_box
+      asset: /objects/thor/Living Room and Bedroom Objects/Box_Full/Prefabs/Box_10/Box_10.xml
+      asset_id: Box_10
+      spawn_name: task_box
+      spawn_root_pos: [0.00, -1.20, 0.0]
+      spawn_quat: [0.0, 0.0, 0.7071067812, 0.7071067812]
+      joint: task_box_Box_10_box_10_flap_outer_1_joint_0
+      closed_qpos: -2.93938
+      open_qpos: 0.0
+      open_start_qpos: -1.3843677664
+      target: outer box flap
+      lang: "{verb} the outer flap of the floor box"
+      box_floor_xy: [0.00, -1.20]
+      box_floor_probe_below: 0.08
+      remove_fixtures: []
+      robot_outward_direction: [0.0, -1.0]
+      robot_center_distance: 0.55
+      minimum_target_right_offset: 0.05
+    can_into_basket:
+      lang: put the can in the basket
+    mug_into_basket:
+      lang: put the mug in the basket
+    boxed_food_into_basket:
+      lang: put the boxed food in the basket
+    safe_door:
+      fixture: FloorPlan323:Safe_18_2_19
+      joint: safe_9ec7e597d8dc9e38b4aedf3b754b6971_1_2_0_safedoor18joint0_1
+      target: safe door
+      lang: "{verb} the safe door"
+      safe_z_offset: -0.7025
+      safe_xy: [1.50, 1.50]
+      safe_pedestal_half_xy: [0.31182, 0.31538]
+      safe_support_probe_below: 0.18
+      safe_robot_xy: [1.06, 1.26]
+      safe_robot_min_clearance: 0.06
+    open_safe_door:
+      fixture: FloorPlan323:Safe_18_2_19
+      joint: safe_9ec7e597d8dc9e38b4aedf3b754b6971_1_2_0_safedoor18joint0_1
+      target: safe door
+      lang: "{verb} the safe door"
+      safe_xy: [-2.448, -0.514]
+      safe_yaw_delta: 3.1415926536
+      safe_support_fixture: FloorPlan323:Side_Table_302_1_5_18
+      safe_support_region: FloorPlan323:Side_Table_302_1_5_18:region:support:1
+      safe_support_probe_below: 0.25
+      remove_fixtures:
+        - FloorPlan323:Desk_Lamp_1_15
+        - FloorPlan323:Cellphone_5_2
+        - FloorPlan323:Mug_3_0
+      safe_robot_xy: [-1.65, -0.514]
+      safe_robot_min_clearance: 0.06
+
+  FloorPlan329:
+    approach_bed:
+      fixture: FloorPlan329:Bed_29_9
+      start_pose: {xy: [1.80, 0.75], yaw: -2.268386}
+      minimum_start_distance: 1.40
+      remove_fixtures: []
+      lang: walk to the bed
+    approach_desk:
+      fixture: FloorPlan329:Desk_329_1_16
+      start_pose: {xy: [1.95, -1.95], yaw: 2.245555}
+      minimum_start_distance: 2.40
+      remove_fixtures: []
+      lang: walk to the desk
+    approach_hamper_lid:
+      fixture: FloorPlan329:spawned:task_laundry_hamper
+      start_pose: {xy: [1.95, -1.95], yaw: 2.245555}
+      minimum_start_distance: 0.60
+      operation_pose: {xy: [1.20, 0.60], yaw: -1.5707963268}
+      remove_fixtures: []
+    approach_storage:
+      fixture: FloorPlan329:Box_29_2
+      start_pose: {xy: [1.95, -2.10], yaw: 1.332943}
+      minimum_start_distance: 1.40
+      remove_fixtures: []
+      lang: walk to the cardboard box on the floor
+    drawer:
+      fixture: FloorPlan329:Side_Table_329_1_17
+      joint: stand_97b1d5461f86f5f69c9681415d63ebad_2_2_0_joint_1
+      target: drawer
+      lang: "{verb} the opposite bedside drawer"
+    laptop:
+      fixture_mode: spawn_asset
+      behaviors: [open, close]
+      asset: /objects/thor/Living Room and Bedroom Objects/Laptop_Full/Prefabs/Laptop_13/Laptop_13.xml
+      asset_id: Laptop_13
+      spawn_name: spawned_laptop
+      spawn_root_pos: [-0.2410, 0.6833, 0.6705]
+      spawn_quat: [0.70710678, 0.70710678, 0.0, 0.0]
+      spawn_scale: 1.0
+      surface_fixture: FloorPlan329:Desk_329_1_16
+      surface_region: FloorPlan329:Desk_329_1_16:region:support:3
+      joint: spawned_laptop_Laptop_13_laptop_lid_13_joint_0
+      target: laptop lid
+      lang: "{verb} the laptop lid"
+    workspace:
+      fixture: FloorPlan329:Desk_329_1_16
+      region: FloorPlan329:Desk_329_1_16:region:receptacle:0
+      remove_fixtures: []
+    grasp_workspace:
+      fixture: FloorPlan329:Desk_329_1_16
+      region: FloorPlan329:Desk_329_1_16:region:receptacle:0
+      remove_fixtures: []
+      approach_direction: [0.0, -1.0]
+      operation_normal_distance: 0.40
+    secondary_workspace: &bed_walk_329
+      fixture: FloorPlan329:Desk_329_1_16
+      region: FloorPlan329:Desk_329_1_16:region:receptacle:0
+      far_start_pose: {xy: [2.415578, -2.058455], yaw: 2.319822}
+      minimum_start_distance: 0.70
+      approach_distance: 0.35
+      remove_fixtures: []
+      approach_direction: [0.0, -1.0]
+      operation_normal_distance: 0.40
+    can_into_basket:
+      lang: put the can in the basket
+    box_flap:
+      fixture_mode: existing
+      fixture: FloorPlan329:Box_29_2
+      joint: box_993495f45b10f36d15adc52172c4a7ec_1_1_0_box29flapouter1joint0_1
+      closed_qpos: -2.74176
+      open_qpos: 0.0
+      open_start_qpos: -1.1691420089
+      target: outer box flap
+      lang: "{verb} the outer flap of the floor box"
+      box_floor_xy: [1.50, 0.00]
+      box_floor_probe_below: 0.08
+      remove_fixtures:
+        - FloorPlan329:BaseballBat_1_13
+      robot_outward_direction: [0.0, -1.0]
+      robot_center_distance: 0.50
+      minimum_target_right_offset: 0.05
+    mug_into_basket:
+      lang: put the mug in the basket
+    boxed_food_into_basket:
+      lang: put the boxed food in the basket
+    lift_basket:
+      fixture: FloorPlan329:Desk_329_1_16
+      region: FloorPlan329:Desk_329_1_16:region:receptacle:0
+      source_horizontal_distance: 0.40
+      lang: pick up the basket and lift it
+    lift_basket_from_floor:
+      basket_xy: [1.20, 0.00]
+      basket_quat: [1.0, 0.0, 0.0, 0.0]
+      stool_model: /objects/lightwheel/stool/Stool005/model.xml
+      stool_scale: [1.15, 0.90, 0.30]
+      stool_xy: [1.20, 0.00]
+      stool_yaw: 0.0
+      stool_top_half_xy: [0.176, 0.137]
+      stool_floor_probe_below: 0.01
+      robot_pose: {xy: [1.20, 0.45], yaw: -1.5707963268}
+      staging_robot_pose: {xy: [1.20, 0.70], yaw: -1.5707963268}
+      source_horizontal_distance: 0.45
+      remove_fixtures: []
+      lang: pick up the basket from the low bedroom stool
+    hamper_lid:
+      fixture_mode: spawn_asset
+      fixture: FloorPlan329:spawned:task_laundry_hamper
+      asset: /objects/thor/Miscellaneous Objects/LaundryHamper/Prefabs/Laundry_Hamper_1_1/Laundry_Hamper_1_1.xml
+      asset_id: Laundry_Hamper_1_1
+      spawn_name: task_laundry_hamper
+      spawn_root_pos: [1.20, 0.00, 0.0]
+      spawn_quat: [0.7071067812, 0.7071067812, 0.0, 0.0]
+      joint: task_laundry_hamper_Laundry_Hamper_1_1_laundry_hamper_lid_1_joint_0
+      target: laundry hamper lid
+      lang: "{verb} the laundry hamper lid"
+      hamper_floor_probe_below: 0.08
+      hamper_robot_pose: {xy: [1.20, 0.60], yaw: -1.5707963268}
+      hamper_robot_clearances:
+        FloorPlan329:spawned:task_laundry_hamper: 0.08
+    top_drawer:
+      fixture: FloorPlan329:Side_Table_329_1_15
+      joint: stand_97b1d5461f86f5f69c9681415d63ebad_1_2_0_joint_1
+      target: top bedside drawer
+      lang: "{verb} the top bedside drawer"

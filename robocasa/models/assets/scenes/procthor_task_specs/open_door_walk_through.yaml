@@ -1,0 +1,5 @@
+task: ProcTHOROpenDoorWalkThrough
+semantic_requirements:
+  fixture_categories: [Doorway, Door]
+  capabilities: [openable]
+  relations: [connects_two_rooms]

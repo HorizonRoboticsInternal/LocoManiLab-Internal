@@ -1,0 +1,10 @@
+# Living-room style 002: a visually distinct look from style001 (marble floor +
+# white-brick walls) so scenes built on it read as a different room. Reuses
+# shared textures. Same furniture assets as style001 for now.
+floor_texture: textures/marble/marble_2.png
+wall_texture: textures/bricks/white_bricks.png
+furniture:
+  sofa: fixtures/sofas/Sofa001
+  coffee_table: fixtures/coffee_tables/CoffeeTable001
+  tv_stand: fixtures/tv_stands/TVStand001
+  side_table: objects/lightwheel/stool/Stool013

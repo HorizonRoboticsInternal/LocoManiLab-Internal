@@ -1,0 +1,11 @@
+floor_texture: textures/bricks/option1.png
+wall_texture: textures/bricks/white_bricks.png
+furniture:
+  # living-room furniture (XML-backed)
+  sofa: fixtures/sofas/Sofa001
+  coffee_table: fixtures/coffee_tables/CoffeeTable001
+  side_table: objects/lightwheel/stool/Stool013
+  tv_stand: fixtures/tv_stands/TVStand001
+  fridge: fixtures/fridges/Refrigerator031
+  stove: fixtures/stoves/Stove001
+  dishwasher: fixtures/dishwashers/Dishwasher031

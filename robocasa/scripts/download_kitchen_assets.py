@@ -9,11 +9,10 @@ from zipfile import ZipFile
 from termcolor import colored
 from tqdm import tqdm
 
-import robocasa
-
 # path to the box_links.json shipped with robocasa
+ASSETS_ROOT = Path(__file__).resolve().parents[1] / "models" / "assets"
 BOX_LINKS_PATH = os.path.join(
-    robocasa.__path__[0], "models", "assets", "box_links", "box_links_assets.json"
+    ASSETS_ROOT, "box_links", "box_links_assets.json"
 )
 with open(BOX_LINKS_PATH, "r") as f:
     BOX_LINKS = json.load(f)
@@ -35,38 +34,38 @@ DOWNLOAD_ASSET_REGISTRY = {
     "tex": dict(
         message="Downloading environment textures",
         url=_get_direct_download_url(BOX_LINKS["textures"]),
-        folder=os.path.join(robocasa.__path__[0], "models/assets/textures"),
+        folder=os.path.join(ASSETS_ROOT, "textures"),
         check_folder_exists=False,
     ),
     "tex_generative": dict(
         message="Downloading AI-generated environment textures",
         url=_get_direct_download_url(BOX_LINKS["generative_textures"]),
-        folder=os.path.join(robocasa.__path__[0], "models/assets/generative_textures"),
+        folder=os.path.join(ASSETS_ROOT, "generative_textures"),
         check_folder_exists=False,
     ),
     "fixtures_lw": dict(
         message="Downloading lightwheel fixtures",
         url=_get_direct_download_url(BOX_LINKS["fixtures_lightwheel"]),
-        folder=os.path.join(robocasa.__path__[0], "models/assets/fixtures"),
+        folder=os.path.join(ASSETS_ROOT, "fixtures"),
         check_folder_exists=False,
     ),
     ### objects ###
     "objs_objaverse": dict(
         message="Downloading objaverse objects",
         url=_get_direct_download_url(BOX_LINKS["objaverse"]),
-        folder=os.path.join(robocasa.__path__[0], "models/assets/objects/objaverse"),
+        folder=os.path.join(ASSETS_ROOT, "objects/objaverse"),
         check_folder_exists=False,
     ),
     "objs_aigen": dict(
         message="Downloading AI-generated objects",
         url=_get_direct_download_url(BOX_LINKS["aigen_objs"]),
-        folder=os.path.join(robocasa.__path__[0], "models/assets/objects/aigen_objs"),
+        folder=os.path.join(ASSETS_ROOT, "objects/aigen_objs"),
         check_folder_exists=False,
     ),
     "objs_lw": dict(
         message="Downloading lightwheel objects",
         url=_get_direct_download_url(BOX_LINKS["objects_lightwheel"]),
-        folder=os.path.join(robocasa.__path__[0], "models/assets/objects/lightwheel"),
+        folder=os.path.join(ASSETS_ROOT, "objects/lightwheel"),
         check_folder_exists=False,
     ),
 }
@@ -129,7 +128,7 @@ def download_url(url, download_dir, fname=None, check_overwrite=True):
         assert user_response.lower() in {
             "yes",
             "y",
-        }, f"Did not receive confirmation. Aborting download."
+        }, "Did not receive confirmation. Aborting download."
 
     print(colored(f"Downloading to {file_to_write}", "yellow"))
 
@@ -172,7 +171,7 @@ def download_and_extract_zip(
 
     if prompt_before_download:
         ans = input(
-            "Assets to be downloaded may be a few Gb. Proceed? (y/n) ".format(folder)
+            "Assets to be downloaded may be a few Gb. Proceed? (y/n) "
         )
 
         if ans == "y":
@@ -209,23 +208,24 @@ def download_and_extract_zip(
     print(colored("Done.\n", "yellow"))
 
 
-def download_kitchen_assets(types):
-    ans = input("The script will download ~10 Gb of data. Proceed? (y/n) ")
+def download_kitchen_assets(types, dry_run=False):
+    if not types or any(name not in DOWNLOAD_ASSET_REGISTRY and name != "all" for name in types):
+        raise ValueError("Select explicit asset types; use --type all only for the complete collection.")
+    selected = {name: config for name, config in DOWNLOAD_ASSET_REGISTRY.items()
+                if "all" in types or name in types}
+    for name, config in selected.items():
+        print(f"{name}: {config['folder']}")
+    if dry_run:
+        print("Offline plan; no requests, directories, or downloads. EmptyEnv needs none of these packs.")
+        return
+    ans = input(f"Download {len(selected)} selected asset archive(s)? Packs can be large. Proceed? (y/n) ")
     if ans == "y":
         print("Proceeding...")
     else:
         print("Aborting.")
         return
 
-    for ds_name, config in DOWNLOAD_ASSET_REGISTRY.items():
-        if types is None:
-            pass
-        elif "all" in types:
-            # download everything
-            pass
-        else:
-            if ds_name not in types:
-                continue
+    for config in selected.values():
         download_and_extract_zip(**config)
 
 
@@ -235,11 +235,14 @@ if __name__ == "__main__":
         "--type",
         type=str,
         nargs="+",
+        required=True,
         choices=list(DOWNLOAD_ASSET_REGISTRY.keys()) + ["all"],
         help='asset registry types to download (specify "all" to download all types)',
     )
+    parser.add_argument("--dry-run", action="store_true",
+                        help="print selected asset categories offline without downloading")
 
     args = parser.parse_args()
     types = args.type
 
-    download_kitchen_assets(types)
+    download_kitchen_assets(types, dry_run=args.dry_run)

@@ -1,0 +1,1296 @@
+{
+    "objects": {
+        "doorway_06578a8f61a612b28999ce2f14b6e2c7_1_0_0": {
+            "hash_name": "doorway_06578a8f61a612b28999ce2f14b6e2c7_1_0_0",
+            "asset_id": "Doorway_7",
+            "object_id": "door|0|exterior|room0",
+            "category": "Doorway",
+            "object_enum": "thor_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "doorway_06578a8f61a612b28999ce2f14b6e2c7_1_0_0": "Doorway_7",
+                    "doorway_06578a8f61a612b28999ce2f14b6e2c7_1_1_0": "Doorway_7_doorway_7",
+                    "doorway_06578a8f61a612b28999ce2f14b6e2c7_1_2_0": "Doorway_7_doorway_door_7",
+                    "doorway_06578a8f61a612b28999ce2f14b6e2c7_1_3_0": "Doorway_7_doorway_handle_7"
+                },
+                "joints": {
+                    "doorway_06578a8f61a612b28999ce2f14b6e2c7_1_2_0_doorwaydoor7joint0_0": "Doorway_7_doorway_door_7_joint_0",
+                    "doorway_06578a8f61a612b28999ce2f14b6e2c7_1_3_0_doorwayhandle7joint0_1": "Doorway_7_doorway_handle_7_joint_0"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": []
+        },
+        "window_a28de649e905dd78e94d2b9193dab852_1_0_0": {
+            "hash_name": "window_a28de649e905dd78e94d2b9193dab852_1_0_0",
+            "asset_id": "Window_Fixed_96x48",
+            "object_id": "window|wall|room0|south|3|0|0",
+            "category": "Window",
+            "object_enum": "thor_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "window_a28de649e905dd78e94d2b9193dab852_1_0_0": "Window_Fixed_96x48",
+                    "window_a28de649e905dd78e94d2b9193dab852_1_1_0": "Window_Fixed_96x48_window_fixed_96x48"
+                },
+                "joints": {},
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": []
+        },
+        "window_a28de649e905dd78e94d2b9193dab852_2_0_0": {
+            "hash_name": "window_a28de649e905dd78e94d2b9193dab852_2_0_0",
+            "asset_id": "Window_Fixed_96x48",
+            "object_id": "window|wall|room0|south|3|1|1",
+            "category": "Window",
+            "object_enum": "thor_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "window_a28de649e905dd78e94d2b9193dab852_2_0_0": "Window_Fixed_96x48",
+                    "window_a28de649e905dd78e94d2b9193dab852_2_1_0": "Window_Fixed_96x48_window_fixed_96x48"
+                },
+                "joints": {},
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0": {
+            "hash_name": "obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0",
+            "asset_id": "42f1d3c373784c9996d35cbf08f2dbbb",
+            "object_id": "large0 (room0)|room0",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0": "42f1d3c373784c9996d35cbf08f2dbbb"
+                },
+                "joints": {},
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": [
+                "laptop_63fbcd680e0db93dfb0454951f2114f3_1_0_0"
+            ]
+        },
+        "laptop_63fbcd680e0db93dfb0454951f2114f3_1_0_0": {
+            "hash_name": "laptop_63fbcd680e0db93dfb0454951f2114f3_1_0_0",
+            "asset_id": "Laptop_24",
+            "object_id": "small33|large0 (room0)",
+            "category": "Laptop",
+            "object_enum": "thor_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "laptop_63fbcd680e0db93dfb0454951f2114f3_1_0_0": "Laptop_24",
+                    "laptop_63fbcd680e0db93dfb0454951f2114f3_1_1_0": "Laptop_24_laptop_24",
+                    "laptop_63fbcd680e0db93dfb0454951f2114f3_1_2_0": "Laptop_24_laptop_lid_24"
+                },
+                "joints": {
+                    "laptop_63fbcd680e0db93dfb0454951f2114f3_1_0_0_jntfree_0": "Laptop_24_free",
+                    "laptop_63fbcd680e0db93dfb0454951f2114f3_1_2_0_laptoplid24joint0_1": "Laptop_24_laptop_lid_24_joint_0"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "shelf_22fc3a3d40ecdc9abc7852ada2b32b02_1_0_0": {
+            "hash_name": "shelf_22fc3a3d40ecdc9abc7852ada2b32b02_1_0_0",
+            "asset_id": "Shelving_Unit_307_1",
+            "object_id": "large1 (room0)|room0",
+            "category": "ShelvingUnit",
+            "object_enum": "thor_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "shelf_22fc3a3d40ecdc9abc7852ada2b32b02_1_0_0": "Shelving_Unit_307_1",
+                    "shelf_22fc3a3d40ecdc9abc7852ada2b32b02_1_1_0": "Shelving_Unit_307_1_mesh"
+                },
+                "joints": {},
+                "sites": {
+                    "shelf_22fc3a3d40ecdc9abc7852ada2b32b02_1_1_0_meshReceptacle0_0": "Shelving_Unit_307_1_mesh_Receptacle_0",
+                    "shelf_22fc3a3d40ecdc9abc7852ada2b32b02_1_1_0_meshReceptacle1_1": "Shelving_Unit_307_1_mesh_Receptacle_1",
+                    "shelf_22fc3a3d40ecdc9abc7852ada2b32b02_1_1_0_meshReceptacle2_2": "Shelving_Unit_307_1_mesh_Receptacle_2",
+                    "shelf_22fc3a3d40ecdc9abc7852ada2b32b02_1_1_0_meshReceptacle3_3": "Shelving_Unit_307_1_mesh_Receptacle_3",
+                    "shelf_22fc3a3d40ecdc9abc7852ada2b32b02_1_1_0_meshReceptacle4_4": "Shelving_Unit_307_1_mesh_Receptacle_4",
+                    "shelf_22fc3a3d40ecdc9abc7852ada2b32b02_1_1_0_meshReceptacle5_5": "Shelving_Unit_307_1_mesh_Receptacle_5",
+                    "shelf_22fc3a3d40ecdc9abc7852ada2b32b02_1_1_0_meshReceptacle6_6": "Shelving_Unit_307_1_mesh_Receptacle_6",
+                    "shelf_22fc3a3d40ecdc9abc7852ada2b32b02_1_1_0_meshReceptacle7_7": "Shelving_Unit_307_1_mesh_Receptacle_7",
+                    "shelf_22fc3a3d40ecdc9abc7852ada2b32b02_1_1_0_meshReceptacle8_8": "Shelving_Unit_307_1_mesh_Receptacle_8"
+                }
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": []
+        },
+        "shelf_22fc3a3d40ecdc9abc7852ada2b32b02_2_0_0": {
+            "hash_name": "shelf_22fc3a3d40ecdc9abc7852ada2b32b02_2_0_0",
+            "asset_id": "Shelving_Unit_307_1",
+            "object_id": "large2 (room0)|room0",
+            "category": "ShelvingUnit",
+            "object_enum": "thor_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "shelf_22fc3a3d40ecdc9abc7852ada2b32b02_2_0_0": "Shelving_Unit_307_1",
+                    "shelf_22fc3a3d40ecdc9abc7852ada2b32b02_2_1_0": "Shelving_Unit_307_1_mesh"
+                },
+                "joints": {},
+                "sites": {
+                    "shelf_22fc3a3d40ecdc9abc7852ada2b32b02_2_1_0_meshReceptacle0_0": "Shelving_Unit_307_1_mesh_Receptacle_0",
+                    "shelf_22fc3a3d40ecdc9abc7852ada2b32b02_2_1_0_meshReceptacle1_1": "Shelving_Unit_307_1_mesh_Receptacle_1",
+                    "shelf_22fc3a3d40ecdc9abc7852ada2b32b02_2_1_0_meshReceptacle2_2": "Shelving_Unit_307_1_mesh_Receptacle_2",
+                    "shelf_22fc3a3d40ecdc9abc7852ada2b32b02_2_1_0_meshReceptacle3_3": "Shelving_Unit_307_1_mesh_Receptacle_3",
+                    "shelf_22fc3a3d40ecdc9abc7852ada2b32b02_2_1_0_meshReceptacle4_4": "Shelving_Unit_307_1_mesh_Receptacle_4",
+                    "shelf_22fc3a3d40ecdc9abc7852ada2b32b02_2_1_0_meshReceptacle5_5": "Shelving_Unit_307_1_mesh_Receptacle_5",
+                    "shelf_22fc3a3d40ecdc9abc7852ada2b32b02_2_1_0_meshReceptacle6_6": "Shelving_Unit_307_1_mesh_Receptacle_6",
+                    "shelf_22fc3a3d40ecdc9abc7852ada2b32b02_2_1_0_meshReceptacle7_7": "Shelving_Unit_307_1_mesh_Receptacle_7",
+                    "shelf_22fc3a3d40ecdc9abc7852ada2b32b02_2_1_0_meshReceptacle8_8": "Shelving_Unit_307_1_mesh_Receptacle_8"
+                }
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": []
+        },
+        "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_1_0_0": {
+            "hash_name": "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_1_0_0",
+            "asset_id": "Dresser_315_2",
+            "object_id": "large3 (room0)|room0",
+            "category": "Dresser",
+            "object_enum": "thor_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_1_0_0": "Dresser_315_2",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_1_1_0": "Dresser_315_2_DresserMesh",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_1_2_0": "Dresser_315_2_DrawerMesh_09",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_1_3_0": "Dresser_315_2_DrawerMesh_10",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_1_4_0": "Dresser_315_2_DrawerMesh_07",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_1_5_0": "Dresser_315_2_DrawerMesh_08",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_1_6_0": "Dresser_315_2_DrawerMesh_05",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_1_7_0": "Dresser_315_2_DrawerMesh_06",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_1_8_0": "Dresser_315_2_DrawerMesh_03",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_1_9_0": "Dresser_315_2_DrawerMesh_04",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_1_10_0": "Dresser_315_2_DrawerMesh_01",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_1_11_0": "Dresser_315_2_DrawerMesh_02"
+                },
+                "joints": {
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_1_2_0_joint_0": "Dresser_315_2_joint",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_1_3_0_DrawerMesh101_1": "Dresser_315_2_DrawerMesh_10__1",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_1_4_0_DrawerMesh071_2": "Dresser_315_2_DrawerMesh_07__1",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_1_5_0_DrawerMesh081_3": "Dresser_315_2_DrawerMesh_08__1",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_1_6_0_DrawerMesh051_4": "Dresser_315_2_DrawerMesh_05__1",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_1_7_0_DrawerMesh061_5": "Dresser_315_2_DrawerMesh_06__1",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_1_8_0_DrawerMesh031_6": "Dresser_315_2_DrawerMesh_03__1",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_1_9_0_DrawerMesh041_7": "Dresser_315_2_DrawerMesh_04__1",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_1_10_0_DrawerMesh011_8": "Dresser_315_2_DrawerMesh_01__1",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_1_11_0_DrawerMesh021_9": "Dresser_315_2_DrawerMesh_02__1"
+                },
+                "sites": {
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_1_1_0_DresserMeshReceptacle0_0": "Dresser_315_2_DresserMesh_Receptacle_0",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_1_2_0_DrawerMesh09Receptacle0_1": "Dresser_315_2_DrawerMesh_09_Receptacle_0",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_1_3_0_DrawerMesh10Receptacle0_2": "Dresser_315_2_DrawerMesh_10_Receptacle_0",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_1_4_0_DrawerMesh07Receptacle0_3": "Dresser_315_2_DrawerMesh_07_Receptacle_0",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_1_5_0_DrawerMesh08Receptacle0_4": "Dresser_315_2_DrawerMesh_08_Receptacle_0",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_1_6_0_DrawerMesh05Receptacle0_5": "Dresser_315_2_DrawerMesh_05_Receptacle_0",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_1_7_0_DrawerMesh06Receptacle0_6": "Dresser_315_2_DrawerMesh_06_Receptacle_0",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_1_8_0_DrawerMesh03Receptacle0_7": "Dresser_315_2_DrawerMesh_03_Receptacle_0",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_1_9_0_DrawerMesh04Receptacle0_8": "Dresser_315_2_DrawerMesh_04_Receptacle_0",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_1_10_0_DrawerMesh01Receptacle0_9": "Dresser_315_2_DrawerMesh_01_Receptacle_0",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_1_11_0_DrawerMesh02Receptacle0_10": "Dresser_315_2_DrawerMesh_02_Receptacle_0"
+                }
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": [
+                "obja_db4692abcc52471eb31fdc41bf7f7353_1_0_0",
+                "obja_72496e3f9ba54ee683fe00534ac3b174_1_0_0",
+                "obja_27e4472ffcdb4b49b9feda691ded2704_1_0_0",
+                "obja_632cf7dbc59a496283d1a6092dc6f9b0_1_0_0",
+                "toaster_625f51fc570c07c3f492cb2abb3318ef_1_0_0",
+                "obja_72496e3f9ba54ee683fe00534ac3b174_2_0_0",
+                "obja_41a38cd6fbe24388a13c5bcdd58d4260_1_0_0"
+            ]
+        },
+        "obja_db4692abcc52471eb31fdc41bf7f7353_1_0_0": {
+            "hash_name": "obja_db4692abcc52471eb31fdc41bf7f7353_1_0_0",
+            "asset_id": "db4692abcc52471eb31fdc41bf7f7353",
+            "object_id": "small8|large3 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_db4692abcc52471eb31fdc41bf7f7353_1_0_0": "db4692abcc52471eb31fdc41bf7f7353"
+                },
+                "joints": {
+                    "obja_db4692abcc52471eb31fdc41bf7f7353_1_0_0_jntfree_0": "db4692abcc52471eb31fdc41bf7f7353_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_72496e3f9ba54ee683fe00534ac3b174_1_0_0": {
+            "hash_name": "obja_72496e3f9ba54ee683fe00534ac3b174_1_0_0",
+            "asset_id": "72496e3f9ba54ee683fe00534ac3b174",
+            "object_id": "small9|large3 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_72496e3f9ba54ee683fe00534ac3b174_1_0_0": "72496e3f9ba54ee683fe00534ac3b174"
+                },
+                "joints": {
+                    "obja_72496e3f9ba54ee683fe00534ac3b174_1_0_0_jntfree_0": "72496e3f9ba54ee683fe00534ac3b174_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_27e4472ffcdb4b49b9feda691ded2704_1_0_0": {
+            "hash_name": "obja_27e4472ffcdb4b49b9feda691ded2704_1_0_0",
+            "asset_id": "27e4472ffcdb4b49b9feda691ded2704",
+            "object_id": "small10|large3 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_27e4472ffcdb4b49b9feda691ded2704_1_0_0": "27e4472ffcdb4b49b9feda691ded2704"
+                },
+                "joints": {
+                    "obja_27e4472ffcdb4b49b9feda691ded2704_1_0_0_jntfree_0": "27e4472ffcdb4b49b9feda691ded2704_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_632cf7dbc59a496283d1a6092dc6f9b0_1_0_0": {
+            "hash_name": "obja_632cf7dbc59a496283d1a6092dc6f9b0_1_0_0",
+            "asset_id": "632cf7dbc59a496283d1a6092dc6f9b0",
+            "object_id": "small11|large3 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_632cf7dbc59a496283d1a6092dc6f9b0_1_0_0": "632cf7dbc59a496283d1a6092dc6f9b0"
+                },
+                "joints": {
+                    "obja_632cf7dbc59a496283d1a6092dc6f9b0_1_0_0_jntfree_0": "632cf7dbc59a496283d1a6092dc6f9b0_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "toaster_625f51fc570c07c3f492cb2abb3318ef_1_0_0": {
+            "hash_name": "toaster_625f51fc570c07c3f492cb2abb3318ef_1_0_0",
+            "asset_id": "Toaster_11",
+            "object_id": "small12|large3 (room0)",
+            "category": "Toaster",
+            "object_enum": "thor_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "toaster_625f51fc570c07c3f492cb2abb3318ef_1_0_0": "Toaster_11",
+                    "toaster_625f51fc570c07c3f492cb2abb3318ef_1_1_0": "Toaster_11_Mesh_9683a7a0",
+                    "toaster_625f51fc570c07c3f492cb2abb3318ef_1_2_0": "Toaster_11_toaster_lever_11_4f9f69b6"
+                },
+                "joints": {
+                    "toaster_625f51fc570c07c3f492cb2abb3318ef_1_0_0_jntfree_0": "freejnt",
+                    "toaster_625f51fc570c07c3f492cb2abb3318ef_1_2_0_joint_1": "Toaster_11_joint"
+                },
+                "sites": {
+                    "toaster_625f51fc570c07c3f492cb2abb3318ef_1_1_0_Mesh9683a7a0Receptacle0_0": "Toaster_11_Mesh_9683a7a0_Receptacle_0",
+                    "toaster_625f51fc570c07c3f492cb2abb3318ef_1_1_0_Mesh9683a7a0Receptacle1_1": "Toaster_11_Mesh_9683a7a0_Receptacle_1"
+                }
+            },
+            "mjcf_path": "",
+            "parent": "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_72496e3f9ba54ee683fe00534ac3b174_2_0_0": {
+            "hash_name": "obja_72496e3f9ba54ee683fe00534ac3b174_2_0_0",
+            "asset_id": "72496e3f9ba54ee683fe00534ac3b174",
+            "object_id": "small13|large3 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_72496e3f9ba54ee683fe00534ac3b174_2_0_0": "72496e3f9ba54ee683fe00534ac3b174"
+                },
+                "joints": {
+                    "obja_72496e3f9ba54ee683fe00534ac3b174_2_0_0_jntfree_0": "72496e3f9ba54ee683fe00534ac3b174_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_41a38cd6fbe24388a13c5bcdd58d4260_1_0_0": {
+            "hash_name": "obja_41a38cd6fbe24388a13c5bcdd58d4260_1_0_0",
+            "asset_id": "41a38cd6fbe24388a13c5bcdd58d4260",
+            "object_id": "small14|large3 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_41a38cd6fbe24388a13c5bcdd58d4260_1_0_0": "41a38cd6fbe24388a13c5bcdd58d4260"
+                },
+                "joints": {
+                    "obja_41a38cd6fbe24388a13c5bcdd58d4260_1_0_0_jntfree_0": "41a38cd6fbe24388a13c5bcdd58d4260_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_2_0_0": {
+            "hash_name": "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_2_0_0",
+            "asset_id": "Dresser_315_2",
+            "object_id": "large4 (room0)|room0",
+            "category": "Dresser",
+            "object_enum": "thor_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_2_0_0": "Dresser_315_2",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_2_1_0": "Dresser_315_2_DresserMesh",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_2_2_0": "Dresser_315_2_DrawerMesh_09",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_2_3_0": "Dresser_315_2_DrawerMesh_10",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_2_4_0": "Dresser_315_2_DrawerMesh_07",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_2_5_0": "Dresser_315_2_DrawerMesh_08",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_2_6_0": "Dresser_315_2_DrawerMesh_05",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_2_7_0": "Dresser_315_2_DrawerMesh_06",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_2_8_0": "Dresser_315_2_DrawerMesh_03",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_2_9_0": "Dresser_315_2_DrawerMesh_04",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_2_10_0": "Dresser_315_2_DrawerMesh_01",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_2_11_0": "Dresser_315_2_DrawerMesh_02"
+                },
+                "joints": {
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_2_2_0_joint_0": "Dresser_315_2_joint",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_2_3_0_DrawerMesh101_1": "Dresser_315_2_DrawerMesh_10__1",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_2_4_0_DrawerMesh071_2": "Dresser_315_2_DrawerMesh_07__1",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_2_5_0_DrawerMesh081_3": "Dresser_315_2_DrawerMesh_08__1",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_2_6_0_DrawerMesh051_4": "Dresser_315_2_DrawerMesh_05__1",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_2_7_0_DrawerMesh061_5": "Dresser_315_2_DrawerMesh_06__1",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_2_8_0_DrawerMesh031_6": "Dresser_315_2_DrawerMesh_03__1",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_2_9_0_DrawerMesh041_7": "Dresser_315_2_DrawerMesh_04__1",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_2_10_0_DrawerMesh011_8": "Dresser_315_2_DrawerMesh_01__1",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_2_11_0_DrawerMesh021_9": "Dresser_315_2_DrawerMesh_02__1"
+                },
+                "sites": {
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_2_1_0_DresserMeshReceptacle0_0": "Dresser_315_2_DresserMesh_Receptacle_0",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_2_2_0_DrawerMesh09Receptacle0_1": "Dresser_315_2_DrawerMesh_09_Receptacle_0",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_2_3_0_DrawerMesh10Receptacle0_2": "Dresser_315_2_DrawerMesh_10_Receptacle_0",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_2_4_0_DrawerMesh07Receptacle0_3": "Dresser_315_2_DrawerMesh_07_Receptacle_0",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_2_5_0_DrawerMesh08Receptacle0_4": "Dresser_315_2_DrawerMesh_08_Receptacle_0",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_2_6_0_DrawerMesh05Receptacle0_5": "Dresser_315_2_DrawerMesh_05_Receptacle_0",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_2_7_0_DrawerMesh06Receptacle0_6": "Dresser_315_2_DrawerMesh_06_Receptacle_0",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_2_8_0_DrawerMesh03Receptacle0_7": "Dresser_315_2_DrawerMesh_03_Receptacle_0",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_2_9_0_DrawerMesh04Receptacle0_8": "Dresser_315_2_DrawerMesh_04_Receptacle_0",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_2_10_0_DrawerMesh01Receptacle0_9": "Dresser_315_2_DrawerMesh_01_Receptacle_0",
+                    "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_2_11_0_DrawerMesh02Receptacle0_10": "Dresser_315_2_DrawerMesh_02_Receptacle_0"
+                }
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": [
+                "obja_27e4472ffcdb4b49b9feda691ded2704_2_0_0",
+                "obja_41a38cd6fbe24388a13c5bcdd58d4260_2_0_0",
+                "obja_632cf7dbc59a496283d1a6092dc6f9b0_2_0_0",
+                "obja_db4692abcc52471eb31fdc41bf7f7353_2_0_0",
+                "obja_72496e3f9ba54ee683fe00534ac3b174_3_0_0",
+                "obja_72496e3f9ba54ee683fe00534ac3b174_4_0_0"
+            ]
+        },
+        "obja_27e4472ffcdb4b49b9feda691ded2704_2_0_0": {
+            "hash_name": "obja_27e4472ffcdb4b49b9feda691ded2704_2_0_0",
+            "asset_id": "27e4472ffcdb4b49b9feda691ded2704",
+            "object_id": "small15|large4 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_27e4472ffcdb4b49b9feda691ded2704_2_0_0": "27e4472ffcdb4b49b9feda691ded2704"
+                },
+                "joints": {
+                    "obja_27e4472ffcdb4b49b9feda691ded2704_2_0_0_jntfree_0": "27e4472ffcdb4b49b9feda691ded2704_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_2_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_41a38cd6fbe24388a13c5bcdd58d4260_2_0_0": {
+            "hash_name": "obja_41a38cd6fbe24388a13c5bcdd58d4260_2_0_0",
+            "asset_id": "41a38cd6fbe24388a13c5bcdd58d4260",
+            "object_id": "small16|large4 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_41a38cd6fbe24388a13c5bcdd58d4260_2_0_0": "41a38cd6fbe24388a13c5bcdd58d4260"
+                },
+                "joints": {
+                    "obja_41a38cd6fbe24388a13c5bcdd58d4260_2_0_0_jntfree_0": "41a38cd6fbe24388a13c5bcdd58d4260_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_2_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_632cf7dbc59a496283d1a6092dc6f9b0_2_0_0": {
+            "hash_name": "obja_632cf7dbc59a496283d1a6092dc6f9b0_2_0_0",
+            "asset_id": "632cf7dbc59a496283d1a6092dc6f9b0",
+            "object_id": "small17|large4 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_632cf7dbc59a496283d1a6092dc6f9b0_2_0_0": "632cf7dbc59a496283d1a6092dc6f9b0"
+                },
+                "joints": {
+                    "obja_632cf7dbc59a496283d1a6092dc6f9b0_2_0_0_jntfree_0": "632cf7dbc59a496283d1a6092dc6f9b0_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_2_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_db4692abcc52471eb31fdc41bf7f7353_2_0_0": {
+            "hash_name": "obja_db4692abcc52471eb31fdc41bf7f7353_2_0_0",
+            "asset_id": "db4692abcc52471eb31fdc41bf7f7353",
+            "object_id": "small18|large4 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_db4692abcc52471eb31fdc41bf7f7353_2_0_0": "db4692abcc52471eb31fdc41bf7f7353"
+                },
+                "joints": {
+                    "obja_db4692abcc52471eb31fdc41bf7f7353_2_0_0_jntfree_0": "db4692abcc52471eb31fdc41bf7f7353_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_2_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_72496e3f9ba54ee683fe00534ac3b174_3_0_0": {
+            "hash_name": "obja_72496e3f9ba54ee683fe00534ac3b174_3_0_0",
+            "asset_id": "72496e3f9ba54ee683fe00534ac3b174",
+            "object_id": "small19|large4 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_72496e3f9ba54ee683fe00534ac3b174_3_0_0": "72496e3f9ba54ee683fe00534ac3b174"
+                },
+                "joints": {
+                    "obja_72496e3f9ba54ee683fe00534ac3b174_3_0_0_jntfree_0": "72496e3f9ba54ee683fe00534ac3b174_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_2_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_72496e3f9ba54ee683fe00534ac3b174_4_0_0": {
+            "hash_name": "obja_72496e3f9ba54ee683fe00534ac3b174_4_0_0",
+            "asset_id": "72496e3f9ba54ee683fe00534ac3b174",
+            "object_id": "small20|large4 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_72496e3f9ba54ee683fe00534ac3b174_4_0_0": "72496e3f9ba54ee683fe00534ac3b174"
+                },
+                "joints": {
+                    "obja_72496e3f9ba54ee683fe00534ac3b174_4_0_0_jntfree_0": "72496e3f9ba54ee683fe00534ac3b174_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "chestofdrawers_6b85a5c8ef3c6b19d80b1c0cd90ddb85_2_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "chestofdrawers_0404a602d0608057acc9ab5271ffc125_1_0_0": {
+            "hash_name": "chestofdrawers_0404a602d0608057acc9ab5271ffc125_1_0_0",
+            "asset_id": "Dresser_319_2",
+            "object_id": "large5 (room0)|room0",
+            "category": "Dresser",
+            "object_enum": "thor_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "chestofdrawers_0404a602d0608057acc9ab5271ffc125_1_0_0": "Dresser_319_2",
+                    "chestofdrawers_0404a602d0608057acc9ab5271ffc125_1_1_0": "Dresser_319_2_FP319:DRESSER2",
+                    "chestofdrawers_0404a602d0608057acc9ab5271ffc125_1_2_0": "Dresser_319_2_DrawerMesh_10",
+                    "chestofdrawers_0404a602d0608057acc9ab5271ffc125_1_3_0": "Dresser_319_2_DrawerMesh_08",
+                    "chestofdrawers_0404a602d0608057acc9ab5271ffc125_1_4_0": "Dresser_319_2_DrawerMesh_06",
+                    "chestofdrawers_0404a602d0608057acc9ab5271ffc125_1_5_0": "Dresser_319_2_DrawerMesh_04",
+                    "chestofdrawers_0404a602d0608057acc9ab5271ffc125_1_6_0": "Dresser_319_2_DrawerMesh_02",
+                    "chestofdrawers_0404a602d0608057acc9ab5271ffc125_1_7_0": "Dresser_319_2_DrawerMesh_09",
+                    "chestofdrawers_0404a602d0608057acc9ab5271ffc125_1_8_0": "Dresser_319_2_DrawerMesh_07",
+                    "chestofdrawers_0404a602d0608057acc9ab5271ffc125_1_9_0": "Dresser_319_2_DrawerMesh_05",
+                    "chestofdrawers_0404a602d0608057acc9ab5271ffc125_1_10_0": "Dresser_319_2_DrawerMesh_03",
+                    "chestofdrawers_0404a602d0608057acc9ab5271ffc125_1_11_0": "Dresser_319_2_DrawerMesh_01"
+                },
+                "joints": {
+                    "chestofdrawers_0404a602d0608057acc9ab5271ffc125_1_2_0_joint_0": "Dresser_319_2_joint",
+                    "chestofdrawers_0404a602d0608057acc9ab5271ffc125_1_3_0_DrawerMesh081_1": "Dresser_319_2_DrawerMesh_08__1",
+                    "chestofdrawers_0404a602d0608057acc9ab5271ffc125_1_4_0_DrawerMesh061_2": "Dresser_319_2_DrawerMesh_06__1",
+                    "chestofdrawers_0404a602d0608057acc9ab5271ffc125_1_5_0_DrawerMesh041_3": "Dresser_319_2_DrawerMesh_04__1",
+                    "chestofdrawers_0404a602d0608057acc9ab5271ffc125_1_6_0_DrawerMesh021_4": "Dresser_319_2_DrawerMesh_02__1",
+                    "chestofdrawers_0404a602d0608057acc9ab5271ffc125_1_7_0_DrawerMesh091_5": "Dresser_319_2_DrawerMesh_09__1",
+                    "chestofdrawers_0404a602d0608057acc9ab5271ffc125_1_8_0_DrawerMesh071_6": "Dresser_319_2_DrawerMesh_07__1",
+                    "chestofdrawers_0404a602d0608057acc9ab5271ffc125_1_9_0_DrawerMesh051_7": "Dresser_319_2_DrawerMesh_05__1",
+                    "chestofdrawers_0404a602d0608057acc9ab5271ffc125_1_10_0_DrawerMesh031_8": "Dresser_319_2_DrawerMesh_03__1",
+                    "chestofdrawers_0404a602d0608057acc9ab5271ffc125_1_11_0_DrawerMesh011_9": "Dresser_319_2_DrawerMesh_01__1"
+                },
+                "sites": {
+                    "chestofdrawers_0404a602d0608057acc9ab5271ffc125_1_1_0_FP319:DRESSER2Receptacle0_0": "Dresser_319_2_FP319:DRESSER2_Receptacle_0",
+                    "chestofdrawers_0404a602d0608057acc9ab5271ffc125_1_1_0_FP319:DRESSER2Receptacle1_1": "Dresser_319_2_FP319:DRESSER2_Receptacle_1",
+                    "chestofdrawers_0404a602d0608057acc9ab5271ffc125_1_1_0_FP319:DRESSER2Receptacle2_2": "Dresser_319_2_FP319:DRESSER2_Receptacle_2",
+                    "chestofdrawers_0404a602d0608057acc9ab5271ffc125_1_1_0_FP319:DRESSER2Receptacle3_3": "Dresser_319_2_FP319:DRESSER2_Receptacle_3",
+                    "chestofdrawers_0404a602d0608057acc9ab5271ffc125_1_1_0_FP319:DRESSER2Receptacle4_4": "Dresser_319_2_FP319:DRESSER2_Receptacle_4",
+                    "chestofdrawers_0404a602d0608057acc9ab5271ffc125_1_1_0_FP319:DRESSER2Receptacle5_5": "Dresser_319_2_FP319:DRESSER2_Receptacle_5",
+                    "chestofdrawers_0404a602d0608057acc9ab5271ffc125_1_1_0_FP319:DRESSER2Receptacle6_6": "Dresser_319_2_FP319:DRESSER2_Receptacle_6",
+                    "chestofdrawers_0404a602d0608057acc9ab5271ffc125_1_1_0_FP319:DRESSER2Receptacle7_7": "Dresser_319_2_FP319:DRESSER2_Receptacle_7",
+                    "chestofdrawers_0404a602d0608057acc9ab5271ffc125_1_1_0_FP319:DRESSER2Receptacle8_8": "Dresser_319_2_FP319:DRESSER2_Receptacle_8",
+                    "chestofdrawers_0404a602d0608057acc9ab5271ffc125_1_1_0_FP319:DRESSER2Receptacle9_9": "Dresser_319_2_FP319:DRESSER2_Receptacle_9",
+                    "chestofdrawers_0404a602d0608057acc9ab5271ffc125_1_1_0_FP319:DRESSER2Receptacle10_10": "Dresser_319_2_FP319:DRESSER2_Receptacle_10",
+                    "chestofdrawers_0404a602d0608057acc9ab5271ffc125_1_2_0_DrawerMesh10Receptacle0_11": "Dresser_319_2_DrawerMesh_10_Receptacle_0",
+                    "chestofdrawers_0404a602d0608057acc9ab5271ffc125_1_3_0_DrawerMesh08Receptacle0_12": "Dresser_319_2_DrawerMesh_08_Receptacle_0",
+                    "chestofdrawers_0404a602d0608057acc9ab5271ffc125_1_4_0_DrawerMesh06Receptacle0_13": "Dresser_319_2_DrawerMesh_06_Receptacle_0",
+                    "chestofdrawers_0404a602d0608057acc9ab5271ffc125_1_5_0_DrawerMesh04Receptacle0_14": "Dresser_319_2_DrawerMesh_04_Receptacle_0",
+                    "chestofdrawers_0404a602d0608057acc9ab5271ffc125_1_6_0_DrawerMesh02Receptacle0_15": "Dresser_319_2_DrawerMesh_02_Receptacle_0",
+                    "chestofdrawers_0404a602d0608057acc9ab5271ffc125_1_7_0_DrawerMesh09Receptacle0_16": "Dresser_319_2_DrawerMesh_09_Receptacle_0",
+                    "chestofdrawers_0404a602d0608057acc9ab5271ffc125_1_8_0_DrawerMesh07Receptacle0_17": "Dresser_319_2_DrawerMesh_07_Receptacle_0",
+                    "chestofdrawers_0404a602d0608057acc9ab5271ffc125_1_9_0_DrawerMesh05Receptacle0_18": "Dresser_319_2_DrawerMesh_05_Receptacle_0",
+                    "chestofdrawers_0404a602d0608057acc9ab5271ffc125_1_10_0_DrawerMesh03Receptacle0_19": "Dresser_319_2_DrawerMesh_03_Receptacle_0",
+                    "chestofdrawers_0404a602d0608057acc9ab5271ffc125_1_11_0_DrawerMesh01Receptacle0_20": "Dresser_319_2_DrawerMesh_01_Receptacle_0"
+                }
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": [
+                "obja_b94b7e56ccb74c4eaf4f72d548ccbbdb_1_0_0",
+                "obja_27e4472ffcdb4b49b9feda691ded2704_3_0_0",
+                "obja_b94b7e56ccb74c4eaf4f72d548ccbbdb_2_0_0",
+                "tablelamp_72cfdabeeb270d1d086fea2c07e33f6f_1_0_0",
+                "obja_b94b7e56ccb74c4eaf4f72d548ccbbdb_3_0_0",
+                "obja_632cf7dbc59a496283d1a6092dc6f9b0_3_0_0"
+            ]
+        },
+        "obja_b94b7e56ccb74c4eaf4f72d548ccbbdb_1_0_0": {
+            "hash_name": "obja_b94b7e56ccb74c4eaf4f72d548ccbbdb_1_0_0",
+            "asset_id": "b94b7e56ccb74c4eaf4f72d548ccbbdb",
+            "object_id": "small2|large5 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_b94b7e56ccb74c4eaf4f72d548ccbbdb_1_0_0": "b94b7e56ccb74c4eaf4f72d548ccbbdb"
+                },
+                "joints": {
+                    "obja_b94b7e56ccb74c4eaf4f72d548ccbbdb_1_0_0_jntfree_0": "b94b7e56ccb74c4eaf4f72d548ccbbdb_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "chestofdrawers_0404a602d0608057acc9ab5271ffc125_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_27e4472ffcdb4b49b9feda691ded2704_3_0_0": {
+            "hash_name": "obja_27e4472ffcdb4b49b9feda691ded2704_3_0_0",
+            "asset_id": "27e4472ffcdb4b49b9feda691ded2704",
+            "object_id": "small3|large5 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_27e4472ffcdb4b49b9feda691ded2704_3_0_0": "27e4472ffcdb4b49b9feda691ded2704"
+                },
+                "joints": {
+                    "obja_27e4472ffcdb4b49b9feda691ded2704_3_0_0_jntfree_0": "27e4472ffcdb4b49b9feda691ded2704_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "chestofdrawers_0404a602d0608057acc9ab5271ffc125_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_b94b7e56ccb74c4eaf4f72d548ccbbdb_2_0_0": {
+            "hash_name": "obja_b94b7e56ccb74c4eaf4f72d548ccbbdb_2_0_0",
+            "asset_id": "b94b7e56ccb74c4eaf4f72d548ccbbdb",
+            "object_id": "small4|large5 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_b94b7e56ccb74c4eaf4f72d548ccbbdb_2_0_0": "b94b7e56ccb74c4eaf4f72d548ccbbdb"
+                },
+                "joints": {
+                    "obja_b94b7e56ccb74c4eaf4f72d548ccbbdb_2_0_0_jntfree_0": "b94b7e56ccb74c4eaf4f72d548ccbbdb_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "chestofdrawers_0404a602d0608057acc9ab5271ffc125_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "tablelamp_72cfdabeeb270d1d086fea2c07e33f6f_1_0_0": {
+            "hash_name": "tablelamp_72cfdabeeb270d1d086fea2c07e33f6f_1_0_0",
+            "asset_id": "Desk_Lamp_4",
+            "object_id": "small5|large5 (room0)",
+            "category": "DeskLamp",
+            "object_enum": "thor_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "tablelamp_72cfdabeeb270d1d086fea2c07e33f6f_1_0_0": "Desk_Lamp_4",
+                    "tablelamp_72cfdabeeb270d1d086fea2c07e33f6f_1_1_0": "Desk_Lamp_4_mesh"
+                },
+                "joints": {
+                    "tablelamp_72cfdabeeb270d1d086fea2c07e33f6f_1_0_0_jntfree_0": "freejnt"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "chestofdrawers_0404a602d0608057acc9ab5271ffc125_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_b94b7e56ccb74c4eaf4f72d548ccbbdb_3_0_0": {
+            "hash_name": "obja_b94b7e56ccb74c4eaf4f72d548ccbbdb_3_0_0",
+            "asset_id": "b94b7e56ccb74c4eaf4f72d548ccbbdb",
+            "object_id": "small6|large5 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_b94b7e56ccb74c4eaf4f72d548ccbbdb_3_0_0": "b94b7e56ccb74c4eaf4f72d548ccbbdb"
+                },
+                "joints": {
+                    "obja_b94b7e56ccb74c4eaf4f72d548ccbbdb_3_0_0_jntfree_0": "b94b7e56ccb74c4eaf4f72d548ccbbdb_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "chestofdrawers_0404a602d0608057acc9ab5271ffc125_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_632cf7dbc59a496283d1a6092dc6f9b0_3_0_0": {
+            "hash_name": "obja_632cf7dbc59a496283d1a6092dc6f9b0_3_0_0",
+            "asset_id": "632cf7dbc59a496283d1a6092dc6f9b0",
+            "object_id": "small7|large5 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_632cf7dbc59a496283d1a6092dc6f9b0_3_0_0": "632cf7dbc59a496283d1a6092dc6f9b0"
+                },
+                "joints": {
+                    "obja_632cf7dbc59a496283d1a6092dc6f9b0_3_0_0_jntfree_0": "632cf7dbc59a496283d1a6092dc6f9b0_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "chestofdrawers_0404a602d0608057acc9ab5271ffc125_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "armchair_f127c74757394c4234a0fbb0a6286d65_1_0_0": {
+            "hash_name": "armchair_f127c74757394c4234a0fbb0a6286d65_1_0_0",
+            "asset_id": "Armchair_201_3",
+            "object_id": "large6 (room0)|room0",
+            "category": "ArmChair",
+            "object_enum": "thor_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "armchair_f127c74757394c4234a0fbb0a6286d65_1_0_0": "Armchair_201_3",
+                    "armchair_f127c74757394c4234a0fbb0a6286d65_1_1_0": "Armchair_201_3_armchair_201"
+                },
+                "joints": {},
+                "sites": {
+                    "armchair_f127c74757394c4234a0fbb0a6286d65_1_1_0_armchair201ReceptacleCollider0_0": "Armchair_201_3_armchair_201_ReceptacleCollider_0"
+                }
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": [
+                "obja_d46ec5e299be44f1a34a00c42a3fbb35_1_0_0"
+            ]
+        },
+        "obja_d46ec5e299be44f1a34a00c42a3fbb35_1_0_0": {
+            "hash_name": "obja_d46ec5e299be44f1a34a00c42a3fbb35_1_0_0",
+            "asset_id": "d46ec5e299be44f1a34a00c42a3fbb35",
+            "object_id": "small0|large6 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_d46ec5e299be44f1a34a00c42a3fbb35_1_0_0": "d46ec5e299be44f1a34a00c42a3fbb35"
+                },
+                "joints": {
+                    "obja_d46ec5e299be44f1a34a00c42a3fbb35_1_0_0_jntfree_0": "d46ec5e299be44f1a34a00c42a3fbb35_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "armchair_f127c74757394c4234a0fbb0a6286d65_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "armchair_f127c74757394c4234a0fbb0a6286d65_2_0_0": {
+            "hash_name": "armchair_f127c74757394c4234a0fbb0a6286d65_2_0_0",
+            "asset_id": "Armchair_201_3",
+            "object_id": "large7 (room0)|room0",
+            "category": "ArmChair",
+            "object_enum": "thor_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "armchair_f127c74757394c4234a0fbb0a6286d65_2_0_0": "Armchair_201_3",
+                    "armchair_f127c74757394c4234a0fbb0a6286d65_2_1_0": "Armchair_201_3_armchair_201"
+                },
+                "joints": {},
+                "sites": {
+                    "armchair_f127c74757394c4234a0fbb0a6286d65_2_1_0_armchair201ReceptacleCollider0_0": "Armchair_201_3_armchair_201_ReceptacleCollider_0"
+                }
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": [
+                "obja_d46ec5e299be44f1a34a00c42a3fbb35_2_0_0"
+            ]
+        },
+        "obja_d46ec5e299be44f1a34a00c42a3fbb35_2_0_0": {
+            "hash_name": "obja_d46ec5e299be44f1a34a00c42a3fbb35_2_0_0",
+            "asset_id": "d46ec5e299be44f1a34a00c42a3fbb35",
+            "object_id": "small1|large7 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_d46ec5e299be44f1a34a00c42a3fbb35_2_0_0": "d46ec5e299be44f1a34a00c42a3fbb35"
+                },
+                "joints": {
+                    "obja_d46ec5e299be44f1a34a00c42a3fbb35_2_0_0_jntfree_0": "d46ec5e299be44f1a34a00c42a3fbb35_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "armchair_f127c74757394c4234a0fbb0a6286d65_2_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "stand_dba5fb19566f0e1caaf78947145fe7fc_1_0_0": {
+            "hash_name": "stand_dba5fb19566f0e1caaf78947145fe7fc_1_0_0",
+            "asset_id": "Side_Table_216_3_1",
+            "object_id": "large8 (room0)|room0",
+            "category": "SideTable",
+            "object_enum": "thor_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "stand_dba5fb19566f0e1caaf78947145fe7fc_1_0_0": "Side_Table_216_3_1",
+                    "stand_dba5fb19566f0e1caaf78947145fe7fc_1_1_0": "Side_Table_216_3_1_Mesh",
+                    "stand_dba5fb19566f0e1caaf78947145fe7fc_1_2_0": "Side_Table_216_3_1_DrawerMesh_01"
+                },
+                "joints": {
+                    "stand_dba5fb19566f0e1caaf78947145fe7fc_1_2_0_joint_0": "Side_Table_216_3_1_joint"
+                },
+                "sites": {
+                    "stand_dba5fb19566f0e1caaf78947145fe7fc_1_1_0_MeshReceptacle0_0": "Side_Table_216_3_1_Mesh_Receptacle_0",
+                    "stand_dba5fb19566f0e1caaf78947145fe7fc_1_2_0_DrawerMesh01Receptacle0_1": "Side_Table_216_3_1_DrawerMesh_01_Receptacle_0"
+                }
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": [
+                "obja_1ae1abff2ff84d5198fc308648feb750_1_0_0",
+                "candle_c6e5d947796037dc5ccc452b1320f772_1_0_0",
+                "candle_e556573454d609117d1a666932ebfcb2_1_0_0",
+                "book_389a9acdc701109829c44ab7674d6742_2_0_0"
+            ]
+        },
+        "obja_1ae1abff2ff84d5198fc308648feb750_1_0_0": {
+            "hash_name": "obja_1ae1abff2ff84d5198fc308648feb750_1_0_0",
+            "asset_id": "1ae1abff2ff84d5198fc308648feb750",
+            "object_id": "small26|large8 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_1ae1abff2ff84d5198fc308648feb750_1_0_0": "1ae1abff2ff84d5198fc308648feb750"
+                },
+                "joints": {
+                    "obja_1ae1abff2ff84d5198fc308648feb750_1_0_0_jntfree_0": "1ae1abff2ff84d5198fc308648feb750_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "stand_dba5fb19566f0e1caaf78947145fe7fc_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "candle_c6e5d947796037dc5ccc452b1320f772_1_0_0": {
+            "hash_name": "candle_c6e5d947796037dc5ccc452b1320f772_1_0_0",
+            "asset_id": "RoboTHOR_candle_glittrig_3_v",
+            "object_id": "small27|large8 (room0)",
+            "category": "Candle",
+            "object_enum": "thor_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "candle_c6e5d947796037dc5ccc452b1320f772_1_0_0": "RoboTHOR_candle_glittrig_3_v",
+                    "candle_c6e5d947796037dc5ccc452b1320f772_1_1_0": "RoboTHOR_candle_glittrig_3_v_robothor_candle_glittrig_3"
+                },
+                "joints": {
+                    "candle_c6e5d947796037dc5ccc452b1320f772_1_0_0_jntfree_0": "RoboTHOR_candle_glittrig_3_v_free"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "stand_dba5fb19566f0e1caaf78947145fe7fc_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "candle_e556573454d609117d1a666932ebfcb2_1_0_0": {
+            "hash_name": "candle_e556573454d609117d1a666932ebfcb2_1_0_0",
+            "asset_id": "RoboTHOR_candle_glittrig_1_v",
+            "object_id": "small28|large8 (room0)",
+            "category": "Candle",
+            "object_enum": "thor_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "candle_e556573454d609117d1a666932ebfcb2_1_0_0": "RoboTHOR_candle_glittrig_1_v",
+                    "candle_e556573454d609117d1a666932ebfcb2_1_1_0": "RoboTHOR_candle_glittrig_1_v_robothor_candle_glittrig_1"
+                },
+                "joints": {
+                    "candle_e556573454d609117d1a666932ebfcb2_1_0_0_jntfree_0": "RoboTHOR_candle_glittrig_1_v_free"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "stand_dba5fb19566f0e1caaf78947145fe7fc_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "book_389a9acdc701109829c44ab7674d6742_2_0_0": {
+            "hash_name": "book_389a9acdc701109829c44ab7674d6742_2_0_0",
+            "asset_id": "Book_17",
+            "object_id": "small29|large8 (room0)",
+            "category": "Book",
+            "object_enum": "thor_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "book_389a9acdc701109829c44ab7674d6742_2_0_0": "Book_17",
+                    "book_389a9acdc701109829c44ab7674d6742_2_1_0": "Book_17_book_front_17",
+                    "book_389a9acdc701109829c44ab7674d6742_2_2_0": "Book_17_book_17"
+                },
+                "joints": {
+                    "book_389a9acdc701109829c44ab7674d6742_2_0_0_jntfree_0": "Book_17_free"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "stand_dba5fb19566f0e1caaf78947145fe7fc_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "stand_dba5fb19566f0e1caaf78947145fe7fc_2_0_0": {
+            "hash_name": "stand_dba5fb19566f0e1caaf78947145fe7fc_2_0_0",
+            "asset_id": "Side_Table_216_3_1",
+            "object_id": "large9 (room0)|room0",
+            "category": "SideTable",
+            "object_enum": "thor_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "stand_dba5fb19566f0e1caaf78947145fe7fc_2_0_0": "Side_Table_216_3_1",
+                    "stand_dba5fb19566f0e1caaf78947145fe7fc_2_1_0": "Side_Table_216_3_1_Mesh",
+                    "stand_dba5fb19566f0e1caaf78947145fe7fc_2_2_0": "Side_Table_216_3_1_DrawerMesh_01"
+                },
+                "joints": {
+                    "stand_dba5fb19566f0e1caaf78947145fe7fc_2_2_0_joint_0": "Side_Table_216_3_1_joint"
+                },
+                "sites": {
+                    "stand_dba5fb19566f0e1caaf78947145fe7fc_2_1_0_MeshReceptacle0_0": "Side_Table_216_3_1_Mesh_Receptacle_0",
+                    "stand_dba5fb19566f0e1caaf78947145fe7fc_2_2_0_DrawerMesh01Receptacle0_1": "Side_Table_216_3_1_DrawerMesh_01_Receptacle_0"
+                }
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": [
+                "candle_c6e5d947796037dc5ccc452b1320f772_2_0_0",
+                "tablelamp_72cfdabeeb270d1d086fea2c07e33f6f_2_0_0",
+                "candle_ffd2c50b9d799aa15832f6043a31148b_1_0_0",
+                "obja_1ae1abff2ff84d5198fc308648feb750_2_0_0",
+                "book_f4e747659291a4cbe4055184d1393785_2_0_0"
+            ]
+        },
+        "candle_c6e5d947796037dc5ccc452b1320f772_2_0_0": {
+            "hash_name": "candle_c6e5d947796037dc5ccc452b1320f772_2_0_0",
+            "asset_id": "RoboTHOR_candle_glittrig_3_v",
+            "object_id": "small21|large9 (room0)",
+            "category": "Candle",
+            "object_enum": "thor_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "candle_c6e5d947796037dc5ccc452b1320f772_2_0_0": "RoboTHOR_candle_glittrig_3_v",
+                    "candle_c6e5d947796037dc5ccc452b1320f772_2_1_0": "RoboTHOR_candle_glittrig_3_v_robothor_candle_glittrig_3"
+                },
+                "joints": {
+                    "candle_c6e5d947796037dc5ccc452b1320f772_2_0_0_jntfree_0": "RoboTHOR_candle_glittrig_3_v_free"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "stand_dba5fb19566f0e1caaf78947145fe7fc_2_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "tablelamp_72cfdabeeb270d1d086fea2c07e33f6f_2_0_0": {
+            "hash_name": "tablelamp_72cfdabeeb270d1d086fea2c07e33f6f_2_0_0",
+            "asset_id": "Desk_Lamp_4",
+            "object_id": "small22|large9 (room0)",
+            "category": "DeskLamp",
+            "object_enum": "thor_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "tablelamp_72cfdabeeb270d1d086fea2c07e33f6f_2_0_0": "Desk_Lamp_4",
+                    "tablelamp_72cfdabeeb270d1d086fea2c07e33f6f_2_1_0": "Desk_Lamp_4_mesh"
+                },
+                "joints": {
+                    "tablelamp_72cfdabeeb270d1d086fea2c07e33f6f_2_0_0_jntfree_0": "freejnt"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "stand_dba5fb19566f0e1caaf78947145fe7fc_2_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "candle_ffd2c50b9d799aa15832f6043a31148b_1_0_0": {
+            "hash_name": "candle_ffd2c50b9d799aa15832f6043a31148b_1_0_0",
+            "asset_id": "RoboTHOR_candle_glittrig_2_v",
+            "object_id": "small23|large9 (room0)",
+            "category": "Candle",
+            "object_enum": "thor_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "candle_ffd2c50b9d799aa15832f6043a31148b_1_0_0": "RoboTHOR_candle_glittrig_2_v",
+                    "candle_ffd2c50b9d799aa15832f6043a31148b_1_1_0": "RoboTHOR_candle_glittrig_2_v_robothor_candle_glittrig_2"
+                },
+                "joints": {
+                    "candle_ffd2c50b9d799aa15832f6043a31148b_1_0_0_jntfree_0": "RoboTHOR_candle_glittrig_2_v_free"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "stand_dba5fb19566f0e1caaf78947145fe7fc_2_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_1ae1abff2ff84d5198fc308648feb750_2_0_0": {
+            "hash_name": "obja_1ae1abff2ff84d5198fc308648feb750_2_0_0",
+            "asset_id": "1ae1abff2ff84d5198fc308648feb750",
+            "object_id": "small24|large9 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_1ae1abff2ff84d5198fc308648feb750_2_0_0": "1ae1abff2ff84d5198fc308648feb750"
+                },
+                "joints": {
+                    "obja_1ae1abff2ff84d5198fc308648feb750_2_0_0_jntfree_0": "1ae1abff2ff84d5198fc308648feb750_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "stand_dba5fb19566f0e1caaf78947145fe7fc_2_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "book_f4e747659291a4cbe4055184d1393785_2_0_0": {
+            "hash_name": "book_f4e747659291a4cbe4055184d1393785_2_0_0",
+            "asset_id": "Book_4",
+            "object_id": "small25|large9 (room0)",
+            "category": "Book",
+            "object_enum": "thor_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "book_f4e747659291a4cbe4055184d1393785_2_0_0": "Book_4",
+                    "book_f4e747659291a4cbe4055184d1393785_2_1_0": "Book_4_book_4",
+                    "book_f4e747659291a4cbe4055184d1393785_2_2_0": "Book_4_book_front_4"
+                },
+                "joints": {
+                    "book_f4e747659291a4cbe4055184d1393785_2_0_0_jntfree_0": "Book_4_free"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "stand_dba5fb19566f0e1caaf78947145fe7fc_2_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "painting_8cbaf499936a0f66ced34354e5215369_1_0_0": {
+            "hash_name": "painting_8cbaf499936a0f66ced34354e5215369_1_0_0",
+            "asset_id": "Wall_Decor_Photo_3",
+            "object_id": "large10 (room0)|room0",
+            "category": "Painting",
+            "object_enum": "thor_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "painting_8cbaf499936a0f66ced34354e5215369_1_0_0": "Wall_Decor_Photo_3",
+                    "painting_8cbaf499936a0f66ced34354e5215369_1_1_0": "Wall_Decor_Photo_3_robothor_wall_decor_4_3"
+                },
+                "joints": {},
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": []
+        },
+        "painting_8cbaf499936a0f66ced34354e5215369_2_0_0": {
+            "hash_name": "painting_8cbaf499936a0f66ced34354e5215369_2_0_0",
+            "asset_id": "Wall_Decor_Photo_3",
+            "object_id": "large11 (room0)|room0",
+            "category": "Painting",
+            "object_enum": "thor_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "painting_8cbaf499936a0f66ced34354e5215369_2_0_0": "Wall_Decor_Photo_3",
+                    "painting_8cbaf499936a0f66ced34354e5215369_2_1_0": "Wall_Decor_Photo_3_robothor_wall_decor_4_3"
+                },
+                "joints": {},
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": []
+        },
+        "painting_8cbaf499936a0f66ced34354e5215369_3_0_0": {
+            "hash_name": "painting_8cbaf499936a0f66ced34354e5215369_3_0_0",
+            "asset_id": "Wall_Decor_Photo_3",
+            "object_id": "large12 (room0)|room0",
+            "category": "Painting",
+            "object_enum": "thor_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "painting_8cbaf499936a0f66ced34354e5215369_3_0_0": "Wall_Decor_Photo_3",
+                    "painting_8cbaf499936a0f66ced34354e5215369_3_1_0": "Wall_Decor_Photo_3_robothor_wall_decor_4_3"
+                },
+                "joints": {},
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_e237f52867c944bba90c848456d854eb_1_0_0": {
+            "hash_name": "obja_e237f52867c944bba90c848456d854eb_1_0_0",
+            "asset_id": "e237f52867c944bba90c848456d854eb",
+            "object_id": "large13 (room0)|room0",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "obja_e237f52867c944bba90c848456d854eb_1_0_0": "e237f52867c944bba90c848456d854eb"
+                },
+                "joints": {},
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_b183e6af5d324e03913a4ca835fb291d_1_0_0": {
+            "hash_name": "obja_b183e6af5d324e03913a4ca835fb291d_1_0_0",
+            "asset_id": "b183e6af5d324e03913a4ca835fb291d",
+            "object_id": "large14 (room0)|room0",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "obja_b183e6af5d324e03913a4ca835fb291d_1_0_0": "b183e6af5d324e03913a4ca835fb291d"
+                },
+                "joints": {},
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_117946e14b8545a69e962fce2b8a5022_1_0_0": {
+            "hash_name": "obja_117946e14b8545a69e962fce2b8a5022_1_0_0",
+            "asset_id": "117946e14b8545a69e962fce2b8a5022",
+            "object_id": "large15 (room0)|room0",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "obja_117946e14b8545a69e962fce2b8a5022_1_0_0": "117946e14b8545a69e962fce2b8a5022"
+                },
+                "joints": {},
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_682de1041e194046b125a69c41fa1ff7_1_0_0": {
+            "hash_name": "obja_682de1041e194046b125a69c41fa1ff7_1_0_0",
+            "asset_id": "682de1041e194046b125a69c41fa1ff7",
+            "object_id": "large16 (room0)|room0",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "obja_682de1041e194046b125a69c41fa1ff7_1_0_0": "682de1041e194046b125a69c41fa1ff7"
+                },
+                "joints": {},
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_bc1f9be152c145d59770a12683587bb4_1_0_0": {
+            "hash_name": "obja_bc1f9be152c145d59770a12683587bb4_1_0_0",
+            "asset_id": "bc1f9be152c145d59770a12683587bb4",
+            "object_id": "large17 (room0)|room0",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "obja_bc1f9be152c145d59770a12683587bb4_1_0_0": "bc1f9be152c145d59770a12683587bb4"
+                },
+                "joints": {},
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_49b6b53ddf1e4bbfa57ca2a9360ae645_1_0_0": {
+            "hash_name": "obja_49b6b53ddf1e4bbfa57ca2a9360ae645_1_0_0",
+            "asset_id": "49b6b53ddf1e4bbfa57ca2a9360ae645",
+            "object_id": "large18 (room0)|room0",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "obja_49b6b53ddf1e4bbfa57ca2a9360ae645_1_0_0": "49b6b53ddf1e4bbfa57ca2a9360ae645"
+                },
+                "joints": {},
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": []
+        }
+    }
+}

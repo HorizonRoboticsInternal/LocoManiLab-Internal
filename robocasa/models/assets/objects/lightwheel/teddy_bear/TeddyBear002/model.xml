@@ -1,0 +1,54 @@
+<mujoco model="TeddyBear002">
+  <compiler angle="radian"/>
+
+  <asset>
+    <texture
+      file="../../../thor/Miscellaneous Objects/TeddyBear/Prefabs/Teddy_Bear_2/TeddyBear_DefaultMaterial_AlbedoTransparency.png"
+      name="TeddyBear002_material"
+      type="2d"/>
+    <material
+      name="TeddyBear002_material"
+      rgba="1 1 1 1"
+      texture="TeddyBear002_material"/>
+    <mesh
+      file="../../../thor/Miscellaneous Objects/TeddyBear/Prefabs/Teddy_Bear_2/Teddy_Bear_2_default/Teddy_Bear_2_default.obj"
+      name="TeddyBear002_vis"
+      scale="0.64119 0.64119 0.64119"/>
+  </asset>
+
+  <default>
+    <default class="visual">
+      <geom conaffinity="0" contype="0" group="1" type="mesh" density="20"/>
+    </default>
+    <default class="collision">
+      <geom group="0" rgba="0 1 0 0.25" density="20" friction="0.9 0.9 0.001" solimp="0.998 0.998 0.001" solref="0.025 1"/>
+    </default>
+    <default class="region">
+      <geom group="1" conaffinity="0" contype="0" rgba="0 1 0 0"/>
+    </default>
+  </default>
+
+  <worldbody>
+    <body>
+      <body name="object">
+        <body name="teddy_visual" pos="-0.014289 -0.365778 0.262469" quat="0 0 -1 0">
+          <geom class="visual" mesh="TeddyBear002_vis" material="TeddyBear002_material"/>
+          <geom class="collision" name="teddy_body" size="0.111608 0.0387321" pos="-0.014289 0.388738 0.266466" quat="0.608117 0.793847 0 0" type="capsule"/>
+          <geom class="collision" name="teddy_head" size="0.100645 1e-05" pos="-0.017489 0.568987 0.314573" quat="-0.0690869 0.997611 0 0" type="capsule"/>
+          <geom class="collision" name="teddy_left_arm_upper" size="0.0497062 0.0555499" pos="0.114527 0.42516 0.234037" quat="0.00343863 0.978697 -0.00591986 0.205197" type="capsule"/>
+          <geom class="collision" name="teddy_right_arm_upper" size="0.0546985 0.0516771" pos="-0.154229 0.418035 0.272498" quat="0.120435 0.897087 0.0970635 -0.413894" type="capsule"/>
+          <geom class="collision" name="teddy_right_leg_lower" size="0.058919 0.0446135" pos="-0.134889 0.286919 0.204038" quat="0.00532715 0.93779 0.000511789 -0.347163" type="capsule"/>
+          <geom class="collision" name="teddy_right_leg_upper" size="0.0563182 0.0778606" pos="-0.129751 0.287432 0.258201" quat="0.00535012 0.910566 0.00012958 -0.41333" type="capsule"/>
+          <geom class="collision" name="teddy_left_leg_upper" size="0.0543726 0.0783887" pos="0.124655 0.31757 0.210884" quat="-0.0677517 0.946896 0.00925721 0.314184" type="capsule"/>
+          <geom class="collision" name="teddy_left_leg_lower" size="0.0526087 0.0411127" pos="0.127269 0.322948 0.174881" quat="-0.066126 0.97804 0.0174155 0.196881" type="capsule"/>
+          <geom class="collision" name="teddy_muzzle" size="0.031104 1e-05" pos="-0.0047399 0.250149 0.358318" quat="0.913188 0.406528 0.0261998 0.0116635" type="capsule"/>
+          <geom class="collision" name="teddy_face" size="0.0440969 1e-05" pos="-0.021989 0.555625 0.23906" quat="0.761759 0.64786 0 0" type="capsule"/>
+          <geom class="collision" name="teddy_right_ear" size="0.0275563 0.0262212 0.00920376" pos="-0.0940492 0.639117 0.340546" quat="0.906363 0.13584 0.140586 -0.374553" type="box"/>
+          <geom class="collision" name="teddy_left_ear" size="0.0217411 0.0287229 0.009205" pos="0.0592495 0.649573 0.354555" quat="0.917085 0.083032 0.0145876 -0.389677" type="box"/>
+          <geom class="collision" name="teddy_snout" size="0.04177 0.0582709" pos="-0.00228853 0.285016 0.325442" quat="0.70611 0.283307 -0.585661 -0.279546" type="capsule"/>
+        </body>
+        <geom class="region" name="reg_bbox" type="box" pos="0.0 0.0 0.265" size="0.20 0.32 0.265"/>
+      </body>
+    </body>
+  </worldbody>
+</mujoco>

@@ -15,13 +15,12 @@ from robosuite.utils.observables import Observable, sensor
 from robosuite.environments.base import EnvMeta
 from collections import defaultdict
 
-from robosuite.models.robots import PandaOmron
-
 import robocasa
 import robocasa.macros as macros
 import robocasa.utils.camera_utils as CamUtils
 import robocasa.utils.env_utils as EnvUtils
 import robocasa.utils.object_utils as OU
+from robocasa.utils.robot_utils import validate_g1_robots
 import robocasa.models.scenes.scene_registry as SceneRegistry
 from robocasa.models.scenes import KitchenArena
 from robocasa.models.fixtures import *
@@ -80,7 +79,7 @@ class Kitchen(ManipulationEnv, metaclass=KitchenEnvMeta):
 
     Args:
         robots: Specification for specific robot arm(s) to be instantiated within this env
-            (e.g: "Sawyer" would generate one arm; ["Panda", "Panda", "Sawyer"] would generate three robot arms)
+            (one of G1, G1FixedLowerBody, or G1FloatingBody)
 
         env_configuration (str): Specifies how to position the robot(s) within the environment. Default is "default",
             which should be interpreted accordingly by any subclasses.
@@ -457,11 +456,7 @@ class Kitchen(ManipulationEnv, metaclass=KitchenEnvMeta):
         if isinstance(robots, str):
             robots = [robots]
 
-        # backward compatibility: rename all robots that were previously called PandaMobile -> PandaOmron
-        for i in range(len(robots)):
-            if robots[i] == "PandaMobile":
-                robots[i] = "PandaOmron"
-        assert len(robots) == 1
+        validate_g1_robots(robots)
 
         # intialize cameras
         self.use_cotraining_cameras = use_cotraining_cameras
@@ -480,15 +475,6 @@ class Kitchen(ManipulationEnv, metaclass=KitchenEnvMeta):
             controller_configs = refactor_composite_controller_config(
                 controller_configs, robots[0], arms
             )
-            if robots[0] == "PandaOmron":
-                if "composite_controller_specific_configs" not in controller_configs:
-                    controller_configs["composite_controller_specific_configs"] = {}
-                controller_configs["composite_controller_specific_configs"][
-                    "body_part_ordering"
-                ] = ["right", "right_gripper", "base", "torso"]
-                controller_configs["body_parts"]["base"][
-                    "type"
-                ] = "JOINT_VELOCITY_LEGACY"
 
         # if not hasattr(self, "_reset_internal_end_callbacks"):
         #     self._reset_internal_end_callbacks = []
@@ -561,32 +547,6 @@ class Kitchen(ManipulationEnv, metaclass=KitchenEnvMeta):
         """
         helper function called by _load_model to setup the mjcf model
         """
-        for robot in self.robots:
-            if isinstance(robot.robot_model, PandaOmron):
-                robot.init_qpos = (
-                    -0.01612974,
-                    -1.03446714,
-                    -0.02397936,
-                    -2.27550888,
-                    0.03932365,
-                    1.51639493,
-                    0.69615947,
-                )
-                robot.init_torso_qpos = np.array([0.0])
-
-        for robot in self.robots:
-            if isinstance(robot.robot_model, PandaOmron):
-                robot.init_qpos = (
-                    -0.01612974,
-                    -1.03446714,
-                    -0.02397936,
-                    -2.27550888,
-                    0.03932365,
-                    1.51639493,
-                    0.69615947,
-                )
-                robot.init_torso_qpos = np.array([0.0])
-
         # determine sample layout and style
         if "layout_id" in self._ep_meta and "style_id" in self._ep_meta:
             self.layout_id = self._ep_meta["layout_id"]

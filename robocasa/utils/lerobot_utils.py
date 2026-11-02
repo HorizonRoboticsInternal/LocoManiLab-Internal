@@ -6,12 +6,19 @@ from lerobot.datasets.video_utils import (
 )
 import glob
 import shutil
+import time
+import av
+from PIL import Image
 from robocasa.utils.robomimic.robomimic_dataset_utils import (
     get_env_metadata_from_dataset,
 )
 import xml.etree.ElementTree as ET
 
 from lerobot.datasets.lerobot_dataset import LeRobotDataset
+
+# Moved to g1_bridge so a real-robot collector can write the same datasets
+# without importing robocasa; re-exported here for existing callers.
+from g1_bridge.recording.lerobot_dataset import LerobotDatasetWrapper  # noqa: F401
 import numpy as np
 from pathlib import Path
 import json
@@ -26,6 +33,101 @@ class LerobotDatasetWrapper(LeRobotDataset):
     methods to get more control over video encoding parameters.
     """
 
+    # Callers that need the source PNG frames can enable this per dataset. The
+    # default keeps the historical behavior of removing PNGs after encoding.
+    keep_image_frames = False
+    depth_video_keys = set()
+    depth_video_info = {}
+
+    def _save_image(self, image, fpath):
+        """Write 12-bit depth codes as 16-bit PNGs; defer RGB to LeRobot."""
+        if any(key in fpath.parts for key in self.depth_video_keys):
+            depth_codes = np.asarray(image)
+            if depth_codes.ndim == 3 and depth_codes.shape[-1] == 1:
+                depth_codes = depth_codes[..., 0]
+            if depth_codes.ndim != 2 or depth_codes.dtype != np.uint16:
+                raise ValueError(
+                    "Depth video frames must be uint16 arrays shaped (H, W) or "
+                    f"(H, W, 1), got {depth_codes.dtype} {depth_codes.shape}."
+                )
+            Image.fromarray(depth_codes).save(fpath)
+            return
+        super()._save_image(image, fpath)
+
+    def _encode_depth_video(self, img_dir, video_path):
+        """Encode v3-style 12-bit quantized depth into a lossless HEVC MP4."""
+        paths = sorted(img_dir.glob("frame_*.png"))
+        if not paths:
+            raise FileNotFoundError(f"No depth frames found in {img_dir}.")
+        first = np.asarray(Image.open(paths[0]), dtype=np.uint16)
+        height, width = first.shape
+        video_path.parent.mkdir(parents=True, exist_ok=True)
+        with av.open(str(video_path), "w") as output:
+            stream = output.add_stream(
+                "hevc",
+                self.fps,
+                options={"x265-params": "lossless=1", "g": "1"},
+            )
+            stream.width = width
+            stream.height = height
+            stream.pix_fmt = "gray12le"
+            for path in paths:
+                codes = np.asarray(Image.open(path), dtype=np.uint16)
+                if codes.shape != (height, width):
+                    raise ValueError(
+                        f"Depth frame {path} has shape {codes.shape}, expected "
+                        f"{(height, width)}."
+                    )
+                frame = av.VideoFrame.from_ndarray(codes, format="gray12le")
+                # PyAV's ndarray conversion scales 16-bit samples for some
+                # builds. Copy the uint12 codes into the padded plane exactly,
+                # matching LeRobot v3's write_u16_plane implementation.
+                plane = frame.planes[0]
+                stride = plane.line_size // np.dtype(np.uint16).itemsize
+                plane_data = np.frombuffer(plane, dtype=np.uint16).reshape(
+                    height, stride
+                )
+                plane_data.fill(0)
+                plane_data[:, :width] = codes
+                for packet in stream.encode(frame):
+                    output.mux(packet)
+            for packet in stream.encode():
+                output.mux(packet)
+
+    def _episode_image_paths(self, episode_buffer):
+        paths = []
+        for key, ft in self.features.items():
+            if ft["dtype"] in ["image", "video"] and key in episode_buffer:
+                paths.extend(Path(p) for p in episode_buffer[key])
+        return paths
+
+    def _wait_for_episode_images(self, episode_buffer, timeout_s=5.0):
+        """Wait until every image path referenced by the buffer exists on disk."""
+        self._wait_image_writer()
+        paths = self._episode_image_paths(episode_buffer)
+        deadline = time.monotonic() + timeout_s
+        missing = [p for p in paths if not p.is_file()]
+        while missing and time.monotonic() < deadline:
+            time.sleep(0.05)
+            missing = [p for p in paths if not p.is_file()]
+        if missing:
+            preview = ", ".join(str(p) for p in missing[:5])
+            raise FileNotFoundError(
+                f"{len(missing)} image file(s) referenced by the episode buffer "
+                f"were not written before save_episode; first missing: {preview}"
+            )
+
+    def save_episode(self, episode_data: dict | None = None) -> None:
+        episode_buffer = self.episode_buffer if episode_data is None else episode_data
+        self._wait_for_episode_images(episode_buffer)
+        return super().save_episode(episode_data)
+
+    def clear_episode_buffer(self) -> None:
+        # Do not remove an episode image directory while async writer jobs for it
+        # are still running.
+        self._wait_image_writer()
+        return super().clear_episode_buffer()
+
     def encode_episode_videos(self, episode_index: int) -> None:
         """
         Encode videos for a given episode index. Code is mostly copied from parent class
@@ -39,22 +141,30 @@ class LerobotDatasetWrapper(LeRobotDataset):
             img_dir = self._get_image_file_path(
                 episode_index=episode_index, image_key=key, frame_index=0
             ).parent
-            encode_video_frames(
-                img_dir,
-                video_path,
-                self.fps,
-                overwrite=True,
-                vcodec="h264",
-                pix_fmt="yuv420p",
-                crf=23,
-                g=None,
-                fast_decode=0,
-            )
-            shutil.rmtree(img_dir)
+            if key in self.depth_video_keys:
+                self._encode_depth_video(img_dir, video_path)
+            else:
+                encode_video_frames(
+                    img_dir,
+                    video_path,
+                    self.fps,
+                    overwrite=True,
+                    vcodec="h264",
+                    pix_fmt="yuv420p",
+                    crf=23,
+                    g=None,
+                    fast_decode=0,
+                )
+            if not self.keep_image_frames:
+                shutil.rmtree(img_dir)
 
         # Update video info (only needed when first episode is encoded since it reads from episode 0)
         if len(self.meta.video_keys) > 0 and episode_index == 0:
             self.meta.update_video_info()
+            for key in self.depth_video_keys:
+                feature = self.meta.info["features"][key]
+                info = feature.setdefault("info", {})
+                info.update(self.depth_video_info)
             write_info(
                 self.meta.info, self.meta.root
             )  # ensure video info always written properly
@@ -163,37 +273,6 @@ def reorder_hdf5_state(state_hdf5: dict[str, np.ndarray], modality_dict) -> np.n
         lerobot_end = state_info[key]["end"]
         reordered_state[:, lerobot_start:lerobot_end] = state_hdf5[hdf5_key][:]
     return reordered_state
-
-
-def add_groot_specific_metadata(data_dir: str):
-    """
-    Adds metadata files to dataset to allow for compatibility with gr00t.
-    """
-
-    # Create lerobot directory if it doesn't exist
-    lerobot_meta_dir = Path(data_dir) / "lerobot" / "meta"
-
-    src_modality_path = (
-        Path(__file__).parent.parent
-        / "models/assets/groot_dataset_assets/PandaOmron_modality.json"
-    )
-    dst_modality_path = lerobot_meta_dir / "modality.json"
-    shutil.copyfile(src_modality_path, dst_modality_path)
-
-    src_embodiment_path = (
-        Path(__file__).parent.parent
-        / "models/assets/groot_dataset_assets/PandaOmron_embodiment.json"
-    )
-    dst_embodiment_path = lerobot_meta_dir / "embodiment.json"
-    shutil.copyfile(src_embodiment_path, dst_embodiment_path)
-
-    parquet_paths = glob.glob(
-        str(Path(data_dir) / "lerobot" / "data" / "*" / "episode_*.parquet")
-    )
-    stats = calculate_dataset_statistics(parquet_paths)
-    stats_path = lerobot_meta_dir / "stats.json"
-    with open(stats_path, "w") as f:
-        json.dump(stats, f, indent=4)
 
 
 def save_extra_demo_info(dataset_dir: Path, hdf5_dataset, demo, demo_index):

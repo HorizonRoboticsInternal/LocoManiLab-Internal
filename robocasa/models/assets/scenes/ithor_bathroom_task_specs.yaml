@@ -1,0 +1,941 @@
+scenes:
+  FloorPlan401:
+    approach_toilet:
+      fixture: FloorPlan401:Toilet_1_14
+      start_pose: {xy: [-2.432, 0.135], yaw: 0.838521}
+      minimum_start_distance: 3.00
+      remove_fixtures: []
+      lang: walk over to the toilet and stand next to it
+    approach_sink:
+      fixture: FloorPlan401:Sink_eb03b045_26
+      start_pose: {xy: [-0.632, 3.535], yaw: -2.459911}
+      minimum_start_distance: 2.30
+      remove_fixtures: []
+      lang: walk over to the sink and stand next to it
+    approach_garbage_can:
+      fixture: FloorPlan401:bin_1_4
+      start_pose: {xy: [-2.432, 0.135], yaw: 0.986012}
+      minimum_start_distance: 3.70
+      remove_fixtures: []
+      lang: walk over to the garbage can and stand next to it
+    navigate_to_bathing_area:
+      fixture: FloorPlan401:Bathtub_fc4e4aac_16
+      start_pose: {xy: [-3.032, 3.535], yaw: -0.740197}
+      minimum_start_distance: 2.10
+      remove_fixtures: []
+      lang: walk to the bathtub
+    toilet_lid:
+      fixture: FloorPlan401:Toilet_1_14
+      joint: crapper_cd6fa77f725b7ec4a4ced5913731ae93_1_2_0_joint_0
+      close_robot_pose: {xy: [0.116, 2.494], yaw: 1.570796}
+      target: toilet lid
+      lang: "{verb} the toilet lid"
+    soap_bathtub_workspace: &bath_soap_bathtub_401
+      source_fixture: FloorPlan401:Soap_Bottle_1_10
+      surface_fixture: FloorPlan401:manual_support:scrub_brush_bathtub_rim
+      surface_region: FloorPlan401:manual_support:scrub_brush_bathtub_rim:region:support
+      source_xy: [-0.78, 0.70]
+      source_quat: [0.70710678, 0.0, 0.70710678, 0.0]
+      upright_axis: 1
+      upright_sign: 1.0
+      remove_fixtures: []
+      auxiliary_placements: []
+      robot_pose: {xy: [-1.30, 0.70], yaw: 0.0}
+      source_horizontal_distance: 0.52
+    lift_soap_bottle:
+      <<: *bath_soap_bathtub_401
+      lang: pick up the soap bottle
+    lift_toilet_roll_workspace: &bath_lift_toilet_roll_401
+      source_fixture: FloorPlan401:Toilet_Paper_5
+      surface_fixture: FloorPlan401:WallShelf_81fbd644_18
+      surface_region: FloorPlan401:WallShelf_81fbd644_18:region:support:5
+      source_xy: [-2.70, 3.9098]
+      source_quat: [0.0, 0.0, 0.70710678, 0.70710678]
+      remove_fixtures: []
+      auxiliary_placements: []
+      robot_pose: {xy: [-2.70, 3.5098], yaw: 1.570796}
+      source_horizontal_distance: 0.40
+    lift_toilet_paper_roll:
+      <<: *bath_lift_toilet_roll_401
+      lang: pick up the toilet paper roll
+    lift_spray_workspace: &bath_lift_spray_401
+      source_fixture: FloorPlan401:Spray_Bottle_1_11
+      surface_fixture: FloorPlan401:Side_Table_401_1_3
+      surface_region: FloorPlan401:Side_Table_401_1_3:region:support:3
+      source_xy: [-3.0, 0.2]
+      remove_fixtures: []
+      auxiliary_placements: []
+      robot_pose: {xy: [-2.6, 0.2], yaw: 3.141593}
+      source_horizontal_distance: 0.40
+    lift_spray_bottle:
+      <<: *bath_lift_spray_401
+      lang: pick up the spray bottle
+    stand_soap_bottle_upright:
+      <<: *bath_soap_bathtub_401
+      lang: stand the soap bottle upright
+    lift_scrub_brush:
+      source_fixture: FloorPlan401:Scrub_Brush_1_0
+      surface_fixture: FloorPlan401:WallShelf_81fbd644_18
+      surface_region: FloorPlan401:WallShelf_81fbd644_18:region:support:5
+      source_xy: [-2.70, 3.9098]
+      source_quat: [0.70710678, 0.0, 0.0, 0.70710678]
+      remove_fixtures: []
+      auxiliary_placements: []
+      robot_pose: {xy: [-2.70, 3.5098], yaw: 1.570796}
+      source_horizontal_distance: 0.40
+      lang: pick up the scrub brush
+    toilet_paper_roll_into_bin:
+      source_fixture: FloorPlan401:Toilet_Paper_5
+      bin_fixture: FloorPlan401:bin_1_4
+      bin_region: FloorPlan401:bin_1_4:region:receptacle:0
+      bin_region_z_offset: -0.04
+      surface_fixture: FloorPlan401:WallShelf_81fbd644_18
+      surface_region: FloorPlan401:WallShelf_81fbd644_18:region:support:5
+      source_xy: [-2.70, 3.9098]
+      source_quat: [0.0, 0.0, 0.70710678, 0.70710678]
+      bin_xy: [-2.05, 3.35]
+      robot_pose: {xy: [-2.70, 3.5098], yaw: 1.570796}
+      source_horizontal_distance: 0.40
+      lang: put the toilet paper roll into the bin
+    lift_candle_from_floor:
+      source_xy: [-1.60, 1.00]
+      source_quat: [1.0, 0.0, 0.0, 0.0]
+      source_grasp_span: 0.075
+      grasp_span_note: scaled pillar candle; both horizontal spans exceed 0.07 m
+      stool_model: /objects/lightwheel/stool/Stool006/model.xml
+      stool_scale: 0.55
+      stool_xy: [-1.62, 1.00]
+      stool_yaw: 0.0
+      stool_top_half_xy: [0.075, 0.075]
+      stool_floor_probe_above: 0.01
+      stool_floor_probe_below: 0.01
+      remove_fixtures:
+        - FloorPlan401:Candle_1_12
+      robot_pose: {xy: [-1.15, 1.00], yaw: 3.141593}
+      source_horizontal_distance: 0.45
+      lang: pick up the bathroom candle from the low floor-standing stool
+    put_sponge_in_sink:
+      sink_fixture: FloorPlan401:Sink_eb03b045_26
+      sink_bottom_geoms:
+        - sink_d516d145d37ab002f8a700bafd85476c_1_1_0_collision_32
+      source_region:
+        center: [-2.755, 1.531, 1.025]
+        half_size: [0.08, 0.12, 0.03]
+      sink_region:
+        center: [-3.09, 1.531, 0.91]
+        half_size: [0.17, 0.17, 0.085]
+      robot_pose: {pos: [-2.40, 1.531, 0.0], yaw: 3.141593}
+      lang: pick up the sponge from the sink rim and put it in the sink
+    put_sponge_in_bathtub:
+      bathtub_fixture: FloorPlan401:Bathtub_fc4e4aac_16
+      rim_fixture: FloorPlan401:manual_support:bathtub_north_rim
+      rim_region: FloorPlan401:manual_support:bathtub_north_rim:region:support
+      remove_fixtures:
+        - FloorPlan401:Soap_Bar_1_1
+      rim_anchor_xy: [-0.689, 1.895]
+      basin_center_xy: [-0.13, 0.92]
+      basin_half_xy: [0.48, 0.90]
+      basin_z_range: [0.02, 0.60]
+      robot_pose: {xy: [-1.189, 1.895], yaw: -0.349066}
+      source_horizontal_distance: 0.50
+      source_near_edge_distance: 0.40
+      initial_rim_z_offset: 0.00
+      initial_rim_strategy: center
+      initial_rim_edge_fraction: 1.00
+      lang: pick up the sponge from the bathtub rim and put it in the bathtub
+    soap_to_lower_shelf:
+      fixture: FloorPlan401:WallShelf_81fbd644_18
+      source_region: FloorPlan401:WallShelf_81fbd644_18:region:support:3
+      target_region: FloorPlan401:WallShelf_81fbd644_18:region:support:5
+      target_center_xy_tolerance: [0.022, 0.03]
+      lang: pick up the {source} from the second-lowest wall shelf and place it on the lowest shelf
+  FloorPlan405:
+    approach_toilet:
+      fixture: FloorPlan405:Toilet_1_4
+      start_pose: {xy: [-1.669, -0.297], yaw: 2.276204}
+      minimum_start_distance: 1.20
+      remove_fixtures: []
+      lang: walk to the toilet
+    approach_garbage_can:
+      fixture: FloorPlan405:bin_5_0
+      start_pose: {xy: [-1.669, -0.297], yaw: 2.438346}
+      minimum_start_distance: 1.00
+      remove_fixtures: []
+      lang: walk to the garbage can
+    approach_sink:
+      fixture: FloorPlan405:CabinetBodyMesh_45407f37_25
+      start_pose: {xy: [-1.569, 1.503], yaw: -2.323868}
+      minimum_start_distance: 0.95
+      remove_fixtures: []
+      lang: walk to the sink
+    navigate_to_bathing_area:
+      fixture: FloorPlan405:Bathtub_ae3c36fa_17
+      start_pose: {xy: [-2.569, 0.703], yaw: 0.052584}
+      minimum_start_distance: 0.80
+      remove_fixtures: []
+      lang: walk to the bathtub
+    put_sponge_in_bathtub:
+      bathtub_fixture: FloorPlan405:Bathtub_ae3c36fa_17
+      rim_fixture: FloorPlan405:manual_support:scrub_brush_bathtub_rim
+      rim_region: FloorPlan405:manual_support:scrub_brush_bathtub_rim:region:support
+      remove_fixtures: [FloorPlan405:Scrub_Brush_1_5]
+      rim_anchor_xy: [-1.08, 0.83]
+      basin_center_xy: [-0.54, 0.83]
+      basin_half_xy: [0.47, 0.90]
+      basin_z_range: [0.00, 0.53]
+      robot_pose: {xy: [-1.40, 0.83], yaw: 0.0}
+      source_horizontal_distance: 0.65
+      initial_rim_z_offset: 0.00
+      initial_rim_strategy: center
+      initial_rim_edge_fraction: 1.00
+      lang: pick up the sponge from the bathtub rim and put it in the bathtub
+    toilet_lid:
+      fixture: FloorPlan405:Toilet_1_4
+      joint: crapper_cd6fa77f725b7ec4a4ced5913731ae93_1_2_0_joint_0
+      close_robot_pose: {xy: [-2.493, 1.745], yaw: -2.487094}
+      target: toilet lid
+      lang: "{verb} the toilet lid"
+    lift_soap_bottle:
+      source_fixture: FloorPlan405:Soap_Bottle_5_7
+      surface_fixture: FloorPlan405:CabinetBodyMesh_45407f37_25
+      surface_region: FloorPlan405:CabinetBodyMesh_45407f37_25:region:receptacle:7
+      source_xy: [-2.87, -0.444552]
+      remove_fixtures: []
+      auxiliary_placements: []
+      robot_pose: {xy: [-2.234461, -0.444552], yaw: 3.141593}
+      lang: pick up the soap bottle
+    lift_soap_bottle_from_cabinet:
+      source_fixture: FloorPlan405:Soap_Bottle_5_7
+      surface_fixture: FloorPlan405:spawned:soap_cabinet_table
+      surface_region: FloorPlan405:spawned:soap_cabinet_table:region:support
+      table_xy: [-2.92, -0.12]
+      source_xy: [-2.84, -0.09]
+      remove_fixtures: []
+      auxiliary_placements: []
+      # Keep the sonic standing right arm clear of the fully open cabinet door.
+      robot_pose: {xy: [-2.4, 0.10], yaw: -2.921344}
+      cabinet_fixture: FloorPlan405:Cabinet_cc651d88_3
+      cabinet_joint: cabinet_4d8401876c23e5ef4325895368767cfe_1_1_0_joint_0
+      cabinet_open_fraction: 1.0
+      cabinet_region: FloorPlan405:CabinetBodyMesh_45407f37_25:region:receptacle:1
+      table_model: /objects/manual/bathroom_cabinet_table/model.xml
+      table_base_z: 0.09929
+      lang: pick up the soap bottle from the open bathroom cabinet
+    stand_soap_bottle_upright:
+      source_fixture: FloorPlan405:Soap_Bottle_5_7
+      surface_fixture: FloorPlan405:CabinetBodyMesh_45407f37_25
+      surface_region: FloorPlan405:CabinetBodyMesh_45407f37_25:region:receptacle:7
+      source_xy: [-2.87, -0.444552]
+      source_quat: [0.70710678, 0.0, 0.70710678, 0.0]
+      upright_axis: 1
+      upright_sign: 1.0
+      remove_fixtures: []
+      auxiliary_placements: []
+      robot_pose: {xy: [-2.234461, -0.444552], yaw: 3.141593}
+      source_horizontal_distance: 0.6355
+      lang: stand the soap bottle upright
+    lift_toilet_paper_roll:
+      source_fixture: FloorPlan405:Toilet_Paper_2
+      surface_fixture: FloorPlan405:CabinetBodyMesh_45407f37_25
+      surface_region: FloorPlan405:CabinetBodyMesh_45407f37_25:region:receptacle:7
+      source_xy: [-2.87, -0.444552]
+      remove_fixtures: []
+      auxiliary_placements: []
+      robot_pose: {xy: [-2.234461, -0.444552], yaw: 3.141593}
+      lang: pick up the toilet paper roll
+    toilet_paper_roll_into_bin:
+      source_fixture: FloorPlan405:Toilet_Paper_2
+      bin_fixture: FloorPlan405:bin_5_0
+      bin_region: FloorPlan405:bin_5_0:region:receptacle:0
+      bin_region_z_offset: -0.04
+      surface_fixture: FloorPlan405:CabinetBodyMesh_45407f37_25
+      surface_region: FloorPlan405:CabinetBodyMesh_45407f37_25:region:receptacle:4
+      source_xy: [-2.8, 0.55]
+      source_quat: [0.0, 0.0, 0.70710678, 0.70710678]
+      bin_xy: [-3.0808, 0.899995]
+      robot_pose: {xy: [-2.45, 0.65], yaw: 3.110000}
+      lang: put the toilet paper roll into the bin
+    lift_spray_bottle:
+      source_fixture: FloorPlan405:Spray_Bottle_5_10
+      surface_fixture: FloorPlan405:CabinetBodyMesh_45407f37_25
+      surface_region: FloorPlan405:CabinetBodyMesh_45407f37_25:region:receptacle:7
+      source_xy: [-2.87, -0.444552]
+      remove_fixtures: []
+      auxiliary_placements: []
+      robot_pose: {xy: [-2.234461, -0.444552], yaw: 3.141593}
+      lang: pick up the spray bottle
+    lift_scrub_brush:
+      source_fixture: FloorPlan405:Scrub_Brush_1_5
+      surface_fixture: FloorPlan405:manual_support:scrub_brush_bathtub_rim
+      surface_region: FloorPlan405:manual_support:scrub_brush_bathtub_rim:region:support
+      source_xy: [-1.09, 0.83]
+      source_quat: [1.0, 0.0, 0.0, 0.0]
+      atomic_source_stool:
+        model: /objects/lightwheel/stool/Stool005/model.xml
+        scale: [0.90, 1.90, 0.60]
+        xy: [-1.49, 0.83]
+        yaw: 0.0
+        top_half_xy: [0.13, 0.28]
+        floor_probe_above: 0.08
+        floor_probe_below: 0.01
+        floor_probe_step: 0.0005
+        robot_pose: {xy: [-1.89, 0.83], yaw: 0.0}
+        remove_fixtures: []
+      remove_fixtures: []
+      auxiliary_placements: []
+      robot_pose: {xy: [-1.74, 0.83], yaw: 0.0}
+      lang: pick up the scrub brush
+    # Composite-only: match the atomic brush's fixed-stool placement and
+    # working stance without changing its already-collected specification.
+    navigate_to_bathing_area_and_lift_scrub_brush:
+      surface_fixture: FloorPlan405:spawned:brush_stool
+      surface_region: FloorPlan405:spawned:brush_stool:region:support
+      source_xy: [-1.49, 0.83]
+      source_stool:
+        model: /objects/lightwheel/stool/Stool005/model.xml
+        scale: [0.90, 1.90, 0.60]
+        xy: [-1.49, 0.83]
+        yaw: 0.0
+        top_half_xy: [0.13, 0.28]
+        floor_probe_above: 0.08
+        floor_probe_below: 0.01
+        floor_probe_step: 0.0005
+      robot_pose: {xy: [-1.89, 0.83], yaw: 0.0}
+      source_horizontal_distance: 0.40
+    lift_candle_from_floor:
+      source_xy: [-2.015, -0.008]
+      source_quat: [1.0, 0.0, 0.0, 0.0]
+      source_grasp_span: 0.075
+      grasp_span_note: scaled pillar candle; both horizontal spans exceed 0.07 m
+      stool_model: /objects/lightwheel/stool/Stool006/model.xml
+      stool_scale: 0.55
+      stool_xy: [-2.015, -0.008]
+      stool_yaw: 0.0
+      stool_top_half_xy: [0.075, 0.075]
+      stool_floor_probe_above: 0.01
+      stool_floor_probe_below: 0.01
+      remove_fixtures: [FloorPlan405:Candle_1_9]
+      robot_pose: {xy: [-1.669, -0.297], yaw: 2.438346}
+      source_horizontal_distance: 0.450818
+      lang: pick up the bathroom candle from the low floor-standing stool
+    open_cabinet_door:
+      fixture: FloorPlan405:Cabinet_cc651d88_3
+      joint: cabinet_4d8401876c23e5ef4325895368767cfe_1_1_0_joint_0
+      joint_type: hinge
+      robot_pose: {xy: [-2.334461, 0.444552], yaw: 3.141593}
+      init_open_fraction: 0.20
+      success_open_fraction: 0.80
+      success_close_fraction: 0.20
+      anchor_fixture: false
+      target: cabinet door
+      lang: open the bathroom cabinet door to 80% open
+    close_cabinet_door:
+      fixture: FloorPlan405:Cabinet_cc651d88_3
+      joint: cabinet_4d8401876c23e5ef4325895368767cfe_1_1_0_joint_0
+      joint_type: hinge
+      robot_pose: {xy: [-2.234461, -0.444552], yaw: 3.141593}
+      init_open_fraction: 0.80
+      success_open_fraction: 0.80
+      success_close_fraction: 0.20
+      anchor_fixture: false
+      target: cabinet door
+      lang: close the bathroom cabinet door to 20% open
+    # Composite-only validation poses: the atomic cabinet's collected
+    # interaction poses clip the G1 during its full joint sweep. The target
+    # fixture and joint remain the exact Open/CloseCabinetDoor calibration.
+    approach_sink_and_open_cabinet_door:
+      robot_pose: {xy: [-1.569, 1.503], yaw: -2.323868}
+    approach_sink_and_close_cabinet_door:
+      robot_pose: {xy: [-1.569, 1.503], yaw: -2.323868}
+  FloorPlan407:
+    approach_toilet:
+      fixture: FloorPlan407:Toilet_1_10
+      start_pose: {xy: [0.107, -0.838], yaw: 2.526222}
+      minimum_start_distance: 1.20
+      remove_fixtures: []
+      lang: walk to the toilet
+    approach_garbage_can:
+      fixture: FloorPlan407:bin_7_14
+      start_pose: {xy: [-0.8568, 0.0164], yaw: -1.017181}
+      minimum_start_distance: 1.00
+      remove_fixtures: []
+      lang: walk to the garbage can
+    approach_sink:
+      fixture: FloorPlan407:Cabinet_93cd2f94_2
+      start_pose: {xy: [0.007, 0.162], yaw: -2.295108}
+      minimum_start_distance: 1.30
+      remove_fixtures: []
+      lang: walk to the sink
+    navigate_to_bathing_area:
+      fixture: FloorPlan407:Bathtub_7a069a01_43
+      start_pose: {xy: [-1.593, -0.738], yaw: -0.140028}
+      minimum_start_distance: 1.50
+      remove_fixtures: []
+      lang: walk to the bathtub
+    put_sponge_in_bathtub:
+      bathtub_fixture: FloorPlan407:Bathtub_7a069a01_43
+      rim_fixture: FloorPlan407:manual_support:scrub_brush_bathtub_rim
+      rim_region: FloorPlan407:manual_support:scrub_brush_bathtub_rim:region:support
+      remove_fixtures: [FloorPlan407:Scrub_Brush_1_12]
+      rim_anchor_xy: [0.54, -1.08]
+      basin_center_xy: [1.02, -1.08]
+      basin_half_xy: [0.48, 0.90]
+      basin_z_range: [0.02, 0.60]
+      robot_pose: {xy: [0.1, -1.08], yaw: 0.0}
+      source_horizontal_distance: 0.60
+      initial_rim_z_offset: 0.06
+      initial_rim_strategy: edge
+      initial_rim_edge_fraction: 1.00
+      lang: pick up the sponge from the bathtub rim and put it in the bathtub
+    toilet_lid:
+      fixture: FloorPlan407:Toilet_1_10
+      joint: crapper_cd6fa77f725b7ec4a4ced5913731ae93_1_2_0_joint_0
+      close_robot_pose: {xy: [-1.007, 0.363], yaw: -2.976444}
+      target: toilet lid
+      lang: "{verb} the toilet lid"
+    open_cabinet_door:
+      fixture: FloorPlan407:Cabinet_93cd2f94_2
+      joint: cabinet_e6db8a25b329231332368548293d3ba6_1_1_0_joint_0
+      joint_type: hinge
+      robot_pose: {xy: [-1.745500, -0.927210], yaw: -0.523599}
+      init_open_fraction: 0.20
+      success_open_fraction: 0.80
+      success_close_fraction: 0.20
+      anchor_fixture: false
+      target: cabinet door
+      lang: open the bathroom cabinet door to 80% open
+    close_cabinet_door:
+      fixture: FloorPlan407:Cabinet_93cd2f94_2
+      joint: cabinet_e6db8a25b329231332368548293d3ba6_1_1_0_joint_0
+      joint_type: hinge
+      robot_pose: {xy: [-0.80, -0.90], yaw: -2.093995}
+      init_open_fraction: 0.80
+      success_open_fraction: 0.80
+      success_close_fraction: 0.20
+      anchor_fixture: false
+      target: cabinet door
+      lang: close the bathroom cabinet door to 20% open
+    # The collected close pose clips G1 on its opening sweep. Preserve the
+    # exact atomic fixture and joint, but validate composites from the safe
+    # approach-sink start pose.
+    approach_sink_and_close_cabinet_door:
+      robot_pose: {xy: [0.007, 0.162], yaw: -2.295108}
+    lift_soap_bottle:
+      source_fixture: FloorPlan407:Soap_Bottle_7_13
+      surface_fixture: FloorPlan407:Countertopmesh_ebfc63b6_32
+      surface_region: FloorPlan407:Countertopmesh_ebfc63b6_32:region:support:5
+      source_xy: [-1.09584, -1.44]
+      remove_fixtures: []
+      auxiliary_placements:
+        - fixture: FloorPlan407:Toilet_Paper_8
+          xy: [-1.02, -1.60]
+      robot_pose: {xy: [-0.80, -0.90], yaw: -2.093995}
+      lang: pick up the soap bottle
+    stand_soap_bottle_upright:
+      source_fixture: FloorPlan407:Soap_Bottle_7_13
+      surface_fixture: FloorPlan407:Countertopmesh_ebfc63b6_32
+      surface_region: FloorPlan407:Countertopmesh_ebfc63b6_32:region:support:5
+      source_xy: [-1.05, -1.48]
+      source_quat: [0.70710678, 0.0, 0.70710678, 0.0]
+      upright_axis: 1
+      upright_sign: 1.0
+      remove_fixtures: [FloorPlan407:Toilet_Paper_8]
+      auxiliary_placements: []
+      robot_pose: {xy: [-0.80, -0.90], yaw: -1.716862}
+      source_horizontal_distance: 0.708802
+      lang: stand the soap bottle upright
+    lift_toilet_paper_roll:
+      source_fixture: FloorPlan407:Toilet_Paper_8
+      surface_fixture: FloorPlan407:Countertopmesh_ebfc63b6_32
+      surface_region: FloorPlan407:Countertopmesh_ebfc63b6_32:region:support:5
+      source_xy: [-1.10, -1.44]
+      remove_fixtures: []
+      auxiliary_placements: []
+      robot_pose: {xy: [-0.80, -0.90], yaw: -2.093995}
+      lang: pick up the toilet paper roll
+    toilet_paper_roll_into_bin:
+      source_fixture: FloorPlan407:Toilet_Paper_8
+      bin_fixture: FloorPlan407:bin_7_14
+      bin_region: FloorPlan407:bin_7_14:region:receptacle:0
+      bin_region_z_offset: -0.04
+      surface_fixture: FloorPlan407:Countertopmesh_ebfc63b6_32
+      surface_region: FloorPlan407:Countertopmesh_ebfc63b6_32:region:receptacle:1
+      source_xy: [-0.12, -1.35]
+      source_quat: [0.0, 0.0, 0.70710678, 0.70710678]
+      bin_xy: [0.121763, -1.566798]
+      robot_pose: {xy: [0.10, -0.95], yaw: -1.460000}
+      lang: put the toilet paper roll into the bin
+    lift_spray_bottle:
+      source_fixture: FloorPlan407:Spray_Bottle_1_6
+      surface_fixture: FloorPlan407:Countertopmesh_ebfc63b6_32
+      surface_region: FloorPlan407:Countertopmesh_ebfc63b6_32:region:support:5
+      source_xy: [-1.18, -1.44]
+      remove_fixtures: []
+      auxiliary_placements:
+        - fixture: FloorPlan407:Toilet_Paper_8
+          xy: [-1.02, -1.60]
+      robot_pose: {xy: [-0.80, -0.90], yaw: -2.093995}
+      lang: pick up the spray bottle
+    lift_scrub_brush:
+      source_fixture: FloorPlan407:Scrub_Brush_1_12
+      surface_fixture: FloorPlan407:manual_support:scrub_brush_bathtub_rim
+      surface_region: FloorPlan407:manual_support:scrub_brush_bathtub_rim:region:support
+      source_xy: [0.54, -1.08]
+      source_quat: [1.0, 0.0, 0.0, 0.0]
+      atomic_source_stool:
+        model: /objects/lightwheel/stool/Stool005/model.xml
+        scale: [0.90, 1.90, 0.60]
+        xy: [0.1, -0.7]
+        yaw: 0.0
+        top_half_xy: [0.13, 0.28]
+        floor_probe_above: 0.08
+        floor_probe_below: 0.01
+        floor_probe_step: 0.0005
+        robot_pose: {xy: [-0.3, -0.7], yaw: 0.0}
+        remove_fixtures: []
+      remove_fixtures: []
+      auxiliary_placements: []
+      robot_pose: {xy: [-0.06, -1.08], yaw: 0.0}
+      lang: pick up the scrub brush
+    # Composite-only override: preserve the already-collected atomic layout.
+    navigate_to_bathing_area_and_lift_scrub_brush:
+      surface_fixture: FloorPlan407:spawned:brush_stool
+      surface_region: FloorPlan407:spawned:brush_stool:region:support
+      source_xy: [0.10, -0.70]
+      source_stool:
+        model: /objects/lightwheel/stool/Stool005/model.xml
+        scale: [0.90, 1.90, 0.60]
+        xy: [0.10, -0.70]
+        yaw: 0.0
+        top_half_xy: [0.13, 0.28]
+        floor_probe_above: 0.08
+        floor_probe_below: 0.01
+        floor_probe_step: 0.0005
+      robot_pose: {xy: [-0.30, -0.70], yaw: 0.0}
+      source_horizontal_distance: 0.40
+    open_shower_door:
+      fixture: FloorPlan407:ShowerDoor_fe3e45db_4
+      joint: door_06eb8a38ca59cde9f435e6acb10317f7_1_1_0_joint_0
+      joint_type: hinge
+      joint_range: [0.0, 1.5708]
+      closed_qpos: 0.0
+      open_qpos: 1.5708
+      init_open_fraction: 0.0
+      success_open_fraction: 0.3333333333333333
+      success_close_fraction: 0.022222222222222223
+      target_open_angle_degrees: 30.0
+      closed_tolerance_degrees: 2.0
+      target: shower door
+      lang: open the shower door
+    close_shower_door:
+      fixture: FloorPlan407:ShowerDoor_fe3e45db_4
+      joint: door_06eb8a38ca59cde9f435e6acb10317f7_1_1_0_joint_0
+      joint_type: hinge
+      joint_range: [0.0, 1.5708]
+      closed_qpos: 0.0
+      open_qpos: 1.5708
+      init_open_fraction: 0.3333333333333333
+      success_open_fraction: 0.3333333333333333
+      success_close_fraction: 0.022222222222222223
+      target_open_angle_degrees: 30.0
+      closed_tolerance_degrees: 2.0
+      target: shower door
+      lang: close the shower door
+    lift_candle_from_floor:
+      source_xy: [0.10, -0.70]
+      source_quat: [1.0, 0.0, 0.0, 0.0]
+      source_grasp_span: 0.075
+      grasp_span_note: scaled pillar candle; both horizontal spans exceed 0.07 m
+      stool_model: /objects/lightwheel/stool/Stool006/model.xml
+      stool_scale: 0.55
+      stool_xy: [0.10, -0.70]
+      stool_yaw: 0.0
+      stool_top_half_xy: [0.075, 0.075]
+      stool_floor_probe_above: 0.08
+      stool_floor_probe_below: 0.01
+      remove_fixtures: [FloorPlan407:Candle_3_5]
+      robot_pose: {xy: [-0.30, -0.70], yaw: 0.0}
+      source_horizontal_distance: 0.40
+      lang: pick up the bathroom candle from the low floor-standing stool
+  FloorPlan415:
+    approach_toilet:
+      fixture: FloorPlan415:Toilet_1_3
+      start_pose: {xy: [-2.0, -3.5], yaw: 1.034730}
+      minimum_start_distance: 2.50
+      remove_fixtures: []
+      lang: walk to the toilet
+    approach_garbage_can:
+      fixture: FloorPlan415:bin_15_13
+      start_pose: {xy: [-2.0, -3.5], yaw: 0.407617}
+      minimum_start_distance: 1.00
+      remove_fixtures: []
+      lang: walk to the garbage can
+    approach_sink:
+      fixture: FloorPlan415:Sink_b1749873_13
+      start_pose: {xy: [-2.0, -3.5], yaw: 0.700590}
+      minimum_start_distance: 1.40
+      remove_fixtures: []
+      lang: walk to the sink
+    navigate_to_bathing_area:
+      fixture: FloorPlan415:Bathtub_ebc346f6_11
+      start_pose: {xy: [-0.7, -3.5], yaw: 2.182310}
+      minimum_start_distance: 1.90
+      remove_fixtures: []
+      lang: walk to the bathtub
+    put_sponge_in_bathtub:
+      bathtub_fixture: FloorPlan415:Bathtub_ebc346f6_11
+      rim_fixture: FloorPlan415:manual_support:scrub_brush_bathtub_rim
+      rim_region: FloorPlan415:manual_support:scrub_brush_bathtub_rim:region:support
+      remove_fixtures: [FloorPlan415:Scrub_Brush_1_1]
+      rim_anchor_xy: [-2.21, -0.83]
+      basin_center_xy: [-2.70, -0.83]
+      basin_half_xy: [0.48, 0.90]
+      basin_z_range: [0.02, 0.49]
+      robot_pose: {xy: [-1.8, -0.83], yaw: 2.988943}
+      source_horizontal_distance: 0.65765
+      initial_rim_z_offset: 0.00
+      initial_rim_strategy: center
+      initial_rim_edge_fraction: 1.00
+      lang: pick up the sponge from the bathtub rim and put it in the bathtub
+    toilet_lid:
+      fixture: FloorPlan415:Toilet_1_3
+      joint: crapper_cd6fa77f725b7ec4a4ced5913731ae93_1_2_0_joint_0
+      close_robot_pose: {xy: [-0.258, -1.151], yaw: 1.735945}
+      target: toilet lid
+      lang: "{verb} the toilet lid"
+    open_lower_drawer:
+      fixture: FloorPlan415:Dresser_413_1_12
+      joint: chestofdrawers_665b5f9ef6118c922c09c75638260fde_1_6_0_DrawerMesh031_3
+      joint_type: slide
+      robot_pose: {xy: [-0.7915, -3.5708], yaw: 0.392699}
+      init_open_fraction: 0.20
+      success_open_fraction: 0.80
+      success_close_fraction: 0.20
+      anchor_fixture: true
+      target: lower drawer
+      lang: crouch slightly and open the lower bathroom drawer
+    close_lower_drawer:
+      fixture: FloorPlan415:Dresser_413_1_12
+      joint: chestofdrawers_665b5f9ef6118c922c09c75638260fde_1_6_0_DrawerMesh031_3
+      joint_type: slide
+      robot_pose: {xy: [-0.7915, -3.5708], yaw: 0.392699}
+      init_open_fraction: 0.80
+      success_open_fraction: 0.80
+      success_close_fraction: 0.20
+      anchor_fixture: true
+      target: lower drawer
+      lang: crouch slightly and close the lower bathroom drawer
+    lift_soap_bottle:
+      source_fixture: FloorPlan415:Soap_Bottle_15_0
+      surface_fixture: FloorPlan415:TableMesh_31b19dd3_29
+      surface_region: FloorPlan415:TableMesh_31b19dd3_29:region:receptacle:2
+      source_xy: [-2.50, -2.923]
+      remove_fixtures: []
+      auxiliary_placements: []
+      robot_pose: {xy: [-2.099737, -2.923], yaw: 3.141593}
+      lang: pick up the soap bottle
+    stand_soap_bottle_upright:
+      source_fixture: FloorPlan415:Soap_Bottle_15_0
+      surface_fixture: FloorPlan415:TableMesh_31b19dd3_29
+      surface_region: FloorPlan415:TableMesh_31b19dd3_29:region:receptacle:2
+      source_xy: [-2.50, -2.923]
+      source_quat: [0.70710678, 0.0, 0.70710678, 0.0]
+      upright_axis: 1
+      upright_sign: 1.0
+      remove_fixtures: []
+      auxiliary_placements: []
+      robot_pose: {xy: [-2.099737, -2.923], yaw: 3.141593}
+      source_horizontal_distance: 0.4003
+      lang: stand the soap bottle upright
+    lift_toilet_paper_roll:
+      source_fixture: FloorPlan415:Toilet_Paper_6
+      surface_fixture: FloorPlan415:TableMesh_31b19dd3_29
+      surface_region: FloorPlan415:TableMesh_31b19dd3_29:region:receptacle:2
+      source_xy: [-2.50, -2.923]
+      remove_fixtures: []
+      auxiliary_placements: []
+      robot_pose: {xy: [-2.099737, -2.923], yaw: 3.141593}
+      lang: pick up the toilet paper roll
+    lift_spray_bottle:
+      source_fixture: FloorPlan415:Spray_Bottle_3_8
+      surface_fixture: FloorPlan415:TableMesh_31b19dd3_29
+      surface_region: FloorPlan415:TableMesh_31b19dd3_29:region:receptacle:2
+      source_xy: [-2.50, -2.923]
+      remove_fixtures: []
+      auxiliary_placements: []
+      robot_pose: {xy: [-2.099737, -2.923], yaw: 3.141593}
+      lang: pick up the spray bottle
+    lift_scrub_brush:
+      source_fixture: FloorPlan415:Scrub_Brush_1_1
+      surface_fixture: FloorPlan415:manual_support:scrub_brush_bathtub_rim
+      surface_region: FloorPlan415:manual_support:scrub_brush_bathtub_rim:region:support
+      source_xy: [-2.22, -0.83]
+      source_quat: [1.0, 0.0, 0.0, 0.0]
+      atomic_source_stool:
+        model: /objects/lightwheel/stool/Stool005/model.xml
+        scale: [0.90, 1.90, 0.60]
+        xy: [-1.587, -3.322]
+        yaw: 0.0
+        top_half_xy: [0.13, 0.28]
+        floor_probe_above: 0.08
+        floor_probe_below: 0.01
+        floor_probe_step: 0.0005
+        robot_pose: {xy: [-1.987, -3.322], yaw: 0.0}
+        remove_fixtures: [FloorPlan415:Candle_3_9]
+      remove_fixtures: []
+      auxiliary_placements: []
+      robot_pose: {xy: [-1.57, -0.93], yaw: 2.988943}
+      lang: pick up the scrub brush
+    # Composite-only: the rim brush is 0.66 m from the 415 stance; keep the
+    # already-collected atomic layout unchanged and stage the brush within reach.
+    navigate_to_bathing_area_and_lift_scrub_brush:
+      surface_fixture: FloorPlan415:spawned:brush_stool
+      surface_region: FloorPlan415:spawned:brush_stool:region:support
+      source_xy: [-1.17, -0.83]
+      source_stool:
+        model: /objects/lightwheel/stool/Stool005/model.xml
+        scale: [0.90, 1.90, 0.60]
+        xy: [-1.17, -0.83]
+        yaw: 0.0
+        top_half_xy: [0.13, 0.28]
+        floor_probe_above: 0.08
+        floor_probe_below: 0.01
+        floor_probe_step: 0.0005
+      robot_pose: {xy: [-1.57, -0.83], yaw: 0.0}
+      source_horizontal_distance: 0.40
+    lift_candle_from_floor:
+      source_xy: [-1.587, -3.322]
+      source_quat: [1.0, 0.0, 0.0, 0.0]
+      source_grasp_span: 0.075
+      grasp_span_note: scaled pillar candle; both horizontal spans exceed 0.07 m
+      stool_model: /objects/lightwheel/stool/Stool006/model.xml
+      stool_scale: 0.55
+      stool_xy: [-1.587, -3.322]
+      stool_yaw: 0.0
+      stool_top_half_xy: [0.075, 0.075]
+      stool_floor_probe_above: 0.01
+      stool_floor_probe_below: 0.01
+      remove_fixtures: [FloorPlan415:Candle_3_9]
+      robot_pose: {xy: [-2.0, -3.5], yaw: 0.407617}
+      source_horizontal_distance: 0.449725
+      lang: pick up the bathroom candle from the low floor-standing stool
+  FloorPlan418:
+    approach_toilet:
+      fixture: FloorPlan418:Toilet_1_6
+      start_pose: {xy: [-2.5, -0.5], yaw: -0.859560}
+      minimum_start_distance: 2.35
+      remove_fixtures: []
+      lang: walk to the toilet
+    approach_garbage_can:
+      fixture: FloorPlan418:bin_18_0
+      start_pose: {xy: [-2.5, -0.5], yaw: -1.012904}
+      minimum_start_distance: 2.50
+      remove_fixtures: []
+      lang: walk to the garbage can
+    approach_sink:
+      fixture: FloorPlan418:FP418:BathroomSink2_5af95d26_18
+      start_pose: {xy: [-1.7, -0.5], yaw: -1.925831}
+      minimum_start_distance: 1.30
+      remove_fixtures: []
+      lang: walk to the sink
+    navigate_to_bathing_area:
+      fixture: FloorPlan418:ShowerDoor_6546a21b_3
+      start_pose: {xy: [-2.5, -0.5], yaw: -0.752192}
+      minimum_start_distance: 1.00
+      remove_fixtures: []
+      lang: walk to the shower
+    toilet_lid:
+      fixture: FloorPlan418:Toilet_1_6
+      joint: crapper_cd6fa77f725b7ec4a4ced5913731ae93_1_2_0_joint_0
+      close_robot_pose: {xy: [-0.249, -2.495], yaw: -1.832596}
+      target: toilet lid
+      lang: "{verb} the toilet lid"
+    open_cabinet_door:
+      fixture: FloorPlan418:Cabinet_a2bae403_2
+      joint: cabinet_319e232bfbc0b060b11e23fd809e5c68_1_1_0_joint_0
+      joint_type: hinge
+      robot_pose: {xy: [-1.82, -2.60], yaw: 3.141593}
+      init_open_fraction: 0.10
+      success_open_fraction: 0.50
+      success_close_fraction: 0.10
+      anchor_fixture: false
+      target: cabinet door
+      lang: open the bathroom cabinet door halfway
+    close_cabinet_door:
+      fixture: FloorPlan418:Cabinet_a2bae403_2
+      joint: cabinet_319e232bfbc0b060b11e23fd809e5c68_1_1_0_joint_0
+      joint_type: hinge
+      robot_pose: {xy: [-1.82, -2.60], yaw: 3.141593}
+      init_open_fraction: 0.50
+      success_open_fraction: 0.50
+      success_close_fraction: 0.10
+      anchor_fixture: false
+      target: cabinet door
+      lang: close the bathroom cabinet door
+    lift_soap_bottle:
+      source_fixture: FloorPlan418:Soap_Bottle_18_10
+      surface_fixture: FloorPlan418:FP418:BathroomSink2_5af95d26_18
+      surface_region: FloorPlan418:FP418:BathroomSink2_5af95d26_18:region:receptacle:0
+      source_xy: [-2.38, -3.67]
+      remove_fixtures: []
+      auxiliary_placements: []
+      robot_pose: {xy: [-1.80, -3.65], yaw: 3.140581}
+      lang: pick up the soap bottle
+    stand_soap_bottle_upright:
+      source_fixture: FloorPlan418:Soap_Bottle_18_10
+      surface_fixture: FloorPlan418:FP418:BathroomSink2_5af95d26_18
+      surface_region: FloorPlan418:FP418:BathroomSink2_5af95d26_18:region:receptacle:0
+      source_xy: [-2.38, -3.67]
+      source_quat: [0.70710678, 0.0, 0.70710678, 0.0]
+      upright_axis: 1
+      upright_sign: 1.0
+      remove_fixtures: []
+      auxiliary_placements: []
+      robot_pose: {xy: [-1.80, -3.65], yaw: 3.140581}
+      source_horizontal_distance: 0.5803
+      lang: stand the soap bottle upright
+    lift_toilet_paper_roll:
+      source_fixture: FloorPlan418:Toilet_Paper_9
+      surface_fixture: FloorPlan418:FP418:BathroomSink2_5af95d26_18
+      surface_region: FloorPlan418:FP418:BathroomSink2_5af95d26_18:region:receptacle:0
+      source_xy: [-2.38, -3.67]
+      remove_fixtures: []
+      auxiliary_placements: []
+      robot_pose: {xy: [-1.80, -3.65], yaw: 3.140581}
+      lang: pick up the toilet paper roll
+    lift_spray_bottle:
+      source_fixture: FloorPlan418:Spray_Bottle_6_1
+      surface_fixture: FloorPlan418:FP418:BathroomSink2_5af95d26_18
+      surface_region: FloorPlan418:FP418:BathroomSink2_5af95d26_18:region:receptacle:0
+      source_xy: [-2.38, -3.67]
+      remove_fixtures: []
+      auxiliary_placements: []
+      robot_pose: {xy: [-1.80, -3.65], yaw: 3.140581}
+      lang: pick up the spray bottle
+    lift_scrub_brush:
+      source_fixture: FloorPlan418:Scrub_Brush_1_5
+      surface_fixture: FloorPlan418:FP418:BathroomSink2_5af95d26_18
+      surface_region: FloorPlan418:FP418:BathroomSink2_5af95d26_18:region:receptacle:0
+      source_xy: [-2.35, -3.65]
+      source_quat: [1.0, 0.0, 0.0, 0.0]
+      remove_fixtures: []
+      auxiliary_placements: []
+      robot_pose: {xy: [-2.0, -3.65], yaw: 3.140581}
+      lang: pick up the scrub brush
+    open_shower_door:
+      fixture: FloorPlan418:ShowerDoor_6546a21b_3
+      joint: door_5aadd3474c4ea82158d97e990646009b_1_1_0_joint_0
+      joint_type: hinge
+      joint_range: [0.0, 1.5708]
+      closed_qpos: 0.0
+      open_qpos: 1.5708
+      init_open_fraction: 0.0
+      success_open_fraction: 0.3333333333333333
+      success_close_fraction: 0.022222222222222223
+      target_open_angle_degrees: 30.0
+      closed_tolerance_degrees: 2.0
+      target: shower door
+      lang: open the shower door
+    close_shower_door:
+      fixture: FloorPlan418:ShowerDoor_6546a21b_3
+      joint: door_5aadd3474c4ea82158d97e990646009b_1_1_0_joint_0
+      joint_type: hinge
+      joint_range: [0.0, 1.5708]
+      closed_qpos: 0.0
+      open_qpos: 1.5708
+      init_open_fraction: 0.3333333333333333
+      success_open_fraction: 0.3333333333333333
+      success_close_fraction: 0.022222222222222223
+      target_open_angle_degrees: 30.0
+      closed_tolerance_degrees: 2.0
+      target: shower door
+      lang: close the shower door
+
+    lift_candle_from_floor:
+      source_xy: [-2.262, -0.882]
+      source_quat: [1.0, 0.0, 0.0, 0.0]
+      source_grasp_span: 0.075
+      grasp_span_note: scaled pillar candle; both horizontal spans exceed 0.07 m
+      stool_model: /objects/lightwheel/stool/Stool006/model.xml
+      stool_scale: 0.55
+      stool_xy: [-2.262, -0.882]
+      stool_yaw: 0.0
+      stool_top_half_xy: [0.075, 0.075]
+      stool_floor_probe_above: 0.01
+      stool_floor_probe_below: 0.01
+      remove_fixtures: [FloorPlan418:Candle_2_2]
+      robot_pose: {xy: [-2.5, -0.5], yaw: -1.012904}
+      source_horizontal_distance: 0.450076
+      lang: pick up the bathroom candle from the low floor-standing stool
+  FloorPlan410:
+    toilet_paper_roll_into_drawer:
+      source_fixture: FloorPlan410:Toilet_Paper_5
+      source_xy: [-1.65, 2.1166]
+      source_quat: [0.0, 0.0, 0.70710678, 0.70710678]
+      surface_fixture: FloorPlan410:CounterTopMesh_fb983d72_22
+      surface_region: FloorPlan410:CounterTopMesh_fb983d72_22:region:receptacle:3
+      drawer_fixture: FloorPlan410:Drawer_c81edb51_0
+      drawer_joint: drawer_3593bc74e14afaf576668610fec0f56f_1_1_0_joint_0
+      drawer_region: FloorPlan410:Drawer_c81edb51_0:region:receptacle:0
+      drawer_region_z_offset: -0.012
+      robot_pose: {xy: [-2.00, 2.57], yaw: -0.408238}
+      lang: put the toilet-paper roll into the upper drawer under the sink
+    take_soap_bottle_from_drawer:
+      source_fixture: FloorPlan410:Soap_Bottle_10_7
+      source_xy: [-1.50, 2.34]
+      source_quat: [0.70710678, 0.70710678, 0.0, 0.0]
+      surface_fixture: FloorPlan410:CounterTopMesh_fb983d72_22
+      surface_region: FloorPlan410:CounterTopMesh_fb983d72_22:region:receptacle:3
+      drawer_fixture: FloorPlan410:Drawer_c81edb51_0
+      drawer_joint: drawer_3593bc74e14afaf576668610fec0f56f_1_1_0_joint_0
+      drawer_region: FloorPlan410:Drawer_c81edb51_0:region:receptacle:0
+      drawer_region_z_offset: -0.012
+      robot_pose: {xy: [-2.00, 2.57], yaw: -0.408238}
+      lang: take the soap bottle out of the upper drawer under the sink
+  FloorPlan422:
+    open_upper_cabinet_door:
+      # Keep the cabinet against the wall and floor while lowering its doors.
+      cabinet_scale: 0.75
+      cabinet_scale_origin: [-2.42, 2.1277, 0.0]
+      cabinet_part_bodies:
+        - cabinetbody_52e0763c01cc45200795e1266bb5ee7d_1_0_0
+        - cabinet_408a24f2d1bddd4eabb5091faf214ac9_1_0_0
+        - cabinet_723d949f94d760d03b4969ecfc8c2b18_1_0_0
+        - drawer_81c1371bbd3816700fec3a80e25bb303_1_0_0
+        # Shelf contents follow the same transform to retain their support.
+        - tissuepaper_1f28299e6e99a63de7abb400051cb351_1_0_0
+        - candle_fe12fa900f50b1f2dcab659cebcf492b_1_0_0
+        - barsoap_c7ecd0630d4898217f5abbe2e7c0cca8_1_0_0
+      fixture: FloorPlan422:Cabinet_a6b630aa_2
+      joint: cabinet_408a24f2d1bddd4eabb5091faf214ac9_1_1_0_joint_0
+      joint_type: hinge
+      robot_pose: {xy: [-1.7, 2.04], yaw: 3.141593}
+      init_open_fraction: 0.20
+      success_open_fraction: 0.80
+      success_close_fraction: 0.20
+      anchor_fixture: false
+      target: upper bathroom cabinet door
+      lang: open the upper bathroom cabinet door
+    close_upper_cabinet_door:
+      # Keep the cabinet against the wall and floor while lowering its doors.
+      cabinet_scale: 0.75
+      cabinet_scale_origin: [-2.42, 2.1277, 0.0]
+      cabinet_part_bodies:
+        - cabinetbody_52e0763c01cc45200795e1266bb5ee7d_1_0_0
+        - cabinet_408a24f2d1bddd4eabb5091faf214ac9_1_0_0
+        - cabinet_723d949f94d760d03b4969ecfc8c2b18_1_0_0
+        - drawer_81c1371bbd3816700fec3a80e25bb303_1_0_0
+        # Shelf contents follow the same transform to retain their support.
+        - tissuepaper_1f28299e6e99a63de7abb400051cb351_1_0_0
+        - candle_fe12fa900f50b1f2dcab659cebcf492b_1_0_0
+        - barsoap_c7ecd0630d4898217f5abbe2e7c0cca8_1_0_0
+      fixture: FloorPlan422:Cabinet_a6b630aa_2
+      joint: cabinet_408a24f2d1bddd4eabb5091faf214ac9_1_1_0_joint_0
+      joint_type: hinge
+      robot_pose: {xy: [-1.6, 2.2], yaw: 3.141593}
+      init_open_fraction: 0.80
+      success_open_fraction: 0.80
+      success_close_fraction: 0.20
+      anchor_fixture: false
+      target: upper bathroom cabinet door
+      lang: close the upper bathroom cabinet door

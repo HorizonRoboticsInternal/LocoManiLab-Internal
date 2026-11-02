@@ -18,6 +18,8 @@ def fixture_is_type(fixture, fixture_type):
         return isinstance(fixture, Oven)
     elif fixture_type == FixtureType.FRIDGE:
         return isinstance(fixture, Fridge)
+    elif fixture_type == FixtureType.SHELF:
+        return isinstance(fixture, Shelf)
     elif fixture_type == FixtureType.DISHWASHER:
         return isinstance(fixture, Dishwasher)
     elif fixture_type == FixtureType.ELECTRIC_KETTLE:

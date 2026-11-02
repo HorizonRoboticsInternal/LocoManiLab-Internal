@@ -1,4 +1,90 @@
+import os
+import sys
+
+
+_PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+_LOCAL_ROBOSUITE_SRC = os.path.join(_PROJECT_ROOT, "robosuite_src")
+if os.path.isdir(os.path.join(_LOCAL_ROBOSUITE_SRC, "robosuite")):
+    if _LOCAL_ROBOSUITE_SRC not in sys.path:
+        sys.path.insert(0, _LOCAL_ROBOSUITE_SRC)
+
 from robosuite.environments.base import make
+
+# Public aliases for the G1 variants maintained with this benchmark. The
+# bundled robosuite fork owns their registration.
+from robosuite.models.robots.manipulators.g1_robot import (
+    G1,
+    G1FixedLowerBody,
+    G1FloatingBody,
+)
+# Preserve controller names while deferring optional model/SDK imports until
+# a caller actually constructs that controller.
+from robocasa.g1_host.controller_registry import register_g1_controller_factories
+
+register_g1_controller_factories()
+
+# Minimal kitchen-free test environment (floor + robot)
+from robocasa.environments.empty.empty_env import EmptyEnv
+from robocasa.environments.telelab.telelab_env import TeleLabEnv
+from robocasa.environments.telelab.telelab_conveyor import TeleLabConveyor
+from robocasa.environments.telelab.telelab_mani import TeleLabMani
+from robocasa.environments.telelab.approach_open_fridge import (
+    TeleLabApproachOpenFridge,
+)
+from robocasa.environments.telelab.carry_cup_from_shelf_to_desk import (
+    TeleLabCarryCupFromShelfToDesk,
+)
+from robocasa.environments.telelab.conveyor_box_to_desk import (
+    TeleLabConveyorPlaceBoxOnDesk,
+    TeleLabConveyorBoxToDesk,
+)
+
+# Independent living-room environment stack (base env + tasks)
+from robocasa.environments.living_room.living_room import LivingRoomEnv
+from robocasa.environments.living_room.tasks.tidy_living_room import TidyLivingRoom
+from robocasa.environments.living_room.tasks.approach_sofa import ApproachSofa
+from robocasa.environments.living_room.tasks.carry_object_to_table import (
+    CarryObjectToTable,
+)
+from robocasa.environments.living_room.tasks.squat_pick_place_tv_stand import (
+    SquatPickPlaceTVStand,
+)
+from robocasa.environments.living_room.tasks.store_mug_in_cabinet import (
+    StoreMugInCabinet,
+)
+from robocasa.environments.living_room.tasks.tabletop_pick_place import (
+    TabletopPickPlace,
+)
+from robocasa.environments.living_room.tasks.tabletop_charger_socket import (
+    TabletopChargerSocket,
+)
+from robocasa.environments.living_room.tasks.tabletop_cylinder_socket import (
+    TabletopCylinderSocket,
+)
+from robocasa.environments.living_room.tasks.approach_table import ApproachTable
+from robocasa.environments.living_room.tasks.fetch_snack_fridge import (
+    FetchSnackFridge,
+)
+from robocasa.environments.living_room.tasks.stack_can_on_plate import (
+    StackCanOnPlate,
+)
+from robocasa.environments.living_room.tasks.collect_fruit_in_bowl import (
+    CollectFruitInBowl,
+)
+from robocasa.environments.living_room.tasks.clear_coffee_table import (
+    ClearCoffeeTable,
+)
+
+# iTHOR (MolmoSpaces) environment categories — one per room type, peers of
+# kitchen / living_room. Each: a runnable base env + tasks. Per-package
+# __all__ lists control the public surface; ``import *`` avoids repeating
+# every task class name here.
+from robocasa.environments.ithor_kitchen import *  # noqa: F401, F403
+from robocasa.environments.ithor_living_room import *  # noqa: F401, F403
+from robocasa.environments.ithor_bedroom import *  # noqa: F401, F403
+from robocasa.environments.ithor_bathroom import *  # noqa: F401, F403
+from robocasa.environments.procthor import *  # noqa: F401, F403
+from robocasa.environments.holodeck import *  # noqa: F401, F403
 
 # Manipulation environments
 from robocasa.environments.kitchen.kitchen import Kitchen
@@ -929,6 +1015,7 @@ from robocasa.environments.kitchen.atomic.kitchen_microwave import (
     TurnOffMicrowave,
 )
 from robocasa.environments.kitchen.atomic.kitchen_navigate import NavigateKitchen
+from robocasa.environments.kitchen.atomic.g1_standing import G1Standing
 
 from robocasa.environments.kitchen.atomic.kitchen_oven import (
     PreheatOven,
@@ -981,13 +1068,6 @@ from robocasa.environments.kitchen.atomic.kitchen_toaster_oven import (
 from robocasa.environments.kitchen.atomic.kitchen_toaster import (
     TurnOnToaster,
 )
-
-try:
-    import mimicgen
-except ImportError:
-    print(
-        "WARNING: mimicgen environments not imported since mimicgen is not installed!"
-    )
 
 from robocasa.environments import ALL_KITCHEN_ENVIRONMENTS
 

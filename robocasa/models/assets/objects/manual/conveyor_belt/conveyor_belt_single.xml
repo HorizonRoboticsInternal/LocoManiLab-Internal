@@ -1,0 +1,95 @@
+<!--
+  Reusable single conveyor belt fixture.
+  The emerald belt wraps around the top, underside, and both ends of the frame.
+  Drive belt_drive_00 ... belt_drive_15 with the same target velocity.
+-->
+<mujoco model="conveyor_belt_single">
+  <compiler angle="degree" autolimits="true"/>
+  <option timestep="0.002" integrator="implicitfast" gravity="0 0 -9.81"/>
+
+  <asset>
+    <material name="belt_emerald" rgba="0.015 0.34 0.12 1"
+              specular="0.25" shininess="0.35"/>
+    <material name="belt_tread" rgba="0.025 0.44 0.16 0"
+              specular="0.2" shininess="0.25"/>
+    <material name="conveyor_frame" rgba="0.55 0.57 0.59 1"
+              specular="0.55" shininess="0.55" reflectance="0.12"/>
+  </asset>
+
+  <default>
+    <geom group="0" contype="1" conaffinity="1" friction="0.8 0.03 0.01"/>
+  </default>
+
+  <worldbody>
+    <!-- Overall size: 4 m long, 1 m wide, top surface at z=0.80 m. -->
+    <body name="conveyor_belt_single" pos="0 0 0.25">
+      <!-- Plain support rack: one tabletop and four legs. -->
+      <geom name="conveyor_frame" type="box" pos="0 0 0.48"
+            size="2.15 0.60 0.04" material="conveyor_frame"/>
+      <geom name="conveyor_leg_front_left" type="box"
+            pos="-1.85 0.45 0.095" size="0.12 0.12 0.345"
+            material="conveyor_frame"/>
+      <geom name="conveyor_leg_front_right" type="box"
+            pos="-1.85 -0.45 0.095" size="0.12 0.12 0.345"
+            material="conveyor_frame"/>
+      <geom name="conveyor_leg_rear_left" type="box"
+            pos="1.85 0.45 0.095" size="0.12 0.12 0.345"
+            material="conveyor_frame"/>
+      <geom name="conveyor_leg_rear_right" type="box"
+            pos="1.85 -0.45 0.095" size="0.12 0.12 0.345"
+            material="conveyor_frame"/>
+
+      <!-- Continuous capsule-shaped belt surrounding the tabletop. -->
+      <geom name="belt_top" type="box" pos="0 0 0.530"
+            size="2.15 0.52 0.008" material="belt_emerald"
+            contype="0" conaffinity="0"/>
+      <geom name="belt_bottom" type="box" pos="0 0 0.430"
+            size="2.15 0.52 0.008" material="belt_emerald"
+            contype="0" conaffinity="0"/>
+      <geom name="belt_end_left" type="cylinder" pos="-2.15 0 0.48"
+            size="0.058 0.52" quat="0.7071068 0.7071068 0 0"
+            material="belt_emerald" contype="0" conaffinity="0"/>
+      <geom name="belt_end_right" type="cylinder" pos="2.15 0 0.48"
+            size="0.058 0.52" quat="0.7071068 0.7071068 0 0"
+            material="belt_emerald" contype="0" conaffinity="0"/>
+
+      <!-- Invisible tread plates provide the moving physical contact surface;
+           the fixed continuous belt below supplies the seamless appearance. -->
+      <body name="slat_00" pos="-2.025 0 0.543"><joint name="belt_slide_00" type="slide" axis="1 0 0" damping="0.02"/><geom name="belt_contact_00" type="box" size="0.130 0.52 0.005" material="belt_tread" friction="0.45 0.005 0.001" condim="3"/></body>
+      <body name="slat_01" pos="-1.755 0 0.543"><joint name="belt_slide_01" type="slide" axis="1 0 0" damping="0.02"/><geom name="belt_contact_01" type="box" size="0.130 0.52 0.005" material="belt_tread" friction="0.45 0.005 0.001" condim="3"/></body>
+      <body name="slat_02" pos="-1.485 0 0.543"><joint name="belt_slide_02" type="slide" axis="1 0 0" damping="0.02"/><geom name="belt_contact_02" type="box" size="0.130 0.52 0.005" material="belt_tread" friction="0.45 0.005 0.001" condim="3"/></body>
+      <body name="slat_03" pos="-1.215 0 0.543"><joint name="belt_slide_03" type="slide" axis="1 0 0" damping="0.02"/><geom name="belt_contact_03" type="box" size="0.130 0.52 0.005" material="belt_tread" friction="0.45 0.005 0.001" condim="3"/></body>
+      <body name="slat_04" pos="-0.945 0 0.543"><joint name="belt_slide_04" type="slide" axis="1 0 0" damping="0.02"/><geom name="belt_contact_04" type="box" size="0.130 0.52 0.005" material="belt_tread" friction="0.45 0.005 0.001" condim="3"/></body>
+      <body name="slat_05" pos="-0.675 0 0.543"><joint name="belt_slide_05" type="slide" axis="1 0 0" damping="0.02"/><geom name="belt_contact_05" type="box" size="0.130 0.52 0.005" material="belt_tread" friction="0.45 0.005 0.001" condim="3"/></body>
+      <body name="slat_06" pos="-0.405 0 0.543"><joint name="belt_slide_06" type="slide" axis="1 0 0" damping="0.02"/><geom name="belt_contact_06" type="box" size="0.130 0.52 0.005" material="belt_tread" friction="0.45 0.005 0.001" condim="3"/></body>
+      <body name="slat_07" pos="-0.135 0 0.543"><joint name="belt_slide_07" type="slide" axis="1 0 0" damping="0.02"/><geom name="belt_contact_07" type="box" size="0.130 0.52 0.005" material="belt_tread" friction="0.45 0.005 0.001" condim="3"/></body>
+      <body name="slat_08" pos="0.135 0 0.543"><joint name="belt_slide_08" type="slide" axis="1 0 0" damping="0.02"/><geom name="belt_contact_08" type="box" size="0.130 0.52 0.005" material="belt_tread" friction="0.45 0.005 0.001" condim="3"/></body>
+      <body name="slat_09" pos="0.405 0 0.543"><joint name="belt_slide_09" type="slide" axis="1 0 0" damping="0.02"/><geom name="belt_contact_09" type="box" size="0.130 0.52 0.005" material="belt_tread" friction="0.45 0.005 0.001" condim="3"/></body>
+      <body name="slat_10" pos="0.675 0 0.543"><joint name="belt_slide_10" type="slide" axis="1 0 0" damping="0.02"/><geom name="belt_contact_10" type="box" size="0.130 0.52 0.005" material="belt_tread" friction="0.45 0.005 0.001" condim="3"/></body>
+      <body name="slat_11" pos="0.945 0 0.543"><joint name="belt_slide_11" type="slide" axis="1 0 0" damping="0.02"/><geom name="belt_contact_11" type="box" size="0.130 0.52 0.005" material="belt_tread" friction="0.45 0.005 0.001" condim="3"/></body>
+      <body name="slat_12" pos="1.215 0 0.543"><joint name="belt_slide_12" type="slide" axis="1 0 0" damping="0.02"/><geom name="belt_contact_12" type="box" size="0.130 0.52 0.005" material="belt_tread" friction="0.45 0.005 0.001" condim="3"/></body>
+      <body name="slat_13" pos="1.485 0 0.543"><joint name="belt_slide_13" type="slide" axis="1 0 0" damping="0.02"/><geom name="belt_contact_13" type="box" size="0.130 0.52 0.005" material="belt_tread" friction="0.45 0.005 0.001" condim="3"/></body>
+      <body name="slat_14" pos="1.755 0 0.543"><joint name="belt_slide_14" type="slide" axis="1 0 0" damping="0.02"/><geom name="belt_contact_14" type="box" size="0.130 0.52 0.005" material="belt_tread" friction="0.45 0.005 0.001" condim="3"/></body>
+      <body name="slat_15" pos="2.025 0 0.543"><joint name="belt_slide_15" type="slide" axis="1 0 0" damping="0.02"/><geom name="belt_contact_15" type="box" size="0.130 0.52 0.005" material="belt_tread" friction="0.45 0.005 0.001" condim="3"/></body>
+    </body>
+  </worldbody>
+
+  <actuator>
+    <velocity name="belt_drive_00" joint="belt_slide_00" kv="80" ctrlrange="-1.5 1.5" ctrllimited="true"/>
+    <velocity name="belt_drive_01" joint="belt_slide_01" kv="80" ctrlrange="-1.5 1.5" ctrllimited="true"/>
+    <velocity name="belt_drive_02" joint="belt_slide_02" kv="80" ctrlrange="-1.5 1.5" ctrllimited="true"/>
+    <velocity name="belt_drive_03" joint="belt_slide_03" kv="80" ctrlrange="-1.5 1.5" ctrllimited="true"/>
+    <velocity name="belt_drive_04" joint="belt_slide_04" kv="80" ctrlrange="-1.5 1.5" ctrllimited="true"/>
+    <velocity name="belt_drive_05" joint="belt_slide_05" kv="80" ctrlrange="-1.5 1.5" ctrllimited="true"/>
+    <velocity name="belt_drive_06" joint="belt_slide_06" kv="80" ctrlrange="-1.5 1.5" ctrllimited="true"/>
+    <velocity name="belt_drive_07" joint="belt_slide_07" kv="80" ctrlrange="-1.5 1.5" ctrllimited="true"/>
+    <velocity name="belt_drive_08" joint="belt_slide_08" kv="80" ctrlrange="-1.5 1.5" ctrllimited="true"/>
+    <velocity name="belt_drive_09" joint="belt_slide_09" kv="80" ctrlrange="-1.5 1.5" ctrllimited="true"/>
+    <velocity name="belt_drive_10" joint="belt_slide_10" kv="80" ctrlrange="-1.5 1.5" ctrllimited="true"/>
+    <velocity name="belt_drive_11" joint="belt_slide_11" kv="80" ctrlrange="-1.5 1.5" ctrllimited="true"/>
+    <velocity name="belt_drive_12" joint="belt_slide_12" kv="80" ctrlrange="-1.5 1.5" ctrllimited="true"/>
+    <velocity name="belt_drive_13" joint="belt_slide_13" kv="80" ctrlrange="-1.5 1.5" ctrllimited="true"/>
+    <velocity name="belt_drive_14" joint="belt_slide_14" kv="80" ctrlrange="-1.5 1.5" ctrllimited="true"/>
+    <velocity name="belt_drive_15" joint="belt_slide_15" kv="80" ctrlrange="-1.5 1.5" ctrllimited="true"/>
+  </actuator>
+</mujoco>

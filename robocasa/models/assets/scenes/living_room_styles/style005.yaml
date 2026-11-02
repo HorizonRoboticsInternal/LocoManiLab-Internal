@@ -1,0 +1,9 @@
+# Living-room style 005: dark wood floor + warm white walls.
+# High-contrast warm theme for visual diversity in VLA training.
+floor_texture: textures/wood/dark_wood_parquet.png
+wall_texture: textures/flat/warm_white.png
+furniture:
+  sofa: fixtures/sofas/Sofa001
+  coffee_table: fixtures/coffee_tables/CoffeeTable001
+  tv_stand: fixtures/tv_stands/TVStand001
+  side_table: objects/lightwheel/stool/Stool013

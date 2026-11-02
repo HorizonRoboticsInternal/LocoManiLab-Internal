@@ -1,18 +1,18 @@
+"""Browse inherited kitchen layouts with the G1 whole-body viewer.
+
+Scene assets and the selected controller weights must already be provisioned.
+This command never downloads them. Use collect_demos_g1 / collect_fixed_task
+for training-data collection.
+"""
+
 import argparse
-import json
-import sys
-import termios
 from collections import OrderedDict
 
 import numpy as np
 import robosuite
-from robosuite.controllers import load_composite_controller_config
-from robosuite.wrappers import VisualizationWrapper
 from termcolor import colored
 
-import robocasa.macros as macros
 from robocasa.models.scenes.scene_registry import LayoutType, StyleType
-from robocasa.scripts.collect_demos import collect_human_trajectory
 from robocasa.wrappers.enclosing_wall_render_wrapper import (
     EnclosingWallRenderWrapper,
     install_enclosing_wall_hotkeys,
@@ -72,144 +72,61 @@ def choose_option(
     return choice
 
 
-if __name__ == "__main__":
-    # Arguments
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--task", type=str, default="Kitchen", help="task")
-    parser.add_argument(
-        "--layout", type=int, help="kitchen layout (choose number 1-60)"
-    )
-    parser.add_argument("--style", type=int, help="kitchen style (choose number 1-60)")
-    parser.add_argument("--robot", type=str, help="robot", default="PandaOmron")
-    parser.add_argument(
-        "--show-walls",
-        action="store_true",
-        help="render enclosing walls (default is to hide walls with enclosing_wall: true)",
-    )
-    parser.add_argument(
-        "--device",
-        type=str,
-        default="keyboard",
-        choices=["keyboard", "spacemouse"],
-        help="Teleop device (default: keyboard)",
-    )
+from robocasa.demos.demo_empty_teleop import (
+    _G1_CONTROL_DESCRIPTIONS,
+    load_g1_controller_config,
+    run_sonic_viewer_loop,
+)
+from robocasa.utils.robot_utils import DEFAULT_ROBOT, G1_ROBOTS
+from g1_bridge.sonic_utils.ckpt import DEFAULT_SONIC_CKPT, SONIC_CKPT_CHOICES
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--task", default="Kitchen", help="registered kitchen task")
+    parser.add_argument("--layout", type=int, help="kitchen layout ID")
+    parser.add_argument("--style", type=int, help="kitchen style ID")
+    parser.add_argument("--robot", default=DEFAULT_ROBOT, choices=G1_ROBOTS)
+    parser.add_argument("--show-walls", action="store_true")
+    parser.add_argument("--g1-control", default="keyboard", choices=list(_G1_CONTROL_DESCRIPTIONS))
+    parser.add_argument("--pico-source", default="mock", choices=("mock", "real"))
+    parser.add_argument("--sonic-ckpt", default=DEFAULT_SONIC_CKPT, choices=SONIC_CKPT_CHOICES)
     args = parser.parse_args()
 
-    raw_layouts = dict(
-        map(lambda item: (item.value, item.name.lower().capitalize()), LayoutType)
+    layouts = OrderedDict((item.value, item.name) for item in LayoutType if item.value >= 0)
+    styles = OrderedDict((item.value, item.name) for item in StyleType if item.value >= 0)
+    layout = args.layout if args.layout is not None else choose_option(
+        layouts, "kitchen layout", default=-1, default_message="random layout"
     )
-    layouts = OrderedDict()
-    for k in sorted(raw_layouts.keys()):
-        if k < -0:
-            continue
-        layouts[k] = raw_layouts[k]
-
-    raw_styles = dict(
-        map(lambda item: (item.value, item.name.lower().capitalize()), StyleType)
+    style = args.style if args.style is not None else choose_option(
+        styles, "kitchen style", default=-1, default_message="random style"
     )
-    styles = OrderedDict()
-    for k in sorted(raw_styles.keys()):
-        if k < 0:
-            continue
-        styles[k] = raw_styles[k]
-
-    # Create argument configuration
-    config = {
-        "env_name": args.task,
-        "robots": args.robot,
-        "controller_configs": load_composite_controller_config(robot=args.robot),
-        "translucent_robot": False,
-    }
-
-    args.renderer = "mjviewer"
-
-    print(colored("Initializing environment...", "yellow"))
+    if layout == -1:
+        layout = int(np.random.choice(list(layouts)))
+    if style == -1:
+        style = int(np.random.choice(list(styles)))
 
     env = robosuite.make(
-        **config,
+        env_name=args.task,
+        robots=args.robot,
+        controller_configs=load_g1_controller_config(
+            args.g1_control, args.pico_source, args.sonic_ckpt
+        ),
+        layout_ids=layout,
+        style_ids=style,
+        translucent_robot=False,
         has_renderer=True,
         has_offscreen_renderer=False,
         render_camera=None,
         ignore_done=True,
         use_camera_obs=False,
         control_freq=20,
-        renderer=args.renderer,
+        renderer="mjviewer",
     )
     env = EnclosingWallRenderWrapper(env, alpha=0.1, enabled=not args.show_walls)
     install_enclosing_wall_hotkeys(env)
+    run_sonic_viewer_loop(env, show_ego=False)
 
-    # Grab reference to controller config and convert it to json-encoded string
-    env_info = json.dumps(config)
 
-    # initialize device
-    device = args.device
-    if device == "keyboard":
-        from robosuite.devices import Keyboard
-
-        device = Keyboard(env=env, pos_sensitivity=4.0, rot_sensitivity=4.0)
-    elif device == "spacemouse":
-        from robosuite.devices import SpaceMouse
-
-        device = SpaceMouse(
-            env=env,
-            pos_sensitivity=4.0,
-            rot_sensitivity=4.0,
-            vendor_id=macros.SPACEMOUSE_VENDOR_ID,
-            product_id=macros.SPACEMOUSE_PRODUCT_ID,
-        )
-    else:
-        raise ValueError
-
-    # collect demonstrations
-    while True:
-        if args.layout is None:
-            layout = choose_option(
-                layouts, "kitchen layout", default=-1, default_message="random layouts"
-            )
-        else:
-            layout = args.layout
-
-        if args.style is None:
-            style = choose_option(
-                styles, "kitchen style", default=-1, default_message="random styles"
-            )
-        else:
-            style = args.style
-        print("chose layout:", layout, "style:", style)
-        if layout == -1:
-            layout = int(np.random.choice(list(layouts.keys())))
-        if style == -1:
-            style = int(np.random.choice(list(styles.keys())))
-
-        env.layout_and_style_ids = [[layout, style]]
-        print(
-            colored(
-                f"Showing configuration:\n    Layout: {layouts[layout]}\n    Style: {styles[style]}",
-                "green",
-            )
-        )
-        print()
-        print(
-            colored(
-                "Spawning environment...\n(Press Q any time to view new configuration)",
-                "yellow",
-            )
-        )
-
-        ep_directory, discard_traj = collect_human_trajectory(
-            env,
-            device,
-            "right",
-            "single-arm-opposed",
-            mirror_actions=True,
-            render=(args.renderer != "mjviewer"),
-            max_fr=30,
-            print_info=False,
-        )
-
-        # Flush stdin to clear any buffered keypresses otherwise when getting
-        # the next layout/style choice, it will read a 'q' from before
-        termios.tcflush(sys.stdin, termios.TCIFLUSH)
-
-        print()
-        print()
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,18 @@
+# Living-room layout 004 (used by the CarryObjectToTable task): two side tables
+# at opposite corners of the room -- the object starts on "origin_table" and
+# must be carried across to "target_table". A sofa sits against the -x wall for
+# context. Both side tables are the same furniture type (side_table) but named
+# distinctly so the task can reference each one.
+furniture:
+  - name: sofa
+    type: sofa
+    pos: [-2.3, 0.0]   # half-depth ~0.565, so back face at x=-2.865 (inside the -2.95 wall)
+    z_rot: 1.5708
+  - name: origin_table
+    type: side_table
+    pos: [-1.6, -1.9]
+    z_rot: 0.0
+  - name: target_table
+    type: side_table
+    pos: [1.9, 1.9]
+    z_rot: 0.0

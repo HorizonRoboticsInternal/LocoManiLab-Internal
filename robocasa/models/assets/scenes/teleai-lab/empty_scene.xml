@@ -1,0 +1,37 @@
+<mujoco model="telelab_empty_scene">
+  <compiler angle="degree" autolimits="true"/>
+  <option timestep="0.002" integrator="implicitfast" gravity="0 0 -9.81"/>
+
+  <asset>
+    <texture name="room_floor" type="2d" file="../../textures/floor.png"/>
+    <texture name="room_wall" type="2d" file="../../textures/cream-plaster.png"/>
+    <material name="room_floor" texture="room_floor"
+              texrepeat="1 1" texuniform="true"/>
+    <material name="room_wall" texture="room_wall"
+              texrepeat="3 3" texuniform="true"
+              specular="0.01" shininess="0.01"/>
+  </asset>
+
+  <default>
+    <geom contype="1" conaffinity="1" friction="0.8 0.03 0.01"/>
+  </default>
+
+  <worldbody>
+    <light name="room_key_light" pos="0 0 4.5" directional="true"
+           diffuse="0.8 0.8 0.8"/>
+    <light name="room_fill_light" pos="0 -3 2.5" directional="true"
+           diffuse="0.35 0.35 0.35"/>
+
+    <geom name="room_floor" type="plane" pos="0 0 0"
+          size="5 5 0.1" material="room_floor"/>
+
+    <geom name="wall_back" type="box" pos="0 5 2.0"
+          size="5 0.10 2.0" material="room_wall"/>
+    <geom name="wall_front" type="box" pos="0 -5 2.0"
+          size="5 0.10 2.0" material="room_wall"/>
+    <geom name="wall_left" type="box" pos="-5 0 2.0"
+          size="0.10 5 2.0" material="room_wall"/>
+    <geom name="wall_right" type="box" pos="5 0 2.0"
+          size="0.10 5 2.0" material="room_wall"/>
+  </worldbody>
+</mujoco>

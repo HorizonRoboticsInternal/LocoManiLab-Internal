@@ -1,0 +1,48 @@
+<mujoco>
+  <worldbody>
+    <body name="box_7dd55f35e8c815541d7f3dcca02e7f6e_1_0_0" pos="-0.007505897154092576 0.8929697027891236 0.584414817141946" quat="2.0040531125193354e-05 1.2005059750235466e-05 0.7070752981456779 0.7071382624398547">
+      <joint name="box_7dd55f35e8c815541d7f3dcca02e7f6e_1_0_0_jntfree_0" class="/" type="free" limited="false" actuatorfrclimited="false" damping="0.001" frictionloss="0.001" />
+      <body name="box_7dd55f35e8c815541d7f3dcca02e7f6e_1_1_0" pos="0.00241363 0.0948896 0.0883958" quat="0.0883706 0.996088 0 0">
+        <joint name="box_7dd55f35e8c815541d7f3dcca02e7f6e_1_1_0_box7flapouter1joint0_1" class="/" pos="0 0 0" axis="-1 0 0" range="0 2.96462" damping="0.005" frictionloss="0.005" />
+        <geom name="box_7dd55f35e8c815541d7f3dcca02e7f6e_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Cardboard_Mat1" mesh="Box_7_box_7_flap_outer_1" />
+        <geom name="box_7dd55f35e8c815541d7f3dcca02e7f6e_1_1_0_collision_1" class="__DYNAMIC_MJT__" size="0.0446206 0.00210186 0.108958" pos="0.000396884 -0.000525206 -0.0443764" quat="0.00451476 0.707092 -0.00451302 -0.707092" type="box" rgba="0 1 0 1" />
+      </body>
+      <body name="box_7dd55f35e8c815541d7f3dcca02e7f6e_1_2_0" pos="0.00132 -0.113005 0.00113774">
+        <geom name="box_7dd55f35e8c815541d7f3dcca02e7f6e_1_2_0_visual_2" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Cardboard_Mat1" mesh="Box_7_box_7" />
+        <geom name="box_7dd55f35e8c815541d7f3dcca02e7f6e_1_2_0_collision_3" class="__DYNAMIC_MJT__" size="0.110149 0.00360201 0.0897376" pos="0.00129503 0.00291272 -0.000837214" quat="0 1 0 0" type="box" density="78" rgba="0 1 0 1" />
+        <geom name="box_7dd55f35e8c815541d7f3dcca02e7f6e_1_2_0_collision_4" class="__DYNAMIC_MJT__" size="0.103228 0.00165432 0.0897286" pos="0.109573 0.102699 -0.00060901" quat="0 0.707108 0.707106 0" type="box" density="78" rgba="0 1 0 1" />
+        <geom name="box_7dd55f35e8c815541d7f3dcca02e7f6e_1_2_0_collision_5" class="__DYNAMIC_MJT__" size="0.103478 0.00150717 0.0877335" pos="-0.107371 0.102892 -0.00261499" quat="0 0.707108 0.707106 0" type="box" density="78" rgba="0 1 0 1" />
+        <geom name="box_7dd55f35e8c815541d7f3dcca02e7f6e_1_2_0_collision_6" class="__DYNAMIC_MJT__" size="0.103484 0.00200957 0.11004" pos="0.00135981 0.102885 -0.088369" quat="-0.499999 0.500001 0.5 -0.5" type="box" density="78" rgba="0 1 0 1" />
+        <geom name="box_7dd55f35e8c815541d7f3dcca02e7f6e_1_2_0_collision_7" class="__DYNAMIC_MJT__" size="0.103462 0.00199819 0.110106" pos="0.00129249 0.102761 0.0870801" quat="-0.499999 0.500001 0.5 -0.5" type="box" density="78" rgba="0 1 0 1" />
+        <site name="box_7dd55f35e8c815541d7f3dcca02e7f6e_1_2_0_box7ReceptacleCollider0_0" class="/" pos="0.00183062 0.106373 -0.000806961" quat="0 1 0 0" size="0.107473 0.101238 0.0869804" group="5" type="box" rgba="1 0 0 1" />
+      </body>
+      <body name="box_7dd55f35e8c815541d7f3dcca02e7f6e_1_3_0" pos="0.00241363 0.0948896 -0.0883958" quat="0.0549339 -0.99849 0 0">
+        <joint name="box_7dd55f35e8c815541d7f3dcca02e7f6e_1_3_0_box7flapouter2joint0_2" class="/" pos="0 0 0" axis="-1 0 0" range="-3.03165 0" damping="0.005" frictionloss="0.005" />
+        <geom name="box_7dd55f35e8c815541d7f3dcca02e7f6e_1_3_0_visual_8" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Cardboard_Mat1" mesh="Box_7_box_7_flap_outer_2" />
+        <geom name="box_7dd55f35e8c815541d7f3dcca02e7f6e_1_3_0_collision_9" class="__DYNAMIC_MJT__" size="0.0448759 0.00212411 0.110135" pos="-0.00053842 4.0709e-05 0.0440731" quat="0.707093 -0.00437345 -0.707093 0.00437163" type="box" rgba="0 1 0 1" />
+      </body>
+      <body name="box_7dd55f35e8c815541d7f3dcca02e7f6e_1_4_0" pos="-0.106366 0.0934206 0.000446581" quat="0.0720005 0 0 0.997405">
+        <joint name="box_7dd55f35e8c815541d7f3dcca02e7f6e_1_4_0_box7flapinner2joint0_3" class="/" pos="0 0 0" axis="0 0 1" range="-2.98573 0" damping="0.002" frictionloss="0.002" />
+        <geom name="box_7dd55f35e8c815541d7f3dcca02e7f6e_1_4_0_visual_10" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Cardboard_Mat1" mesh="Box_7_box_7_flap_inner_2" />
+        <geom name="box_7dd55f35e8c815541d7f3dcca02e7f6e_1_4_0_collision_11" class="__DYNAMIC_MJT__" size="0.0313403 0.00206712 0.0857054" pos="0.0308623 -0.000235831 -0.000150576" quat="0 1 0.00055821 0" type="box" rgba="0 1 0 1" />
+      </body>
+      <body name="box_7dd55f35e8c815541d7f3dcca02e7f6e_1_5_0" pos="0.111415 0.0934206 0.000446581" quat="0.0778375 0 0 -0.996966">
+        <joint name="box_7dd55f35e8c815541d7f3dcca02e7f6e_1_5_0_box7flapinner1joint0_4" class="/" pos="0 0 0" axis="0 0 1" range="0 2.99746" damping="0.002" frictionloss="0.002" />
+        <geom name="box_7dd55f35e8c815541d7f3dcca02e7f6e_1_5_0_visual_12" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Cardboard_Mat1" mesh="Box_7_box_7_flap_inner_1" />
+        <geom name="box_7dd55f35e8c815541d7f3dcca02e7f6e_1_5_0_collision_13" class="__DYNAMIC_MJT__" size="0.0323605 0.00189859 0.0854049" pos="-0.0301422 -2.33564e-05 -0.000389691" quat="0 -0.00137125 -0.999999 0" type="box" rgba="0 1 0 1" />
+      </body>
+    </body>
+  </worldbody>
+  <contact>
+    <exclude name="mjt_pair_0" body1="box_7dd55f35e8c815541d7f3dcca02e7f6e_1_1_0" body2="box_7dd55f35e8c815541d7f3dcca02e7f6e_1_2_0" />
+    <exclude name="mjt_pair_1" body1="box_7dd55f35e8c815541d7f3dcca02e7f6e_1_1_0" body2="box_7dd55f35e8c815541d7f3dcca02e7f6e_1_3_0" />
+    <exclude name="mjt_pair_2" body1="box_7dd55f35e8c815541d7f3dcca02e7f6e_1_1_0" body2="box_7dd55f35e8c815541d7f3dcca02e7f6e_1_4_0" />
+    <exclude name="mjt_pair_3" body1="box_7dd55f35e8c815541d7f3dcca02e7f6e_1_1_0" body2="box_7dd55f35e8c815541d7f3dcca02e7f6e_1_5_0" />
+    <exclude name="mjt_pair_4" body1="box_7dd55f35e8c815541d7f3dcca02e7f6e_1_2_0" body2="box_7dd55f35e8c815541d7f3dcca02e7f6e_1_3_0" />
+    <exclude name="mjt_pair_5" body1="box_7dd55f35e8c815541d7f3dcca02e7f6e_1_2_0" body2="box_7dd55f35e8c815541d7f3dcca02e7f6e_1_4_0" />
+    <exclude name="mjt_pair_6" body1="box_7dd55f35e8c815541d7f3dcca02e7f6e_1_2_0" body2="box_7dd55f35e8c815541d7f3dcca02e7f6e_1_5_0" />
+    <exclude name="mjt_pair_7" body1="box_7dd55f35e8c815541d7f3dcca02e7f6e_1_3_0" body2="box_7dd55f35e8c815541d7f3dcca02e7f6e_1_4_0" />
+    <exclude name="mjt_pair_8" body1="box_7dd55f35e8c815541d7f3dcca02e7f6e_1_3_0" body2="box_7dd55f35e8c815541d7f3dcca02e7f6e_1_5_0" />
+    <exclude name="mjt_pair_9" body1="box_7dd55f35e8c815541d7f3dcca02e7f6e_1_4_0" body2="box_7dd55f35e8c815541d7f3dcca02e7f6e_1_5_0" />
+  </contact>
+</mujoco>

@@ -1,0 +1,14 @@
+# Living-room layout 002: the same pieces laid out along the y-axis.
+furniture:
+  - name: sofa
+    type: sofa
+    pos: [0.0, -2.2]
+    z_rot: 3.1416
+  - name: coffee_table
+    type: coffee_table
+    pos: [0.0, -0.8]
+    z_rot: 1.5708
+  - name: tv_stand
+    type: tv_stand
+    pos: [0.0, 2.3]
+    z_rot: 0.0

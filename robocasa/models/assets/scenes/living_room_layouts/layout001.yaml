@@ -1,0 +1,17 @@
+# Living-room layout 001: sofa / coffee table / TV stand along the x-axis,
+# sofa and TV facing each other. Floor spans roughly [-3, 3] in x and y.
+# pos is the planar (x, y) of the piece's center; resting height is derived
+# from the asset. z_rot is the yaw in radians.
+furniture:
+  - name: sofa
+    type: sofa
+    pos: [-2.2, 0.0]
+    z_rot: 1.5708
+  - name: coffee_table
+    type: coffee_table
+    pos: [-0.8, 0.0]
+    z_rot: 0.0
+  - name: tv_stand
+    type: tv_stand
+    pos: [2.3, 0.0]
+    z_rot: -1.5708

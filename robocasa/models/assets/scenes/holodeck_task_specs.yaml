@@ -1,0 +1,4252 @@
+default_asset_layouts:
+  # Desk-independent tasks still need a collision-safe, visually stable desk
+  # asset layout when these scenes are loaded.
+  train_1664: open_laptop
+  train_2025: open_laptop
+
+scenes:
+  train_1477:
+    approach_trash_can_then_lift_plant_then_place_plant_in_trash_can:
+      trash_can_body: holodeck1477_plant_workflow_trash_can
+      # Beside the atomic plant, shifted toward the robot to clear the tables.
+      bin_pos: [1.20, 5.0, 0.0]
+      robot_pose:
+        # Remote open floor, facing the plant-side bin.
+        pos: [0.75, 3.80, 0.0]
+        yaw: 1.5707963267948966
+      # Native scene-117 bin, Y-up in its body frame; include 5 mm clearance.
+      bin_inner_min: [-0.155, 0.075, -0.155]
+      bin_inner_max: [0.155, 0.61, 0.155]
+      # Shortest robot-to-bin collision distance for the first stage.
+      success_radius: 0.35
+
+    lift_plant_from_low_cabinet:
+      # Clear the low object beneath the robot's approach to the side table.
+      remove_scene_bodies:
+        - obja_b183e6af5d324e03913a4ca835fb291d_1_0_0
+      # The round side table nearest the leftmost window.
+      source_body: stand_007a3ac7acf8cfc943375cf9dded27c1_1_0_0
+      target_body: houseplant_70451f91981395edf773114de3a28b67_1_0_0
+      target_pose:
+        # Place the existing plant near the robot-facing edge of the table.
+        pos: [0.75, 5.4, 0.66533]
+        quat: [0.230209, 0.230210, 0.668581, 0.668585]
+      robot_pose:
+        # Stand closer to the south edge, facing the plant along +Y.
+        pos: [0.75, 5.05, 0.0]
+        yaw: 1.5707963267948966
+
+    cube_in_plate:
+      # Keep only the target plate on the coffee table for this task.
+      remove_scene_bodies:
+        - plate_f61129d9e389712b24d18993ffe91ff5_2_0_0
+      target_body: obja_a04ff652820c465da4ba7a427fd34417_1_0_0
+      target_pose:
+        # Cube and plate sit side by side near the table's -Y edge.
+        pos: [4.65, 5.20, 0.608939]
+        quat: [-0.116693, -0.116692, 0.69741, 0.697413]
+      plate_body: plate_f61129d9e389712b24d18993ffe91ff5_1_0_0
+      plate_pose:
+        pos: [4.40, 5.28, 0.591055]
+        quat: [0.700225, 0.700225, -0.0984102, -0.0984102]
+      table_body: coffeetable_b3f143252f435a2cbc346ca9563926cf_1_0_0
+      robot_pose:
+        pos: [4.50, 4.80, 0.0]
+        yaw: 1.5707963267948966
+
+    approach_window_then_cube_in_plate_then_open_laptop:
+      # The north-wall row, viewed from inside the room facing +Y.
+      window_body: window_76ae12c4dabc4895be686fe9df54801e_3_0_0
+      robot_pose:
+        # Reuse the clear floor area opposite the windows, facing the target.
+        pos: [5.45, 1.65, 0.0]
+        yaw: 1.5707963267948966
+      success_radius: 0.65
+      laptop_pose:
+        # Original scene-117 Laptop_26, on the cube's unchanged coffee table.
+        # Base bottom at z=0.577465, matching the baked collision tabletop.
+        pos: [4.90, 5.3, 0.652345]
+        quat: [0.7071067811865476, 0.7071067811865476, 0.0, 0.0]
+
+  train_117:
+    pick_book_from_dresser:
+      # Original book on the side table by the window.
+      source_body: stand_accd13ef606f3a2fbd33b6c6efb9184a_1_0_0
+      target_body: obja_229c536a8d6b445f8a21cf73f6c6dce9_1_0_0
+      robot_pose:
+        # 0.10 m shortest collision distance from the G1 to the source table.
+        pos: [5.19421348, 3.30, 0.0]
+        yaw: 0.0
+      # The baked book is narrower and lighter for a stable G1 grasp.
+      book_scale: [0.55, 1.0, 1.0]
+      book_density: 180.0
+      # Uniformly enlarge the side table around its foot plane. This raises
+      # the tabletop while preserving the original proportions and footprint.
+      source_table_scale: 1.2
+      book_pose:
+        # The scaled table top is at z ~= 0.620; preserve the original book
+        # to surface clearance so the book starts supported, not suspended.
+        # Move it 5 cm farther along the robot's +X viewing direction.
+        pos: [5.54421348, 3.30, 0.748084]
+        quat: [0.304415, 0.30442, -0.638221, -0.638227]
+      lift_delta: 0.15
+
+    pick_book_to_desk:
+      desk_body: desk_aeb6ab35aea76da67db0d3cd45d3e821_1_0_0
+      success_radius: 1.0
+
+    approach_trash_can:
+      trash_can_body: holodeck117_trash_can
+      robot_pose:
+        # Start 0.5 m farther along the trash-can-to-start direction and face
+        # the trash can directly.
+        pos: [3.976562, 4.951290, 0.0]
+        yaw: -2.834195180466972
+      composite_robot_pose:
+        # Start in the room corner opposite the desk and face the trash can.
+        pos: [0.6, 0.6, 0.0]
+        yaw: 1.648762960626439
+      # The desk/laptop/trash composite starts by approaching the desk.
+      desk_composite_robot_pose:
+        pos: [0.6, 0.6, 0.0]
+        yaw: 0.6921691387270338
+      success_radius: 1.0
+
+    approach_window:
+      # Rightmost window in the east-wall row; collision geometry is in the baked XML.
+      window_body: window_8d46bf775284cf92b31bf5fe02ddd4b4_3_0_0
+      lang: "walk to the rightmost window and stand nearby"
+      robot_pose:
+        # Start on the opposite side of the room.
+        pos: [0.6, 0.6, 0.0]
+        yaw: 0.0459877383419593
+      # The desk/laptop/window composite starts from this remote floor pose;
+      # the atomic window pose is also safely outside the desk region.
+      composite_robot_pose:
+        pos: [0.6, 0.6, 0.0]
+        # Face the desk for the first navigation stage.
+        yaw: 0.6921691387270338
+      success_radius: 1.2
+
+    throw_bottle_into_trash_can:
+      trash_can_body: holodeck117_trash_can
+      replaced_body: chair_3cd00cb1e425e822898c02ccf4e6984f_3_0_0
+      source_body: holodeck117_bottle_source_table
+      source_table_pose:
+        # Move the side table toward the nearby trash can while keeping a
+        # clear gap between their floor collision geometries.
+        pos: [0.50, 4.20, 0.0]
+        yaw: 0.0
+      source_surface_z: 0.70
+      source_table_half_size: [0.25, 0.20]
+      robot_pose:
+        # 0.10 m shortest collision distance from the G1 to the source table.
+        pos: [1.09107319, 4.15392845, 0.0]
+        # Face the bottle at the robot-facing (+X) table edge.
+        yaw: 3.075024489813971
+      bottle_scale: 1.4
+      bottle_pose:
+        # Keep the source bottle 0.45 m horizontally in front of the G1.
+        pos: [0.64206987, 4.18386200, 0.7773]
+        quat: [1.0, 0.0, 0.0, 0.0]
+
+    pick_box_from_floor:
+      # Open floor in the center of the office, clear of the baked furniture.
+      room_id: 0
+      robot_pose:
+        pos: [2.30, 3.00, 0.0]
+        yaw: 0.0
+      box_scale: 2.0
+      box_pose:
+        # Approximate doubled Box_19 root height; reset snaps its compiled
+        # lowest geometry exactly to the floor.
+        pos: [3.00, 3.00, 0.1580]
+        # Rotate the prefab's +Y opening normal to world +Z (up).
+        quat: [0.707107, 0.707107, 0.0, 0.0]
+
+    approach_window_then_pick_box:
+      # Put the box on the floor beside the window-side dining table.
+      box_pose:
+        pos: [4.30, 0.60, 0.1580]
+        quat: [0.707107, 0.707107, 0.0, 0.0]
+
+    place_box_on_floor:
+      room_id: 0
+      table_body: desk_aeb6ab35aea76da67db0d3cd45d3e821_1_0_0
+      robot_pose:
+        # Keep the larger box outside the G1 spawn collision envelope.
+        pos: [4.74990582, 4.8, 0.0]
+        yaw: 0.0
+      box_scale: 2.0
+      box_pose:
+        # Upright Box_19 rests on the desk top at approximately z=0.70.
+        # Raise the root 2 cm to avoid the baked desk collision slab while
+        # retaining a shallow stabilizing contact on the tabletop.
+        pos: [5.44990582, 4.8, 1.0000]
+        quat: [0.707107, 0.707107, 0.0, 0.0]
+      remove_scene_bodies:
+        - laptop_6ae82082b761fc8537b74b4d805f7cb1_1_0_0
+
+    place_box_on_desk:
+      room_id: 0
+      table_body: desk_aeb6ab35aea76da67db0d3cd45d3e821_1_0_0
+      robot_pose:
+        # Stand beside the desk and face south toward the floor box.
+        pos: [4.90, 4.50, 0.0]
+        yaw: -1.5707963267948966
+      box_scale: 1.75
+      box_pose:
+        # Keep the source box on the floor, 70 cm in front of the robot.
+        pos: [4.90, 3.80, 0.1580]
+        quat: [0.5, 0.5, 0.5, 0.5]
+      remove_scene_bodies:
+        - laptop_6ae82082b761fc8537b74b4d805f7cb1_1_0_0
+
+
+    close_laptop:
+      target_body: laptop_6ae82082b761fc8537b74b4d805f7cb1_1_0_0
+      target_joint: laptop_6ae82082b761fc8537b74b4d805f7cb1_1_1_0_laptoplid26joint0_1
+      robot_pose:
+        # 0.10 m shortest collision distance from the G1 to the operating desk.
+        pos: [4.99989971, 4.0661376, 0.0]
+        yaw: 0.0
+      closed_qpos: 1.5708
+      open_qpos: 0.0
+
+    open_laptop:
+      target_body: laptop_6ae82082b761fc8537b74b4d805f7cb1_1_0_0
+      target_joint: laptop_6ae82082b761fc8537b74b4d805f7cb1_1_1_0_laptoplid26joint0_1
+      robot_pose:
+        # 0.10 m shortest collision distance from the G1 to the operating desk.
+        pos: [4.99989971, 4.0661376, 0.0]
+        yaw: 0.0
+      closed_qpos: 1.5708
+      open_qpos: 0.0
+
+    open_cabinet_door:
+      # Rightmost credenza door, nearest to the office desk.
+      target_fixture: chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_0_0
+      target_joint: chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_8_0_CabinetDoorMesh041_3
+      lang: "Open the rightmost cabinet door."
+      robot_pose:
+        pos: [4.30, 4.85, 0.0]
+        yaw: 1.0
+      init_open_fraction: 0.20
+      success_open_fraction: 0.80
+      closed_qpos: 0.0
+      open_qpos: -1.5708
+      hold_seconds: 1.0
+
+    open_drawer:
+      target_fixture: chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_0_0
+      target_joint: chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_16_0_DrawerMesh041_7
+      lang: "Open the dresser drawer closest to the desk."
+      robot_pose:
+        pos: [4.65, 4.85, 0.0]
+        yaw: 1.5707963267948966
+      init_open_fraction: 0.0
+      success_open_fraction: 0.90
+      closed_qpos: 0.0
+      open_qpos: 0.172
+      hold_steps: 10
+
+    take_tissue_box_from_open_drawer:
+      target_fixture: chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_0_0
+      target_joint: chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_16_0_DrawerMesh041_7
+      target_table_body: desk_aeb6ab35aea76da67db0d3cd45d3e821_1_0_0
+      robot_pose:
+        pos: [4.65, 4.85, 0.0]
+        yaw: 1.5707963267948966
+      init_open_fraction: 1.0
+      success_open_fraction: 0.50
+      closed_qpos: 0.0
+      open_qpos: 0.172
+      lang: "Take the tissue box out of the open drawer."
+
+    open_drawer_then_take_tissue_box:
+      target_fixture: chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_0_0
+      target_joint: chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_16_0_DrawerMesh041_7
+      target_table_body: desk_aeb6ab35aea76da67db0d3cd45d3e821_1_0_0
+      robot_pose:
+        pos: [4.65, 4.85, 0.0]
+        yaw: 1.5707963267948966
+      init_open_fraction: 0.0
+      success_open_fraction: 0.90
+      closed_qpos: 0.0
+      open_qpos: 0.172
+      hold_steps: 10
+      lang: "Open the dresser drawer closest to the desk, then take out the tissue box."
+
+    open_drawer_take_tissue_box_to_desk:
+      target_fixture: chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_0_0
+      target_joint: chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_16_0_DrawerMesh041_7
+      target_table_body: desk_aeb6ab35aea76da67db0d3cd45d3e821_1_0_0
+      robot_pose:
+        pos: [4.65, 4.85, 0.0]
+        yaw: 1.5707963267948966
+      init_open_fraction: 0.0
+      success_open_fraction: 0.90
+      closed_qpos: 0.0
+      open_qpos: 0.172
+      hold_steps: 10
+      lang: "Open the dresser drawer closest to the desk, then take out the tissue box."
+
+    close_drawer:
+      target_fixture: chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_0_0
+      target_joint: chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_16_0_DrawerMesh041_7
+      lang: "Close the dresser drawer closest to the desk."
+      robot_pose:
+        pos: [4.65, 4.85, 0.0]
+        yaw: 1.5707963267948966
+      init_open_fraction: 1.0
+      success_close_fraction: 0.10
+      closed_qpos: 0.0
+      open_qpos: 0.172
+      hold_steps: 10
+
+    ice_cube_in_glass:
+      table_body: diningtable_5998373f8cc3a5cf95fd99d754406513_1_0_0
+      robot_pose:
+        # 0.10 m shortest collision distance from the G1 to the operating table.
+        pos: [4.57380371, 1.45, 0.0]
+        yaw: 0.0
+      object_scale: 1.52
+      cup_pose:
+        # Keep the cup 0.45 m from the robot while preserving its depth and height.
+        pos: [5.00609412, 1.575, 0.8153238]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      ice_pose:
+        pos: [5.02380371, 1.45, 0.759105]
+        quat: [1.0, 0.0, 0.0, 0.0]
+
+    ice_cube_then_place_cup:
+      # Both source objects start on the desk that carries the placemat target.
+      table_body: desk_aeb6ab35aea76da67db0d3cd45d3e821_1_0_0
+      robot_pose:
+        pos: [4.95, 4.8, 0.0]
+        yaw: 0.0
+      object_scale: 1.52
+      cup_pose:
+        pos: [5.45, 4.8, 0.7773]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      # Keep the ice close to the cup while leaving the two objects separately
+      # graspable from the near desk edge.
+      ice_pose:
+        pos: [5.45, 4.65, 0.72108]
+        quat: [1.0, 0.0, 0.0, 0.0]
+
+    ice_cube_then_approach_window_then_pick_box:
+      # This composite uses the calibrated office desk, not the dining table
+      # used by the standalone ice-cube task.  The laptop is removed so the
+      # cup and ice have a clear, shared tabletop workspace.
+      table_body: desk_aeb6ab35aea76da67db0d3cd45d3e821_1_0_0
+      remove_scene_bodies:
+        - laptop_6ae82082b761fc8537b74b4d805f7cb1_1_0_0
+      robot_pose:
+        # Stand directly in front of the ice cube and face it (+X).
+        pos: [4.95, 4.45, 0.0]
+        yaw: 0.0
+      object_scale: 1.52
+      cup_pose:
+        # Keep the cup close to the ice while leaving both objects separately graspable.
+        pos: [5.45, 4.60, 0.7773]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      ice_pose:
+        pos: [5.45, 4.45, 0.72108]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      box_pose:
+        # Grounded beside the window-side dining table and close to the wall.
+        pos: [4.3, 0.60, 0.1580]
+        quat: [0.707107, 0.707107, 0.0, 0.0]
+
+    open_mug_lid:
+      table_body: desk_aeb6ab35aea76da67db0d3cd45d3e821_1_0_0
+      robot_pose:
+        # 0.10 m shortest collision distance from the G1 to the operating desk.
+        pos: [4.99989361, 4.8, 0.0]
+        yaw: 0.0
+      object_scale: 1.0
+      mug_pose:
+        # Jar004 bottom at this pose rests on the calibrated desk surface.
+        pos: [5.44989361, 4.8, 0.77440]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      lid_pose:
+        pos: [5.44989361, 4.8, 0.87049]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      open_distance: 0.10
+
+    close_mug_lid:
+      table_body: diningtable_5998373f8cc3a5cf95fd99d754406513_1_0_0
+      robot_pose:
+        # 0.10 m shortest collision distance from the G1 to the operating table.
+        pos: [4.57380371, 1.45, 0.0]
+        yaw: 0.0
+      object_scale: 1.0
+      mug_pose:
+        # Keep the jar about 0.45 m from the fixed 0.10 m table-edge standoff.
+        pos: [5.02380371, 1.45, 0.70740]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      # Place the lid on the robot's left while keeping it about 0.45 m away.
+      open_lid_pose:
+        pos: [4.97691660, 1.65, 0.65500]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      closed_lid_pose:
+        pos: [5.02380371, 1.45, 0.80349]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      close_distance: 0.04
+
+    sugar_cube_in_jar:
+      table_body: diningtable_5998373f8cc3a5cf95fd99d754406513_1_0_0
+      robot_pose:
+        # 0.10 m shortest collision distance from the G1 to the operating table.
+        pos: [4.57380371, 1.45, 0.0]
+        yaw: 0.0
+      jar_scale: 1.0
+      jar_pose:
+        pos: [5.15, 1.45, 0.70740]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      # Keep the jar and lid together, with the cube in a separate supported
+      # position outside the jar.
+      lid_pose:
+        pos: [5.15, 1.67, 0.65500]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      sugar_pose:
+        # Preserve the supported 0.05 m-grid layout while increasing the
+        # robot-to-sugar spacing by 0.15 m.
+        pos: [5.12380371, 1.55, 0.65400]
+        quat: [1.0, 0.0, 0.0, 0.0]
+
+    sugar_cube_then_close_jar:
+      table_body: diningtable_5998373f8cc3a5cf95fd99d754406513_1_0_0
+      robot_pose:
+        pos: [4.57380371, 1.45, 0.0]
+        yaw: 0.0
+      jar_scale: 1.0
+      # Keep all three objects at the sugar cube's distance from the table
+      # long edge, ordered along that edge: sugar cube, jar, lid.
+      jar_pose:
+        pos: [5.12380371, 1.45, 0.70740]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      lid_pose:
+        pos: [5.12380371, 1.65, 0.65500]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      sugar_pose:
+        pos: [5.12380371, 1.25, 0.65400]
+        quat: [1.0, 0.0, 0.0, 0.0]
+
+    push_chair_to_desk:
+      chair_body: chair_d1ece0a380cf81a8d48fd1ffe684e8c7_1_0_0
+      chair_joint: chair_d1ece0a380cf81a8d48fd1ffe684e8c7_1_0_0_jntfree_0
+      desk_body: desk_aeb6ab35aea76da67db0d3cd45d3e821_1_0_0
+      chair_start_pose:
+        pos: [4.2, 4.8, 0.424305]
+        quat: [0.5, 0.5, 0.5, 0.5]
+      robot_pose:
+        pos: [3.53, 4.8, 0.0]
+        yaw: 0.0
+      target_xy: [5.2, 4.8]
+      target_tolerance: [0.3, 1.5]
+      show_target_region: false
+      upright_local_axis: [0.0, 1.0, 0.0]
+      min_upright_cosine: 0.90
+      max_linear_speed: 0.08
+      max_angular_speed: 0.30
+
+    approach_desk:
+      desk_body: desk_aeb6ab35aea76da67db0d3cd45d3e821_1_0_0
+      robot_pose:
+        pos: [3.5, 4.8, 0.0]
+        yaw: 0.0
+      success_radius: 1.0
+
+    pick_cup_from_desk:
+      table_body: desk_aeb6ab35aea76da67db0d3cd45d3e821_1_0_0
+      robot_pose:
+        # 0.10 m shortest collision distance from the G1 to the operating desk.
+        pos: [4.99990582, 4.8, 0.0]
+        yaw: 0.0
+      object_scale: 1.52
+      cup_pose:
+        pos: [5.44990582, 4.8, 0.7773]
+        quat: [1.0, 0.0, 0.0, 0.0]
+
+    place_cup_on_placemat:
+      table_body: desk_aeb6ab35aea76da67db0d3cd45d3e821_1_0_0
+      robot_pose:
+        # 0.10 m shortest collision distance from the G1 to the operating desk.
+        pos: [4.99989361, 4.8, 0.0]
+        yaw: 0.0
+      cup_scale: 1.52
+      cup_pose:
+        pos: [5.44989361, 4.8, 0.7773]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      placemat_scale: 1.0
+      placemat_pose:
+        # Keep the target close to, but distinct from, the calibrated cup pose.
+        pos: [5.55, 5.03, 0.7015]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      target_half_size: [0.198, 0.146, 0.01]
+      support_z: 0.69991
+
+    pick_cup_then_approach_desk_then_place_cup_on_placemat:
+      # The cup starts on the dining table; the placemat remains on the desk
+      # configured by place_cup_on_placemat above.
+      source_table_body: diningtable_5998373f8cc3a5cf95fd99d754406513_1_0_0
+      source_robot_pose:
+        # Keep the G1 45 cm from the source cup on the dining table.
+        pos: [4.57380371, 1.45, 0.0]
+        yaw: 0.0
+      source_cup_pose:
+        pos: [5.00609412, 1.575, 0.8153238]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      source_support_z: 0.73793604
+
+    move_cup_to_center:
+      desk_body: desk_aeb6ab35aea76da67db0d3cd45d3e821_1_0_0
+      robot_pose:
+        # Stand 10 cm outside the desk's near long edge and face the cup.
+        pos: [5.000000000000, 4.400000000000, 0.0]
+        yaw: 0.0
+      cup_scale: 1.52
+      cup_pose:
+        # Place the cup 20 cm inside the near long edge and 10 cm before the
+        # target region along the desk's long axis.
+        pos: [5.50, 4.400000000000, 0.7773]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      # Explicit source position shared by center and corner variants.
+      initial_cup_base_xy: [5.50, 4.400000000000]
+      # Green central placement area: 0.30 m by 0.60 m.
+      target_base_xy: [5.67, 4.80]
+      target_tolerance: [0.15, 0.30]
+      # Collision top-slab XY bounds, measured after MuJoCo compilation.
+      tabletop_bounds_xy: [[5.3452173, 3.7746968], [6.0023979, 5.8152970]]
+      support_z: 0.69991
+      support_z_tolerance: 0.04
+      upright_local_axis: [0.0, 0.0, 1.0]
+      min_upright_cosine: 0.90
+      max_linear_speed: 0.08
+      max_angular_speed: 0.30
+
+    move_cup_to_corner:
+      desk_body: desk_aeb6ab35aea76da67db0d3cd45d3e821_1_0_0
+      robot_pose:
+        # G1 faces the cup from the desk edge with 0.10 m collision clearance.
+        pos: [5.000000000000, 4.100000000000, 0.0]
+        yaw: 0.0
+      cup_scale: 1.52
+      cup_pose:
+        # Match the center task's 20 cm near-edge cup placement while keeping
+        # the source aligned with the robot-side corner target.
+        pos: [5.50, 4.1, 0.7773]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      initial_cup_base_xy: [5.50, 4.1]
+      target_base_xy: [5.67, 4.80]
+      target_tolerance: [0.15, 0.30]
+      corner_target_base_xys: [[5.4652173, 3.8946968], [5.4652173, 5.6952970]]
+      tabletop_bounds_xy: [[5.3452173, 3.7746968], [6.0023979, 5.8152970]]
+      support_z: 0.69991
+      support_z_tolerance: 0.04
+      upright_local_axis: [0.0, 0.0, 1.0]
+      min_upright_cosine: 0.90
+      max_linear_speed: 0.08
+      max_angular_speed: 0.30
+
+    pull_chair_from_desk:
+      # Replace the scene-exported structural chair with the same dynamic
+      # Chair_313_1 asset used by the other sliding-chair calibrations.
+      fixture_mode: spawn_asset
+      chair_asset: objects/thor/Common Objects/Chair/Prefabs/Chair_313_1/Chair_313_1.xml
+      chair_body: holodeck_task_chair_Chair_313_1
+      chair_joint: holodeck_task_chair_Chair_313_1_free
+      desk_body: desk_aeb6ab35aea76da67db0d3cd45d3e821_1_0_0
+      remove_scene_bodies:
+        - chair_d1ece0a380cf81a8d48fd1ffe684e8c7_1_0_0
+      chair_start_pose:
+        # With the task orientation below, this height puts the lowest
+        # collision box on the scene floor instead of spawning the chair in
+        # the air and letting gravity drop it during reset.
+        # Move the chair out along the pull axis so its seat collision box
+        # clears the desk's lower frame before the pull begins.
+        pos: [4.95, 4.7, 0.429]
+        quat: [0.5, 0.5, 0.5, 0.5]
+      chair_collision_local_y_offset: -0.0036
+      disable_chair_desk_collisions: false
+      disable_desk_drawer_collisions: false
+      robot_pose:
+        pos: [4.28, 4.7, 0.0]
+        yaw: 0.0
+      target_xy: [4.2, 4.7]
+      target_tolerance: [0.3, 1.5]
+      show_target_region: false
+      upright_local_axis: [0.0, 1.0, 0.0]
+      min_upright_cosine: 0.90
+      max_linear_speed: 0.12
+      max_angular_speed: 0.45
+
+  train_1018:
+    insert_folder_into_shelf:
+      shelf_body: chestofdrawers_192fae93d3058f720017885d21c8146a_2_0_0
+      # Nearest desk is the folder's initial support surface.
+      source_table_body: desk_699341cef0b075b18b23569c42fb1e52_1_0_0
+      robot_pose:
+        # Stand beside the desk, about 0.10 m beyond its collision edge.
+        pos: [3.81, 2.20, 0.0]
+        # Face the folder on the desk's shelf-facing side.
+        yaw: 3.141592653589793
+      # green_folder001 is a folder-shaped, taller/thinner rigid asset.
+      # Compress the local depth axis; after the spine-up rotation this is the
+      # robot-facing thickness, while the local spine length stays unchanged.
+      folder_scale: [0.7, 0.5, 0.7]
+      folder_pose:
+        # Rotate the spine edge upright and toward the robot. The folder sits
+        # on the desk near the shelf-facing edge, 0.45 m from the G1. Lower
+        # the root to keep the scaled bbox in shallow contact with the desk.
+        pos: [3.36, 2.20, 0.9035]
+        # Spine points along the calibrated desk-side pose.
+        quat: [0.707107, 0.0, -0.707107, 0.0]
+      source_center: [3.3078, 2.2000, 0.7915]
+      source_half_size: [0.20, 1.00, 0.08]
+      # Middle open region of the baked THOR ShelvingUnit.
+      region_center: [3.48652, 2.82253, 0.924]
+      region_half_size: [0.32, 0.18, 0.20]
+      lang: "pick up the folder from the nearest desk and insert it into the middle shelf of the file rack"
+
+    remove_folder_from_shelf:
+      shelf_body: chestofdrawers_192fae93d3058f720017885d21c8146a_2_0_0
+      robot_pose:
+        pos: [3.8, 2.4, 0.0]
+        # Face the ShelvingUnit from the approach aisle (+Y direction).
+        yaw: 1.5707963267948966
+      # Match the insert task's taller/thinner folder and spine-facing pose.
+      folder_scale: [0.7, 0.5, 0.7]
+      # Resting pose in the same calibrated middle region. Lower the root so
+      # the scaled folder keeps shallow contact with the shelf floor without
+      # penetrating the divider above it.
+      folder_pose:
+        # Move the folder toward the robot so its rear edge clears the back
+        # panel of the ShelvingUnit.
+        pos: [3.70, 2.78, 0.897]
+        # Keep the folder upright and turn its face another 180 degrees around Z.
+        quat: [0.5, -0.5, -0.5, -0.5]
+      region_center: [3.48652, 2.82253, 0.924]
+      # The rotated folder uses the full depth of the middle shelf opening.
+      region_half_size: [0.32, 0.18, 0.20]
+      source_center: [3.48652, 2.82253, 0.924]
+      source_half_size: [0.32, 0.18, 0.20]
+      lang: "grasp the folder from the middle shelf and move it completely outside the shelf space"
+
+    open_drawer:
+      target_fixture: chestofdrawers_192fae93d3058f720017885d21c8146a_1_0_0
+      target_joint: chestofdrawers_192fae93d3058f720017885d21c8146a_1_8_0_DrawerMesh051_3
+      lang: "Open the left drawer in the third row down from the top of the dresser in the study room."
+      robot_pose:
+        pos: [7.34, 2.25, 0.0]
+        yaw: 1.5707963267948966
+      init_open_fraction: 0.20
+      success_open_fraction: 0.80
+      closed_qpos: 0.0
+      open_qpos: 0.216
+      hold_steps: 10
+
+    take_tissue_box_from_open_drawer:
+      target_fixture: chestofdrawers_192fae93d3058f720017885d21c8146a_1_0_0
+      target_joint: chestofdrawers_192fae93d3058f720017885d21c8146a_1_8_0_DrawerMesh051_3
+      target_table_body: desk_0ecf411cb557754bf283627e911b16c6_1_0_0
+      robot_pose:
+        pos: [7.34, 2.25, 0.0]
+        yaw: 1.5707963267948966
+      # The original atomic pose puts the G1 right hand inside the dresser
+      # when this composite is initialized. Keep the atomic calibration intact
+      # and use a collision-free pose for this task only.
+      composite_robot_pose:
+        pos: [7.0, 2.25, 0.0]
+        yaw: 0.7073878461355123
+      # This composite has no separate navigation stage between the drawer
+      # and cup actions. Keep both cup objects on the nearby desk beside the
+      # drawer robot pose; the baked laptop on this desk is removed only by
+      # HolodeckTakeTissueBoxThenPlaceCup.
+      composite_cup_layout:
+        table_body: desk_0ecf411cb557754bf283627e911b16c6_1_0_0
+        robot_pose:
+          pos: [7.0, 2.25, 0.0]
+          yaw: 0.7073878461355123
+        cup_scale: 1.52
+        cup_pose:
+          # Put the cup at the robot-facing (+Y) side of the desk.
+          pos: [7.55, 1.02, 0.8009]
+          quat: [1.0, 0.0, 0.0, 0.0]
+        placemat_scale: 1.0
+        placemat_pose:
+          # Leave a clear initial gap while keeping the mat on the same desk.
+          pos: [7.55, 0.68, 0.7248]
+          quat: [1.0, 0.0, 0.0, 0.0]
+        target_half_size: [0.198, 0.146, 0.01]
+        support_z: 0.72347
+      init_open_fraction: 1.0
+      success_open_fraction: 0.50
+      closed_qpos: 0.0
+      open_qpos: 0.216
+      lang: "Take the tissue box out of the open drawer."
+
+    open_drawer_then_take_tissue_box:
+      target_fixture: chestofdrawers_192fae93d3058f720017885d21c8146a_1_0_0
+      target_joint: chestofdrawers_192fae93d3058f720017885d21c8146a_1_8_0_DrawerMesh051_3
+      target_table_body: desk_0ecf411cb557754bf283627e911b16c6_1_0_0
+      robot_pose:
+        pos: [7.34, 2.25, 0.0]
+        yaw: 1.5707963267948966
+      init_open_fraction: 0.20
+      success_open_fraction: 0.90
+      closed_qpos: 0.0
+      open_qpos: 0.216
+      hold_steps: 10
+      lang: "Open the study dresser drawer, then take out the tissue box."
+
+    close_drawer:
+      target_fixture: chestofdrawers_192fae93d3058f720017885d21c8146a_1_0_0
+      target_joint: chestofdrawers_192fae93d3058f720017885d21c8146a_1_8_0_DrawerMesh051_3
+      lang: "Close the left drawer in the third row down from the top of the dresser in the study room."
+      robot_pose:
+        pos: [7.34, 2.25, 0.0]
+        yaw: 1.5707963267948966
+      init_open_fraction: 1.0
+      success_close_fraction: 0.10
+      closed_qpos: 0.0
+      open_qpos: 0.216
+      hold_steps: 10
+    pick_book_from_dresser:
+      # Room2 bookcase-0: the open, multi-level bookcase beside the study door.
+      # Clear the two baked shelf objects and place a compact vertical book
+      # with its spine toward the robot for an unobstructed grasp.
+      source_body: obja_41625486719240a5a27882771dc1bc9e_1_0_0
+      robot_pose:
+        # 0.10 m shortest collision distance from the G1 to the source bookcase.
+        pos: [7.41427139, 2.00, 0.0]
+        yaw: 0.0
+      # The shelf openings are only about 0.28 m high; the 0.75x book leaves
+      # clearance from both the shelf floor and the divider above it.
+      book_scale: 0.75
+      book_pose:
+        # The upper shelf floor is at z ~= 0.712; this center height places
+        # the scaled book on that floor with clearance below the next divider.
+        # The X half-turn corrects Book_3's vertically inverted cover texture.
+        # Center it within the shelf depth so its scaled footprint has about
+        # 3 cm clearance from both the front and rear shelf boundaries.
+        pos: [7.88000000, 2.00, 0.829]
+        quat: [0.0, 1.0, 0.0, 0.0]
+      lift_delta: 0.15
+
+    pick_book_to_desk:
+      desk_body: desk_0ecf411cb557754bf283627e911b16c6_1_0_0
+      success_radius: 1.0
+
+    close_laptop:
+      target_body: laptop_6ae82082b761fc8537b74b4d805f7cb1_1_0_0
+      target_joint: laptop_6ae82082b761fc8537b74b4d805f7cb1_1_1_0_laptoplid26joint0_1
+      robot_pose:
+        # 0.10 m shortest collision distance from the G1 to the operating desk.
+        pos: [7.04658770, 0.89, 0.0]
+        yaw: 0.0
+      composite_robot_pose:
+        # Move 2.3 cm east to retain the trash-can separation margin while
+        # preserving the laptop-facing orientation and floor clearance.
+        pos: [7.07000000, 0.89, 0.0]
+        yaw: 0.0
+      closed_qpos: 1.5708
+      open_qpos: 0.0
+
+    open_laptop:
+      target_body: laptop_6ae82082b761fc8537b74b4d805f7cb1_1_0_0
+      target_joint: laptop_6ae82082b761fc8537b74b4d805f7cb1_1_1_0_laptoplid26joint0_1
+      robot_pose:
+        # 0.10 m shortest collision distance from the G1 to the operating desk.
+        pos: [7.04657549, 0.89, 0.0]
+        yaw: 0.0
+      closed_qpos: 1.5708
+      open_qpos: 0.0
+
+    ice_cube_in_glass:
+      table_body: desk_699341cef0b075b18b23569c42fb1e52_1_0_0
+      robot_pose:
+        # 0.10 m shortest collision distance from the G1 to the operating desk.
+        pos: [3.81892754, 1.25, 0.0]
+        yaw: 3.141592653589793
+      object_scale: 1.52
+      cup_pose:
+        # Keep the cup 0.45 m from the robot while preserving its depth and height.
+        pos: [3.38663713, 1.125, 0.874]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      ice_pose:
+        pos: [3.36892754, 1.25, 0.818]
+        quat: [1.0, 0.0, 0.0, 0.0]
+
+    ice_cube_then_approach_window_then_pick_box:
+      # Start with the standalone ice layout, then reuse the window workflow's
+      # scene-local floor box without changing either atomic calibration.
+      table_body: desk_699341cef0b075b18b23569c42fb1e52_1_0_0
+      robot_pose:
+        pos: [3.81892754, 1.25, 0.0]
+        yaw: 3.141592653589793
+      object_scale: 1.52
+      cup_pose:
+        pos: [3.38663713, 1.125, 0.874]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      ice_pose:
+        pos: [3.36892754, 1.25, 0.818]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      box_pose:
+        pos: [4.50, 0.70, 0.1580]
+        quat: [0.707107, 0.707107, 0.0, 0.0]
+
+    ice_cube_then_place_cup:
+      # This composite shares the desk targeted by approach_desk so navigation
+      # and all tabletop manipulation stages use one physical work surface.
+      table_body: desk_0ecf411cb557754bf283627e911b16c6_1_0_0
+      remove_scene_bodies:
+        - laptop_6ae82082b761fc8537b74b4d805f7cb1_1_0_0
+      robot_pose:
+        # Start directly in front of the desk, matching the desk-facing
+        # calibration used by the laptop workflow.
+        pos: [7.04658770, 0.89, 0.0]
+        yaw: 0.0
+      object_scale: 1.52
+      cup_scale: 1.52
+      cup_pose:
+        pos: [7.55, 0.82, 0.8009]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      placemat_scale: 1.0
+      placemat_pose:
+        # Move the target onto the same desk as the cup and ice cube.
+        pos: [7.55, 0.48, 0.7248]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      target_half_size: [0.198, 0.146, 0.01]
+      support_z: 0.72347
+      ice_pose:
+        # Keep the ice close to the cup while leaving a small graspable gap.
+        pos: [7.55, 1.00, 0.7248]
+        quat: [1.0, 0.0, 0.0, 0.0]
+
+    open_mug_lid:
+      # Reuse the clear placemat desk from close_mug_lid. The other desk's
+      # baked laptop intersects the jar at its calibrated placement.
+      table_body: desk_699341cef0b075b18b23569c42fb1e52_1_0_0
+      robot_pose:
+        # 0.10 m shortest collision distance from the G1 to the operating desk.
+        pos: [3.81892754, 1.25, 0.0]
+        yaw: 3.141592653589793
+      object_scale: 1.0
+      mug_pose:
+        # Keep the jar 0.45 m in front of the robot, matching train_117.
+        pos: [3.36892754, 1.25, 0.86600]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      lid_pose:
+        pos: [3.36892754, 1.25, 0.96209]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      open_distance: 0.10
+
+    approach_desk_then_open_jar:
+      # The standalone jar uses the other study desk. Keep this composite's
+      # jar on the exact desk targeted by approach_desk.
+      table_body: desk_0ecf411cb557754bf283627e911b16c6_1_0_0
+      remove_scene_bodies:
+        - laptop_6ae82082b761fc8537b74b4d805f7cb1_1_0_0
+      robot_pose:
+        pos: [5.35, 1.25, 0.0]
+        yaw: 0.0
+      object_scale: 1.0
+      mug_pose:
+        pos: [7.55, 1.02, 0.7983895]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      lid_pose:
+        pos: [7.55, 1.02, 0.8944795]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      open_distance: 0.10
+
+    close_mug_lid:
+      table_body: desk_699341cef0b075b18b23569c42fb1e52_1_0_0
+      robot_pose:
+        # 0.10 m shortest collision distance from the G1 to the operating desk.
+        pos: [3.81892754, 1.25, 0.0]
+        yaw: 3.141592653589793
+      # The close-jar composite starts just outside the desk's open edge so
+      # the lid remains reachable without spawning inside scene geometry or
+      # the trash-can navigation success region.
+      composite_robot_pose:
+        pos: [3.90, 1.45, 0.0]
+        yaw: -2.774418819771574
+      object_scale: 1.0
+      mug_pose:
+        # Keep the jar about 0.45 m from the fixed 0.10 m table-edge standoff.
+        pos: [3.36892754, 1.25, 0.86600]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      # Place the lid beside the jar while keeping it about 0.45 m away.
+      open_lid_pose:
+        pos: [3.41581465, 1.45, 0.81000]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      closed_lid_pose:
+        pos: [3.36892754, 1.25, 0.96209]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      close_distance: 0.04
+
+    sugar_cube_in_jar:
+      table_body: desk_699341cef0b075b18b23569c42fb1e52_1_0_0
+      robot_pose:
+        # 0.10 m shortest collision distance from the G1 to the operating desk.
+        pos: [3.81892754, 1.25, 0.0]
+        yaw: 3.141592653589793
+      jar_scale: 1.0
+      jar_pose:
+        pos: [3.23, 1.25, 0.86600]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      # Keep the jar and lid together, with the cube in a separate supported
+      # position outside the jar.
+      lid_pose:
+        pos: [3.23, 1.47, 0.81000]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      sugar_pose:
+        pos: [3.36892754, 1.25, 0.81300]
+        quat: [1.0, 0.0, 0.0, 0.0]
+
+    sugar_cube_then_close_jar:
+      table_body: desk_699341cef0b075b18b23569c42fb1e52_1_0_0
+      robot_pose:
+        pos: [3.81892754, 1.25, 0.0]
+        yaw: 3.141592653589793
+      jar_scale: 1.0
+      # Keep all three objects at the sugar cube's distance from the table
+      # long edge, ordered along that edge: sugar cube, jar, lid.
+      jar_pose:
+        pos: [3.36892754, 1.25, 0.86600]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      lid_pose:
+        pos: [3.36892754, 1.45, 0.81000]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      sugar_pose:
+        pos: [3.36892754, 1.05, 0.81300]
+        quat: [1.0, 0.0, 0.0, 0.0]
+
+    move_cup_to_center:
+      # Keep the cup composite on its original calibrated desk in room 2.
+      desk_body: desk_699341cef0b075b18b23569c42fb1e52_1_0_0
+      robot_pose:
+        # 0.10 m shortest collision distance from the G1 to the operating desk.
+        pos: [3.7261299324, 1.4109423525, 0.0]
+        yaw: 2.8274333882
+      cup_scale: 1.52
+      cup_pose:
+        # Start strictly to the robot's right of the target, not fore or aft.
+        pos: [3.2981545000, 1.5500000000, 0.8689]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      # Explicit source position shared by center and corner variants.
+      initial_cup_base_xy: [3.2981545000, 1.5500000000]
+      target_base_xy: [3.25, 1.25]
+      # Original central placement area: 0.32 m by 0.40 m.
+      target_tolerance: [0.16, 0.20]
+      # Collision top-slab XY bounds, measured after MuJoCo compilation.
+      tabletop_bounds_xy: [[3.0049985, 0.1241401], [3.4981545, 2.3833801]]
+      support_z: 0.7915
+      support_z_tolerance: 0.04
+      upright_local_axis: [0.0, 0.0, 1.0]
+      min_upright_cosine: 0.90
+      max_linear_speed: 0.08
+      max_angular_speed: 0.30
+
+    approach_desk_then_move_cup_to_center:
+      # Keep the navigation and manipulation stages on the same study desk;
+      # the standalone move-cup task remains on desk_6993.
+      desk_body: desk_0ecf411cb557754bf283627e911b16c6_1_0_0
+      remove_scene_bodies:
+        - laptop_6ae82082b761fc8537b74b4d805f7cb1_1_0_0
+      robot_pose:
+        pos: [5.35, 1.25, 0.0]
+        yaw: 0.0
+      cup_scale: 1.52
+      cup_pose:
+        pos: [7.55, 0.48, 0.8009]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      initial_cup_base_xy: [7.55, 0.48]
+      target_base_xy: [7.55, 0.89]
+      target_tolerance: [0.15, 0.30]
+      tabletop_bounds_xy: [[7.40, 0.25], [7.70, 1.55]]
+      support_z: 0.72347
+      support_z_tolerance: 0.04
+      upright_local_axis: [0.0, 0.0, 1.0]
+      min_upright_cosine: 0.90
+      max_linear_speed: 0.08
+      max_angular_speed: 0.30
+
+    move_cup_to_corner:
+      desk_body: desk_699341cef0b075b18b23569c42fb1e52_1_0_0
+      robot_pose:
+        # G1 faces the cup from the desk edge with 0.10 m collision clearance.
+        pos: [3.7933718000, 2.0580803000, 0.0]
+        yaw: 3.141592653589793
+      cup_scale: 1.52
+      cup_pose:
+        # Match train_117: keep the cup farther inside the near edge and
+        # farther from the robot-side corner target.
+        pos: [3.3433718000, 2.0580803000, 0.8689]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      initial_cup_base_xy: [3.3433718000, 2.0580803000]
+      target_base_xy: [3.25, 1.25]
+      target_tolerance: [0.16, 0.20]
+      corner_target_base_xys: [[3.3781545, 0.2441401], [3.3781545, 2.2633801]]
+      tabletop_bounds_xy: [[3.0049985, 0.1241401], [3.4981545, 2.3833801]]
+      support_z: 0.7915
+      support_z_tolerance: 0.04
+      upright_local_axis: [0.0, 0.0, 1.0]
+      min_upright_cosine: 0.90
+      max_linear_speed: 0.08
+      max_angular_speed: 0.30
+
+    push_chair_to_desk:
+      chair_body: chair_289e7d48c03d83bd231ca60ace65650b_1_0_0
+      chair_joint: chair_289e7d48c03d83bd231ca60ace65650b_1_0_0_jntfree_0
+      desk_body: desk_0ecf411cb557754bf283627e911b16c6_1_0_0
+      chair_start_pose:
+        pos: [6.00, 0.72, 0.495666]
+        # The chair back is on the outside (-X); its seat faces the desk (+X).
+        quat: [0.5, 0.5, 0.5, 0.5]
+      robot_pose:
+        pos: [5.33, 0.72, 0.0]
+        yaw: 0.0
+      # Push the chair farther beneath the laptop desk before succeeding.
+      target_xy: [7.45, 0.72]
+      target_tolerance: [0.05, 1.50]
+      show_target_region: false
+      upright_local_axis: [0.0, 1.0, 0.0]
+      min_upright_cosine: 0.90
+      max_linear_speed: 0.08
+      max_angular_speed: 0.30
+
+    approach_desk:
+      desk_body: desk_0ecf411cb557754bf283627e911b16c6_1_0_0
+      robot_pose:
+        pos: [5.35, 1.25, 0.0]
+        yaw: 0.0
+      success_radius: 1.0
+
+    approach_trash_can:
+      trash_can_body: holodeck1018_trash_can
+      robot_pose:
+        # Start inside the back office, in the aisle between the shelving unit
+        # and the north doorway, facing the trash can.
+        pos: [4.75, 2.25, 0.0]
+        yaw: -1.4378945318155236
+      composite_robot_pose:
+        # The desk-to-trash-can composite uses this remote initial pose so the
+        # task cannot start inside its final navigation success region.
+        pos: [4.75, 2.25, 0.0]
+        yaw: -1.4378945318155236
+      # The desk-first laptop workflow keeps this remote pose facing the desk.
+      desk_composite_robot_pose:
+        pos: [4.75, 2.25, 0.0]
+        yaw: -0.471415628820373
+      # The box workflow starts with the trash-can approach, so keep its spawn
+      # outside the navigation margin and face the same way as the atomic task.
+      trash_first_composite_robot_pose:
+        pos: [4.73675, 2.34912, 0.0]
+        yaw: -1.4378945318155236
+      success_radius: 1.0
+
+    approach_window:
+      # Rightmost window in the south-wall row; collision geometry is in the baked XML.
+      window_body: window_8d46bf775284cf92b31bf5fe02ddd4b4_2_0_0
+      lang: "walk to the rightmost window and stand nearby"
+      robot_pose:
+        # Start beside the ShelfUnit on its south side, clear of the fixture.
+        pos: [3.8, 2.4, 0.0]
+        yaw: -1.5707963267948966
+      composite_robot_pose:
+        # The desk-to-window composite uses this remote initial pose so the
+        # task cannot start inside its final navigation success region.
+        pos: [3.8, 2.4, 0.0]
+        # Face the desk for the first navigation stage.
+        yaw: -0.40091987191216905
+      success_radius: 1.0
+
+    throw_bottle_into_trash_can:
+      trash_can_body: holodeck1018_trash_can
+      replaced_body: chair_289e7d48c03d83bd231ca60ace65650b_1_0_0
+      source_body: holodeck1018_bottle_source_table
+      source_table_pose:
+        # Move the side table toward the nearby trash can while keeping a
+        # clear gap between their floor collision geometries.
+        pos: [4.35, 0.42, 0.0]
+        yaw: 0.0
+      source_surface_z: 0.72
+      source_table_half_size: [0.22, 0.14]
+      robot_pose:
+        # 0.10 m shortest collision distance from the G1 to the source table.
+        pos: [4.39622440, 0.92098549, 0.0]
+        # Face the bottle at the robot-facing (+Y) table edge.
+        yaw: -1.667270101977484
+      bottle_scale: 1.4
+      bottle_pose:
+        # Keep the source bottle 0.45 m horizontally in front of the G1.
+        pos: [4.35287851, 0.47307798, 0.8000]
+        quat: [1.0, 0.0, 0.0, 0.0]
+
+    pick_box_from_floor:
+      # Back office / study room (room 2), clear of the baked furniture.
+      room_id: 2
+      robot_pose:
+        pos: [4.80, 1.80, 0.0]
+        yaw: 0.0
+      box_scale: 2.0
+      box_pose:
+        # Approximate doubled Box_19 root height; reset snaps its compiled
+        # lowest geometry exactly to the floor.
+        pos: [5.50, 1.80, 0.1580]
+        quat: [0.707107, 0.707107, 0.0, 0.0]
+
+    approach_window_then_pick_box:
+      # Put the box beside the desk on the open side of the target window.
+      box_pose:
+        pos: [4.50, 0.70, 0.1580]
+        quat: [0.707107, 0.707107, 0.0, 0.0]
+
+    place_box_on_floor:
+      room_id: 2
+      table_body: desk_0ecf411cb557754bf283627e911b16c6_1_0_0
+      robot_pose:
+        # Keep G1's torso clear of the box's overhanging upper flap.
+        pos: [6.85, 0.89, 0.0]
+        yaw: 0.0
+      box_scale: 2.0
+      box_pose:
+        pos: [7.49658770, 0.89, 0.9800]
+        quat: [0.707107, 0.707107, 0.0, 0.0]
+      remove_scene_bodies:
+        - laptop_6ae82082b761fc8537b74b4d805f7cb1_1_0_0
+
+    place_box_on_desk:
+      room_id: 2
+      table_body: desk_0ecf411cb557754bf283627e911b16c6_1_0_0
+      robot_pose:
+        # Keep the calibrated stance and turn toward the box beside the desk.
+        pos: [7.04658770, 0.89, 0.0]
+        yaw: 1.484802035600656
+      box_scale: 2.0
+      box_pose:
+        # Place the floor box beside the robot, near the desk's west edge.
+        pos: [7.04658770, 1.47, 0.0]
+        quat: [0.5, 0.5, 0.5, 0.5]
+      remove_scene_bodies:
+        - laptop_6ae82082b761fc8537b74b4d805f7cb1_1_0_0
+
+    pick_cup_from_desk:
+      table_body: desk_0ecf411cb557754bf283627e911b16c6_1_0_0
+      # The baked laptop overlaps the calibrated cup on this desk. Remove it
+      # only for this task; other 1018 tasks retain their laptop fixture.
+      remove_scene_bodies:
+        - laptop_6ae82082b761fc8537b74b4d805f7cb1_1_0_0
+      robot_pose:
+        # 0.10 m shortest collision distance from the G1 to the operating desk.
+        pos: [7.04658770, 0.89, 0.0]
+        yaw: 0.0
+      object_scale: 1.52
+      cup_pose:
+        pos: [7.49658770, 0.89, 0.7773]
+        quat: [1.0, 0.0, 0.0, 0.0]
+
+    place_cup_on_placemat:
+      table_body: desk_699341cef0b075b18b23569c42fb1e52_1_0_0
+      robot_pose:
+        # 0.10 m shortest collision distance from the G1 to the operating desk.
+        pos: [3.81892754, 1.25, 0.0]
+        yaw: 3.141592653589793
+      cup_scale: 1.52
+      cup_pose:
+        pos: [3.36892754, 1.25, 0.8689]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      placemat_scale: 1.0
+      placemat_pose:
+        # Keep the target close to, but distinct from, the calibrated cup pose.
+        pos: [3.30, 1.52, 0.7928]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      target_half_size: [0.198, 0.146, 0.01]
+      support_z: 0.7915
+
+    pick_cup_then_approach_desk_then_place_cup_on_placemat:
+      # Pick from the standalone cup desk, then carry the cup to the desk
+      # targeted by approach_desk and its task-local placemat.
+      table_body: desk_0ecf411cb557754bf283627e911b16c6_1_0_0
+      remove_scene_bodies:
+        - laptop_6ae82082b761fc8537b74b4d805f7cb1_1_0_0
+      robot_pose:
+        pos: [7.04658770, 0.89, 0.0]
+        yaw: 0.0
+      cup_scale: 1.52
+      cup_pose:
+        pos: [7.55, 0.82, 0.8009]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      placemat_scale: 1.0
+      placemat_pose:
+        pos: [7.55, 0.48, 0.7248]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      target_half_size: [0.198, 0.146, 0.01]
+      support_z: 0.72347
+      source_table_body: desk_699341cef0b075b18b23569c42fb1e52_1_0_0
+      source_robot_pose:
+        pos: [3.81892754, 1.25, 0.0]
+        yaw: 3.141592653589793
+      source_cup_pose:
+        pos: [3.36892754, 1.25, 0.8689]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      source_support_z: 0.7915
+
+    pull_chair_from_desk:
+      # Replace only this pull task's baked chair with the free-jointed,
+      # low-friction office chair used for pulling in train_1664. Composite
+      # pull stages reuse this spec; the separate push task keeps its chair.
+      fixture_mode: spawn_asset
+      remove_scene_bodies:
+        - chair_289e7d48c03d83bd231ca60ace65650b_1_0_0
+      chair_asset: objects/thor/RoboTHOR Objects/RoboTHOR_Assets_Furniture/OfficeChair/Prefabs/RoboTHOR_office_chair_allak/RoboTHOR_office_chair_allak.xml
+      chair_body: holodeck_task_chair_RoboTHOR_office_chair_allak
+      chair_joint: holodeck_task_chair_RoboTHOR_office_chair_allak_free
+      desk_body: desk_0ecf411cb557754bf283627e911b16c6_1_0_0
+      chair_start_pose:
+        pos: [7.4, 0.72, 0.495666]
+        # Keep the chair back outside the desk and the seat facing the desk.
+        quat: [0.5, 0.5, 0.5, 0.5]
+      robot_pose:
+        pos: [6.43, 0.72, 0.0]
+        yaw: 0.0
+      target_xy: [6.00, 0.72]
+      target_tolerance: [0.25, 1.50]
+      show_target_region: false
+      upright_local_axis: [0.0, 1.0, 0.0]
+      min_upright_cosine: 0.90
+      max_linear_speed: 0.12
+      max_angular_speed: 0.45
+
+  train_1197:
+    pick_box_from_floor:
+      # Open floor in the center of the office, clear of the display furniture.
+      room_id: 0
+      robot_pose:
+        pos: [2.75, 3.00, 0.0]
+        yaw: 0.0
+      box_scale: 2.0
+      box_pose:
+        pos: [3.45, 3.00, 0.1580]
+        quat: [0.707107, 0.707107, 0.0, 0.0]
+
+    approach_window_then_pick_box:
+      # Put the box on the floor southwest of the desk, near the target window.
+      box_pose:
+        pos: [4.65, 2.85, 0.1580]
+        quat: [0.707107, 0.707107, 0.0, 0.0]
+
+    place_box_on_floor:
+      room_id: 0
+      table_body: obja_45dadf1d294c461195e92c1cdeb8aabf_1_0_0
+      robot_pose:
+        # Keep the larger box outside the G1 spawn collision envelope.
+        pos: [4.59698800, 2.17987800, 0.0]
+        yaw: -0.17453292519943295
+      box_scale: 2.0
+      box_pose:
+        # The desk top is calibrated at approximately z=0.728.
+        # Raise the root 2 cm to avoid the baked desk collision slab while
+        # retaining a shallow stabilizing contact on the tabletop.
+        pos: [5.30, 2.10, 1.0280]
+        quat: [0.707107, 0.707107, 0.0, 0.0]
+
+    place_box_on_desk:
+      room_id: 0
+      table_body: obja_45dadf1d294c461195e92c1cdeb8aabf_1_0_0
+      robot_pose:
+        # Keep the calibrated stance and turn toward the box beside the desk.
+        pos: [4.59698800, 2.17987800, 0.0]
+        yaw: 1.484802035600656
+      box_scale: 2.0
+      box_pose:
+        # Place the floor box beside the robot, near the desk's west edge.
+        pos: [4.64698800, 2.75987800, 0.1580]
+        quat: [0.5, 0.5, 0.5, 0.5]
+
+    pick_book_from_dresser:
+      # Replace only this task's native Book_18 with train_1664's Book_3.
+      source_body: chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_0_0
+      remove_scene_bodies:
+        - book_fde77405a8546edd1a9cd35621b51508_1_0_0
+      robot_pose:
+        # G1, G1FloatingBody, and G1FixedLowerBody collision-free stance,
+        # 67 cm from and facing the upright dresser book.
+        pos: [4.80, 5.20, 0.0]
+        yaw: -0.12076321047163487
+      book_scale: 0.75
+      book_density: 180.0
+      book_pose:
+        # Stand Book_3 with its local +X spine toward the robot. Account for
+        # the 3.8 mm lower dresser top relative to train_1664 (z ~= 0.966).
+        pos: [5.46986, 5.11871, 1.08270]
+        quat: [0.0, 0.060344921, 0.998177585, 0.0]
+
+    pick_cup_from_desk:
+      table_body: obja_45dadf1d294c461195e92c1cdeb8aabf_1_0_0
+      robot_pose:
+        # Shared G1/G1FloatingBody collision-safe stance, about 46 cm away.
+        pos: [4.84698800, 2.17987800, 0.0]
+        yaw: -0.17453292519943295
+      object_scale: 1.52
+      cup_pose:
+        pos: [5.30, 2.10, 0.8061]
+        quat: [1.0, 0.0, 0.0, 0.0]
+
+    ice_cube_in_glass:
+      table_body: obja_45dadf1d294c461195e92c1cdeb8aabf_1_0_0
+      robot_pose:
+        # Face the ice cube from the open side of the desk with a 45 cm standoff.
+        pos: [4.85, 2.10, 0.0]
+        yaw: 0.0
+      object_scale: 1.52
+      cup_pose:
+        # Offset the cup from the ice while keeping both objects within reach.
+        pos: [5.2822904116, 2.22500000, 0.8061]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      ice_pose:
+        pos: [5.30, 2.10, 0.7501]
+        quat: [1.0, 0.0, 0.0, 0.0]
+
+    approach_trash_can:
+      trash_can_body: holodeck1197_trash_can
+      robot_pose:
+        # Reuse the calibrated desk-task starting area and face the trash can.
+        pos: [4.00, 2.10, 0.0]
+        yaw: -2.89983978572555
+      # The three-stage trash-can/desk/chair workflow must start outside the
+      # desk success margin while retaining a clear route to the trash can.
+      composite_robot_pose:
+        pos: [3.50, 2.10, 0.0]
+        yaw: -2.8632929945846817
+      desk_composite_robot_pose:
+        # Start farther west so the desk-return workflow is outside the
+        # desk approach margin; the generic trash-can composites keep the
+        # calibrated composite pose above.
+        pos: [3.00, 2.10, 0.0]
+        yaw: -2.8632929945846817
+      success_radius: 1.0
+
+    throw_bottle_into_trash_can:
+      trash_can_body: holodeck1197_trash_can
+      source_body: holodeck1197_bottle_source_table
+      source_table_pose:
+        # Put the task-local side table beside the bin along the left wall.
+        pos: [0.25, 1.60, 0.0]
+        yaw: 0.0
+      source_surface_z: 0.70
+      source_table_half_size: [0.25, 0.20]
+      robot_pose:
+        # Stand just beyond the table edge where the bottle is placed.
+        pos: [0.90, 1.58386200, 0.0]
+        yaw: 3.141592653589793
+      bottle_scale: 1.4
+      bottle_pose:
+        # Keep the source bottle 0.45 m horizontally in front of the G1.
+        pos: [0.45, 1.58386200, 0.7773]
+        quat: [1.0, 0.0, 0.0, 0.0]
+
+    insert_folder_into_shelf:
+      shelf_body: shelf_cb210cde73055d16858af3c54bc507d0_1_0_0
+      source_table_body: obja_45dadf1d294c461195e92c1cdeb8aabf_1_0_0
+      robot_pose:
+        # Reuse the removal stance, but face 180 degrees toward the desk-side
+        # folder source rather than the white file rack.
+        pos: [5.25, 0.70, 0.0]
+        yaw: 1.5707963267948966
+      folder_scale: [0.7, 0.5, 0.7]
+      folder_pose:
+        # Keep the scaled folder upright with its base on the desktop.
+        # The Objaverse desk collision top is z ~= 0.7485; this height gives
+        # the task-local folder collision a shallow initial support contact.
+        pos: [5.35, 1.22, 0.8435]
+        # From the canonical upright pose, rotate clockwise 90 degrees around
+        # Z so the folder spine faces the robot on the west desk edge.
+        quat: [0.5, -0.5, -0.5, -0.5]
+      source_center: [5.35, 2.20, 0.7915]
+      source_half_size: [0.15, 0.85, 0.08]
+      # This calibrated opening is the lower compartment of the white rack;
+      # its floor is z ~= 0.556, so the folder center is z ~= 0.6749.
+      region_center: [5.25, 0.20, 0.6749]
+      region_half_size: [0.32, 0.18, 0.20]
+      lang: "pick up the folder from the desk and insert it into the lower shelf of the white file rack"
+
+    remove_folder_from_shelf:
+      shelf_body: shelf_cb210cde73055d16858af3c54bc507d0_1_0_0
+      robot_pose:
+        # Face the white file rack from its open front side.
+        pos: [5.25, 0.70, 0.0]
+        yaw: -1.5707963267948966
+      folder_scale: [0.7, 0.5, 0.7]
+      folder_pose:
+        # Rest the folder on the lower-compartment floor at z ~= 0.556.
+        pos: [5.25, 0.20, 0.6749]
+        # Rotate the current calibrated pose 90 degrees clockwise around Z.
+        quat: [-0.5, -0.5, 0.5, -0.5]
+      region_center: [5.25, 0.20, 0.6749]
+      region_half_size: [0.32, 0.18, 0.20]
+      source_center: [5.25, 0.20, 0.6749]
+      source_half_size: [0.32, 0.18, 0.20]
+      lang: "grasp the folder from the lower shelf and move it completely outside the shelf space"
+
+    approach_window:
+      window_body: window_a28de649e905dd78e94d2b9193dab852_2_0_0
+      lang: "walk to the rightmost window and stand nearby"
+      robot_pose:
+        pos: [0.8, 1.0, 0.0]
+        yaw: 0.2421042087034546
+      success_radius: 1.0
+
+    approach_desk:
+      desk_body: obja_45dadf1d294c461195e92c1cdeb8aabf_1_0_0
+      lang: "walk to the desk and stand nearby"
+      robot_pose:
+        # Start on the open long side, outside the approach success radius.
+        pos: [4.00, 2.10, 0.0]
+        yaw: 0.0
+      desk_composite_robot_pose:
+        # The atomic pose is already inside the desk composite's success
+        # radius; keep the ordered navigation stage meaningful.
+        pos: [3.50, 2.10, 0.0]
+        yaw: 0.0
+      success_radius: 1.0
+
+    open_laptop:
+      fixture_mode: spawn_asset
+      chair_asset: objects/thor/Common Objects/Chair/Prefabs/Chair_313_1/Chair_313_1.xml
+      target_body: spawned_laptop_Laptop_26
+      target_joint: spawned_laptop_Laptop_26_laptop_lid_26_joint_0
+      laptop_pose:
+        # Laptop_26's upright root has a bottom at -0.07488 m. The desk
+        # collision top is z=0.7682 m, so this leaves 6 mm of clearance.
+        # Place the base near the west edge of the desk, toward the robot.
+        pos: [5.300, 2.100, 0.8491]
+        # Face the laptop toward the robot on the desk's open long side.
+        quat: [0.5, 0.5, -0.5, -0.5]
+      laptop_front: [-1.0, 0.0]
+      desk_body: obja_45dadf1d294c461195e92c1cdeb8aabf_1_0_0
+      laptop_support_geom:
+        # Local coordinates of the desk root. This proxy supports the laptop
+        # where the Objaverse desktop collision mesh is not watertight.
+        pos: [0.0, 0.3894, 0.1644]
+        size: [0.20, 0.005, 0.22]
+      robot_pose:
+        # 0.10 m shortest collision distance from the G1 to the operating desk.
+        pos: [4.76599121, 2.10, 0.0]
+        yaw: 0.0
+      closed_qpos: 1.5708
+      open_qpos: 0.0
+
+    close_laptop:
+      fixture_mode: spawn_asset
+      target_body: spawned_laptop_Laptop_26
+      target_joint: spawned_laptop_Laptop_26_laptop_lid_26_joint_0
+      laptop_pose:
+        pos: [5.300, 2.100, 0.8491]
+        quat: [0.5, 0.5, -0.5, -0.5]
+      laptop_front: [-1.0, 0.0]
+      desk_body: obja_45dadf1d294c461195e92c1cdeb8aabf_1_0_0
+      laptop_support_geom:
+        pos: [0.0, 0.3894, 0.1644]
+        size: [0.20, 0.005, 0.22]
+      robot_pose:
+        # 0.10 m shortest collision distance from the G1 to the operating desk.
+        pos: [4.76599120, 2.10, 0.0]
+        yaw: 0.0
+      closed_qpos: 1.5708
+      open_qpos: 0.0
+
+    open_drawer:
+      target_fixture: chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_0_0
+      # Robot faces +X; choose the rightmost drawer from its viewpoint.
+      target_joint: chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_16_0_DrawerMesh041_7
+      lang: "Open the dresser drawer."
+      robot_pose:
+        # Align with the selected drawer and face its front side.
+        pos: [4.65, 3.773, 0.0]
+        yaw: 0.0
+      init_open_fraction: 0.20
+      success_open_fraction: 0.80
+      closed_qpos: 0.0
+      open_qpos: 0.172
+      hold_steps: 10
+
+    open_drawer_then_take_tissue_box:
+      target_fixture: chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_0_0
+      target_joint: chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_16_0_DrawerMesh041_7
+      target_table_body: obja_45dadf1d294c461195e92c1cdeb8aabf_1_0_0
+      robot_pose:
+        pos: [4.65, 3.773, 0.0]
+        yaw: 0.0
+      init_open_fraction: 0.20
+      success_open_fraction: 0.90
+      closed_qpos: 0.0
+      open_qpos: 0.172
+      hold_steps: 10
+      lang: "Open the dresser drawer, then take out the tissue box."
+
+    open_drawer_take_tissue_box_to_desk:
+      target_fixture: chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_0_0
+      target_joint: chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_16_0_DrawerMesh041_7
+      target_table_body: obja_45dadf1d294c461195e92c1cdeb8aabf_1_0_0
+      robot_pose:
+        pos: [4.65, 3.773, 0.0]
+        yaw: 0.0
+      init_open_fraction: 0.20
+      success_open_fraction: 0.90
+      closed_qpos: 0.0
+      open_qpos: 0.172
+      hold_steps: 10
+      lang: "Open the dresser drawer, then take out the tissue box."
+
+    take_tissue_box_from_open_drawer:
+      target_fixture: chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_0_0
+      target_joint: chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_16_0_DrawerMesh041_7
+      target_table_body: obja_45dadf1d294c461195e92c1cdeb8aabf_1_0_0
+      robot_pose:
+        pos: [4.65, 3.773, 0.0]
+        yaw: 0.0
+      init_open_fraction: 1.0
+      success_open_fraction: 0.50
+      closed_qpos: 0.0
+      open_qpos: 0.172
+      lang: "Take the tissue box out of the open drawer."
+
+    close_drawer:
+      target_fixture: chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_0_0
+      target_joint: chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_16_0_DrawerMesh041_7
+      lang: "Close the dresser drawer."
+      robot_pose:
+        pos: [4.65, 3.773, 0.0]
+        yaw: 0.0
+      init_open_fraction: 1.0
+      success_close_fraction: 0.10
+      closed_qpos: 0.0
+      open_qpos: 0.172
+      hold_steps: 10
+
+    open_mug_lid:
+      table_body: obja_45dadf1d294c461195e92c1cdeb8aabf_1_0_0
+      robot_pose:
+        pos: [4.85, 2.10, 0.0]
+        yaw: 0.0
+      object_scale: 1.0
+      mug_pose:
+        pos: [5.30, 2.10, 0.80324]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      lid_pose:
+        pos: [5.30, 2.10, 0.89973]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      open_distance: 0.10
+
+    close_mug_lid:
+      table_body: obja_45dadf1d294c461195e92c1cdeb8aabf_1_0_0
+      robot_pose:
+        pos: [4.85, 2.10, 0.0]
+        yaw: 0.0
+      object_scale: 1.0
+      mug_pose:
+        # Keep the jar about 0.45 m from the fixed table-edge standoff.
+        pos: [5.30, 2.10, 0.80324]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      open_lid_pose:
+        pos: [5.25311289, 2.30, 0.74955]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      closed_lid_pose:
+        pos: [5.30, 2.10, 0.89973]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      close_distance: 0.04
+
+    sugar_cube_in_jar:
+      table_body: obja_45dadf1d294c461195e92c1cdeb8aabf_1_0_0
+      robot_pose:
+        pos: [4.85, 2.10, 0.0]
+        yaw: 0.0
+      jar_scale: 1.0
+      jar_pose:
+        pos: [5.30, 2.10, 0.80324]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      lid_pose:
+        pos: [5.30, 2.35, 0.74955]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      sugar_pose:
+        pos: [5.30, 1.85, 0.74982]
+        quat: [1.0, 0.0, 0.0, 0.0]
+
+    open_jar_add_sugar_then_close_jar:
+      table_body: obja_45dadf1d294c461195e92c1cdeb8aabf_1_0_0
+      robot_pose:
+        pos: [4.85, 2.10, 0.0]
+        yaw: 0.0
+      jar_scale: 1.0
+      jar_pose:
+        pos: [5.30, 2.10, 0.80324]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      lid_pose:
+        pos: [5.30, 2.35, 0.74955]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      sugar_pose:
+        pos: [5.30, 1.85, 0.74982]
+        quat: [1.0, 0.0, 0.0, 0.0]
+
+    sugar_cube_then_close_jar:
+      table_body: obja_45dadf1d294c461195e92c1cdeb8aabf_1_0_0
+      robot_pose:
+        pos: [4.85, 2.10, 0.0]
+        yaw: 0.0
+      jar_scale: 1.0
+      jar_pose:
+        pos: [5.30, 2.10, 0.80324]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      lid_pose:
+        pos: [5.30, 2.35, 0.74955]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      sugar_pose:
+        pos: [5.30, 1.85, 0.74982]
+        quat: [1.0, 0.0, 0.0, 0.0]
+
+    place_cup_on_placemat:
+      table_body: obja_45dadf1d294c461195e92c1cdeb8aabf_1_0_0
+      robot_pose:
+        pos: [4.85, 2.10, 0.0]
+        yaw: 0.0
+      cup_scale: 1.52
+      cup_pose:
+        # Keep the source cup near the robot-facing long edge of the desk.
+        pos: [5.22, 2.10, 0.8061]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      placemat_scale: 1.0
+      placemat_pose:
+        # Keep the target close to the source while preserving a small gap.
+        pos: [5.40, 2.35, 0.7303]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      target_half_size: [0.198, 0.146, 0.01]
+      support_z: 0.7287
+
+    move_cup_to_center:
+      desk_body: obja_45dadf1d294c461195e92c1cdeb8aabf_1_0_0
+      robot_pose:
+        # 0.10 m shortest collision distance from the G1 to the operating desk.
+        # Keep a precise 45 cm standoff while facing the calibrated cup.
+        pos: [4.9520902467, 1.7703955093, 0.0]
+        yaw: -0.1570796327
+      cup_scale: 1.52
+      cup_pose:
+        # Start strictly to the robot's right of the target, not fore or aft.
+        pos: [5.3965500000, 1.7000000000, 0.8061]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      initial_cup_base_xy: [5.3965500000, 1.7000000000]
+      target_base_xy: [5.35, 2.10]
+      target_tolerance: [0.15, 0.30]
+      tabletop_bounds_xy: [[5.19655, 1.12490], [5.71283, 3.06378]]
+      support_z: 0.7287
+      support_z_tolerance: 0.04
+      upright_local_axis: [0.0, 0.0, 1.0]
+      min_upright_cosine: 0.90
+      max_linear_speed: 0.08
+      max_angular_speed: 0.30
+
+    move_cup_to_corner:
+      desk_body: obja_45dadf1d294c461195e92c1cdeb8aabf_1_0_0
+      robot_pose:
+        # G1 faces the cup from the desk edge with 0.10 m collision clearance.
+        pos: [4.7865000000, 1.4502032000, 0.0]
+        yaw: 0.0
+      cup_scale: 1.52
+      cup_pose:
+        # Match train_117: keep the cup farther inside the near edge and
+        # farther from the robot-side corner target.
+        pos: [5.3513327000, 1.4502032000, 0.8061]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      initial_cup_base_xy: [5.3513327000, 1.4502032000]
+      target_base_xy: [5.35, 2.10]
+      target_tolerance: [0.15, 0.30]
+      corner_target_base_xys: [[5.31655, 1.24490], [5.31655, 2.94378]]
+      tabletop_bounds_xy: [[5.19655, 1.12490], [5.71283, 3.06378]]
+      support_z: 0.7287
+      support_z_tolerance: 0.04
+      upright_local_axis: [0.0, 0.0, 1.0]
+      min_upright_cosine: 0.90
+      max_linear_speed: 0.08
+      max_angular_speed: 0.30
+
+    approach_desk_then_close_laptop_move_cup:
+      fixture_mode: spawn_asset
+      target_body: spawned_laptop_Laptop_26
+      target_joint: spawned_laptop_Laptop_26_laptop_lid_26_joint_0
+      laptop_pose:
+        pos: [5.30, 2.10, 0.8491]
+        quat: [0.5, 0.5, -0.5, -0.5]
+      laptop_front: [-1.0, 0.0]
+      desk_body: obja_45dadf1d294c461195e92c1cdeb8aabf_1_0_0
+      laptop_support_geom:
+        pos: [0.0, 0.3894, 0.1644]
+        size: [0.2, 0.005, 0.22]
+      robot_pose:
+        pos: [3.50, 2.10, 0.0]
+        yaw: 0.0
+      success_radius: 1.0
+      closed_qpos: 1.5708
+      open_qpos: 0.0
+      cup_scale: 1.52
+      cup_pose:
+        pos: [5.3513327, 1.4502032, 0.8061]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      initial_cup_base_xy: [5.3513327, 1.4502032]
+      target_base_xy: [5.35, 2.10]
+      target_tolerance: [0.15, 0.30]
+      corner_target_base_xys: [[5.31655, 1.2449], [5.31655, 2.94378]]
+      tabletop_bounds_xy: [[5.19655, 1.1249], [5.71283, 3.06378]]
+      support_z: 0.7287
+      support_z_tolerance: 0.04
+      upright_local_axis: [0.0, 0.0, 1.0]
+      min_upright_cosine: 0.90
+      max_linear_speed: 0.08
+      max_angular_speed: 0.30
+
+    ice_cube_then_place_cup:
+      table_body: obja_45dadf1d294c461195e92c1cdeb8aabf_1_0_0
+      robot_pose:
+        pos: [4.85, 2.10, 0.0]
+        yaw: 0.0
+      object_scale: 1.52
+      cup_pose:
+        pos: [5.22, 2.10, 0.8061]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      ice_pose:
+        pos: [5.30, 1.85, 0.7501]
+        quat: [1.0, 0.0, 0.0, 0.0]
+
+    approach_desk_then_pull_chair:
+      fixture_mode: spawn_asset
+      chair_asset: objects/thor/Common Objects/Chair/Prefabs/Chair_313_1/Chair_313_1.xml
+      chair_body: holodeck_task_chair_Chair_313_1
+      chair_joint: holodeck_task_chair_Chair_313_1_free
+      desk_body: obja_45dadf1d294c461195e92c1cdeb8aabf_1_0_0
+      chair_start_pose:
+        # The Chair_313_1 visual mesh extends 1.145 mm below the primitive
+        # floor collider in this orientation; lift the root to keep the mesh
+        # from penetrating the floor after the free body settles at reset.
+        pos: [4.67, 2.10, 0.429]
+        quat: [0.5, 0.5, 0.5, 0.5]
+      # Chair_313_1 uses local +Y as its upright axis. Lower only the dynamic
+      # collision boxes so gravity does not settle the visual mesh below floor.
+      chair_collision_local_y_offset: -0.0036
+      disable_chair_desk_collisions: false
+      disable_desk_drawer_collisions: false
+      robot_pose:
+        pos: [3.50, 2.10, 0.0]
+        yaw: 0.0
+      success_radius: 1.0
+      target_xy: [4.17, 2.10]
+      target_tolerance: [0.20, 0.45]
+      show_target_region: false
+      upright_local_axis: [0.0, 1.0, 0.0]
+      min_upright_cosine: 0.90
+      max_linear_speed: 0.12
+      max_angular_speed: 0.45
+
+    remove_folder_from_shelf_to_desk:
+      shelf_body: shelf_cb210cde73055d16858af3c54bc507d0_1_0_0
+      source_table_body: obja_45dadf1d294c461195e92c1cdeb8aabf_1_0_0
+      robot_pose:
+        pos: [5.25, 0.7, 0.0]
+        yaw: -1.5707963267948966
+      folder_scale: [0.7, 0.5, 0.7]
+      folder_pose:
+        # Match the lower shelf used by HolodeckRemoveFolderFromShelf.
+        pos: [5.25, 0.20, 0.6749]
+        quat: [-0.5, -0.5, 0.5, -0.5]
+      region_center: [5.25, 0.20, 0.6749]
+      region_half_size: [0.32, 0.18, 0.20]
+      source_center: [5.35, 2.20, 0.7915]
+      source_half_size: [0.15, 0.85, 0.08]
+
+    push_chair_to_desk:
+      # train_1197 has no baked movable chair. Spawn the task-local office
+      # chair on the open side of the desk and push it toward the desktop.
+      fixture_mode: spawn_asset
+      chair_asset: objects/thor/Common Objects/Chair/Prefabs/Chair_313_1/Chair_313_1.xml
+      chair_body: holodeck_task_chair_Chair_313_1
+      chair_joint: holodeck_task_chair_Chair_313_1_free
+      desk_body: obja_45dadf1d294c461195e92c1cdeb8aabf_1_0_0
+      chair_start_pose:
+        # Match the visual-mesh floor clearance used by pull and composite
+        # chair tasks in train_1197.
+        pos: [4.67, 2.10, 0.429]
+        # Chair_313_1 is authored with +Y as its upright axis. Combine the
+        # X-axis mounting rotation with the 90-degree desk-facing yaw.
+        quat: [0.5, 0.5, 0.5, 0.5]
+      chair_collision_local_y_offset: -0.0036
+      disable_chair_desk_collisions: false
+      disable_desk_drawer_collisions: false
+      robot_pose:
+        pos: [3.68, 2.10, 0.0]
+        yaw: 0.0
+      target_xy: [5.20, 2.10]
+      target_tolerance: [0.20, 0.45]
+      show_target_region: false
+      upright_local_axis: [0.0, 1.0, 0.0]
+      min_upright_cosine: 0.90
+      max_linear_speed: 0.12
+      max_angular_speed: 0.45
+
+    pull_chair_from_desk:
+      fixture_mode: spawn_asset
+      chair_asset: objects/thor/Common Objects/Chair/Prefabs/Chair_313_1/Chair_313_1.xml
+      chair_body: holodeck_task_chair_Chair_313_1
+      chair_joint: holodeck_task_chair_Chair_313_1_free
+      desk_body: obja_45dadf1d294c461195e92c1cdeb8aabf_1_0_0
+      chair_start_pose:
+        # Match the visual-mesh floor clearance used by push and composite
+        # chair tasks in train_1197.
+        pos: [4.67, 2.10, 0.429]
+        # Keep the upright, 90-degree desk-facing orientation for the pull reset.
+        quat: [0.5, 0.5, 0.5, 0.5]
+      chair_collision_local_y_offset: -0.0036
+      disable_chair_desk_collisions: false
+      disable_desk_drawer_collisions: false
+      robot_pose:
+        pos: [5.72, 2.10, 0.0]
+        yaw: 3.141592653589793
+      composite_robot_pose:
+        # The composite must stand on the pull side of the chair. Keep a
+        # 0.77 m standoff so the G1 hands start clear of the chair collider.
+        pos: [3.90, 2.10, 0.0]
+        yaw: 0.0
+      target_xy: [4.17, 2.10]
+      target_tolerance: [0.20, 0.45]
+      show_target_region: false
+      upright_local_axis: [0.0, 1.0, 0.0]
+      min_upright_cosine: 0.90
+      max_linear_speed: 0.12
+      max_angular_speed: 0.45
+
+    approach_desk_pull_chair_then_open_laptop:
+      fixture_mode: spawn_asset
+      chair_asset: objects/thor/Common Objects/Chair/Prefabs/Chair_313_1/Chair_313_1.xml
+      chair_body: holodeck_task_chair_Chair_313_1
+      chair_joint: holodeck_task_chair_Chair_313_1_free
+      desk_body: obja_45dadf1d294c461195e92c1cdeb8aabf_1_0_0
+      chair_start_pose:
+        pos: [4.67, 2.10, 0.429]
+        quat: [0.5, 0.5, 0.5, 0.5]
+      chair_collision_local_y_offset: -0.0036
+      disable_chair_desk_collisions: false
+      disable_desk_drawer_collisions: false
+      target_xy: [4.17, 2.10]
+      target_tolerance: [0.20, 0.45]
+      show_target_region: false
+      upright_local_axis: [0.0, 1.0, 0.0]
+      min_upright_cosine: 0.90
+      max_linear_speed: 0.12
+      max_angular_speed: 0.45
+      target_body: spawned_laptop_Laptop_26
+      target_joint: spawned_laptop_Laptop_26_laptop_lid_26_joint_0
+      laptop_pose:
+        pos: [5.300, 2.100, 0.8491]
+        quat: [0.5, 0.5, -0.5, -0.5]
+      laptop_front: [-1.0, 0.0]
+      laptop_support_geom:
+        pos: [0.0, 0.3894, 0.1644]
+        size: [0.20, 0.005, 0.22]
+      robot_pose:
+        pos: [3.50, 2.10, 0.0]
+        yaw: 0.0
+      success_radius: 1.0
+      closed_qpos: 1.5708
+      open_qpos: 0.0
+
+    move_cup_to_center_then_open_laptop:
+      fixture_mode: spawn_asset
+      target_body: spawned_laptop_Laptop_26
+      target_joint: spawned_laptop_Laptop_26_laptop_lid_26_joint_0
+      laptop_pose:
+        # Keep the closed laptop clear of the cup's center target.
+        pos: [5.45, 2.65, 0.8491]
+        quat: [0.5, 0.5, -0.5, -0.5]
+      laptop_front: [-1.0, 0.0]
+      desk_body: obja_45dadf1d294c461195e92c1cdeb8aabf_1_0_0
+      laptop_support_geom:
+        pos: [0.15, 0.9394, 0.1644]
+        size: [0.20, 0.005, 0.22]
+      robot_pose:
+        pos: [4.9520902467, 1.7703955093, 0.0]
+        yaw: -0.1570796327
+      closed_qpos: 1.5708
+      open_qpos: 0.0
+      cup_scale: 1.52
+      cup_pose:
+        pos: [5.3965500000, 1.7000000000, 0.8061]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      initial_cup_base_xy: [5.3965500000, 1.7000000000]
+      target_base_xy: [5.35, 2.10]
+      target_tolerance: [0.15, 0.30]
+      tabletop_bounds_xy: [[5.19655, 1.12490], [5.71283, 3.06378]]
+      support_z: 0.7287
+      support_z_tolerance: 0.04
+      upright_local_axis: [0.0, 0.0, 1.0]
+      min_upright_cosine: 0.90
+      max_linear_speed: 0.08
+      max_angular_speed: 0.30
+
+    remove_folder_from_shelf_to_desk_then_open_laptop:
+      fixture_mode: spawn_asset
+      shelf_body: shelf_cb210cde73055d16858af3c54bc507d0_1_0_0
+      source_table_body: obja_45dadf1d294c461195e92c1cdeb8aabf_1_0_0
+      robot_pose:
+        pos: [5.25, 0.80, 0.0]
+        yaw: -1.5707963267948966
+      folder_scale: [0.7, 0.5, 0.7]
+      folder_pose:
+        # Match the lower shelf used by HolodeckRemoveFolderFromShelf.
+        pos: [5.25, 0.20, 0.6749]
+        quat: [-0.5, -0.5, 0.5, -0.5]
+      region_center: [5.25, 0.20, 0.6749]
+      region_half_size: [0.32, 0.18, 0.20]
+      source_center: [5.35, 2.20, 0.7915]
+      source_half_size: [0.15, 0.85, 0.08]
+      target_body: spawned_laptop_Laptop_26
+      target_joint: spawned_laptop_Laptop_26_laptop_lid_26_joint_0
+      laptop_pose:
+        pos: [5.300, 2.100, 0.8491]
+        quat: [0.5, 0.5, -0.5, -0.5]
+      laptop_front: [-1.0, 0.0]
+      desk_body: obja_45dadf1d294c461195e92c1cdeb8aabf_1_0_0
+      laptop_support_geom:
+        pos: [0.0, 0.3894, 0.1644]
+        size: [0.20, 0.005, 0.22]
+      closed_qpos: 1.5708
+      open_qpos: 0.0
+
+    approach_desk_ice_cube_place_cup_then_pick_cup:
+      desk_body: obja_45dadf1d294c461195e92c1cdeb8aabf_1_0_0
+      table_body: obja_45dadf1d294c461195e92c1cdeb8aabf_1_0_0
+      robot_pose:
+        # Match the other desk composites' far, collision-safe west-side spawn.
+        pos: [3.50, 2.10, 0.0]
+        yaw: 0.0
+      success_radius: 1.0
+      object_scale: 1.52
+      cup_scale: 1.52
+      cup_pose:
+        pos: [5.22, 2.10, 0.8061]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      ice_pose:
+        pos: [5.30, 1.85, 0.7501]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      placemat_scale: 1.0
+      placemat_pose:
+        pos: [5.40, 2.35, 0.7303]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      target_half_size: [0.198, 0.146, 0.01]
+      support_z: 0.7287
+
+    close_laptop_push_chair_then_approach_window:
+      fixture_mode: spawn_asset
+      target_body: spawned_laptop_Laptop_26
+      target_joint: spawned_laptop_Laptop_26_laptop_lid_26_joint_0
+      laptop_pose:
+        pos: [5.300, 2.100, 0.8491]
+        quat: [0.5, 0.5, -0.5, -0.5]
+      laptop_front: [-1.0, 0.0]
+      desk_body: obja_45dadf1d294c461195e92c1cdeb8aabf_1_0_0
+      laptop_support_geom:
+        pos: [0.0, 0.3894, 0.1644]
+        size: [0.20, 0.005, 0.22]
+      chair_asset: objects/thor/Common Objects/Chair/Prefabs/Chair_313_1/Chair_313_1.xml
+      chair_body: holodeck_task_chair_Chair_313_1
+      chair_joint: holodeck_task_chair_Chair_313_1_free
+      chair_start_pose:
+        pos: [4.67, 2.10, 0.429]
+        quat: [0.5, 0.5, 0.5, 0.5]
+      chair_collision_local_y_offset: -0.0036
+      disable_chair_desk_collisions: false
+      disable_desk_drawer_collisions: false
+      target_xy: [5.20, 2.10]
+      target_tolerance: [0.20, 0.45]
+      show_target_region: false
+      upright_local_axis: [0.0, 1.0, 0.0]
+      min_upright_cosine: 0.90
+      max_linear_speed: 0.12
+      max_angular_speed: 0.45
+      window_body: window_a28de649e905dd78e94d2b9193dab852_2_0_0
+      robot_pose:
+        pos: [4.76599120, 2.10, 0.0]
+        yaw: 0.0
+      success_radius: 1.0
+      closed_qpos: 1.5708
+      open_qpos: 0.0
+
+    take_tissue_box_then_place_cup:
+      target_fixture: chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_0_0
+      target_joint: chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_16_0_DrawerMesh041_7
+      target_table_body: obja_45dadf1d294c461195e92c1cdeb8aabf_1_0_0
+      robot_pose:
+        pos: [4.65, 3.773, 0.0]
+        yaw: 0.0
+      init_open_fraction: 1.0
+      success_open_fraction: 0.50
+      closed_qpos: 0.0
+      open_qpos: 0.172
+      table_body: obja_45dadf1d294c461195e92c1cdeb8aabf_1_0_0
+      cup_scale: 1.52
+      cup_pose:
+        pos: [5.22, 2.10, 0.8061]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      placemat_scale: 1.0
+      placemat_pose:
+        pos: [5.40, 2.35, 0.7303]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      target_half_size: [0.198, 0.146, 0.01]
+      support_z: 0.7287
+
+    approach_trash_can_then_throw_bottle:
+      trash_can_body: holodeck1197_trash_can
+      robot_pose:
+        pos: [4.00, 2.10, 0.0]
+        yaw: -2.89983978572555
+      success_radius: 1.0
+      source_body: holodeck1197_bottle_source_table
+      source_table_pose:
+        pos: [0.25, 1.60, 0.0]
+        yaw: 0.0
+      source_surface_z: 0.70
+      source_table_half_size: [0.25, 0.20]
+      bottle_scale: 1.4
+      bottle_pose:
+        pos: [0.45, 1.58386200, 0.7773]
+        quat: [1.0, 0.0, 0.0, 0.0]
+
+    remove_folder_from_shelf_to_desk_then_close_laptop:
+      fixture_mode: spawn_asset
+      shelf_body: shelf_cb210cde73055d16858af3c54bc507d0_1_0_0
+      source_table_body: obja_45dadf1d294c461195e92c1cdeb8aabf_1_0_0
+      robot_pose:
+        pos: [5.25, 1.00, 0.0]
+        yaw: -1.5707963267948966
+      folder_scale: [0.7, 0.5, 0.7]
+      folder_pose:
+        # Match the lower shelf used by HolodeckRemoveFolderFromShelf.
+        pos: [5.25, 0.20, 0.6749]
+        quat: [-0.5, -0.5, 0.5, -0.5]
+      region_center: [5.25, 0.20, 0.6749]
+      region_half_size: [0.32, 0.18, 0.20]
+      source_center: [5.35, 2.20, 0.7915]
+      source_half_size: [0.15, 0.85, 0.08]
+      target_body: spawned_laptop_Laptop_26
+      target_joint: spawned_laptop_Laptop_26_laptop_lid_26_joint_0
+      laptop_pose:
+        pos: [5.300, 2.100, 0.8491]
+        quat: [0.5, 0.5, -0.5, -0.5]
+      laptop_front: [-1.0, 0.0]
+      desk_body: obja_45dadf1d294c461195e92c1cdeb8aabf_1_0_0
+      laptop_support_geom:
+        pos: [0.0, 0.3894, 0.1644]
+        size: [0.20, 0.005, 0.22]
+      closed_qpos: 1.5708
+      open_qpos: 0.0
+
+    approach_window_then_desk:
+      window_body: window_a28de649e905dd78e94d2b9193dab852_2_0_0
+      desk_body: obja_45dadf1d294c461195e92c1cdeb8aabf_1_0_0
+      robot_pose:
+        pos: [0.8, 1.0, 0.0]
+        yaw: 0.2421042087034546
+      success_radius: 1.0
+
+    approach_trash_can_then_throw_bottle_then_approach_desk:
+      trash_can_body: holodeck1197_trash_can
+      source_body: holodeck1197_bottle_source_table
+      source_table_pose:
+        pos: [0.25, 1.60, 0.0]
+        yaw: 0.0
+      source_surface_z: 0.70
+      source_table_half_size: [0.25, 0.20]
+      bottle_scale: 1.4
+      bottle_pose:
+        pos: [0.45, 1.58386200, 0.7773]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      desk_body: obja_45dadf1d294c461195e92c1cdeb8aabf_1_0_0
+      robot_pose:
+        # Keep generous collision clearance from the desk at reset so the
+        # final return-to-desk stage cannot begin inside its success margin.
+        # This remote west-side spawn also leaves room for the trash-can leg.
+        pos: [2.75, 2.10, 0.0]
+        yaw: -2.89983978572555
+      success_radius: 1.0
+
+    approach_desk_then_open_laptop_then_approach_window:
+      fixture_mode: spawn_asset
+      target_body: spawned_laptop_Laptop_26
+      target_joint: spawned_laptop_Laptop_26_laptop_lid_26_joint_0
+      laptop_pose:
+        pos: [5.300, 2.100, 0.8491]
+        quat: [0.5, 0.5, -0.5, -0.5]
+      laptop_front: [-1.0, 0.0]
+      desk_body: obja_45dadf1d294c461195e92c1cdeb8aabf_1_0_0
+      laptop_support_geom:
+        pos: [0.0, 0.3894, 0.1644]
+        size: [0.20, 0.005, 0.22]
+      window_body: window_a28de649e905dd78e94d2b9193dab852_2_0_0
+      robot_pose:
+        pos: [4.00, 2.10, 0.0]
+        yaw: 0.0
+      success_radius: 1.0
+      closed_qpos: 1.5708
+      open_qpos: 0.0
+
+    approach_desk_then_close_laptop_then_approach_trash_can:
+      fixture_mode: spawn_asset
+      target_body: spawned_laptop_Laptop_26
+      target_joint: spawned_laptop_Laptop_26_laptop_lid_26_joint_0
+      laptop_pose:
+        pos: [5.300, 2.100, 0.8491]
+        quat: [0.5, 0.5, -0.5, -0.5]
+      laptop_front: [-1.0, 0.0]
+      desk_body: obja_45dadf1d294c461195e92c1cdeb8aabf_1_0_0
+      laptop_support_geom:
+        pos: [0.0, 0.3894, 0.1644]
+        size: [0.20, 0.005, 0.22]
+      trash_can_body: holodeck1197_trash_can
+      robot_pose:
+        # Keep the composite start outside the desk success margin.  The
+        # atomic trash-can task retains its closer, trash-facing start.
+        pos: [2.75, 2.10, 0.0]
+        yaw: 0.0
+      success_radius: 1.0
+      closed_qpos: 1.5708
+      open_qpos: 0.0
+
+    approach_trash_can_then_approach_desk_then_pull_chair:
+      fixture_mode: spawn_asset
+      chair_asset: objects/thor/Common Objects/Chair/Prefabs/Chair_313_1/Chair_313_1.xml
+      chair_body: holodeck_task_chair_Chair_313_1
+      chair_joint: holodeck_task_chair_Chair_313_1_free
+      desk_body: obja_45dadf1d294c461195e92c1cdeb8aabf_1_0_0
+      chair_start_pose:
+        pos: [4.67, 2.10, 0.429]
+        quat: [0.5, 0.5, 0.5, 0.5]
+      chair_collision_local_y_offset: -0.0036
+      disable_chair_desk_collisions: false
+      disable_desk_drawer_collisions: false
+      target_xy: [4.17, 2.10]
+      target_tolerance: [0.20, 0.45]
+      show_target_region: false
+      upright_local_axis: [0.0, 1.0, 0.0]
+      min_upright_cosine: 0.90
+      max_linear_speed: 0.12
+      max_angular_speed: 0.45
+      trash_can_body: holodeck1197_trash_can
+      robot_pose:
+        pos: [4.00, 2.10, 0.0]
+        yaw: -2.89983978572555
+      success_radius: 1.0
+
+    take_tissue_box_then_close_drawer_then_approach_trash_can:
+      target_fixture: chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_0_0
+      target_joint: chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_16_0_DrawerMesh041_7
+      target_table_body: obja_45dadf1d294c461195e92c1cdeb8aabf_1_0_0
+      robot_pose:
+        pos: [4.65, 3.773, 0.0]
+        yaw: 0.0
+      init_open_fraction: 1.0
+      success_open_fraction: 0.50
+      closed_qpos: 0.0
+      open_qpos: 0.172
+      lang: "Take the tissue box out of the open drawer."
+      trash_can_body: holodeck1197_trash_can
+
+    approach_desk_then_ice_cube_in_glass:
+      desk_body: obja_45dadf1d294c461195e92c1cdeb8aabf_1_0_0
+      table_body: obja_45dadf1d294c461195e92c1cdeb8aabf_1_0_0
+      robot_pose:
+        pos: [3.50, 2.10, 0.0]
+        yaw: 0.0
+      success_radius: 1.0
+      object_scale: 1.52
+      cup_pose:
+        pos: [5.2822904116, 2.22500000, 0.8061]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      ice_pose:
+        pos: [5.30, 2.10, 0.7501]
+        quat: [1.0, 0.0, 0.0, 0.0]
+
+    approach_trash_can_then_approach_desk_then_open_jar:
+      table_body: obja_45dadf1d294c461195e92c1cdeb8aabf_1_0_0
+      robot_pose:
+        pos: [4.85, 2.10, 0.0]
+        yaw: 0.0
+      object_scale: 1.0
+      mug_pose:
+        pos: [5.30, 2.10, 0.80324]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      lid_pose:
+        pos: [5.30, 2.10, 0.89973]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      desk_body: obja_45dadf1d294c461195e92c1cdeb8aabf_1_0_0
+      trash_can_body: holodeck1197_trash_can
+
+  train_1664:
+    pick_box_from_floor:
+      # Open floor in the center of the office, clear of the desk and seating.
+      room_id: 0
+      robot_pose:
+        pos: [2.75, 3.00, 0.0]
+        yaw: 0.0
+      box_scale: 2.0
+      box_pose:
+        pos: [3.45, 3.00, 0.1580]
+        quat: [0.707107, 0.707107, 0.0, 0.0]
+
+    approach_window_then_pick_box:
+      # Put the box on the floor beside the cabinet near the north window.
+      box_pose:
+        pos: [4.45, 5.15, 0.1580]
+        quat: [0.707107, 0.707107, 0.0, 0.0]
+
+    place_box_on_floor:
+      room_id: 0
+      table_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      robot_pose:
+        pos: [5.19, 1.85, 0.0]
+        yaw: 0.0
+      box_scale: 1.5
+      box_pose:
+        # Keep the original desk support height; adjust the box root for the
+        # 1.5x upright box half-height so its bottom contacts the tabletop.
+        pos: [5.73182, 1.85, 0.9586]
+        quat: [0.707107, 0.707107, 0.0, 0.0]
+      support_top_z: 0.7486
+      remove_scene_bodies:
+        - laptop_f09fcf086ebe9e3ab2d97bff50b833ef_1_0_0
+
+    place_box_on_desk:
+      room_id: 0
+      table_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      robot_pose:
+        # Keep the calibrated stance and turn toward the box beside the desk.
+        pos: [5.19, 1.85, 0.0]
+        yaw: 1.4711276743037345
+      box_scale: 1.5
+      box_pose:
+        # Place the floor box beside the robot, near the desk's west edge.
+        pos: [5.24, 2.35, 0.1580]
+        quat: [0.5, 0.5, 0.5, 0.5]
+      remove_scene_bodies:
+        - laptop_f09fcf086ebe9e3ab2d97bff50b833ef_1_0_0
+
+    pick_book_from_dresser:
+      # No book is present in the runnable XML export for this scene. Spawn
+      # the canonical Book_3 on the calibrated dresser top instead of using a
+      # stale metadata-only Objaverse book record.
+      source_body: chestofdrawers_c86848ac21624c499f4665989ac4f01a_1_0_0
+      robot_pose:
+        # G1, G1FloatingBody, and G1FixedLowerBody collision-free stance,
+        # 60 cm from and facing the upright dresser book.
+        pos: [3.045, 5.009, 0.0]
+        yaw: 1.1303308019933513
+      book_scale: 0.75
+      book_density: 180.0
+      book_pose:
+        # The dresser collision top is z ~= 0.9698; this pose gives a shallow
+        # 0.2 mm contact margin after MuJoCo mesh compilation. Rotate in the
+        # table plane so Book_3's local +X spine faces the robot.
+        pos: [3.30, 5.55, 1.08650]
+        quat: [0.0, 0.535555504, -0.844500031, 0.0]
+
+    pick_cup_from_desk:
+      table_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      remove_scene_bodies:
+        - laptop_f09fcf086ebe9e3ab2d97bff50b833ef_1_0_0
+      robot_pose:
+        # Place the G1 45 cm west of the cup on the open desk side.
+        pos: [5.19, 1.85, 0.0]
+        yaw: 0.0
+      object_scale: 1.52
+      cup_pose:
+        pos: [5.64, 1.85, 0.8257]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      support_z: 0.7473
+      # Raise the task-local proxy by 1.3 mm above support_z so the cup's
+      # collision mesh has a stable shallow contact in this scene.
+      support_top_z: 0.7486
+
+    ice_cube_in_glass:
+      table_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      remove_scene_bodies:
+        - laptop_f09fcf086ebe9e3ab2d97bff50b833ef_1_0_0
+      robot_pose:
+        # Face the ice cube from the open side of the desk with a 45 cm standoff.
+        pos: [5.25, 1.45, 0.0]
+        yaw: 0.0
+      object_scale: 1.52
+      cup_pose:
+        pos: [5.6822904116, 1.57500000, 0.8257]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      ice_pose:
+        pos: [5.70, 1.45, 0.7697]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      support_z: 0.7473
+      support_top_z: 0.7486
+
+    ice_cube_then_approach_window_then_pick_box:
+      table_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      remove_scene_bodies:
+        - laptop_f09fcf086ebe9e3ab2d97bff50b833ef_1_0_0
+      robot_pose:
+        pos: [5.25, 1.45, 0.0]
+        yaw: 0.0
+      object_scale: 1.52
+      cup_pose:
+        pos: [5.6822904116, 1.57500000, 0.8257]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      ice_pose:
+        pos: [5.70, 1.45, 0.7697]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      box_pose:
+        pos: [4.45, 5.15, 0.1580]
+        quat: [0.707107, 0.707107, 0.0, 0.0]
+
+    approach_trash_can:
+      trash_can_body: holodeck1664_trash_can
+      robot_pose:
+        # Reuse the calibrated desk-task starting area and face the trash can.
+        pos: [4.00, 1.80, 0.0]
+        yaw: 2.6403283887182107
+      composite_robot_pose:
+        # Start farther west so the composite is outside the desk approach
+        # margin while retaining a clear route to the trash can.
+        pos: [3.50, 1.80, 0.0]
+        yaw: 2.575897274573418
+      success_radius: 1.0
+
+    throw_bottle_into_trash_can:
+      trash_can_body: holodeck1664_trash_can
+      source_body: holodeck1664_bottle_source_table
+      source_table_pose:
+        # Put the task-local side table beside the bin along the left wall.
+        pos: [0.25, 4.20, 0.0]
+        yaw: 0.0
+      source_surface_z: 0.70
+      source_table_half_size: [0.25, 0.20]
+      robot_pose:
+        # Stand just beyond the table edge where the bottle is placed.
+        pos: [0.90, 4.18386200, 0.0]
+        yaw: 3.141592653589793
+      bottle_scale: 1.4
+      bottle_pose:
+        # Keep the source bottle 0.45 m horizontally in front of the G1.
+        pos: [0.45, 4.18386200, 0.7773]
+        quat: [1.0, 0.0, 0.0, 0.0]
+
+    approach_desk:
+      desk_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      fixture_mode: spawn_asset
+      source_body: laptop_f09fcf086ebe9e3ab2d97bff50b833ef_1_0_0
+      laptop_pose:
+        pos: [5.70623, 1.65, 0.835000]
+        quat: [0.5, 0.5, -0.5, -0.5]
+      lang: "walk to the desk and stand nearby"
+      # Start west of the desk, outside the success radius, facing its open side.
+      robot_pose:
+        pos: [4.00, 1.80, 0.0]
+        yaw: 0.0
+      pick_cup_composite_robot_pose:
+        # Keep this workflow outside the desk approach margin without changing
+        # the atomic approach task or the other desk composites.
+        pos: [3.90, 1.80, 0.0]
+        yaw: 0.0
+      open_jar_composite_robot_pose:
+        # Give the jar composite enough desk clearance without changing the
+        # atomic approach task or other desk composites.
+        pos: [3.90, 1.80, 0.0]
+        yaw: 0.0
+      success_radius: 1.0
+
+    approach_window:
+      window_body: window_a28de649e905dd78e94d2b9193dab852_2_0_0
+      lang: "walk to the rightmost window and stand nearby"
+      robot_pose:
+        # The old southwest spawn overlapped the dining table collision mesh.
+        # Use the open central floor while retaining a remote window approach.
+        pos: [2.0, 3.0, 0.0]
+        yaw: 0.862429249488069
+      # Keep the composite start outside both desk and window regions.
+      composite_robot_pose:
+        pos: [2.0, 3.0, 0.0]
+        # Face the desk for the first navigation stage.
+        yaw: -0.3088083073471421
+      success_radius: 1.0
+
+    open_laptop:
+      fixture_mode: spawn_asset
+      source_body: laptop_f09fcf086ebe9e3ab2d97bff50b833ef_1_0_0
+      target_body: spawned_laptop_Laptop_26
+      target_joint: spawned_laptop_Laptop_26_laptop_lid_26_joint_0
+      # Move off the front edge of the desk; the baked pose leaves the base
+      # flush with the desk collision mesh.
+      laptop_pose:
+        pos: [5.70623, 1.65, 0.835000]
+        quat: [0.5, 0.5, -0.5, -0.5]
+      desk_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      laptop_support_geom:
+        # The Objaverse desk collision mesh is open below this point. This
+        # hidden support gives the Laptop_26 base the same desk contact as 117.
+        pos: [0.150000, 0.383000, 0.055360]
+        size: [0.200000, 0.005000, 0.180000]
+      robot_pose:
+        # Face the laptop head-on with a 0.10 m desk collision clearance.
+        pos: [5.18516845, 1.65, 0.0]
+        yaw: 0.0
+      closed_qpos: 1.5708
+      open_qpos: 0.0
+
+    close_laptop:
+      fixture_mode: spawn_asset
+      source_body: laptop_f09fcf086ebe9e3ab2d97bff50b833ef_1_0_0
+      target_body: spawned_laptop_Laptop_26
+      target_joint: spawned_laptop_Laptop_26_laptop_lid_26_joint_0
+      laptop_pose:
+        pos: [5.70623, 1.65, 0.835000]
+        quat: [0.5, 0.5, -0.5, -0.5]
+      desk_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      laptop_support_geom:
+        pos: [0.150000, 0.383000, 0.055360]
+        size: [0.200000, 0.005000, 0.180000]
+      robot_pose:
+        # Face the laptop head-on with a 0.10 m desk collision clearance.
+        pos: [5.18516846, 1.65, 0.0]
+        yaw: 0.0
+      closed_qpos: 1.5708
+      open_qpos: 0.0
+
+    open_drawer:
+      target_fixture: chestofdrawers_c86848ac21624c499f4665989ac4f01a_1_0_0
+      # Robot faces +Y; choose the rightmost (+X), highest drawer.
+      target_joint: chestofdrawers_c86848ac21624c499f4665989ac4f01a_1_20_0_DrawerMesh021_9
+      lang: "Open the dresser drawer."
+      robot_pose:
+        # Align with the selected drawer and face its front side.
+        pos: [3.70, 4.65, 0.0]
+        yaw: 1.5707963267948966
+      init_open_fraction: 0.20
+      success_open_fraction: 0.80
+      closed_qpos: 0.0
+      open_qpos: 0.466
+      hold_steps: 10
+
+    open_drawer_then_take_tissue_box:
+      target_fixture: chestofdrawers_c86848ac21624c499f4665989ac4f01a_1_0_0
+      target_joint: chestofdrawers_c86848ac21624c499f4665989ac4f01a_1_20_0_DrawerMesh021_9
+      target_table_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      robot_pose:
+        pos: [3.70, 4.65, 0.0]
+        yaw: 1.5707963267948966
+      init_open_fraction: 0.20
+      success_open_fraction: 0.90
+      closed_qpos: 0.0
+      open_qpos: 0.466
+      hold_steps: 10
+      lang: "Open the dresser drawer, then take out the tissue box."
+
+    take_tissue_box_from_open_drawer:
+      target_fixture: chestofdrawers_c86848ac21624c499f4665989ac4f01a_1_0_0
+      target_joint: chestofdrawers_c86848ac21624c499f4665989ac4f01a_1_20_0_DrawerMesh021_9
+      target_table_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      robot_pose:
+        pos: [3.70, 4.65, 0.0]
+        yaw: 1.5707963267948966
+      init_open_fraction: 1.0
+      success_open_fraction: 0.50
+      closed_qpos: 0.0
+      open_qpos: 0.466
+      lang: "Take the tissue box out of the open drawer."
+
+    close_drawer:
+      target_fixture: chestofdrawers_c86848ac21624c499f4665989ac4f01a_1_0_0
+      target_joint: chestofdrawers_c86848ac21624c499f4665989ac4f01a_1_20_0_DrawerMesh021_9
+      lang: "Close the dresser drawer."
+      robot_pose:
+        pos: [3.70, 4.65, 0.0]
+        yaw: 1.5707963267948966
+      init_open_fraction: 1.0
+      success_close_fraction: 0.10
+      closed_qpos: 0.0
+      open_qpos: 0.466
+      hold_steps: 10
+
+    open_mug_lid:
+      table_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      robot_pose:
+        pos: [5.25, 1.45, 0.0]
+        yaw: 0.0
+      object_scale: 1.0
+      mug_pose:
+        # Keep the jar in the middle of the usable tabletop.
+        pos: [5.75000, 1.40000, 0.82178]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      lid_pose:
+        pos: [5.75000, 1.40000, 0.91787]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      open_distance: 0.10
+
+    close_mug_lid:
+      table_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      robot_pose:
+        pos: [5.25, 1.45, 0.0]
+        yaw: 0.0
+      object_scale: 1.0
+      mug_pose:
+        # Keep the jar about 0.45 m from the fixed table-edge standoff.
+        pos: [5.70000, 1.45000, 0.82178]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      open_lid_pose:
+        pos: [5.67426407, 1.60000, 0.76808]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      closed_lid_pose:
+        pos: [5.70000, 1.45000, 0.91787]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      close_distance: 0.04
+
+    sugar_cube_in_jar:
+      table_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      # Remove the unrelated tabletop object beside the jar.
+      remove_scene_bodies:
+        - obja_a1c08eb2cc1e486abf358df7d2cbe74d_1_0_0
+      robot_pose:
+        pos: [5.25, 1.45, 0.0]
+        yaw: 0.0
+      jar_scale: 1.0
+      jar_pose:
+        pos: [5.75000, 1.40000, 0.82178]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      lid_pose:
+        pos: [5.75000, 1.65000, 0.76808]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      sugar_pose:
+        # Keep the cube on the robot-facing side with a small edge clearance.
+        pos: [5.75000, 1.20000, 0.76835]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      support_z: 0.7473
+      support_top_z: 0.7486
+
+    sugar_cube_then_close_jar:
+      table_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      remove_scene_bodies:
+        - obja_a1c08eb2cc1e486abf358df7d2cbe74d_1_0_0
+      robot_pose:
+        pos: [5.25, 1.45, 0.0]
+        yaw: 0.0
+      jar_scale: 1.0
+      jar_pose:
+        pos: [5.75, 1.40, 0.82178]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      lid_pose:
+        pos: [5.75, 1.65, 0.76808]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      sugar_pose:
+        pos: [5.75, 1.20, 0.76835]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      support_z: 0.7473
+      support_top_z: 0.7486
+
+    open_jar_add_sugar_then_close_jar:
+      table_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      remove_scene_bodies:
+        - obja_a1c08eb2cc1e486abf358df7d2cbe74d_1_0_0
+      robot_pose:
+        pos: [5.25, 1.45, 0.0]
+        yaw: 0.0
+      jar_scale: 1.0
+      jar_pose:
+        pos: [5.75, 1.40, 0.82178]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      lid_pose:
+        pos: [5.75, 1.65, 0.76808]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      sugar_pose:
+        pos: [5.75, 1.20, 0.76835]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      support_z: 0.7473
+      support_top_z: 0.7486
+
+    approach_desk_then_close_laptop_move_cup:
+      fixture_mode: spawn_asset
+      source_body: laptop_f09fcf086ebe9e3ab2d97bff50b833ef_1_0_0
+      target_body: spawned_laptop_Laptop_26
+      target_joint: spawned_laptop_Laptop_26_laptop_lid_26_joint_0
+      laptop_pose:
+        pos: [5.70623, 1.65, 0.835]
+        quat: [0.5, 0.5, -0.5, -0.5]
+      desk_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      remove_scene_bodies:
+        - obja_a1c08eb2cc1e486abf358df7d2cbe74d_1_0_0
+      laptop_support_geom:
+        pos: [0.15, 0.383, 0.05536]
+        size: [0.2, 0.005, 0.18]
+      robot_pose:
+        pos: [4.0, 1.8, 0.0]
+        yaw: 0.0
+      success_radius: 1.0
+      closed_qpos: 1.5708
+      open_qpos: 0.0
+      cup_scale: 1.52
+      cup_pose:
+        pos: [5.62, 1.2, 0.8247]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      initial_cup_base_xy: [5.62, 1.2]
+      target_base_xy: [5.76283, 1.93907]
+      target_tolerance: [0.15, 0.30]
+      corner_target_base_xys: [[5.66722, 0.91154], [5.66722, 2.71728]]
+      tabletop_bounds_xy: [[5.61283, 1.12557], [5.91283, 2.75256]]
+      support_z: 0.7473
+      support_z_tolerance: 0.04
+      upright_local_axis: [0.0, 0.0, 1.0]
+      min_upright_cosine: 0.90
+      max_linear_speed: 0.08
+      max_angular_speed: 0.30
+
+    ice_cube_then_place_cup:
+      table_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      remove_scene_bodies:
+        - laptop_f09fcf086ebe9e3ab2d97bff50b833ef_1_0_0
+      robot_pose:
+        pos: [5.25, 1.85, 0.0]
+        yaw: 0.0
+      object_scale: 1.52
+      cup_pose:
+        pos: [5.64, 1.85, 0.8257]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      ice_pose:
+        pos: [5.70, 1.6, 0.7697]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      support_z: 0.7473
+      support_top_z: 0.7486
+
+    approach_desk_then_pull_chair:
+      fixture_mode: spawn_asset
+      chair_asset: objects/thor/RoboTHOR Objects/RoboTHOR_Assets_Furniture/OfficeChair/Prefabs/RoboTHOR_office_chair_allak/RoboTHOR_office_chair_allak.xml
+      chair_body: holodeck_task_chair_RoboTHOR_office_chair_allak
+      chair_joint: holodeck_task_chair_RoboTHOR_office_chair_allak_free
+      desk_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      chair_start_pose:
+        pos: [5.20, 1.80, 0.495666]
+        quat: [0.5, 0.5, 0.5, 0.5]
+      robot_pose:
+        # Move the remote composite spawn slightly farther from the desk so
+        # its robot collision geometry clears the navigation margin.
+        pos: [3.98, 1.80, 0.0]
+        yaw: 0.0
+      success_radius: 1.0
+      target_xy: [4.67, 1.80]
+      target_tolerance: [0.18, 0.35]
+      show_target_region: false
+      upright_local_axis: [0.0, 1.0, 0.0]
+      min_upright_cosine: 0.90
+      max_linear_speed: 0.12
+      max_angular_speed: 0.45
+
+    approach_window_then_desk_then_pick_cup:
+      window_body: window_a28de649e905dd78e94d2b9193dab852_2_0_0
+      desk_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      table_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      remove_scene_bodies:
+        - laptop_f09fcf086ebe9e3ab2d97bff50b833ef_1_0_0
+      robot_pose:
+        # Match the atomic approach_window starting pose for this scene.
+        pos: [2.0, 3.0, 0.0]
+        yaw: 0.862429249488069
+      success_radius: 1.0
+      object_scale: 1.52
+      cup_pose:
+        pos: [5.64, 2.15, 0.8459]
+        quat: [1.0, 0.0, 0.0, 0.0]
+
+    approach_desk_pull_chair_then_open_laptop:
+      fixture_mode: spawn_asset
+      source_body: laptop_f09fcf086ebe9e3ab2d97bff50b833ef_1_0_0
+      chair_asset: objects/thor/RoboTHOR Objects/RoboTHOR_Assets_Furniture/OfficeChair/Prefabs/RoboTHOR_office_chair_allak/RoboTHOR_office_chair_allak.xml
+      chair_body: holodeck_task_chair_RoboTHOR_office_chair_allak
+      chair_joint: holodeck_task_chair_RoboTHOR_office_chair_allak_free
+      desk_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      chair_start_pose:
+        pos: [5.20, 1.95, 0.495666]
+        quat: [0.5, 0.5, 0.5, 0.5]
+      robot_pose:
+        pos: [3.50, 1.95, 0.0]
+        yaw: 0.06627822076846923
+      success_radius: 1.0
+      target_xy: [4.17, 1.95]
+      target_tolerance: [0.18, 0.35]
+      show_target_region: false
+      upright_local_axis: [0.0, 1.0, 0.0]
+      min_upright_cosine: 0.90
+      max_linear_speed: 0.12
+      max_angular_speed: 0.45
+      target_body: spawned_laptop_Laptop_26
+      target_joint: spawned_laptop_Laptop_26_laptop_lid_26_joint_0
+      laptop_pose:
+        pos: [5.7061, 1.95, 0.855529]
+        quat: [0.5, 0.5, -0.5, -0.5]
+      laptop_front: [-1.0, 0.0]
+      laptop_support_geom:
+        pos: [0.15, 0.383, 0.05536]
+        size: [0.2, 0.005, 0.18]
+      closed_qpos: 1.5708
+      open_qpos: 0.0
+
+    move_cup_to_center_then_open_laptop:
+      fixture_mode: spawn_asset
+      source_body: laptop_f09fcf086ebe9e3ab2d97bff50b833ef_1_0_0
+      target_body: spawned_laptop_Laptop_26
+      target_joint: spawned_laptop_Laptop_26_laptop_lid_26_joint_0
+      laptop_pose:
+        # Keep the atomic laptop X/Z calibration, but move it near the center
+        # target while retaining a small clearance from the final cup pose.
+        pos: [5.70623, 2.450, 0.835000]
+        quat: [0.5, 0.5, -0.5, -0.5]
+      laptop_front: [-1.0, 0.0]
+      desk_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      laptop_support_geom:
+        # The support is in the rotated desk body's local frame.
+        pos: [-0.650000, 0.383000, 0.055360]
+        size: [0.200000, 0.005000, 0.180000]
+      robot_pose:
+        pos: [5.1802130682, 1.45, 0.0]
+        yaw: -0.0309603234
+      closed_qpos: 1.5708
+      open_qpos: 0.0
+      cup_scale: 1.52
+      cup_pose:
+        pos: [5.63, 1.45, 0.8247]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      initial_cup_base_xy: [5.63, 1.45]
+      target_base_xy: [5.76283, 1.85]
+      target_tolerance: [0.15, 0.30]
+      tabletop_bounds_xy: [[5.61283, 1.12557], [5.91283, 2.75256]]
+      support_z: 0.7473
+      support_z_tolerance: 0.04
+      upright_local_axis: [0.0, 0.0, 1.0]
+      min_upright_cosine: 0.90
+      max_linear_speed: 0.08
+      max_angular_speed: 0.30
+
+    place_cup_on_placemat:
+      table_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      remove_scene_bodies:
+        - laptop_f09fcf086ebe9e3ab2d97bff50b833ef_1_0_0
+      robot_pose:
+        # Stand 0.45 m west of the cup and face the calibrated source pose.
+        pos: [5.19, 1.85, 0.0]
+        yaw: 0.0
+      cup_scale: 1.52
+      cup_pose:
+        # Keep the source cup inside the near end of the narrow tabletop.
+        pos: [5.64, 1.85, 0.8257]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      placemat_scale: 1.0
+      placemat_pose:
+        # Keep the target close to the source while preserving a small gap.
+        pos: [5.76, 2.15, 0.7499]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      target_half_size: [0.198, 0.146, 0.01]
+      support_z: 0.7473
+
+    pick_cup_then_approach_desk_then_place_cup_on_placemat:
+      table_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      remove_scene_bodies:
+        - laptop_f09fcf086ebe9e3ab2d97bff50b833ef_1_0_0
+      robot_pose:
+        pos: [5.25, 1.45, 0.0]
+        yaw: 0.0
+      cup_scale: 1.52
+      cup_pose:
+        pos: [5.6822904116, 1.57500000, 0.8257]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      placemat_scale: 1.0
+      placemat_pose:
+        pos: [5.76, 2.15, 0.7499]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      target_half_size: [0.198, 0.146, 0.01]
+      support_z: 0.7473
+      # Start on the room's other table, leaving the placemat on the desk.
+      source_table_body: diningtable_ccf909fdcb2bcd7c1441fe7740cecd0b_1_0_0
+      source_robot_pose:
+        pos: [1.50, 0.50, 0.0]
+        yaw: 1.5707963267948966
+      source_cup_pose:
+        pos: [1.50, 0.95, 0.7566]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      source_support_z: 0.6782
+
+    move_cup_to_center:
+      desk_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      robot_pose:
+        # 0.10 m shortest collision distance from the G1 to the operating desk.
+        pos: [5.1802130682, 1.45, 0.0]
+        yaw: -0.0309603234
+      cup_scale: 1.52
+      cup_pose:
+        # Start strictly to the robot's right of the target, not fore or aft.
+        pos: [5.63, 1.45, 0.8247]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      initial_cup_base_xy: [5.63, 1.45]
+      # Center the target on the desk. The 30 cm short-axis span uses the full
+      # measured tabletop width and is twice the previous visual width.
+      target_base_xy: [5.76283, 1.85]
+      target_tolerance: [0.15, 0.30]
+      # Corner centers use the physical collision top slab, not the narrower
+      # semantic support patch used by the center task.
+      corner_target_base_xys: [[5.66722, 0.91154], [5.66722, 2.71728]]
+      tabletop_bounds_xy: [[5.61283, 1.12557], [5.91283, 2.75256]]
+      support_z: 0.7473
+      support_z_tolerance: 0.04
+      upright_local_axis: [0.0, 0.0, 1.0]
+      min_upright_cosine: 0.90
+      max_linear_speed: 0.08
+      max_angular_speed: 0.30
+
+    move_cup_to_corner:
+      desk_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      # Remove the baked tabletop clutter that overlaps the initial cup.
+      remove_scene_bodies:
+        - obja_a1c08eb2cc1e486abf358df7d2cbe74d_1_0_0
+      robot_pose:
+        # G1 faces the cup from the desk edge with 0.10 m collision clearance.
+        pos: [5.1220000000, 1.2000000000, 0.0]
+        yaw: 0.0
+      cup_scale: 1.52
+      cup_pose:
+        # Match train_117: keep the cup farther inside the near edge and
+        # farther from the robot-side corner target.
+        pos: [5.62, 1.2000000000, 0.8247]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      initial_cup_base_xy: [5.62, 1.2000000000]
+      target_base_xy: [5.76283, 1.93907]
+      target_tolerance: [0.15, 0.30]
+      corner_target_base_xys: [[5.66722, 0.91154], [5.66722, 2.71728]]
+      tabletop_bounds_xy: [[5.61283, 1.12557], [5.91283, 2.75256]]
+      support_z: 0.7473
+      support_z_tolerance: 0.04
+      upright_local_axis: [0.0, 0.0, 1.0]
+      min_upright_cosine: 0.90
+      max_linear_speed: 0.08
+      max_angular_speed: 0.30
+
+    push_chair_to_desk:
+      # The Objaverse room has only static armchairs, so use the shared
+      # free-jointed office-chair asset for this manipulation task.
+      fixture_mode: spawn_asset
+      chair_asset: objects/thor/RoboTHOR Objects/RoboTHOR_Assets_Furniture/OfficeChair/Prefabs/RoboTHOR_office_chair_allak/RoboTHOR_office_chair_allak.xml
+      chair_body: holodeck_task_chair_RoboTHOR_office_chair_allak
+      chair_joint: holodeck_task_chair_RoboTHOR_office_chair_allak_free
+      desk_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      chair_start_pose:
+        pos: [4.67, 1.80, 0.495666]
+        # Turn the chair clockwise 90 degrees so it faces the desk.
+        quat: [0.5, 0.5, 0.5, 0.5]
+      robot_pose:
+        pos: [4.00, 1.80, 0.0]
+        yaw: 0.0
+      target_xy: [5.20, 1.80]
+      target_tolerance: [0.18, 0.35]
+      show_target_region: false
+      upright_local_axis: [0.0, 1.0, 0.0]
+      min_upright_cosine: 0.90
+      max_linear_speed: 0.12
+      max_angular_speed: 0.45
+
+    pull_chair_from_desk:
+      fixture_mode: spawn_asset
+      chair_asset: objects/thor/RoboTHOR Objects/RoboTHOR_Assets_Furniture/OfficeChair/Prefabs/RoboTHOR_office_chair_allak/RoboTHOR_office_chair_allak.xml
+      chair_body: holodeck_task_chair_RoboTHOR_office_chair_allak
+      chair_joint: holodeck_task_chair_RoboTHOR_office_chair_allak_free
+      desk_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      chair_start_pose:
+        pos: [5.20, 1.80, 0.495666]
+        # Keep the clockwise 90-degree desk-facing orientation for the pull reset.
+        quat: [0.5, 0.5, 0.5, 0.5]
+      robot_pose:
+        pos: [5.87, 1.80, 0.0]
+        yaw: 3.141592653589793
+      composite_robot_pose:
+        # Stand on the chair's pull side; the atomic pose is beyond this
+        # scene's usable floor boundary when used by the box composite.
+        pos: [4.53, 1.80, 0.0]
+        yaw: 0.0
+      target_xy: [4.67, 1.80]
+      target_tolerance: [0.18, 0.35]
+      show_target_region: false
+      upright_local_axis: [0.0, 1.0, 0.0]
+      min_upright_cosine: 0.90
+      max_linear_speed: 0.12
+      max_angular_speed: 0.45
+
+    approach_desk_ice_cube_place_cup_then_pick_cup:
+      desk_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      table_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      remove_scene_bodies:
+        - laptop_f09fcf086ebe9e3ab2d97bff50b833ef_1_0_0
+      robot_pose:
+        # Move west from the atomic approach point to retain the composite
+        # navigation clearance before the tabletop stages begin.
+        pos: [3.50, 1.80, 0.0]
+        yaw: 0.0
+      success_radius: 1.0
+      object_scale: 1.52
+      cup_scale: 1.52
+      cup_pose:
+        pos: [5.64, 1.85, 0.8257]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      ice_pose:
+        pos: [5.70, 1.60, 0.7697]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      placemat_scale: 1.0
+      placemat_pose:
+        pos: [5.76, 2.15, 0.7499]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      target_half_size: [0.198, 0.146, 0.01]
+      support_z: 0.7473
+      support_top_z: 0.7486
+
+    close_laptop_push_chair_then_approach_window:
+      fixture_mode: spawn_asset
+      source_body: laptop_f09fcf086ebe9e3ab2d97bff50b833ef_1_0_0
+      target_body: spawned_laptop_Laptop_26
+      target_joint: spawned_laptop_Laptop_26_laptop_lid_26_joint_0
+      laptop_pose:
+        pos: [5.70623, 1.65, 0.835000]
+        quat: [0.5, 0.5, -0.5, -0.5]
+      laptop_front: [-1.0, 0.0]
+      desk_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      laptop_support_geom:
+        pos: [0.150000, 0.383000, 0.055360]
+        size: [0.200000, 0.005000, 0.180000]
+      chair_asset: objects/thor/RoboTHOR Objects/RoboTHOR_Assets_Furniture/OfficeChair/Prefabs/RoboTHOR_office_chair_allak/RoboTHOR_office_chair_allak.xml
+      chair_body: holodeck_task_chair_RoboTHOR_office_chair_allak
+      chair_joint: holodeck_task_chair_RoboTHOR_office_chair_allak_free
+      chair_start_pose:
+        pos: [4.67, 1.80, 0.495666]
+        quat: [0.5, 0.5, 0.5, 0.5]
+      target_xy: [5.20, 1.80]
+      target_tolerance: [0.18, 0.35]
+      show_target_region: false
+      upright_local_axis: [0.0, 1.0, 0.0]
+      min_upright_cosine: 0.90
+      max_linear_speed: 0.12
+      max_angular_speed: 0.45
+      window_body: window_a28de649e905dd78e94d2b9193dab852_2_0_0
+      robot_pose:
+        pos: [5.18516846, 1.65, 0.0]
+        yaw: 0.0
+      success_radius: 1.0
+      closed_qpos: 1.5708
+      open_qpos: 0.0
+
+    take_tissue_box_then_place_cup:
+      target_fixture: chestofdrawers_c86848ac21624c499f4665989ac4f01a_1_0_0
+      target_joint: chestofdrawers_c86848ac21624c499f4665989ac4f01a_1_20_0_DrawerMesh021_9
+      target_table_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      robot_pose:
+        pos: [3.70, 4.65, 0.0]
+        yaw: 1.5707963267948966
+      init_open_fraction: 1.0
+      success_open_fraction: 0.50
+      closed_qpos: 0.0
+      open_qpos: 0.466
+      table_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      remove_scene_bodies:
+        - laptop_f09fcf086ebe9e3ab2d97bff50b833ef_1_0_0
+      cup_scale: 1.52
+      cup_pose:
+        pos: [5.64, 1.85, 0.8257]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      placemat_scale: 1.0
+      placemat_pose:
+        pos: [5.76, 2.15, 0.7499]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      target_half_size: [0.198, 0.146, 0.01]
+      support_z: 0.7473
+
+    approach_trash_can_then_throw_bottle:
+      trash_can_body: holodeck1664_trash_can
+      robot_pose:
+        pos: [4.00, 1.80, 0.0]
+        yaw: 2.6403283887182107
+      success_radius: 1.0
+      source_body: holodeck1664_bottle_source_table
+      source_table_pose:
+        pos: [0.25, 4.20, 0.0]
+        yaw: 0.0
+      source_surface_z: 0.70
+      source_table_half_size: [0.25, 0.20]
+      bottle_scale: 1.4
+      bottle_pose:
+        pos: [0.45, 4.18386200, 0.7773]
+        quat: [1.0, 0.0, 0.0, 0.0]
+
+    approach_window_then_desk:
+      window_body: window_a28de649e905dd78e94d2b9193dab852_2_0_0
+      desk_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      robot_pose:
+        pos: [2.0, 3.0, 0.0]
+        yaw: 0.862429249488069
+      success_radius: 1.0
+
+    approach_trash_can_then_throw_bottle_then_approach_desk:
+      trash_can_body: holodeck1664_trash_can
+      source_body: holodeck1664_bottle_source_table
+      source_table_pose:
+        pos: [0.25, 4.20, 0.0]
+        yaw: 0.0
+      source_surface_z: 0.70
+      source_table_half_size: [0.25, 0.20]
+      bottle_scale: 1.4
+      bottle_pose:
+        pos: [0.45, 4.18386200, 0.7773]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      desk_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      robot_pose:
+        pos: [4.00, 1.80, 0.0]
+        yaw: 2.6403283887182107
+      success_radius: 1.0
+
+    approach_desk_then_open_laptop_then_approach_window:
+      fixture_mode: spawn_asset
+      source_body: laptop_f09fcf086ebe9e3ab2d97bff50b833ef_1_0_0
+      target_body: spawned_laptop_Laptop_26
+      target_joint: spawned_laptop_Laptop_26_laptop_lid_26_joint_0
+      laptop_pose:
+        pos: [5.70623, 1.65, 0.835000]
+        quat: [0.5, 0.5, -0.5, -0.5]
+      laptop_front: [-1.0, 0.0]
+      desk_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      laptop_support_geom:
+        pos: [0.150000, 0.383000, 0.055360]
+        size: [0.200000, 0.005000, 0.180000]
+      window_body: window_a28de649e905dd78e94d2b9193dab852_2_0_0
+      robot_pose:
+        pos: [4.00, 1.80, 0.0]
+        yaw: 0.0
+      success_radius: 1.0
+      closed_qpos: 1.5708
+      open_qpos: 0.0
+
+    approach_desk_then_close_laptop_then_approach_trash_can:
+      fixture_mode: spawn_asset
+      source_body: laptop_f09fcf086ebe9e3ab2d97bff50b833ef_1_0_0
+      target_body: spawned_laptop_Laptop_26
+      target_joint: spawned_laptop_Laptop_26_laptop_lid_26_joint_0
+      laptop_pose:
+        pos: [5.70623, 1.65, 0.835000]
+        quat: [0.5, 0.5, -0.5, -0.5]
+      laptop_front: [-1.0, 0.0]
+      desk_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      laptop_support_geom:
+        pos: [0.150000, 0.383000, 0.055360]
+        size: [0.200000, 0.005000, 0.180000]
+      trash_can_body: holodeck1664_trash_can
+      robot_pose:
+        pos: [4.00, 1.80, 0.0]
+        yaw: 0.0
+      success_radius: 1.0
+      closed_qpos: 1.5708
+      open_qpos: 0.0
+
+    approach_trash_can_then_approach_desk_then_pull_chair:
+      fixture_mode: spawn_asset
+      chair_asset: objects/thor/RoboTHOR Objects/RoboTHOR_Assets_Furniture/OfficeChair/Prefabs/RoboTHOR_office_chair_allak/RoboTHOR_office_chair_allak.xml
+      chair_body: holodeck_task_chair_RoboTHOR_office_chair_allak
+      chair_joint: holodeck_task_chair_RoboTHOR_office_chair_allak_free
+      desk_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      chair_start_pose:
+        pos: [5.20, 1.80, 0.495666]
+        quat: [0.5, 0.5, 0.5, 0.5]
+      target_xy: [4.67, 1.80]
+      target_tolerance: [0.18, 0.35]
+      show_target_region: false
+      upright_local_axis: [0.0, 1.0, 0.0]
+      min_upright_cosine: 0.90
+      max_linear_speed: 0.12
+      max_angular_speed: 0.45
+      trash_can_body: holodeck1664_trash_can
+      robot_pose:
+        pos: [4.00, 1.80, 0.0]
+        yaw: 2.6403283887182107
+      success_radius: 1.0
+
+    take_tissue_box_then_close_drawer_then_approach_trash_can:
+      target_fixture: chestofdrawers_c86848ac21624c499f4665989ac4f01a_1_0_0
+      target_joint: chestofdrawers_c86848ac21624c499f4665989ac4f01a_1_20_0_DrawerMesh021_9
+      target_table_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      robot_pose:
+        pos: [3.70, 4.65, 0.0]
+        yaw: 1.5707963267948966
+      init_open_fraction: 1.0
+      success_open_fraction: 0.50
+      closed_qpos: 0.0
+      open_qpos: 0.466
+      lang: "Take the tissue box out of the open drawer."
+      trash_can_body: holodeck1664_trash_can
+
+    approach_desk_then_ice_cube_in_glass:
+      desk_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      table_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      remove_scene_bodies:
+        - laptop_f09fcf086ebe9e3ab2d97bff50b833ef_1_0_0
+      robot_pose:
+        pos: [3.50, 1.80, 0.0]
+        yaw: 0.0
+      success_radius: 1.0
+      object_scale: 1.52
+      cup_pose:
+        pos: [5.6822904116, 1.57500000, 0.8257]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      ice_pose:
+        pos: [5.70, 1.45, 0.7697]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      support_z: 0.7473
+      support_top_z: 0.7486
+
+    close_jar_then_approach_desk_then_approach_trash_can:
+      table_body: diningtable_ccf909fdcb2bcd7c1441fe7740cecd0b_1_0_0
+      robot_pose:
+        pos: [1.50, 0.50, 0.0]
+        yaw: 1.5707963267948966
+      object_scale: 1.0
+      mug_pose:
+        # The robot approaches the near (y-min) edge of this table. Keep the
+        # jar center 0.10 m inside that edge for a reachable fixed-base grasp.
+        pos: [1.50, 0.80, 0.75140]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      open_lid_pose:
+        # Rotate the old rearward lid offset 90 degrees onto the jar's side,
+        # so the lid is visible and reachable from the robot-facing edge.
+        pos: [1.65, 0.82574, 0.69800]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      closed_lid_pose:
+        pos: [1.50, 0.80, 0.84749]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      close_distance: 0.04
+      desk_body: diningtable_ccf909fdcb2bcd7c1441fe7740cecd0b_1_0_0
+      trash_can_body: holodeck1664_trash_can
+
+    approach_trash_can_then_approach_desk_then_open_jar:
+      table_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      robot_pose:
+        pos: [5.25, 1.45, 0.0]
+        yaw: 0.0
+      object_scale: 1.0
+      mug_pose:
+        pos: [5.75, 1.40, 0.82178]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      lid_pose:
+        pos: [5.75, 1.40, 0.91787]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      desk_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      trash_can_body: holodeck1664_trash_can
+
+  train_2025:
+    stand_candle_upright:
+      # Outer tall candle on the side table farther from the desk.
+      table_body: stand_dba5fb19566f0e1caaf78947145fe7fc_1_0_0
+      tabletop_geom: stand_dba5fb19566f0e1caaf78947145fe7fc_1_1_0_collision_1
+      candle_pose:
+        # Native shape, lying along world Y clear of the book and short candle.
+        # Top z=0.653330; native sideways half-height=0.0510944.
+        pos: [2.26769, 0.40, 0.70442]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      robot_pose:
+        pos: [2.23, 0.91, 0.0]
+        yaw: -1.5707963267948966
+
+    pick_box_from_floor:
+      # Open floor in the center of the back office, clear of the desk.
+      room_id: 0
+      robot_pose:
+        pos: [2.75, 3.00, 0.0]
+        yaw: 0.0
+      box_scale: 2.0
+      box_pose:
+        pos: [3.45, 3.00, 0.1580]
+        quat: [0.707107, 0.707107, 0.0, 0.0]
+
+    approach_window_then_pick_box:
+      # Keep the box centered in front of the target window and clear of the
+      # dresser and side table directly below it.
+      box_pose:
+        pos: [1.50, 1.00, 0.1580]
+        quat: [0.707107, 0.707107, 0.0, 0.0]
+      ground_box_on_collision_geometry: true
+
+    place_box_on_floor:
+      room_id: 0
+      table_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      robot_pose:
+        pos: [5.19, 2.15, 0.0]
+        yaw: 0.0
+      box_scale: 1.5
+      box_pose:
+        # Keep the original desk support height while restoring box contact.
+        pos: [5.73182, 2.15, 0.9788]
+        quat: [0.707107, 0.707107, 0.0, 0.0]
+      support_top_z: 0.7688
+      remove_scene_bodies:
+        - laptop_63fbcd680e0db93dfb0454951f2114f3_1_0_0
+
+    place_box_on_desk:
+      room_id: 0
+      table_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      robot_pose:
+        # Keep the calibrated stance and turn toward the box beside the desk.
+        pos: [5.19, 2.15, 0.0]
+        yaw: 1.4711276743037345
+      box_scale: 1.5
+      box_pose:
+        # Place the floor box beside the robot, near the desk's west edge.
+        pos: [5.24, 2.65, 0.1580]
+        quat: [0.5, 0.5, 0.5, 0.5]
+      remove_scene_bodies:
+        - laptop_63fbcd680e0db93dfb0454951f2114f3_1_0_0
+
+    pick_book_from_dresser:
+      # Use the dresser as the explicit source surface and spawn the
+      # canonical Book_3 on its top; native books in this scene are on tables.
+      source_body: chestofdrawers_0404a602d0608057acc9ab5271ffc125_1_0_0
+      remove_scene_bodies:
+        # Keep the side cabinet beside the desk so its native decor remains
+        # supported; remove only unrelated native books that block the
+        # calibrated dresser approach lane.
+        - book_389a9acdc701109829c44ab7674d6742_2_0_0
+        - book_f4e747659291a4cbe4055184d1393785_2_0_0
+      robot_pose:
+        # The dresser itself blocks a 45 cm stance; keep the shared
+        # collision-safe robot stance. Shift west of the side cabinet so the
+        # Sonic controller's left hand does not start inside its tabletop.
+        pos: [1.45, 0.85, 0.0]
+        yaw: -1.4164757372604628
+      book_scale: 0.75
+      book_density: 180.0
+      book_pose:
+        # The dresser collision top is z ~= 0.8175; this pose gives a shallow
+        # 0.25 mm contact margin after MuJoCo mesh compilation. Rotate in the
+        # table plane so Book_3's local +X spine faces the robot.
+        pos: [1.52, 0.40, 0.93420]
+        quat: [0.0, 0.806329702, 0.591466324, 0.0]
+
+    pick_cup_from_desk:
+      table_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      remove_scene_bodies:
+        - laptop_63fbcd680e0db93dfb0454951f2114f3_1_0_0
+      robot_pose:
+        # Place the G1 45 cm west of the cup on the open desk side.
+        pos: [5.19, 2.15, 0.0]
+        yaw: 0.0
+      object_scale: 1.52
+      cup_pose:
+        pos: [5.64, 2.15, 0.8459]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      support_z: 0.7678
+      support_top_z: 0.7688
+
+    ice_cube_in_glass:
+      table_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      remove_scene_bodies:
+        - laptop_63fbcd680e0db93dfb0454951f2114f3_1_0_0
+      robot_pose:
+        # Face the ice cube from the open side of the desk with a 45 cm standoff.
+        pos: [5.19, 1.50, 0.0]
+        yaw: 0.0
+      object_scale: 1.52
+      cup_pose:
+        pos: [5.6222904116, 1.62500000, 0.8459]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      ice_pose:
+        pos: [5.64, 1.50, 0.7899]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      support_z: 0.7678
+      support_top_z: 0.7688
+
+    ice_cube_then_approach_window_then_pick_box:
+      table_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      remove_scene_bodies:
+        - laptop_63fbcd680e0db93dfb0454951f2114f3_1_0_0
+      robot_pose:
+        pos: [5.19, 1.50, 0.0]
+        yaw: 0.0
+      object_scale: 1.52
+      cup_pose:
+        pos: [5.6222904116, 1.62500000, 0.8459]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      ice_pose:
+        pos: [5.64, 1.50, 0.7899]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      box_pose:
+        pos: [1.50, 1.00, 0.1580]
+        quat: [0.707107, 0.707107, 0.0, 0.0]
+      ground_box_on_collision_geometry: true
+
+    insert_folder_into_shelf:
+      shelf_body: shelf_22fc3a3d40ecdc9abc7852ada2b32b02_2_0_0
+      source_table_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      robot_pose:
+        # Stand beside the desk's long west edge and face the folder.
+        pos: [5.25, 2.82, 0.0]
+        yaw: 0.0
+      # The upright local X axis is world Z in this pose. Shorten it to keep
+      # the folder clear of the upper shelf divider.
+      folder_scale: [0.6, 0.5, 0.7]
+      folder_pose:
+        # Keep the scaled folder upright with its base on the desktop.
+        # Lower by the reduced world-Z half-height so the folder remains in
+        # shallow contact with the desktop.
+        pos: [5.70, 2.82, 0.8448]
+        # Apply the requested clockwise 90-degree Z rotation.
+        quat: [0.0, -0.707107, 0.0, -0.707107]
+      source_center: [5.70, 2.20, 0.7688]
+      source_half_size: [0.15, 0.85, 0.08]
+      # This calibrated opening is the upper compartment of the rack; its
+      # floor is z ~= 0.877, so the folder center is z ~= 0.995.
+      region_center: [5.869, 3.382, 0.995]
+      region_half_size: [0.11, 0.20, 0.16]
+      lang: "pick up the folder from the desk and insert it into the top shelf of the file rack"
+
+    remove_folder_from_shelf:
+      shelf_body: shelf_22fc3a3d40ecdc9abc7852ada2b32b02_2_0_0
+      robot_pose:
+        # Face the file rack from the west side beside the desk.
+        pos: [5.35, 3.382, 0.0]
+        yaw: 0.0
+      # Match the shorter upright folder used by the insert task.
+      folder_scale: [0.6, 0.5, 0.7]
+      folder_pose:
+        # Lower by the reduced world-Z half-height and retain stable contact
+        # with the upper-compartment floor at z ~= 0.877.
+        pos: [5.87, 3.382, 0.979]
+        # Rotate the calibrated pose 90 degrees clockwise around Z.
+        quat: [0.0, -0.707107, 0.0, -0.707107]
+      region_center: [5.869, 3.382, 0.995]
+      region_half_size: [0.11, 0.20, 0.16]
+      source_center: [5.869, 3.382, 0.995]
+      source_half_size: [0.11, 0.20, 0.16]
+      lang: "grasp the folder from the middle shelf and move it completely outside the shelf space"
+
+    approach_trash_can:
+      trash_can_body: holodeck2025_trash_can
+      robot_pose:
+        # Reuse the calibrated desk-task starting area and face the trash can.
+        pos: [3.50, 1.95, 0.0]
+        yaw: 2.610562548745611
+      composite_robot_pose:
+        # Keep the composite start explicit and identical to this calibrated
+        # desk-side pose; the atomic task remains unchanged.
+        pos: [3.50, 1.95, 0.0]
+        yaw: 2.610562548745611
+      success_radius: 1.0
+
+    throw_bottle_into_trash_can:
+      trash_can_body: holodeck2025_trash_can
+      source_body: holodeck2025_bottle_source_table
+      source_table_pose:
+        # Put the task-local side table beside the bin along the left wall.
+        pos: [0.25, 4.20, 0.0]
+        yaw: 0.0
+      source_surface_z: 0.70
+      source_table_half_size: [0.25, 0.20]
+      robot_pose:
+        # Stand just beyond the table edge where the bottle is placed.
+        pos: [0.90, 4.18386200, 0.0]
+        yaw: 3.141592653589793
+      bottle_scale: 1.4
+      bottle_pose:
+        # Keep the source bottle 0.45 m horizontally in front of the G1.
+        pos: [0.45, 4.18386200, 0.7773]
+        quat: [1.0, 0.0, 0.0, 0.0]
+
+    approach_desk:
+      desk_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      fixture_mode: spawn_asset
+      source_body: laptop_63fbcd680e0db93dfb0454951f2114f3_1_0_0
+      laptop_pose:
+        pos: [5.706100000000000, 1.950000000000000, 0.855529]
+        quat: [0.5, 0.5, -0.5, -0.5]
+      lang: "walk to the desk and stand nearby"
+      # Start west of the desk, outside the success radius, facing its open side.
+      robot_pose:
+        pos: [3.50, 1.95, 0.0]
+        yaw: 0.06627822076846923
+      success_radius: 1.0
+
+    approach_window:
+      window_body: window_a28de649e905dd78e94d2b9193dab852_2_0_0
+      lang: "walk to the rightmost window and stand nearby"
+      robot_pose:
+        pos: [2.5, 4.0, 0.0]
+        yaw: -1.8611036429564018
+      # Keep the composite start outside both desk and window regions.
+      composite_robot_pose:
+        pos: [2.5, 4.0, 0.0]
+        # Face the desk for the first navigation stage.
+        yaw: -0.5274981435848193
+      success_radius: 1.0
+
+    open_laptop:
+      fixture_mode: spawn_asset
+      source_body: laptop_63fbcd680e0db93dfb0454951f2114f3_1_0_0
+      target_body: spawned_laptop_Laptop_26
+      target_joint: spawned_laptop_Laptop_26_laptop_lid_26_joint_0
+      laptop_pose:
+        pos: [5.706100000000000, 1.950000000000000, 0.855529]
+        quat: [0.5, 0.5, -0.5, -0.5]
+      desk_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      laptop_support_geom:
+        pos: [0.150000, 0.383000, 0.055360]
+        size: [0.200000, 0.005000, 0.180000]
+      robot_pose:
+        # Face the laptop head-on with a 0.10 m desk collision clearance.
+        pos: [5.18516845, 1.95, 0.0]
+        yaw: 0.0
+      closed_qpos: 1.5708
+      open_qpos: 0.0
+
+    close_laptop:
+      fixture_mode: spawn_asset
+      source_body: laptop_63fbcd680e0db93dfb0454951f2114f3_1_0_0
+      target_body: spawned_laptop_Laptop_26
+      target_joint: spawned_laptop_Laptop_26_laptop_lid_26_joint_0
+      laptop_pose:
+        pos: [5.706100000000000, 1.950000000000000, 0.855529]
+        quat: [0.5, 0.5, -0.5, -0.5]
+      desk_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      laptop_support_geom:
+        pos: [0.150000, 0.383000, 0.055360]
+        size: [0.200000, 0.005000, 0.180000]
+      robot_pose:
+        # Face the laptop head-on with a 0.10 m desk collision clearance.
+        pos: [5.18516846, 1.95, 0.0]
+        yaw: 0.0
+      closed_qpos: 1.5708
+      open_qpos: 0.0
+
+    open_drawer:
+      # Use the low side cabinet immediately beside the sofa seating area.
+      target_fixture: stand_dba5fb19566f0e1caaf78947145fe7fc_2_0_0
+      target_joint: stand_dba5fb19566f0e1caaf78947145fe7fc_2_2_0_joint_0
+      lang: "Open the side cabinet drawer."
+      robot_pose:
+        # Stand in front of the drawer, facing its opening direction.
+        pos: [3.30, 0.90, 0.0]
+        yaw: -1.5798708501714973
+      init_open_fraction: 0.20
+      success_open_fraction: 0.80
+      closed_qpos: 0.0
+      open_qpos: 0.381
+      hold_steps: 10
+
+    open_drawer_then_take_tissue_box:
+      target_fixture: stand_dba5fb19566f0e1caaf78947145fe7fc_2_0_0
+      target_joint: stand_dba5fb19566f0e1caaf78947145fe7fc_2_2_0_joint_0
+      target_table_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      robot_pose:
+        pos: [3.30, 0.90, 0.0]
+        yaw: -1.5798708501714973
+      # The composite starts farther out than the atomic calibration so the
+      # G1 and tissue box have more clearance from the side cabinet.
+      composite_robot_pose:
+        pos: [3.30, 1.05, 0.0]
+        yaw: -1.5798708501714973
+      initial_tissue_box_offset: [0.0, 0.15, 0.0]
+      init_open_fraction: 0.20
+      success_open_fraction: 0.90
+      closed_qpos: 0.0
+      open_qpos: 0.381
+      hold_steps: 10
+      lang: "Open the side cabinet drawer, then take out the tissue box."
+
+    take_tissue_box_from_open_drawer:
+      target_fixture: stand_dba5fb19566f0e1caaf78947145fe7fc_2_0_0
+      target_joint: stand_dba5fb19566f0e1caaf78947145fe7fc_2_2_0_joint_0
+      target_table_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      robot_pose:
+        # Keep the open drawer in front of, rather than inside, the G1 body.
+        pos: [3.30, 1.20, 0.0]
+        yaw: -1.5816852989136816
+      init_open_fraction: 1.0
+      success_open_fraction: 0.50
+      closed_qpos: 0.0
+      open_qpos: 0.381
+      lang: "Take the tissue box out of the open drawer."
+
+    close_drawer:
+      target_fixture: stand_dba5fb19566f0e1caaf78947145fe7fc_2_0_0
+      target_joint: stand_dba5fb19566f0e1caaf78947145fe7fc_2_2_0_joint_0
+      lang: "Close the side cabinet drawer."
+      robot_pose:
+        # The drawer is extended toward +Y at the start of this task; move
+        # the G1 forward to keep the open drawer directly in front of it.
+        pos: [3.30, 1.20, 0.0]
+        yaw: -1.5816852989136816
+      init_open_fraction: 1.0
+      success_close_fraction: 0.10
+      closed_qpos: 0.0
+      open_qpos: 0.381
+      hold_steps: 10
+
+    open_mug_lid:
+      table_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      robot_pose:
+        pos: [5.25, 1.45, 0.0]
+        yaw: 0.0
+      object_scale: 1.0
+      mug_pose:
+        # Keep the jar in the wider central part of the usable tabletop.
+        pos: [5.63186, 1.50000, 0.84231]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      lid_pose:
+        pos: [5.63186, 1.50000, 0.93840]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      open_distance: 0.10
+
+    close_mug_lid:
+      table_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      robot_pose:
+        pos: [5.25, 1.45, 0.0]
+        yaw: 0.0
+      object_scale: 1.0
+      mug_pose:
+        # Keep the jar 0.45 m in front of the fixed table-edge standoff.
+        pos: [5.66243181, 1.63000, 0.84231]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      open_lid_pose:
+        # Put the detached lid beside the jar on the robot-facing side.
+        pos: [5.69955534, 1.43000, 0.78861]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      closed_lid_pose:
+        pos: [5.66243181, 1.63000, 0.93840]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      close_distance: 0.04
+
+    sugar_cube_in_jar:
+      table_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      robot_pose:
+        pos: [5.25, 1.45, 0.0]
+        yaw: 0.0
+      jar_scale: 1.0
+      jar_pose:
+        pos: [5.63186, 1.50000, 0.84231]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      lid_pose:
+        # Put the lid on the far side of the jar, opposite the sugar cube.
+        pos: [5.63186, 1.70000, 0.78861]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      sugar_pose:
+        # Keep the enlarged cube on the side of the jar away from the laptop.
+        pos: [5.63186, 1.38000, 0.78888]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      support_z: 0.7678
+      support_top_z: 0.7688
+
+    sugar_cube_then_close_jar:
+      table_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      robot_pose:
+        pos: [5.25, 1.45, 0.0]
+        yaw: 0.0
+      jar_scale: 1.0
+      jar_pose:
+        pos: [5.63186, 1.50, 0.84231]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      lid_pose:
+        pos: [5.63186, 1.70, 0.78861]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      sugar_pose:
+        pos: [5.63186, 1.38, 0.78888]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      support_z: 0.7678
+      support_top_z: 0.7688
+
+    open_jar_add_sugar_then_close_jar:
+      table_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      robot_pose:
+        pos: [5.25, 1.45, 0.0]
+        yaw: 0.0
+      jar_scale: 1.0
+      jar_pose:
+        pos: [5.63186, 1.50, 0.84231]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      lid_pose:
+        pos: [5.63186, 1.70, 0.78861]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      sugar_pose:
+        pos: [5.63186, 1.38, 0.78888]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      support_z: 0.7678
+      support_top_z: 0.7688
+
+    approach_desk_then_close_laptop_move_cup:
+      fixture_mode: spawn_asset
+      source_body: laptop_63fbcd680e0db93dfb0454951f2114f3_1_0_0
+      target_body: spawned_laptop_Laptop_26
+      target_joint: spawned_laptop_Laptop_26_laptop_lid_26_joint_0
+      laptop_pose:
+        pos: [5.7061, 1.95, 0.855529]
+        quat: [0.5, 0.5, -0.5, -0.5]
+      laptop_front: [-1.0, 0.0]
+      desk_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      laptop_support_geom:
+        pos: [0.15, 0.383, 0.05536]
+        size: [0.2, 0.005, 0.18]
+      robot_pose:
+        pos: [3.50, 1.95, 0.0]
+        yaw: 0.06627822076846923
+      success_radius: 1.0
+      closed_qpos: 1.5708
+      open_qpos: 0.0
+      cup_scale: 1.52
+      cup_pose:
+        pos: [5.7184227, 1.6387032, 0.8449]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      initial_cup_base_xy: [5.7184227, 1.6387032]
+      target_base_xy: [5.73182, 2.17275]
+      target_tolerance: [0.15, 0.30]
+      corner_target_base_xys: [[5.66709, 1.43340], [5.66709, 2.78908]]
+      tabletop_bounds_xy: [[5.56364, 1.32818], [5.90000, 3.01733]]
+      support_z: 0.7678
+      support_z_tolerance: 0.04
+      upright_local_axis: [0.0, 0.0, 1.0]
+      min_upright_cosine: 0.90
+      max_linear_speed: 0.08
+      max_angular_speed: 0.30
+
+    ice_cube_then_place_cup:
+      table_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      remove_scene_bodies:
+        - laptop_63fbcd680e0db93dfb0454951f2114f3_1_0_0
+      robot_pose:
+        pos: [5.19, 2.15, 0.0]
+        yaw: 0.0
+      object_scale: 1.52
+      cup_pose:
+        pos: [5.64, 2.15, 0.8459]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      ice_pose:
+        # Keep the composite's ice cube close to the cup without changing
+        # the separate atomic ice_cube_in_glass calibration above.
+        pos: [5.64, 1.90, 0.7899]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      support_z: 0.7678
+      support_top_z: 0.7688
+
+    approach_desk_then_pull_chair:
+      fixture_mode: spawn_asset
+      chair_asset: objects/thor/RoboTHOR Objects/RoboTHOR_Assets_Furniture/OfficeChair/Prefabs/RoboTHOR_office_chair_allak/RoboTHOR_office_chair_allak.xml
+      chair_body: holodeck_task_chair_RoboTHOR_office_chair_allak
+      chair_joint: holodeck_task_chair_RoboTHOR_office_chair_allak_free
+      desk_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      chair_start_pose:
+        pos: [5.20, 1.95, 0.495666]
+        quat: [0.5, 0.5, 0.5, 0.5]
+      robot_pose:
+        pos: [3.50, 1.95, 0.0]
+        yaw: 0.06627822076846923
+      success_radius: 1.0
+      target_xy: [4.17, 1.95]
+      target_tolerance: [0.18, 0.35]
+      show_target_region: false
+      upright_local_axis: [0.0, 1.0, 0.0]
+      min_upright_cosine: 0.90
+      max_linear_speed: 0.12
+      max_angular_speed: 0.45
+
+    remove_folder_from_shelf_to_desk:
+      shelf_body: shelf_22fc3a3d40ecdc9abc7852ada2b32b02_2_0_0
+      source_table_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      robot_pose:
+        pos: [5.35, 3.382, 0.0]
+        yaw: 0.0
+      folder_scale: [0.6, 0.5, 0.7]
+      folder_pose:
+        pos: [5.87, 3.382, 0.979]
+        quat: [0.0, -0.707107, 0.0, -0.707107]
+      region_center: [5.869, 3.382, 0.995]
+      region_half_size: [0.11, 0.20, 0.16]
+      source_center: [5.70, 2.20, 0.7688]
+      source_half_size: [0.15, 0.85, 0.08]
+
+    place_cup_on_placemat:
+      table_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      remove_scene_bodies:
+        - laptop_63fbcd680e0db93dfb0454951f2114f3_1_0_0
+      robot_pose:
+        # Stand 0.45 m west of the cup and face the calibrated source pose.
+        pos: [5.19, 2.15, 0.0]
+        yaw: 0.0
+      cup_scale: 1.52
+      cup_pose:
+        # Keep the source cup inside the near end of the narrow tabletop.
+        pos: [5.64, 2.15, 0.8459]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      placemat_scale: 1.0
+      placemat_pose:
+        # Keep the target near the source cup while preserving a small gap.
+        pos: [5.76, 2.40, 0.7704]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      target_half_size: [0.198, 0.146, 0.01]
+      support_z: 0.7678
+
+    pick_cup_then_approach_desk_then_place_cup_on_placemat:
+      table_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      remove_scene_bodies:
+        - laptop_63fbcd680e0db93dfb0454951f2114f3_1_0_0
+      robot_pose:
+        pos: [5.19, 1.50, 0.0]
+        yaw: 0.0
+      cup_scale: 1.52
+      cup_pose:
+        pos: [5.6222904116, 1.62500000, 0.8459]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      placemat_scale: 1.0
+      placemat_pose:
+        pos: [5.76, 2.40, 0.7704]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      target_half_size: [0.198, 0.146, 0.01]
+      support_z: 0.7678
+      # Start on the low side cabinet used by the opening drawer task.
+      source_table_body: stand_dba5fb19566f0e1caaf78947145fe7fc_2_0_0
+      source_robot_pose:
+        pos: [3.30, 0.90, 0.0]
+        yaw: -1.5707963267948966
+      source_cup_pose:
+        # Use the cabinet's collision top, which is below its semantic site.
+        pos: [3.30, 0.45, 0.73173]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      source_support_z: 0.65333
+
+    move_cup_to_center:
+      desk_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      robot_pose:
+        # 0.10 m shortest collision distance from the G1 to the operating desk.
+        # Keep a precise 45 cm standoff while facing the calibrated cup.
+        pos: [5.3251734709, 1.8739779745, 0.0]
+        yaw: -0.2268928028
+      cup_scale: 1.52
+      cup_pose:
+        # Start strictly to the robot's right of the target, not fore or aft.
+        pos: [5.7636400000, 1.7727500000, 0.8449]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      initial_cup_base_xy: [5.7636400000, 1.7727500000]
+      target_base_xy: [5.73182, 2.17275]
+      target_tolerance: [0.15, 0.30]
+      # Corner centers use the physical collision top slab, not the narrower
+      # semantic support patch used by the center task.
+      corner_target_base_xys: [[5.66709, 1.43340], [5.66709, 2.78908]]
+      tabletop_bounds_xy: [[5.56364, 1.32818], [5.90000, 3.01733]]
+      support_z: 0.7678
+      support_z_tolerance: 0.04
+      upright_local_axis: [0.0, 0.0, 1.0]
+      min_upright_cosine: 0.90
+      max_linear_speed: 0.08
+      max_angular_speed: 0.30
+
+    move_cup_to_corner:
+      desk_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      robot_pose:
+        # G1 faces the cup from the desk edge with 0.10 m collision clearance.
+        pos: [5.2684227000, 1.6387032000, 0.0]
+        yaw: 0.0
+      cup_scale: 1.52
+      cup_pose:
+        # Match train_117: keep the cup farther inside the near edge and
+        # farther from the robot-side corner target.
+        pos: [5.7184227000, 1.6387032000, 0.8449]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      initial_cup_base_xy: [5.7184227000, 1.6387032000]
+      target_base_xy: [5.73182, 2.17275]
+      target_tolerance: [0.15, 0.30]
+      corner_target_base_xys: [[5.66709, 1.43340], [5.66709, 2.78908]]
+      tabletop_bounds_xy: [[5.56364, 1.32818], [5.90000, 3.01733]]
+      support_z: 0.7678
+      support_z_tolerance: 0.04
+      upright_local_axis: [0.0, 0.0, 1.0]
+      min_upright_cosine: 0.90
+      max_linear_speed: 0.08
+      max_angular_speed: 0.30
+
+    push_chair_to_desk:
+      fixture_mode: spawn_asset
+      chair_asset: objects/thor/RoboTHOR Objects/RoboTHOR_Assets_Furniture/OfficeChair/Prefabs/RoboTHOR_office_chair_allak/RoboTHOR_office_chair_allak.xml
+      chair_body: holodeck_task_chair_RoboTHOR_office_chair_allak
+      chair_joint: holodeck_task_chair_RoboTHOR_office_chair_allak_free
+      desk_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      chair_start_pose:
+        pos: [4.17, 1.95, 0.495666]
+        # Turn the chair clockwise 90 degrees so it faces the desk.
+        quat: [0.5, 0.5, 0.5, 0.5]
+      robot_pose:
+        pos: [3.50, 1.95, 0.0]
+        yaw: 0.0
+      target_xy: [5.20, 1.95]
+      target_tolerance: [0.18, 0.35]
+      show_target_region: false
+      upright_local_axis: [0.0, 1.0, 0.0]
+      min_upright_cosine: 0.90
+      max_linear_speed: 0.12
+      max_angular_speed: 0.45
+
+    pull_chair_from_desk:
+      fixture_mode: spawn_asset
+      chair_asset: objects/thor/RoboTHOR Objects/RoboTHOR_Assets_Furniture/OfficeChair/Prefabs/RoboTHOR_office_chair_allak/RoboTHOR_office_chair_allak.xml
+      chair_body: holodeck_task_chair_RoboTHOR_office_chair_allak
+      chair_joint: holodeck_task_chair_RoboTHOR_office_chair_allak_free
+      desk_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      chair_start_pose:
+        pos: [5.20, 1.95, 0.495666]
+        # Keep the clockwise 90-degree desk-facing orientation for the pull reset.
+        quat: [0.5, 0.5, 0.5, 0.5]
+      robot_pose:
+        pos: [5.87, 1.95, 0.0]
+        yaw: 3.141592653589793
+      composite_robot_pose:
+        # Stand on the chair's pull side; the atomic pose is beyond this
+        # scene's usable floor boundary when used by the box composite.
+        pos: [4.53, 1.95, 0.0]
+        yaw: 0.0
+      target_xy: [4.17, 1.95]
+      target_tolerance: [0.18, 0.35]
+      show_target_region: false
+      upright_local_axis: [0.0, 1.0, 0.0]
+      min_upright_cosine: 0.90
+      max_linear_speed: 0.12
+      max_angular_speed: 0.45
+
+    approach_window_then_desk_then_pick_cup:
+      window_body: window_a28de649e905dd78e94d2b9193dab852_2_0_0
+      desk_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      table_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      remove_scene_bodies:
+        - laptop_63fbcd680e0db93dfb0454951f2114f3_1_0_0
+      robot_pose:
+        pos: [2.5, 4.0, 0.0]
+        yaw: -1.8611036429564018
+      success_radius: 1.0
+      object_scale: 1.52
+      cup_pose:
+        pos: [5.64, 2.15, 0.8459]
+        quat: [1.0, 0.0, 0.0, 0.0]
+
+    approach_desk_pull_chair_then_open_laptop:
+      fixture_mode: spawn_asset
+      source_body: laptop_63fbcd680e0db93dfb0454951f2114f3_1_0_0
+      chair_asset: objects/thor/RoboTHOR Objects/RoboTHOR_Assets_Furniture/OfficeChair/Prefabs/RoboTHOR_office_chair_allak/RoboTHOR_office_chair_allak.xml
+      chair_body: holodeck_task_chair_RoboTHOR_office_chair_allak
+      chair_joint: holodeck_task_chair_RoboTHOR_office_chair_allak_free
+      desk_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      chair_start_pose:
+        pos: [5.20, 1.95, 0.495666]
+        quat: [0.5, 0.5, 0.5, 0.5]
+      robot_pose:
+        pos: [3.50, 1.95, 0.0]
+        yaw: 0.06627822076846923
+      success_radius: 1.0
+      target_xy: [4.17, 1.95]
+      target_tolerance: [0.18, 0.35]
+      show_target_region: false
+      upright_local_axis: [0.0, 1.0, 0.0]
+      min_upright_cosine: 0.90
+      max_linear_speed: 0.12
+      max_angular_speed: 0.45
+      target_body: spawned_laptop_Laptop_26
+      target_joint: spawned_laptop_Laptop_26_laptop_lid_26_joint_0
+      laptop_pose:
+        pos: [5.7061, 1.95, 0.855529]
+        quat: [0.5, 0.5, -0.5, -0.5]
+      laptop_front: [-1.0, 0.0]
+      laptop_support_geom:
+        pos: [0.15, 0.383, 0.05536]
+        size: [0.2, 0.005, 0.18]
+      closed_qpos: 1.5708
+      open_qpos: 0.0
+
+    move_cup_to_center_then_open_laptop:
+      fixture_mode: spawn_asset
+      source_body: laptop_63fbcd680e0db93dfb0454951f2114f3_1_0_0
+      target_body: spawned_laptop_Laptop_26
+      target_joint: spawned_laptop_Laptop_26_laptop_lid_26_joint_0
+      laptop_pose:
+        # Keep the closed laptop on the far side of the desk from the cup target.
+        pos: [5.7061, 2.70, 0.855529]
+        quat: [0.5, 0.5, -0.5, -0.5]
+      laptop_front: [-1.0, 0.0]
+      desk_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      laptop_support_geom:
+        # Keep the support in the desk's local frame while relocating the
+        # laptop to world y=2.70.
+        pos: [-0.60, 0.383, 0.05536]
+        size: [0.2, 0.005, 0.18]
+      robot_pose:
+        pos: [5.3251734709, 1.8739779745, 0.0]
+        yaw: -0.2268928028
+      closed_qpos: 1.5708
+      open_qpos: 0.0
+      cup_scale: 1.52
+      cup_pose:
+        pos: [5.7636400000, 1.7727500000, 0.8449]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      initial_cup_base_xy: [5.7636400000, 1.7727500000]
+      target_base_xy: [5.73182, 2.17275]
+      target_tolerance: [0.15, 0.30]
+      tabletop_bounds_xy: [[5.56364, 1.32818], [5.90000, 3.01733]]
+      support_z: 0.7678
+      support_z_tolerance: 0.04
+      upright_local_axis: [0.0, 0.0, 1.0]
+      min_upright_cosine: 0.90
+      max_linear_speed: 0.08
+      max_angular_speed: 0.30
+
+    remove_folder_from_shelf_to_desk_then_open_laptop:
+      fixture_mode: spawn_asset
+      source_body: laptop_63fbcd680e0db93dfb0454951f2114f3_1_0_0
+      shelf_body: shelf_22fc3a3d40ecdc9abc7852ada2b32b02_2_0_0
+      source_table_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      robot_pose:
+        pos: [5.35, 3.382, 0.0]
+        yaw: 0.0
+      folder_scale: [0.6, 0.5, 0.7]
+      folder_pose:
+        pos: [5.87, 3.382, 0.979]
+        quat: [0.0, -0.707107, 0.0, -0.707107]
+      region_center: [5.869, 3.382, 0.995]
+      region_half_size: [0.11, 0.20, 0.16]
+      source_center: [5.70, 2.20, 0.7688]
+      source_half_size: [0.15, 0.85, 0.08]
+      target_body: spawned_laptop_Laptop_26
+      target_joint: spawned_laptop_Laptop_26_laptop_lid_26_joint_0
+      laptop_pose:
+        # Place the spawned laptop at the measured center of the desk.
+        pos: [5.73182, 2.17275, 0.855529]
+        quat: [0.5, 0.5, -0.5, -0.5]
+      laptop_front: [-1.0, 0.0]
+      desk_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      laptop_support_geom:
+        # The desk body is rotated; these are local coordinates for a support
+        # whose world XY center matches the calibrated laptop pose.
+        pos: [-0.07275, 0.383, 0.02964]
+        size: [0.2, 0.005, 0.18]
+      closed_qpos: 1.5708
+      open_qpos: 0.0
+
+    approach_desk_ice_cube_place_cup_then_pick_cup:
+      desk_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      table_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      remove_scene_bodies:
+        - laptop_63fbcd680e0db93dfb0454951f2114f3_1_0_0
+      robot_pose:
+        pos: [3.50, 1.95, 0.0]
+        yaw: 0.06627822076846923
+      success_radius: 1.0
+      object_scale: 1.52
+      cup_scale: 1.52
+      cup_pose:
+        pos: [5.64, 2.15, 0.8459]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      ice_pose:
+        pos: [5.64, 1.90, 0.7899]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      placemat_scale: 1.0
+      placemat_pose:
+        pos: [5.76, 2.40, 0.7704]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      target_half_size: [0.198, 0.146, 0.01]
+      support_z: 0.7678
+      support_top_z: 0.7688
+
+    close_laptop_push_chair_then_approach_window:
+      fixture_mode: spawn_asset
+      source_body: laptop_63fbcd680e0db93dfb0454951f2114f3_1_0_0
+      target_body: spawned_laptop_Laptop_26
+      target_joint: spawned_laptop_Laptop_26_laptop_lid_26_joint_0
+      laptop_pose:
+        pos: [5.7061, 1.95, 0.855529]
+        quat: [0.5, 0.5, -0.5, -0.5]
+      laptop_front: [-1.0, 0.0]
+      desk_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      laptop_support_geom:
+        pos: [0.15, 0.383, 0.05536]
+        size: [0.2, 0.005, 0.18]
+      chair_asset: objects/thor/RoboTHOR Objects/RoboTHOR_Assets_Furniture/OfficeChair/Prefabs/RoboTHOR_office_chair_allak/RoboTHOR_office_chair_allak.xml
+      chair_body: holodeck_task_chair_RoboTHOR_office_chair_allak
+      chair_joint: holodeck_task_chair_RoboTHOR_office_chair_allak_free
+      chair_start_pose:
+        pos: [4.17, 1.95, 0.495666]
+        quat: [0.5, 0.5, 0.5, 0.5]
+      target_xy: [5.20, 1.95]
+      target_tolerance: [0.18, 0.35]
+      show_target_region: false
+      upright_local_axis: [0.0, 1.0, 0.0]
+      min_upright_cosine: 0.90
+      max_linear_speed: 0.12
+      max_angular_speed: 0.45
+      window_body: window_a28de649e905dd78e94d2b9193dab852_2_0_0
+      robot_pose:
+        pos: [5.18516846, 1.95, 0.0]
+        yaw: 0.0
+      success_radius: 1.0
+      closed_qpos: 1.5708
+      open_qpos: 0.0
+
+    take_tissue_box_then_place_cup:
+      target_fixture: stand_dba5fb19566f0e1caaf78947145fe7fc_2_0_0
+      target_joint: stand_dba5fb19566f0e1caaf78947145fe7fc_2_2_0_joint_0
+      target_table_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      robot_pose:
+        pos: [3.30, 1.20, 0.0]
+        yaw: -1.5816852989136816
+      init_open_fraction: 1.0
+      success_open_fraction: 0.50
+      closed_qpos: 0.0
+      open_qpos: 0.381
+      table_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      remove_scene_bodies:
+        - laptop_63fbcd680e0db93dfb0454951f2114f3_1_0_0
+      cup_scale: 1.52
+      cup_pose:
+        pos: [5.64, 2.15, 0.8459]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      placemat_scale: 1.0
+      placemat_pose:
+        pos: [5.76, 2.40, 0.7704]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      target_half_size: [0.198, 0.146, 0.01]
+      support_z: 0.7678
+
+    approach_trash_can_then_throw_bottle:
+      trash_can_body: holodeck2025_trash_can
+      robot_pose:
+        pos: [3.50, 1.95, 0.0]
+        yaw: 2.610562548745611
+      success_radius: 1.0
+      source_body: holodeck2025_bottle_source_table
+      source_table_pose:
+        pos: [0.25, 4.20, 0.0]
+        yaw: 0.0
+      source_surface_z: 0.70
+      source_table_half_size: [0.25, 0.20]
+      bottle_scale: 1.4
+      bottle_pose:
+        pos: [0.45, 4.18386200, 0.7773]
+        quat: [1.0, 0.0, 0.0, 0.0]
+
+    remove_folder_from_shelf_to_desk_then_close_laptop:
+      fixture_mode: spawn_asset
+      source_body: laptop_63fbcd680e0db93dfb0454951f2114f3_1_0_0
+      shelf_body: shelf_22fc3a3d40ecdc9abc7852ada2b32b02_2_0_0
+      source_table_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      robot_pose:
+        pos: [5.35, 3.382, 0.0]
+        yaw: 0.0
+      folder_scale: [0.6, 0.5, 0.7]
+      folder_pose:
+        pos: [5.87, 3.382, 0.979]
+        quat: [0.0, -0.707107, 0.0, -0.707107]
+      region_center: [5.869, 3.382, 0.995]
+      region_half_size: [0.11, 0.20, 0.16]
+      source_center: [5.70, 2.20, 0.7688]
+      source_half_size: [0.15, 0.85, 0.08]
+      target_body: spawned_laptop_Laptop_26
+      target_joint: spawned_laptop_Laptop_26_laptop_lid_26_joint_0
+      laptop_pose:
+        pos: [5.7061, 1.95, 0.855529]
+        quat: [0.5, 0.5, -0.5, -0.5]
+      laptop_front: [-1.0, 0.0]
+      desk_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      laptop_support_geom:
+        pos: [0.15, 0.383, 0.05536]
+        size: [0.2, 0.005, 0.18]
+      closed_qpos: 1.5708
+      open_qpos: 0.0
+
+    approach_window_then_desk:
+      window_body: window_a28de649e905dd78e94d2b9193dab852_2_0_0
+      desk_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      robot_pose:
+        pos: [2.5, 4.0, 0.0]
+        yaw: -1.8611036429564018
+      success_radius: 1.0
+
+    approach_trash_can_then_throw_bottle_then_approach_desk:
+      trash_can_body: holodeck2025_trash_can
+      source_body: holodeck2025_bottle_source_table
+      source_table_pose:
+        pos: [0.25, 4.20, 0.0]
+        yaw: 0.0
+      source_surface_z: 0.70
+      source_table_half_size: [0.25, 0.20]
+      bottle_scale: 1.4
+      bottle_pose:
+        pos: [0.45, 4.18386200, 0.7773]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      desk_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      robot_pose:
+        pos: [3.50, 1.95, 0.0]
+        yaw: 2.610562548745611
+      success_radius: 1.0
+
+    approach_desk_then_open_laptop_then_approach_window:
+      fixture_mode: spawn_asset
+      source_body: laptop_63fbcd680e0db93dfb0454951f2114f3_1_0_0
+      target_body: spawned_laptop_Laptop_26
+      target_joint: spawned_laptop_Laptop_26_laptop_lid_26_joint_0
+      laptop_pose:
+        pos: [5.7061, 1.95, 0.855529]
+        quat: [0.5, 0.5, -0.5, -0.5]
+      laptop_front: [-1.0, 0.0]
+      desk_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      laptop_support_geom:
+        pos: [0.15, 0.383, 0.05536]
+        size: [0.2, 0.005, 0.18]
+      window_body: window_a28de649e905dd78e94d2b9193dab852_2_0_0
+      robot_pose:
+        pos: [3.50, 1.95, 0.0]
+        yaw: 0.06627822076846923
+      success_radius: 1.0
+      closed_qpos: 1.5708
+      open_qpos: 0.0
+
+    approach_desk_then_close_laptop_then_approach_trash_can:
+      fixture_mode: spawn_asset
+      source_body: laptop_63fbcd680e0db93dfb0454951f2114f3_1_0_0
+      target_body: spawned_laptop_Laptop_26
+      target_joint: spawned_laptop_Laptop_26_laptop_lid_26_joint_0
+      laptop_pose:
+        pos: [5.7061, 1.95, 0.855529]
+        quat: [0.5, 0.5, -0.5, -0.5]
+      laptop_front: [-1.0, 0.0]
+      desk_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      laptop_support_geom:
+        pos: [0.15, 0.383, 0.05536]
+        size: [0.2, 0.005, 0.18]
+      trash_can_body: holodeck2025_trash_can
+      robot_pose:
+        pos: [3.50, 1.95, 0.0]
+        yaw: 0.06627822076846923
+      success_radius: 1.0
+      closed_qpos: 1.5708
+      open_qpos: 0.0
+
+    approach_trash_can_then_approach_desk_then_pull_chair:
+      fixture_mode: spawn_asset
+      chair_asset: objects/thor/RoboTHOR Objects/RoboTHOR_Assets_Furniture/OfficeChair/Prefabs/RoboTHOR_office_chair_allak/RoboTHOR_office_chair_allak.xml
+      chair_body: holodeck_task_chair_RoboTHOR_office_chair_allak
+      chair_joint: holodeck_task_chair_RoboTHOR_office_chair_allak_free
+      desk_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      chair_start_pose:
+        pos: [5.20, 1.95, 0.495666]
+        quat: [0.5, 0.5, 0.5, 0.5]
+      target_xy: [4.67, 1.95]
+      target_tolerance: [0.18, 0.35]
+      show_target_region: false
+      upright_local_axis: [0.0, 1.0, 0.0]
+      min_upright_cosine: 0.90
+      max_linear_speed: 0.12
+      max_angular_speed: 0.45
+      trash_can_body: holodeck2025_trash_can
+      robot_pose:
+        pos: [3.50, 1.95, 0.0]
+        yaw: 2.610562548745611
+      success_radius: 1.0
+
+    take_tissue_box_then_close_drawer_then_approach_trash_can:
+      target_fixture: stand_dba5fb19566f0e1caaf78947145fe7fc_2_0_0
+      target_joint: stand_dba5fb19566f0e1caaf78947145fe7fc_2_2_0_joint_0
+      target_table_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      robot_pose:
+        pos: [3.30, 1.20, 0.0]
+        yaw: -1.5816852989136816
+      init_open_fraction: 1.0
+      success_open_fraction: 0.50
+      closed_qpos: 0.0
+      open_qpos: 0.381
+      lang: "Take the tissue box out of the open drawer."
+      trash_can_body: holodeck2025_trash_can
+
+    approach_desk_then_ice_cube_in_glass:
+      desk_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      table_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      remove_scene_bodies:
+        - laptop_63fbcd680e0db93dfb0454951f2114f3_1_0_0
+      robot_pose:
+        pos: [3.50, 1.95, 0.0]
+        yaw: 0.06627822076846923
+      success_radius: 1.0
+      object_scale: 1.52
+      cup_pose:
+        pos: [5.6222904116, 1.62500000, 0.8459]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      ice_pose:
+        pos: [5.64, 1.50, 0.7899]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      support_z: 0.7678
+      support_top_z: 0.7688
+
+    approach_trash_can_then_approach_desk_then_open_jar:
+      table_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      robot_pose:
+        pos: [5.25, 1.45, 0.0]
+        yaw: 0.0
+      object_scale: 1.0
+      mug_pose:
+        pos: [5.63186, 1.50, 0.84231]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      lid_pose:
+        pos: [5.63186, 1.50, 0.9384]
+        quat: [1.0, 0.0, 0.0, 0.0]
+      desk_body: obja_42f1d3c373784c9996d35cbf08f2dbbb_1_0_0
+      trash_can_body: holodeck2025_trash_can
+
+
+  train_2209:
+    pick_alarm_clock_from_sofa:
+      source_body: armchair_8f8379d4a78449d15acc205770a52415_1_0_0
+      robot_pose:
+        pos: [3.60, 1.05, 0.0]
+        yaw: -1.5707963267948966
+      clock_pose:
+        pos: [3.60, 0.60, 0.5415]
+        quat: [0.0, 0.0, 0.7071067811865476, 0.7071067811865476]
+
+    place_alarm_clock_in_drawer:
+      source_body: desk_10f44268820264388723f0c30f93a5de_1_0_0
+      # Mirror FloorPlan410's roll-into-drawer layout across the drawer center:
+      # stand diagonally to the left, with the clock on the same side.
+      robot_pose:
+        pos: [2.92, 5.04, 0.0]
+        yaw: 0.408238
+      clock_pose:
+        pos: [3.27, 5.50, 0.9420]
+        quat: [0.7071067811865476, 0.7071067811865476, 0.0, 0.0]
+      drawer_body: desk_10f44268820264388723f0c30f93a5de_1_6_0
+      drawer_joint: desk_10f44268820264388723f0c30f93a5de_1_6_0_DrawerMesh011_2
+      drawer_site: desk_10f44268820264388723f0c30f93a5de_1_6_0_DrawerMesh01Receptacle0_4
+      drawer_bottom_geom: desk_10f44268820264388723f0c30f93a5de_1_6_0_collision_38
+      drawer_open_qpos: 0.294
+
+    # Composite-only additions; the atomic clock calibration stays unchanged.
+    place_alarm_clock_then_close_drawer_then_pick_box:
+      drawer_initial_fraction: 1.0
+      # Same Box_19 model and scale as HolodeckPickBoxFromFloor.
+      box_pose:
+        # In front of the robot, on the floor below the open top drawer.
+        pos: [3.60, 5, 0.0]
+        # Same upright orientation as the atomic floor-box task (+Y to +Z).
+        quat: [0.707107, 0.707107, 0.0, 0.0]
+      room_id: room0
+
+    open_drawer_then_place_alarm_clock_then_approach_trash_can:
+      drawer_initial_fraction: 0.30
+      # Copy the existing 117 bin into this task only, near the y=6 wall.
+      bin_pos: [5.50, 5.20, 0.0]
+      success_radius: 0.35

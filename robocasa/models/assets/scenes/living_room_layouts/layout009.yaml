@@ -1,0 +1,21 @@
+# Living-room layout 009: L-shaped corner arrangement.
+# Sofa at a 45° diagonal blocks direct paths between the side table and TV stand,
+# creating obstacle-rich navigation.  Coffee table sits diagonally offset from
+# the sofa, providing asymmetric approach angles from different room quadrants.
+furniture:
+  - name: sofa
+    type: sofa
+    pos: [-2.0, -1.5]
+    z_rot: 2.3562
+  - name: coffee_table
+    type: coffee_table
+    pos: [-0.5, 0.3]
+    z_rot: 0.0
+  - name: tv_stand
+    type: tv_stand
+    pos: [2.3, -0.2]
+    z_rot: -1.5708
+  - name: side_table
+    type: side_table
+    pos: [-1.2, 1.8]
+    z_rot: 0.0

@@ -1,0 +1,48 @@
+{
+    "type": "WHOLE_BODY_G1",
+    "composite_controller_specific_configs": {
+        "wbt_controller_type": "sonic_vla",
+        "_comment_vla": "VLA deploy: the SONIC whole-body DECODER (mode_id=0, same as sonic_planner) is fed an externally-supplied 64-D motion token via composite_controller.set_vla_action() instead of running the encoder. Finger joints are PD-driven to the policy's predicted left/right hand joints. No PICO, no kPlanner -- the GR00T policy provides the token directly.",
+        "_comment_paths": "ckpt paths resolved by resolve_ckpt_path() -- absolute paths used as-is, otherwise relative to the SIM2REAL repo root ($SIM2REAL_ROOT, else the installed sim2real package). Checkpoints are never kept in this repo. Only the decoder is used at runtime; the encoder is loaded but never run.",
+        "sonic_encoder_path": "checkpoints/sonic/low_latency/g1/model_encoder.onnx",
+        "sonic_decoder_path": "checkpoints/sonic/low_latency/g1/model_decoder.onnx"
+    },
+    "body_parts": {
+        "arms": {
+            "right": {
+                "type": "JOINT_TORQUE",
+                "input_max": 1, "input_min": -1,
+                "output_max": 0.1, "output_min": -0.1,
+                "torque_limits": null,
+                "interpolation": null,
+                "ramp_ratio": 0.2,
+                "gripper": {"type": "GRIP", "use_action_scaling": false}
+            },
+            "left": {
+                "type": "JOINT_TORQUE",
+                "input_max": 1, "input_min": -1,
+                "output_max": 0.1, "output_min": -0.1,
+                "torque_limits": null,
+                "interpolation": null,
+                "ramp_ratio": 0.2,
+                "gripper": {"type": "GRIP", "use_action_scaling": false}
+            }
+        },
+        "torso": {
+            "type": "JOINT_TORQUE",
+            "input_max": 1, "input_min": -1,
+            "output_max": 0.1, "output_min": -0.1,
+            "torque_limits": null,
+            "interpolation": null,
+            "ramp_ratio": 0.2
+        },
+        "legs": {
+            "type": "JOINT_TORQUE",
+            "input_max": 1, "input_min": -1,
+            "output_max": 0.1, "output_min": -0.1,
+            "torque_limits": null,
+            "interpolation": null,
+            "ramp_ratio": 0.2
+        }
+    }
+}

@@ -1,0 +1,12 @@
+# Living-room style 003: red-wood floor + stone-brick walls (distinct from
+# style001 wood-tiles/cream-plaster and style002 marble/white-brick). The wall
+# texture must be a *patterned* image -- a flat solid-color one (e.g.
+# flat/light_gray.png) renders as a plain wall that looks untextured.
+# side_table reuses a lightwheel stool mesh as a small flat-topped table.
+floor_texture: textures/red-wood.png
+wall_texture: textures/bricks/stone_bricks.png
+furniture:
+  sofa: fixtures/sofas/Sofa001
+  side_table: objects/lightwheel/stool/Stool013
+  coffee_table: fixtures/coffee_tables/CoffeeTable001
+  tv_stand: fixtures/tv_stands/TVStand001

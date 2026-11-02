@@ -1,0 +1,60 @@
+{
+    "type": "WHOLE_BODY_G1",
+    "composite_controller_specific_configs": {
+        "wbt_controller_type": "sonic_teleop",
+        "_comment_paths": "ckpt paths resolved by resolve_ckpt_path() -- absolute paths used as-is, otherwise relative to the SIM2REAL repo root ($SIM2REAL_ROOT, else the installed sim2real package). Checkpoints are never kept in this repo.",
+        "sonic_encoder_path": "checkpoints/sonic/low_latency/g1/model_encoder.onnx",
+        "sonic_decoder_path": "checkpoints/sonic/low_latency/g1/model_decoder.onnx",
+        "planner_path": "checkpoints/sonic/low_latency/g1/planner_sonic.onnx",
+        "planner_default_height": 0.788740,
+        "planner_seed": 1234,
+        "_comment_pico": "pico_source: 'mock' for Mac dev (fake stationary 3-point data), 'real' for Ubuntu with XRoboToolkit SDK installed",
+        "pico_source": "real",
+        "pico_source_kwargs": {"verbose": true},
+        "initial_movement_state": {
+            "locomotion_mode": 0,
+            "movement_direction": [0.0, 0.0, 0.0],
+            "facing_direction": [1.0, 0.0, 0.0],
+            "movement_speed": -1.0,
+            "height": -1.0
+        }
+    },
+    "body_parts": {
+        "arms": {
+            "right": {
+                "type": "JOINT_TORQUE",
+                "input_max": 1, "input_min": -1,
+                "output_max": 0.1, "output_min": -0.1,
+                "torque_limits": null,
+                "interpolation": null,
+                "ramp_ratio": 0.2,
+                "gripper": {"type": "GRIP", "use_action_scaling": false}
+            },
+            "left": {
+                "type": "JOINT_TORQUE",
+                "input_max": 1, "input_min": -1,
+                "output_max": 0.1, "output_min": -0.1,
+                "torque_limits": null,
+                "interpolation": null,
+                "ramp_ratio": 0.2,
+                "gripper": {"type": "GRIP", "use_action_scaling": false}
+            }
+        },
+        "torso": {
+            "type": "JOINT_TORQUE",
+            "input_max": 1, "input_min": -1,
+            "output_max": 0.1, "output_min": -0.1,
+            "torque_limits": null,
+            "interpolation": null,
+            "ramp_ratio": 0.2
+        },
+        "legs": {
+            "type": "JOINT_TORQUE",
+            "input_max": 1, "input_min": -1,
+            "output_max": 0.1, "output_min": -0.1,
+            "torque_limits": null,
+            "interpolation": null,
+            "ramp_ratio": 0.2
+        }
+    }
+}

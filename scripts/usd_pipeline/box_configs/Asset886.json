@@ -1,0 +1,14 @@
+{
+  "_comment": "Top-loading appliance (converted with --extra-rot-x -90 so the lid is on TOP, hinged at the back-top edge pivot (0,0.207,0.097), axis x). Base AABB x+-0.146 y+-0.217 z[-0.154,0.108]; lid is a thin top panel z[0.094,0.154]. Hollow housing: floor + 4 side walls, OPEN TOP. Walls top out at z=0.085 (just below the lid underside z=0.094) so the lid can flip up without catching them, and so objects can be placed inside.",
+  "asset": "robocasa/models/assets/fixtures/articulated/Asset886",
+  "body": [
+    {"name": "body_floor", "pos": [0.0, 0.0, -0.142], "size": [0.146, 0.217, 0.012]},
+    {"name": "body_xneg",  "pos": [-0.134, 0.0, -0.0345], "size": [0.012, 0.217, 0.1195]},
+    {"name": "body_xpos",  "pos": [0.134, 0.0, -0.0345],  "size": [0.012, 0.217, 0.1195]},
+    {"name": "body_yneg",  "pos": [0.0, -0.205, -0.0345], "size": [0.146, 0.012, 0.1195]},
+    {"name": "body_ypos",  "pos": [0.0, 0.205, -0.0345],  "size": [0.146, 0.012, 0.1195]}
+  ],
+  "door": [
+    {"name": "door_col", "pos": [0.0, -0.003, 0.124], "size": [0.139, 0.21, 0.03]}
+  ]
+}

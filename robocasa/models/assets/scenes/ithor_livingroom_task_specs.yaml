@@ -1,0 +1,2764 @@
+scenes:
+  FloorPlan201:
+    mug_from_sofa_to_coffee_table:
+      robot_pose: {pos: [-2.40, 4.25, 0.05], yaw: -1.5708}
+      mug_xy: [-2.60, 3.65]
+      mug_yaw: 0.0
+      sofa_surface_z: 0.568
+      max_linear_speed: 0.10
+      max_angular_speed: 0.60
+      hold_seconds: 1.0
+    mug_from_coffee_table_to_box_on_sofa:
+      robot_pose: {pos: [-2.85, 4.79, 0.05], yaw: -0.007386}
+      mug_xy: [-2.448, 4.787]
+      mug_yaw: 0.0
+      box_xy: [-2.40, 3.65]
+      box_yaw: 0.0
+      sofa_surface_z: 0.553
+      box_inner_half_xy: [0.114, 0.138]
+      box_floor_z: 0.019
+      box_rim_z: 0.178
+      containment_tolerance: 0.01
+      hold_seconds: 1.0
+    lift_bowl_from_coffee_table:
+      robot_pose: {pos: [-2.85, 4.79, 0.05], yaw: -0.007386}
+      lift_height: 0.30
+      hold_seconds: 1.0
+    box_from_chair_to_floor:
+      robot_pose: {pos: [-1.248, 2.507, 0.05], yaw: -2.872}
+      chair_xy: [-1.8592, 2.31]
+      chair_quat: [0.032031399914441316, 0.02856371822958566, 0.7060279544121009, 0.7068823317986427]
+      box_yaw: -0.828888755
+      seat_center_offset: [0.0, 0.0]
+      release_distance: 0.20
+      hold_seconds: 1.0
+      max_linear_speed: 0.04
+      max_angular_speed: 0.20
+  FloorPlan205:
+    remote_from_side_table_into_box_on_sofa:
+      robot_pose: {pos: [-2.07, 5.95, 0.05], yaw: 1.5708}
+      remote_xy: [-2.071, 6.699]
+      remote_quat: [1.0, 0.0, 0.0, 0.0]
+      box_pos: [-4.20, 5.10, 0.60486]
+      box_quat: [0.0004431661, -0.0004304408, 0.7070965549, 0.7071167375]
+      flap_qpos:
+        box_376bd8a46eebebb53a1cbbec2a1cada0_1_1_0_box5flapinner1joint0_1: 0.0
+        box_376bd8a46eebebb53a1cbbec2a1cada0_1_2_0_box5flapouter1joint0_2: 0.0
+        box_376bd8a46eebebb53a1cbbec2a1cada0_1_3_0_box5flapouter2joint0_3: 0.0
+        box_376bd8a46eebebb53a1cbbec2a1cada0_1_4_0_box5flapinner2joint0_4: 0.0
+      horizontal_tolerance: 0.06
+      height_tolerance: 0.08
+      hold_seconds: 1.0
+    close_top_right_then_top_left_drawer:
+      robot_pose: {pos: [-2.07, 5.95, 0.05], yaw: 2.40}
+      init_open_fraction: 1.0
+      success_open_fraction: 0.80
+      success_close_fraction: 0.10
+      hold_seconds: 1.0
+    statue_chair_to_table:
+      robot_pose: {pos: [-2.55, 1.90, 0.05], yaw: -0.85}
+      chair_pose:
+        pos: [-2.40719, 1.2857368385587553, 0.4824712457271234]
+        quat: [0.0000000038354792, 0.0000006419526288, 0.7064771791463974, 0.7077358231324291]
+      statue_xy: [-2.39296, 1.314147]
+      statue_quat: [0.70710678, 0.70710678, 0.0, 0.0]
+      hold_seconds: 1.0
+      height_tolerance: 0.04
+    box_from_sofa_to_floor:
+      robot_pose: {pos: [-3.60, 5.10, 0.05], yaw: 3.14159}
+      box_xy: [-4.20, 5.10]
+      box_quat: [0.0004431660888760057, -0.00043044078112250395, 0.7070965548893982, 0.7071167374543597]
+      sofa_surface_offset: -0.353
+      release_distance: 0.20
+      hold_seconds: 1.0
+      max_linear_speed: 0.04
+      max_angular_speed: 0.20
+  FloorPlan202:
+    approach_table_and_put_book_in_basket:
+      basket_pos: [-1.7, 2.39, 0.75]
+      book_pos: [-1.5, 2.21, 0.75]
+    approach_sofa:
+      target_fixture: FloorPlan202:Sofa_201_2_7
+      robot_pose:
+        pos: [0.8, 3.5, 0.0]
+        yaw: -2.35619
+      target_xy: [-1.1302, 0.6378]
+      target_tolerance: [1.0, 1.0]
+      show_target_region: false
+      hold_seconds: 1.0
+    sit_on_sofa:
+      target_fixture: FloorPlan202:Sofa_201_2_7
+      robot_pose: {pos: [-1.130, 1.250, 0.0], yaw: -1.5708}
+      seat_center_xy: [-1.130, 0.638]
+      seat_yaw: 3.14159
+      seat_half_xy: [0.90, 0.38]
+      seat_surface_z: 0.552
+      contact_z_tolerance: 0.12
+      hold_seconds: 1.0
+      show_success_region: false
+    approach_table:
+      target_fixture: FloorPlan202:Coffee_Table_202_1_0
+      robot_pose:
+        pos: [0.8, 3.5, 0.0]
+        yaw: -2.35619
+      target_xy: [-1.7387, 2.361]
+      target_tolerance: [1.0, 1.0]
+      show_target_region: false
+      hold_seconds: 1.0
+    lift_statue:
+      robot_pose:
+        pos: [-1.542, 2.899, 0.0]
+        yaw: -1.5708
+      statue_pos: [-1.542, 2.573, 0.483]
+      statue_yaw: 0.0
+      lift_height: 0.3
+      hold_seconds: 1.0
+    push_basketball:
+      robot_pose:
+        pos: [-1.542, 2.899, 0.0]
+        yaw: -1.5708
+      object_pos: [-1.542, 2.573, 0.483]
+      object_yaw: 0.0
+      push_distance: 0.3
+      max_height_change: 0.12
+      hold_seconds: 1.0
+      source_category: basketball
+      source_wrapper_pos: [0.0, 0.0, 0.12]
+      source_wrapper_quat: [0.7071068, 0.7071068, 0.0, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.12]
+      source_bbox_size: [0.12, 0.12, 0.12]
+      source_scale: 0.8
+    lift_watering_can:
+      robot_pose: {pos: [-1.542, 2.899, 0.0], yaw: -1.5708}
+      object_pos: [-1.542, 2.573, 0.483]
+      object_yaw: 0.0
+      lift_height: 0.3
+      hold_seconds: 1.0
+      source_category: watering_can
+      source_wrapper_pos: [0.0, 0.0, 0.10]
+      source_wrapper_quat: [0.7071068, 0.7071068, 0.0, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.13]
+      source_bbox_size: [0.12, 0.13, 0.13]
+      source_scale: 0.8
+    lift_dumbbell:
+      robot_pose: {pos: [-1.542, 2.899, 0.0], yaw: -1.5708}
+      object_pos: [-1.542, 2.573, 0.483]
+      object_yaw: 0.0
+      lift_height: 0.3
+      hold_seconds: 1.0
+      source_category: dumbbell
+      source_wrapper_pos: [0.0, 0.0, 0.065]
+      source_wrapper_quat: [0.7071068, 0.0, 0.7071068, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.065]
+      source_bbox_size: [0.17, 0.065, 0.065]
+      source_scale: 0.8
+    lift_cup_among_objects:
+      robot_pose: {pos: [-1.542, 2.899, 0.0], yaw: -1.5708}
+      object_poses:
+        target_cup: {pos: [-1.542, 2.573, 0.483], yaw: 0.0}
+        distractor_apple: {pos: [-1.722, 2.573, 0.483], yaw: 0.0}
+        distractor_can: {pos: [-1.362, 2.573, 0.483], yaw: 0.0}
+        distractor_egg: {pos: [-1.662, 2.373, 0.483], yaw: 0.0}
+        distractor_candle: {pos: [-1.422, 2.373, 0.483], yaw: 0.0}
+      lift_height: 0.3
+      hold_seconds: 1.0
+    pour_block_from_basket:
+      robot_pose:
+        pos: [-1.7, 1.834, 0.0]
+        yaw: 1.5708
+      work_surface_support:
+        fixture: FloorPlan202:Coffee_Table_202_1_0
+        center: [-1.58163, 2.3391613, 0.44782153]
+        half_xy: [0.56, 0.28]
+        yaw: 0.0
+      work_surface_top_z: 0.75
+      basket_pos: [-1.700002, 2.254, 0.75]
+      basket_yaw: 3.141596
+      hold_seconds: 1.0
+    pour_ice_from_cup:
+      robot_pose: {pos: [-1.542, 2.899, 0.0], yaw: -1.5708}
+      support_fixture: FloorPlan202:Coffee_Table_202_1_0
+      cup_mjcf: models/assets/objects/objaverse/cup/cup_3/model.xml
+      cup_scale: 1.5
+      cup_pos: [-1.542, 2.480, 0.447822]
+      cup_yaw: 0.0
+      ice_mjcf: models/assets/objects/lightwheel/ice_cube/IceCube004/model.xml
+      ice_scale: 1.0
+      ice_local_pos: [0.0, 0.0, -0.020]
+      work_surface_top_z: 0.75
+      ice_region_margin: 0.003
+      hold_seconds: 1.0
+    basket_to_sofa:
+      sofa_fixture: FloorPlan202:Sofa_201_2_7
+      basket_pos: [-1.542, 2.120, 0.483]
+      robot_pose: {pos: [-1.542, 1.834, 0.0], yaw: 1.5708}
+      hold_seconds: 1.0
+    dumbbell_to_sofa:
+      sofa_fixture: FloorPlan202:Sofa_201_2_7
+      object_pos: [-1.542, 2.200, 0.483]
+      object_yaw: 0.0
+      robot_pose: {pos: [-1.542, 1.834, 0.0], yaw: 1.5708}
+      hold_seconds: 1.0
+      source_category: dumbbell
+      source_wrapper_pos: [0.0, 0.0, 0.065]
+      source_wrapper_quat: [0.7071068, 0.0, 0.7071068, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.065]
+      source_bbox_size: [0.17, 0.065, 0.065]
+      source_scale: 0.8
+    statue_to_sofa:
+      sofa_fixture: FloorPlan202:Sofa_201_2_7
+      object_pos: [-1.542, 2.120, 0.483]
+      object_yaw: 0.0
+      robot_pose: {pos: [-1.542, 1.834, 0.0], yaw: 1.5708}
+      hold_seconds: 1.0
+    close_laptop:
+      laptop_pose:
+        pos: [-1.542, 2.573, 0.483]
+        yaw: 3.14159
+      robot_pose:
+        pos: [-1.542, 2.899, 0.0]
+        yaw: -1.5708
+      init_open_fraction: 0.9
+      success_close_fraction: 0.2
+      hold_seconds: 1.0
+    open_laptop:
+      laptop_pose:
+        pos: [-1.542, 2.573, 0.483]
+        yaw: 3.14159
+      robot_pose:
+        pos: [-1.542, 2.899, 0.0]
+        yaw: -1.5708
+      init_open_fraction: 0.2
+      success_open_fraction: 0.9
+      hold_seconds: 1.0
+    coffee_drink_to_bin:
+      bin_fixture: FloorPlan202:bin_2_9
+      coffee_pos: [-1.477, 2.577, 0.504]
+      coffee_yaw: 0.0
+      bin_target_xy: [-0.579, 2.367]
+      bin_xy_tolerance: 0.04
+      bin_z_tolerance: 0.04
+      robot_pose: {pos: [-1.477, 2.897, 0.0], yaw: -1.5708}
+      hold_seconds: 1.0
+    remote_to_bin:
+      bin_fixture: FloorPlan202:bin_2_9
+      object_pos: [-1.477, 2.577, 0.504]
+      object_yaw: 0.0
+      bin_target_xy: [-0.877, 2.897]
+      bin_xy_tolerance: 0.04
+      bin_z_tolerance: 0.04
+      robot_pose: {pos: [-1.477, 2.897, 0.0], yaw: -1.5708}
+      hold_seconds: 1.0
+      source_category: remote_control
+      source_wrapper_pos: [0.0, 0.0, 0.0341]
+      source_wrapper_quat: [0.7071068, 0.0, 0.7071068, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.0341]
+      source_bbox_size: [0.108, 0.010, 0.0341]
+      source_scale: 1.0
+    remote_to_basket:
+      basket_pos: [-1.795, 2.120, 0.483]
+      basket_yaw: 0.0
+      remote_pos: [-1.522, 2.120, 0.483]
+      remote_yaw: 1.5708
+      robot_pose: {pos: [-1.70, 1.834, 0.0], yaw: 1.5708}
+      success_xy_tolerance: 0.12
+      release_distance: 0.25
+      hold_seconds: 1.0
+    candle_to_basket:
+      basket_pos: [-1.795, 2.120, 0.483]
+      basket_yaw: 0.0
+      remote_pos: [-1.522, 2.120, 0.483]
+      remote_yaw: 1.5708
+      robot_pose: {pos: [-1.70, 1.834, 0.0], yaw: 1.5708}
+      success_xy_tolerance: 0.12
+      release_distance: 0.25
+      hold_seconds: 1.0
+      source_category: candle
+      source_wrapper_pos: [0.0, 0.0, 0.08084]
+      source_wrapper_quat: [0.7071068, 0.7071068, 0.0, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.04042]
+      source_bbox_size: [0.035, 0.035, 0.04042]
+      source_scale: 1.0
+    tissue_box_to_basket:
+      basket_pos: [-1.795, 2.120, 0.483]
+      basket_yaw: 0.0
+      remote_pos: [-1.522, 2.120, 0.483]
+      remote_yaw: 1.5708
+      robot_pose: {pos: [-1.70, 1.834, 0.0], yaw: 1.5708}
+      success_xy_tolerance: 0.12
+      release_distance: 0.25
+      hold_seconds: 1.0
+      source_category: tissue_box
+      source_wrapper_pos: [0.0, 0.0, 0.07397]
+      source_wrapper_quat: [0.7071068, 0.7071068, 0.0, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.07397]
+      source_bbox_size: [0.100, 0.052, 0.07397]
+      source_scale: 0.8
+    book_into_basket:
+      work_surface_support: {fixture: "FloorPlan202:Coffee_Table_202_1_0", center: [-1.58163, 2.3391613, 0.44782153], half_xy: [0.30, 0.25], yaw: 0.0}
+      work_surface_top_z: 0.75
+      basket_pos: [-1.50, 2.39, 0.75]
+      basket_yaw: 1.5708
+      basket_contact_sink: 0.008
+      book_pos: [-1.70, 2.21, 0.75]
+      book_yaw: 1.5708
+      book_pitch: -1.5708
+      object_jitter_radius: 0.04
+      robot_pose: {pos: [-1.70, 1.834, 0.0], yaw: 1.5708}
+      success_xy_tolerance: 0.12
+      release_distance: 0.25
+      hold_seconds: 1.0
+      source_category: book
+      source_wrapper_pos: [0.0, 0.0, 0.0]
+      source_wrapper_quat: [0.7071068, 0.7071068, 0.0, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.02]
+      source_bbox_size: [0.12, 0.16, 0.02]
+      source_scale: 0.65
+    stack_book_on_book:
+      work_surface_support: {fixture: "FloorPlan202:Coffee_Table_202_1_0", center: [-1.58163, 2.3391613, 0.44782153], half_xy: [0.30, 0.25], yaw: 0.0}
+      work_surface_top_z: 0.75
+      base_book_pos: [-1.72, 2.18, 0.75]
+      base_book_yaw: 1.5708
+      moving_book_pos: [-1.46, 2.18, 0.75]
+      moving_book_yaw: 1.5708
+      moving_book_pitch: -1.5708
+      object_jitter_radius: 0.04
+      robot_pose: {pos: [-1.70, 1.834, 0.0], yaw: 1.5708}
+      xy_tolerance: 0.08
+      orientation_cosine: 0.94
+      release_distance: 0.25
+      hold_seconds: 1.0
+      source_category: book
+      source_wrapper_pos: [0.0, 0.0, 0.0]
+      source_wrapper_quat: [0.7071068, 0.7071068, 0.0, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.02]
+      source_bbox_size: [0.12, 0.16, 0.02]
+      source_scale: 0.65
+    push_block_to_target_region:
+      work_surface_support: {fixture: "FloorPlan202:Coffee_Table_202_1_0", center: [-1.58163, 2.3391613, 0.44782153], half_xy: [0.56, 0.28], yaw: 0.0}
+      work_surface_top_z: 0.75
+      object_pos: [-1.43, 2.20, 0.75]
+      object_yaw: 0.0
+      target_region_pos: [-1.93, 2.20, 0.75]
+      target_region_half_xy: [0.14, 0.20]
+      target_region_yaw: 1.5708
+      robot_pose: {pos: [-1.70, 1.834, 0.0], yaw: 1.5708}
+      max_lift_height: 0.06
+      hold_seconds: 1.0
+      source_category: chocolate
+      source_wrapper_pos: [0.0, 0.0, 0.0]
+      source_wrapper_quat: [1.0, 0.0, 0.0, 0.0]
+      source_bbox_pos: [-0.00006268, 0.00005167, 0.0]
+      source_bbox_size: [0.02993732, 0.03005167, 0.03045455]
+      source_scale: 1.5
+    open_box_flap:
+      work_surface_support: {fixture: "FloorPlan202:Coffee_Table_202_1_0", center: [-1.58163, 2.3391613, 0.44782153], half_xy: [0.30, 0.25], yaw: 0.0}
+      work_surface_top_z: 0.75
+      box_fixture: "FloorPlan202:Box_2_4"
+      box_root_pos: [-1.5711003, 2.21915778, 0.89076347]
+      box_root_quat: [-0.00002668, 0.00002409, 0.70710353, 0.70711004]
+      target_joint: box_68755690cdb8d7e759bc3b9b84976e1d_1_3_0_box2flapouter1joint0_3
+      target_closed_qpos: -2.70486
+      target_open_qpos: 0.0
+      sibling_initial_qpos: {box_68755690cdb8d7e759bc3b9b84976e1d_1_1_0_box2flapouter2joint0_1: 0.0, box_68755690cdb8d7e759bc3b9b84976e1d_1_2_0_box2flapinner1joint0_2: 0.0, box_68755690cdb8d7e759bc3b9b84976e1d_1_4_0_box2flapinner2joint0_4: 0.0}
+      robot_pose: {pos: [-1.70, 1.70, 0.0], yaw: 1.5708}
+      success_fraction: 0.8
+      hold_seconds: 1.0
+    close_box_flap:
+      work_surface_support: {fixture: "FloorPlan202:Coffee_Table_202_1_0", center: [-1.58163, 2.3391613, 0.44782153], half_xy: [0.30, 0.25], yaw: 0.0}
+      work_surface_top_z: 0.75
+      box_fixture: "FloorPlan202:Box_2_4"
+      box_root_pos: [-1.5711003, 2.21915778, 0.89076347]
+      box_root_quat: [-0.00002668, 0.00002409, 0.70710353, 0.70711004]
+      target_joint: box_68755690cdb8d7e759bc3b9b84976e1d_1_3_0_box2flapouter1joint0_3
+      target_closed_qpos: -2.70486
+      target_open_qpos: 0.0
+      sibling_initial_qpos: {box_68755690cdb8d7e759bc3b9b84976e1d_1_1_0_box2flapouter2joint0_1: 2.91713, box_68755690cdb8d7e759bc3b9b84976e1d_1_2_0_box2flapinner1joint0_2: 2.72512, box_68755690cdb8d7e759bc3b9b84976e1d_1_4_0_box2flapinner2joint0_4: -2.64967}
+      robot_pose: {pos: [-1.70, 1.70, 0.0], yaw: 1.5708}
+      success_fraction: 0.8
+      hold_seconds: 1.0
+    pack_candle_statue_into_basket:
+      work_surface_support: {fixture: "FloorPlan202:Coffee_Table_202_1_0", center: [-1.58163, 2.3391613, 0.44782153], half_xy: [0.56, 0.28], yaw: 0.0}
+      work_surface_top_z: 0.75
+      robot_pose: {pos: [-1.70, 1.70, 0.0], yaw: 1.5708}
+      basket_pos: [-1.70, 2.25, 0.75]
+      basket_yaw: 0.0
+      basket_scale: 1.5
+      object_poses:
+        candle: {pos: [-1.30, 2.25, 0.75], yaw: 0.0}
+        statue: {pos: [-1.10, 2.25, 0.75], yaw: 0.0}
+      candle_scale: 0.9
+      statue_scale: 0.50
+      success_xy_tolerance: 0.18
+      hold_seconds: 1.0
+    walk_to_table_and_put_can_in_basket:
+      work_surface_support: {fixture: "FloorPlan202:Coffee_Table_202_1_0", center: [-1.58163, 2.3391613, 0.44782153], half_xy: [0.56, 0.28], yaw: 0.0}
+      work_surface_top_z: 0.75
+      table_fixture: "FloorPlan202:Coffee_Table_202_1_0"
+      robot_pose: {pos: [0.8, 3.5, 0.0], yaw: -2.35619}
+      basket_pos: [-1.80, 2.43, 0.75]
+      basket_yaw: 0.0
+      basket_scale: 1.0
+      can_pos: [-1.30, 2.20, 0.75]
+      can_yaw: 0.0
+      approach_distance: 0.35
+      minimum_start_distance: 0.50
+      success_xy_tolerance: 0.12
+      hold_seconds: 1.0
+    sofa_then_table:
+      stages:
+        - FloorPlan202:Sofa_201_2_7
+        - FloorPlan202:Coffee_Table_202_1_0
+      robot_pose:
+        pos: [0.8, 3.5, 0.0]
+        yaw: -2.129620
+    table_then_sofa:
+      stages:
+        - FloorPlan202:Coffee_Table_202_1_0
+        - FloorPlan202:Sofa_201_2_7
+      robot_pose:
+        pos: [0.8, 3.5, 0.0]
+        yaw: -2.712934
+    bin_then_table:
+      stages:
+        - FloorPlan202:bin_2_9
+        - FloorPlan202:Coffee_Table_202_1_0
+      robot_pose:
+        pos: [0.8, 3.5, 0.0]
+        yaw: 2.683765
+    bin_then_sofa:
+      stages:
+        - FloorPlan202:bin_2_9
+        - FloorPlan202:Sofa_201_2_7
+      robot_pose:
+        pos: [0.8, 3.5, 0.0]
+        yaw: 2.683765
+    table_then_bin:
+      stages:
+        - FloorPlan202:Coffee_Table_202_1_0
+        - FloorPlan202:bin_2_9
+      robot_pose:
+        pos: [0.8, 3.5, 0.0]
+        yaw: -2.712934
+    sofa_then_bin:
+      stages:
+        - FloorPlan202:Sofa_201_2_7
+        - FloorPlan202:bin_2_9
+      robot_pose:
+        pos: [0.8, 3.5, 0.0]
+        yaw: -2.129620
+    stack_books_and_place_mug:
+      work_surface_support:
+        fixture: FloorPlan202:Coffee_Table_202_1_0
+        center: [-1.58163, 2.3391613, 0.44782153]
+        half_xy: [0.56, 0.25]
+        yaw: 0.0
+      work_surface_top_z: 0.75
+      base_book_pos: [-1.77163, 2.18, 0.75]
+      base_book_yaw: 1.5708
+      moving_book_pos: [-1.39163, 2.18, 0.75]
+      moving_book_yaw: 1.5708
+      moving_book_pitch: -1.5708
+      object_jitter_radius: 0.0
+      robot_pose:
+        pos: [-1.7, 1.834, 0.0]
+        yaw: 1.5708
+      xy_tolerance: 0.08
+      orientation_cosine: 0.94
+      release_distance: 0.25
+      hold_seconds: 1.0
+      source_category: book
+      source_wrapper_pos: [0.0, 0.0, 0.0]
+      source_wrapper_quat: [0.7071068, 0.7071068, 0.0, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.02]
+      source_bbox_size: [0.12, 0.16, 0.02]
+      source_scale: 0.65
+      mug_pos: [-1.58163, 2.18, 0.75]
+      mug_yaw: 1.5708
+      stack_hold_seconds: 0.25
+
+  FloorPlan207:
+    # Basket composites operate from the +X table edge, facing their G1 spawn.
+    approach_table_and_put_remote_in_basket: &basket_composite_207
+      basket_pos: [-0.03, 0.148, 0.47095509]
+      basket_yaw: 1.5708
+      remote_pos: [-0.03, 0.448, 0.47095509]
+      remote_yaw: 1.5708
+      operation_robot_pose: {pos: [0.391, 0.362, 0.0], yaw: 3.14159}
+    approach_table_and_put_candle_in_basket: *basket_composite_207
+    approach_table_and_put_tissue_box_in_basket: *basket_composite_207
+    approach_table_and_put_book_in_basket:
+      basket_pos: [-0.03, 0.15, 0.75]
+      book_pos: [-0.03, 0.50, 0.75]
+      operation_robot_pose: {pos: [0.391, 0.362, 0.0], yaw: 3.14159}
+    approach_sofa:
+      target_fixture: FloorPlan207:Sofa_207_1_0
+      robot_pose:
+        pos: [1.5, 2.5, 0.0]
+        yaw: -2.35619
+      target_xy: [-1.3119, 0.4406]
+      target_tolerance: [1.0, 1.0]
+      show_target_region: false
+      hold_seconds: 1.0
+    sit_on_sofa:
+      target_fixture: FloorPlan207:Sofa_207_1_0
+      robot_pose: {pos: [-0.720, 0.441, 0.0], yaw: 3.14159}
+      seat_center_xy: [-1.312, 0.441]
+      seat_yaw: 1.5708
+      seat_half_xy: [0.75, 0.35]
+      seat_surface_z: 0.341
+      contact_z_tolerance: 0.12
+      hold_seconds: 1.0
+      show_success_region: false
+    approach_table:
+      target_fixture: FloorPlan207:Coffee_Table_207_1_3
+      robot_pose:
+        pos: [1.5, 2.5, 0.0]
+        yaw: -2.35619
+      target_xy: [-0.1489, 0.4176]
+      target_tolerance: [1.0, 1.0]
+      show_target_region: false
+      hold_seconds: 1.0
+    lift_statue:
+      robot_pose:
+        pos: [0.391, 0.000, 0.0]
+        yaw: 3.14159
+      statue_pos: [0.078, 0.000, 0.55]
+      statue_yaw: 1.5708
+      lift_height: 0.3
+      hold_seconds: 1.0
+    push_basketball:
+      robot_pose:
+        pos: [0.391, 0.000, 0.0]
+        yaw: 3.14159
+      object_pos: [0.078, 0.000, 0.55]
+      object_yaw: 1.5708
+      push_distance: 0.3
+      max_height_change: 0.12
+      hold_seconds: 1.0
+      source_category: basketball
+      source_wrapper_pos: [0.0, 0.0, 0.12]
+      source_wrapper_quat: [0.7071068, 0.7071068, 0.0, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.12]
+      source_bbox_size: [0.12, 0.12, 0.12]
+      source_scale: 0.8
+    lift_watering_can:
+      robot_pose: {pos: [0.391, 0.000, 0.0], yaw: 3.14159}
+      object_pos: [0.078, 0.000, 0.55]
+      object_yaw: 1.5708
+      lift_height: 0.3
+      hold_seconds: 1.0
+      source_category: watering_can
+      source_wrapper_pos: [0.0, 0.0, 0.10]
+      source_wrapper_quat: [0.7071068, 0.7071068, 0.0, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.13]
+      source_bbox_size: [0.12, 0.13, 0.13]
+      source_scale: 0.8
+    lift_dumbbell:
+      robot_pose: {pos: [0.391, 0.000, 0.0], yaw: 3.14159}
+      object_pos: [0.078, 0.000, 0.55]
+      object_yaw: 1.5708
+      lift_height: 0.3
+      hold_seconds: 1.0
+      source_category: dumbbell
+      source_wrapper_pos: [0.0, 0.0, 0.065]
+      source_wrapper_quat: [0.7071068, 0.0, 0.7071068, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.065]
+      source_bbox_size: [0.17, 0.065, 0.065]
+      source_scale: 0.8
+    lift_cup_among_objects:
+      robot_pose: {pos: [0.391, 0.0, 0.0], yaw: 3.14159}
+      object_poses:
+        target_cup: {pos: [0.078, 0.0, 0.55], yaw: 0.0}
+        distractor_apple: {pos: [0.078, 0.18, 0.55], yaw: 0.0}
+        distractor_can: {pos: [0.078, -0.18, 0.55], yaw: 0.0}
+        distractor_egg: {pos: [-0.122, 0.12, 0.55], yaw: 0.0}
+        distractor_candle: {pos: [-0.122, -0.12, 0.55], yaw: 0.0}
+      lift_height: 0.3
+      hold_seconds: 1.0
+    pour_block_from_basket:
+      robot_pose:
+        pos: [-0.687, 0.362, 0.0]
+        yaw: 0.0
+      work_surface_support:
+        fixture: FloorPlan207:Coffee_Table_207_1_3
+        center: [-0.1653, 0.40428, 0.47095509]
+        half_xy: [0.27, 0.6]
+        yaw: 0.0
+      work_surface_top_z: 0.75
+      basket_pos: [-0.267, 0.362, 0.75]
+      basket_yaw: 1.570796
+      hold_seconds: 1.0
+    pour_ice_from_cup:
+      robot_pose: {pos: [0.391, 0.1, 0.0], yaw: 3.14159}
+      support_fixture: FloorPlan207:Coffee_Table_207_1_3
+      cup_mjcf: models/assets/objects/objaverse/cup/cup_3/model.xml
+      cup_scale: 1.5
+      cup_pos: [0.020, 0.100, 0.470955]
+      cup_yaw: 0.0
+      ice_mjcf: models/assets/objects/lightwheel/ice_cube/IceCube004/model.xml
+      ice_scale: 1.0
+      ice_local_pos: [0.0, 0.0, -0.020]
+      work_surface_top_z: 0.75
+      ice_region_margin: 0.003
+      hold_seconds: 1.0
+    basket_to_sofa:
+      sofa_fixture: FloorPlan207:Sofa_207_1_0
+      basket_pos: [-0.390, 0.362, 0.559]
+      robot_pose: {pos: [-0.687, 0.362, 0.0], yaw: 0.0}
+      hold_seconds: 1.0
+    dumbbell_to_sofa:
+      sofa_fixture: FloorPlan207:Sofa_207_1_0
+      object_pos: [-0.390, 0.362, 0.559]
+      object_yaw: 1.5708
+      robot_pose: {pos: [-0.687, 0.362, 0.0], yaw: 0.0}
+      hold_seconds: 1.0
+      source_category: dumbbell
+      source_wrapper_pos: [0.0, 0.0, 0.065]
+      source_wrapper_quat: [0.7071068, 0.0, 0.7071068, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.065]
+      source_bbox_size: [0.17, 0.065, 0.065]
+      source_scale: 0.8
+    statue_to_sofa:
+      sofa_fixture: FloorPlan207:Sofa_207_1_0
+      object_pos: [-0.390, 0.362, 0.559]
+      object_yaw: 0.0
+      robot_pose: {pos: [-0.687, 0.362, 0.0], yaw: 0.0}
+      hold_seconds: 1.0
+    close_laptop:
+      laptop_pose:
+        pos: [0.078, 0.000, 0.55]
+        yaw: 1.5708
+      robot_pose:
+        pos: [0.391, 0.000, 0.0]
+        yaw: 3.14159
+      init_open_fraction: 0.9
+      success_close_fraction: 0.2
+      hold_seconds: 1.0
+    open_laptop:
+      laptop_pose:
+        pos: [0.078, 0.000, 0.55]
+        yaw: 1.5708
+      robot_pose:
+        pos: [0.391, 0.000, 0.0]
+        yaw: 3.14159
+      init_open_fraction: 0.2
+      success_open_fraction: 0.9
+      hold_seconds: 1.0
+    coffee_drink_to_bin:
+      bin_fixture: FloorPlan207:bin_7_16
+      coffee_pos: [0.085, 0.019, 0.559]
+      coffee_yaw: 0.0
+      bin_target_xy: [0.488, -0.681]
+      bin_xy_tolerance: 0.04
+      bin_z_tolerance: 0.04
+      robot_pose: {pos: [0.421, 0.019, 0.0], yaw: 3.14159}
+      hold_seconds: 1.0
+    remote_to_bin:
+      bin_fixture: FloorPlan207:bin_7_16
+      object_pos: [0.085, 0.019, 0.559]
+      object_yaw: 0.0
+      bin_target_xy: [0.421, -0.581]
+      bin_xy_tolerance: 0.04
+      bin_z_tolerance: 0.04
+      robot_pose: {pos: [0.421, 0.019, 0.0], yaw: 3.14159}
+      hold_seconds: 1.0
+      source_category: remote_control
+      source_wrapper_pos: [0.0, 0.0, 0.0341]
+      source_wrapper_quat: [0.7071068, 0.0, 0.7071068, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.0341]
+      source_bbox_size: [0.108, 0.010, 0.0341]
+      source_scale: 1.0
+    remote_to_basket:
+      basket_pos: [-0.324, 0.448, 0.559]
+      basket_yaw: 0.0
+      remote_pos: [-0.324, 0.148, 0.559]
+      remote_yaw: 0.0
+      robot_pose: {pos: [-0.687, 0.362, 0.0], yaw: 0.0}
+      success_xy_tolerance: 0.12
+      release_distance: 0.25
+      hold_seconds: 1.0
+    candle_to_basket:
+      basket_pos: [-0.324, 0.448, 0.559]
+      basket_yaw: 0.0
+      remote_pos: [-0.324, 0.148, 0.559]
+      remote_yaw: 0.0
+      robot_pose: {pos: [-0.687, 0.362, 0.0], yaw: 0.0}
+      success_xy_tolerance: 0.12
+      release_distance: 0.25
+      hold_seconds: 1.0
+      source_category: candle
+      source_wrapper_pos: [0.0, 0.0, 0.08084]
+      source_wrapper_quat: [0.7071068, 0.7071068, 0.0, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.04042]
+      source_bbox_size: [0.035, 0.035, 0.04042]
+      source_scale: 1.0
+    tissue_box_to_basket:
+      basket_pos: [-0.324, 0.448, 0.559]
+      basket_yaw: 0.0
+      remote_pos: [-0.324, 0.148, 0.559]
+      remote_yaw: 0.0
+      robot_pose: {pos: [-0.687, 0.362, 0.0], yaw: 0.0}
+      success_xy_tolerance: 0.12
+      release_distance: 0.25
+      hold_seconds: 1.0
+      source_category: tissue_box
+      source_wrapper_pos: [0.0, 0.0, 0.07397]
+      source_wrapper_quat: [0.7071068, 0.7071068, 0.0, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.07397]
+      source_bbox_size: [0.100, 0.052, 0.07397]
+      source_scale: 0.8
+
+    book_into_basket:
+      work_surface_support: {fixture: "FloorPlan207:Coffee_Table_207_1_3", center: [-0.1653, 0.40428, 0.47095509], half_xy: [0.27, 0.60], yaw: 0.0}
+      work_surface_top_z: 0.75
+      basket_pos: [-0.20, 0.50, 0.75]
+      basket_yaw: 1.5708
+      basket_contact_sink: 0.008
+      book_pos: [-0.35, 0.15, 0.75]
+      book_yaw: 0.0
+      book_pitch: -1.5708
+      object_jitter_radius: 0.04
+      robot_pose: {pos: [-0.687, 0.362, 0.0], yaw: 0.0}
+      success_xy_tolerance: 0.12
+      release_distance: 0.25
+      hold_seconds: 1.0
+      source_category: book
+      source_wrapper_pos: [0.0, 0.0, 0.0]
+      source_wrapper_quat: [0.7071068, 0.7071068, 0.0, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.02]
+      source_bbox_size: [0.12, 0.16, 0.02]
+      source_scale: 0.65
+    stack_book_on_book:
+      work_surface_support: {fixture: "FloorPlan207:Coffee_Table_207_1_3", center: [-0.1653, 0.40428, 0.47095509], half_xy: [0.27, 0.60], yaw: 0.0}
+      work_surface_top_z: 0.75
+      base_book_pos: [-0.35, 0.54, 0.75]
+      base_book_yaw: 0.0
+      moving_book_pos: [-0.35, 0.27, 0.75]
+      moving_book_yaw: 0.0
+      moving_book_pitch: -1.5708
+      object_jitter_radius: 0.04
+      robot_pose: {pos: [-0.687, 0.362, 0.0], yaw: 0.0}
+      xy_tolerance: 0.08
+      orientation_cosine: 0.94
+      release_distance: 0.25
+      hold_seconds: 1.0
+      source_category: book
+      source_wrapper_pos: [0.0, 0.0, 0.0]
+      source_wrapper_quat: [0.7071068, 0.7071068, 0.0, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.02]
+      source_bbox_size: [0.12, 0.16, 0.02]
+      source_scale: 0.65
+    push_block_to_target_region:
+      work_surface_support: {fixture: "FloorPlan207:Coffee_Table_207_1_3", center: [-0.1653, 0.40428, 0.47095509], half_xy: [0.27, 0.60], yaw: 0.0}
+      work_surface_top_z: 0.75
+      object_pos: [-0.32, 0.20, 0.75]
+      object_yaw: 0.0
+      target_region_pos: [-0.32, 0.70, 0.75]
+      target_region_half_xy: [0.14, 0.20]
+      target_region_yaw: 0.0
+      robot_pose: {pos: [-0.687, 0.362, 0.0], yaw: 0.0}
+      max_lift_height: 0.06
+      hold_seconds: 1.0
+      source_category: chocolate
+      source_wrapper_pos: [0.0, 0.0, 0.0]
+      source_wrapper_quat: [1.0, 0.0, 0.0, 0.0]
+      source_bbox_pos: [-0.00006268, 0.00005167, 0.0]
+      source_bbox_size: [0.02993732, 0.03005167, 0.03045455]
+      source_scale: 1.5
+    open_box_flap:
+      work_surface_support: {fixture: "FloorPlan207:Coffee_Table_207_1_3", center: [-0.1653, 0.40428, 0.47095509], half_xy: [0.27, 0.60], yaw: 0.0}
+      work_surface_top_z: 0.75
+      box_fixture: "FloorPlan207:Box_7_5"
+      box_root_pos: [-0.31266364, 0.40472628, 0.86607801]
+      box_root_quat: [0.70713826, 0.70707530, 0.00000402, -0.00000402]
+      target_joint: box_7dd55f35e8c815541d7f3dcca02e7f6e_1_1_0_box7flapouter1joint0_1
+      target_closed_qpos: 2.96462
+      target_open_qpos: 0.0
+      sibling_initial_qpos: {box_7dd55f35e8c815541d7f3dcca02e7f6e_1_3_0_box7flapouter2joint0_2: 0.0, box_7dd55f35e8c815541d7f3dcca02e7f6e_1_4_0_box7flapinner2joint0_3: 0.0, box_7dd55f35e8c815541d7f3dcca02e7f6e_1_5_0_box7flapinner1joint0_4: 0.0}
+      robot_pose: {pos: [-0.687, 0.362, 0.0], yaw: 0.0}
+      success_fraction: 0.8
+      hold_seconds: 1.0
+    close_box_flap:
+      work_surface_support: {fixture: "FloorPlan207:Coffee_Table_207_1_3", center: [-0.1653, 0.40428, 0.47095509], half_xy: [0.27, 0.60], yaw: 0.0}
+      work_surface_top_z: 0.75
+      box_fixture: "FloorPlan207:Box_7_5"
+      box_root_pos: [-0.31266364, 0.40472628, 0.86607801]
+      box_root_quat: [0.70713826, 0.70707530, 0.00000402, -0.00000402]
+      target_joint: box_7dd55f35e8c815541d7f3dcca02e7f6e_1_1_0_box7flapouter1joint0_1
+      target_closed_qpos: 2.96462
+      target_open_qpos: 0.0
+      sibling_initial_qpos: {box_7dd55f35e8c815541d7f3dcca02e7f6e_1_3_0_box7flapouter2joint0_2: -3.03165, box_7dd55f35e8c815541d7f3dcca02e7f6e_1_4_0_box7flapinner2joint0_3: -2.98573, box_7dd55f35e8c815541d7f3dcca02e7f6e_1_5_0_box7flapinner1joint0_4: 2.99746}
+      robot_pose: {pos: [-0.687, 0.362, 0.0], yaw: 0.0}
+      success_fraction: 0.8
+      hold_seconds: 1.0
+    pack_candle_statue_into_basket:
+      work_surface_support: {fixture: "FloorPlan207:Coffee_Table_207_1_3", center: [-0.1653, 0.40428, 0.47095509], half_xy: [0.27, 0.60], yaw: 0.0}
+      work_surface_top_z: 0.75
+      robot_pose: {pos: [-0.687, 0.362, 0.0], yaw: 0.0}
+      basket_pos: [-0.20, 0.36, 0.75]
+      basket_yaw: 0.0
+      basket_scale: 1.5
+      object_poses:
+        candle: {pos: [-0.20, -0.08, 0.75], yaw: 0.0}
+        statue: {pos: [-0.20, 0.70, 0.75], yaw: 0.0}
+      candle_scale: 0.9
+      statue_scale: 0.50
+      success_xy_tolerance: 0.18
+      hold_seconds: 1.0
+    walk_to_table_and_put_can_in_basket:
+      work_surface_support: {fixture: "FloorPlan207:Coffee_Table_207_1_3", center: [-0.1653, 0.40428, 0.47095509], half_xy: [0.27, 0.60], yaw: 0.0}
+      work_surface_top_z: 0.75
+      table_fixture: "FloorPlan207:Coffee_Table_207_1_3"
+      robot_pose: {pos: [1.5, 2.5, 0.0], yaw: -2.35619}
+      basket_pos: [-0.10, 0.80, 0.75]
+      basket_yaw: 0.0
+      basket_scale: 1.0
+      can_pos: [0, 0.55, 0.75]
+      can_yaw: 0.0
+      approach_distance: 0.35
+      minimum_start_distance: 0.50
+      success_xy_tolerance: 0.12
+      hold_seconds: 1.0
+    sofa_then_table:
+      stages:
+        - FloorPlan207:Sofa_207_1_0
+        - FloorPlan207:Coffee_Table_207_1_3
+      robot_pose:
+        pos: [1.5, 2.5, 0.0]
+        yaw: -2.522552
+    table_then_sofa:
+      stages:
+        - FloorPlan207:Coffee_Table_207_1_3
+        - FloorPlan207:Sofa_207_1_0
+      robot_pose:
+        pos: [1.5, 2.5, 0.0]
+        yaw: -2.235895
+    bin_then_table:
+      stages:
+        - FloorPlan207:bin_7_16
+        - FloorPlan207:Coffee_Table_207_1_3
+      robot_pose:
+        pos: [1.5, 2.5, 0.0]
+        yaw: 1.379493
+    bin_then_sofa:
+      stages:
+        - FloorPlan207:bin_7_16
+        - FloorPlan207:Sofa_207_1_0
+      robot_pose:
+        pos: [1.5, 2.5, 0.0]
+        yaw: 1.379493
+    table_then_bin:
+      stages:
+        - FloorPlan207:Coffee_Table_207_1_3
+        - FloorPlan207:bin_7_16
+      robot_pose:
+        pos: [1.5, 2.5, 0.0]
+        yaw: -2.235895
+    sofa_then_bin:
+      stages:
+        - FloorPlan207:Sofa_207_1_0
+        - FloorPlan207:bin_7_16
+      robot_pose:
+        pos: [1.5, 2.5, 0.0]
+        yaw: -2.522552
+    stack_books_and_place_mug:
+      work_surface_support:
+        fixture: FloorPlan207:Coffee_Table_207_1_3
+        center: [-0.1653, 0.40428, 0.47095509]
+        half_xy: [0.27, 0.6]
+        yaw: 0.0
+      work_surface_top_z: 0.75
+      base_book_pos: [-0.35, 0.59428, 0.75]
+      base_book_yaw: 0.0
+      moving_book_pos: [-0.35, 0.21428, 0.75]
+      moving_book_yaw: 0.0
+      moving_book_pitch: -1.5708
+      object_jitter_radius: 0.0
+      robot_pose:
+        pos: [-0.687, 0.362, 0.0]
+        yaw: 0.0
+      xy_tolerance: 0.08
+      orientation_cosine: 0.94
+      release_distance: 0.25
+      hold_seconds: 1.0
+      source_category: book
+      source_wrapper_pos: [0.0, 0.0, 0.0]
+      source_wrapper_quat: [0.7071068, 0.7071068, 0.0, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.02]
+      source_bbox_size: [0.12, 0.16, 0.02]
+      source_scale: 0.65
+      mug_pos: [-0.35, 0.40428, 0.75]
+      mug_yaw: 0.0
+      stack_hold_seconds: 0.25
+
+  FloorPlan209:
+    statue_from_table_to_trash_bin:
+      robot_pose: {pos: [-1.77, -3.74, 0.05], yaw: 2.133}
+      statue_xy: [-2.25, -2.98]
+      statue_yaw: 0.0
+      bin_xy_half_tolerance: [0.04, 0.05]
+      bin_above_rim_tolerance: 0.10
+      bin_below_floor_tolerance: 0.05
+      hold_seconds: 1.0
+    statue_into_box:
+      robot_pose: {pos: [-3.10, -2.50, 0.05], yaw: 0.0}
+      table_top_z: 0.57744495
+      box_xy: [-2.60, -2.25]
+      box_quat: [0.5, 0.5, 0.5, 0.5]
+      object_xy: [-2.60, -2.75]
+      object_quat: [0.70710678, 0.70710678, 0.0, 0.0]
+      flap_qpos:
+        box_e7e029a9fdad1078011b9d2693eb5ef1_1_1_0_box9flapouter2joint0_1: 0.0
+        box_e7e029a9fdad1078011b9d2693eb5ef1_1_2_0_box9flapinner1joint0_2: 0.0
+        box_e7e029a9fdad1078011b9d2693eb5ef1_1_3_0_box9flapinner2joint0_3: 0.0
+        box_e7e029a9fdad1078011b9d2693eb5ef1_1_4_0_box9flapouter1joint0_4: 0.0
+      horizontal_tolerance: 0.005
+      height_tolerance: 0.02
+      hold_seconds: 1.0
+    # Start beside the native bin (-0.97, -5.06), looking toward the table.
+    # Stage objects along the +X table edge, toward the bin-side G1 spawn.
+    approach_table_and_put_remote_in_basket: &table_composite_basket_209
+      robot_pose: &table_composite_spawn_209 {pos: [-1.400, -4.635, 0.0], yaw: 2.066528}
+      operation_robot_pose: &table_composite_operation_209 {pos: [-1.780, -2.700, 0.0], yaw: 3.14159}
+      basket_pos: [-2.230, -2.900, 0.651974]
+      basket_yaw: 1.5708
+      remote_pos: [-2.230, -2.500, 0.617]
+      remote_yaw: 1.5708
+    approach_table_and_put_candle_in_basket: *table_composite_basket_209
+    approach_table_and_put_tissue_box_in_basket: *table_composite_basket_209
+    approach_table_and_put_book_in_basket:
+      robot_pose: *table_composite_spawn_209
+      operation_robot_pose: *table_composite_operation_209
+      basket_pos: [-2.230, -2.900, 0.75]
+      book_pos: [-2.230, -2.500, 0.75]
+    approach_table_and_lift_dumbbell: &table_composite_lift_209
+      robot_pose: *table_composite_spawn_209
+      operation_robot_pose: *table_composite_operation_209
+      object_pos: [-2.230, -2.900, 0.651974]
+    approach_table_and_lift_statue:
+      # Preserve the a65fb56a layout without changing shared composite poses.
+      robot_pose: {pos: [-5.3, -2.4523, 0.0], yaw: 0.0}
+      operation_robot_pose: {pos: [-3.171, -2.4392, 0.0], yaw: -0.05439}
+      statue_pos: [-2.75, -2.489, 0.651974]
+    approach_table_and_lift_watering_can: *table_composite_lift_209
+    approach_sofa:
+      target_fixture: FloorPlan209:Sofa_207_2_0
+      robot_pose:
+        pos: [-7.0, -2.4523, 0.0]
+        yaw: 0.0
+      target_xy: [-4.355040090502306, -2.5]
+      target_tolerance: [1.0, 2.0]
+      show_target_region: false
+      hold_seconds: 1.0
+    sit_on_sofa:
+      target_fixture: FloorPlan209:Sofa_207_2_0
+      robot_pose: {pos: [-3.630, -2.070, 0.0], yaw: 3.14159}
+      seat_center_xy: [-4.222, -2.070]
+      seat_yaw: 1.5708
+      seat_half_xy: [0.75, 0.35]
+      seat_surface_z: 0.341
+      contact_z_tolerance: 0.12
+      hold_seconds: 1.0
+      show_success_region: false
+    approach_table:
+      target_fixture: FloorPlan209:Coffee_Table_209_1_1
+      robot_pose:
+        pos: [-5.3, -2.4523, 0.0]
+        yaw: 0.0
+      target_xy: [-2.4740509413278513, -2.4894406018866055]
+      target_tolerance: [1.0, 1.5]
+      show_target_region: false
+      hold_seconds: 1.0
+    open_drawer:
+      target_fixture: FloorPlan209:Dresser_209_1_4
+      target_joint: chestofdrawers_663f11089f8df7c4a9a159fdc6b749ac_1_8_0_DrawerMesh001_4
+      robot_pose:
+        pos: [-2.9774, -4.55, 0.0]
+        yaw: -1.5708
+      init_open_fraction: 0.20
+      success_open_fraction: 0.80
+      hold_seconds: 1.0
+    close_drawer:
+      target_fixture: FloorPlan209:Dresser_209_1_4
+      target_joint: chestofdrawers_663f11089f8df7c4a9a159fdc6b749ac_1_8_0_DrawerMesh001_4
+      robot_pose:
+        pos: [-2.80, -4.35, 0.0]
+        yaw: -1.5708
+      init_open_fraction: 0.80
+      success_close_fraction: 0.20
+      hold_seconds: 1.0
+    lift_statue:
+      robot_pose:
+        pos: [-3.171, -2.4392, 0.0]
+        yaw: -0.05439
+      statue_pos: [-2.75, -2.489, 0.651974]
+      statue_yaw: 1.5708
+      lift_height: 0.3
+      hold_seconds: 1.0
+    push_basketball:
+      robot_pose:
+        pos: [-3.171, -2.4392, 0.0]
+        yaw: -0.05439
+      object_pos: [-2.75, -2.489, 0.651974]
+      object_yaw: 1.5708
+      push_distance: 0.3
+      max_height_change: 0.12
+      hold_seconds: 1.0
+      source_category: basketball
+      source_wrapper_pos: [0.0, 0.0, 0.12]
+      source_wrapper_quat: [0.7071068, 0.7071068, 0.0, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.12]
+      source_bbox_size: [0.12, 0.12, 0.12]
+      source_scale: 0.8
+    lift_watering_can:
+      robot_pose: {pos: [-3.171, -2.4392, 0.0], yaw: -0.05439}
+      object_pos: [-2.75, -2.489, 0.651974]
+      object_yaw: 1.5708
+      lift_height: 0.3
+      hold_seconds: 1.0
+      source_category: watering_can
+      source_wrapper_pos: [0.0, 0.0, 0.10]
+      source_wrapper_quat: [0.7071068, 0.7071068, 0.0, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.13]
+      source_bbox_size: [0.12, 0.13, 0.13]
+      source_scale: 0.8
+    lift_dumbbell:
+      robot_pose: {pos: [-3.171, -2.4392, 0.0], yaw: -0.05439}
+      object_pos: [-2.75, -2.489, 0.651974]
+      object_yaw: 1.5708
+      lift_height: 0.3
+      hold_seconds: 1.0
+      source_category: dumbbell
+      source_wrapper_pos: [0.0, 0.0, 0.065]
+      source_wrapper_quat: [0.7071068, 0.0, 0.7071068, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.065]
+      source_bbox_size: [0.17, 0.065, 0.065]
+      source_scale: 0.8
+    lift_cup_among_objects:
+      robot_pose: {pos: [-3.171, -2.4392, 0.0], yaw: -0.05439}
+      object_poses:
+        target_cup: {pos: [-2.75, -2.489, 0.651974], yaw: 0.0}
+        distractor_apple: {pos: [-2.7598, -2.6687, 0.651974], yaw: 0.0}
+        distractor_can: {pos: [-2.7402, -2.3093, 0.651974], yaw: 0.0}
+        distractor_egg: {pos: [-2.5568, -2.6197, 0.651974], yaw: 0.0}
+        distractor_candle: {pos: [-2.5438, -2.3801, 0.651974], yaw: 0.0}
+      lift_height: 0.3
+      hold_seconds: 1.0
+    pour_block_from_basket:
+      robot_pose:
+        pos: [-3.1562, -2.4523, 0.0]
+        yaw: 0.0
+      work_surface_support:
+        fixture: FloorPlan209:Coffee_Table_209_1_1
+        center: [-2.46120225, -2.48201715, 0.57744495]
+        half_xy: [0.36667892, 0.63508127]
+        yaw: 0.0
+      work_surface_top_z: 0.75
+      basket_pos: [-2.690216, -2.4523, 0.75]
+      basket_yaw: 1.570796
+      hold_seconds: 1.0
+    pour_ice_from_cup:
+      robot_pose: {pos: [-3.150, -2.3778, 0.0], yaw: -0.05439}
+      support_fixture: FloorPlan209:Coffee_Table_209_1_1
+      cup_mjcf: models/assets/objects/objaverse/cup/cup_3/model.xml
+      cup_scale: 1.5
+      cup_pos: [-2.750, -2.489, 0.577445]
+      cup_yaw: 0.0
+      ice_mjcf: models/assets/objects/lightwheel/ice_cube/IceCube004/model.xml
+      ice_scale: 1.0
+      ice_local_pos: [0.0, 0.0, -0.020]
+      work_surface_top_z: 0.75
+      ice_region_margin: 0.003
+      hold_seconds: 1.0
+    basket_to_sofa:
+      sofa_fixture: FloorPlan209:Sofa_207_2_0
+      basket_pos: [-2.758, -2.489, 0.651974]
+      robot_pose: {pos: [-3.2473, -2.4473, 0.0], yaw: -0.05439}
+      hold_seconds: 1.0
+    dumbbell_to_sofa:
+      sofa_fixture: FloorPlan209:Sofa_207_2_0
+      object_pos: [-2.758, -2.489, 0.651974]
+      object_yaw: 1.5708
+      robot_pose: {pos: [-3.2473, -2.4473, 0.0], yaw: -0.05439}
+      hold_seconds: 1.0
+      source_category: dumbbell
+      source_wrapper_pos: [0.0, 0.0, 0.065]
+      source_wrapper_quat: [0.7071068, 0.0, 0.7071068, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.065]
+      source_bbox_size: [0.17, 0.065, 0.065]
+      source_scale: 0.8
+    statue_to_sofa:
+      sofa_fixture: FloorPlan209:Sofa_207_2_0
+      object_pos: [-2.758, -2.489, 0.651974]
+      object_yaw: 0.0
+      robot_pose: {pos: [-3.2473, -2.4473, 0.0], yaw: -0.05439}
+      hold_seconds: 1.0
+    close_laptop:
+      laptop_pose:
+        pos: [-2.80, -2.546823, 0.704594]
+        yaw: -1.5708
+      robot_pose:
+        pos: [-3.2271, -2.4392, 0.0]
+        yaw: 0.0
+      init_open_fraction: 0.9
+      success_close_fraction: 0.2
+      hold_seconds: 1.0
+    open_laptop:
+      laptop_pose:
+        pos: [-2.80, -2.546823, 0.704594]
+        yaw: -1.5708
+      robot_pose:
+        pos: [-3.2971, -2.4392, 0.0]
+        yaw: 0.0
+      init_open_fraction: 0.2
+      success_open_fraction: 0.9
+      hold_seconds: 1.0
+    coffee_drink_to_bin:
+      bin_fixture: FloorPlan209:bin_9_12
+      coffee_pos: [-2.758, -2.489, 0.651974]
+      coffee_yaw: 0.0
+      bin_target_xy: [-3.111, -3.585]
+      bin_xy_tolerance: 0.04
+      bin_z_tolerance: 0.04
+      robot_pose: {pos: [-3.1562, -2.4523, 0.0], yaw: 0.0}
+      hold_seconds: 1.0
+    remote_to_bin:
+      bin_fixture: FloorPlan209:bin_9_12
+      object_pos: [-2.758, -2.489, 0.651974]
+      object_yaw: 0.0
+      bin_target_xy: [-3.1562, -1.8523]
+      bin_xy_tolerance: 0.04
+      bin_z_tolerance: 0.04
+      robot_pose: {pos: [-3.1562, -2.4523, 0.0], yaw: 0.0}
+      hold_seconds: 1.0
+      source_category: remote_control
+      source_wrapper_pos: [0.0, 0.0, 0.0341]
+      source_wrapper_quat: [0.7071068, 0.0, 0.7071068, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.0341]
+      source_bbox_size: [0.108, 0.010, 0.0341]
+      source_scale: 1.0
+    remote_to_basket:
+      basket_pos: [-2.770, -2.389, 0.651974]
+      basket_yaw: 0.0
+      remote_pos: [-2.770, -2.662, 0.617]
+      remote_yaw: 0.0
+      robot_pose: {pos: [-3.1562, -2.4523, 0.0], yaw: 0.0}
+      success_xy_tolerance: 0.12
+      release_distance: 0.25
+      hold_seconds: 1.0
+    candle_to_basket:
+      basket_pos: [-2.770, -2.389, 0.651974]
+      basket_yaw: 0.0
+      remote_pos: [-2.770, -2.662, 0.617]
+      remote_yaw: 0.0
+      robot_pose: {pos: [-3.1562, -2.4523, 0.0], yaw: 0.0}
+      success_xy_tolerance: 0.12
+      release_distance: 0.25
+      hold_seconds: 1.0
+      source_category: candle
+      source_wrapper_pos: [0.0, 0.0, 0.08084]
+      source_wrapper_quat: [0.7071068, 0.7071068, 0.0, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.04042]
+      source_bbox_size: [0.035, 0.035, 0.04042]
+      source_scale: 1.0
+    tissue_box_to_basket:
+      basket_pos: [-2.770, -2.489, 0.651974]
+      basket_yaw: 0.0
+      remote_pos: [-2.770, -2.762, 0.617]
+      remote_yaw: 0.0
+      robot_pose: {pos: [-3.1562, -2.4523, 0.0], yaw: 0.0}
+      success_xy_tolerance: 0.12
+      release_distance: 0.25
+      hold_seconds: 1.0
+      source_category: tissue_box
+      source_wrapper_pos: [0.0, 0.0, 0.07397]
+      source_wrapper_quat: [0.7071068, 0.7071068, 0.0, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.07397]
+      source_bbox_size: [0.100, 0.052, 0.07397]
+      source_scale: 0.8
+
+    book_into_basket:
+      work_surface_support: {fixture: "FloorPlan209:Coffee_Table_209_1_1", center: [-2.46120225, -2.48201715, 0.57744495], half_xy: [0.36667892, 0.63508127], yaw: 0.0}
+      work_surface_top_z: 0.75
+      basket_pos: [-2.74, -2.35, 0.75]
+      basket_yaw: 1.5708
+      basket_contact_sink: 0.008
+      book_pos: [-2.70, -2.65, 0.75]
+      book_yaw: 0.0
+      book_pitch: -1.5708
+      object_jitter_radius: 0.04
+      robot_pose: {pos: [-3.1062, -2.4523, 0.0], yaw: 0.0}
+      success_xy_tolerance: 0.12
+      release_distance: 0.25
+      hold_seconds: 1.0
+      source_category: book
+      source_wrapper_pos: [0.0, 0.0, 0.0]
+      source_wrapper_quat: [0.7071068, 0.7071068, 0.0, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.02]
+      source_bbox_size: [0.12, 0.16, 0.02]
+      source_scale: 0.65
+    stack_book_on_book:
+      work_surface_support: {fixture: "FloorPlan209:Coffee_Table_209_1_1", center: [-2.46120225, -2.48201715, 0.57744495], half_xy: [0.36667892, 0.63508127], yaw: 0.0}
+      work_surface_top_z: 0.75
+      base_book_pos: [-2.70, -2.35, 0.75]
+      base_book_yaw: 0.0
+      moving_book_pos: [-2.70, -2.62, 0.75]
+      moving_book_yaw: 0.0
+      moving_book_pitch: -1.5708
+      object_jitter_radius: 0.04
+      robot_pose: {pos: [-3.1562, -2.4523, 0.0], yaw: 0.0}
+      xy_tolerance: 0.08
+      orientation_cosine: 0.94
+      release_distance: 0.25
+      hold_seconds: 1.0
+      source_category: book
+      source_wrapper_pos: [0.0, 0.0, 0.0]
+      source_wrapper_quat: [0.7071068, 0.7071068, 0.0, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.02]
+      source_bbox_size: [0.12, 0.16, 0.02]
+      source_scale: 0.65
+    push_block_to_target_region:
+      work_surface_support: {fixture: "FloorPlan209:Coffee_Table_209_1_1", center: [-2.46120225, -2.48201715, 0.57744495], half_xy: [0.36667892, 0.63508127], yaw: 0.0}
+      work_surface_top_z: 0.75
+      object_pos: [-2.68, -2.62, 0.75]
+      object_yaw: 0.0
+      target_region_pos: [-2.68, -2.12, 0.75]
+      target_region_half_xy: [0.14, 0.20]
+      target_region_yaw: 0.0
+      robot_pose: {pos: [-3.1562, -2.4523, 0.0], yaw: 0.0}
+      max_lift_height: 0.06
+      hold_seconds: 1.0
+      source_category: chocolate
+      source_wrapper_pos: [0.0, 0.0, 0.0]
+      source_wrapper_quat: [1.0, 0.0, 0.0, 0.0]
+      source_bbox_pos: [-0.00006268, 0.00005167, 0.0]
+      source_bbox_size: [0.02993732, 0.03005167, 0.03045455]
+      source_scale: 1.5
+    open_box_flap:
+      work_surface_support: {fixture: "FloorPlan209:Coffee_Table_209_1_1", center: [-2.46120225, -2.48201715, 0.57744495], half_xy: [0.36667892, 0.63508127], yaw: 0.0}
+      work_surface_top_z: 0.75
+      box_fixture: "FloorPlan209:Box_9_20"
+      box_root_pos: [-2.64223716, -2.47755407, 0.90609221]
+      box_root_quat: [0.49997941, 0.50002059, 0.50002049, 0.49997951]
+      target_joint: box_e7e029a9fdad1078011b9d2693eb5ef1_1_4_0_box9flapouter1joint0_4
+      target_closed_qpos: -3.02631
+      target_open_qpos: 0.0
+      sibling_initial_qpos: {box_e7e029a9fdad1078011b9d2693eb5ef1_1_1_0_box9flapouter2joint0_1: 0.0, box_e7e029a9fdad1078011b9d2693eb5ef1_1_2_0_box9flapinner1joint0_2: 0.0, box_e7e029a9fdad1078011b9d2693eb5ef1_1_3_0_box9flapinner2joint0_3: 0.0}
+      robot_pose: {pos: [-3.1562, -2.4523, 0.0], yaw: 0.0}
+      success_fraction: 0.8
+      hold_seconds: 1.0
+    close_box_flap:
+      work_surface_support: {fixture: "FloorPlan209:Coffee_Table_209_1_1", center: [-2.46120225, -2.48201715, 0.57744495], half_xy: [0.36667892, 0.63508127], yaw: 0.0}
+      work_surface_top_z: 0.75
+      box_fixture: "FloorPlan209:Box_9_20"
+      box_root_pos: [-2.64223716, -2.47755407, 0.90609221]
+      box_root_quat: [0.49997941, 0.50002059, 0.50002049, 0.49997951]
+      target_joint: box_e7e029a9fdad1078011b9d2693eb5ef1_1_4_0_box9flapouter1joint0_4
+      target_closed_qpos: -3.02631
+      target_open_qpos: 0.0
+      sibling_initial_qpos: {box_e7e029a9fdad1078011b9d2693eb5ef1_1_1_0_box9flapouter2joint0_1: 2.82696, box_e7e029a9fdad1078011b9d2693eb5ef1_1_2_0_box9flapinner1joint0_2: 2.74668, box_e7e029a9fdad1078011b9d2693eb5ef1_1_3_0_box9flapinner2joint0_3: -3.03478}
+      robot_pose: {pos: [-3.1562, -2.4523, 0.0], yaw: 0.0}
+      success_fraction: 0.8
+      hold_seconds: 1.0
+    pack_candle_statue_into_basket:
+      work_surface_support: {fixture: "FloorPlan209:Coffee_Table_209_1_1", center: [-2.46120225, -2.48201715, 0.57744495], half_xy: [0.36667892, 0.63508127], yaw: 0.0}
+      work_surface_top_z: 0.75
+      robot_pose: {pos: [-3.1562, -2.4523, 0.0], yaw: 0.0}
+      basket_pos: [-2.58, -2.45, 0.75]
+      basket_yaw: 0.0
+      basket_scale: 1.5
+      object_poses:
+        candle: {pos: [-2.80, -2.70, 0.75], yaw: 0.0}
+        statue: {pos: [-2.75, -2.20, 0.75], yaw: 0.0}
+      candle_scale: 0.9
+      statue_scale: 0.50
+      success_xy_tolerance: 0.18
+      hold_seconds: 1.0
+    walk_and_close_low_drawer:
+      target_fixture: FloorPlan209:Dresser_209_1_4
+      target_joint: chestofdrawers_663f11089f8df7c4a9a159fdc6b749ac_1_6_0_DrawerMesh021_3
+      robot_pose:
+        pos: [-5.3, -2.4523, 0.0]
+        yaw: -0.8142
+      init_open_fraction: 0.8
+      approach_distance: 0.35
+      minimum_start_distance: 0.5
+      hold_seconds: 1.0
+      success_close_fraction: 0.2
+    low_drawer_pnp:
+      target_fixture: FloorPlan209:Dresser_209_1_4
+      target_joint: chestofdrawers_663f11089f8df7c4a9a159fdc6b749ac_1_6_0_DrawerMesh021_3
+      init_open_fraction: 0.2
+      success_open_fraction: 0.8
+      hold_seconds: 1.0
+      success_close_fraction: 0.2
+      robot_pose:
+        pos: [-2.9774, -4.4, 0.0]
+        yaw: -1.5708
+      apple_xy: [-2.9774, -4.96]
+      apple_support_geom: chestofdrawers_663f11089f8df7c4a9a159fdc6b749ac_1_1_0_collision_1
+      drawer_receptacle_site: chestofdrawers_663f11089f8df7c4a9a159fdc6b749ac_1_6_0_DrawerMesh02Receptacle0_3
+    walk_and_open_low_drawer:
+      target_fixture: "FloorPlan209:Dresser_209_1_4"
+      target_joint: chestofdrawers_663f11089f8df7c4a9a159fdc6b749ac_1_6_0_DrawerMesh021_3
+      robot_pose: {pos: [-5.3, -2.4523, 0.0], yaw: -0.8142}
+      init_open_fraction: 0.2
+      success_open_fraction: 0.8
+      approach_distance: 0.35
+      minimum_start_distance: 0.50
+      hold_seconds: 1.0
+    walk_and_open_drawer:
+      target_fixture: "FloorPlan209:Dresser_209_1_4"
+      target_joint: chestofdrawers_663f11089f8df7c4a9a159fdc6b749ac_1_8_0_DrawerMesh001_4
+      robot_pose: {pos: [-5.3, -2.4523, 0.0], yaw: 0.0}
+      init_open_fraction: 0.2
+      success_open_fraction: 0.8
+      approach_distance: 0.35
+      minimum_start_distance: 0.50
+      hold_seconds: 1.0
+    walk_and_open_close_drawer:
+      target_fixture: "FloorPlan209:Dresser_209_1_4"
+      target_joint: chestofdrawers_663f11089f8df7c4a9a159fdc6b749ac_1_8_0_DrawerMesh001_4
+      robot_pose: {pos: [-5.3, -2.4523, 0.0], yaw: 0.0}
+      init_open_fraction: 0.2
+      success_open_fraction: 0.8
+      success_close_fraction: 0.2
+      open_hold_seconds: 1.0
+      approach_distance: 0.35
+      minimum_start_distance: 0.50
+      hold_seconds: 1.0
+    walk_and_close_drawer:
+      target_fixture: "FloorPlan209:Dresser_209_1_4"
+      target_joint: chestofdrawers_663f11089f8df7c4a9a159fdc6b749ac_1_8_0_DrawerMesh001_4
+      robot_pose: {pos: [-5.3, -2.4523, 0.0], yaw: 0.0}
+      init_open_fraction: 0.7
+      success_close_fraction: 0.05
+      approach_distance: 0.35
+      minimum_start_distance: 0.50
+      hold_seconds: 1.0
+    walk_to_table_and_put_can_in_basket:
+      work_surface_support: {fixture: "FloorPlan209:Coffee_Table_209_1_1", center: [-2.46120225, -2.48201715, 0.57744495], half_xy: [0.39, 0.69], yaw: 0.0}
+      work_surface_top_z: 0.75
+      table_fixture: "FloorPlan209:Coffee_Table_209_1_1"
+      robot_pose: {pos: [-1.400, -4.635, 0.0], yaw: 1.5708}
+      basket_pos: [-2.182, -2.873, 0.75]
+      basket_yaw: 0.0
+      basket_scale: 1.0
+      can_pos: [-2.1824, -2.5860, 0.75]
+      can_yaw: 0.0
+      approach_distance: 0.35
+      minimum_start_distance: 0.50
+      success_xy_tolerance: 0.12
+      hold_seconds: 1.0
+    sofa_then_table:
+      stages:
+        - FloorPlan209:Sofa_207_2_0
+        - FloorPlan209:Coffee_Table_209_1_1
+      robot_pose:
+        pos: [-1.400, -4.635, 0.0]
+        yaw: 2.448764
+    table_then_sofa:
+      stages:
+        - FloorPlan209:Coffee_Table_209_1_1
+        - FloorPlan209:Sofa_207_2_0
+      robot_pose:
+        pos: [-1.400, -4.635, 0.0]
+        yaw: 2.066528
+    bin_then_table:
+      stages:
+        - FloorPlan209:bin_9_12
+        - FloorPlan209:Coffee_Table_209_1_1
+      robot_pose:
+        pos: [-1.173, -2.598, 0.0]
+        yaw: -1.575
+    bin_then_sofa:
+      stages:
+        - FloorPlan209:bin_9_12
+        - FloorPlan209:Sofa_207_2_0
+      robot_pose:
+        pos: [-1.5, -2.4523, 0.0]
+        yaw: -1.5708
+    table_then_bin:
+      stages:
+        - FloorPlan209:Coffee_Table_209_1_1
+        - FloorPlan209:bin_9_12
+      robot_pose:
+        pos: [-1.400, -4.635, 0.0]
+        yaw: 2.066528
+    sofa_then_bin:
+      stages:
+        - FloorPlan209:Sofa_207_2_0
+        - FloorPlan209:bin_9_12
+      robot_pose:
+        pos: [-1.400, -4.635, 0.0]
+        yaw: 2.448764
+    stack_books_and_place_mug:
+      work_surface_support:
+        fixture: FloorPlan209:Coffee_Table_209_1_1
+        center: [-2.46120225, -2.48201715, 0.57744495]
+        half_xy: [0.36667892, 0.63508127]
+        yaw: 0.0
+      work_surface_top_z: 0.75
+      base_book_pos: [-2.7, -2.29201715, 0.75]
+      base_book_yaw: 0.0
+      moving_book_pos: [-2.7, -2.67201715, 0.75]
+      moving_book_yaw: 0.0
+      moving_book_pitch: -1.5708
+      object_jitter_radius: 0.0
+      robot_pose:
+        pos: [-3.1562, -2.4523, 0.0]
+        yaw: 0.0
+      xy_tolerance: 0.08
+      orientation_cosine: 0.94
+      release_distance: 0.25
+      hold_seconds: 1.0
+      source_category: book
+      source_wrapper_pos: [0.0, 0.0, 0.0]
+      source_wrapper_quat: [0.7071068, 0.7071068, 0.0, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.02]
+      source_bbox_size: [0.12, 0.16, 0.02]
+      source_scale: 0.65
+      mug_pos: [-2.7, -2.48201715, 0.75]
+      mug_yaw: 0.0
+      stack_hold_seconds: 0.25
+
+  FloorPlan210:
+    approach_sofa:
+      target_fixture: FloorPlan210:Sofa_210_1_2
+      robot_pose:
+        pos: [-3.021, 3.318, 0.0]
+        yaw: -1.5708
+      target_xy: [-2.5246452201742957, 0.2644824560470194]
+      target_tolerance: [2.0, 1.5]
+      show_target_region: false
+      hold_seconds: 1.0
+    sit_on_sofa:
+      target_fixture: FloorPlan210:Sofa_210_1_2
+      robot_pose: {pos: [-2.522, 1.000, 0.0], yaw: -1.5708}
+      seat_center_xy: [-2.522, 0.428]
+      seat_yaw: 3.14159
+      seat_half_xy: [1.05, 0.30]
+      seat_surface_z: 0.482
+      contact_z_tolerance: 0.12
+      hold_seconds: 1.0
+      show_success_region: false
+    open_drawer:
+      target_fixture: FloorPlan210:Dresser_210_2_1_7
+      target_joint: chestofdrawers_6e3a4148a857a4222c764362660c370a_1_4_0_DrawerMesh011_2
+      robot_pose:
+        pos: [-0.948, 3.8534, 0.0]
+        yaw: 0.0
+      init_open_fraction: 0.20
+      success_open_fraction: 0.80
+      hold_seconds: 1.0
+    close_drawer:
+      target_fixture: FloorPlan210:Dresser_210_2_1_7
+      target_joint: chestofdrawers_6e3a4148a857a4222c764362660c370a_1_4_0_DrawerMesh011_2
+      robot_pose:
+        pos: [-1.15, 3.80, 0.0]
+        yaw: 0.0
+      init_open_fraction: 0.80
+      success_close_fraction: 0.20
+      hold_seconds: 1.0
+    lift_statue:
+      robot_pose:
+        pos: [-3.705, 1.384, 0.0]
+        yaw: 3.14159
+      statue_pos: [-4.108, 1.384, 0.463]
+      statue_yaw: 1.5708
+      lift_height: 0.3
+      hold_seconds: 1.0
+    push_basketball:
+      robot_pose:
+        pos: [-3.705, 1.384, 0.0]
+        yaw: 3.14159
+      object_pos: [-4.108, 1.384, 0.463]
+      object_yaw: 1.5708
+      push_distance: 0.3
+      max_height_change: 0.12
+      hold_seconds: 1.0
+      source_category: basketball
+      source_wrapper_pos: [0.0, 0.0, 0.12]
+      source_wrapper_quat: [0.7071068, 0.7071068, 0.0, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.12]
+      source_bbox_size: [0.12, 0.12, 0.12]
+      source_scale: 0.8
+    lift_watering_can:
+      robot_pose: {pos: [-3.705, 1.384, 0.0], yaw: 3.14159}
+      object_pos: [-4.108, 1.384, 0.463]
+      object_yaw: 1.5708
+      lift_height: 0.3
+      hold_seconds: 1.0
+      source_category: watering_can
+      source_wrapper_pos: [0.0, 0.0, 0.10]
+      source_wrapper_quat: [0.7071068, 0.7071068, 0.0, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.13]
+      source_bbox_size: [0.12, 0.13, 0.13]
+      source_scale: 0.8
+    lift_dumbbell:
+      robot_pose: {pos: [-3.705, 1.384, 0.0], yaw: 3.14159}
+      object_pos: [-4.108, 1.384, 0.463]
+      object_yaw: 1.5708
+      lift_height: 0.3
+      hold_seconds: 1.0
+      source_category: dumbbell
+      source_wrapper_pos: [0.0, 0.0, 0.065]
+      source_wrapper_quat: [0.7071068, 0.0, 0.7071068, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.065]
+      source_bbox_size: [0.17, 0.065, 0.065]
+      source_scale: 0.8
+    lift_cup_among_objects:
+      robot_pose: {pos: [-3.705, 1.384, 0.0], yaw: 3.14159}
+      work_surface_support:
+        fixture: FloorPlan210:Armchair_210_1_3
+        center: [-4.108, 1.384, 0.428]
+        half_xy: [0.20, 0.20]
+        yaw: 0.0
+      object_poses:
+        target_cup: {pos: [-4.108, 1.384, 0.463], yaw: 0.0}
+        distractor_apple: {pos: [-4.108, 1.484, 0.463], yaw: 0.0}
+        distractor_can: {pos: [-4.108, 1.284, 0.463], yaw: 0.0}
+        distractor_egg: {pos: [-4.208, 1.444, 0.463], yaw: 0.0}
+        distractor_candle: {pos: [-4.208, 1.324, 0.463], yaw: 0.0}
+      object_jitter_radius: 0.0
+      lift_height: 0.3
+      hold_seconds: 1.0
+    pour_block_from_basket:
+      robot_pose:
+        pos: [-2.455, 1.537, 0.0]
+        yaw: 0.0
+      work_surface_support:
+        fixture: FloorPlan210:Ottoman_210_1_1
+        center: [-1.76272897, 1.81072118, 0.44825378]
+        half_xy: [0.4552077, 0.45332102]
+        yaw: 0.0
+      work_surface_top_z: 0.75
+      basket_pos: [-2.035, 1.537, 0.75]
+      basket_yaw: 1.570796
+      hold_seconds: 1.0
+    pour_ice_from_cup:
+      robot_pose: {pos: [-3.608, 1.384, 0.0], yaw: 3.14159}
+      support_fixture: FloorPlan210:Armchair_210_1_3
+      success_region:
+        center: [-4.108, 1.384, 0.428]
+        half_xy: [0.20, 0.20]
+        yaw: 0.0
+      cup_mjcf: models/assets/objects/objaverse/cup/cup_3/model.xml
+      cup_scale: 1.5
+      cup_pos: [-4.108, 1.384, 0.463]
+      cup_yaw: 0.0
+      ice_mjcf: models/assets/objects/lightwheel/ice_cube/IceCube004/model.xml
+      ice_scale: 1.0
+      ice_local_pos: [0.0, 0.0, -0.020]
+      work_surface_top_z: 0.75
+      ice_region_margin: 0.003
+      hold_seconds: 1.0
+    basket_to_sofa:
+      sofa_fixture: FloorPlan210:Sofa_210_1_2
+      basket_pos: [-2.085, 1.837, 0.497]
+      robot_pose: {pos: [-2.455, 1.837, 0.0], yaw: 0.0}
+      hold_seconds: 1.0
+    dumbbell_to_sofa:
+      sofa_fixture: FloorPlan210:Sofa_210_1_2
+      work_surface_support:
+        fixture: FloorPlan210:Ottoman_210_1_1
+        center: [-1.76272897, 1.81072118, 0.448253781]
+        half_xy: [0.45520770, 0.45332102]
+        yaw: 0.0
+      object_pos: [-2.085, 1.837, 0.497]
+      object_yaw: 1.5708
+      robot_pose: {pos: [-2.455, 1.837, 0.0], yaw: 0.0}
+      hold_seconds: 1.0
+      source_category: dumbbell
+      source_wrapper_pos: [0.0, 0.0, 0.065]
+      source_wrapper_quat: [0.7071068, 0.0, 0.7071068, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.065]
+      source_bbox_size: [0.17, 0.065, 0.065]
+      source_scale: 0.8
+    statue_to_sofa:
+      sofa_fixture: FloorPlan210:Sofa_210_1_2
+      work_surface_support:
+        fixture: FloorPlan210:Ottoman_210_1_1
+        center: [-1.76272897, 1.81072118, 0.448253781]
+        half_xy: [0.45520770, 0.45332102]
+        yaw: 0.0
+      object_pos: [-2.085, 1.837, 0.497]
+      object_yaw: 0.0
+      robot_pose: {pos: [-2.455, 1.837, 0.0], yaw: 0.0}
+      hold_seconds: 1.0
+    close_laptop:
+      laptop_pose:
+        pos: [-4.088, 1.376, 0.445]
+        yaw: 1.5708
+      robot_pose:
+        pos: [-3.669, 1.376, 0.0]
+        yaw: -3.141593
+      init_open_fraction: 0.9
+      success_close_fraction: 0.2
+      hold_seconds: 1.0
+    open_laptop:
+      laptop_pose:
+        pos: [-4.088, 1.376, 0.445]
+        yaw: 1.5708
+      robot_pose:
+        pos: [-3.669, 1.376, 0.0]
+        yaw: -3.141593
+      init_open_fraction: 0.2
+      success_open_fraction: 0.9
+      hold_seconds: 1.0
+    coffee_drink_to_bin:
+      bin_fixture: FloorPlan210:bin_10_15
+      coffee_pos: [-4.108, 1.384, 0.463]
+      coffee_yaw: 0.0
+      bin_target_xy: [-4.366, 2.471,]
+      bin_xy_tolerance: 0.04
+      bin_z_tolerance: 0.04
+      robot_pose: {pos: [-3.705, 1.384, 0.0], yaw: 3.14159}
+      hold_seconds: 1.0
+    remote_to_bin:
+      bin_fixture: FloorPlan210:bin_10_15
+      object_pos: [-4.108, 1.384, 0.463]
+      object_yaw: 0.0
+      bin_target_xy: [-3.705, 0.784]
+      bin_xy_tolerance: 0.04
+      bin_z_tolerance: 0.04
+      robot_pose: {pos: [-3.705, 1.384, 0.0], yaw: 3.14159}
+      hold_seconds: 1.0
+      source_category: remote_control
+      source_wrapper_pos: [0.0, 0.0, 0.0341]
+      source_wrapper_quat: [0.7071068, 0.0, 0.7071068, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.0341]
+      source_bbox_size: [0.108, 0.010, 0.0341]
+      source_scale: 1.0
+    remote_to_basket:
+      basket_pos: [-4.069, 1.268, 0.462]
+      basket_yaw: 1.5708
+      remote_pos: [-4.069, 1.549, 0.462]
+      remote_yaw: 0.0
+      robot_pose: {pos: [-3.705, 1.384, 0.0], yaw: 3.14159}
+      success_xy_tolerance: 0.12
+      release_distance: 0.25
+      hold_seconds: 1.0
+    candle_to_basket:
+      basket_pos: [-4.069, 1.268, 0.462]
+      basket_yaw: 1.5708
+      remote_pos: [-4.069, 1.549, 0.462]
+      remote_yaw: 0.0
+      robot_pose: {pos: [-3.705, 1.384, 0.0], yaw: 3.14159}
+      work_surface_support:
+        fixture: FloorPlan210:Armchair_210_1_3
+        center: [-4.108, 1.384, 0.428]
+        half_xy: [0.20, 0.20]
+        yaw: 0.0
+      success_xy_tolerance: 0.12
+      release_distance: 0.25
+      hold_seconds: 1.0
+      source_category: candle
+      source_wrapper_pos: [0.0, 0.0, 0.08084]
+      source_wrapper_quat: [0.7071068, 0.7071068, 0.0, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.04042]
+      source_bbox_size: [0.035, 0.035, 0.04042]
+      source_scale: 1.0
+    tissue_box_to_basket:
+      basket_pos: [-4.069, 1.268, 0.462]
+      basket_yaw: 1.5708
+      remote_pos: [-4.069, 1.549, 0.462]
+      remote_yaw: 0.0
+      robot_pose: {pos: [-3.705, 1.384, 0.0], yaw: 3.14159}
+      success_xy_tolerance: 0.12
+      release_distance: 0.25
+      hold_seconds: 1.0
+      source_category: tissue_box
+      source_wrapper_pos: [0.0, 0.0, 0.07397]
+      source_wrapper_quat: [0.7071068, 0.7071068, 0.0, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.07397]
+      source_bbox_size: [0.100, 0.052, 0.07397]
+      source_scale: 0.8
+
+    book_into_basket:
+      work_surface_support: {fixture: "FloorPlan210:Ottoman_210_1_1", center: [-1.76272897, 1.81072118, 0.44825378], half_xy: [0.4552077, 0.45332102], yaw: 0.0}
+      work_surface_top_z: 0.75
+      basket_pos: [-1.85, 1.65, 0.75]
+      basket_yaw: 1.5708
+      basket_contact_sink: 0.008
+      book_pos: [-2.08, 1.97, 0.75]
+      book_yaw: 0.0
+      book_pitch: -1.5708
+      object_jitter_radius: 0.04
+      robot_pose: {pos: [-2.455, 1.837, 0.0], yaw: 0.0}
+      success_xy_tolerance: 0.12
+      release_distance: 0.25
+      hold_seconds: 1.0
+      source_category: book
+      source_wrapper_pos: [0.0, 0.0, 0.0]
+      source_wrapper_quat: [0.7071068, 0.7071068, 0.0, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.02]
+      source_bbox_size: [0.12, 0.16, 0.02]
+      source_scale: 0.65
+    stack_book_on_book:
+      work_surface_support: {fixture: "FloorPlan210:Ottoman_210_1_1", center: [-1.76272897, 1.81072118, 0.44825378], half_xy: [0.4552077, 0.45332102], yaw: 0.0}
+      work_surface_top_z: 0.75
+      base_book_pos: [-2.08, 1.95, 0.75]
+      base_book_yaw: 0.0
+      moving_book_pos: [-2.08, 1.68, 0.75]
+      moving_book_yaw: 0.0
+      moving_book_pitch: -1.5708
+      object_jitter_radius: 0.04
+      robot_pose: {pos: [-2.455, 1.837, 0.0], yaw: 0.0}
+      xy_tolerance: 0.08
+      orientation_cosine: 0.94
+      release_distance: 0.25
+      hold_seconds: 1.0
+      source_category: book
+      source_wrapper_pos: [0.0, 0.0, 0.0]
+      source_wrapper_quat: [0.7071068, 0.7071068, 0.0, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.02]
+      source_bbox_size: [0.12, 0.16, 0.02]
+      source_scale: 0.65
+    push_block_to_target_region:
+      work_surface_support: {fixture: "FloorPlan210:Ottoman_210_1_1", center: [-1.76272897, 1.81072118, 0.44825378], half_xy: [0.4552077, 0.45332102], yaw: 0.0}
+      work_surface_top_z: 0.75
+      object_pos: [-2.00, 1.53, 0.75]
+      object_yaw: 0.0
+      target_region_pos: [-2.00, 2.03, 0.75]
+      target_region_half_xy: [0.14, 0.20]
+      target_region_yaw: 0.0
+      robot_pose: {pos: [-2.455, 1.537, 0.0], yaw: 0.0}
+      max_lift_height: 0.06
+      hold_seconds: 1.0
+      source_category: chocolate
+      source_wrapper_pos: [0.0, 0.0, 0.0]
+      source_wrapper_quat: [1.0, 0.0, 0.0, 0.0]
+      source_bbox_pos: [-0.00006268, 0.00005167, 0.0]
+      source_bbox_size: [0.02993732, 0.03005167, 0.03045455]
+      source_scale: 1.5
+    open_box_flap:
+      work_surface_support: {fixture: "FloorPlan210:Ottoman_210_1_1", center: [-1.76272897, 1.81072118, 0.44825378], half_xy: [0.4552077, 0.45332102], yaw: 0.0}
+      work_surface_top_z: 0.75
+      box_fixture: "FloorPlan210:Box_10_10"
+      box_root_pos: [-1.98947354, 1.81446865, 0.94414253]
+      box_root_quat: [0.50614666, 0.49377683, 0.49342333, 0.50649128]
+      target_joint: box_7c54a26cba93093ca8aceb6fbac82646_1_4_0_box10flapouter1joint0_3
+      target_closed_qpos: -2.93938
+      target_open_qpos: 0.0
+      sibling_initial_qpos: {box_7c54a26cba93093ca8aceb6fbac82646_1_1_0_box10flapinner1joint0_1: 0.0, box_7c54a26cba93093ca8aceb6fbac82646_1_3_0_box10flapinner2joint0_2: 0.0, box_7c54a26cba93093ca8aceb6fbac82646_1_5_0_box10flapouter2joint0_4: 0.0}
+      robot_pose: {pos: [-2.455, 1.837, 0.0], yaw: 0.0}
+      success_fraction: 0.8
+      hold_seconds: 1.0
+    close_box_flap:
+      work_surface_support: {fixture: "FloorPlan210:Ottoman_210_1_1", center: [-1.76272897, 1.81072118, 0.44825378], half_xy: [0.4552077, 0.45332102], yaw: 0.0}
+      work_surface_top_z: 0.75
+      box_fixture: "FloorPlan210:Box_10_10"
+      box_root_pos: [-1.98947354, 1.81446865, 0.94414253]
+      box_root_quat: [0.50614666, 0.49377683, 0.49342333, 0.50649128]
+      target_joint: box_7c54a26cba93093ca8aceb6fbac82646_1_4_0_box10flapouter1joint0_3
+      target_closed_qpos: -2.93938
+      target_open_qpos: 0.0
+      sibling_initial_qpos: {box_7c54a26cba93093ca8aceb6fbac82646_1_1_0_box10flapinner1joint0_1: 2.91219, box_7c54a26cba93093ca8aceb6fbac82646_1_3_0_box10flapinner2joint0_2: -3.06698, box_7c54a26cba93093ca8aceb6fbac82646_1_5_0_box10flapouter2joint0_4: 2.71177}
+      robot_pose: {pos: [-2.455, 1.837, 0.0], yaw: 0.0}
+      success_fraction: 0.8
+      hold_seconds: 1.0
+    walk_and_close_low_drawer:
+      target_fixture: FloorPlan210:Dresser_210_2_1_7
+      target_joint: chestofdrawers_6e3a4148a857a4222c764362660c370a_1_8_0_DrawerMesh031_4
+      robot_pose:
+        pos: [-3.021, 3.318, 0.0]
+        yaw: -1.5708
+      init_open_fraction: 0.8
+      approach_distance: 0.35
+      minimum_start_distance: 0.5
+      hold_seconds: 1.0
+      success_close_fraction: 0.2
+    low_drawer_pnp:
+      target_fixture: FloorPlan210:Dresser_210_2_1_7
+      target_joint: chestofdrawers_6e3a4148a857a4222c764362660c370a_1_8_0_DrawerMesh031_4
+      init_open_fraction: 0.2
+      success_open_fraction: 0.8
+      hold_seconds: 1.0
+      success_close_fraction: 0.2
+      robot_pose:
+        pos: [-1.05, 3.7979, 0.0]
+        yaw: 0.0
+      apple_xy: [-0.47, 3.7979]
+      apple_support_geom: chestofdrawers_6e3a4148a857a4222c764362660c370a_1_1_0_collision_1
+      drawer_receptacle_site: chestofdrawers_6e3a4148a857a4222c764362660c370a_1_8_0_DrawerMesh03Receptacle0_4
+    walk_and_open_low_drawer:
+      target_fixture: "FloorPlan210:Dresser_210_2_1_7"
+      target_joint: chestofdrawers_6e3a4148a857a4222c764362660c370a_1_8_0_DrawerMesh031_4
+      robot_pose: {pos: [-3.021, 3.318, 0.0], yaw: -1.5708}
+      init_open_fraction: 0.2
+      success_open_fraction: 0.8
+      approach_distance: 0.35
+      minimum_start_distance: 0.50
+      hold_seconds: 1.0
+    walk_and_open_drawer:
+      target_fixture: "FloorPlan210:Dresser_210_2_1_7"
+      target_joint: chestofdrawers_6e3a4148a857a4222c764362660c370a_1_4_0_DrawerMesh011_2
+      robot_pose: {pos: [-3.021, 3.318, 0.0], yaw: -1.5708}
+      init_open_fraction: 0.2
+      success_open_fraction: 0.8
+      approach_distance: 0.35
+      minimum_start_distance: 0.50
+      hold_seconds: 1.0
+    walk_and_open_close_drawer:
+      target_fixture: "FloorPlan210:Dresser_210_2_1_7"
+      target_joint: chestofdrawers_6e3a4148a857a4222c764362660c370a_1_4_0_DrawerMesh011_2
+      robot_pose: {pos: [-3.021, 3.318, 0.0], yaw: -1.5708}
+      init_open_fraction: 0.2
+      success_open_fraction: 0.8
+      success_close_fraction: 0.2
+      open_hold_seconds: 1.0
+      approach_distance: 0.35
+      minimum_start_distance: 0.50
+      hold_seconds: 1.0
+    walk_and_close_drawer:
+      target_fixture: "FloorPlan210:Dresser_210_2_1_7"
+      target_joint: chestofdrawers_6e3a4148a857a4222c764362660c370a_1_4_0_DrawerMesh011_2
+      robot_pose: {pos: [-3.021, 3.318, 0.0], yaw: -1.5708}
+      init_open_fraction: 0.7
+      success_close_fraction: 0.05
+      approach_distance: 0.35
+      minimum_start_distance: 0.50
+      hold_seconds: 1.0
+    stack_books_and_place_mug:
+      work_surface_support:
+        fixture: FloorPlan210:Ottoman_210_1_1
+        center: [-1.76272897, 1.81072118, 0.44825378]
+        half_xy: [0.4552077, 0.45332102]
+        yaw: 0.0
+      work_surface_top_z: 0.75
+      base_book_pos: [-2.08, 2.00072118, 0.75]
+      base_book_yaw: 0.0
+      moving_book_pos: [-2.08, 1.62072118, 0.75]
+      moving_book_yaw: 0.0
+      moving_book_pitch: -1.5708
+      object_jitter_radius: 0.0
+      robot_pose:
+        pos: [-2.455, 1.837, 0.0]
+        yaw: 0.0
+      xy_tolerance: 0.08
+      orientation_cosine: 0.94
+      release_distance: 0.25
+      hold_seconds: 1.0
+      source_category: book
+      source_wrapper_pos: [0.0, 0.0, 0.0]
+      source_wrapper_quat: [0.7071068, 0.7071068, 0.0, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.02]
+      source_bbox_size: [0.12, 0.16, 0.02]
+      source_scale: 0.65
+      mug_pos: [-2.08, 1.81072118, 0.75]
+      mug_yaw: 0.0
+      stack_hold_seconds: 0.25
+
+  FloorPlan212:
+    approach_sofa:
+      target_fixture: FloorPlan212:Sofa_207_3_1
+      robot_pose:
+        pos: [2.857, -0.383, 0.0]
+        yaw: 1.5708
+      target_xy: [1.19299263335262, 1.8650357853140423]
+      target_tolerance: [2.0, 1.0]
+      show_target_region: false
+      hold_seconds: 1.0
+    sit_on_sofa:
+      target_fixture: FloorPlan212:Sofa_207_3_1
+      robot_pose: {pos: [1.213, 1.140, 0.0], yaw: 1.5708}
+      seat_center_xy: [1.213, 1.732]
+      seat_yaw: 0.0
+      seat_half_xy: [0.75, 0.35]
+      seat_surface_z: 0.341
+      contact_z_tolerance: 0.12
+      hold_seconds: 1.0
+      show_success_region: false
+    approach_table:
+      target_fixture: FloorPlan212:Coffee_Table_206_2_22
+      robot_pose:
+        pos: [-1.857, -0.383, 0.0]
+        yaw: 0.0
+      target_xy: [1.5909933280011772, 0.4459871295066869]
+      target_tolerance: [1.00, 0.80]
+      show_target_region: false
+      hold_seconds: 1.0
+    lift_statue:
+      robot_pose:
+        pos: [1.70, 1.02, 0.0]
+        yaw: -1.5707
+      statue_pos: [1.589, 0.568, 0.549488]
+      statue_yaw: 0.0
+      lift_height: 0.3
+      hold_seconds: 1.0
+    push_basketball:
+      robot_pose:
+        pos: [1.70, 1.02, 0.0]
+        yaw: -1.5707
+      object_pos: [1.589, 0.568, 0.549488]
+      object_yaw: 0.0
+      push_distance: 0.3
+      max_height_change: 0.12
+      hold_seconds: 1.0
+      source_category: basketball
+      source_wrapper_pos: [0.0, 0.0, 0.12]
+      source_wrapper_quat: [0.7071068, 0.7071068, 0.0, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.12]
+      source_bbox_size: [0.12, 0.12, 0.12]
+      source_scale: 0.8
+    lift_watering_can:
+      robot_pose: {pos: [1.70, 1.02, 0.0], yaw: -1.5707}
+      object_pos: [1.589, 0.568, 0.549488]
+      object_yaw: 0.0
+      lift_height: 0.3
+      hold_seconds: 1.0
+      source_category: watering_can
+      source_wrapper_pos: [0.0, 0.0, 0.10]
+      source_wrapper_quat: [0.7071068, 0.7071068, 0.0, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.13]
+      source_bbox_size: [0.12, 0.13, 0.13]
+      source_scale: 0.8
+    lift_dumbbell:
+      robot_pose: {pos: [1.70, 1.02, 0.0], yaw: -1.5707}
+      object_pos: [1.589, 0.568, 0.549488]
+      object_yaw: 0.0
+      lift_height: 0.3
+      hold_seconds: 1.0
+      source_category: dumbbell
+      source_wrapper_pos: [0.0, 0.0, 0.065]
+      source_wrapper_quat: [0.7071068, 0.0, 0.7071068, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.065]
+      source_bbox_size: [0.17, 0.065, 0.065]
+      source_scale: 0.8
+    lift_cup_among_objects:
+      robot_pose: {pos: [1.7, 1.02, 0.0], yaw: -1.5707}
+      object_poses:
+        target_cup: {pos: [1.589, 0.568, 0.549488], yaw: 0.0}
+        distractor_apple: {pos: [1.409, 0.568, 0.549488], yaw: 0.0}
+        distractor_can: {pos: [1.769, 0.568, 0.549488], yaw: 0.0}
+        distractor_egg: {pos: [1.469, 0.368, 0.549488], yaw: 0.0}
+        distractor_candle: {pos: [1.709, 0.368, 0.549488], yaw: 0.0}
+      lift_height: 0.3
+      hold_seconds: 1.0
+    pour_block_from_basket:
+      robot_pose:
+        pos: [1.4, 1.02, 0.0]
+        yaw: -1.5707
+      work_surface_support:
+        fixture: FloorPlan212:Coffee_Table_206_2_22
+        center: [1.59909, 0.44909, 0.47115613]
+        half_xy: [0.56, 0.25]
+        yaw: 0.0
+      work_surface_top_z: 0.75
+      basket_pos: [1.40004, 0.561409, 0.75]
+      basket_yaw: 9.6e-05
+      hold_seconds: 1.0
+    pour_ice_from_cup:
+      robot_pose: {pos: [1.7, 1.02, 0.0], yaw: -1.5707}
+      support_fixture: FloorPlan212:Coffee_Table_206_2_22
+      cup_mjcf: models/assets/objects/objaverse/cup/cup_3/model.xml
+      cup_scale: 1.5
+      cup_pos: [1.589, 0.568, 0.471156]
+      cup_yaw: 0.0
+      ice_mjcf: models/assets/objects/lightwheel/ice_cube/IceCube004/model.xml
+      ice_scale: 1.0
+      ice_local_pos: [0.0, 0.0, -0.020]
+      work_surface_top_z: 0.75
+      ice_region_margin: 0.003
+      hold_seconds: 1.0
+    basket_to_sofa:
+      sofa_fixture: FloorPlan212:Sofa_207_3_1
+      basket_pos: [1.589, 0.664, 0.549488]
+      robot_pose: {pos: [1.8502, 1.083, 0.0], yaw: -1.96011}
+      hold_seconds: 1.0
+    dumbbell_to_sofa:
+      sofa_fixture: FloorPlan212:Sofa_207_3_1
+      object_pos: [1.589, 0.590, 0.549488]
+      object_yaw: 0.0
+      robot_pose: {pos: [1.8502, 1.083, 0.0], yaw: -1.96011}
+      hold_seconds: 1.0
+      source_category: dumbbell
+      source_wrapper_pos: [0.0, 0.0, 0.065]
+      source_wrapper_quat: [0.7071068, 0.0, 0.7071068, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.065]
+      source_bbox_size: [0.17, 0.065, 0.065]
+      source_scale: 0.8
+    statue_to_sofa:
+      sofa_fixture: FloorPlan212:Sofa_207_3_1
+      object_pos: [1.589, 0.664, 0.549488]
+      object_yaw: 0.0
+      robot_pose: {pos: [1.8502, 1.083, 0.0], yaw: -1.96011}
+      hold_seconds: 1.0
+    close_laptop:
+      laptop_pose:
+        pos: [1.549445, 0.46024, 0.602108]
+        yaw: 3.141593
+      robot_pose:
+        pos: [1.354, 1.2218, 0.0]
+        yaw: -1.5707
+      init_open_fraction: 0.9
+      success_close_fraction: 0.2
+      hold_seconds: 1.0
+    open_laptop:
+      laptop_pose:
+        pos: [1.549445, 0.46024, 0.602108]
+        yaw: 3.141593
+      robot_pose:
+        pos: [1.354, 1.2218, 0.0]
+        yaw: -1.5707
+      init_open_fraction: 0.2
+      success_open_fraction: 0.9
+      hold_seconds: 1.0
+    coffee_drink_to_bin:
+      bin_fixture: FloorPlan212:bin_12_14
+      coffee_pos: [1.589, 0.568, 0.549488]
+      coffee_yaw: 0.0
+      bin_target_xy: [2.584, 0.598]
+      bin_xy_tolerance: 0.04
+      bin_z_tolerance: 0.04
+      robot_pose: {pos: [1.70, 1.02, 0.0], yaw: -1.5707}
+      hold_seconds: 1.0
+    remote_to_bin:
+      bin_fixture: FloorPlan212:bin_12_14
+      object_pos: [1.589, 0.568, 0.549488]
+      object_yaw: 0.0
+      bin_target_xy: [2.300, 1.020]
+      bin_xy_tolerance: 0.04
+      bin_z_tolerance: 0.04
+      robot_pose: {pos: [1.70, 1.02, 0.0], yaw: -1.5707}
+      hold_seconds: 1.0
+      source_category: remote_control
+      source_wrapper_pos: [0.0, 0.0, 0.0341]
+      source_wrapper_quat: [0.7071068, 0.0, 0.7071068, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.0341]
+      source_bbox_size: [0.108, 0.010, 0.0341]
+      source_scale: 1.0
+    remote_to_basket:
+      basket_pos: [1.772, 0.647, 0.487]
+      basket_yaw: 0.0
+      remote_pos: [1.544, 0.651, 0.487]
+      remote_yaw: 1.5708
+      robot_pose: {pos: [1.70, 1.02, 0.0], yaw: -1.5707}
+      success_xy_tolerance: 0.12
+      release_distance: 0.25
+      hold_seconds: 1.0
+    candle_to_basket:
+      basket_pos: [1.772, 0.647, 0.487]
+      basket_yaw: 0.0
+      remote_pos: [1.544, 0.651, 0.487]
+      remote_yaw: 1.5708
+      robot_pose: {pos: [1.70, 1.02, 0.0], yaw: -1.5707}
+      success_xy_tolerance: 0.12
+      release_distance: 0.25
+      hold_seconds: 1.0
+      source_category: candle
+      source_wrapper_pos: [0.0, 0.0, 0.08084]
+      source_wrapper_quat: [0.7071068, 0.7071068, 0.0, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.04042]
+      source_bbox_size: [0.035, 0.035, 0.04042]
+      source_scale: 1.0
+    tissue_box_to_basket:
+      basket_pos: [1.772, 0.647, 0.487]
+      basket_yaw: 0.0
+      remote_pos: [1.544, 0.651, 0.487]
+      remote_yaw: 1.5708
+      robot_pose: {pos: [1.70, 1.02, 0.0], yaw: -1.5707}
+      success_xy_tolerance: 0.12
+      release_distance: 0.25
+      hold_seconds: 1.0
+      source_category: tissue_box
+      source_wrapper_pos: [0.0, 0.0, 0.07397]
+      source_wrapper_quat: [0.7071068, 0.7071068, 0.0, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.07397]
+      source_bbox_size: [0.100, 0.052, 0.07397]
+      source_scale: 0.8
+
+    book_into_basket:
+      work_surface_support: {fixture: "FloorPlan212:Coffee_Table_206_2_22", center: [1.59909, 0.44909, 0.47115613], half_xy: [0.50, 0.25], yaw: 0.0}
+      work_surface_top_z: 0.75
+      basket_pos: [1.78, 0.47, 0.75]
+      basket_yaw: 1.5708
+      basket_contact_sink: 0.008
+      book_pos: [1.45, 0.59, 0.75]
+      book_yaw: -1.5707
+      book_pitch: -1.5708
+      object_jitter_radius: 0.04
+      robot_pose: {pos: [1.70, 1.02, 0.0], yaw: -1.5707}
+      success_xy_tolerance: 0.12
+      release_distance: 0.25
+      hold_seconds: 1.0
+      source_category: book
+      source_wrapper_pos: [0.0, 0.0, 0.0]
+      source_wrapper_quat: [0.7071068, 0.7071068, 0.0, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.02]
+      source_bbox_size: [0.12, 0.16, 0.02]
+      source_scale: 0.65
+    stack_book_on_book:
+      work_surface_support: {fixture: "FloorPlan212:Coffee_Table_206_2_22", center: [1.59909, 0.44909, 0.47115613], half_xy: [0.50, 0.25], yaw: 0.0}
+      work_surface_top_z: 0.75
+      base_book_pos: [1.73, 0.59, 0.75]
+      base_book_yaw: 1.5708
+      moving_book_pos: [1.45, 0.59, 0.75]
+      moving_book_yaw: -1.5707
+      moving_book_pitch: -1.5708
+      object_jitter_radius: 0.04
+      robot_pose: {pos: [1.70, 1.02, 0.0], yaw: -1.5707}
+      xy_tolerance: 0.08
+      orientation_cosine: 0.94
+      release_distance: 0.25
+      hold_seconds: 1.0
+      source_category: book
+      source_wrapper_pos: [0.0, 0.0, 0.0]
+      source_wrapper_quat: [0.7071068, 0.7071068, 0.0, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.02]
+      source_bbox_size: [0.12, 0.16, 0.02]
+      source_scale: 0.65
+    push_block_to_target_region:
+      work_surface_support: {fixture: "FloorPlan212:Coffee_Table_206_2_22", center: [1.59909, 0.44909, 0.47115613], half_xy: [0.56, 0.25], yaw: 0.0}
+      work_surface_top_z: 0.75
+      object_pos: [1.15, 0.56, 0.75]
+      object_yaw: 0.0
+      target_region_pos: [1.65, 0.56005, 0.75]
+      target_region_half_xy: [0.14, 0.20]
+      target_region_yaw: -1.5707
+      robot_pose: {pos: [1.40, 1.02, 0.0], yaw: -1.5707}
+      max_lift_height: 0.06
+      hold_seconds: 1.0
+      source_category: chocolate
+      source_wrapper_pos: [0.0, 0.0, 0.0]
+      source_wrapper_quat: [1.0, 0.0, 0.0, 0.0]
+      source_bbox_pos: [-0.00006268, 0.00005167, 0.0]
+      source_bbox_size: [0.02993732, 0.03005167, 0.03045455]
+      source_scale: 1.5
+    open_box_flap:
+      work_surface_support: {fixture: "FloorPlan212:Coffee_Table_206_2_22", center: [1.59909, 0.44909, 0.47115613], half_xy: [0.50, 0.25], yaw: 0.0}
+      work_surface_top_z: 0.75
+      box_fixture: "FloorPlan212:Box_12_3"
+      box_root_pos: [1.59907753, 0.55984470, 0.91381640]
+      box_root_quat: [-0.70713907, -0.70707449, -0.00002455, -0.00004356]
+      target_joint: box_a7fda261fbf649cf3161ddc4a5444f30_1_2_0_box12flapouter1joint0_2
+      target_closed_qpos: -2.72317
+      target_open_qpos: 0.0
+      sibling_initial_qpos: {box_a7fda261fbf649cf3161ddc4a5444f30_1_1_0_box12flapinner1joint0_1: 0.0, box_a7fda261fbf649cf3161ddc4a5444f30_1_4_0_box12flapinner2joint0_3: 0.0, box_a7fda261fbf649cf3161ddc4a5444f30_1_5_0_box12flapouter2joint0_4: 0.0}
+      robot_pose: {pos: [1.68, 0.95, 0.0], yaw: -1.5707}
+      success_fraction: 0.8
+      hold_seconds: 1.0
+    close_box_flap:
+      work_surface_support: {fixture: "FloorPlan212:Coffee_Table_206_2_22", center: [1.59909, 0.44909, 0.47115613], half_xy: [0.50, 0.25], yaw: 0.0}
+      work_surface_top_z: 0.75
+      box_fixture: "FloorPlan212:Box_12_3"
+      box_root_pos: [1.59907753, 0.55984470, 0.91381640]
+      box_root_quat: [-0.70713907, -0.70707449, -0.00002455, -0.00004356]
+      target_joint: box_a7fda261fbf649cf3161ddc4a5444f30_1_2_0_box12flapouter1joint0_2
+      target_closed_qpos: -2.72317
+      target_open_qpos: 0.0
+      sibling_initial_qpos: {box_a7fda261fbf649cf3161ddc4a5444f30_1_1_0_box12flapinner1joint0_1: 2.50659, box_a7fda261fbf649cf3161ddc4a5444f30_1_4_0_box12flapinner2joint0_3: -2.50162, box_a7fda261fbf649cf3161ddc4a5444f30_1_5_0_box12flapouter2joint0_4: 3.01410}
+      robot_pose: {pos: [1.68, 0.95, 0.0], yaw: -1.5707}
+      success_fraction: 0.8
+      hold_seconds: 1.0
+    pack_candle_statue_into_basket:
+      work_surface_support: {fixture: "FloorPlan212:Coffee_Table_206_2_22", center: [1.59909, 0.44909, 0.47115613], half_xy: [0.50, 0.25], yaw: 0.0}
+      work_surface_top_z: 0.75
+      robot_pose: {pos: [1.68, 1.20, 0.0], yaw: -1.5707}
+      basket_pos: [1.68, 0.52, 0.75]
+      basket_yaw: 0.0
+      basket_scale: 1.5
+      object_poses:
+        candle: {pos: [1.20, 0.60, 0.75], yaw: 0.0}
+        statue: {pos: [2.02, 0.60, 0.75], yaw: 0.0}
+      candle_scale: 0.9
+      statue_scale: 0.50
+      success_xy_tolerance: 0.18
+      hold_seconds: 1.0
+    walk_to_table_and_put_can_in_basket:
+      work_surface_support: {fixture: "FloorPlan212:Coffee_Table_206_2_22", center: [1.59909, 0.44909, 0.47115613], half_xy: [0.50, 0.25], yaw: 0.0}
+      work_surface_top_z: 0.75
+      table_fixture: "FloorPlan212:Coffee_Table_206_2_22"
+      robot_pose: {pos: [-1.857, -0.383, 0.0], yaw: 0.0}
+      basket_pos: [1.85, 0.38, 0.75]
+      basket_yaw: 0.0
+      basket_scale: 1.0
+      can_pos: [1.6, 0.35, 0.75]
+      can_yaw: 0.0
+      approach_distance: 0.35
+      minimum_start_distance: 0.50
+      success_xy_tolerance: 0.12
+      hold_seconds: 1.0
+    sofa_then_table:
+      stages:
+        - FloorPlan212:Sofa_207_3_1
+        - FloorPlan212:Coffee_Table_206_2_22
+      robot_pose:
+        pos: [-1.857, -0.383, 0.0]
+        yaw: 0.620933
+    table_then_sofa:
+      stages:
+        - FloorPlan212:Coffee_Table_206_2_22
+        - FloorPlan212:Sofa_207_3_1
+      robot_pose:
+        pos: [-1.857, -0.383, 0.0]
+        yaw: 0.224901
+    bin_then_table:
+      stages:
+        - FloorPlan212:bin_12_14
+        - FloorPlan212:Coffee_Table_206_2_22
+      robot_pose:
+        pos: [-1.857, -0.383, 0.0]
+        yaw: -0.022771
+    bin_then_sofa:
+      stages:
+        - FloorPlan212:bin_12_14
+        - FloorPlan212:Sofa_207_3_1
+      robot_pose:
+        pos: [-1.857, -0.383, 0.0]
+        yaw: -0.022771
+    table_then_bin:
+      stages:
+        - FloorPlan212:Coffee_Table_206_2_22
+        - FloorPlan212:bin_12_14
+      robot_pose:
+        pos: [-1.857, -0.383, 0.0]
+        yaw: 0.224901
+    sofa_then_bin:
+      stages:
+        - FloorPlan212:Sofa_207_3_1
+        - FloorPlan212:bin_12_14
+      robot_pose:
+        pos: [-1.857, -0.383, 0.0]
+        yaw: 0.620933
+    stack_books_and_place_mug:
+      work_surface_support:
+        fixture: FloorPlan212:Coffee_Table_206_2_22
+        center: [1.59909, 0.44909, 0.47115613]
+        half_xy: [0.5, 0.25]
+        yaw: 0.0
+      work_surface_top_z: 0.75
+      base_book_pos: [1.78909, 0.59, 0.75]
+      base_book_yaw: 1.5708
+      moving_book_pos: [1.40909, 0.59, 0.75]
+      moving_book_yaw: -1.5707
+      moving_book_pitch: -1.5708
+      object_jitter_radius: 0.0
+      robot_pose:
+        pos: [1.7, 1.02, 0.0]
+        yaw: -1.5707
+      xy_tolerance: 0.08
+      orientation_cosine: 0.94
+      release_distance: 0.25
+      hold_seconds: 1.0
+      source_category: book
+      source_wrapper_pos: [0.0, 0.0, 0.0]
+      source_wrapper_quat: [0.7071068, 0.7071068, 0.0, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.02]
+      source_bbox_size: [0.12, 0.16, 0.02]
+      source_scale: 0.65
+      mug_pos: [1.59909, 0.59, 0.75]
+      mug_yaw: 1.5708
+      stack_hold_seconds: 0.25
+
+  FloorPlan226:
+    canned_drink_from_table_into_box_on_armchair:
+      robot_pose: {pos: [-0.8178, -1.15, 0.05], yaw: 1.4060}
+      can_xy: [-0.712, -0.510]
+      can_yaw: 0.0
+      box_xy: [1.356, -0.581]
+      box_quat: [-0.0001713858, -0.0000179466, 0.7071319527, 0.7070815878]
+      flap_qpos:
+        box_b1c47d67056cd714cb582cc351224939_1_1_0_box26flapouter1joint0_1: 0.0
+        box_b1c47d67056cd714cb582cc351224939_1_2_0_box26flapouter2joint0_2: 0.0
+        box_b1c47d67056cd714cb582cc351224939_1_3_0_box26flapinner2joint0_3: 0.0
+        box_b1c47d67056cd714cb582cc351224939_1_5_0_box26flapinner1joint0_4: 0.0
+      horizontal_tolerance: 0.008
+      height_tolerance: 0.025
+      hold_seconds: 1.0
+    remote_into_box:
+      robot_pose: {pos: [-0.70, -1.00, 0.05], yaw: 1.5708}
+      table_top_z: 0.54438784
+      box_xy: [-0.90, -0.48]
+      box_quat: [-0.0001713858, -0.0000179466, 0.7071319527, 0.7070815878]
+      object_xy: [-0.35, -0.52]
+      object_quat: [1.0, 0.0, 0.0, 0.0]
+      flap_qpos:
+        box_b1c47d67056cd714cb582cc351224939_1_1_0_box26flapouter1joint0_1: 0.0
+        box_b1c47d67056cd714cb582cc351224939_1_2_0_box26flapouter2joint0_2: 0.0
+        box_b1c47d67056cd714cb582cc351224939_1_3_0_box26flapinner2joint0_3: 0.0
+        box_b1c47d67056cd714cb582cc351224939_1_5_0_box26flapinner1joint0_4: 0.0
+      horizontal_tolerance: 0.005
+      height_tolerance: 0.02
+      hold_seconds: 1.0
+    approach_sofa:
+      target_fixture: FloorPlan226:Sofa_207_4_14
+      robot_pose:
+        pos: [1.365, -1.567, 0.0]
+        yaw: 3.14159
+      target_xy: [-0.5000073761198512, -1.8870222452827414]
+      target_tolerance: [1.0, 1.0]
+      show_target_region: false
+      hold_seconds: 1.0
+    sit_on_sofa:
+      target_fixture: FloorPlan226:Sofa_207_4_14
+      robot_pose: {pos: [-0.520, -1.160, 0.0], yaw: -1.5708}
+      seat_center_xy: [-0.520, -1.754]
+      seat_yaw: 3.14159
+      seat_half_xy: [0.75, 0.35]
+      seat_surface_z: 0.341
+      contact_z_tolerance: 0.12
+      hold_seconds: 1.0
+      show_success_region: false
+    approach_table:
+      target_fixture: FloorPlan226:Coffee_Table_203_1_13
+      robot_pose:
+        pos: [1.365, -1.567, 0.0]
+        yaw: 3.14159
+      target_xy: [-0.7119994221240762, -0.36500420919380333]
+      target_tolerance: [1.20, 0.80]
+      show_target_region: false
+      hold_seconds: 1.0
+    open_drawer:
+      target_fixture: FloorPlan226:Coffee_Table_203_1_13
+      target_joint: coffeetable_9ffe419303e0e264ed57bd3b87ddecb2_1_2_0_joint_1
+      robot_pose:
+        pos: [-0.7967, -1.0377, 0.0]
+        yaw: 1.65806
+      init_open_fraction: 0.20
+      success_open_fraction: 0.80
+      hold_seconds: 1.0
+    close_drawer:
+      target_fixture: FloorPlan226:Coffee_Table_203_1_13
+      target_joint: coffeetable_9ffe419303e0e264ed57bd3b87ddecb2_1_2_0_joint_1
+      robot_pose:
+        pos: [-0.82, -1.25, 0.0]
+        yaw: 1.65806
+      init_open_fraction: 0.80
+      success_close_fraction: 0.20
+      hold_seconds: 1.0
+    lift_statue:
+      robot_pose:
+        pos: [-0.8178, -1.00, 0.0]
+        yaw: 1.44552
+      statue_pos: [-0.712, -0.51, 0.601288]
+      statue_yaw: 0.0
+      lift_height: 0.3
+      hold_seconds: 1.0
+    push_basketball:
+      robot_pose:
+        pos: [-0.8178, -1.00, 0.0]
+        yaw: 1.44552
+      object_pos: [-0.712, -0.51, 0.601288]
+      object_yaw: 0.0
+      push_distance: 0.3
+      max_height_change: 0.12
+      hold_seconds: 1.0
+      source_category: basketball
+      source_wrapper_pos: [0.0, 0.0, 0.12]
+      source_wrapper_quat: [0.7071068, 0.7071068, 0.0, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.12]
+      source_bbox_size: [0.12, 0.12, 0.12]
+      source_scale: 0.8
+    lift_watering_can:
+      robot_pose: {pos: [-0.8178, -1.00, 0.0], yaw: 1.44552}
+      object_pos: [-0.712, -0.51, 0.601288]
+      object_yaw: 0.0
+      lift_height: 0.3
+      hold_seconds: 1.0
+      source_category: watering_can
+      source_wrapper_pos: [0.0, 0.0, 0.10]
+      source_wrapper_quat: [0.7071068, 0.7071068, 0.0, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.13]
+      source_bbox_size: [0.12, 0.13, 0.13]
+      source_scale: 0.8
+    lift_dumbbell:
+      robot_pose: {pos: [-0.8178, -1.00, 0.0], yaw: 1.44552}
+      object_pos: [-0.712, -0.51, 0.601288]
+      object_yaw: 0.0
+      lift_height: 0.3
+      hold_seconds: 1.0
+      source_category: dumbbell
+      source_wrapper_pos: [0.0, 0.0, 0.065]
+      source_wrapper_quat: [0.7071068, 0.0, 0.7071068, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.065]
+      source_bbox_size: [0.17, 0.065, 0.065]
+      source_scale: 0.8
+    lift_cup_among_objects:
+      robot_pose: {pos: [-0.8178, -1.0, 0.0], yaw: 1.44552}
+      object_poses:
+        target_cup: {pos: [-0.712, -0.51, 0.601288], yaw: 0.0}
+        distractor_apple: {pos: [-0.5334, -0.5325, 0.601288], yaw: 0.0}
+        distractor_can: {pos: [-0.8906, -0.4875, 0.601288], yaw: 0.0}
+        distractor_egg: {pos: [-0.568, -0.3266, 0.601288], yaw: 0.0}
+        distractor_candle: {pos: [-0.8061, -0.2966, 0.601288], yaw: 0.0}
+      lift_height: 0.3
+      hold_seconds: 1.0
+    pour_block_from_basket:
+      robot_pose:
+        pos: [-0.799, -1.0562, 0.0]
+        yaw: 1.44552
+      work_surface_support:
+        fixture: FloorPlan226:Coffee_Table_203_1_13
+        center: [-0.66666, -0.36664, 0.54438784]
+        half_xy: [0.5, 0.3]
+        yaw: 0.0
+      work_surface_top_z: 0.75
+      basket_pos: [-0.746521, -0.509409, 0.75]
+      basket_yaw: 3.016316
+      hold_seconds: 1.0
+    pour_ice_from_cup:
+      robot_pose: {pos: [-0.8598, -1.1942, 0.0], yaw: 1.44552}
+      support_fixture: FloorPlan226:Coffee_Table_203_1_13
+      cup_mjcf: models/assets/objects/objaverse/cup/cup_3/model.xml
+      cup_scale: 1.5
+      cup_pos: [-0.712, -0.510, 0.544388]
+      cup_yaw: 0.0
+      ice_mjcf: models/assets/objects/lightwheel/ice_cube/IceCube004/model.xml
+      ice_scale: 1.0
+      ice_local_pos: [0.0, 0.0, -0.020]
+      work_surface_top_z: 0.75
+      ice_region_margin: 0.003
+      hold_seconds: 1.0
+    basket_to_sofa:
+      sofa_fixture: FloorPlan226:Sofa_207_4_14
+      basket_pos: [-0.712, -0.605, 0.601288]
+      robot_pose: {pos: [-0.799, -1.0562, 0.0], yaw: 1.44552}
+      hold_seconds: 1.0
+    dumbbell_to_sofa:
+      sofa_fixture: FloorPlan226:Sofa_207_4_14
+      object_pos: [-0.712, -0.520, 0.601288]
+      object_yaw: 0.0
+      robot_pose: {pos: [-0.799, -1.0562, 0.0], yaw: 1.44552}
+      hold_seconds: 1.0
+      source_category: dumbbell
+      source_wrapper_pos: [0.0, 0.0, 0.065]
+      source_wrapper_quat: [0.7071068, 0.0, 0.7071068, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.065]
+      source_bbox_size: [0.17, 0.065, 0.065]
+      source_scale: 0.8
+    statue_to_sofa:
+      sofa_fixture: FloorPlan226:Sofa_207_4_14
+      object_pos: [-0.712, -0.605, 0.601288]
+      object_yaw: 0.0
+      robot_pose: {pos: [-0.799, -1.0562, 0.0], yaw: 1.44552}
+      hold_seconds: 1.0
+    close_laptop:
+      laptop_pose:
+        pos: [-0.848, -0.604, 0.630]
+        yaw: 0.0
+      robot_pose:
+        pos: [-0.848, -0.957, 0.0]
+        yaw: 1.44552
+      init_open_fraction: 0.9
+      success_close_fraction: 0.2
+      hold_seconds: 1.0
+    open_laptop:
+      laptop_pose:
+        pos: [-0.848, -0.604, 0.630]
+        yaw: 0.0
+      robot_pose:
+        pos: [-0.848, -0.957, 0.0]
+        yaw: 1.44552
+      init_open_fraction: 0.2
+      success_open_fraction: 0.9
+      hold_seconds: 1.0
+    coffee_drink_to_bin:
+      bin_fixture: FloorPlan226:bin_26_6
+      coffee_pos: [-0.712, -0.51, 0.601288]
+      coffee_yaw: 0.0
+      bin_target_xy: [-1.753, -0.475]
+      bin_xy_tolerance: 0.04
+      bin_z_tolerance: 0.04
+      robot_pose: {pos: [-0.8178, -1.00, 0.0], yaw: 1.44552}
+      hold_seconds: 1.0
+    remote_to_bin:
+      bin_fixture: FloorPlan226:bin_26_6
+      object_pos: [-0.712, -0.51, 0.601288]
+      object_yaw: 0.0
+      bin_target_xy: [-1.413, -0.925]
+      bin_xy_tolerance: 0.04
+      bin_z_tolerance: 0.04
+      robot_pose: {pos: [-0.8178, -1.00, 0.0], yaw: 1.44552}
+      hold_seconds: 1.0
+      source_category: remote_control
+      source_wrapper_pos: [0.0, 0.0, 0.0341]
+      source_wrapper_quat: [0.7071068, 0.0, 0.7071068, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.0341]
+      source_bbox_size: [0.108, 0.010, 0.0341]
+      source_scale: 1.0
+    remote_to_basket:
+      basket_pos: [-0.812, -0.605, 0.601288]
+      basket_yaw: 0.0
+      remote_pos: [-0.515, -0.605, 0.601288]
+      remote_yaw: 1.5708
+      robot_pose: {pos: [-0.799, -1.0562, 0.0], yaw: 1.44552}
+      success_xy_tolerance: 0.12
+      release_distance: 0.25
+      hold_seconds: 1.0
+    candle_to_basket:
+      basket_pos: [-0.812, -0.605, 0.601288]
+      basket_yaw: 0.0
+      remote_pos: [-0.515, -0.605, 0.601288]
+      remote_yaw: 1.5708
+      robot_pose: {pos: [-0.799, -1.0562, 0.0], yaw: 1.44552}
+      success_xy_tolerance: 0.12
+      release_distance: 0.25
+      hold_seconds: 1.0
+      source_category: candle
+      source_wrapper_pos: [0.0, 0.0, 0.08084]
+      source_wrapper_quat: [0.7071068, 0.7071068, 0.0, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.04042]
+      source_bbox_size: [0.035, 0.035, 0.04042]
+      source_scale: 1.0
+    tissue_box_to_basket:
+      basket_pos: [-0.812, -0.605, 0.601288]
+      basket_yaw: 0.0
+      remote_pos: [-0.515, -0.605, 0.601288]
+      remote_yaw: 1.5708
+      robot_pose: {pos: [-0.799, -1.0562, 0.0], yaw: 1.44552}
+      success_xy_tolerance: 0.12
+      release_distance: 0.25
+      hold_seconds: 1.0
+      source_category: tissue_box
+      source_wrapper_pos: [0.0, 0.0, 0.07397]
+      source_wrapper_quat: [0.7071068, 0.7071068, 0.0, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.07397]
+      source_bbox_size: [0.100, 0.052, 0.07397]
+      source_scale: 0.8
+    book_into_basket:
+      work_surface_support: {fixture: "FloorPlan226:Coffee_Table_203_1_13", center: [-0.66666, -0.36664, 0.54438784], half_xy: [0.50, 0.30], yaw: 0.0}
+      work_surface_top_z: 0.75
+      basket_pos: [-0.82, -0.50, 0.75]
+      basket_yaw: 1.5708
+      basket_contact_sink: 0.008
+      book_pos: [-0.51, -0.56, 0.75]
+      book_yaw: 1.44552
+      book_pitch: -1.5708
+      object_jitter_radius: 0.04
+      robot_pose: {pos: [-0.799, -1.0562, 0.0], yaw: 1.44552}
+      success_xy_tolerance: 0.12
+      release_distance: 0.25
+      hold_seconds: 1.0
+      source_category: book
+      source_wrapper_pos: [0.0, 0.0, 0.0]
+      source_wrapper_quat: [0.7071068, 0.7071068, 0.0, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.02]
+      source_bbox_size: [0.12, 0.16, 0.02]
+      source_scale: 0.65
+    stack_book_on_book:
+      work_surface_support: {fixture: "FloorPlan226:Coffee_Table_203_1_13", center: [-0.66666, -0.36664, 0.54438784], half_xy: [0.50, 0.30], yaw: 0.0}
+      work_surface_top_z: 0.75
+      base_book_pos: [-0.80, -0.54, 0.75]
+      base_book_yaw: 1.5708
+      moving_book_pos: [-0.52, -0.58, 0.75]
+      moving_book_yaw: 1.44552
+      moving_book_pitch: -1.5708
+      object_jitter_radius: 0.04
+      robot_pose: {pos: [-0.799, -1.0562, 0.0], yaw: 1.44552}
+      xy_tolerance: 0.08
+      orientation_cosine: 0.94
+      release_distance: 0.25
+      hold_seconds: 1.0
+      source_category: book
+      source_wrapper_pos: [0.0, 0.0, 0.0]
+      source_wrapper_quat: [0.7071068, 0.7071068, 0.0, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.02]
+      source_bbox_size: [0.12, 0.16, 0.02]
+      source_scale: 0.65
+    push_block_to_target_region:
+      work_surface_support: {fixture: "FloorPlan226:Coffee_Table_203_1_13", center: [-0.66666, -0.36664, 0.54438784], half_xy: [0.50, 0.30], yaw: 0.0}
+      work_surface_top_z: 0.75
+      object_pos: [-0.50, -0.52, 0.75]
+      object_yaw: 0.0
+      target_region_pos: [-0.99608, -0.45750, 0.75]
+      target_region_half_xy: [0.14, 0.20]
+      target_region_yaw: 0.0
+      robot_pose: {pos: [-0.799, -1.0562, 0.0], yaw: 1.44552}
+      max_lift_height: 0.06
+      hold_seconds: 1.0
+      source_category: chocolate
+      source_wrapper_pos: [0.0, 0.0, 0.0]
+      source_wrapper_quat: [1.0, 0.0, 0.0, 0.0]
+      source_bbox_pos: [-0.00006268, 0.00005167, 0.0]
+      source_bbox_size: [0.02993732, 0.03005167, 0.03045455]
+      source_scale: 1.5
+    open_box_flap:
+      work_surface_support: {fixture: "FloorPlan226:Coffee_Table_203_1_13", center: [-0.66666, -0.36664, 0.54438784], half_xy: [0.50, 0.30], yaw: 0.0}
+      work_surface_top_z: 0.75
+      box_fixture: "FloorPlan226:Box_26_0"
+      box_root_pos: [-0.66684295, -0.50658459, 0.89507221]
+      box_root_quat: [0.04418476, 0.04434106, 0.70574037, 0.70569973]
+      target_joint: box_b1c47d67056cd714cb582cc351224939_1_1_0_box26flapouter1joint0_1
+      target_closed_qpos: -2.58670
+      target_open_qpos: 0.0
+      sibling_initial_qpos: {box_b1c47d67056cd714cb582cc351224939_1_2_0_box26flapouter2joint0_2: 0.0, box_b1c47d67056cd714cb582cc351224939_1_3_0_box26flapinner2joint0_3: 0.0, box_b1c47d67056cd714cb582cc351224939_1_5_0_box26flapinner1joint0_4: 0.0}
+      robot_pose: {pos: [-0.799, -1.0562, 0.0], yaw: 1.44552}
+      success_fraction: 0.8
+      hold_seconds: 1.0
+    close_box_flap:
+      work_surface_support: {fixture: "FloorPlan226:Coffee_Table_203_1_13", center: [-0.66666, -0.36664, 0.54438784], half_xy: [0.50, 0.30], yaw: 0.0}
+      work_surface_top_z: 0.75
+      box_fixture: "FloorPlan226:Box_26_0"
+      box_root_pos: [-0.66684295, -0.50658459, 0.89507221]
+      box_root_quat: [0.04418476, 0.04434106, 0.70574037, 0.70569973]
+      target_joint: box_b1c47d67056cd714cb582cc351224939_1_1_0_box26flapouter1joint0_1
+      target_closed_qpos: -2.58670
+      target_open_qpos: 0.0
+      sibling_initial_qpos: {box_b1c47d67056cd714cb582cc351224939_1_2_0_box26flapouter2joint0_2: 2.56631, box_b1c47d67056cd714cb582cc351224939_1_3_0_box26flapinner2joint0_3: -2.51753, box_b1c47d67056cd714cb582cc351224939_1_5_0_box26flapinner1joint0_4: 2.51024}
+      robot_pose: {pos: [-0.799, -1.0562, 0.0], yaw: 1.44552}
+      success_fraction: 0.8
+      hold_seconds: 1.0
+    pack_candle_statue_into_basket:
+      work_surface_support: {fixture: "FloorPlan226:Coffee_Table_203_1_13", center: [-0.66666, -0.36664, 0.54438784], half_xy: [0.50, 0.30], yaw: 0.0}
+      work_surface_top_z: 0.75
+      robot_pose: {pos: [-0.799, -1.0562, 0.0], yaw: 1.44552}
+      basket_pos: [-0.74, -0.52, 0.75]
+      basket_yaw: 0.0
+      basket_scale: 1.5
+      object_poses:
+        candle: {pos: [-1.05, -0.57, 0.75], yaw: 0.0}
+        statue: {pos: [-0.35, -0.57, 0.75], yaw: 0.0}
+      candle_scale: 0.9
+      statue_scale: 0.50
+      success_xy_tolerance: 0.18
+      hold_seconds: 1.0
+    walk_and_close_low_drawer:
+      target_fixture: FloorPlan226:Coffee_Table_203_1_13
+      target_joint: coffeetable_9ffe419303e0e264ed57bd3b87ddecb2_1_3_0_DrawerMesh021_2
+      robot_pose:
+        pos: [1.365, -1.567, 0.0]
+        yaw: 3.14159
+      init_open_fraction: 0.8
+      approach_distance: 0.35
+      minimum_start_distance: 0.5
+      hold_seconds: 1.0
+      success_close_fraction: 0.2
+    low_drawer_pnp:
+      target_fixture: FloorPlan226:Coffee_Table_203_1_13
+      target_joint: coffeetable_9ffe419303e0e264ed57bd3b87ddecb2_1_3_0_DrawerMesh021_2
+      init_open_fraction: 0.2
+      success_open_fraction: 0.8
+      hold_seconds: 1.0
+      success_close_fraction: 0.2
+      robot_pose:
+        pos: [-0.8, -1.15, 0.0]
+        yaw: 1.5708
+      apple_xy: [-0.8, -0.665]
+      apple_support_geom: coffeetable_9ffe419303e0e264ed57bd3b87ddecb2_1_1_0_collision_1
+      drawer_receptacle_site: coffeetable_9ffe419303e0e264ed57bd3b87ddecb2_1_3_0_DrawerMesh02Receptacle0_2
+    walk_and_open_low_drawer:
+      target_fixture: "FloorPlan226:Coffee_Table_203_1_13"
+      target_joint: coffeetable_9ffe419303e0e264ed57bd3b87ddecb2_1_3_0_DrawerMesh021_2
+      robot_pose: {pos: [1.365, -1.567, 0.0], yaw: 3.14159}
+      init_open_fraction: 0.2
+      success_open_fraction: 0.8
+      approach_distance: 0.35
+      minimum_start_distance: 0.50
+      hold_seconds: 1.0
+    walk_and_open_drawer:
+      target_fixture: "FloorPlan226:Coffee_Table_203_1_13"
+      target_joint: coffeetable_9ffe419303e0e264ed57bd3b87ddecb2_1_2_0_joint_1
+      robot_pose: {pos: [1.365, -1.567, 0.0], yaw: 3.14159}
+      init_open_fraction: 0.2
+      success_open_fraction: 0.8
+      approach_distance: 0.35
+      minimum_start_distance: 0.50
+      hold_seconds: 1.0
+    walk_and_open_close_drawer:
+      target_fixture: "FloorPlan226:Coffee_Table_203_1_13"
+      target_joint: coffeetable_9ffe419303e0e264ed57bd3b87ddecb2_1_2_0_joint_1
+      robot_pose: {pos: [1.365, -1.567, 0.0], yaw: 3.14159}
+      init_open_fraction: 0.2
+      success_open_fraction: 0.8
+      success_close_fraction: 0.2
+      open_hold_seconds: 1.0
+      approach_distance: 0.35
+      minimum_start_distance: 0.50
+      hold_seconds: 1.0
+    walk_and_close_drawer:
+      target_fixture: "FloorPlan226:Coffee_Table_203_1_13"
+      target_joint: coffeetable_9ffe419303e0e264ed57bd3b87ddecb2_1_2_0_joint_1
+      robot_pose: {pos: [1.365, -1.567, 0.0], yaw: 3.14159}
+      init_open_fraction: 0.7
+      success_close_fraction: 0.05
+      approach_distance: 0.35
+      minimum_start_distance: 0.50
+      hold_seconds: 1.0
+    walk_to_table_and_put_can_in_basket:
+      work_surface_support: {fixture: "FloorPlan226:Coffee_Table_203_1_13", center: [-0.66666, -0.36664, 0.54438784], half_xy: [0.50, 0.30], yaw: 0.0}
+      work_surface_top_z: 0.75
+      table_fixture: "FloorPlan226:Coffee_Table_203_1_13"
+      robot_pose: {pos: [1.365, -1.567, 0.0], yaw: 2.607749}
+      basket_pos: [-0.65, -0.55, 0.75]
+      basket_yaw: 0.0
+      basket_scale: 1.0
+      can_pos: [-0.43, -0.55, 0.75]
+      can_yaw: 0.0
+      approach_distance: 0.35
+      minimum_start_distance: 0.50
+      success_xy_tolerance: 0.12
+      hold_seconds: 1.0
+    sofa_then_table:
+      stages:
+        - FloorPlan226:Sofa_207_4_14
+        - FloorPlan226:Coffee_Table_203_1_13
+      robot_pose:
+        pos: [1.365, -1.567, 0.0]
+        yaw: -2.957555
+    table_then_sofa:
+      stages:
+        - FloorPlan226:Coffee_Table_203_1_13
+        - FloorPlan226:Sofa_207_4_14
+      robot_pose:
+        pos: [1.365, -1.567, 0.0]
+        yaw: 2.607749
+    bin_then_table:
+      stages:
+        - FloorPlan226:bin_26_6
+        - FloorPlan226:Coffee_Table_203_1_13
+      robot_pose:
+        pos: [1.365, -1.567, 0.0]
+        yaw: 2.612636
+    bin_then_sofa:
+      stages:
+        - FloorPlan226:bin_26_6
+        - FloorPlan226:Sofa_207_4_14
+      robot_pose:
+        pos: [1.365, -1.567, 0.0]
+        yaw: 2.612636
+    table_then_bin:
+      stages:
+        - FloorPlan226:Coffee_Table_203_1_13
+        - FloorPlan226:bin_26_6
+      robot_pose:
+        pos: [1.365, -1.567, 0.0]
+        yaw: 2.607749
+    sofa_then_bin:
+      stages:
+        - FloorPlan226:Sofa_207_4_14
+        - FloorPlan226:bin_26_6
+      robot_pose:
+        pos: [1.365, -1.567, 0.0]
+        yaw: -2.957555
+    stack_books_and_place_mug:
+      work_surface_support:
+        fixture: FloorPlan226:Coffee_Table_203_1_13
+        center: [-0.66666, -0.36664, 0.54438784]
+        half_xy: [0.5, 0.3]
+        yaw: 0.0
+      work_surface_top_z: 0.75
+      base_book_pos: [-0.85666, -0.54, 0.75]
+      base_book_yaw: 1.5708
+      moving_book_pos: [-0.47666, -0.54, 0.75]
+      moving_book_yaw: 1.44552
+      moving_book_pitch: -1.5708
+      object_jitter_radius: 0.0
+      robot_pose:
+        pos: [-0.799, -1.0562, 0.0]
+        yaw: 1.5708
+      xy_tolerance: 0.08
+      orientation_cosine: 0.94
+      release_distance: 0.25
+      hold_seconds: 1.0
+      source_category: book
+      source_wrapper_pos: [0.0, 0.0, 0.0]
+      source_wrapper_quat: [0.7071068, 0.7071068, 0.0, 0.0]
+      source_bbox_pos: [0.0, 0.0, 0.02]
+      source_bbox_size: [0.12, 0.16, 0.02]
+      source_scale: 0.65
+      mug_pos: [-0.66666, -0.54, 0.75]
+      mug_yaw: 1.5708
+      stack_hold_seconds: 0.25

@@ -1,0 +1,23 @@
+newmtl GreenDesktop
+Ka 0.005 0.070 0.060
+Kd 0.015 0.310 0.280
+Ks 0.220 0.220 0.220
+Ns 32.000
+d 1.0
+illum 2
+
+newmtl AluminumProfile
+Ka 0.120 0.125 0.130
+Kd 0.620 0.640 0.670
+Ks 0.850 0.850 0.850
+Ns 78.000
+d 1.0
+illum 2
+
+newmtl ProfileSlot
+Ka 0.020 0.020 0.020
+Kd 0.120 0.130 0.140
+Ks 0.200 0.200 0.200
+Ns 20.000
+d 1.0
+illum 2

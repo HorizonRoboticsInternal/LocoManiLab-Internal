@@ -1,0 +1,5 @@
+default:
+  xml: fixtures/articulated/ElectricCooker001
+
+ElectricCooker001:
+  xml: fixtures/articulated/ElectricCooker001

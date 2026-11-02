@@ -297,6 +297,11 @@ def sample_kitchen_object(
     return mjcf_kwargs, info
 
 
+#: Categories already reported as having no model files, so the warning about
+#: each one is printed once per process rather than once per sample.
+_EMPTY_CATEGORIES_WARNED: set = set()
+
+
 def sample_kitchen_object_helper(
     groups,
     exclude_groups=None,
@@ -437,34 +442,58 @@ def sample_kitchen_object_helper(
 
                 valid_categories.append(cat)
 
-        cat = rng.choice(valid_categories)
+        # A category can be REGISTERED without any model files being present --
+        # `pillow` is declared in the lightwheel registry but ships no mjcf, and
+        # a `split` can empty a one-model category outright. Drawing such a
+        # category used to divide by zero and surface as
+        # `ValueError: Probabilities contain NaN` several frames later, so
+        # re-draw without it instead. The first draw is unchanged, which keeps
+        # every currently-working scene sampling exactly as before.
+        remaining = list(valid_categories)
+        while True:
+            cat = rng.choice(remaining)
 
-        choices = {reg: [] for reg in obj_registries}
+            choices = {reg: [] for reg in obj_registries}
 
-        for reg in obj_registries:
-            if reg not in OBJ_CATEGORIES[cat]:
-                choices[reg] = []
-                continue
-            reg_choices = deepcopy(OBJ_CATEGORIES[cat][reg].mjcf_paths)
+            for reg in obj_registries:
+                if reg not in OBJ_CATEGORIES[cat]:
+                    choices[reg] = []
+                    continue
+                reg_choices = deepcopy(OBJ_CATEGORIES[cat][reg].mjcf_paths)
 
-            # exclude out objects based on split
-            if split is not None:
-                split_th = max(
-                    len(reg_choices) - 5, int(math.ceil(len(reg_choices) / 2))
+                # exclude out objects based on split
+                if split is not None:
+                    split_th = max(
+                        len(reg_choices) - 5, int(math.ceil(len(reg_choices) / 2))
+                    )
+                    if split == "pretrain":
+                        reg_choices = reg_choices[:split_th]
+                    elif split == "target":
+                        reg_choices = reg_choices[split_th:]
+                    else:
+                        raise ValueError
+                choices[reg] = reg_choices
+
+            counts = np.array([len(choices[reg]) for reg in obj_registries])
+            if counts.sum() > 0:
+                break
+            if cat not in _EMPTY_CATEGORIES_WARNED:
+                _EMPTY_CATEGORIES_WARNED.add(cat)
+                print(
+                    f"[robocasa] object category {cat!r} has no models in "
+                    f"{list(obj_registries)}"
+                    + (f" for split {split!r}" if split is not None else "")
+                    + " -- skipping it when sampling"
                 )
-                if split == "pretrain":
-                    reg_choices = reg_choices[:split_th]
-                elif split == "target":
-                    reg_choices = reg_choices[split_th:]
-                else:
-                    raise ValueError
-            choices[reg] = reg_choices
+            remaining = [c for c in remaining if c != cat]
+            if not remaining:
+                raise ValueError(
+                    f"no object category with available models for groups "
+                    f"{groups} in registries {list(obj_registries)}"
+                    + (f" (split {split!r})" if split is not None else "")
+                )
 
-        chosen_reg = rng.choice(
-            obj_registries,
-            p=np.array([len(choices[reg]) for reg in obj_registries])
-            / sum(len(choices[reg]) for reg in obj_registries),
-        )
+        chosen_reg = rng.choice(obj_registries, p=counts / counts.sum())
 
         mjcf_path = rng.choice(choices[chosen_reg])
         if rotate_upright:

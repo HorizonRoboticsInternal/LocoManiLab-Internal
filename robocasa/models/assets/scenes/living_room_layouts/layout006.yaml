@@ -1,0 +1,6 @@
+# Living-room layout 006 (StoreMugInCabinet): an empty room. The task builds
+# both task fixtures itself in _setup_model -- a kitchen Counter (the pick
+# surface, with clean box collision) front-right, and a kitchen SingleCabinet
+# front-left -- so nothing is declared here. Robot spawns at the origin facing
+# +x. Empty -> very light scene.
+furniture: []

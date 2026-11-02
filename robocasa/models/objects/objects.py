@@ -64,8 +64,11 @@ class MujocoXMLObjectRobocasa(MujocoXMLObject):
                 else:
                     rot_mat = np.eye(3)
 
-                if len(g_size) == 3:
-                    # for boxes, spheres
+                if len(g_size) == 1:
+                    # spheres have one isotropic radius
+                    g_size = g_size * float(np.asarray(scale).reshape(-1)[0])
+                elif len(g_size) == 3:
+                    # boxes
                     size_world_frame = rot_mat @ g_size
                     new_size_world_frame = size_world_frame * scale
                     g_size = np.abs(np.linalg.inv(rot_mat) @ new_size_world_frame)
@@ -238,6 +241,11 @@ class MJCFObject(MujocoXMLObjectRobocasa):
         xml_path = mjcf_path
         self.mjcf_path = mjcf_path
         folder = os.path.dirname(xml_path)
+        if not os.path.isfile(xml_path):
+            raise FileNotFoundError(
+                f"Missing object MJCF asset: {xml_path}. "
+                "Provision the required asset pack before constructing this task."
+            )
         tree = ET.parse(xml_path)
         root = tree.getroot()
 

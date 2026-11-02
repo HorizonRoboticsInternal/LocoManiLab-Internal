@@ -1,0 +1,82 @@
+{
+    "type": "WHOLE_BODY_G1",
+    "composite_controller_specific_configs": {
+        "wbt_controller_type": "heft_tracker",
+        "_comment_paths": "ckpt paths resolved by resolve_ckpt_path() \u2014 absolute paths used as-is, otherwise treated as relative to tele_humanoid_benchmark/ project root",
+        "almi_policy_path": "almi_g1_policy_lstm_4500.onnx",
+        "sonic_encoder_path": "model_encoder.onnx",
+        "sonic_decoder_path": "model_decoder.onnx",
+        "planner_path": "planner_sonic.onnx",
+        "planner_default_height": 0.78874,
+        "planner_seed": 1234,
+        "initial_movement_state": {
+            "locomotion_mode": 0,
+            "movement_direction": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "facing_direction": [
+                1.0,
+                0.0,
+                0.0
+            ],
+            "movement_speed": -1.0,
+            "height": -1.0
+        },
+        "_comment_heft": "heft_policy_onnx: empty -> resolved by rl.kimodo.heft.heft_ckpt ($HEFT_POLICY_ONNX, then rl/kimodo/_out/heft/). Produce it with: python -m rl.kimodo.heft.export_policy",
+        "heft_policy_onnx": ""
+    },
+    "body_parts": {
+        "arms": {
+            "right": {
+                "type": "JOINT_TORQUE",
+                "input_max": 1,
+                "input_min": -1,
+                "output_max": 0.1,
+                "output_min": -0.1,
+                "torque_limits": null,
+                "interpolation": null,
+                "ramp_ratio": 0.2,
+                "gripper": {
+                    "type": "GRIP",
+                    "use_action_scaling": false
+                }
+            },
+            "left": {
+                "type": "JOINT_TORQUE",
+                "input_max": 1,
+                "input_min": -1,
+                "output_max": 0.1,
+                "output_min": -0.1,
+                "torque_limits": null,
+                "interpolation": null,
+                "ramp_ratio": 0.2,
+                "gripper": {
+                    "type": "GRIP",
+                    "use_action_scaling": false
+                }
+            }
+        },
+        "torso": {
+            "type": "JOINT_TORQUE",
+            "input_max": 1,
+            "input_min": -1,
+            "output_max": 0.1,
+            "output_min": -0.1,
+            "torque_limits": null,
+            "interpolation": null,
+            "ramp_ratio": 0.2
+        },
+        "legs": {
+            "type": "JOINT_TORQUE",
+            "input_max": 1,
+            "input_min": -1,
+            "output_max": 0.1,
+            "output_min": -0.1,
+            "torque_limits": null,
+            "interpolation": null,
+            "ramp_ratio": 0.2
+        }
+    }
+}

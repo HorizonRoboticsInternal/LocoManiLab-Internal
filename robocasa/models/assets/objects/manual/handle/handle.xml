@@ -1,0 +1,25 @@
+<mujoco model="Handle">
+  <compiler angle="radian"/>
+
+  <default>
+    <default class="handle_geom">
+      <geom friction="0.8 0.03 0.01" density="500"/>
+    </default>
+  </default>
+
+  <asset>
+    <texture type="2d" name="handle_diffuse" file="texture_pbr_20250901.png"/>
+    <texture type="2d" name="handle_metallic" file="texture_pbr_20250901_metallic.png"/>
+    <texture type="2d" name="handle_roughness" file="texture_pbr_20250901_roughness.png"/>
+    <texture type="2d" name="handle_normal" file="texture_pbr_20250901_normal.png"/>
+    <material name="handle_material" texture="handle_diffuse" specular="0.8" shininess="0.65" reflectance="0.15"/>
+    <mesh name="handle_mesh" content_type="model/obj" file="d03ab85f0a58cfcb46bfb9d7d3491743.obj"/>
+  </asset>
+
+  <worldbody>
+    <body name="Handle">
+      <joint name="Handle_freejoint" type="free" limited="false" actuatorfrclimited="false"/>
+      <geom name="Handle_visual_collision" class="handle_geom" type="mesh" material="handle_material" mesh="handle_mesh" contype="0" conaffinity="0"/>
+    </body>
+  </worldbody>
+</mujoco>

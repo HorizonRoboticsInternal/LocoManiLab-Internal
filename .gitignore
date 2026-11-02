@@ -115,6 +115,10 @@ mjkey.txt
 .pytest_cache/
 
 MUJOCO_LOG.TXT
+MJMODEL.TXT
+MJDATA.TXT
+mjmodel.xml
+*.deb
 
 macros_private.py
 robocasa/models/assets/demonstrations_private
@@ -136,8 +140,19 @@ robocasa/models/assets/objects/**/*.png
 robocasa/models/assets/objects/**/*.jpeg
 robocasa/models/assets/objects/**/model.xml
 
-# don't track any files in objects folder
-robocasa/models/assets/objects
+# Don't track object assets by default; manual assets below are the exception.
+robocasa/models/assets/objects/*
+
+# Manual benchmark assets under objects/ are intentionally tracked.
+!robocasa/models/assets/objects/manual/
+!robocasa/models/assets/objects/manual/**
+robocasa/models/assets/objects/manual/**/__pycache__/
+
+# Task-private calibrated variants are tracked explicitly.
+!robocasa/models/assets/objects/lightwheel/
+!robocasa/models/assets/objects/lightwheel/glass_cup/
+!robocasa/models/assets/objects/lightwheel/glass_cup/GlassCup014/
+!robocasa/models/assets/objects/lightwheel/glass_cup/GlassCup014/model_long_grip.xml
 
 # Ignore all fixture asset files
 robocasa/models/assets/fixtures/**/*.glb
@@ -156,9 +171,45 @@ robocasa/models/assets/fixtures/**/model.xml
 
 # default textures
 robocasa/models/assets/textures
+robocasa/models/assets/usd
 
 # midjourney-generated textures
 robocasa/models/assets/generative_textures
+
+# scene assets
+robocasa/models/assets/scenes/ithor/*
+!robocasa/models/assets/scenes/ithor/FloorPlan6_physics.xml
+!robocasa/models/assets/scenes/ithor/FloorPlan7_physics.xml
+!robocasa/models/assets/scenes/ithor/FloorPlan13_physics.xml
+!robocasa/models/assets/scenes/ithor/FloorPlan24_physics.xml
+!robocasa/models/assets/scenes/ithor/FloorPlan25_physics.xml
+
+!robocasa/models/assets/scenes/ithor/FloorPlan202_physics.xml
+!robocasa/models/assets/scenes/ithor/FloorPlan207_physics.xml
+!robocasa/models/assets/scenes/ithor/FloorPlan207_box.xml
+!robocasa/models/assets/scenes/ithor/FloorPlan209_physics.xml
+!robocasa/models/assets/scenes/ithor/FloorPlan210_physics.xml
+!robocasa/models/assets/scenes/ithor/FloorPlan212_physics.xml
+!robocasa/models/assets/scenes/ithor/FloorPlan226_physics.xml
+
+!robocasa/models/assets/scenes/ithor/FloorPlan302_physics.xml
+!robocasa/models/assets/scenes/ithor/FloorPlan306_physics.xml
+!robocasa/models/assets/scenes/ithor/FloorPlan310_physics.xml
+!robocasa/models/assets/scenes/ithor/FloorPlan323_physics.xml
+!robocasa/models/assets/scenes/ithor/FloorPlan329_physics.xml
+
+!robocasa/models/assets/scenes/ithor/FloorPlan401_physics.xml
+!robocasa/models/assets/scenes/ithor/FloorPlan405_physics.xml
+!robocasa/models/assets/scenes/ithor/FloorPlan407_physics.xml
+!robocasa/models/assets/scenes/ithor/FloorPlan411_physics.xml
+!robocasa/models/assets/scenes/ithor/FloorPlan418_physics.xml
+
+robocasa/models/assets/scenes/procthor-objaverse-*
+robocasa/models/assets/scenes/holodeck-objaverse-*
+!robocasa/models/assets/scenes/holodeck-objaverse-train/
+robocasa/models/assets/scenes/holodeck-objaverse-train/*
+!robocasa/models/assets/scenes/holodeck-objaverse-train/train_117*
+!robocasa/models/assets/scenes/holodeck-objaverse-train/train_1018*
 
 # taskgen outputs
 robocasa/scripts/internal/taskgen/activity_prompting/outputs/
@@ -168,3 +219,36 @@ robocasa/scripts/taskgen/task_prompting/outputs/
 
 # Always ignore macOS junk
 **/.DS_Store
+
+# understand-anything tool cache (auto-regenerates)
+.understand-anything/
+.codegraph/
+.claude/
+.vscode/
+PLAN_old.md
+AGENTS.md
+
+*.onnx
+# AMO policy artifacts (kept local like the SONIC *.onnx weights)
+amo_jit.pt
+adapter_jit.pt
+adapter_norm_stats.pt
+
+# local eval/collection outputs (datasets, videos)
+/outputs/
+outputs_sim/
+/tmp/
+browse_task/
+browse_task_*/
+robocasa/models/assets/scenes/backups
+
+# Local agent guidance and browse-task renders
+/docs/skills/scene-task-yaml-calibration/
+/browse_task_0804/
+
+# Local task collection files
+/tasks_to_collect_0804.sh
+/tasks_to_collect_0804_sorted.md
+/tasks_to_collect_0804_sorted.sh
+/tasks_to_collet.md
+/tasks_to_collet.sh

@@ -5,7 +5,6 @@ from typing import Dict, Optional
 import numpy as np
 import yaml
 from robosuite.wrappers import Wrapper
-from pynput.keyboard import Key, Listener
 
 import robocasa.models.scenes.scene_registry as SceneRegistry
 
@@ -299,6 +298,7 @@ def install_enclosing_wall_hotkeys(env):
 
     Used by interactive loops that call `EnclosingWallHotkeyHandler.consume_pending()`.
     """
+    from pynput.keyboard import Key, Listener
 
     # idempotent-ish: if already installed, no-op
     if getattr(env, "_enclosing_wall_key_listener", None) is not None:

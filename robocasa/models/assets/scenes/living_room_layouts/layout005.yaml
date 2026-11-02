@@ -1,0 +1,13 @@
+# Living-room layout 005 (SquatPickPlaceTVStand): a low coffee table in FRONT of
+# the robot (the apple starts on it -> the robot squats to pick it up) and a TV
+# stand BEHIND the robot (place the apple on its top). Deliberately only two
+# pieces of furniture for fast rendering. Robot spawns at the origin facing +x.
+furniture:
+  - name: coffee_table
+    type: coffee_table
+    pos: [0.65, 0.0]     # in front of the robot (+x), close enough to reach when squatting
+    z_rot: 0.0
+  - name: tv_stand
+    type: tv_stand
+    pos: [-0.9, 0.0]     # behind the robot (-x), close so the place is a short turn
+    z_rot: 1.5708        # screen faces +x (toward the robot)

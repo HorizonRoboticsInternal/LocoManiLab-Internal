@@ -1,0 +1,5 @@
+task: ProcTHORTableToTable
+semantic_requirements:
+  distinct_regions: 2
+  region_kind: support
+  fixture_categories: [CounterTop, DiningTable, Table]

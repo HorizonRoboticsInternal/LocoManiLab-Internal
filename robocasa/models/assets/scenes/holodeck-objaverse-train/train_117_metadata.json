@@ -1,0 +1,1012 @@
+{
+    "objects": {
+        "doorway_fee6ea5c4766fbf3fb30edadd9ddd22a_1_0_0": {
+            "hash_name": "doorway_fee6ea5c4766fbf3fb30edadd9ddd22a_1_0_0",
+            "asset_id": "Doorway_1",
+            "object_id": "door|0|exterior|room0",
+            "category": "Doorway",
+            "object_enum": "thor_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "doorway_fee6ea5c4766fbf3fb30edadd9ddd22a_1_0_0": "Doorway_1",
+                    "doorway_fee6ea5c4766fbf3fb30edadd9ddd22a_1_1_0": "Doorway_1_doorway_1",
+                    "doorway_fee6ea5c4766fbf3fb30edadd9ddd22a_1_2_0": "Doorway_1_doorway_door_1",
+                    "doorway_fee6ea5c4766fbf3fb30edadd9ddd22a_1_3_0": "Doorway_1_doorway_handle_1"
+                },
+                "joints": {
+                    "doorway_fee6ea5c4766fbf3fb30edadd9ddd22a_1_2_0_doorwaydoor1joint0_0": "Doorway_1_doorway_door_1_joint_0",
+                    "doorway_fee6ea5c4766fbf3fb30edadd9ddd22a_1_3_0_doorwayhandle1joint0_1": "Doorway_1_doorway_handle_1_joint_0"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": []
+        },
+        "window_8d46bf775284cf92b31bf5fe02ddd4b4_1_0_0": {
+            "hash_name": "window_8d46bf775284cf92b31bf5fe02ddd4b4_1_0_0",
+            "asset_id": "Window_Slider_60x48",
+            "object_id": "window|wall|room0|east|2|0|0",
+            "category": "Window",
+            "object_enum": "thor_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "window_8d46bf775284cf92b31bf5fe02ddd4b4_1_0_0": "Window_Slider_60x48",
+                    "window_8d46bf775284cf92b31bf5fe02ddd4b4_1_1_0": "Window_Slider_60x48_window_slider_60x48"
+                },
+                "joints": {},
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": []
+        },
+        "window_8d46bf775284cf92b31bf5fe02ddd4b4_2_0_0": {
+            "hash_name": "window_8d46bf775284cf92b31bf5fe02ddd4b4_2_0_0",
+            "asset_id": "Window_Slider_60x48",
+            "object_id": "window|wall|room0|east|2|1|1",
+            "category": "Window",
+            "object_enum": "thor_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "window_8d46bf775284cf92b31bf5fe02ddd4b4_2_0_0": "Window_Slider_60x48",
+                    "window_8d46bf775284cf92b31bf5fe02ddd4b4_2_1_0": "Window_Slider_60x48_window_slider_60x48"
+                },
+                "joints": {},
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": []
+        },
+        "window_8d46bf775284cf92b31bf5fe02ddd4b4_3_0_0": {
+            "hash_name": "window_8d46bf775284cf92b31bf5fe02ddd4b4_3_0_0",
+            "asset_id": "Window_Slider_60x48",
+            "object_id": "window|wall|room0|east|2|2|2",
+            "category": "Window",
+            "object_enum": "thor_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "window_8d46bf775284cf92b31bf5fe02ddd4b4_3_0_0": "Window_Slider_60x48",
+                    "window_8d46bf775284cf92b31bf5fe02ddd4b4_3_1_0": "Window_Slider_60x48_window_slider_60x48"
+                },
+                "joints": {},
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": []
+        },
+        "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_0_0": {
+            "hash_name": "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_0_0",
+            "asset_id": "Desk_313_2",
+            "object_id": "large0 (room0)|room0",
+            "category": "Desk",
+            "object_enum": "thor_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_0_0": "Desk_313_2",
+                    "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_1_0": "Desk_313_2_DeskMesh",
+                    "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_2_0": "Desk_313_2_Mesh_01",
+                    "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_3_0": "Desk_313_2_Mesh_02",
+                    "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_4_0": "Desk_313_2_Mesh_03",
+                    "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_5_0": "Desk_313_2_Mesh_04",
+                    "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_6_0": "Desk_313_2_Mesh_05",
+                    "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_7_0": "Desk_313_2_Mesh_06"
+                },
+                "joints": {
+                    "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_2_0_joint_0": "Desk_313_2_joint",
+                    "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_3_0_Mesh021_1": "Desk_313_2_Mesh_02__1",
+                    "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_4_0_Mesh031_2": "Desk_313_2_Mesh_03__1",
+                    "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_5_0_Mesh041_3": "Desk_313_2_Mesh_04__1",
+                    "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_6_0_Mesh051_4": "Desk_313_2_Mesh_05__1",
+                    "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_7_0_Mesh061_5": "Desk_313_2_Mesh_06__1"
+                },
+                "sites": {
+                    "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_1_0_DeskMeshReceptacle0_0": "Desk_313_2_DeskMesh_Receptacle_0",
+                    "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_1_0_DeskMeshReceptacle1_1": "Desk_313_2_DeskMesh_Receptacle_1",
+                    "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_1_0_DeskMeshReceptacle2_2": "Desk_313_2_DeskMesh_Receptacle_2",
+                    "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_1_0_DeskMeshReceptacle3_3": "Desk_313_2_DeskMesh_Receptacle_3",
+                    "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_1_0_DeskMeshReceptacle4_4": "Desk_313_2_DeskMesh_Receptacle_4",
+                    "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_1_0_DeskMeshReceptacle5_5": "Desk_313_2_DeskMesh_Receptacle_5",
+                    "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_1_0_DeskMeshReceptacle6_6": "Desk_313_2_DeskMesh_Receptacle_6",
+                    "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_2_0_Mesh01Receptacle0_7": "Desk_313_2_Mesh_01_Receptacle_0",
+                    "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_3_0_Mesh02Receptacle0_8": "Desk_313_2_Mesh_02_Receptacle_0",
+                    "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_4_0_Mesh03Receptacle0_9": "Desk_313_2_Mesh_03_Receptacle_0",
+                    "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_5_0_Mesh04Receptacle0_10": "Desk_313_2_Mesh_04_Receptacle_0",
+                    "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_6_0_Mesh05Receptacle0_11": "Desk_313_2_Mesh_05_Receptacle_0",
+                    "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_7_0_Mesh06Receptacle0_12": "Desk_313_2_Mesh_06_Receptacle_0"
+                }
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": [
+                "obja_c7f4c2c14fb34cb68eea80269aacf8b0_1_0_0",
+                "laptop_6ae82082b761fc8537b74b4d805f7cb1_1_0_0",
+                "obja_1ae1abff2ff84d5198fc308648feb750_1_0_0",
+                "laptop_f09fcf086ebe9e3ab2d97bff50b833ef_1_0_0",
+                "book_de3b70cc0318f15bb43559d29b7a160e_1_0_0",
+                "obja_29c93078db3649ecb7f48efcdcc8b671_1_0_0"
+            ]
+        },
+        "obja_c7f4c2c14fb34cb68eea80269aacf8b0_1_0_0": {
+            "hash_name": "obja_c7f4c2c14fb34cb68eea80269aacf8b0_1_0_0",
+            "asset_id": "c7f4c2c14fb34cb68eea80269aacf8b0",
+            "object_id": "small0|large0 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_c7f4c2c14fb34cb68eea80269aacf8b0_1_0_0": "c7f4c2c14fb34cb68eea80269aacf8b0"
+                },
+                "joints": {
+                    "obja_c7f4c2c14fb34cb68eea80269aacf8b0_1_0_0_jntfree_0": "c7f4c2c14fb34cb68eea80269aacf8b0_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "laptop_6ae82082b761fc8537b74b4d805f7cb1_1_0_0": {
+            "hash_name": "laptop_6ae82082b761fc8537b74b4d805f7cb1_1_0_0",
+            "asset_id": "Laptop_26",
+            "object_id": "small1|large0 (room0)",
+            "category": "Laptop",
+            "object_enum": "thor_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "laptop_6ae82082b761fc8537b74b4d805f7cb1_1_0_0": "Laptop_26",
+                    "laptop_6ae82082b761fc8537b74b4d805f7cb1_1_1_0": "Laptop_26_laptop_lid_26",
+                    "laptop_6ae82082b761fc8537b74b4d805f7cb1_1_2_0": "Laptop_26_laptop_26"
+                },
+                "joints": {
+                    "laptop_6ae82082b761fc8537b74b4d805f7cb1_1_0_0_jntfree_0": "Laptop_26_free",
+                    "laptop_6ae82082b761fc8537b74b4d805f7cb1_1_1_0_laptoplid26joint0_1": "Laptop_26_laptop_lid_26_joint_0"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_1ae1abff2ff84d5198fc308648feb750_1_0_0": {
+            "hash_name": "obja_1ae1abff2ff84d5198fc308648feb750_1_0_0",
+            "asset_id": "1ae1abff2ff84d5198fc308648feb750",
+            "object_id": "small2|large0 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_1ae1abff2ff84d5198fc308648feb750_1_0_0": "1ae1abff2ff84d5198fc308648feb750"
+                },
+                "joints": {
+                    "obja_1ae1abff2ff84d5198fc308648feb750_1_0_0_jntfree_0": "1ae1abff2ff84d5198fc308648feb750_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "laptop_f09fcf086ebe9e3ab2d97bff50b833ef_1_0_0": {
+            "hash_name": "laptop_f09fcf086ebe9e3ab2d97bff50b833ef_1_0_0",
+            "asset_id": "Laptop_21",
+            "object_id": "small3|large0 (room0)",
+            "category": "Laptop",
+            "object_enum": "thor_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "laptop_f09fcf086ebe9e3ab2d97bff50b833ef_1_0_0": "Laptop_21",
+                    "laptop_f09fcf086ebe9e3ab2d97bff50b833ef_1_1_0": "Laptop_21_laptop_lid_21",
+                    "laptop_f09fcf086ebe9e3ab2d97bff50b833ef_1_2_0": "Laptop_21_laptop_21"
+                },
+                "joints": {
+                    "laptop_f09fcf086ebe9e3ab2d97bff50b833ef_1_0_0_jntfree_0": "Laptop_21_free",
+                    "laptop_f09fcf086ebe9e3ab2d97bff50b833ef_1_1_0_laptoplid21joint0_1": "Laptop_21_laptop_lid_21_joint_0"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "book_de3b70cc0318f15bb43559d29b7a160e_1_0_0": {
+            "hash_name": "book_de3b70cc0318f15bb43559d29b7a160e_1_0_0",
+            "asset_id": "Book_3",
+            "object_id": "small4|large0 (room0)",
+            "category": "Book",
+            "object_enum": "thor_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "book_de3b70cc0318f15bb43559d29b7a160e_1_0_0": "Book_3",
+                    "book_de3b70cc0318f15bb43559d29b7a160e_1_1_0": "Book_3_book_3",
+                    "book_de3b70cc0318f15bb43559d29b7a160e_1_2_0": "Book_3_book_front_3"
+                },
+                "joints": {
+                    "book_de3b70cc0318f15bb43559d29b7a160e_1_0_0_jntfree_0": "Book_3_free"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_29c93078db3649ecb7f48efcdcc8b671_1_0_0": {
+            "hash_name": "obja_29c93078db3649ecb7f48efcdcc8b671_1_0_0",
+            "asset_id": "29c93078db3649ecb7f48efcdcc8b671",
+            "object_id": "small5|large0 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_29c93078db3649ecb7f48efcdcc8b671_1_0_0": "29c93078db3649ecb7f48efcdcc8b671"
+                },
+                "joints": {
+                    "obja_29c93078db3649ecb7f48efcdcc8b671_1_0_0_jntfree_0": "29c93078db3649ecb7f48efcdcc8b671_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "desk_aeb6ab35aea76da67db0d3cd45d3e821_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "diningtable_5998373f8cc3a5cf95fd99d754406513_1_0_0": {
+            "hash_name": "diningtable_5998373f8cc3a5cf95fd99d754406513_1_0_0",
+            "asset_id": "Dining_Table_227_1",
+            "object_id": "large1 (room0)|room0",
+            "category": "DiningTable",
+            "object_enum": "thor_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "diningtable_5998373f8cc3a5cf95fd99d754406513_1_0_0": "Dining_Table_227_1",
+                    "diningtable_5998373f8cc3a5cf95fd99d754406513_1_1_0": "Dining_Table_227_1_dining_table_227"
+                },
+                "joints": {},
+                "sites": {
+                    "diningtable_5998373f8cc3a5cf95fd99d754406513_1_1_0_diningtable227ReceptacleCollider0_0": "Dining_Table_227_1_dining_table_227_ReceptacleCollider_0"
+                }
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": [
+                "obja_27e4472ffcdb4b49b9feda691ded2704_1_0_0",
+                "obja_0056bf73a1474aaf9d60227776a3e167_1_0_0",
+                "cup_f0b0d2daf223c218fc39b2050c49360d_1_0_0",
+                "houseplant_15719b40ce800775a95943cc16d9bcf0_1_0_0",
+                "houseplant_d37aebaa50ea58533e6603f1787122b6_1_0_0"
+            ]
+        },
+        "obja_27e4472ffcdb4b49b9feda691ded2704_1_0_0": {
+            "hash_name": "obja_27e4472ffcdb4b49b9feda691ded2704_1_0_0",
+            "asset_id": "27e4472ffcdb4b49b9feda691ded2704",
+            "object_id": "small6|large1 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_27e4472ffcdb4b49b9feda691ded2704_1_0_0": "27e4472ffcdb4b49b9feda691ded2704"
+                },
+                "joints": {
+                    "obja_27e4472ffcdb4b49b9feda691ded2704_1_0_0_jntfree_0": "27e4472ffcdb4b49b9feda691ded2704_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "diningtable_5998373f8cc3a5cf95fd99d754406513_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_0056bf73a1474aaf9d60227776a3e167_1_0_0": {
+            "hash_name": "obja_0056bf73a1474aaf9d60227776a3e167_1_0_0",
+            "asset_id": "0056bf73a1474aaf9d60227776a3e167",
+            "object_id": "small7|large1 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_0056bf73a1474aaf9d60227776a3e167_1_0_0": "0056bf73a1474aaf9d60227776a3e167"
+                },
+                "joints": {
+                    "obja_0056bf73a1474aaf9d60227776a3e167_1_0_0_jntfree_0": "0056bf73a1474aaf9d60227776a3e167_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "diningtable_5998373f8cc3a5cf95fd99d754406513_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "cup_f0b0d2daf223c218fc39b2050c49360d_1_0_0": {
+            "hash_name": "cup_f0b0d2daf223c218fc39b2050c49360d_1_0_0",
+            "asset_id": "Cup_20",
+            "object_id": "small8|large1 (room0)",
+            "category": "Cup",
+            "object_enum": "thor_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "cup_f0b0d2daf223c218fc39b2050c49360d_1_0_0": "Cup_20",
+                    "cup_f0b0d2daf223c218fc39b2050c49360d_1_1_0": "Cup_20_cup_20"
+                },
+                "joints": {
+                    "cup_f0b0d2daf223c218fc39b2050c49360d_1_0_0_jntfree_0": "Cup_20_free"
+                },
+                "sites": {
+                    "cup_f0b0d2daf223c218fc39b2050c49360d_1_1_0_cup20ReceptacleCollider0_0": "Cup_20_cup_20_ReceptacleCollider_0"
+                }
+            },
+            "mjcf_path": "",
+            "parent": "diningtable_5998373f8cc3a5cf95fd99d754406513_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "houseplant_15719b40ce800775a95943cc16d9bcf0_1_0_0": {
+            "hash_name": "houseplant_15719b40ce800775a95943cc16d9bcf0_1_0_0",
+            "asset_id": "Houseplant_19",
+            "object_id": "small9|large1 (room0)",
+            "category": "HousePlant",
+            "object_enum": "thor_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "houseplant_15719b40ce800775a95943cc16d9bcf0_1_0_0": "Houseplant_19",
+                    "houseplant_15719b40ce800775a95943cc16d9bcf0_1_1_0": "Houseplant_19_houseplant_19"
+                },
+                "joints": {
+                    "houseplant_15719b40ce800775a95943cc16d9bcf0_1_0_0_jntfree_0": "Houseplant_19_free"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "diningtable_5998373f8cc3a5cf95fd99d754406513_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "houseplant_d37aebaa50ea58533e6603f1787122b6_1_0_0": {
+            "hash_name": "houseplant_d37aebaa50ea58533e6603f1787122b6_1_0_0",
+            "asset_id": "Houseplant_21",
+            "object_id": "small10|large1 (room0)",
+            "category": "HousePlant",
+            "object_enum": "thor_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "houseplant_d37aebaa50ea58533e6603f1787122b6_1_0_0": "Houseplant_21",
+                    "houseplant_d37aebaa50ea58533e6603f1787122b6_1_1_0": "Houseplant_21_houseplant_21"
+                },
+                "joints": {
+                    "houseplant_d37aebaa50ea58533e6603f1787122b6_1_0_0_jntfree_0": "Houseplant_21_free"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "diningtable_5998373f8cc3a5cf95fd99d754406513_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_0_0": {
+            "hash_name": "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_0_0",
+            "asset_id": "Dresser_217_1",
+            "object_id": "large2 (room0)|room0",
+            "category": "Dresser",
+            "object_enum": "thor_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_0_0": "Dresser_217_1",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_1_0": "Dresser_217_1_DresserMesh",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_2_0": "Dresser_217_1_CabinetDoorMesh_01",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_3_0": "Dresser_217_1_dresser_door_217_1_handle",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_4_0": "Dresser_217_1_CabinetDoorMesh_02",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_5_0": "Dresser_217_1_dresser_door_217_2_handle",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_6_0": "Dresser_217_1_CabinetDoorMesh_03",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_7_0": "Dresser_217_1_dresser_door_217_3_handle",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_8_0": "Dresser_217_1_CabinetDoorMesh_04",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_9_0": "Dresser_217_1_dresser_door_217_4_handle",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_10_0": "Dresser_217_1_DrawerMesh_01",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_11_0": "Dresser_217_1_handle_2_178mm_01",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_12_0": "Dresser_217_1_DrawerMesh_02",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_13_0": "Dresser_217_1_handle_2_178mm_02",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_14_0": "Dresser_217_1_DrawerMesh_03",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_15_0": "Dresser_217_1_handle_2_178mm_03",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_16_0": "Dresser_217_1_DrawerMesh_04",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_17_0": "Dresser_217_1_handle_2_178mm_04"
+                },
+                "joints": {
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_2_0_joint_0": "Dresser_217_1_joint",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_4_0_CabinetDoorMesh021_1": "Dresser_217_1_CabinetDoorMesh_02__1",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_6_0_CabinetDoorMesh031_2": "Dresser_217_1_CabinetDoorMesh_03__1",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_8_0_CabinetDoorMesh041_3": "Dresser_217_1_CabinetDoorMesh_04__1",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_10_0_DrawerMesh011_4": "Dresser_217_1_DrawerMesh_01__1",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_12_0_DrawerMesh021_5": "Dresser_217_1_DrawerMesh_02__1",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_14_0_DrawerMesh031_6": "Dresser_217_1_DrawerMesh_03__1",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_16_0_DrawerMesh041_7": "Dresser_217_1_DrawerMesh_04__1"
+                },
+                "sites": {
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_1_0_DresserMeshReceptacle0_0": "Dresser_217_1_DresserMesh_Receptacle_0",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_1_0_DresserMeshReceptacle1_1": "Dresser_217_1_DresserMesh_Receptacle_1",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_1_0_DresserMeshReceptacle2_2": "Dresser_217_1_DresserMesh_Receptacle_2",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_1_0_DresserMeshReceptacle3_3": "Dresser_217_1_DresserMesh_Receptacle_3",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_1_0_DresserMeshReceptacle4_4": "Dresser_217_1_DresserMesh_Receptacle_4",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_10_0_DrawerMesh01Receptacle0_5": "Dresser_217_1_DrawerMesh_01_Receptacle_0",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_12_0_DrawerMesh02Receptacle0_6": "Dresser_217_1_DrawerMesh_02_Receptacle_0",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_14_0_DrawerMesh03Receptacle0_7": "Dresser_217_1_DrawerMesh_03_Receptacle_0",
+                    "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_16_0_DrawerMesh04Receptacle0_8": "Dresser_217_1_DrawerMesh_04_Receptacle_0"
+                }
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": [
+                "houseplant_af522629621e5a199e6e1517db24f95c_1_0_0",
+                "obja_b183e6af5d324e03913a4ca835fb291d_1_0_0",
+                "book_fde77405a8546edd1a9cd35621b51508_1_0_0",
+                "obja_ddf9b19ef12e455989cee7733c1fc115_1_0_0",
+                "obja_0056bf73a1474aaf9d60227776a3e167_2_0_0",
+                "book_de3b70cc0318f15bb43559d29b7a160e_2_0_0",
+                "alarmclock_7e4d181f2517b07b61d9406b0a04ede2_1_0_0"
+            ]
+        },
+        "houseplant_af522629621e5a199e6e1517db24f95c_1_0_0": {
+            "hash_name": "houseplant_af522629621e5a199e6e1517db24f95c_1_0_0",
+            "asset_id": "Houseplant_10",
+            "object_id": "small11|large2 (room0)",
+            "category": "HousePlant",
+            "object_enum": "thor_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "houseplant_af522629621e5a199e6e1517db24f95c_1_0_0": "Houseplant_10",
+                    "houseplant_af522629621e5a199e6e1517db24f95c_1_1_0": "Houseplant_10_houseplant_10"
+                },
+                "joints": {
+                    "houseplant_af522629621e5a199e6e1517db24f95c_1_0_0_jntfree_0": "Houseplant_10_free"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_b183e6af5d324e03913a4ca835fb291d_1_0_0": {
+            "hash_name": "obja_b183e6af5d324e03913a4ca835fb291d_1_0_0",
+            "asset_id": "b183e6af5d324e03913a4ca835fb291d",
+            "object_id": "small12|large2 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_b183e6af5d324e03913a4ca835fb291d_1_0_0": "b183e6af5d324e03913a4ca835fb291d"
+                },
+                "joints": {
+                    "obja_b183e6af5d324e03913a4ca835fb291d_1_0_0_jntfree_0": "b183e6af5d324e03913a4ca835fb291d_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "book_fde77405a8546edd1a9cd35621b51508_1_0_0": {
+            "hash_name": "book_fde77405a8546edd1a9cd35621b51508_1_0_0",
+            "asset_id": "Book_18",
+            "object_id": "small13|large2 (room0)",
+            "category": "Book",
+            "object_enum": "thor_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "book_fde77405a8546edd1a9cd35621b51508_1_0_0": "Book_18",
+                    "book_fde77405a8546edd1a9cd35621b51508_1_1_0": "Book_18_book_18",
+                    "book_fde77405a8546edd1a9cd35621b51508_1_2_0": "Book_18_book_front_18"
+                },
+                "joints": {
+                    "book_fde77405a8546edd1a9cd35621b51508_1_0_0_jntfree_0": "Book_18_free"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_ddf9b19ef12e455989cee7733c1fc115_1_0_0": {
+            "hash_name": "obja_ddf9b19ef12e455989cee7733c1fc115_1_0_0",
+            "asset_id": "ddf9b19ef12e455989cee7733c1fc115",
+            "object_id": "small14|large2 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_ddf9b19ef12e455989cee7733c1fc115_1_0_0": "ddf9b19ef12e455989cee7733c1fc115"
+                },
+                "joints": {
+                    "obja_ddf9b19ef12e455989cee7733c1fc115_1_0_0_jntfree_0": "ddf9b19ef12e455989cee7733c1fc115_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_0056bf73a1474aaf9d60227776a3e167_2_0_0": {
+            "hash_name": "obja_0056bf73a1474aaf9d60227776a3e167_2_0_0",
+            "asset_id": "0056bf73a1474aaf9d60227776a3e167",
+            "object_id": "small15|large2 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_0056bf73a1474aaf9d60227776a3e167_2_0_0": "0056bf73a1474aaf9d60227776a3e167"
+                },
+                "joints": {
+                    "obja_0056bf73a1474aaf9d60227776a3e167_2_0_0_jntfree_0": "0056bf73a1474aaf9d60227776a3e167_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "book_de3b70cc0318f15bb43559d29b7a160e_2_0_0": {
+            "hash_name": "book_de3b70cc0318f15bb43559d29b7a160e_2_0_0",
+            "asset_id": "Book_3",
+            "object_id": "small16|large2 (room0)",
+            "category": "Book",
+            "object_enum": "thor_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "book_de3b70cc0318f15bb43559d29b7a160e_2_0_0": "Book_3",
+                    "book_de3b70cc0318f15bb43559d29b7a160e_2_1_0": "Book_3_book_3",
+                    "book_de3b70cc0318f15bb43559d29b7a160e_2_2_0": "Book_3_book_front_3"
+                },
+                "joints": {
+                    "book_de3b70cc0318f15bb43559d29b7a160e_2_0_0_jntfree_0": "Book_3_free"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "alarmclock_7e4d181f2517b07b61d9406b0a04ede2_1_0_0": {
+            "hash_name": "alarmclock_7e4d181f2517b07b61d9406b0a04ede2_1_0_0",
+            "asset_id": "Alarm_Clock_14",
+            "object_id": "small17|large2 (room0)",
+            "category": "AlarmClock",
+            "object_enum": "thor_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "alarmclock_7e4d181f2517b07b61d9406b0a04ede2_1_0_0": "Alarm_Clock_14",
+                    "alarmclock_7e4d181f2517b07b61d9406b0a04ede2_1_1_0": "Alarm_Clock_14_alarm_clock_14",
+                    "alarmclock_7e4d181f2517b07b61d9406b0a04ede2_1_2_0": "Alarm_Clock_14_alarm_clock_button_14",
+                    "alarmclock_7e4d181f2517b07b61d9406b0a04ede2_1_3_0": "Alarm_Clock_14_alarm_clock_hand_hour_14",
+                    "alarmclock_7e4d181f2517b07b61d9406b0a04ede2_1_4_0": "Alarm_Clock_14_alarm_clock_hand_minute_14"
+                },
+                "joints": {
+                    "alarmclock_7e4d181f2517b07b61d9406b0a04ede2_1_0_0_jntfree_0": "freejnt"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "chestofdrawers_22b31e6c8819e16e5b2ab4f7bfe7202c_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "stand_accd13ef606f3a2fbd33b6c6efb9184a_1_0_0": {
+            "hash_name": "stand_accd13ef606f3a2fbd33b6c6efb9184a_1_0_0",
+            "asset_id": "RoboTHOR_side_table_fornbro",
+            "object_id": "large3 (room0)|room0",
+            "category": "SideTable",
+            "object_enum": "thor_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "stand_accd13ef606f3a2fbd33b6c6efb9184a_1_0_0": "RoboTHOR_side_table_fornbro",
+                    "stand_accd13ef606f3a2fbd33b6c6efb9184a_1_1_0": "RoboTHOR_side_table_fornbro_mesh"
+                },
+                "joints": {},
+                "sites": {
+                    "stand_accd13ef606f3a2fbd33b6c6efb9184a_1_1_0_meshReceptacle0_0": "RoboTHOR_side_table_fornbro_mesh_Receptacle_0",
+                    "stand_accd13ef606f3a2fbd33b6c6efb9184a_1_1_0_meshReceptacle1_1": "RoboTHOR_side_table_fornbro_mesh_Receptacle_1",
+                    "stand_accd13ef606f3a2fbd33b6c6efb9184a_1_1_0_meshReceptacle2_2": "RoboTHOR_side_table_fornbro_mesh_Receptacle_2",
+                    "stand_accd13ef606f3a2fbd33b6c6efb9184a_1_1_0_meshReceptacle3_3": "RoboTHOR_side_table_fornbro_mesh_Receptacle_3"
+                }
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": [
+                "obja_733250257e9d44458ef4d0785e822ed0_1_0_0",
+                "obja_229c536a8d6b445f8a21cf73f6c6dce9_1_0_0",
+                "cup_f0b0d2daf223c218fc39b2050c49360d_2_0_0"
+            ]
+        },
+        "obja_733250257e9d44458ef4d0785e822ed0_1_0_0": {
+            "hash_name": "obja_733250257e9d44458ef4d0785e822ed0_1_0_0",
+            "asset_id": "733250257e9d44458ef4d0785e822ed0",
+            "object_id": "small19|large3 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_733250257e9d44458ef4d0785e822ed0_1_0_0": "733250257e9d44458ef4d0785e822ed0"
+                },
+                "joints": {
+                    "obja_733250257e9d44458ef4d0785e822ed0_1_0_0_jntfree_0": "733250257e9d44458ef4d0785e822ed0_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "stand_accd13ef606f3a2fbd33b6c6efb9184a_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_229c536a8d6b445f8a21cf73f6c6dce9_1_0_0": {
+            "hash_name": "obja_229c536a8d6b445f8a21cf73f6c6dce9_1_0_0",
+            "asset_id": "229c536a8d6b445f8a21cf73f6c6dce9",
+            "object_id": "small20|large3 (room0)",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "obja_229c536a8d6b445f8a21cf73f6c6dce9_1_0_0": "229c536a8d6b445f8a21cf73f6c6dce9"
+                },
+                "joints": {
+                    "obja_229c536a8d6b445f8a21cf73f6c6dce9_1_0_0_jntfree_0": "229c536a8d6b445f8a21cf73f6c6dce9_jntfree"
+                },
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "stand_accd13ef606f3a2fbd33b6c6efb9184a_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "cup_f0b0d2daf223c218fc39b2050c49360d_2_0_0": {
+            "hash_name": "cup_f0b0d2daf223c218fc39b2050c49360d_2_0_0",
+            "asset_id": "Cup_20",
+            "object_id": "small21|large3 (room0)",
+            "category": "Cup",
+            "object_enum": "thor_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "cup_f0b0d2daf223c218fc39b2050c49360d_2_0_0": "Cup_20",
+                    "cup_f0b0d2daf223c218fc39b2050c49360d_2_1_0": "Cup_20_cup_20"
+                },
+                "joints": {
+                    "cup_f0b0d2daf223c218fc39b2050c49360d_2_0_0_jntfree_0": "Cup_20_free"
+                },
+                "sites": {
+                    "cup_f0b0d2daf223c218fc39b2050c49360d_2_1_0_cup20ReceptacleCollider0_0": "Cup_20_cup_20_ReceptacleCollider_0"
+                }
+            },
+            "mjcf_path": "",
+            "parent": "stand_accd13ef606f3a2fbd33b6c6efb9184a_1_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "stand_accd13ef606f3a2fbd33b6c6efb9184a_2_0_0": {
+            "hash_name": "stand_accd13ef606f3a2fbd33b6c6efb9184a_2_0_0",
+            "asset_id": "RoboTHOR_side_table_fornbro",
+            "object_id": "large4 (room0)|room0",
+            "category": "SideTable",
+            "object_enum": "thor_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "stand_accd13ef606f3a2fbd33b6c6efb9184a_2_0_0": "RoboTHOR_side_table_fornbro",
+                    "stand_accd13ef606f3a2fbd33b6c6efb9184a_2_1_0": "RoboTHOR_side_table_fornbro_mesh"
+                },
+                "joints": {},
+                "sites": {
+                    "stand_accd13ef606f3a2fbd33b6c6efb9184a_2_1_0_meshReceptacle0_0": "RoboTHOR_side_table_fornbro_mesh_Receptacle_0",
+                    "stand_accd13ef606f3a2fbd33b6c6efb9184a_2_1_0_meshReceptacle1_1": "RoboTHOR_side_table_fornbro_mesh_Receptacle_1",
+                    "stand_accd13ef606f3a2fbd33b6c6efb9184a_2_1_0_meshReceptacle2_2": "RoboTHOR_side_table_fornbro_mesh_Receptacle_2",
+                    "stand_accd13ef606f3a2fbd33b6c6efb9184a_2_1_0_meshReceptacle3_3": "RoboTHOR_side_table_fornbro_mesh_Receptacle_3"
+                }
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": [
+                "cup_56edd85aeab4ab58cc2b44e71d5e86bf_1_0_0"
+            ]
+        },
+        "cup_56edd85aeab4ab58cc2b44e71d5e86bf_1_0_0": {
+            "hash_name": "cup_56edd85aeab4ab58cc2b44e71d5e86bf_1_0_0",
+            "asset_id": "Cup_21",
+            "object_id": "small18|large4 (room0)",
+            "category": "Cup",
+            "object_enum": "thor_obj",
+            "is_static": false,
+            "name_map": {
+                "bodies": {
+                    "cup_56edd85aeab4ab58cc2b44e71d5e86bf_1_0_0": "Cup_21",
+                    "cup_56edd85aeab4ab58cc2b44e71d5e86bf_1_1_0": "Cup_21_cup_21"
+                },
+                "joints": {
+                    "cup_56edd85aeab4ab58cc2b44e71d5e86bf_1_0_0_jntfree_0": "Cup_21_free"
+                },
+                "sites": {
+                    "cup_56edd85aeab4ab58cc2b44e71d5e86bf_1_1_0_cup21ReceptacleCollider0_0": "Cup_21_cup_21_ReceptacleCollider_0"
+                }
+            },
+            "mjcf_path": "",
+            "parent": "stand_accd13ef606f3a2fbd33b6c6efb9184a_2_0_0",
+            "room_id": 0,
+            "children": []
+        },
+        "chair_3cd00cb1e425e822898c02ccf4e6984f_1_0_0": {
+            "hash_name": "chair_3cd00cb1e425e822898c02ccf4e6984f_1_0_0",
+            "asset_id": "Chair_303_2",
+            "object_id": "large5 (room0)|room0",
+            "category": "Chair",
+            "object_enum": "thor_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "chair_3cd00cb1e425e822898c02ccf4e6984f_1_0_0": "Chair_303_2",
+                    "chair_3cd00cb1e425e822898c02ccf4e6984f_1_1_0": "Chair_303_2_chair_303"
+                },
+                "joints": {},
+                "sites": {
+                    "chair_3cd00cb1e425e822898c02ccf4e6984f_1_1_0_chair303ReceptacleCollider0_0": "Chair_303_2_chair_303_ReceptacleCollider_0"
+                }
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": []
+        },
+        "chair_3cd00cb1e425e822898c02ccf4e6984f_2_0_0": {
+            "hash_name": "chair_3cd00cb1e425e822898c02ccf4e6984f_2_0_0",
+            "asset_id": "Chair_303_2",
+            "object_id": "large6 (room0)|room0",
+            "category": "Chair",
+            "object_enum": "thor_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "chair_3cd00cb1e425e822898c02ccf4e6984f_2_0_0": "Chair_303_2",
+                    "chair_3cd00cb1e425e822898c02ccf4e6984f_2_1_0": "Chair_303_2_chair_303"
+                },
+                "joints": {},
+                "sites": {
+                    "chair_3cd00cb1e425e822898c02ccf4e6984f_2_1_0_chair303ReceptacleCollider0_0": "Chair_303_2_chair_303_ReceptacleCollider_0"
+                }
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": []
+        },
+        "chair_3cd00cb1e425e822898c02ccf4e6984f_3_0_0": {
+            "hash_name": "chair_3cd00cb1e425e822898c02ccf4e6984f_3_0_0",
+            "asset_id": "Chair_303_2",
+            "object_id": "large7 (room0)|room0",
+            "category": "Chair",
+            "object_enum": "thor_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "chair_3cd00cb1e425e822898c02ccf4e6984f_3_0_0": "Chair_303_2",
+                    "chair_3cd00cb1e425e822898c02ccf4e6984f_3_1_0": "Chair_303_2_chair_303"
+                },
+                "joints": {},
+                "sites": {
+                    "chair_3cd00cb1e425e822898c02ccf4e6984f_3_1_0_chair303ReceptacleCollider0_0": "Chair_303_2_chair_303_ReceptacleCollider_0"
+                }
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": []
+        },
+        "chair_d1ece0a380cf81a8d48fd1ffe684e8c7_1_0_0": {
+            "hash_name": "chair_d1ece0a380cf81a8d48fd1ffe684e8c7_1_0_0",
+            "asset_id": "Chair_313_1",
+            "object_id": "large8 (room0)|room0",
+            "category": "Chair",
+            "object_enum": "thor_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "chair_d1ece0a380cf81a8d48fd1ffe684e8c7_1_0_0": "Chair_313_1",
+                    "chair_d1ece0a380cf81a8d48fd1ffe684e8c7_1_1_0": "Chair_313_1_chair_313"
+                },
+                "joints": {},
+                "sites": {
+                    "chair_d1ece0a380cf81a8d48fd1ffe684e8c7_1_1_0_chair313ReceptacleCollider0_0": "Chair_313_1_chair_313_ReceptacleCollider_0"
+                }
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": []
+        },
+        "painting_4f3babd58fe97f8e96558544e6b7b5a6_1_0_0": {
+            "hash_name": "painting_4f3babd58fe97f8e96558544e6b7b5a6_1_0_0",
+            "asset_id": "Wall_Decor_Painting_8",
+            "object_id": "large9 (room0)|room0",
+            "category": "Painting",
+            "object_enum": "thor_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "painting_4f3babd58fe97f8e96558544e6b7b5a6_1_0_0": "Wall_Decor_Painting_8",
+                    "painting_4f3babd58fe97f8e96558544e6b7b5a6_1_1_0": "Wall_Decor_Painting_8_robothor_wall_decor_4_3"
+                },
+                "joints": {},
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": []
+        },
+        "painting_066459fad4b197e715bf02465fd2eab2_1_0_0": {
+            "hash_name": "painting_066459fad4b197e715bf02465fd2eab2_1_0_0",
+            "asset_id": "Wall_Decor_Painting_3",
+            "object_id": "large10 (room0)|room0",
+            "category": "Painting",
+            "object_enum": "thor_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "painting_066459fad4b197e715bf02465fd2eab2_1_0_0": "Wall_Decor_Painting_3",
+                    "painting_066459fad4b197e715bf02465fd2eab2_1_1_0": "Wall_Decor_Painting_3_robothor_wall_decor_4_3"
+                },
+                "joints": {},
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_f33af1b399a24448880930fef312ef3f_1_0_0": {
+            "hash_name": "obja_f33af1b399a24448880930fef312ef3f_1_0_0",
+            "asset_id": "f33af1b399a24448880930fef312ef3f",
+            "object_id": "large11 (room0)|room0",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "obja_f33af1b399a24448880930fef312ef3f_1_0_0": "f33af1b399a24448880930fef312ef3f"
+                },
+                "joints": {},
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": []
+        },
+        "obja_596fd518055a49a28d56c193cd087470_1_0_0": {
+            "hash_name": "obja_596fd518055a49a28d56c193cd087470_1_0_0",
+            "asset_id": "596fd518055a49a28d56c193cd087470",
+            "object_id": "large12 (room0)|room0",
+            "category": "",
+            "object_enum": "objaverse_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "obja_596fd518055a49a28d56c193cd087470_1_0_0": "596fd518055a49a28d56c193cd087470"
+                },
+                "joints": {},
+                "sites": {}
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": []
+        },
+        "hanger_e410793a71def6fb57af6d08e7945ad3_1_0_0": {
+            "hash_name": "hanger_e410793a71def6fb57af6d08e7945ad3_1_0_0",
+            "asset_id": "Toilet_Paper_Hanger_15",
+            "object_id": "large13 (room0)|room0",
+            "category": "ToiletPaperHanger",
+            "object_enum": "thor_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "hanger_e410793a71def6fb57af6d08e7945ad3_1_0_0": "Toilet_Paper_Hanger_15",
+                    "hanger_e410793a71def6fb57af6d08e7945ad3_1_1_0": "Toilet_Paper_Hanger_15_toilet_paper_hanger_5"
+                },
+                "joints": {},
+                "sites": {
+                    "hanger_e410793a71def6fb57af6d08e7945ad3_1_1_0_toiletpaperhanger5ReceptacleCollider0_0": "Toilet_Paper_Hanger_15_toilet_paper_hanger_5_ReceptacleCollider_0"
+                }
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": []
+        },
+        "hanger_e410793a71def6fb57af6d08e7945ad3_2_0_0": {
+            "hash_name": "hanger_e410793a71def6fb57af6d08e7945ad3_2_0_0",
+            "asset_id": "Toilet_Paper_Hanger_15",
+            "object_id": "large14 (room0)|room0",
+            "category": "ToiletPaperHanger",
+            "object_enum": "thor_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "hanger_e410793a71def6fb57af6d08e7945ad3_2_0_0": "Toilet_Paper_Hanger_15",
+                    "hanger_e410793a71def6fb57af6d08e7945ad3_2_1_0": "Toilet_Paper_Hanger_15_toilet_paper_hanger_5"
+                },
+                "joints": {},
+                "sites": {
+                    "hanger_e410793a71def6fb57af6d08e7945ad3_2_1_0_toiletpaperhanger5ReceptacleCollider0_0": "Toilet_Paper_Hanger_15_toilet_paper_hanger_5_ReceptacleCollider_0"
+                }
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": []
+        },
+        "hanger_e410793a71def6fb57af6d08e7945ad3_3_0_0": {
+            "hash_name": "hanger_e410793a71def6fb57af6d08e7945ad3_3_0_0",
+            "asset_id": "Toilet_Paper_Hanger_15",
+            "object_id": "large15 (room0)|room0",
+            "category": "ToiletPaperHanger",
+            "object_enum": "thor_obj",
+            "is_static": true,
+            "name_map": {
+                "bodies": {
+                    "hanger_e410793a71def6fb57af6d08e7945ad3_3_0_0": "Toilet_Paper_Hanger_15",
+                    "hanger_e410793a71def6fb57af6d08e7945ad3_3_1_0": "Toilet_Paper_Hanger_15_toilet_paper_hanger_5"
+                },
+                "joints": {},
+                "sites": {
+                    "hanger_e410793a71def6fb57af6d08e7945ad3_3_1_0_toiletpaperhanger5ReceptacleCollider0_0": "Toilet_Paper_Hanger_15_toilet_paper_hanger_5_ReceptacleCollider_0"
+                }
+            },
+            "mjcf_path": "",
+            "parent": "",
+            "room_id": 0,
+            "children": []
+        }
+    }
+}

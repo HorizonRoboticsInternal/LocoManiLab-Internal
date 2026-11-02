@@ -1,0 +1,1041 @@
+default:
+  FloorPlan1:
+    robot_pose:
+      pos:
+      - -1.0521
+      - -0.5498
+      - 0.0
+      yaw: 3.14159
+  FloorPlan2:
+    robot_pose:
+      pos:
+      - -0.8125
+      - 0.4037
+      - 0.0
+      yaw: 0.05661
+  FloorPlan3:
+    robot_pose:
+      pos:
+      - -0.7917
+      - 1.7738
+      - 0.05
+      yaw: 3.14159
+    robot_scale: 1.5
+  FloorPlan4:
+    robot_pose:
+      pos:
+      - -1.3449
+      - 2.515
+      - 0.0
+      yaw: 0.0
+  FloorPlan5:
+    robot_pose:
+      pos:
+      - -0.3287
+      - -0.4087
+      - 0.0
+      yaw: 1.50364
+  FloorPlan6:
+    robot_pose:
+      pos:
+      - -1.7683
+      - 0.8746
+      - 0.0
+      yaw: 3.11351
+  FloorPlan7:
+    robot_pose:
+      pos:
+      - -1.1146
+      - 0.1952
+      - 0.0
+      yaw: -3.14159
+  FloorPlan8:
+    robot_pose:
+      pos:
+      - 0.4007
+      - -0.1445
+      - 0.0
+      yaw: 0.0
+  FloorPlan9:
+    robot_pose:
+      pos:
+      - 1.9003
+      - 0.5747
+      - 0.0
+      yaw: -4.72831
+  FloorPlan10:
+    robot_pose:
+      pos:
+      - 0.2507
+      - -0.45
+      - 0.0
+      yaw: -0.0
+  FloorPlan11:
+    robot_pose:
+      pos:
+      - 1.4942
+      - -0.9174
+      - 0.0
+      yaw: 4.72495
+  FloorPlan12:
+    robot_pose:
+      pos:
+      - 0.8434
+      - 0.8724
+      - 0.0
+      yaw: -0.08727
+  FloorPlan13:
+    robot_pose:
+      pos:
+      - -3.5029
+      - 4.6783
+      - 0.0
+      yaw: 1.48353
+  FloorPlan14:
+    robot_pose:
+      pos:
+      - 0.5244
+      - 0.3005
+      - 0.0
+      yaw: 1.48353
+  FloorPlan15:
+    robot_pose:
+      pos:
+      - -2.2514
+      - 3.0456
+      - 0.0
+      yaw: 1.5708
+  FloorPlan16:
+    robot_pose:
+      pos:
+      - 1.6814
+      - 3.1633
+      - 0.0
+      yaw: 0.7854
+  FloorPlan17:
+    robot_pose:
+      pos:
+      - -0.5008
+      - 2.2386
+      - 0.0
+      yaw: 3.14426
+  FloorPlan18:
+    robot_pose:
+      pos:
+      - 0.6867
+      - 3.1009
+      - 0.0
+      yaw: -0.05655
+  FloorPlan19:
+    robot_pose:
+      pos:
+      - -1.0172
+      - -1.1831
+      - 0.0
+      yaw: 0.0
+  FloorPlan20:
+    robot_pose:
+      pos:
+      - 0.9318
+      - 0.6476
+      - 0.0
+      yaw: 3.1924
+  FloorPlan21:
+    robot_pose:
+      pos:
+      - -0.6333
+      - -0.0761
+      - 0.0
+      yaw: 1.60737
+  FloorPlan22:
+    robot_pose:
+      pos:
+      - -1.8994
+      - -0.5598
+      - 0.0
+      yaw: -1.5708
+  FloorPlan23:
+    robot_pose:
+      pos:
+      - -1.7095
+      - -1.6019
+      - 0.0
+      yaw: 3.0977
+  FloorPlan24:
+    robot_pose:
+      pos:
+      - -0.8875
+      - 1.8604
+      - 0.0
+      yaw: -1.49614
+  FloorPlan25:
+    robot_pose:
+      pos:
+      - -1.2502
+      - 0.8984
+      - 0.0
+      yaw: -1.5514
+  FloorPlan26:
+    robot_pose:
+      pos:
+      - -1.9125
+      - 1.0048
+      - 0.0
+      yaw: -1.5708
+  FloorPlan27:
+    robot_pose:
+      pos:
+      - 0.611
+      - 1.0209
+      - 0.0
+      yaw: 3.05298
+  FloorPlan28:
+    robot_pose:
+      pos:
+      - -3.2614
+      - -1.1619
+      - 0.0
+      yaw: 1.48353
+  FloorPlan29:
+    robot_pose:
+      pos:
+      - 0.3379
+      - -0.3102
+      - 0.0
+      yaw: 1.56167
+  FloorPlan30:
+    robot_pose:
+      pos:
+      - 1.1969
+      - -0.4717
+      - 0.0
+      yaw: 1.47842
+  FloorPlan202:
+    robot_pose:
+      pos:
+      - -1.3566
+      - 3.0887
+      - 0.0
+      yaw: -4.62512
+  FloorPlan204:
+    robot_pose:
+      pos:
+      - -0.7118
+      - 2.1016
+      - 0.0
+      yaw: -1.65806
+  FloorPlan206:
+    robot_pose:
+      pos:
+      - -0.9799
+      - -0.5667
+      - 0.0
+      yaw: -3.14159
+  FloorPlan207:
+    robot_pose:
+      pos:
+      - 0.6218
+      - -0.0207
+      - 0.0
+      yaw: 3.14159
+  FloorPlan208:
+    robot_pose:
+      pos:
+      - -2.3015
+      - -4.0757
+      - 0.0
+      yaw: -3.22886
+  FloorPlan209:
+    robot_pose:
+      pos:
+      - -3.1562
+      - -2.4523
+      - 0.0
+      yaw: 0.0
+  FloorPlan210:
+    robot_pose:
+      pos:
+      - -0.948
+      - 3.8534
+      - 0.0
+      yaw: 0.0
+  FloorPlan211:
+    robot_pose:
+      pos:
+      - 2.8749
+      - -1.2564
+      - 0.0
+      yaw: -0.0
+  FloorPlan212:
+    robot_pose:
+      pos:
+      - 1.8158
+      - 0.9991
+      - 0.0
+      yaw: -1.5708
+  FloorPlan213:
+    robot_pose:
+      pos:
+      - 11.1042
+      - 0.1188
+      - 0.0
+      yaw: 1.65806
+  FloorPlan214:
+    robot_pose:
+      pos:
+      - -3.4998
+      - 2.352
+      - 0.0
+      yaw: 3.14159
+  FloorPlan215:
+    robot_pose:
+      pos:
+      - -3.2024
+      - 4.3268
+      - 0.0
+      yaw: -0.69813
+  FloorPlan216:
+    robot_pose:
+      pos:
+      - -0.4762
+      - 0.7174
+      - 0.0
+      yaw: 1.5919
+  FloorPlan217:
+    robot_pose:
+      pos:
+      - -2.3905
+      - 1.4527
+      - 0.0
+      yaw: -1.5708
+  FloorPlan218:
+    robot_pose:
+      pos:
+      - -6.6059
+      - 5.0573
+      - 0.0
+      yaw: 0.0
+  FloorPlan219:
+    robot_pose:
+      pos:
+      - -1.5353
+      - 2.9743
+      - 0.0
+      yaw: -0.08727
+  FloorPlan220:
+    robot_pose:
+      pos:
+      - -3.3092
+      - 3.0352
+      - 0.0
+      yaw: 1.48353
+  FloorPlan221:
+    robot_pose:
+      pos:
+      - -3.5246
+      - -2.0755
+      - 0.0
+      yaw: 1.5708
+  FloorPlan222:
+    robot_pose:
+      pos:
+      - 0.6555
+      - -0.863
+      - 0.0
+      yaw: 2.87979
+  FloorPlan223:
+    robot_pose:
+      pos:
+      - 0.6158
+      - -0.599
+      - 0.0
+      yaw: 0.02959
+  FloorPlan224:
+    robot_pose:
+      pos:
+      - -2.5603
+      - -1.3066
+      - 0.0
+      yaw: 4.6102
+  FloorPlan225:
+    robot_pose:
+      pos:
+      - -1.2536
+      - 2.4762
+      - 0.0
+      yaw: 0.0
+  FloorPlan226:
+    robot_pose:
+      pos:
+      - -0.7967
+      - -1.0377
+      - 0.0
+      yaw: 1.65806
+  FloorPlan227:
+    robot_pose:
+      pos:
+      - -2.794
+      - 2.6705
+      - 0.0
+      yaw: -1.48353
+  FloorPlan229:
+    robot_pose:
+      pos:
+      - -1.3614
+      - 0.6185
+      - 0.0
+      yaw: 0.0
+  FloorPlan230:
+    robot_pose:
+      pos:
+      - -1.4622
+      - 2.3857
+      - 0.0
+      yaw: -3.14159
+  FloorPlan201:
+    robot_pose:
+      pos:
+      - -1.9253
+      - 2.5068
+      - 0.0
+      yaw: -1.5708
+  FloorPlan301:
+    robot_pose:
+      pos:
+      - -0.5763
+      - -0.5669
+      - 0.0
+      yaw: 1.5708
+  FloorPlan302:
+    robot_pose:
+      pos:
+      - 0.0909
+      - -0.8588
+      - 0.0
+      yaw: -0.2618
+  FloorPlan303:
+    robot_pose:
+      pos:
+      - 0.1794
+      - -1.2262
+      - 0.0
+      yaw: 0.0
+  FloorPlan304:
+    robot_pose:
+      pos:
+      - -0.4184
+      - 1.1545
+      - 0.0
+      yaw: 3.10292
+  FloorPlan305:
+    robot_pose:
+      pos:
+      - -0.1937
+      - -0.0224
+      - 0.0
+      yaw: -0.143
+  FloorPlan306:
+    robot_pose:
+      pos:
+      - 2.0202
+      - -0.06
+      - 0.0
+      yaw: -1.6258
+  FloorPlan307:
+    robot_pose:
+      pos:
+      - 0.0646
+      - 0.2361
+      - 0.0
+      yaw: 1.48353
+  FloorPlan308:
+    robot_pose:
+      pos:
+      - -0.0615
+      - 1.5081
+      - 0.0
+      yaw: -0.00422
+  FloorPlan309:
+    robot_pose:
+      pos:
+      - -0.815
+      - 0.4967
+      - 0.0
+      yaw: -0.0716
+  FloorPlan310:
+    robot_pose:
+      pos:
+      - -0.6341
+      - -1.1032
+      - 0.0
+      yaw: -1.64778
+  FloorPlan311:
+    robot_pose:
+      pos:
+      - 0.912
+      - 2.0377
+      - 0.0
+      yaw: 2.96853
+  FloorPlan312:
+    robot_pose:
+      pos:
+      - 0.3171
+      - -0.4873
+      - 0.0
+      yaw: 2.98857
+  FloorPlan313:
+    robot_pose:
+      pos:
+      - -0.3087
+      - -0.5087
+      - 0.0
+      yaw: -3.07461
+  FloorPlan314:
+    robot_pose:
+      pos:
+      - 1.1173
+      - 1.0801
+      - 0.0
+      yaw: 3.07896
+  FloorPlan315:
+    robot_pose:
+      pos:
+      - -1.1041
+      - -3.2092
+      - 0.0
+      yaw: 4.74035
+  FloorPlan316:
+    robot_pose:
+      pos:
+      - -0.4323
+      - -1.207
+      - 0.0
+      yaw: 2.44346
+  FloorPlan317:
+    robot_pose:
+      pos:
+      - 1.2525
+      - -0.9018
+      - 0.0
+      yaw: 1.5708
+  FloorPlan318:
+    robot_pose:
+      pos:
+      - 0.1712
+      - 2.4168
+      - 0.0
+      yaw: 3.05777
+  FloorPlan319:
+    robot_pose:
+      pos:
+      - 1.169
+      - 0.8614
+      - 0.0
+      yaw: -3.07519
+  FloorPlan320:
+    robot_pose:
+      pos:
+      - 0.7316
+      - 0.2841
+      - 0.0
+      yaw: 0.00189
+  FloorPlan321:
+    robot_pose:
+      pos:
+      - 3.0788
+      - -2.5086
+      - 0.0
+      yaw: 1.59075
+  FloorPlan322:
+    robot_pose:
+      pos:
+      - 1.9817
+      - 0.094
+      - 0.0
+      yaw: 0.0
+  FloorPlan323:
+    robot_pose:
+      pos:
+      - -1.3369
+      - -0.7077
+      - 0.0
+      yaw: -1.57609
+  FloorPlan324:
+    robot_pose:
+      pos:
+      - 0.5213
+      - 0.0015
+      - 0.0
+      yaw: -1.5708
+  FloorPlan325:
+    robot_pose:
+      pos:
+      - 1.2004
+      - 0.3696
+      - 0.0
+      yaw: -0.0
+  FloorPlan326:
+    robot_pose:
+      pos:
+      - 0.253
+      - -0.7439
+      - 0.0
+      yaw: 3.11116
+  FloorPlan327:
+    robot_pose:
+      pos:
+      - -0.3209
+      - -0.1729
+      - 0.0
+      yaw: 3.14159
+  FloorPlan328:
+    robot_pose:
+      pos:
+      - 1.9523
+      - -0.5195
+      - 0.0
+      yaw: -1.63738
+  FloorPlan329:
+    robot_pose:
+      pos:
+      - 1.4969
+      - -0.579
+      - 0.0
+      yaw: -3.14159
+  FloorPlan330:
+    robot_pose:
+      pos:
+      - -0.4864
+      - -0.2335
+      - 0.0
+      yaw: -0.08727
+  FloorPlan401:
+    robot_pose:
+      pos:
+      - -1.7397
+      - 1.1601
+      - 0.0
+      yaw: 1.48353
+  FloorPlan402:
+    robot_pose:
+      pos:
+      - -1.5087
+      - 2.6918
+      - 0.0
+      yaw: 0.50464
+  FloorPlan403:
+    robot_pose:
+      pos:
+      - -1.1925
+      - 1.7366
+      - 0.0
+      yaw: 0.0
+  FloorPlan405:
+    robot_pose:
+      pos:
+      - -1.6349
+      - 0.57
+      - 0.0
+      yaw: 0.0
+  FloorPlan406:
+    robot_pose:
+      pos:
+      - -0.7354
+      - 2.5267
+      - 0.0
+      yaw: -0.22586
+  FloorPlan407:
+    robot_pose:
+      pos:
+      - -0.8568
+      - 0.0164
+      - 0.0
+      yaw: 3.14159
+  FloorPlan408:
+    robot_pose:
+      pos:
+      - -1.1321
+      - -0.3571
+      - 0.0
+      yaw: 1.52857
+  FloorPlan409:
+    robot_pose:
+      pos:
+      - -0.416
+      - 2.0658
+      - 0.0
+      yaw: -0.7854
+  FloorPlan410:
+    robot_pose:
+      pos:
+      - -2.2803
+      - 2.4983
+      - 0.0
+      yaw: -1.5708
+  FloorPlan411:
+    robot_pose:
+      pos:
+      - -0.1678
+      - 2.2562
+      - 0.0
+      yaw: -0.76765
+  FloorPlan412:
+    robot_pose:
+      pos:
+      - -1.9433
+      - -0.8215
+      - 0.0
+      yaw: -1.5708
+  FloorPlan413:
+    robot_pose:
+      pos:
+      - -0.477
+      - 2.3334
+      - 0.0
+      yaw: -2.66228
+  FloorPlan414:
+    robot_pose:
+      pos:
+      - -1.4464
+      - 1.7836
+      - 0.0
+      yaw: 0.0
+  FloorPlan415:
+    robot_pose:
+      pos:
+      - -1.7317
+      - -2.6799
+      - 0.0
+      yaw: 3.03822
+  FloorPlan416:
+    robot_pose:
+      pos:
+      - -0.9645
+      - 2.6109
+      - 0.0
+      yaw: 3.05433
+  FloorPlan417:
+    robot_pose:
+      pos:
+      - -0.6122
+      - -2.1142
+      - 0.0
+      yaw: -1.309
+  FloorPlan418:
+    robot_pose:
+      pos:
+      - -1.5492
+      - -2.9079
+      - 0.0
+      yaw: 0.0
+  FloorPlan419:
+    robot_pose:
+      pos:
+      - -1.4982
+      - -1.7777
+      - 0.0
+      yaw: -0.1498
+  FloorPlan420:
+    robot_pose:
+      pos:
+      - -0.8981
+      - -0.9668
+      - 0.0
+      yaw: 2.56999
+  FloorPlan421:
+    robot_pose:
+      pos:
+      - -0.945
+      - 2.2935
+      - 0.0
+      yaw: -0.0786
+  FloorPlan422:
+    robot_pose:
+      pos:
+      - -1.2423
+      - 1.8357
+      - 0.0
+      yaw: 0.5236
+  FloorPlan423:
+    robot_pose:
+      pos:
+      - -0.9648
+      - 2.67
+      - 0.0
+      yaw: -0.0
+  FloorPlan424:
+    robot_pose:
+      pos:
+      - -0.8468
+      - 2.9574
+      - 0.0
+      yaw: -0.0
+  FloorPlan425:
+    robot_pose:
+      pos:
+      - -0.6995
+      - 2.016
+      - 0.0
+      yaw: -0.43434
+  FloorPlan426:
+    robot_pose:
+      pos:
+      - -1.0141
+      - 0.9219
+      - 0.0
+      yaw: -1.53808
+  FloorPlan427:
+    robot_pose:
+      pos:
+      - -2.1884
+      - -0.013
+      - 0.0
+      yaw: -1.48353
+  FloorPlan428:
+    robot_pose:
+      pos:
+      - -0.9619
+      - 2.5992
+      - 0.0
+      yaw: -2.26893
+  FloorPlan429:
+    robot_pose:
+      pos:
+      - -0.0316
+      - -2.707
+      - 0.0
+      yaw: -1.5708
+  FloorPlan430:
+    robot_pose:
+      pos:
+      - -0.6649
+      - 1.1264
+      - 0.0
+      yaw: 1.13446
+  FloorPlan228:
+    robot_pose:
+      pos:
+      - -3.4219
+      - 2.0623
+      - 0.0
+      yaw: 3.14159
+tasks:
+  IThorKitchenPackProduceIntoBox:
+    FloorPlan21:
+      task_object_poses:
+        usd_box:
+          pos:
+          - -0.61007
+          - 0.56001
+          - 1.04007
+          quat:
+          - 0.9994572
+          - -5.0e-07
+          - -6.0e-07
+          - -0.032945
+        apple:
+          pos:
+          - -0.90553
+          - 0.49946
+          - 0.94754
+          quat:
+          - -0.7894464
+          - 0.2883023
+          - -0.514335
+          - -0.1706333
+        banana:
+          pos:
+          - -0.31039
+          - 0.55831
+          - 0.93055
+          quat:
+          - 0.7101745
+          - 0.0254281
+          - -0.031221
+          - 0.7028733
+        carrot:
+          pos:
+          - -0.8625
+          - 0.67661
+          - 0.92899
+          quat:
+          - -0.1548518
+          - 0.8294227
+          - 0.4082873
+          - 0.3483967
+    FloorPlan1:
+      task_object_poses:
+        usd_box:
+          pos:
+          - -1.78167
+          - -0.61102
+          - 1.02271
+          quat:
+          - 0.999618
+          - 0.0
+          - -0.0
+          - 0.0276372
+        apple:
+          pos:
+          - -1.67887
+          - -0.85646
+          - 0.93236
+          quat:
+          - 0.9995664
+          - -0.0011723
+          - 0.0014018
+          - 0.029388
+        banana:
+          pos:
+          - -1.65191
+          - -0.37544
+          - 0.91788
+          quat:
+          - -0.650902
+          - 0.030524
+          - 0.0044803
+          - 0.7585347
+        carrot:
+          pos:
+          - -1.84686
+          - -0.85699
+          - 0.91978
+          quat:
+          - -0.6787218
+          - 0.0216954
+          - 0.013828
+          - 0.7339447
+    FloorPlan2:
+      task_object_poses:
+        usd_box:
+          pos:
+          - -0.24852
+          - 0.36734
+          - 1.03827
+          quat:
+          - 0.6910501
+          - -0.0
+          - -0.0
+          - -0.7228069
+        apple:
+          pos:
+          - -0.25824
+          - 0.73143
+          - 0.94497
+          quat:
+          - 0.8573656
+          - 0.1403633
+          - 0.4013618
+          - -0.2900535
+        banana:
+          pos:
+          - -0.30527
+          - 0.08039
+          - 0.92886
+          quat:
+          - 0.8042848
+          - 0.0383756
+          - -0.0467789
+          - 0.5911556
+        carrot:
+          pos:
+          - -0.25637
+          - 0.02302
+          - 0.9304
+          quat:
+          - 0.1492698
+          - 0.6491562
+          - 0.7391126
+          - -0.1001361
+    FloorPlan5:
+      task_object_poses:
+        usd_box:
+          pos:
+          - -0.30605
+          - 0.10585
+          - 1.02477
+          quat:
+          - 0.9999472
+          - 4.0e-07
+          - -0.0
+          - -0.0102741
+        apple:
+          pos:
+          - -0.57025
+          - 0.12608
+          - 0.93286
+          quat:
+          - -0.0922642
+          - -0.5292725
+          - -0.0396596
+          - 0.8424874
+        banana:
+          pos:
+          - 0.01584
+          - 0.18166
+          - 0.93068
+          quat:
+          - 0.9233914
+          - 0.0389398
+          - -0.2181907
+          - -0.3134084
+        carrot:
+          pos:
+          - -0.48576
+          - 0.12186
+          - 0.92251
+          quat:
+          - 0.0895707
+          - 0.8002883
+          - -0.1247714
+          - 0.57961
+    FloorPlan6:
+      task_object_poses:
+        usd_box:
+          pos:
+          - -2.26502
+          - 0.91841
+          - 1.02248
+          quat:
+          - -0.0856277
+          - -7.0e-07
+          - -3.0e-07
+          - 0.9963272
+        apple:
+          pos:
+          - -2.22734
+          - 0.70963
+          - 0.93126
+          quat:
+          - -0.4539771
+          - 0.6536115
+          - 0.6018901
+          - 0.0665222
+        banana:
+          pos:
+          - -2.26753
+          - 1.21982
+          - 0.91357
+          quat:
+          - 0.1204302
+          - 0.0343359
+          - 0.0042805
+          - 0.9921186
+        carrot:
+          pos:
+          - -2.37968
+          - 0.64848
+          - 0.91343
+          quat:
+          - -0.3991569
+          - 0.4647965
+          - 0.3202405
+          - 0.7225538
+  IThorLivingRoomEnv:
+    FloorPlan209:
+      robot_pose:
+        pos:
+        - -3.1354
+        - -2.5345
+        - 0.0
+        yaw: 0.0

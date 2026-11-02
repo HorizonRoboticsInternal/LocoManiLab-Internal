@@ -1,0 +1,32 @@
+task: ProcTHORRoomToRoomCarry
+
+success:
+  target_xy_tol: [0.12, 0.22]
+  target_table_z_tol: 0.08
+  release_dist: 0.35
+  trash_can_half_height: 0.27
+  trash_can_success_radius: 0.14
+  trash_can_top_tol: 0.03
+
+scene_specs:
+  train_0:
+    task_fixture_configs:
+      - room_to_room_carry_train0
+    remove_scene_bodies:
+      - objaorganizer_6fcd876db4104524a35517ba1172fb8c_1_0_7
+      - objabluetoothspeaker_2db67686cd884068b5904b438844d525_1_0_7
+      - book_99ec547b12240186aeaf5dbccbf44f86_1_0_7
+      - objadecorativetorch_99f5fdefe30345f6af095c420d0bc96c_1_0_7
+    spawn_points:
+      - source_room: "7"
+        target_room: "6"
+        robot_pos: [1.30, 6.80, 0.0]
+        robot_yaw: 1.5708
+        source_surface_center: [0.766, 7.829, 0.822]
+        source_surface_half: [0.05, 0.05]
+        target_surface_center: [11.8770, 7.0031, 0.7791]
+        target_surface_half: [0.4, 0.6]
+        target_is_surface: true
+        source_is_table: true
+        max_source_table_items: 4
+        object_scale: 1.0

@@ -1,0 +1,5 @@
+task: ProcTHORTrashToBin
+semantic_requirements:
+  source_region: support
+  target_region: receptacle
+  target_room_relation: adjacent

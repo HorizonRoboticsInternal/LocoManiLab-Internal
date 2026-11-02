@@ -1,0 +1,10 @@
+# Living-room style 001: which mesh asset to use per furniture type, plus the
+# floor + wall textures. Textures reuse shared kitchen textures (textures/ is
+# not kitchen-specific). Asset paths are relative to the asset root.
+floor_texture: textures/wood-tiles.png
+wall_texture: textures/cream-plaster.png
+furniture:
+  sofa: fixtures/sofas/Sofa001
+  coffee_table: fixtures/coffee_tables/CoffeeTable001
+  tv_stand: fixtures/tv_stands/TVStand001
+  side_table: objects/lightwheel/stool/Stool013

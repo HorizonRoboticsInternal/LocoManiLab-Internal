@@ -1,1 +1,2 @@
 recursive-include robocasa *.yaml *.xml *.json *.png *.obj *.csv *.urdf *.stl *.mtl
+include THIRD_PARTY_ASSETS.md

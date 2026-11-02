@@ -1,0 +1,43 @@
+fixtures:
+  - name: procthor_bathroom_trash_can
+    fixture_type: trash_can
+    asset_id: bin_24
+    pos: [0.20, 0.95, 0.271]
+    materials:
+      - name: procthor_bathroom_trash_can_metal
+        rgba: "0.45 0.38 0.28 1"
+    meshes:
+      - name: procthor_bathroom_trash_can_mesh
+        file: "{asset_root}/thor/Kitchen Objects/GarbageCan/Prefabs/bin_24/bin_24_Cylinder/bin_24_Cylinder.obj"
+        scale: [13.5142, 13.5142, 13.5142]
+      - set: collisions
+        name_prefix: procthor_bathroom_trash_can_mesh
+        file_glob: "{asset_root}/thor/Kitchen Objects/GarbageCan/Prefabs/bin_24/bin_24_Cylinder/bin_24_Cylinder/bin_24_Cylinder_collision_*.obj"
+        scale: [13.5142, 13.5142, 13.5142]
+    body:
+      name: procthor_bathroom_trash_can
+      pos: [0.20, 0.95, 0.271]
+      quat: "0 0 0.707107 0.707107"
+      bodies:
+        - name: procthor_bathroom_trash_can_visual_body
+          pos: "0 -0.13579 0.0006"
+          quat: "0.707107 -0.707107 0 0"
+          geoms:
+            - name: procthor_bathroom_trash_can_visual
+              type: mesh
+              mesh: procthor_bathroom_trash_can_mesh
+              material: procthor_bathroom_trash_can_metal
+              group: "1"
+              contype: "0"
+              conaffinity: "0"
+            - for_each_mesh_set: collisions
+              name_template: "{mesh}"
+              type: mesh
+              rgba: "0 1 0 0.15"
+              group: "0"
+              contype: "1"
+              conaffinity: "15"
+              friction: "0.9 0.9 0.001"
+              solref: "0.025 1.0"
+              solimp: "0.998 0.998 0.001 0.5 2.0"
+              density: "111.459"

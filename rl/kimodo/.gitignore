@@ -1,0 +1,4 @@
+# Phase 0 local artifacts (generated motions, videos, copied model adapters)
+_out/
+_assets/
+__pycache__/

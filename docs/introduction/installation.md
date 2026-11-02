@@ -1,51 +1,20 @@
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    document.body.classList.add("rc-installation-page");
-  });
-</script>
-
 # Installation
 
-RoboCasa works across all major computing platforms. The easiest way to set up is through the [Anaconda](https://www.anaconda.com/) package management system. Follow the instructions below to install:
-1. Set up conda environment:
+This fork supports G1 only. Follow the [current README](../../README.md#installation)
+to create a Python 3.11 simulator environment and install its bundled
+`robosuite_src` fork. Installing a separate upstream robosuite checkout would
+restore a different robot catalog and does not provide this fork's G1 changes.
 
-   ```sh
-   conda create -c conda-forge -n robocasa python=3.11
-   ```
-2. Activate conda environment:
-   ```sh
-   conda activate robocasa
-   ```
-3. Clone and setup robosuite dependency:
+Start with `EmptyEnv` and one selected controller. The G1 model and native floor
+are bundled; no room, kitchen, iTHOR or Objaverse asset pack is needed for that
+scene. A control session still needs the selected controller environment and
+weights. Prepare those separately using the README's explicit asset plans.
 
-   <div class="admonition warning">
-   <p class="admonition-title">Important!</p>
-   The latest version of RoboCasa uses the master branch of robosuite
-   </div>
-   
-   ```sh
-   git clone https://github.com/ARISE-Initiative/robosuite
-   cd robosuite
-   pip install -e .
-   ```
-4. Clone and setup this repo:
+For task/model inspection and CPU checks, see [G1 scope](../g1_scope.md#cpu-development-without-new-assets).
+Those checks require no policy weights or additional scene downloads.
 
-   ```sh
-   cd ..
-   git clone https://github.com/robocasa/robocasa
-   cd robocasa
-   pip install -e .
-   ```
-   <div class="admonition note">
-   <p class="admonition-title">Installation troubleshooting</p>
-
-   If you encounter issues with installing the numpy or numba dependencies, please try installing through conda instead: `conda install -c numba numba=0.56.4 -y`
-
-   </div>
-
-5. Install the package and download assets:
-   ```sh
-   python -m robocasa.scripts.setup_macros              # Set up system variables.
-   python -m robocasa.scripts.download_kitchen_assets   # Caution: Assets to be downloaded are around 10GB.
-   ```
-
+Scene-specific assets remain optional. Install only the packs referenced by
+your chosen environment; installation does not download them automatically.
+Keep downloaded assets, local macros, datasets and checkpoints outside public
+source archives. Older manuals under `docs/_versions` describe upstream
+multi-robot releases and are retained as historical reference.

@@ -1,5 +1,9 @@
+"""Optional G1 fixture/layout inspection using already-installed scene assets.
+
+This command-line utility is not part of the CPU unit-test selection.
+"""
+
 import os
-import hid
 import numpy as np
 import tqdm
 import traceback
@@ -10,12 +14,10 @@ from termcolor import colored
 
 import robocasa
 from robocasa.scripts.browse_mjcf_model import read_model
-import robocasa.macros as macros
 from robocasa.models.fixtures.fixture import FixtureType
 from robosuite.wrappers import VisualizationWrapper
 
 from robocasa.utils.env_utils import create_env, run_random_rollouts
-from robocasa.scripts.collect_demos import collect_human_trajectory
 from robocasa.models.scenes.scene_registry import (
     get_layout_path,
     get_style_path,
@@ -172,25 +174,6 @@ if __name__ == "__main__":
 
     parser.add_argument("--layout", type=int, nargs="+", default=-3)
     parser.add_argument("--num_rollouts", type=int, default=3)
-    parser.add_argument("--interactive", action="store_true")
-    parser.add_argument(
-        "--device",
-        type=str,
-        default="spacemouse",
-        choices=["keyboard", "spacemouse"],
-    )
-    parser.add_argument(
-        "--pos-sensitivity",
-        type=float,
-        default=4.0,
-        help="How much to scale position user inputs",
-    )
-    parser.add_argument(
-        "--rot-sensitivity",
-        type=float,
-        default=4.0,
-        help="How much to scale rotation user inputs",
-    )
 
     args = parser.parse_args()
 
@@ -227,18 +210,6 @@ if __name__ == "__main__":
     if not os.path.exists(base_log_dir):
         os.makedirs(base_log_dir)
 
-    if args.device is None:
-        # check if spacemouse is available
-        spacemouse_found = False
-        for device in hid.enumerate():
-            vendor_id, product_id = device["vendor_id"], device["product_id"]
-            if (
-                vendor_id == macros.SPACEMOUSE_VENDOR_ID
-                and product_id == macros.SPACEMOUSE_PRODUCT_ID
-            ):
-                spacemouse_found = True
-                break
-        args.device = "spacemouse" if spacemouse_found else "keyboard"
 
     for fixture_type in all_fixtures_dict.keys():
         error_dict[fixture_type] = dict()
@@ -248,7 +219,6 @@ if __name__ == "__main__":
             all_layout_ids=args.layout, filter_by=("type", fixture_type)
         )
         fixture_list = all_fixtures_dict[fixture_type]
-        device = None
         for i, fixture_name in enumerate(fixture_list):
             if i < NUM_DONE:
                 num_tests_completed += 1
@@ -280,7 +250,7 @@ if __name__ == "__main__":
 
                 try:
                     env = create_env(
-                        render_onscreen=args.interactive,
+                        render_onscreen=False,
                         seed=0,  # set seed=None to run unseeded
                         style_ids=style_configs,
                         layout_ids=layout_ids,
@@ -291,51 +261,12 @@ if __name__ == "__main__":
                     # Wrap this with visualization wrapper
                     env = VisualizationWrapper(env)
 
-                    if args.interactive is False:
-                        info = run_random_rollouts(
-                            env,
-                            num_rollouts=args.num_rollouts,
-                            num_steps=50,
-                            video_path=f"{fxtr_log_folder}/{env_name}.mp4",
-                        )
-                    else:
-                        # set up devices for interactive mode
-                        # initialize device
-                        if device is None:
-                            if args.device == "keyboard":
-                                from robosuite.devices import Keyboard
-
-                                device = Keyboard(
-                                    env=env,
-                                    pos_sensitivity=args.pos_sensitivity,
-                                    rot_sensitivity=args.rot_sensitivity,
-                                )
-                            elif args.device == "spacemouse":
-                                from robosuite.devices import SpaceMouse
-
-                                device = SpaceMouse(
-                                    env=env,
-                                    pos_sensitivity=args.pos_sensitivity,
-                                    rot_sensitivity=args.rot_sensitivity,
-                                    vendor_id=macros.SPACEMOUSE_VENDOR_ID,
-                                    product_id=macros.SPACEMOUSE_PRODUCT_ID,
-                                )
-                            else:
-                                raise ValueError
-
-                        # set up (updated) env for device
-                        device.env = env
-
-                        while True:
-                            collect_human_trajectory(
-                                env,
-                                device,
-                                "right",
-                                "single-arm-opposed",
-                                True,
-                                render=False,
-                                max_fr=30,
-                            )
+                    info = run_random_rollouts(
+                        env,
+                        num_rollouts=args.num_rollouts,
+                        num_steps=50,
+                        video_path=f"{fxtr_log_folder}/{env_name}.mp4",
+                    )
                 except KeyboardInterrupt:
                     print("\n\nMoving onto next configuration...")
                 except Exception:

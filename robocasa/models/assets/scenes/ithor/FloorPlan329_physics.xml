@@ -1,0 +1,931 @@
+<mujoco model="FloorPlan329_physics">
+  <compiler angle="radian" autolimits="true" boundmass="0" balanceinertia="true" />
+
+  <option impratio="10" gravity="0 0 -9.8" integrator="implicitfast" cone="elliptic" jacobian="sparse" noslip_iterations="4">
+    <flag energy="enable" multiccd="enable" contact="enable" warmstart="enable" />
+  </option>
+
+  <size njmax="5000" nconmax="5000" />
+
+  <visual>
+    <global offwidth="1280" offheight="720" />
+    <quality shadowsize="16384" />
+    <headlight ambient="0.35 0.35 0.35" />
+    <map znear="0.001" />
+    <scale contactwidth="0.0572519" contactheight="0.0572519" jointlength="0.458015" jointwidth="0.0572519" framelength="0.343512" framewidth="0.028626" />
+  </visual>
+
+  <default>
+    <default class="/">
+      <default class="__VISUAL_MJT__">
+        <geom contype="0" conaffinity="0" group="0" mass="1e-08" />
+      </default>
+      <default class="__STRUCTURAL_MJT__">
+        <geom contype="8" conaffinity="15" group="4" friction="0.9 0.9 0.001" solref="0.025 1.0" solimp="0.998 0.998 0.001 0.5 2.0" density="500.0" />
+        <default class="__STRUCTURAL_WALL_MJT__">
+          <geom group="3" />
+        </default>
+      </default>
+      <default class="__DYNAMIC_MJT__">
+        <geom conaffinity="15" group="4" friction="0.9 0.9 0.001" solref="0.025 1.0" solimp="0.998 0.998 0.001 0.5 2.0" density="500.0" contype="1" />
+      </default>
+      <default class="__ARTICULABLE_DYNAMIC_MJT__">
+        <geom contype="0" conaffinity="7" group="4" friction="0.9 0.9 0.001" solref="0.025 1.0" solimp="0.998 0.998 0.001 0.5 2.0" density="500.0" />
+      </default>
+    </default>
+    </default>
+
+  <asset>
+    <texture type="2d" name="Cellphone_4A_Mat" file="../../objects/thor/Bedroom Objects/Cellphone/Prefabs/Cellphone_7/Cellphone_4A_AlbedoTransparency.png" />
+    <texture type="2d" name="Book_Text_Mat" file="../../objects/thor/Bedroom Objects/Book/Prefabs/Book_29/Book_Text_AlbedoTransparency.png" />
+    <texture type="2d" name="Book_Pages_1_Mat" file="../../objects/thor/Bedroom Objects/Book/Prefabs/Book_29/Book_Pages_AlbedoTransparency.png" />
+    <texture type="2d" name="Book_Cover_Mat" file="../../objects/thor/Bedroom Objects/Book/Prefabs/Book_29/Book_Cover_AlbedoTransparency.png" />
+    <texture type="2d" name="Cardboard_Mat2" file="../../objects/thor/Living Room and Bedroom Objects/Box_Full/Prefabs/Box_29/Cardboard_AlbedoTransparency.png" />
+    <texture type="2d" name="PensPencils_DefaultMaterial_AlbedoTransparency" file="../../objects/thor/Bedroom Objects/Pencil/Prefabs/Pencil_7/PensPencils_DefaultMaterial_AlbedoTransparency.png" />
+    <texture type="2d" name="CD" file="../../objects/thor/Miscellaneous Objects/CD/Prefabs/CD_1/CD.png" />
+    <texture type="2d" name="Laptop_Detail_Mat" file="../../objects/thor/Living Room and Bedroom Objects/Laptop_Full/Prefabs/Laptop_29/Laptop_Detail_AlbedoTransparency.png" />
+    <texture type="2d" name="Laptop_Touchpad_Mat" file="../../objects/thor/Living Room and Bedroom Objects/Laptop_Full/Prefabs/Laptop_29/BrushedAluminum_AlbedoTransparency.png" />
+    <texture type="2d" name="Laptop_Secondary2_Mat" file="../../objects/thor/Living Room and Bedroom Objects/Laptop_Full/Prefabs/Laptop_29/BrushedIron_AlbedoTransparency.png" />
+    <texture type="2d" name="Laptop_Primary2_Mat" file="../../objects/thor/Living Room and Bedroom Objects/Laptop_Full/Prefabs/Laptop_29/BrushedIron_AlbedoTransparency.png" />
+    <texture type="2d" name="PillowG_AO" file="../../objects/thor/Textures/PillowG_AO.png" />
+    <texture type="2d" name="Alarm_Clock_Metal_Mat" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/BrushedIron_AlbedoTransparency.png" />
+    <texture type="2d" name="DarkWoodSmooth" file="../../objects/thor/Bedroom Objects/Bed/Prefabs/Bed_29/WoodGrains1.png" />
+    <texture type="2d" name="DarkWoodSmooth2" file="../../objects/thor/Bedroom Objects/Bed/Prefabs/Bed_29/WoodGrains1.png" />
+    <texture type="2d" name="FittedSheet1AO" file="../../objects/thor/Bedroom Objects/Bed/Prefabs/Bed_29/FittedSheet1AO.png" />
+    <texture type="2d" name="Bin_Decal_Mat" file="../../objects/thor/Kitchen Objects/GarbageCan/Prefabs/bin_29/Bin_Decal_AlbedoTransparency.png" />
+    <texture type="2d" name="Bin_Primary4_Mat" file="../../objects/thor/Kitchen Objects/GarbageCan/Prefabs/bin_29/BrushedAluminum_AlbedoTransparency.png" />
+    <texture type="2d" name="Copper_AlbedoTransparency" file="../../objects/thor/Bedroom Objects/DeskLamp/Prefabs/Desk_Lamp_11/Copper_AlbedoTransparency.png" />
+    <texture type="2d" name="WornWood" file="../../objects/thor/Bedroom Objects/BaseballBat/Prefabs/BaseballBat_1/TexturesCom_WornWood2_albedo_S.png" />
+    <texture type="2d" name="HammeredMetal_AlbedoTransparency_2" file="../../objects/thor/Common Objects/SideTable/Prefabs/Side_Table_329_1/HammeredMetal_AlbedoTransparency.png" />
+    <texture type="2d" name="Cream_wood" file="../../objects/thor/Living Room and Bedroom Objects/Desk/Prefabs/Desk_329_1/HammeredMetal_MetallicSmoothness.png" />
+    <texture type="2d" name="ConcreteFloor" file="FloorPlan329_physics/Structural/mesh_fcc428b9/marbleBase1.png" />
+    <texture type="2d" name="santa-maria-novella-1081775_1920" file="FloorPlan329_physics/Structural/FP329:Base25_a9c7f018/santa-maria-novella-1081775_1920.png" />
+    <texture type="2d" name="DrywallEggshellTiled" file="FloorPlan329_physics/Structural/FP329:Ceiling_e8578017/WallDrywallWhite.png" />
+    <texture type="2d" name="Walldrywall3Tiled" file="FloorPlan329_physics/Structural/FP329:StandardWallSize_f5149d25/WallDrywallWhite.png" />
+    <texture type="2d" name="BrushedAluminum_AlbedoTransparency" file="FloorPlan329_physics/Structural/FP329:StandardKnob1_395b51db/BrushedAluminum_MetallicSmoothness.png" />
+    <texture type="2d" name="LightWoodCounters2" file="FloorPlan329_physics/Structural/FP329:StandardDoor1_2b414092/LightWoodCounters.png" />
+    <material name="material_Cellphone_Screen_Off_Mat" rgba="0 0 0 1" />
+    <material name="material_Cellphone_4A_Mat" texture="Cellphone_4A_Mat" />
+    <material name="material_Book_Text_Mat" texture="Book_Text_Mat" />
+    <material name="material_Book_Pages_1_Mat" texture="Book_Pages_1_Mat" />
+    <material name="material_Book_Cover_Mat" texture="Book_Cover_Mat" />
+    <material name="material_Cardboard_Mat2" texture="Cardboard_Mat2" rgba="0.985294 0.769075 0.601319 1" />
+    <material name="material_PensPencils_DefaultMaterial_AlbedoTransparency" texture="PensPencils_DefaultMaterial_AlbedoTransparency" />
+    <material name="material_Glass_Detailed_White_Mat" rgba="1 1 1 0.5" />
+    <material name="material_CD" texture="CD" />
+    <material name="material_Laptop_Decals_Off_Mat" rgba="1 1 1 0.5" />
+    <material name="material_Laptop_Detail_Mat" texture="Laptop_Detail_Mat" />
+    <material name="material_Laptop_Screen_Off_Mat" rgba="0.00560449 0.00560449 0.00560449 1" />
+    <material name="material_Laptop_Touchpad_Mat" texture="Laptop_Touchpad_Mat" rgba="0.56542 0.589868 0.610294 1" />
+    <material name="material_Laptop_Secondary2_Mat" texture="Laptop_Secondary2_Mat" rgba="0.154412 0.154412 0.154412 1" />
+    <material name="material_Laptop_Primary2_Mat" texture="Laptop_Primary2_Mat" rgba="0.433823 0.433823 0.433823 1" />
+    <material name="material_Pillow29_Mat" texture="PillowG_AO" />
+    <material name="material_alarm_clock_backup_mat" rgba="0.5 0.5 0.5 1" />
+    <material name="material_Alarm_Clock_Metal_Mat" texture="Alarm_Clock_Metal_Mat" rgba="0.808824 0.808824 0.808824 1" />
+    <material name="material_Alarm_Clock_Secondary3_Mat" rgba="0.439663 0.514446 0.558824 1" />
+    <material name="material_Alarm_Clock_Primary3_Mat" rgba="0.352941 0.0965572 0.0103806 1" />
+    <material name="material_DarkWoodSmooth" texture="DarkWoodSmooth" rgba="0.235849 0.130508 0.0767622 1" />
+    <material name="material_DarkWoodSmooth2" texture="DarkWoodSmooth2" rgba="0.122641 0.0908241 0.0908241 1" />
+    <material name="material_Bedsheet_Unmade_29B_Mat" rgba="0 0 0 1" />
+    <material name="material_FittedSheet1AO" texture="FittedSheet1AO" />
+    <material name="material_Bedsheet_Unmade_29A_Mat" rgba="0.611765 0 0.137255 1" />
+    <material name="material_Light_Switch_Secondary_Mat" rgba="0.955882 0.955882 0.955882 1" />
+    <material name="material_Light_Switch_Primary5_Mat" rgba="0 0 0 1" />
+    <material name="material_Bin_Decal_Mat" texture="Bin_Decal_Mat" />
+    <material name="material_Bin_Secondary4_Mat" rgba="0.272059 0.272059 0.272059 1" />
+    <material name="material_Bin_Primary4_Mat" texture="Bin_Primary4_Mat" />
+    <material name="material_Copper_AlbedoTransparency" texture="Copper_AlbedoTransparency" />
+    <material name="material_Light" rgba="1 0.944118 0.860294 1" />
+    <material name="material_KitchenLightDull" rgba="1 0.351136 0 1" />
+    <material name="material_WornWood" texture="WornWood" rgba="0.514706 0.391197 0.170307 1" />
+    <material name="material_Mug_Decals_Off_Mat" rgba="1 1 1 0.5" />
+    <material name="material_BlackPlastic" rgba="0.198529 0.198529 0.198529 1" />
+    <material name="material_HammeredMetal_AlbedoTransparency_2" texture="HammeredMetal_AlbedoTransparency_2" rgba="1 0.934077 0.816176 1" />
+    <material name="material_Cream_wood" texture="Cream_wood" rgba="1 0.977941 0.977941 1" />
+    <material name="material_DarkGranite" rgba="0.185211 0.205882 0.178633 1" />
+    <material name="material_ConcreteFloor" texture="ConcreteFloor" rgba="0.505407 0.562582 0.602941 1" />
+    <material name="material_WhiteWoodClean" />
+    <material name="material_Glass_Detailed_Lit_High_Mat" rgba="1 1 1 0.1" />
+    <material name="material_santa-maria-novella-1081775_1920" texture="santa-maria-novella-1081775_1920" />
+    <material name="material_ScreenDecalStencil" />
+    <material name="material_Mirror" />
+    <material name="material_PureBlack_Wood" rgba="0 0 0 1" />
+    <material name="material_PVC" rgba="0.8 0.8 0.8 1" />
+    <material name="material_Mirror_Decals_Off_Mat" rgba="1 1 1 0.1" />
+    <material name="material_Metal" />
+    <material name="material_WhitePlastic" />
+    <material name="material_Light1" rgba="0.970588 1 0.995132 1" />
+    <material name="material_DrywallEggshellTiled" texture="DrywallEggshellTiled" rgba="0.92549 0.878431 0.776471 1" />
+    <material name="material_Walldrywall3Tiled" texture="Walldrywall3Tiled" rgba="0.959 0.99491 1 1" />
+    <material name="material_BrushedAluminum_AlbedoTransparency" texture="BrushedAluminum_AlbedoTransparency" />
+    <material name="material_LightWoodCounters2" texture="LightWoodCounters2" rgba="0.764151 0.517355 0.299172 1" />
+    <mesh name="Cellphone_7_cellphone_4_0" content_type="model/obj" file="../../objects/thor/Bedroom Objects/Cellphone/Prefabs/Cellphone_7/Cellphone_7_cellphone_4/Cellphone_7_cellphone_4_0.obj" inertia="shell" />
+    <mesh name="Cellphone_7_cellphone_4_1" content_type="model/obj" file="../../objects/thor/Bedroom Objects/Cellphone/Prefabs/Cellphone_7/Cellphone_7_cellphone_4/Cellphone_7_cellphone_4_1.obj" inertia="shell" />
+    <mesh name="Cellphone_7_cellphone_4_2" content_type="model/obj" file="../../objects/thor/Bedroom Objects/Cellphone/Prefabs/Cellphone_7/Cellphone_7_cellphone_4/Cellphone_7_cellphone_4_2.obj" />
+    <mesh name="Book_29_book_front_29_0" content_type="model/obj" file="../../objects/thor/Bedroom Objects/Book/Prefabs/Book_29/Book_29_book_front_29/Book_29_book_front_29_0.obj" />
+    <mesh name="Book_29_book_front_29_1" content_type="model/obj" file="../../objects/thor/Bedroom Objects/Book/Prefabs/Book_29/Book_29_book_front_29/Book_29_book_front_29_1.obj" />
+    <mesh name="Book_29_book_front_29_2" content_type="model/obj" file="../../objects/thor/Bedroom Objects/Book/Prefabs/Book_29/Book_29_book_front_29/Book_29_book_front_29_2.obj" />
+    <mesh name="Book_29_book_29_0" content_type="model/obj" file="../../objects/thor/Bedroom Objects/Book/Prefabs/Book_29/Book_29_book_29/Book_29_book_29_0.obj" />
+    <mesh name="Book_29_book_29_1" content_type="model/obj" file="../../objects/thor/Bedroom Objects/Book/Prefabs/Book_29/Book_29_book_29/Book_29_book_29_1.obj" />
+    <mesh name="Book_29_book_29_2" content_type="model/obj" file="../../objects/thor/Bedroom Objects/Book/Prefabs/Book_29/Book_29_book_29/Book_29_book_29_2.obj" />
+    <mesh name="Box_29_box_29_flap_outer_1" content_type="model/obj" file="../../objects/thor/Living Room and Bedroom Objects/Box_Full/Prefabs/Box_29/Box_29_box_29_flap_outer_1/Box_29_box_29_flap_outer_1.obj" scale="0.538519 0.538519 0.538519" />
+    <mesh name="Box_29_box_29_flap_inner_2" content_type="model/obj" file="../../objects/thor/Living Room and Bedroom Objects/Box_Full/Prefabs/Box_29/Box_29_box_29_flap_inner_2/Box_29_box_29_flap_inner_2.obj" scale="0.53852 0.538521 0.538521" />
+    <mesh name="Box_29_box_29_flap_outer_2" content_type="model/obj" file="../../objects/thor/Living Room and Bedroom Objects/Box_Full/Prefabs/Box_29/Box_29_box_29_flap_outer_2/Box_29_box_29_flap_outer_2.obj" scale="0.538519 0.538519 0.538519" />
+    <mesh name="Box_29_box_29_flap_inner_1" content_type="model/obj" file="../../objects/thor/Living Room and Bedroom Objects/Box_Full/Prefabs/Box_29/Box_29_box_29_flap_inner_1/Box_29_box_29_flap_inner_1.obj" scale="0.538519 0.538519 0.538519" />
+    <mesh name="Box_29_box_29" content_type="model/obj" file="../../objects/thor/Living Room and Bedroom Objects/Box_Full/Prefabs/Box_29/Box_29_box_29/Box_29_box_29.obj" scale="0.538519 0.538519 0.538519" />
+    <mesh name="Pencil_7_Cylinder.233" content_type="model/obj" file="../../objects/thor/Bedroom Objects/Pencil/Prefabs/Pencil_7/Pencil_7_Cylinder.233/Pencil_7_Cylinder.233.obj" />
+    <mesh name="Pen_4_Cylinder.226" content_type="model/obj" file="../../objects/thor/Bedroom Objects/Pen/Prefabs/Pen_4/Pen_4_Cylinder.226/Pen_4_Cylinder.226.obj" />
+    <mesh name="CD_1_CD1_0" content_type="model/obj" file="../../objects/thor/Miscellaneous Objects/CD/Prefabs/CD_1/CD_1_cd1/CD_1_cd1_0.obj" />
+    <mesh name="CD_1_CD1_1" content_type="model/obj" file="../../objects/thor/Miscellaneous Objects/CD/Prefabs/CD_1/CD_1_cd1/CD_1_cd1_1.obj" />
+    <mesh name="Laptop_29_laptop_lid_29_0" content_type="model/obj" file="../../objects/thor/Living Room and Bedroom Objects/Laptop_Full/Prefabs/Laptop_29/Laptop_29_laptop_lid_29/Laptop_29_laptop_lid_29_0.obj" inertia="shell" />
+    <mesh name="Laptop_29_laptop_lid_29_1" content_type="model/obj" file="../../objects/thor/Living Room and Bedroom Objects/Laptop_Full/Prefabs/Laptop_29/Laptop_29_laptop_lid_29/Laptop_29_laptop_lid_29_1.obj" />
+    <mesh name="Laptop_29_laptop_lid_29_2" content_type="model/obj" file="../../objects/thor/Living Room and Bedroom Objects/Laptop_Full/Prefabs/Laptop_29/Laptop_29_laptop_lid_29/Laptop_29_laptop_lid_29_2.obj" />
+    <mesh name="Laptop_29_laptop_lid_29_3" content_type="model/obj" file="../../objects/thor/Living Room and Bedroom Objects/Laptop_Full/Prefabs/Laptop_29/Laptop_29_laptop_lid_29/Laptop_29_laptop_lid_29_3.obj" inertia="shell" />
+    <mesh name="Laptop_29_laptop_lid_29_4" content_type="model/obj" file="../../objects/thor/Living Room and Bedroom Objects/Laptop_Full/Prefabs/Laptop_29/Laptop_29_laptop_lid_29/Laptop_29_laptop_lid_29_4.obj" />
+    <mesh name="Laptop_29_laptop_lid_29_5" content_type="model/obj" file="../../objects/thor/Living Room and Bedroom Objects/Laptop_Full/Prefabs/Laptop_29/Laptop_29_laptop_lid_29/Laptop_29_laptop_lid_29_5.obj" />
+    <mesh name="Laptop_29_laptop_29_0" content_type="model/obj" file="../../objects/thor/Living Room and Bedroom Objects/Laptop_Full/Prefabs/Laptop_29/Laptop_29_laptop_29/Laptop_29_laptop_29_0.obj" inertia="shell" />
+    <mesh name="Laptop_29_laptop_29_1" content_type="model/obj" file="../../objects/thor/Living Room and Bedroom Objects/Laptop_Full/Prefabs/Laptop_29/Laptop_29_laptop_29/Laptop_29_laptop_29_1.obj" />
+    <mesh name="Laptop_29_laptop_29_2" content_type="model/obj" file="../../objects/thor/Living Room and Bedroom Objects/Laptop_Full/Prefabs/Laptop_29/Laptop_29_laptop_29/Laptop_29_laptop_29_2.obj" inertia="shell" />
+    <mesh name="Laptop_29_laptop_29_3" content_type="model/obj" file="../../objects/thor/Living Room and Bedroom Objects/Laptop_Full/Prefabs/Laptop_29/Laptop_29_laptop_29/Laptop_29_laptop_29_3.obj" />
+    <mesh name="Laptop_29_laptop_29_4" content_type="model/obj" file="../../objects/thor/Living Room and Bedroom Objects/Laptop_Full/Prefabs/Laptop_29/Laptop_29_laptop_29/Laptop_29_laptop_29_4.obj" />
+    <mesh name="Laptop_29_laptop_29_5" content_type="model/obj" file="../../objects/thor/Living Room and Bedroom Objects/Laptop_Full/Prefabs/Laptop_29/Laptop_29_laptop_29/Laptop_29_laptop_29_5.obj" />
+    <mesh name="pillow_29_pillow_29" content_type="model/obj" file="../../objects/thor/Living Room and Bedroom Objects/Pillow/Prefabs/pillow_29/pillow_29_pillow_29/pillow_29_pillow_29.obj" />
+    <mesh name="pillow_29_pillow_29_collision_0" content_type="model/obj" file="../../objects/thor/Living Room and Bedroom Objects/Pillow/Prefabs/pillow_29/pillow_29_pillow_29/pillow_29_pillow_29/pillow_29_pillow_29_collision_0.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_0" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_0.obj" inertia="shell" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_1" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_1.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_2" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_2.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_3" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_3.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_4" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_4.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_button_29_0" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_button_29/Alarm_Clock_29_alarm_clock_button_29_0.obj" inertia="shell" />
+    <mesh name="Alarm_Clock_29_alarm_clock_button_29_1" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_button_29/Alarm_Clock_29_alarm_clock_button_29_1.obj" inertia="shell" />
+    <mesh name="Alarm_Clock_29_alarm_clock_button_29_2" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_button_29/Alarm_Clock_29_alarm_clock_button_29_2.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_button_29_3" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_button_29/Alarm_Clock_29_alarm_clock_button_29_3.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_button_29_4" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_button_29/Alarm_Clock_29_alarm_clock_button_29_4.obj" inertia="shell" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_0_collision_0" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_0/Alarm_Clock_29_alarm_clock_29_0_collision_0.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_1_collision_0" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_1/Alarm_Clock_29_alarm_clock_29_1_collision_0.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_1_collision_1" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_1/Alarm_Clock_29_alarm_clock_29_1_collision_1.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_2_collision_1" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_2/Alarm_Clock_29_alarm_clock_29_2_collision_1.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_2_collision_0" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_2/Alarm_Clock_29_alarm_clock_29_2_collision_0.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_3_collision_14" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_3/Alarm_Clock_29_alarm_clock_29_3_collision_14.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_3_collision_42" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_3/Alarm_Clock_29_alarm_clock_29_3_collision_42.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_3_collision_46" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_3/Alarm_Clock_29_alarm_clock_29_3_collision_46.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_3_collision_16" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_3/Alarm_Clock_29_alarm_clock_29_3_collision_16.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_3_collision_2" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_3/Alarm_Clock_29_alarm_clock_29_3_collision_2.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_3_collision_19" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_3/Alarm_Clock_29_alarm_clock_29_3_collision_19.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_3_collision_29" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_3/Alarm_Clock_29_alarm_clock_29_3_collision_29.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_3_collision_1" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_3/Alarm_Clock_29_alarm_clock_29_3_collision_1.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_3_collision_21" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_3/Alarm_Clock_29_alarm_clock_29_3_collision_21.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_3_collision_8" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_3/Alarm_Clock_29_alarm_clock_29_3_collision_8.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_3_collision_17" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_3/Alarm_Clock_29_alarm_clock_29_3_collision_17.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_3_collision_12" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_3/Alarm_Clock_29_alarm_clock_29_3_collision_12.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_3_collision_35" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_3/Alarm_Clock_29_alarm_clock_29_3_collision_35.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_3_collision_36" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_3/Alarm_Clock_29_alarm_clock_29_3_collision_36.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_3_collision_23" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_3/Alarm_Clock_29_alarm_clock_29_3_collision_23.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_3_collision_24" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_3/Alarm_Clock_29_alarm_clock_29_3_collision_24.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_3_collision_6" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_3/Alarm_Clock_29_alarm_clock_29_3_collision_6.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_3_collision_37" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_3/Alarm_Clock_29_alarm_clock_29_3_collision_37.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_3_collision_11" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_3/Alarm_Clock_29_alarm_clock_29_3_collision_11.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_3_collision_30" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_3/Alarm_Clock_29_alarm_clock_29_3_collision_30.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_3_collision_34" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_3/Alarm_Clock_29_alarm_clock_29_3_collision_34.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_3_collision_10" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_3/Alarm_Clock_29_alarm_clock_29_3_collision_10.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_3_collision_47" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_3/Alarm_Clock_29_alarm_clock_29_3_collision_47.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_3_collision_18" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_3/Alarm_Clock_29_alarm_clock_29_3_collision_18.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_3_collision_33" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_3/Alarm_Clock_29_alarm_clock_29_3_collision_33.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_3_collision_27" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_3/Alarm_Clock_29_alarm_clock_29_3_collision_27.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_3_collision_49" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_3/Alarm_Clock_29_alarm_clock_29_3_collision_49.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_3_collision_38" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_3/Alarm_Clock_29_alarm_clock_29_3_collision_38.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_3_collision_45" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_3/Alarm_Clock_29_alarm_clock_29_3_collision_45.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_3_collision_26" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_3/Alarm_Clock_29_alarm_clock_29_3_collision_26.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_3_collision_13" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_3/Alarm_Clock_29_alarm_clock_29_3_collision_13.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_3_collision_7" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_3/Alarm_Clock_29_alarm_clock_29_3_collision_7.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_3_collision_31" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_3/Alarm_Clock_29_alarm_clock_29_3_collision_31.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_3_collision_39" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_3/Alarm_Clock_29_alarm_clock_29_3_collision_39.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_3_collision_40" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_3/Alarm_Clock_29_alarm_clock_29_3_collision_40.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_3_collision_41" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_3/Alarm_Clock_29_alarm_clock_29_3_collision_41.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_3_collision_3" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_3/Alarm_Clock_29_alarm_clock_29_3_collision_3.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_3_collision_0" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_3/Alarm_Clock_29_alarm_clock_29_3_collision_0.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_3_collision_15" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_3/Alarm_Clock_29_alarm_clock_29_3_collision_15.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_3_collision_32" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_3/Alarm_Clock_29_alarm_clock_29_3_collision_32.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_3_collision_4" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_3/Alarm_Clock_29_alarm_clock_29_3_collision_4.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_3_collision_44" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_3/Alarm_Clock_29_alarm_clock_29_3_collision_44.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_3_collision_28" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_3/Alarm_Clock_29_alarm_clock_29_3_collision_28.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_3_collision_48" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_3/Alarm_Clock_29_alarm_clock_29_3_collision_48.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_3_collision_9" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_3/Alarm_Clock_29_alarm_clock_29_3_collision_9.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_3_collision_25" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_3/Alarm_Clock_29_alarm_clock_29_3_collision_25.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_3_collision_43" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_3/Alarm_Clock_29_alarm_clock_29_3_collision_43.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_3_collision_22" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_3/Alarm_Clock_29_alarm_clock_29_3_collision_22.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_3_collision_20" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_3/Alarm_Clock_29_alarm_clock_29_3_collision_20.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_3_collision_5" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_3/Alarm_Clock_29_alarm_clock_29_3_collision_5.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_4_collision_7" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_4/Alarm_Clock_29_alarm_clock_29_4_collision_7.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_4_collision_36" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_4/Alarm_Clock_29_alarm_clock_29_4_collision_36.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_4_collision_17" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_4/Alarm_Clock_29_alarm_clock_29_4_collision_17.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_4_collision_22" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_4/Alarm_Clock_29_alarm_clock_29_4_collision_22.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_4_collision_2" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_4/Alarm_Clock_29_alarm_clock_29_4_collision_2.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_4_collision_14" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_4/Alarm_Clock_29_alarm_clock_29_4_collision_14.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_4_collision_23" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_4/Alarm_Clock_29_alarm_clock_29_4_collision_23.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_4_collision_40" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_4/Alarm_Clock_29_alarm_clock_29_4_collision_40.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_4_collision_24" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_4/Alarm_Clock_29_alarm_clock_29_4_collision_24.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_4_collision_20" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_4/Alarm_Clock_29_alarm_clock_29_4_collision_20.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_4_collision_19" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_4/Alarm_Clock_29_alarm_clock_29_4_collision_19.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_4_collision_37" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_4/Alarm_Clock_29_alarm_clock_29_4_collision_37.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_4_collision_42" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_4/Alarm_Clock_29_alarm_clock_29_4_collision_42.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_4_collision_35" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_4/Alarm_Clock_29_alarm_clock_29_4_collision_35.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_4_collision_6" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_4/Alarm_Clock_29_alarm_clock_29_4_collision_6.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_4_collision_49" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_4/Alarm_Clock_29_alarm_clock_29_4_collision_49.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_4_collision_39" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_4/Alarm_Clock_29_alarm_clock_29_4_collision_39.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_4_collision_12" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_4/Alarm_Clock_29_alarm_clock_29_4_collision_12.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_4_collision_10" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_4/Alarm_Clock_29_alarm_clock_29_4_collision_10.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_4_collision_25" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_4/Alarm_Clock_29_alarm_clock_29_4_collision_25.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_4_collision_26" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_4/Alarm_Clock_29_alarm_clock_29_4_collision_26.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_4_collision_1" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_4/Alarm_Clock_29_alarm_clock_29_4_collision_1.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_4_collision_11" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_4/Alarm_Clock_29_alarm_clock_29_4_collision_11.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_4_collision_3" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_4/Alarm_Clock_29_alarm_clock_29_4_collision_3.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_4_collision_27" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_4/Alarm_Clock_29_alarm_clock_29_4_collision_27.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_4_collision_18" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_4/Alarm_Clock_29_alarm_clock_29_4_collision_18.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_4_collision_4" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_4/Alarm_Clock_29_alarm_clock_29_4_collision_4.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_4_collision_46" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_4/Alarm_Clock_29_alarm_clock_29_4_collision_46.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_4_collision_48" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_4/Alarm_Clock_29_alarm_clock_29_4_collision_48.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_4_collision_21" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_4/Alarm_Clock_29_alarm_clock_29_4_collision_21.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_4_collision_33" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_4/Alarm_Clock_29_alarm_clock_29_4_collision_33.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_4_collision_30" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_4/Alarm_Clock_29_alarm_clock_29_4_collision_30.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_4_collision_28" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_4/Alarm_Clock_29_alarm_clock_29_4_collision_28.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_4_collision_5" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_4/Alarm_Clock_29_alarm_clock_29_4_collision_5.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_4_collision_29" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_4/Alarm_Clock_29_alarm_clock_29_4_collision_29.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_4_collision_45" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_4/Alarm_Clock_29_alarm_clock_29_4_collision_45.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_4_collision_43" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_4/Alarm_Clock_29_alarm_clock_29_4_collision_43.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_4_collision_41" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_4/Alarm_Clock_29_alarm_clock_29_4_collision_41.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_4_collision_47" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_4/Alarm_Clock_29_alarm_clock_29_4_collision_47.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_4_collision_31" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_4/Alarm_Clock_29_alarm_clock_29_4_collision_31.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_4_collision_38" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_4/Alarm_Clock_29_alarm_clock_29_4_collision_38.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_4_collision_9" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_4/Alarm_Clock_29_alarm_clock_29_4_collision_9.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_4_collision_34" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_4/Alarm_Clock_29_alarm_clock_29_4_collision_34.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_4_collision_13" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_4/Alarm_Clock_29_alarm_clock_29_4_collision_13.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_4_collision_44" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_4/Alarm_Clock_29_alarm_clock_29_4_collision_44.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_4_collision_8" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_4/Alarm_Clock_29_alarm_clock_29_4_collision_8.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_4_collision_15" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_4/Alarm_Clock_29_alarm_clock_29_4_collision_15.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_4_collision_32" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_4/Alarm_Clock_29_alarm_clock_29_4_collision_32.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_4_collision_0" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_4/Alarm_Clock_29_alarm_clock_29_4_collision_0.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_29_4_collision_16" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_29/Alarm_Clock_29_alarm_clock_29_4/Alarm_Clock_29_alarm_clock_29_4_collision_16.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_button_29_0_collision_0" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_button_29/Alarm_Clock_29_alarm_clock_button_29_0/Alarm_Clock_29_alarm_clock_button_29_0_collision_0.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_button_29_1_collision_0" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_button_29/Alarm_Clock_29_alarm_clock_button_29_1/Alarm_Clock_29_alarm_clock_button_29_1_collision_0.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_button_29_2_collision_0" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_button_29/Alarm_Clock_29_alarm_clock_button_29_2/Alarm_Clock_29_alarm_clock_button_29_2_collision_0.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_button_29_2_collision_1" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_button_29/Alarm_Clock_29_alarm_clock_button_29_2/Alarm_Clock_29_alarm_clock_button_29_2_collision_1.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_button_29_3_collision_15" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_button_29/Alarm_Clock_29_alarm_clock_button_29_3/Alarm_Clock_29_alarm_clock_button_29_3_collision_15.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_button_29_3_collision_14" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_button_29/Alarm_Clock_29_alarm_clock_button_29_3/Alarm_Clock_29_alarm_clock_button_29_3_collision_14.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_button_29_3_collision_10" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_button_29/Alarm_Clock_29_alarm_clock_button_29_3/Alarm_Clock_29_alarm_clock_button_29_3_collision_10.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_button_29_3_collision_6" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_button_29/Alarm_Clock_29_alarm_clock_button_29_3/Alarm_Clock_29_alarm_clock_button_29_3_collision_6.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_button_29_3_collision_7" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_button_29/Alarm_Clock_29_alarm_clock_button_29_3/Alarm_Clock_29_alarm_clock_button_29_3_collision_7.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_button_29_3_collision_0" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_button_29/Alarm_Clock_29_alarm_clock_button_29_3/Alarm_Clock_29_alarm_clock_button_29_3_collision_0.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_button_29_3_collision_5" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_button_29/Alarm_Clock_29_alarm_clock_button_29_3/Alarm_Clock_29_alarm_clock_button_29_3_collision_5.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_button_29_3_collision_12" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_button_29/Alarm_Clock_29_alarm_clock_button_29_3/Alarm_Clock_29_alarm_clock_button_29_3_collision_12.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_button_29_3_collision_1" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_button_29/Alarm_Clock_29_alarm_clock_button_29_3/Alarm_Clock_29_alarm_clock_button_29_3_collision_1.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_button_29_3_collision_2" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_button_29/Alarm_Clock_29_alarm_clock_button_29_3/Alarm_Clock_29_alarm_clock_button_29_3_collision_2.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_button_29_3_collision_9" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_button_29/Alarm_Clock_29_alarm_clock_button_29_3/Alarm_Clock_29_alarm_clock_button_29_3_collision_9.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_button_29_3_collision_8" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_button_29/Alarm_Clock_29_alarm_clock_button_29_3/Alarm_Clock_29_alarm_clock_button_29_3_collision_8.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_button_29_3_collision_11" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_button_29/Alarm_Clock_29_alarm_clock_button_29_3/Alarm_Clock_29_alarm_clock_button_29_3_collision_11.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_button_29_3_collision_13" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_button_29/Alarm_Clock_29_alarm_clock_button_29_3/Alarm_Clock_29_alarm_clock_button_29_3_collision_13.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_button_29_3_collision_4" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_button_29/Alarm_Clock_29_alarm_clock_button_29_3/Alarm_Clock_29_alarm_clock_button_29_3_collision_4.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_button_29_3_collision_16" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_button_29/Alarm_Clock_29_alarm_clock_button_29_3/Alarm_Clock_29_alarm_clock_button_29_3_collision_16.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_button_29_3_collision_3" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_button_29/Alarm_Clock_29_alarm_clock_button_29_3/Alarm_Clock_29_alarm_clock_button_29_3_collision_3.obj" />
+    <mesh name="Alarm_Clock_29_alarm_clock_button_29_4_collision_0" content_type="model/obj" file="../../objects/thor/Bedroom Objects/AlarmClock/Prefabs/Alarm_Clock_29/Alarm_Clock_29_alarm_clock_button_29/Alarm_Clock_29_alarm_clock_button_29_4/Alarm_Clock_29_alarm_clock_button_29_4_collision_0.obj" />
+    <mesh name="Bed_29_bed_29_0" content_type="model/obj" file="../../objects/thor/Bedroom Objects/Bed/Prefabs/Bed_29/Bed_29_bed_29/Bed_29_bed_29_0.obj" />
+    <mesh name="Bed_29_bed_29_1" content_type="model/obj" file="../../objects/thor/Bedroom Objects/Bed/Prefabs/Bed_29/Bed_29_bed_29/Bed_29_bed_29_1.obj" />
+    <mesh name="Bed_29_bedsheet_unmade_8" content_type="model/obj" file="../../objects/thor/Bedroom Objects/Bed/Prefabs/Bed_29/Bed_29_bedsheet_unmade_8/Bed_29_bedsheet_unmade_8.obj" scale="0.79298 0.76887 0.774147" />
+    <mesh name="Bed_29_bed_mattress_29" content_type="model/obj" file="../../objects/thor/Bedroom Objects/Bed/Prefabs/Bed_29/Bed_29_bed_mattress_29/Bed_29_bed_mattress_29.obj" />
+    <mesh name="Bed_29_bedsheet_unmade_10" content_type="model/obj" file="../../objects/thor/Bedroom Objects/Bed/Prefabs/Bed_29/Bed_29_bedsheet_unmade_10/Bed_29_bedsheet_unmade_10.obj" scale="0.736949 0.647754 0.620567" />
+    <mesh name="Light_Switch_29_light_switch_27_0" content_type="model/obj" file="../../objects/thor/Bathroom Objects/LightSwitch/Prefabs/Light_Switch_29/Light_Switch_29_light_switch_27/Light_Switch_29_light_switch_27_0.obj" inertia="shell" />
+    <mesh name="Light_Switch_29_light_switch_27_1" content_type="model/obj" file="../../objects/thor/Bathroom Objects/LightSwitch/Prefabs/Light_Switch_29/Light_Switch_29_light_switch_27/Light_Switch_29_light_switch_27_1.obj" inertia="shell" />
+    <mesh name="Light_Switch_29_light_switch_27_2" content_type="model/obj" file="../../objects/thor/Bathroom Objects/LightSwitch/Prefabs/Light_Switch_29/Light_Switch_29_light_switch_27/Light_Switch_29_light_switch_27_2.obj" />
+    <mesh name="Light_Switch_29_light_switch_dial_a_27_0" content_type="model/obj" file="../../objects/thor/Bathroom Objects/LightSwitch/Prefabs/Light_Switch_29/Light_Switch_29_light_switch_dial_a_27/Light_Switch_29_light_switch_dial_a_27_0.obj" inertia="shell" />
+    <mesh name="Light_Switch_29_light_switch_dial_a_27_1" content_type="model/obj" file="../../objects/thor/Bathroom Objects/LightSwitch/Prefabs/Light_Switch_29/Light_Switch_29_light_switch_dial_a_27/Light_Switch_29_light_switch_dial_a_27_1.obj" />
+    <mesh name="Light_Switch_29_light_switch_dial_a_27_2" content_type="model/obj" file="../../objects/thor/Bathroom Objects/LightSwitch/Prefabs/Light_Switch_29/Light_Switch_29_light_switch_dial_a_27/Light_Switch_29_light_switch_dial_a_27_2.obj" inertia="shell" />
+    <mesh name="Light_Switch_29_light_switch_dial_d_27_0" content_type="model/obj" file="../../objects/thor/Bathroom Objects/LightSwitch/Prefabs/Light_Switch_29/Light_Switch_29_light_switch_dial_d_27/Light_Switch_29_light_switch_dial_d_27_0.obj" inertia="shell" />
+    <mesh name="Light_Switch_29_light_switch_dial_d_27_1" content_type="model/obj" file="../../objects/thor/Bathroom Objects/LightSwitch/Prefabs/Light_Switch_29/Light_Switch_29_light_switch_dial_d_27/Light_Switch_29_light_switch_dial_d_27_1.obj" />
+    <mesh name="Light_Switch_29_light_switch_dial_d_27_2" content_type="model/obj" file="../../objects/thor/Bathroom Objects/LightSwitch/Prefabs/Light_Switch_29/Light_Switch_29_light_switch_dial_d_27/Light_Switch_29_light_switch_dial_d_27_2.obj" inertia="shell" />
+    <mesh name="Light_Switch_29_light_switch_dial_b_27_0" content_type="model/obj" file="../../objects/thor/Bathroom Objects/LightSwitch/Prefabs/Light_Switch_29/Light_Switch_29_light_switch_dial_b_27/Light_Switch_29_light_switch_dial_b_27_0.obj" inertia="shell" />
+    <mesh name="Light_Switch_29_light_switch_dial_b_27_1" content_type="model/obj" file="../../objects/thor/Bathroom Objects/LightSwitch/Prefabs/Light_Switch_29/Light_Switch_29_light_switch_dial_b_27/Light_Switch_29_light_switch_dial_b_27_1.obj" />
+    <mesh name="Light_Switch_29_light_switch_dial_b_27_2" content_type="model/obj" file="../../objects/thor/Bathroom Objects/LightSwitch/Prefabs/Light_Switch_29/Light_Switch_29_light_switch_dial_b_27/Light_Switch_29_light_switch_dial_b_27_2.obj" inertia="shell" />
+    <mesh name="Light_Switch_29_light_switch_dial_c_27_0" content_type="model/obj" file="../../objects/thor/Bathroom Objects/LightSwitch/Prefabs/Light_Switch_29/Light_Switch_29_light_switch_dial_c_27/Light_Switch_29_light_switch_dial_c_27_0.obj" inertia="shell" />
+    <mesh name="Light_Switch_29_light_switch_dial_c_27_1" content_type="model/obj" file="../../objects/thor/Bathroom Objects/LightSwitch/Prefabs/Light_Switch_29/Light_Switch_29_light_switch_dial_c_27/Light_Switch_29_light_switch_dial_c_27_1.obj" />
+    <mesh name="Light_Switch_29_light_switch_dial_c_27_2" content_type="model/obj" file="../../objects/thor/Bathroom Objects/LightSwitch/Prefabs/Light_Switch_29/Light_Switch_29_light_switch_dial_c_27/Light_Switch_29_light_switch_dial_c_27_2.obj" inertia="shell" />
+    <mesh name="bin_29_bin_29_0" content_type="model/obj" file="../../objects/thor/Kitchen Objects/GarbageCan/Prefabs/bin_29/bin_29_bin_29/bin_29_bin_29_0.obj" inertia="shell" />
+    <mesh name="bin_29_bin_29_1" content_type="model/obj" file="../../objects/thor/Kitchen Objects/GarbageCan/Prefabs/bin_29/bin_29_bin_29/bin_29_bin_29_1.obj" />
+    <mesh name="bin_29_bin_29_2" content_type="model/obj" file="../../objects/thor/Kitchen Objects/GarbageCan/Prefabs/bin_29/bin_29_bin_29/bin_29_bin_29_2.obj" />
+    <mesh name="Desk_Lamp_11_FP224_Cylinder.164_0" content_type="model/obj" file="../../objects/thor/Bedroom Objects/DeskLamp/Prefabs/Desk_Lamp_11/Desk_Lamp_11_FP224_Cylinder.164/Desk_Lamp_11_FP224_Cylinder.164_0.obj" />
+    <mesh name="Desk_Lamp_11_FP224_Cylinder.164_1" content_type="model/obj" file="../../objects/thor/Bedroom Objects/DeskLamp/Prefabs/Desk_Lamp_11/Desk_Lamp_11_FP224_Cylinder.164/Desk_Lamp_11_FP224_Cylinder.164_1.obj" />
+    <mesh name="Desk_Lamp_11_FP224_Cylinder.164_2" content_type="model/obj" file="../../objects/thor/Bedroom Objects/DeskLamp/Prefabs/Desk_Lamp_11/Desk_Lamp_11_FP224_Cylinder.164/Desk_Lamp_11_FP224_Cylinder.164_2.obj" />
+    <mesh name="BaseballBat_1_Cylinder.222" content_type="model/obj" file="../../objects/thor/Bedroom Objects/BaseballBat/Prefabs/BaseballBat_1/BaseballBat_1_Cylinder.222/BaseballBat_1_Cylinder.222.obj" scale="100 100 100" />
+    <mesh name="BaseballBat_1_Cylinder.222_collision_0" content_type="model/obj" file="../../objects/thor/Bedroom Objects/BaseballBat/Prefabs/BaseballBat_1/BaseballBat_1_Cylinder.222/BaseballBat_1_Cylinder.222/BaseballBat_1_Cylinder.222_collision_0.obj" scale="100 100 100" />
+    <mesh name="Mug_3_mug_3_0" content_type="model/obj" file="../../objects/thor/Kitchen Objects/Mug/Prefabs/Mug_3/Mug_3_mug_3/Mug_3_mug_3_0.obj" />
+    <mesh name="Mug_3_mug_3_1" content_type="model/obj" file="../../objects/thor/Kitchen Objects/Mug/Prefabs/Mug_3/Mug_3_mug_3/Mug_3_mug_3_1.obj" />
+    <mesh name="Mug_3_mug_3_0_collision_10" content_type="model/obj" file="../../objects/thor/Kitchen Objects/Mug/Prefabs/Mug_3/Mug_3_mug_3/Mug_3_mug_3_0/Mug_3_mug_3_0_collision_10.obj" />
+    <mesh name="Mug_3_mug_3_0_collision_14" content_type="model/obj" file="../../objects/thor/Kitchen Objects/Mug/Prefabs/Mug_3/Mug_3_mug_3/Mug_3_mug_3_0/Mug_3_mug_3_0_collision_14.obj" />
+    <mesh name="Mug_3_mug_3_0_collision_1" content_type="model/obj" file="../../objects/thor/Kitchen Objects/Mug/Prefabs/Mug_3/Mug_3_mug_3/Mug_3_mug_3_0/Mug_3_mug_3_0_collision_1.obj" />
+    <mesh name="Mug_3_mug_3_0_collision_15" content_type="model/obj" file="../../objects/thor/Kitchen Objects/Mug/Prefabs/Mug_3/Mug_3_mug_3/Mug_3_mug_3_0/Mug_3_mug_3_0_collision_15.obj" />
+    <mesh name="Mug_3_mug_3_0_collision_11" content_type="model/obj" file="../../objects/thor/Kitchen Objects/Mug/Prefabs/Mug_3/Mug_3_mug_3/Mug_3_mug_3_0/Mug_3_mug_3_0_collision_11.obj" />
+    <mesh name="Mug_3_mug_3_0_collision_20" content_type="model/obj" file="../../objects/thor/Kitchen Objects/Mug/Prefabs/Mug_3/Mug_3_mug_3/Mug_3_mug_3_0/Mug_3_mug_3_0_collision_20.obj" />
+    <mesh name="Mug_3_mug_3_0_collision_19" content_type="model/obj" file="../../objects/thor/Kitchen Objects/Mug/Prefabs/Mug_3/Mug_3_mug_3/Mug_3_mug_3_0/Mug_3_mug_3_0_collision_19.obj" />
+    <mesh name="Mug_3_mug_3_0_collision_7" content_type="model/obj" file="../../objects/thor/Kitchen Objects/Mug/Prefabs/Mug_3/Mug_3_mug_3/Mug_3_mug_3_0/Mug_3_mug_3_0_collision_7.obj" />
+    <mesh name="Mug_3_mug_3_0_collision_12" content_type="model/obj" file="../../objects/thor/Kitchen Objects/Mug/Prefabs/Mug_3/Mug_3_mug_3/Mug_3_mug_3_0/Mug_3_mug_3_0_collision_12.obj" />
+    <mesh name="Mug_3_mug_3_0_collision_6" content_type="model/obj" file="../../objects/thor/Kitchen Objects/Mug/Prefabs/Mug_3/Mug_3_mug_3/Mug_3_mug_3_0/Mug_3_mug_3_0_collision_6.obj" />
+    <mesh name="Mug_3_mug_3_0_collision_23" content_type="model/obj" file="../../objects/thor/Kitchen Objects/Mug/Prefabs/Mug_3/Mug_3_mug_3/Mug_3_mug_3_0/Mug_3_mug_3_0_collision_23.obj" />
+    <mesh name="Mug_3_mug_3_0_collision_5" content_type="model/obj" file="../../objects/thor/Kitchen Objects/Mug/Prefabs/Mug_3/Mug_3_mug_3/Mug_3_mug_3_0/Mug_3_mug_3_0_collision_5.obj" />
+    <mesh name="Mug_3_mug_3_0_collision_3" content_type="model/obj" file="../../objects/thor/Kitchen Objects/Mug/Prefabs/Mug_3/Mug_3_mug_3/Mug_3_mug_3_0/Mug_3_mug_3_0_collision_3.obj" />
+    <mesh name="Mug_3_mug_3_0_collision_8" content_type="model/obj" file="../../objects/thor/Kitchen Objects/Mug/Prefabs/Mug_3/Mug_3_mug_3/Mug_3_mug_3_0/Mug_3_mug_3_0_collision_8.obj" />
+    <mesh name="Mug_3_mug_3_0_collision_9" content_type="model/obj" file="../../objects/thor/Kitchen Objects/Mug/Prefabs/Mug_3/Mug_3_mug_3/Mug_3_mug_3_0/Mug_3_mug_3_0_collision_9.obj" />
+    <mesh name="Mug_3_mug_3_0_collision_21" content_type="model/obj" file="../../objects/thor/Kitchen Objects/Mug/Prefabs/Mug_3/Mug_3_mug_3/Mug_3_mug_3_0/Mug_3_mug_3_0_collision_21.obj" />
+    <mesh name="Mug_3_mug_3_0_collision_16" content_type="model/obj" file="../../objects/thor/Kitchen Objects/Mug/Prefabs/Mug_3/Mug_3_mug_3/Mug_3_mug_3_0/Mug_3_mug_3_0_collision_16.obj" />
+    <mesh name="Mug_3_mug_3_0_collision_18" content_type="model/obj" file="../../objects/thor/Kitchen Objects/Mug/Prefabs/Mug_3/Mug_3_mug_3/Mug_3_mug_3_0/Mug_3_mug_3_0_collision_18.obj" />
+    <mesh name="Mug_3_mug_3_0_collision_13" content_type="model/obj" file="../../objects/thor/Kitchen Objects/Mug/Prefabs/Mug_3/Mug_3_mug_3/Mug_3_mug_3_0/Mug_3_mug_3_0_collision_13.obj" />
+    <mesh name="Mug_3_mug_3_0_collision_22" content_type="model/obj" file="../../objects/thor/Kitchen Objects/Mug/Prefabs/Mug_3/Mug_3_mug_3/Mug_3_mug_3_0/Mug_3_mug_3_0_collision_22.obj" />
+    <mesh name="Mug_3_mug_3_0_collision_0" content_type="model/obj" file="../../objects/thor/Kitchen Objects/Mug/Prefabs/Mug_3/Mug_3_mug_3/Mug_3_mug_3_0/Mug_3_mug_3_0_collision_0.obj" />
+    <mesh name="Mug_3_mug_3_0_collision_2" content_type="model/obj" file="../../objects/thor/Kitchen Objects/Mug/Prefabs/Mug_3/Mug_3_mug_3/Mug_3_mug_3_0/Mug_3_mug_3_0_collision_2.obj" />
+    <mesh name="Mug_3_mug_3_0_collision_24" content_type="model/obj" file="../../objects/thor/Kitchen Objects/Mug/Prefabs/Mug_3/Mug_3_mug_3/Mug_3_mug_3_0/Mug_3_mug_3_0_collision_24.obj" />
+    <mesh name="Mug_3_mug_3_0_collision_4" content_type="model/obj" file="../../objects/thor/Kitchen Objects/Mug/Prefabs/Mug_3/Mug_3_mug_3/Mug_3_mug_3_0/Mug_3_mug_3_0_collision_4.obj" />
+    <mesh name="Mug_3_mug_3_0_collision_17" content_type="model/obj" file="../../objects/thor/Kitchen Objects/Mug/Prefabs/Mug_3/Mug_3_mug_3/Mug_3_mug_3_0/Mug_3_mug_3_0_collision_17.obj" />
+    <mesh name="Mug_3_mug_3_1_collision_22" content_type="model/obj" file="../../objects/thor/Kitchen Objects/Mug/Prefabs/Mug_3/Mug_3_mug_3/Mug_3_mug_3_1/Mug_3_mug_3_1_collision_22.obj" />
+    <mesh name="Mug_3_mug_3_1_collision_4" content_type="model/obj" file="../../objects/thor/Kitchen Objects/Mug/Prefabs/Mug_3/Mug_3_mug_3/Mug_3_mug_3_1/Mug_3_mug_3_1_collision_4.obj" />
+    <mesh name="Mug_3_mug_3_1_collision_21" content_type="model/obj" file="../../objects/thor/Kitchen Objects/Mug/Prefabs/Mug_3/Mug_3_mug_3/Mug_3_mug_3_1/Mug_3_mug_3_1_collision_21.obj" />
+    <mesh name="Mug_3_mug_3_1_collision_18" content_type="model/obj" file="../../objects/thor/Kitchen Objects/Mug/Prefabs/Mug_3/Mug_3_mug_3/Mug_3_mug_3_1/Mug_3_mug_3_1_collision_18.obj" />
+    <mesh name="Mug_3_mug_3_1_collision_6" content_type="model/obj" file="../../objects/thor/Kitchen Objects/Mug/Prefabs/Mug_3/Mug_3_mug_3/Mug_3_mug_3_1/Mug_3_mug_3_1_collision_6.obj" />
+    <mesh name="Mug_3_mug_3_1_collision_5" content_type="model/obj" file="../../objects/thor/Kitchen Objects/Mug/Prefabs/Mug_3/Mug_3_mug_3/Mug_3_mug_3_1/Mug_3_mug_3_1_collision_5.obj" />
+    <mesh name="Mug_3_mug_3_1_collision_9" content_type="model/obj" file="../../objects/thor/Kitchen Objects/Mug/Prefabs/Mug_3/Mug_3_mug_3/Mug_3_mug_3_1/Mug_3_mug_3_1_collision_9.obj" />
+    <mesh name="Mug_3_mug_3_1_collision_16" content_type="model/obj" file="../../objects/thor/Kitchen Objects/Mug/Prefabs/Mug_3/Mug_3_mug_3/Mug_3_mug_3_1/Mug_3_mug_3_1_collision_16.obj" />
+    <mesh name="Mug_3_mug_3_1_collision_17" content_type="model/obj" file="../../objects/thor/Kitchen Objects/Mug/Prefabs/Mug_3/Mug_3_mug_3/Mug_3_mug_3_1/Mug_3_mug_3_1_collision_17.obj" />
+    <mesh name="Mug_3_mug_3_1_collision_19" content_type="model/obj" file="../../objects/thor/Kitchen Objects/Mug/Prefabs/Mug_3/Mug_3_mug_3/Mug_3_mug_3_1/Mug_3_mug_3_1_collision_19.obj" />
+    <mesh name="Mug_3_mug_3_1_collision_13" content_type="model/obj" file="../../objects/thor/Kitchen Objects/Mug/Prefabs/Mug_3/Mug_3_mug_3/Mug_3_mug_3_1/Mug_3_mug_3_1_collision_13.obj" />
+    <mesh name="Mug_3_mug_3_1_collision_8" content_type="model/obj" file="../../objects/thor/Kitchen Objects/Mug/Prefabs/Mug_3/Mug_3_mug_3/Mug_3_mug_3_1/Mug_3_mug_3_1_collision_8.obj" />
+    <mesh name="Mug_3_mug_3_1_collision_14" content_type="model/obj" file="../../objects/thor/Kitchen Objects/Mug/Prefabs/Mug_3/Mug_3_mug_3/Mug_3_mug_3_1/Mug_3_mug_3_1_collision_14.obj" />
+    <mesh name="Mug_3_mug_3_1_collision_24" content_type="model/obj" file="../../objects/thor/Kitchen Objects/Mug/Prefabs/Mug_3/Mug_3_mug_3/Mug_3_mug_3_1/Mug_3_mug_3_1_collision_24.obj" />
+    <mesh name="Mug_3_mug_3_1_collision_23" content_type="model/obj" file="../../objects/thor/Kitchen Objects/Mug/Prefabs/Mug_3/Mug_3_mug_3/Mug_3_mug_3_1/Mug_3_mug_3_1_collision_23.obj" />
+    <mesh name="Mug_3_mug_3_1_collision_12" content_type="model/obj" file="../../objects/thor/Kitchen Objects/Mug/Prefabs/Mug_3/Mug_3_mug_3/Mug_3_mug_3_1/Mug_3_mug_3_1_collision_12.obj" />
+    <mesh name="Mug_3_mug_3_1_collision_1" content_type="model/obj" file="../../objects/thor/Kitchen Objects/Mug/Prefabs/Mug_3/Mug_3_mug_3/Mug_3_mug_3_1/Mug_3_mug_3_1_collision_1.obj" />
+    <mesh name="Mug_3_mug_3_1_collision_10" content_type="model/obj" file="../../objects/thor/Kitchen Objects/Mug/Prefabs/Mug_3/Mug_3_mug_3/Mug_3_mug_3_1/Mug_3_mug_3_1_collision_10.obj" />
+    <mesh name="Mug_3_mug_3_1_collision_0" content_type="model/obj" file="../../objects/thor/Kitchen Objects/Mug/Prefabs/Mug_3/Mug_3_mug_3/Mug_3_mug_3_1/Mug_3_mug_3_1_collision_0.obj" />
+    <mesh name="Mug_3_mug_3_1_collision_15" content_type="model/obj" file="../../objects/thor/Kitchen Objects/Mug/Prefabs/Mug_3/Mug_3_mug_3/Mug_3_mug_3_1/Mug_3_mug_3_1_collision_15.obj" />
+    <mesh name="Mug_3_mug_3_1_collision_20" content_type="model/obj" file="../../objects/thor/Kitchen Objects/Mug/Prefabs/Mug_3/Mug_3_mug_3/Mug_3_mug_3_1/Mug_3_mug_3_1_collision_20.obj" />
+    <mesh name="Mug_3_mug_3_1_collision_3" content_type="model/obj" file="../../objects/thor/Kitchen Objects/Mug/Prefabs/Mug_3/Mug_3_mug_3/Mug_3_mug_3_1/Mug_3_mug_3_1_collision_3.obj" />
+    <mesh name="Mug_3_mug_3_1_collision_11" content_type="model/obj" file="../../objects/thor/Kitchen Objects/Mug/Prefabs/Mug_3/Mug_3_mug_3/Mug_3_mug_3_1/Mug_3_mug_3_1_collision_11.obj" />
+    <mesh name="Mug_3_mug_3_1_collision_7" content_type="model/obj" file="../../objects/thor/Kitchen Objects/Mug/Prefabs/Mug_3/Mug_3_mug_3/Mug_3_mug_3_1/Mug_3_mug_3_1_collision_7.obj" />
+    <mesh name="Mug_3_mug_3_1_collision_2" content_type="model/obj" file="../../objects/thor/Kitchen Objects/Mug/Prefabs/Mug_3/Mug_3_mug_3/Mug_3_mug_3_1/Mug_3_mug_3_1_collision_2.obj" />
+    <mesh name="Side_Table_329_1_FP329:BedSideTable1" content_type="model/obj" file="../../objects/thor/Common Objects/SideTable/Prefabs/Side_Table_329_1/Side_Table_329_1_FP329BedSideTable1/Side_Table_329_1_FP329BedSideTable1.obj" />
+    <mesh name="Side_Table_329_1_DrawerMesh_00_0" content_type="model/obj" file="../../objects/thor/Common Objects/SideTable/Prefabs/Side_Table_329_1/Side_Table_329_1_DrawerMesh_00/Side_Table_329_1_DrawerMesh_00_0.obj" />
+    <mesh name="Side_Table_329_1_DrawerMesh_00_1" content_type="model/obj" file="../../objects/thor/Common Objects/SideTable/Prefabs/Side_Table_329_1/Side_Table_329_1_DrawerMesh_00/Side_Table_329_1_DrawerMesh_00_1.obj" />
+    <mesh name="Side_Table_329_1_handle_3_178mm_00" content_type="model/obj" file="../../objects/thor/Common Objects/SideTable/Prefabs/Side_Table_329_1/Side_Table_329_1_handle_3_178mm_00/Side_Table_329_1_handle_3_178mm_00.obj" />
+    <mesh name="Side_Table_329_1_DrawerMesh_01_0" content_type="model/obj" file="../../objects/thor/Common Objects/SideTable/Prefabs/Side_Table_329_1/Side_Table_329_1_DrawerMesh_01/Side_Table_329_1_DrawerMesh_01_0.obj" />
+    <mesh name="Side_Table_329_1_DrawerMesh_01_1" content_type="model/obj" file="../../objects/thor/Common Objects/SideTable/Prefabs/Side_Table_329_1/Side_Table_329_1_DrawerMesh_01/Side_Table_329_1_DrawerMesh_01_1.obj" />
+    <mesh name="Side_Table_329_1_handle_3_178mm_01" content_type="model/obj" file="../../objects/thor/Common Objects/SideTable/Prefabs/Side_Table_329_1/Side_Table_329_1_handle_3_178mm_01/Side_Table_329_1_handle_3_178mm_01.obj" />
+    <mesh name="Desk_329_1_FP329:Cube.370_0" content_type="model/obj" file="../../objects/thor/Living Room and Bedroom Objects/Desk/Prefabs/Desk_329_1/Desk_329_1_FP329Cube.370/Desk_329_1_FP329Cube.370_0.obj" />
+    <mesh name="Desk_329_1_FP329:Cube.370_1" content_type="model/obj" file="../../objects/thor/Living Room and Bedroom Objects/Desk/Prefabs/Desk_329_1/Desk_329_1_FP329Cube.370/Desk_329_1_FP329Cube.370_1.obj" />
+    <mesh name="mesh_fcc428b9_mesh_fcc428b9" content_type="model/obj" file="FloorPlan329_physics/Structural/mesh_fcc428b9/mesh_fcc428b9_mesh_fcc428b9/mesh_fcc428b9_mesh_fcc428b9.obj" />
+    <mesh name="FP329:StandardWindow3_8ac24448_FP329:StandardWindow3__8ac24448" content_type="model/obj" file="FloorPlan329_physics/Structural/FP329:StandardWindow3_8ac24448/FP329:StandardWindow3_8ac24448_FP329:StandardWindow3__8ac24448/FP329:StandardWindow3_8ac24448_FP329:StandardWindow3__8ac24448.obj" />
+    <mesh name="FP329:StandardWindow3_8ac24448_FP329:WindowPane2_9285ce51" content_type="model/obj" file="FloorPlan329_physics/Structural/FP329:StandardWindow3_8ac24448/FP329:StandardWindow3_8ac24448_FP329:WindowPane2_9285ce51/FP329:StandardWindow3_8ac24448_FP329:WindowPane2_9285ce51.obj" />
+    <mesh name="FP329:Base25_a9c7f018_FP329:Base25_a9c7f018_0" content_type="model/obj" file="FloorPlan329_physics/Structural/FP329:Base25_a9c7f018/FP329:Base25_a9c7f018_FP329:Base25_a9c7f018/FP329:Base25_a9c7f018_FP329:Base25_a9c7f018_0.obj" inertia="shell" />
+    <mesh name="FP329:Base25_a9c7f018_FP329:Base25_a9c7f018_1" content_type="model/obj" file="FloorPlan329_physics/Structural/FP329:Base25_a9c7f018/FP329:Base25_a9c7f018_FP329:Base25_a9c7f018/FP329:Base25_a9c7f018_FP329:Base25_a9c7f018_1.obj" />
+    <mesh name="FP329:StandardWindow3_e412094c_FP329:WindowPane1_eeb1c0e9" content_type="model/obj" file="FloorPlan329_physics/Structural/FP329:StandardWindow3_e412094c/FP329:StandardWindow3_e412094c_FP329:WindowPane1_eeb1c0e9/FP329:StandardWindow3_e412094c_FP329:WindowPane1_eeb1c0e9.obj" />
+    <mesh name="FP329:StandardWindow3_e412094c_FP329:StandardWindow3_e412094c" content_type="model/obj" file="FloorPlan329_physics/Structural/FP329:StandardWindow3_e412094c/FP329:StandardWindow3_e412094c_FP329:StandardWindow3_e412094c/FP329:StandardWindow3_e412094c_FP329:StandardWindow3_e412094c.obj" />
+    <mesh name="DeferredDecalSpawnPlane_f47bceae_DeferredDecalSpawnPlane_f47bceae" content_type="model/obj" file="FloorPlan329_physics/Structural/DeferredDecalSpawnPlane_f47bceae/DeferredDecalSpawnPlane_f47bceae_DeferredDecalSpawnPlane_f47bceae/DeferredDecalSpawnPlane_f47bceae_DeferredDecalSpawnPlane_f47bceae.obj" inertia="shell" />
+    <mesh name="FP329:Base21_18af2fc7_FP329:Base21_18af2fc7_0" content_type="model/obj" file="FloorPlan329_physics/Structural/FP329:Base21_18af2fc7/FP329:Base21_18af2fc7_FP329:Base21_18af2fc7/FP329:Base21_18af2fc7_FP329:Base21_18af2fc7_0.obj" inertia="shell" />
+    <mesh name="FP329:Base21_18af2fc7_FP329:Base21_18af2fc7_1" content_type="model/obj" file="FloorPlan329_physics/Structural/FP329:Base21_18af2fc7/FP329:Base21_18af2fc7_FP329:Base21_18af2fc7/FP329:Base21_18af2fc7_FP329:Base21_18af2fc7_1.obj" />
+    <mesh name="BlindFrameMesh_14f0a846_BlindFrameMesh_14f0a846" content_type="model/obj" file="FloorPlan329_physics/Structural/BlindFrameMesh_14f0a846/BlindFrameMesh_14f0a846_BlindFrameMesh_14f0a846/BlindFrameMesh_14f0a846_BlindFrameMesh_14f0a846.obj" />
+    <mesh name="BlindFrameMesh_e59650a1_BlindFrameMesh_e59650a1" content_type="model/obj" file="FloorPlan329_physics/Structural/BlindFrameMesh_e59650a1/BlindFrameMesh_e59650a1_BlindFrameMesh_e59650a1/BlindFrameMesh_e59650a1_BlindFrameMesh_e59650a1.obj" />
+    <mesh name="Blinds_6d1249f9_BlindFrameMesh_e59650a1" content_type="model/obj" file="FloorPlan329_physics/Structural/Blinds_6d1249f9/Blinds_6d1249f9_BlindFrameMesh_e59650a1/Blinds_6d1249f9_BlindFrameMesh_e59650a1.obj" />
+    <mesh name="Blinds_6d1249f9_BlindMesh_544d93f5" content_type="model/obj" file="FloorPlan329_physics/Structural/Blinds_6d1249f9/Blinds_6d1249f9_BlindMesh_544d93f5/Blinds_6d1249f9_BlindMesh_544d93f5.obj" />
+    <mesh name="Blinds_00c9a3b7_BlindFrameMesh_14f0a846" content_type="model/obj" file="FloorPlan329_physics/Structural/Blinds_00c9a3b7/Blinds_00c9a3b7_BlindFrameMesh_14f0a846/Blinds_00c9a3b7_BlindFrameMesh_14f0a846.obj" />
+    <mesh name="Blinds_00c9a3b7_BlindMesh_2dba27c6" content_type="model/obj" file="FloorPlan329_physics/Structural/Blinds_00c9a3b7/Blinds_00c9a3b7_BlindMesh_2dba27c6/Blinds_00c9a3b7_BlindMesh_2dba27c6.obj" />
+    <mesh name="Mirror_6740e921_MirrorReflection_696f4f17" content_type="model/obj" file="FloorPlan329_physics/Structural/Mirror_6740e921/Mirror_6740e921_MirrorReflection_696f4f17/Mirror_6740e921_MirrorReflection_696f4f17.obj" inertia="shell" />
+    <mesh name="Mirror_6740e921_FP329:Base21_18af2fc7_0" content_type="model/obj" file="FloorPlan329_physics/Structural/Mirror_6740e921/Mirror_6740e921_FP329:Base21_18af2fc7/Mirror_6740e921_FP329:Base21_18af2fc7_0.obj" inertia="shell" />
+    <mesh name="Mirror_6740e921_FP329:Base21_18af2fc7_1" content_type="model/obj" file="FloorPlan329_physics/Structural/Mirror_6740e921/Mirror_6740e921_FP329:Base21_18af2fc7/Mirror_6740e921_FP329:Base21_18af2fc7_1.obj" />
+    <mesh name="Mirror_6740e921_DeferredDecalSpawnPlane_f47bceae" content_type="model/obj" file="FloorPlan329_physics/Structural/Mirror_6740e921/Mirror_6740e921_DeferredDecalSpawnPlane_f47bceae/Mirror_6740e921_DeferredDecalSpawnPlane_f47bceae.obj" inertia="shell" />
+    <mesh name="Mirror_6740e921_MirrorDecals_a1e88228" content_type="model/obj" file="FloorPlan329_physics/Structural/Mirror_6740e921/Mirror_6740e921_MirrorDecals_a1e88228/Mirror_6740e921_MirrorDecals_a1e88228.obj" inertia="shell" />
+    <mesh name="Window_879528a7_FP329:WindowPane1_eeb1c0e9" content_type="model/obj" file="FloorPlan329_physics/Structural/Window_879528a7/Window_879528a7_FP329:WindowPane1_eeb1c0e9/Window_879528a7_FP329:WindowPane1_eeb1c0e9.obj" />
+    <mesh name="Window_879528a7_FP329:StandardWindow3_e412094c" content_type="model/obj" file="FloorPlan329_physics/Structural/Window_879528a7/Window_879528a7_FP329:StandardWindow3_e412094c/Window_879528a7_FP329:StandardWindow3_e412094c.obj" />
+    <mesh name="Painting_49f4dad0_FP329:Base25_a9c7f018_0" content_type="model/obj" file="FloorPlan329_physics/Structural/Painting_49f4dad0/Painting_49f4dad0_FP329:Base25_a9c7f018/Painting_49f4dad0_FP329:Base25_a9c7f018_0.obj" inertia="shell" />
+    <mesh name="Painting_49f4dad0_FP329:Base25_a9c7f018_1" content_type="model/obj" file="FloorPlan329_physics/Structural/Painting_49f4dad0/Painting_49f4dad0_FP329:Base25_a9c7f018/Painting_49f4dad0_FP329:Base25_a9c7f018_1.obj" />
+    <mesh name="Window_d0227e97_FP329:StandardWindow3__8ac24448" content_type="model/obj" file="FloorPlan329_physics/Structural/Window_d0227e97/Window_d0227e97_FP329:StandardWindow3__8ac24448/Window_d0227e97_FP329:StandardWindow3__8ac24448.obj" />
+    <mesh name="Window_d0227e97_FP329:WindowPane2_9285ce51" content_type="model/obj" file="FloorPlan329_physics/Structural/Window_d0227e97/Window_d0227e97_FP329:WindowPane2_9285ce51/Window_d0227e97_FP329:WindowPane2_9285ce51.obj" />
+    <mesh name="Floor_0cda6aa5_mesh_fcc428b9" content_type="model/obj" file="FloorPlan329_physics/Structural/Floor_0cda6aa5/Floor_0cda6aa5_mesh_fcc428b9/Floor_0cda6aa5_mesh_fcc428b9.obj" />
+    <mesh name="FP329:LightFixture1_b5f59204_FP329:LightFixture1_b5f59204_0" content_type="model/obj" file="FloorPlan329_physics/Structural/FP329:LightFixture1_b5f59204/FP329:LightFixture1_b5f59204_FP329:LightFixture1_b5f59204/FP329:LightFixture1_b5f59204_FP329:LightFixture1_b5f59204_0.obj" inertia="shell" />
+    <mesh name="FP329:LightFixture1_b5f59204_FP329:LightFixture1_b5f59204_1" content_type="model/obj" file="FloorPlan329_physics/Structural/FP329:LightFixture1_b5f59204/FP329:LightFixture1_b5f59204_FP329:LightFixture1_b5f59204/FP329:LightFixture1_b5f59204_FP329:LightFixture1_b5f59204_1.obj" />
+    <mesh name="FP329:LightFixture1_b5f59204_FP329:LightFixture1_b5f59204_2" content_type="model/obj" file="FloorPlan329_physics/Structural/FP329:LightFixture1_b5f59204/FP329:LightFixture1_b5f59204_FP329:LightFixture1_b5f59204/FP329:LightFixture1_b5f59204_FP329:LightFixture1_b5f59204_2.obj" />
+    <mesh name="FP329:LightFixture1_4e60d6b9_FP329:LightFixture1__4e60d6b9_0" content_type="model/obj" file="FloorPlan329_physics/Structural/FP329:LightFixture1_4e60d6b9/FP329:LightFixture1_4e60d6b9_FP329:LightFixture1__4e60d6b9/FP329:LightFixture1_4e60d6b9_FP329:LightFixture1__4e60d6b9_0.obj" inertia="shell" />
+    <mesh name="FP329:LightFixture1_4e60d6b9_FP329:LightFixture1__4e60d6b9_1" content_type="model/obj" file="FloorPlan329_physics/Structural/FP329:LightFixture1_4e60d6b9/FP329:LightFixture1_4e60d6b9_FP329:LightFixture1__4e60d6b9/FP329:LightFixture1_4e60d6b9_FP329:LightFixture1__4e60d6b9_1.obj" />
+    <mesh name="FP329:LightFixture1_4e60d6b9_FP329:LightFixture1__4e60d6b9_2" content_type="model/obj" file="FloorPlan329_physics/Structural/FP329:LightFixture1_4e60d6b9/FP329:LightFixture1_4e60d6b9_FP329:LightFixture1__4e60d6b9/FP329:LightFixture1_4e60d6b9_FP329:LightFixture1__4e60d6b9_2.obj" />
+    <mesh name="FP329:Ceiling_e8578017_FP329:Ceiling_e8578017" content_type="model/obj" file="FloorPlan329_physics/Structural/FP329:Ceiling_e8578017/FP329:Ceiling_e8578017_FP329:Ceiling_e8578017/FP329:Ceiling_e8578017_FP329:Ceiling_e8578017.obj" />
+    <mesh name="FP329:StandardWallSize_f5149d25_FP329:StandardWallSize_f5149d25_0" content_type="model/obj" file="FloorPlan329_physics/Structural/FP329:StandardWallSize_f5149d25/FP329:StandardWallSize_f5149d25_FP329:StandardWallSize_f5149d25/FP329:StandardWallSize_f5149d25_FP329:StandardWallSize_f5149d25_0.obj" inertia="shell" />
+    <mesh name="FP329:StandardWallSize_f5149d25_FP329:StandardWallSize_f5149d25_1" content_type="model/obj" file="FloorPlan329_physics/Structural/FP329:StandardWallSize_f5149d25/FP329:StandardWallSize_f5149d25_FP329:StandardWallSize_f5149d25/FP329:StandardWallSize_f5149d25_FP329:StandardWallSize_f5149d25_1.obj" />
+    <mesh name="FP329:StandardKnob1_395b51db_FP329:StandardKnob1__395b51db" content_type="model/obj" file="FloorPlan329_physics/Structural/FP329:StandardKnob1_395b51db/FP329:StandardKnob1_395b51db_FP329:StandardKnob1__395b51db/FP329:StandardKnob1_395b51db_FP329:StandardKnob1__395b51db.obj" />
+    <mesh name="FP329:StandardDoorFrame1_d9336239_FP329:StandardDoorFrame1__d9336239" content_type="model/obj" file="FloorPlan329_physics/Structural/FP329:StandardDoorFrame1_d9336239/FP329:StandardDoorFrame1_d9336239_FP329:StandardDoorFrame1__d9336239/FP329:StandardDoorFrame1_d9336239_FP329:StandardDoorFrame1__d9336239.obj" />
+    <mesh name="FP329:StandardDoor1_2b414092_FP329:StandardDoor1__2b414092" content_type="model/obj" file="FloorPlan329_physics/Structural/FP329:StandardDoor1_2b414092/FP329:StandardDoor1_2b414092_FP329:StandardDoor1__2b414092/FP329:StandardDoor1_2b414092_FP329:StandardDoor1__2b414092.obj" />
+    <mesh name="FP329:StandardKnob1_c7d24047_FP329:StandardKnob1__c7d24047" content_type="model/obj" file="FloorPlan329_physics/Structural/FP329:StandardKnob1_c7d24047/FP329:StandardKnob1_c7d24047_FP329:StandardKnob1__c7d24047/FP329:StandardKnob1_c7d24047_FP329:StandardKnob1__c7d24047.obj" />
+    <mesh name="FP329:StandardDoorFrame1_0825f728_FP329:StandardDoorFrame1_0825f728" content_type="model/obj" file="FloorPlan329_physics/Structural/FP329:StandardDoorFrame1_0825f728/FP329:StandardDoorFrame1_0825f728_FP329:StandardDoorFrame1_0825f728/FP329:StandardDoorFrame1_0825f728_FP329:StandardDoorFrame1_0825f728.obj" />
+    <mesh name="FP329:StandardDoor1(1)_6c591f0b_FP329:StandardDoor1_(1)_6c591f0b" content_type="model/obj" file="FloorPlan329_physics/Structural/FP329:StandardDoor1(1)_6c591f0b/FP329:StandardDoor1(1)_6c591f0b_FP329:StandardDoor1_(1)_6c591f0b/FP329:StandardDoor1(1)_6c591f0b_FP329:StandardDoor1_(1)_6c591f0b.obj" />
+  </asset>
+
+  <worldbody>
+    <geom name="floor" class="__STRUCTURAL_MJT__" size="0 0 0.01" type="plane" solimp="0.9 0.95" />
+    <light pos="1 -1 1.5" dir="-0.57735 0.57735 -0.57735" directional="true" diffuse="0.5 0.5 0.5" />
+    <body name="box_993495f45b10f36d15adc52172c4a7ec_1_0_0" pos="2.4489050067759464 -0.04181269392904981 0.14638610178566092" quat="0.007282499181381668 -0.007316002402515437 0.7072252813973322 0.7069128960961057">
+      <joint name="box_993495f45b10f36d15adc52172c4a7ec_1_0_0_jntfree_0" class="/" type="free" limited="false" actuatorfrclimited="false" damping="0.001" frictionloss="0.001" />
+      <body name="box_993495f45b10f36d15adc52172c4a7ec_1_1_0" pos="-0.100163 0.0983503 -0.000882312" quat="0.198591 0 0 0.980082">
+        <joint name="box_993495f45b10f36d15adc52172c4a7ec_1_1_0_box29flapouter1joint0_1" class="/" pos="0 0 0" axis="0 0 1" range="-2.74176 0" damping="0.01" frictionloss="0.01" />
+        <geom name="box_993495f45b10f36d15adc52172c4a7ec_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Cardboard_Mat2" mesh="Box_29_box_29_flap_outer_1" />
+        <geom name="box_993495f45b10f36d15adc52172c4a7ec_1_1_0_collision_1" class="__DYNAMIC_MJT__" size="0.0505794 0.00213645 0.145886" pos="0.0482025 0.000556931 -0.000104956" quat="0 0.999956 0.00941575 0" type="box" rgba="0 1 0 1" />
+      </body>
+      <body name="box_993495f45b10f36d15adc52172c4a7ec_1_2_0" pos="-0.00145 0.0966349 -0.146204" quat="0.250231 -0.968186 0 0">
+        <joint name="box_993495f45b10f36d15adc52172c4a7ec_1_2_0_box29flapinner2joint0_2" class="/" pos="0 0 0" axis="-1 0 0" range="-2.63576 0" damping="0.002" frictionloss="0.002" />
+        <geom name="box_993495f45b10f36d15adc52172c4a7ec_1_2_0_visual_2" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Cardboard_Mat2" mesh="Box_29_box_29_flap_inner_2" />
+        <geom name="box_993495f45b10f36d15adc52172c4a7ec_1_2_0_collision_3" class="__DYNAMIC_MJT__" size="0.0233803 0.00152164 0.0957839" pos="0.00010494 0.000345849 0.0244579" quat="0.70706 0.00812231 -0.707061 -0.00812367" type="box" rgba="0 1 0 1" />
+      </body>
+      <body name="box_993495f45b10f36d15adc52172c4a7ec_1_3_0" pos="0.097276 0.0983503 -0.000882312" quat="0.23696 0 0 -0.971519">
+        <joint name="box_993495f45b10f36d15adc52172c4a7ec_1_3_0_box29flapouter2joint0_3" class="/" pos="0 0 0" axis="0 0 1" range="0 2.66311" damping="0.01" frictionloss="0.01" />
+        <geom name="box_993495f45b10f36d15adc52172c4a7ec_1_3_0_visual_4" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Cardboard_Mat2" mesh="Box_29_box_29_flap_outer_2" />
+        <geom name="box_993495f45b10f36d15adc52172c4a7ec_1_3_0_collision_5" class="__DYNAMIC_MJT__" size="0.0490268 0.00266851 0.145903" pos="-0.0495985 0.000592067 0.000212103" quat="0 -0.00995447 -0.99995 0" type="box" rgba="0 1 0 1" />
+      </body>
+      <body name="box_993495f45b10f36d15adc52172c4a7ec_1_4_0" pos="-0.00145 0.0966349 0.144735" quat="0.245967 0.969278 0 0">
+        <joint name="box_993495f45b10f36d15adc52172c4a7ec_1_4_0_box29flapinner1joint0_4" class="/" pos="0 0 0" axis="-1 0 0" range="0 2.64456" damping="0.002" frictionloss="0.002" />
+        <geom name="box_993495f45b10f36d15adc52172c4a7ec_1_4_0_visual_6" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Cardboard_Mat2" mesh="Box_29_box_29_flap_inner_1" />
+        <geom name="box_993495f45b10f36d15adc52172c4a7ec_1_4_0_collision_7" class="__DYNAMIC_MJT__" size="0.0242507 0.00192771 0.0954884" pos="6.90826e-05 0.000173354 -0.0249195" quat="0.00808623 0.70706 -0.00808438 -0.707061" type="box" rgba="0 1 0 1" />
+      </body>
+      <body name="box_993495f45b10f36d15adc52172c4a7ec_1_5_0" pos="-0.00145 -0.14437 -0.00526">
+        <geom name="box_993495f45b10f36d15adc52172c4a7ec_1_5_0_visual_8" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Cardboard_Mat2" mesh="Box_29_box_29" />
+        <geom name="box_993495f45b10f36d15adc52172c4a7ec_1_5_0_collision_9" class="__DYNAMIC_MJT__" size="0.0998261 0.00386001 0.1475" pos="-0.000126347 0.00375833 0.00397351" quat="0 1 0 0" type="box" density="60" rgba="0 1 0 1" />
+        <geom name="box_993495f45b10f36d15adc52172c4a7ec_1_5_0_collision_10" class="__DYNAMIC_MJT__" size="0.121603 0.00288319 0.147373" pos="0.096864 0.121403 0.00403205" quat="0 0.707108 0.707106 0" type="box" density="60" rgba="0 1 0 1" />
+        <geom name="box_993495f45b10f36d15adc52172c4a7ec_1_5_0_collision_11" class="__DYNAMIC_MJT__" size="0.121606 0.00312765 0.147474" pos="-0.0966992 0.121404 0.00400025" quat="0 0.707108 0.707106 0" type="box" density="60" rgba="0 1 0 1" />
+        <geom name="box_993495f45b10f36d15adc52172c4a7ec_1_5_0_collision_12" class="__DYNAMIC_MJT__" size="0.121702 0.00229391 0.0998502" pos="3.63444e-06 0.121308 -0.141233" quat="-0.499999 0.500001 0.5 -0.5" type="box" density="60" rgba="0 1 0 1" />
+        <geom name="box_993495f45b10f36d15adc52172c4a7ec_1_5_0_collision_13" class="__DYNAMIC_MJT__" size="0.121578 0.00224277 0.0998786" pos="-2.67324e-05 0.121432 0.149198" quat="-0.499999 0.500001 0.5 -0.5" type="box" density="60" rgba="0 1 0 1" />
+        <site name="box_993495f45b10f36d15adc52172c4a7ec_1_5_0_box29ReceptacleCollider0_0" class="/" pos="0 0.124378 0.00452354" quat="0 1 0 0" size="0.0942772 0.11735 0.140975" group="5" type="box" rgba="1 0 0 1" />
+      </body>
+    </body>
+    <body name="pillow_85cf3d0100d7b2846b69018d65289a34_1_0_0" pos="0.19108864960931485 -2.2859384670648626 0.6410992204824106" quat="-0.0004273936566667866 -0.0008848945526851453 0.7089637175045914 0.7052442708440539">
+      <joint name="pillow_85cf3d0100d7b2846b69018d65289a34_1_0_0_jntfree_0" class="/" type="free" limited="false" actuatorfrclimited="false" damping="0.001" frictionloss="0.001" />
+      <body name="pillow_85cf3d0100d7b2846b69018d65289a34_1_1_0">
+        <geom name="pillow_85cf3d0100d7b2846b69018d65289a34_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Pillow29_Mat" mesh="pillow_29_pillow_29" />
+        <geom name="pillow_85cf3d0100d7b2846b69018d65289a34_1_1_0_collision_1" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="20" rgba="0.0568694 0.0232216 0.917896 1" mesh="pillow_29_pillow_29_collision_0" />
+      </body>
+    </body>
+    <body name="bed_38bf4a5c135c1b64e6b5caa872fd2c73_1_0_0" pos="-0.118006 -1.69999 0.467937" quat="1.71338e-06 3.51816e-07 0.707107 0.707107">
+      <body name="bed_38bf4a5c135c1b64e6b5caa872fd2c73_1_1_0" pos="0 -0.46938 -0.03157">
+        <geom name="bed_38bf4a5c135c1b64e6b5caa872fd2c73_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_DarkWoodSmooth" mesh="Bed_29_bed_29_0" />
+        <geom name="bed_38bf4a5c135c1b64e6b5caa872fd2c73_1_1_0_visual_1" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_DarkWoodSmooth2" mesh="Bed_29_bed_29_1" />
+        <geom name="bed_38bf4a5c135c1b64e6b5caa872fd2c73_1_1_0_collision_2" class="__STRUCTURAL_MJT__" size="0.778169 0.160208 0.924792" pos="-5.31308e-08 0.386207 0.042447" quat="0 1 0 6.25849e-07" type="box" density="49.3096" rgba="0 1 0 1" />
+        <geom name="bed_38bf4a5c135c1b64e6b5caa872fd2c73_1_1_0_collision_3" class="__STRUCTURAL_MJT__" size="0.796863 0.467938 0.0290468" pos="1.0953e-06 0.469375 -0.875054" quat="0 1 0 6.25849e-07" type="box" density="49.3096" rgba="0 1 0 1" />
+        <geom name="bed_38bf4a5c135c1b64e6b5caa872fd2c73_1_1_0_collision_4" class="__STRUCTURAL_MJT__" size="0.0454184 0.237392 0.0290468" pos="0.746999 0.238829 0.931947" quat="0 1 0 6.25849e-07" type="box" density="49.3096" rgba="0 1 0 1" />
+        <geom name="bed_38bf4a5c135c1b64e6b5caa872fd2c73_1_1_0_collision_5" class="__STRUCTURAL_MJT__" size="0.0454184 0.237392 0.0290468" pos="-0.748001 0.238829 0.931945" quat="0 1 0 6.25849e-07" type="box" density="49.3096" rgba="0 1 0 1" />
+        <site name="bed_38bf4a5c135c1b64e6b5caa872fd2c73_1_1_0_bed29ReceptacleCollider0_0" class="/" pos="0 0.673136 -0.0427156" quat="0 0 0 1" size="0.730788 0.14293 0.891495" group="5" type="box" rgba="1 0 0 1" />
+      </body>
+      <body name="bed_38bf4a5c135c1b64e6b5caa872fd2c73_1_2_0" pos="0.123 0.06162 0.14743" quat="1 0 -5.96046e-08 0">
+        <geom name="bed_38bf4a5c135c1b64e6b5caa872fd2c73_1_2_0_visual_6" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Bedsheet_Unmade_29B_Mat" mesh="Bed_29_bedsheet_unmade_8" />
+      </body>
+      <body name="bed_38bf4a5c135c1b64e6b5caa872fd2c73_1_3_0" pos="0 -0.0788149 -0.00757">
+        <geom name="bed_38bf4a5c135c1b64e6b5caa872fd2c73_1_3_0_visual_7" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_FittedSheet1AO" mesh="Bed_29_bed_mattress_29" />
+      </body>
+      <body name="bed_38bf4a5c135c1b64e6b5caa872fd2c73_1_4_0" pos="-0.338 0.06962 0.04443" quat="3.57628e-07 0 1 0">
+        <geom name="bed_38bf4a5c135c1b64e6b5caa872fd2c73_1_4_0_visual_8" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Bedsheet_Unmade_29A_Mat" mesh="Bed_29_bedsheet_unmade_10" />
+      </body>
+    </body>
+    <body name="electricswitch_f0b3ef4ce69b0f6e4ee54d8f5d5e18ff_1_0_0" pos="0.334 1.15 1.257" quat="0.707107 0.707107 0 0">
+      <body name="electricswitch_f0b3ef4ce69b0f6e4ee54d8f5d5e18ff_1_1_0">
+        <geom name="electricswitch_f0b3ef4ce69b0f6e4ee54d8f5d5e18ff_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Light_Switch_Secondary_Mat" mesh="Light_Switch_29_light_switch_27_0" />
+        <geom name="electricswitch_f0b3ef4ce69b0f6e4ee54d8f5d5e18ff_1_1_0_visual_1" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Light_Switch_Secondary_Mat" mesh="Light_Switch_29_light_switch_27_1" />
+        <geom name="electricswitch_f0b3ef4ce69b0f6e4ee54d8f5d5e18ff_1_1_0_visual_2" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Light_Switch_Primary5_Mat" mesh="Light_Switch_29_light_switch_27_2" />
+        <geom name="electricswitch_f0b3ef4ce69b0f6e4ee54d8f5d5e18ff_1_1_0_collision_3" class="__STRUCTURAL_MJT__" size="0.101258 0.0695757 0.0106919" pos="0 0 0.0106919" quat="0 1 0 0" type="box" rgba="0 1 0 1" />
+      </body>
+      <body name="electricswitch_f0b3ef4ce69b0f6e4ee54d8f5d5e18ff_1_2_0" pos="-0.0503082 0 0.00491394">
+        <geom name="electricswitch_f0b3ef4ce69b0f6e4ee54d8f5d5e18ff_1_2_0_visual_4" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Light_Switch_Primary5_Mat" mesh="Light_Switch_29_light_switch_dial_a_27_0" />
+        <geom name="electricswitch_f0b3ef4ce69b0f6e4ee54d8f5d5e18ff_1_2_0_visual_5" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Light_Switch_Secondary_Mat" mesh="Light_Switch_29_light_switch_dial_a_27_1" />
+        <geom name="electricswitch_f0b3ef4ce69b0f6e4ee54d8f5d5e18ff_1_2_0_visual_6" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Light_Switch_Primary5_Mat" mesh="Light_Switch_29_light_switch_dial_a_27_2" />
+      </body>
+      <body name="electricswitch_f0b3ef4ce69b0f6e4ee54d8f5d5e18ff_1_3_0" pos="0.0505795 0 0.00491394">
+        <geom name="electricswitch_f0b3ef4ce69b0f6e4ee54d8f5d5e18ff_1_3_0_visual_7" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Light_Switch_Primary5_Mat" mesh="Light_Switch_29_light_switch_dial_d_27_0" />
+        <geom name="electricswitch_f0b3ef4ce69b0f6e4ee54d8f5d5e18ff_1_3_0_visual_8" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Light_Switch_Secondary_Mat" mesh="Light_Switch_29_light_switch_dial_d_27_1" />
+        <geom name="electricswitch_f0b3ef4ce69b0f6e4ee54d8f5d5e18ff_1_3_0_visual_9" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Light_Switch_Primary5_Mat" mesh="Light_Switch_29_light_switch_dial_d_27_2" />
+      </body>
+      <body name="electricswitch_f0b3ef4ce69b0f6e4ee54d8f5d5e18ff_1_4_0" pos="-0.0164738 5.48363e-08 0.0063266">
+        <geom name="electricswitch_f0b3ef4ce69b0f6e4ee54d8f5d5e18ff_1_4_0_visual_10" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Light_Switch_Primary5_Mat" mesh="Light_Switch_29_light_switch_dial_b_27_0" />
+        <geom name="electricswitch_f0b3ef4ce69b0f6e4ee54d8f5d5e18ff_1_4_0_visual_11" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Light_Switch_Secondary_Mat" mesh="Light_Switch_29_light_switch_dial_b_27_1" />
+        <geom name="electricswitch_f0b3ef4ce69b0f6e4ee54d8f5d5e18ff_1_4_0_visual_12" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Light_Switch_Primary5_Mat" mesh="Light_Switch_29_light_switch_dial_b_27_2" />
+      </body>
+      <body name="electricswitch_f0b3ef4ce69b0f6e4ee54d8f5d5e18ff_1_5_0" pos="0.0162301 0 0.00491394">
+        <geom name="electricswitch_f0b3ef4ce69b0f6e4ee54d8f5d5e18ff_1_5_0_visual_13" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Light_Switch_Primary5_Mat" mesh="Light_Switch_29_light_switch_dial_c_27_0" />
+        <geom name="electricswitch_f0b3ef4ce69b0f6e4ee54d8f5d5e18ff_1_5_0_visual_14" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Light_Switch_Secondary_Mat" mesh="Light_Switch_29_light_switch_dial_c_27_1" />
+        <geom name="electricswitch_f0b3ef4ce69b0f6e4ee54d8f5d5e18ff_1_5_0_visual_15" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Light_Switch_Primary5_Mat" mesh="Light_Switch_29_light_switch_dial_c_27_2" />
+      </body>
+    </body>
+    <body name="ashcan_1995071dfc91d53d2f6bc68ed581bacb_1_0_0" pos="2.405235914647429 0.8730736169026052 0.3282452551505737" quat="-0.4953123810125067 -0.4949546672966959 0.5046349895160109 0.5050040097792421">
+      <joint name="ashcan_1995071dfc91d53d2f6bc68ed581bacb_1_0_0_jntfree_0" class="/" type="free" limited="false" actuatorfrclimited="false" damping="0.001" frictionloss="0.001" />
+      <body name="ashcan_1995071dfc91d53d2f6bc68ed581bacb_1_1_0" pos="-0.00033 -0.33772 0.00471978">
+        <geom name="ashcan_1995071dfc91d53d2f6bc68ed581bacb_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Bin_Decal_Mat" mesh="bin_29_bin_29_0" />
+        <geom name="ashcan_1995071dfc91d53d2f6bc68ed581bacb_1_1_0_visual_1" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Bin_Secondary4_Mat" mesh="bin_29_bin_29_1" />
+        <geom name="ashcan_1995071dfc91d53d2f6bc68ed581bacb_1_1_0_visual_2" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Bin_Primary4_Mat" mesh="bin_29_bin_29_2" />
+        <geom name="ashcan_1995071dfc91d53d2f6bc68ed581bacb_1_1_0_collision_3" class="__DYNAMIC_MJT__" size="0.100244 0.259266 0.0182262" pos="0.000766933 0.268592 0.147297" quat="0 1 0 0" type="box" density="41.0119" rgba="0 1 0 1" />
+        <geom name="ashcan_1995071dfc91d53d2f6bc68ed581bacb_1_1_0_collision_4" class="__DYNAMIC_MJT__" size="0.100244 0.324528 0.0182262" pos="0.000766933 0.339113 -0.147237" quat="0 1 0 0" type="box" density="41.0119" rgba="0 1 0 1" />
+        <geom name="ashcan_1995071dfc91d53d2f6bc68ed581bacb_1_1_0_collision_5" class="__DYNAMIC_MJT__" size="0.100244 0.266773 0.0182262" pos="0.129079 0.278963 0.0743927" quat="0 0.866025 0 -0.5" type="box" density="41.0119" rgba="0 1 0 1" />
+        <geom name="ashcan_1995071dfc91d53d2f6bc68ed581bacb_1_1_0_collision_6" class="__DYNAMIC_MJT__" size="0.100244 0.266775 0.0182262" pos="-0.129003 0.278963 0.0743927" quat="0 0.865684 0 0.50059" type="box" density="41.0119" rgba="0 1 0 1" />
+        <geom name="ashcan_1995071dfc91d53d2f6bc68ed581bacb_1_1_0_collision_7" class="__DYNAMIC_MJT__" size="0.100244 0.299945 0.0182262" pos="-0.129732 0.316297 -0.0757908" quat="0 0.866025 0 -0.5" type="box" density="41.0119" rgba="0 1 0 1" />
+        <geom name="ashcan_1995071dfc91d53d2f6bc68ed581bacb_1_1_0_collision_8" class="__DYNAMIC_MJT__" size="0.100244 0.30729 0.0182262" pos="0.129079 0.318371 -0.0838103" quat="0 0.865684 0 0.50059" type="box" density="41.0119" rgba="0 1 0 1" />
+        <geom name="ashcan_1995071dfc91d53d2f6bc68ed581bacb_1_1_0_collision_9" class="__DYNAMIC_MJT__" size="0.0394969 0.310393 0.0182262" pos="0.109395 0.35778 -0.118075" quat="0 0.865684 0 0.50059" type="box" density="41.0119" rgba="0 1 0 1" />
+        <geom name="ashcan_1995071dfc91d53d2f6bc68ed581bacb_1_1_0_collision_10" class="__DYNAMIC_MJT__" size="0.0359422 0.302852 0.0182262" pos="-0.102758 0.359854 -0.12245" quat="0 0.866025 0 -0.5" type="box" density="41.0119" rgba="0 1 0 1" />
+        <geom name="ashcan_1995071dfc91d53d2f6bc68ed581bacb_1_1_0_collision_11" class="__DYNAMIC_MJT__" size="0.035942 0.273283 0.0182262" pos="0.155325 0.333927 0.0379404" quat="0 0.866025 0 -0.5" type="box" density="41.0119" rgba="0 1 0 1" />
+        <geom name="ashcan_1995071dfc91d53d2f6bc68ed581bacb_1_1_0_collision_12" class="__DYNAMIC_MJT__" size="0.0394961 0.247025 0.0182262" pos="-0.152333 0.362965 0.0372114" quat="0 0.865684 0 0.50059" type="box" density="41.0119" rgba="0 1 0 1" />
+        <geom name="ashcan_1995071dfc91d53d2f6bc68ed581bacb_1_1_0_collision_13" class="__DYNAMIC_MJT__" size="0.0916344 0.0164831 0.14173" pos="0.000766933 0.0260223 -0.00726046" quat="0 1 0 0" type="box" density="41.0119" rgba="0 1 0 1" />
+        <geom name="ashcan_1995071dfc91d53d2f6bc68ed581bacb_1_1_0_collision_14" class="__DYNAMIC_MJT__" size="0.0916338 0.0164842 0.14173" pos="0.000766933 0.0260223 -0.00726046" quat="0 0.866025 0 0.5" type="box" density="41.0119" rgba="0 1 0 1" />
+        <geom name="ashcan_1995071dfc91d53d2f6bc68ed581bacb_1_1_0_collision_15" class="__DYNAMIC_MJT__" size="0.0916338 0.0164842 0.14173" pos="0.000766933 0.0260223 -0.00726046" quat="0 0.5 0 0.866025" type="box" density="41.0119" rgba="0 1 0 1" />
+        <site name="ashcan_1995071dfc91d53d2f6bc68ed581bacb_1_1_0_ReceptacleCollider0_0" class="/" pos="0.000766933 0.32009 -0.000699043" quat="0 1 0 0" size="0.112163 0.280861 0.112163" group="5" type="box" rgba="1 0 0 1" />
+        <site name="ashcan_1995071dfc91d53d2f6bc68ed581bacb_1_1_0_ReceptacleCollider1_1" class="/" pos="0.000766933 0.32009 -0.121114" quat="0 1 0 0" size="0.0750111 0.306662 0.0122468" group="5" type="box" rgba="1 0 0 1" />
+        <site name="ashcan_1995071dfc91d53d2f6bc68ed581bacb_1_1_0_ReceptacleCollider2_2" class="/" pos="0.000766933 0.32009 0.124318" quat="0 1 0 0" size="0.0750098 0.306662 0.0122451" group="5" type="box" rgba="1 0 0 1" />
+        <site name="ashcan_1995071dfc91d53d2f6bc68ed581bacb_1_1_0_ReceptacleCollider3_3" class="/" pos="-0.12425 0.32009 0.00206232" quat="0 0.707107 0 0.707107" size="0.0548213 0.306662 0.0231126" group="5" type="box" rgba="1 0 0 1" />
+        <site name="ashcan_1995071dfc91d53d2f6bc68ed581bacb_1_1_0_ReceptacleCollider4_4" class="/" pos="0.128852 0.323 0.00206232" quat="0 0.707107 0 0.707107" size="0.0548221 0.306662 0.0231126" group="5" type="box" rgba="1 0 0 1" />
+      </body>
+    </body>
+    <body name="tablelamp_b12c83cd7f80b740d7155dc3d3d80b2c_1_0_0" pos="0.9159323001159141 -2.4353866060177003 0.9218443010137836" quat="-0.002052587318372725 -0.0020526871601675677 0.7070977191466067 0.7071098846278341">
+      <joint name="tablelamp_b12c83cd7f80b740d7155dc3d3d80b2c_1_0_0_jntfree_0" type="free" limited="false" actuatorfrclimited="false" damping="0.001" frictionloss="0.001" />
+      <body name="tablelamp_b12c83cd7f80b740d7155dc3d3d80b2c_1_1_0" pos="0 -0.25156 0">
+        <geom name="tablelamp_b12c83cd7f80b740d7155dc3d3d80b2c_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Copper_AlbedoTransparency" mesh="Desk_Lamp_11_FP224_Cylinder.164_0" />
+        <geom name="tablelamp_b12c83cd7f80b740d7155dc3d3d80b2c_1_1_0_visual_1" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Light" mesh="Desk_Lamp_11_FP224_Cylinder.164_1" />
+        <geom name="tablelamp_b12c83cd7f80b740d7155dc3d3d80b2c_1_1_0_visual_2" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_KitchenLightDull" mesh="Desk_Lamp_11_FP224_Cylinder.164_2" />
+        <geom name="tablelamp_b12c83cd7f80b740d7155dc3d3d80b2c_1_1_0_collision_3" class="__DYNAMIC_MJT__" size="0.0588248 0.171543 0.0578081" pos="0 0.171543 0" quat="0 1 0 0" type="box" density="78.9774" rgba="0 1 0 1" />
+        <geom name="tablelamp_b12c83cd7f80b740d7155dc3d3d80b2c_1_1_0_collision_4" class="__DYNAMIC_MJT__" size="0.136914 0.0815605 0.0578081" pos="0 0.421561 0" quat="0 1 0 0" type="box" density="78.9774" rgba="0 1 0 1" />
+        <geom name="tablelamp_b12c83cd7f80b740d7155dc3d3d80b2c_1_1_0_collision_5" class="__DYNAMIC_MJT__" size="0.136914 0.0815605 0.0578081" pos="0 0.421561 0" quat="0 0.707108 0 -0.707106" type="box" density="78.9774" rgba="0 1 0 1" />
+        <geom name="tablelamp_b12c83cd7f80b740d7155dc3d3d80b2c_1_1_0_collision_6" class="__DYNAMIC_MJT__" size="0.136914 0.0815605 0.0578081" pos="0 0.421561 0" quat="0 0.92388 0 -0.382683" type="box" density="78.9774" rgba="0 1 0 1" />
+        <geom name="tablelamp_b12c83cd7f80b740d7155dc3d3d80b2c_1_1_0_collision_7" class="__DYNAMIC_MJT__" size="0.136914 0.0815605 0.0578081" pos="0 0.421561 0" quat="0 0.382685 0 -0.923879" type="box" density="78.9774" rgba="0 1 0 1" />
+      </body>
+    </body>
+    <body name="baseballbat_b4a48c6ca2f266f8881798ce97249576_1_0_0" pos="0.3937641594907426 1.0249689615432478 0.4773612385378832" quat="0.3048119430227991 0.2405656860441026 0.7052418948821334 0.5931708858262129">
+      <joint name="baseballbat_b4a48c6ca2f266f8881798ce97249576_1_0_0_jntfree_0" class="/" type="free" limited="false" actuatorfrclimited="false" damping="0.001" frictionloss="0.001" />
+      <body name="baseballbat_b4a48c6ca2f266f8881798ce97249576_1_1_0" pos="0.00281301 0.00261852 -0.000191138" quat="0 0.707107 0.707107 0">
+        <geom name="baseballbat_b4a48c6ca2f266f8881798ce97249576_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_WornWood" mesh="BaseballBat_1_Cylinder.222" />
+        <geom name="baseballbat_b4a48c6ca2f266f8881798ce97249576_1_1_0_collision_1" class="__DYNAMIC_MJT__" type="mesh" margin="0.001" density="176.635" rgba="0.144053 0.518625 0.85976 1" mesh="BaseballBat_1_Cylinder.222_collision_0" />
+      </body>
+    </body>
+    <body name="stand_97b1d5461f86f5f69c9681415d63ebad_1_0_0" pos="0.9485486793068333 -2.35686670976444 0.3351366266323231" quat="-0.0005127371546482384 -0.0005128092801568926 0.7071005119378073 0.7071126785347184">
+      <joint name="stand_97b1d5461f86f5f69c9681415d63ebad_1_0_0_jntfree_0" type="free" limited="false" actuatorfrclimited="false" damping="0.001" frictionloss="0.001" />
+      <body name="stand_97b1d5461f86f5f69c9681415d63ebad_1_1_0" pos="-0.00024 -0.33263 -0.01284">
+        <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_DarkWoodSmooth" mesh="Side_Table_329_1_FP329:BedSideTable1" />
+        <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_1_1_0_collision_1" class="__DYNAMIC_MJT__" size="0.236126 0.0276624 0.180581" pos="-2.70307e-05 0.640123 -0.0124633" quat="0 1 0 0" type="box" density="890" rgba="0 1 0 1" />
+        <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_1_1_0_collision_2" class="__DYNAMIC_MJT__" size="0.232311 0.0215156 0.180581" pos="-2.70307e-05 0.0189884 -0.0124633" quat="0 1 0 0" type="box" density="890" rgba="0 1 0 1" />
+        <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_1_1_0_collision_3" class="__DYNAMIC_MJT__" size="0.232258 0.00964386 0.177503" pos="-2.70307e-05 0.326333 -0.0130212" quat="0 1 0 0" type="box" density="890" rgba="0 1 0 1" />
+        <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_1_1_0_collision_4" class="__DYNAMIC_MJT__" size="0.0220959 0.319965 0.180581" pos="0.214362 0.317438 -0.0124633" quat="0 1 0 0" type="box" density="890" rgba="0 1 0 1" />
+        <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_1_1_0_collision_5" class="__DYNAMIC_MJT__" size="0.233443 0.319965 0.0619917" pos="-0.00309053 0.317438 -0.131053" quat="0 1 0 0" type="box" density="890" rgba="0 1 0 1" />
+        <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_1_1_0_collision_6" class="__DYNAMIC_MJT__" size="0.0220959 0.319965 0.180581" pos="-0.214838 0.317438 -0.0124633" quat="0 1 0 0" type="box" density="890" rgba="0 1 0 1" />
+        <site name="stand_97b1d5461f86f5f69c9681415d63ebad_1_1_0_FP329:BedSideTable1Receptacle0_0" class="/" pos="-0.002 0.740819 -0.0120038" quat="0 1 0 0" size="0.227733 0.0729647 0.179478" group="5" type="box" rgba="1 0 0 1" />
+        <body name="stand_97b1d5461f86f5f69c9681415d63ebad_1_2_0" pos="0 0.4556 0.0669999">
+          <joint name="stand_97b1d5461f86f5f69c9681415d63ebad_1_2_0_joint_1" class="/" pos="0 0 0" axis="0 0 1" type="slide" range="0 0.197" damping="0.1" frictionloss="1.2" />
+          <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_1_2_0_visual_7" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_DarkWoodSmooth2" mesh="Side_Table_329_1_DrawerMesh_00_0" />
+          <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_1_2_0_visual_8" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_DarkWoodSmooth" mesh="Side_Table_329_1_DrawerMesh_00_1" />
+          <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_1_2_0_collision_9" class="__DYNAMIC_MJT__" size="0.187252 0.00853893 0.111274" pos="0 -0.104512 -0.011707" quat="0 1 0 0" type="box" density="100" rgba="0 1 0 1" />
+          <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_1_2_0_collision_10" class="__DYNAMIC_MJT__" size="0.187252 0.131315 0.00898843" pos="0 0.0182636 0.0905786" quat="0 1 0 0" type="box" density="100" rgba="0 1 0 1" />
+          <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_1_2_0_collision_11" class="__DYNAMIC_MJT__" size="0.187252 0.131315 0.00816202" pos="0 0.0182636 -0.114819" quat="0 1 0 0" type="box" density="100" rgba="0 1 0 1" />
+          <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_1_2_0_collision_12" class="__DYNAMIC_MJT__" size="0.00713706 0.131315 0.111274" pos="0.180115 0.0182636 -0.011707" quat="0 1 0 0" type="box" density="100" rgba="0 1 0 1" />
+          <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_1_2_0_collision_13" class="__DYNAMIC_MJT__" size="0.00680655 0.131315 0.111274" pos="-0.180446 0.0182636 -0.011707" quat="0 1 0 0" type="box" density="100" rgba="0 1 0 1" />
+          <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_1_2_0_collision_14" class="__DYNAMIC_MJT__" size="0.198422 0.145414 0.0127888" pos="0 0.0197365 0.112226" quat="0 1 0 0" type="box" density="100" rgba="0 1 0 1" />
+          <site name="stand_97b1d5461f86f5f69c9681415d63ebad_1_2_0_DrawerMesh00Receptacle0_1" class="/" pos="0.000202417 0.0277168 -0.0127265" quat="0 1 0 0" size="0.173379 0.12286 0.0948279" group="5" type="box" rgba="1 0 0 1" />
+          <body name="stand_97b1d5461f86f5f69c9681415d63ebad_1_3_0" pos="0 0.079 0.119">
+            <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_1_3_0_visual_15" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_HammeredMetal_AlbedoTransparency_2" mesh="Side_Table_329_1_handle_3_178mm_00" />
+            <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_1_3_0_collision_16" class="__DYNAMIC_MJT__" size="0.0887521 0.00355491 0.0164315" pos="0 0 0.01629" quat="0 1 0 0" type="box" rgba="0 1 0 1" />
+            <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_1_3_0_collision_17" class="__DYNAMIC_MJT__" size="0.0887521 0.00775981 0.00192273" pos="0 0.0112849 0.0307988" quat="0 1 0 0" type="box" rgba="0 1 0 1" />
+          </body>
+        </body>
+        <body name="stand_97b1d5461f86f5f69c9681415d63ebad_1_4_0" pos="0 0.1639 0.067">
+          <joint name="stand_97b1d5461f86f5f69c9681415d63ebad_1_4_0_DrawerMesh011_2" class="/" pos="0 0 0" axis="0 0 1" type="slide" range="0 0.197" damping="0.1" frictionloss="1.2" />
+          <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_1_4_0_visual_18" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_DarkWoodSmooth2" mesh="Side_Table_329_1_DrawerMesh_01_0" />
+          <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_1_4_0_visual_19" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_DarkWoodSmooth" mesh="Side_Table_329_1_DrawerMesh_01_1" />
+          <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_1_4_0_collision_20" class="__DYNAMIC_MJT__" size="0.187252 0.00853893 0.111274" pos="0 -0.104512 -0.011707" quat="0 1 0 0" type="box" density="100" rgba="0 1 0 1" />
+          <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_1_4_0_collision_21" class="__DYNAMIC_MJT__" size="0.187252 0.131315 0.00898843" pos="0 0.0182636 0.0905786" quat="0 1 0 0" type="box" density="100" rgba="0 1 0 1" />
+          <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_1_4_0_collision_22" class="__DYNAMIC_MJT__" size="0.187252 0.131315 0.00816202" pos="0 0.0182636 -0.114819" quat="0 1 0 0" type="box" density="100" rgba="0 1 0 1" />
+          <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_1_4_0_collision_23" class="__DYNAMIC_MJT__" size="0.00713706 0.131315 0.111274" pos="0.180115 0.0182636 -0.011707" quat="0 1 0 0" type="box" density="100" rgba="0 1 0 1" />
+          <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_1_4_0_collision_24" class="__DYNAMIC_MJT__" size="0.00680655 0.131315 0.111274" pos="-0.180446 0.0182636 -0.011707" quat="0 1 0 0" type="box" density="100" rgba="0 1 0 1" />
+          <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_1_4_0_collision_25" class="__DYNAMIC_MJT__" size="0.198422 0.145605 0.0127888" pos="0 0.0177579 0.112226" quat="0 1 0 0" type="box" density="100" rgba="0 1 0 1" />
+          <site name="stand_97b1d5461f86f5f69c9681415d63ebad_1_4_0_DrawerMesh01Receptacle0_2" class="/" pos="0.000202417 0.0277168 -0.0127265" quat="0 1 0 0" size="0.173379 0.12286 0.0948279" group="5" type="box" rgba="1 0 0 1" />
+          <body name="stand_97b1d5461f86f5f69c9681415d63ebad_1_5_0" pos="0 0.079 0.119">
+            <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_1_5_0_visual_26" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_HammeredMetal_AlbedoTransparency_2" mesh="Side_Table_329_1_handle_3_178mm_01" />
+            <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_1_5_0_collision_27" class="__DYNAMIC_MJT__" size="0.0887521 0.00355491 0.0164315" pos="0 0 0.01629" quat="0 1 0 0" type="box" rgba="0 1 0 1" />
+            <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_1_5_0_collision_28" class="__DYNAMIC_MJT__" size="0.0887521 0.00775981 0.00192273" pos="0 0.0112849 0.0307988" quat="0 1 0 0" type="box" rgba="0 1 0 1" />
+          </body>
+        </body>
+      </body>
+    </body>
+    <body name="desk_d69fb24716416665ff518b2aa2a302d3_1_0_0" pos="-0.276476481732697 0.8329987807593023 0.3089315454933933" quat="3.0792755836525893e-06 2.155496023605209e-06 0.7071051296761875 0.7071084326830598">
+      <joint name="desk_d69fb24716416665ff518b2aa2a302d3_1_0_0_jntfree_0" type="free" limited="false" actuatorfrclimited="false" damping="0.001" frictionloss="0.001" />
+      <body name="desk_d69fb24716416665ff518b2aa2a302d3_1_1_0" pos="0 -0.31015 0">
+        <geom name="desk_d69fb24716416665ff518b2aa2a302d3_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Cream_wood" mesh="Desk_329_1_FP329:Cube.370_0" />
+        <geom name="desk_d69fb24716416665ff518b2aa2a302d3_1_1_0_visual_1" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_DarkGranite" mesh="Desk_329_1_FP329:Cube.370_1" />
+        <geom name="desk_d69fb24716416665ff518b2aa2a302d3_1_1_0_collision_2" class="__DYNAMIC_MJT__" size="0.622489 0.0387785 0.311339" pos="0 0.580335 0" quat="0 1 0 0" type="box" density="189.901" rgba="0 1 0 1" />
+        <geom name="desk_d69fb24716416665ff518b2aa2a302d3_1_1_0_collision_3" class="__DYNAMIC_MJT__" size="0.588159 0.0264893 0.277071" pos="0 0.325735 0" quat="0 1 0 0" type="box" density="189.901" rgba="0 1 0 1" />
+        <geom name="desk_d69fb24716416665ff518b2aa2a302d3_1_1_0_collision_4" class="__DYNAMIC_MJT__" size="0.588159 0.0264893 0.277071" pos="0 0.072735 0" quat="0 1 0 0" type="box" density="189.901" rgba="0 1 0 1" />
+        <geom name="desk_d69fb24716416665ff518b2aa2a302d3_1_1_0_collision_5" class="__DYNAMIC_MJT__" size="0.0281736 0.308959 0.0277225" pos="-0.558374 0.310155 0.248112" quat="0 1 0 0" type="box" density="189.901" rgba="0 1 0 1" />
+        <geom name="desk_d69fb24716416665ff518b2aa2a302d3_1_1_0_collision_6" class="__DYNAMIC_MJT__" size="0.0281736 0.308959 0.0277225" pos="-0.558374 0.310155 -0.245088" quat="0 1 0 0" type="box" density="189.901" rgba="0 1 0 1" />
+        <geom name="desk_d69fb24716416665ff518b2aa2a302d3_1_1_0_collision_7" class="__DYNAMIC_MJT__" size="0.0281736 0.308959 0.0277225" pos="0.558526 0.310155 -0.247988" quat="0 1 0 0" type="box" density="189.901" rgba="0 1 0 1" />
+        <geom name="desk_d69fb24716416665ff518b2aa2a302d3_1_1_0_collision_8" class="__DYNAMIC_MJT__" size="0.0281736 0.308959 0.0277225" pos="0.560426 0.310155 0.249112" quat="0 1 0 0" type="box" density="189.901" rgba="0 1 0 1" />
+        <site name="desk_d69fb24716416665ff518b2aa2a302d3_1_1_0_FP329:Cube.370Receptacle0_0" class="/" pos="0 0.682378 0" quat="0 2.84612e-06 0 -1" size="0.619918 0.064883 0.311808" group="5" type="box" rgba="1 0 0 1" />
+        <site name="desk_d69fb24716416665ff518b2aa2a302d3_1_1_0_FP329:Cube.370Receptacle1_1" class="/" pos="-0.00176684 0.411461 0" quat="0 1 0 0" size="0.541102 0.0580936 0.220434" group="5" type="box" rgba="1 0 0 1" />
+        <site name="desk_d69fb24716416665ff518b2aa2a302d3_1_1_0_FP329:Cube.370Receptacle2_2" class="/" pos="-9.82899e-05 0.159052 0" quat="0 1 0 0" size="0.582618 0.0580936 0.272644" group="5" type="box" rgba="1 0 0 1" />
+      </body>
+    </body>
+    <body name="stand_97b1d5461f86f5f69c9681415d63ebad_2_0_0" pos="-1.2044097831473568 -2.356905607137421 0.33513714726675703" quat="-0.000455483365907045 -0.0004552051670368371 0.7071007155885792 0.707112553514135">
+      <joint name="stand_97b1d5461f86f5f69c9681415d63ebad_2_0_0_jntfree_0" type="free" limited="false" actuatorfrclimited="false" damping="0.001" frictionloss="0.001" />
+      <body name="stand_97b1d5461f86f5f69c9681415d63ebad_2_1_0" pos="-0.00024 -0.33263 -0.01284">
+        <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_2_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_DarkWoodSmooth" mesh="Side_Table_329_1_FP329:BedSideTable1" />
+        <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_2_1_0_collision_1" class="__DYNAMIC_MJT__" size="0.236126 0.0276624 0.180581" pos="-2.70307e-05 0.640123 -0.0124633" quat="0 1 0 0" type="box" density="890" rgba="0 1 0 1" />
+        <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_2_1_0_collision_2" class="__DYNAMIC_MJT__" size="0.232311 0.0215156 0.180581" pos="-2.70307e-05 0.0189884 -0.0124633" quat="0 1 0 0" type="box" density="890" rgba="0 1 0 1" />
+        <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_2_1_0_collision_3" class="__DYNAMIC_MJT__" size="0.232258 0.00964386 0.177503" pos="-2.70307e-05 0.326333 -0.0130212" quat="0 1 0 0" type="box" density="890" rgba="0 1 0 1" />
+        <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_2_1_0_collision_4" class="__DYNAMIC_MJT__" size="0.0220959 0.319965 0.180581" pos="0.214362 0.317438 -0.0124633" quat="0 1 0 0" type="box" density="890" rgba="0 1 0 1" />
+        <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_2_1_0_collision_5" class="__DYNAMIC_MJT__" size="0.233443 0.319965 0.0619917" pos="-0.00309053 0.317438 -0.131053" quat="0 1 0 0" type="box" density="890" rgba="0 1 0 1" />
+        <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_2_1_0_collision_6" class="__DYNAMIC_MJT__" size="0.0220959 0.319965 0.180581" pos="-0.214838 0.317438 -0.0124633" quat="0 1 0 0" type="box" density="890" rgba="0 1 0 1" />
+        <site name="stand_97b1d5461f86f5f69c9681415d63ebad_2_1_0_FP329:BedSideTable1Receptacle0_0" class="/" pos="-0.002 0.740819 -0.0120038" quat="0 1 0 0" size="0.227733 0.0729647 0.179478" group="5" type="box" rgba="1 0 0 1" />
+        <body name="stand_97b1d5461f86f5f69c9681415d63ebad_2_2_0" pos="0 0.4556 0.0669999">
+          <joint name="stand_97b1d5461f86f5f69c9681415d63ebad_2_2_0_joint_1" class="/" pos="0 0 0" axis="0 0 1" type="slide" range="0 0.197" damping="0.1" frictionloss="1.2" />
+          <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_2_2_0_visual_7" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_DarkWoodSmooth2" mesh="Side_Table_329_1_DrawerMesh_00_0" />
+          <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_2_2_0_visual_8" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_DarkWoodSmooth" mesh="Side_Table_329_1_DrawerMesh_00_1" />
+          <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_2_2_0_collision_9" class="__DYNAMIC_MJT__" size="0.187252 0.00853893 0.111274" pos="0 -0.104512 -0.011707" quat="0 1 0 0" type="box" density="100" rgba="0 1 0 1" />
+          <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_2_2_0_collision_10" class="__DYNAMIC_MJT__" size="0.187252 0.131315 0.00898843" pos="0 0.0182636 0.0905786" quat="0 1 0 0" type="box" density="100" rgba="0 1 0 1" />
+          <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_2_2_0_collision_11" class="__DYNAMIC_MJT__" size="0.187252 0.131315 0.00816202" pos="0 0.0182636 -0.114819" quat="0 1 0 0" type="box" density="100" rgba="0 1 0 1" />
+          <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_2_2_0_collision_12" class="__DYNAMIC_MJT__" size="0.00713706 0.131315 0.111274" pos="0.180115 0.0182636 -0.011707" quat="0 1 0 0" type="box" density="100" rgba="0 1 0 1" />
+          <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_2_2_0_collision_13" class="__DYNAMIC_MJT__" size="0.00680655 0.131315 0.111274" pos="-0.180446 0.0182636 -0.011707" quat="0 1 0 0" type="box" density="100" rgba="0 1 0 1" />
+          <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_2_2_0_collision_14" class="__DYNAMIC_MJT__" size="0.198422 0.145414 0.0127888" pos="0 0.0197365 0.112226" quat="0 1 0 0" type="box" density="100" rgba="0 1 0 1" />
+          <site name="stand_97b1d5461f86f5f69c9681415d63ebad_2_2_0_DrawerMesh00Receptacle0_1" class="/" pos="0.000202417 0.0277168 -0.0127265" quat="0 1 0 0" size="0.173379 0.12286 0.0948279" group="5" type="box" rgba="1 0 0 1" />
+          <body name="stand_97b1d5461f86f5f69c9681415d63ebad_2_3_0" pos="0 0.079 0.119">
+            <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_2_3_0_visual_15" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_HammeredMetal_AlbedoTransparency_2" mesh="Side_Table_329_1_handle_3_178mm_00" />
+            <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_2_3_0_collision_16" class="__DYNAMIC_MJT__" size="0.0887521 0.00355491 0.0164315" pos="0 0 0.01629" quat="0 1 0 0" type="box" rgba="0 1 0 1" />
+            <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_2_3_0_collision_17" class="__DYNAMIC_MJT__" size="0.0887521 0.00775981 0.00192273" pos="0 0.0112849 0.0307988" quat="0 1 0 0" type="box" rgba="0 1 0 1" />
+          </body>
+        </body>
+        <body name="stand_97b1d5461f86f5f69c9681415d63ebad_2_4_0" pos="0 0.1639 0.067">
+          <joint name="stand_97b1d5461f86f5f69c9681415d63ebad_2_4_0_DrawerMesh011_2" class="/" pos="0 0 0" axis="0 0 1" type="slide" range="0 0.197" damping="0.1" frictionloss="1.2" />
+          <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_2_4_0_visual_18" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_DarkWoodSmooth2" mesh="Side_Table_329_1_DrawerMesh_01_0" />
+          <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_2_4_0_visual_19" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_DarkWoodSmooth" mesh="Side_Table_329_1_DrawerMesh_01_1" />
+          <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_2_4_0_collision_20" class="__DYNAMIC_MJT__" size="0.187252 0.00853893 0.111274" pos="0 -0.104512 -0.011707" quat="0 1 0 0" type="box" density="100" rgba="0 1 0 1" />
+          <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_2_4_0_collision_21" class="__DYNAMIC_MJT__" size="0.187252 0.131315 0.00898843" pos="0 0.0182636 0.0905786" quat="0 1 0 0" type="box" density="100" rgba="0 1 0 1" />
+          <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_2_4_0_collision_22" class="__DYNAMIC_MJT__" size="0.187252 0.131315 0.00816202" pos="0 0.0182636 -0.114819" quat="0 1 0 0" type="box" density="100" rgba="0 1 0 1" />
+          <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_2_4_0_collision_23" class="__DYNAMIC_MJT__" size="0.00713706 0.131315 0.111274" pos="0.180115 0.0182636 -0.011707" quat="0 1 0 0" type="box" density="100" rgba="0 1 0 1" />
+          <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_2_4_0_collision_24" class="__DYNAMIC_MJT__" size="0.00680655 0.131315 0.111274" pos="-0.180446 0.0182636 -0.011707" quat="0 1 0 0" type="box" density="100" rgba="0 1 0 1" />
+          <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_2_4_0_collision_25" class="__DYNAMIC_MJT__" size="0.198422 0.145605 0.0127888" pos="0 0.0177579 0.112226" quat="0 1 0 0" type="box" density="100" rgba="0 1 0 1" />
+          <site name="stand_97b1d5461f86f5f69c9681415d63ebad_2_4_0_DrawerMesh01Receptacle0_2" class="/" pos="0.000202417 0.0277168 -0.0127265" quat="0 1 0 0" size="0.173379 0.12286 0.0948279" group="5" type="box" rgba="1 0 0 1" />
+          <body name="stand_97b1d5461f86f5f69c9681415d63ebad_2_5_0" pos="0 0.079 0.119">
+            <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_2_5_0_visual_26" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_HammeredMetal_AlbedoTransparency_2" mesh="Side_Table_329_1_handle_3_178mm_01" />
+            <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_2_5_0_collision_27" class="__DYNAMIC_MJT__" size="0.0887521 0.00355491 0.0164315" pos="0 0 0.01629" quat="0 1 0 0" type="box" rgba="0 1 0 1" />
+            <geom name="stand_97b1d5461f86f5f69c9681415d63ebad_2_5_0_collision_28" class="__DYNAMIC_MJT__" size="0.0887521 0.00775981 0.00192273" pos="0 0.0112849 0.0307988" quat="0 1 0 0" type="box" rgba="0 1 0 1" />
+          </body>
+        </body>
+      </body>
+    </body>
+    <body name="mesh_ede3f625056ebf119ed88c4c80d3170c_1_0_0" quat="0 0 0.707107 0.707107">
+      <body name="mesh_ede3f625056ebf119ed88c4c80d3170c_1_1_0">
+        <geom name="mesh_ede3f625056ebf119ed88c4c80d3170c_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_ConcreteFloor" mesh="mesh_fcc428b9_mesh_fcc428b9" />
+      </body>
+    </body>
+    <body name="quaddecalspawnplane(1)_9caeb95450028146e045751ade5eca79_1_0_0" quat="0 0 0.707107 0.707107" />
+    <body name="fp329:standardwindow3_029d538039c980ef67858e233284d192_1_0_0" quat="0 0 0.707107 0.707107">
+      <body name="fp329:standardwindow3_029d538039c980ef67858e233284d192_1_1_0">
+        <geom name="fp329:standardwindow3_029d538039c980ef67858e233284d192_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_WhiteWoodClean" mesh="FP329:StandardWindow3_8ac24448_FP329:StandardWindow3__8ac24448" />
+        <geom name="fp329:standardwindow3_029d538039c980ef67858e233284d192_1_1_0_collision_1" class="__STRUCTURAL_MJT__" size="0.375042 0.0122517 0.624282" pos="1.52643 1.5 -0.041097" quat="-0.5 0.5 -0.5 -0.5" type="box" rgba="0 1 0 1" />
+      </body>
+      <body name="fp329:standardwindow3_029d538039c980ef67858e233284d192_1_2_0">
+        <geom name="fp329:standardwindow3_029d538039c980ef67858e233284d192_1_2_0_visual_2" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Glass_Detailed_Lit_High_Mat" mesh="FP329:StandardWindow3_8ac24448_FP329:WindowPane2_9285ce51" />
+      </body>
+    </body>
+    <body name="fp329:base25_e9c32dda1d37916f2435bad76bc0e5e3_1_0_0" quat="0 0 0.707107 0.707107">
+      <body name="fp329:base25_e9c32dda1d37916f2435bad76bc0e5e3_1_1_0">
+        <geom name="fp329:base25_e9c32dda1d37916f2435bad76bc0e5e3_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_santa-maria-novella-1081775_1920" mesh="FP329:Base25_a9c7f018_FP329:Base25_a9c7f018_0" />
+        <geom name="fp329:base25_e9c32dda1d37916f2435bad76bc0e5e3_1_1_0_visual_1" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_DarkWoodSmooth2" mesh="FP329:Base25_a9c7f018_FP329:Base25_a9c7f018_1" />
+        <geom name="fp329:base25_e9c32dda1d37916f2435bad76bc0e5e3_1_1_0_collision_2" class="__STRUCTURAL_MJT__" size="0.58988 0.361528 0.0107344" pos="0.0230011 1.559 -2.65037" quat="0 1 0 0" type="box" rgba="0 1 0 1" />
+      </body>
+    </body>
+    <body name="quaddecalspawnplane_63f59d2108d41f659c69a0313419b3e5_1_0_0" quat="0 0 0.707107 0.707107" />
+    <body name="fp329:standardwindow3_6cf099938a95bcb6aef71c8da066380b_1_0_0" quat="0 0 0.707107 0.707107">
+      <body name="fp329:standardwindow3_6cf099938a95bcb6aef71c8da066380b_1_1_0">
+        <geom name="fp329:standardwindow3_6cf099938a95bcb6aef71c8da066380b_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Glass_Detailed_Lit_High_Mat" mesh="FP329:StandardWindow3_e412094c_FP329:WindowPane1_eeb1c0e9" />
+      </body>
+      <body name="fp329:standardwindow3_6cf099938a95bcb6aef71c8da066380b_1_2_0">
+        <geom name="fp329:standardwindow3_6cf099938a95bcb6aef71c8da066380b_1_2_0_visual_1" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_WhiteWoodClean" mesh="FP329:StandardWindow3_e412094c_FP329:StandardWindow3_e412094c" />
+        <geom name="fp329:standardwindow3_6cf099938a95bcb6aef71c8da066380b_1_2_0_collision_2" class="__STRUCTURAL_MJT__" size="0.375042 0.0122517 0.624282" pos="1.52643 1.5 -1.3411" quat="-0.5 0.5 -0.5 -0.5" type="box" rgba="0 1 0 1" />
+      </body>
+    </body>
+    <body name="deferreddecalspawnplane_2bfb74e24a50f4f3323a91ba0a0b8f90_1_0_0" quat="0 0 0.707107 0.707107">
+      <body name="deferreddecalspawnplane_2bfb74e24a50f4f3323a91ba0a0b8f90_1_1_0">
+        <geom name="deferreddecalspawnplane_2bfb74e24a50f4f3323a91ba0a0b8f90_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_ScreenDecalStencil" mesh="DeferredDecalSpawnPlane_f47bceae_DeferredDecalSpawnPlane_f47bceae" />
+        <geom name="deferreddecalspawnplane_2bfb74e24a50f4f3323a91ba0a0b8f90_1_1_0_collision_1" class="__STRUCTURAL_MJT__" size="0.268423 0.325592 0.00928812" pos="-2.6181 1.296 0.3755" quat="0 0.707107 0 -0.707106" type="box" rgba="0 1 0 1" />
+      </body>
+    </body>
+    <body name="fp329:base21_4f4842fbd533b4c7bf79a536da1eff4b_1_0_0" quat="0 0 0.707107 0.707107">
+      <body name="fp329:base21_4f4842fbd533b4c7bf79a536da1eff4b_1_1_0">
+        <geom name="fp329:base21_4f4842fbd533b4c7bf79a536da1eff4b_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Mirror" mesh="FP329:Base21_18af2fc7_FP329:Base21_18af2fc7_0" />
+        <geom name="fp329:base21_4f4842fbd533b4c7bf79a536da1eff4b_1_1_0_visual_1" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_PureBlack_Wood" mesh="FP329:Base21_18af2fc7_FP329:Base21_18af2fc7_1" />
+        <geom name="fp329:base21_4f4842fbd533b4c7bf79a536da1eff4b_1_1_0_collision_2" class="__STRUCTURAL_MJT__" size="0.277049 0.334167 0.00733722" pos="-2.63923 1.2952 0.373481" quat="0 -0.707106 0 -0.707107" type="box" rgba="0 1 0 1" />
+        <geom name="fp329:base21_4f4842fbd533b4c7bf79a536da1eff4b_1_1_0_collision_3" class="__STRUCTURAL_MJT__" size="0.268423 0.325592 0.00928812" pos="-2.6181 1.296 0.3755" quat="0 0.707107 0 -0.707106" type="box" rgba="0 1 0 1" />
+      </body>
+    </body>
+    <body name="blindframemesh_194014c39e89db9764598c6a3a0024f5_1_0_0" quat="0 0 0.707107 0.707107">
+      <body name="blindframemesh_194014c39e89db9764598c6a3a0024f5_1_1_0">
+        <geom name="blindframemesh_194014c39e89db9764598c6a3a0024f5_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_PVC" mesh="BlindFrameMesh_14f0a846_BlindFrameMesh_14f0a846" />
+        <geom name="blindframemesh_194014c39e89db9764598c6a3a0024f5_1_1_0_collision_1" class="__STRUCTURAL_MJT__" size="0.420707 0.0978536 0.0148332" pos="1.46212 1.99979 -0.046" quat="0 0.707108 0 0.707106" type="box" rgba="0 1 0 1" />
+      </body>
+    </body>
+    <body name="blindframemesh_9fc03c052229f66b669b1461c196c8e8_1_0_0" quat="0 0 0.707107 0.707107">
+      <body name="blindframemesh_9fc03c052229f66b669b1461c196c8e8_1_1_0">
+        <geom name="blindframemesh_9fc03c052229f66b669b1461c196c8e8_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_PVC" mesh="BlindFrameMesh_e59650a1_BlindFrameMesh_e59650a1" />
+        <geom name="blindframemesh_9fc03c052229f66b669b1461c196c8e8_1_1_0_collision_1" class="__STRUCTURAL_MJT__" size="0.420707 0.0978536 0.0148332" pos="1.46212 1.99979 -1.344" quat="0 0.707108 0 0.707106" type="box" rgba="0 1 0 1" />
+      </body>
+    </body>
+    <body name="blinds_b3d794374675d38f9454469a33bb7a9d_1_0_0" quat="0 0 0.707107 0.707107">
+      <body name="blinds_b3d794374675d38f9454469a33bb7a9d_1_1_0">
+        <geom name="blinds_b3d794374675d38f9454469a33bb7a9d_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_PVC" mesh="Blinds_6d1249f9_BlindFrameMesh_e59650a1" />
+        <geom name="blinds_b3d794374675d38f9454469a33bb7a9d_1_1_0_collision_1" class="__STRUCTURAL_MJT__" size="0.420707 0.0978536 0.0148332" pos="1.46212 1.99979 -1.344" quat="0 0.707108 0 0.707106" type="box" rgba="0 1 0 1" />
+      </body>
+      <body name="blinds_b3d794374675d38f9454469a33bb7a9d_1_2_0">
+        <geom name="blinds_b3d794374675d38f9454469a33bb7a9d_1_2_0_visual_2" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_PVC" mesh="Blinds_6d1249f9_BlindMesh_544d93f5" />
+        <geom name="blinds_b3d794374675d38f9454469a33bb7a9d_1_2_0_collision_3" class="__STRUCTURAL_MJT__" size="0.420707 0.0978536 0.0148332" pos="1.46212 1.99979 -1.344" quat="0 0.707108 0 0.707106" type="box" rgba="0 1 0 1" />
+      </body>
+    </body>
+    <body name="blinds_fd022a280ecdc053862ba325b208d839_1_0_0" quat="0 0 0.707107 0.707107">
+      <body name="blinds_fd022a280ecdc053862ba325b208d839_1_1_0">
+        <geom name="blinds_fd022a280ecdc053862ba325b208d839_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_PVC" mesh="Blinds_00c9a3b7_BlindFrameMesh_14f0a846" />
+        <geom name="blinds_fd022a280ecdc053862ba325b208d839_1_1_0_collision_1" class="__STRUCTURAL_MJT__" size="0.420707 0.0978536 0.0148332" pos="1.46212 1.99979 -0.046" quat="0 0.707108 0 0.707106" type="box" rgba="0 1 0 1" />
+      </body>
+      <body name="blinds_fd022a280ecdc053862ba325b208d839_1_2_0">
+        <geom name="blinds_fd022a280ecdc053862ba325b208d839_1_2_0_visual_2" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_PVC" mesh="Blinds_00c9a3b7_BlindMesh_2dba27c6" />
+        <geom name="blinds_fd022a280ecdc053862ba325b208d839_1_2_0_collision_3" class="__STRUCTURAL_MJT__" size="0.420707 0.0978536 0.0148332" pos="1.46212 1.99979 -0.046" quat="0 0.707108 0 0.707106" type="box" rgba="0 1 0 1" />
+      </body>
+    </body>
+    <body name="mirror_5135331801d828e0c6bb13132c6ab11d_1_0_0" quat="0 0 0.707107 0.707107">
+      <body name="mirror_5135331801d828e0c6bb13132c6ab11d_1_1_0">
+        <geom name="mirror_5135331801d828e0c6bb13132c6ab11d_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" mesh="Mirror_6740e921_MirrorReflection_696f4f17" />
+      </body>
+      <body name="mirror_5135331801d828e0c6bb13132c6ab11d_1_2_0">
+        <geom name="mirror_5135331801d828e0c6bb13132c6ab11d_1_2_0_visual_1" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Mirror" mesh="Mirror_6740e921_FP329:Base21_18af2fc7_0" />
+        <geom name="mirror_5135331801d828e0c6bb13132c6ab11d_1_2_0_visual_2" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_PureBlack_Wood" mesh="Mirror_6740e921_FP329:Base21_18af2fc7_1" />
+        <geom name="mirror_5135331801d828e0c6bb13132c6ab11d_1_2_0_collision_3" class="__STRUCTURAL_MJT__" size="0.277049 0.334167 0.00733722" pos="-2.63923 1.2952 0.373481" quat="0 -0.707106 0 -0.707107" type="box" rgba="0 1 0 1" />
+        <geom name="mirror_5135331801d828e0c6bb13132c6ab11d_1_2_0_collision_4" class="__STRUCTURAL_MJT__" size="0.268423 0.325592 0.00928812" pos="-2.6181 1.296 0.3755" quat="0 0.707107 0 -0.707106" type="box" rgba="0 1 0 1" />
+      </body>
+      <body name="mirror_5135331801d828e0c6bb13132c6ab11d_1_3_0">
+        <geom name="mirror_5135331801d828e0c6bb13132c6ab11d_1_3_0_visual_5" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_ScreenDecalStencil" mesh="Mirror_6740e921_DeferredDecalSpawnPlane_f47bceae" />
+        <geom name="mirror_5135331801d828e0c6bb13132c6ab11d_1_3_0_collision_6" class="__STRUCTURAL_MJT__" size="0.268423 0.325592 0.00928812" pos="-2.6181 1.296 0.3755" quat="0 0.707107 0 -0.707106" type="box" rgba="0 1 0 1" />
+      </body>
+      <body name="mirror_5135331801d828e0c6bb13132c6ab11d_1_4_0">
+        <geom name="mirror_5135331801d828e0c6bb13132c6ab11d_1_4_0_visual_7" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Mirror_Decals_Off_Mat" mesh="Mirror_6740e921_MirrorDecals_a1e88228" />
+      </body>
+    </body>
+    <body name="window_ecf173f4780277a1fdd81f62ef85d71d_1_0_0" quat="0 0 0.707107 0.707107">
+      <body name="window_ecf173f4780277a1fdd81f62ef85d71d_1_1_0">
+        <geom name="window_ecf173f4780277a1fdd81f62ef85d71d_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Glass_Detailed_Lit_High_Mat" mesh="Window_879528a7_FP329:WindowPane1_eeb1c0e9" />
+      </body>
+      <body name="window_ecf173f4780277a1fdd81f62ef85d71d_1_2_0">
+        <geom name="window_ecf173f4780277a1fdd81f62ef85d71d_1_2_0_visual_1" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_WhiteWoodClean" mesh="Window_879528a7_FP329:StandardWindow3_e412094c" />
+        <geom name="window_ecf173f4780277a1fdd81f62ef85d71d_1_2_0_collision_2" class="__STRUCTURAL_MJT__" size="0.375042 0.0122517 0.624282" pos="1.52643 1.5 -1.3411" quat="-0.5 0.5 -0.5 -0.5" type="box" rgba="0 1 0 1" />
+      </body>
+    </body>
+    <body name="painting_7d7c4083ecd423357fc9bf45c7419f4f_1_0_0" quat="0 0 0.707107 0.707107">
+      <body name="painting_7d7c4083ecd423357fc9bf45c7419f4f_1_1_0">
+        <geom name="painting_7d7c4083ecd423357fc9bf45c7419f4f_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_santa-maria-novella-1081775_1920" mesh="Painting_49f4dad0_FP329:Base25_a9c7f018_0" />
+        <geom name="painting_7d7c4083ecd423357fc9bf45c7419f4f_1_1_0_visual_1" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_DarkWoodSmooth2" mesh="Painting_49f4dad0_FP329:Base25_a9c7f018_1" />
+        <geom name="painting_7d7c4083ecd423357fc9bf45c7419f4f_1_1_0_collision_2" class="__STRUCTURAL_MJT__" size="0.58988 0.361528 0.0107344" pos="0.0230011 1.559 -2.65037" quat="0 1 0 0" type="box" rgba="0 1 0 1" />
+      </body>
+    </body>
+    <body name="window_93b6da6a217d39315099c759b0959d2e_1_0_0" quat="0 0 0.707107 0.707107">
+      <body name="window_93b6da6a217d39315099c759b0959d2e_1_1_0">
+        <geom name="window_93b6da6a217d39315099c759b0959d2e_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_WhiteWoodClean" mesh="Window_d0227e97_FP329:StandardWindow3__8ac24448" />
+        <geom name="window_93b6da6a217d39315099c759b0959d2e_1_1_0_collision_1" class="__STRUCTURAL_MJT__" size="0.375042 0.0122517 0.624282" pos="1.52643 1.5 -0.041097" quat="-0.5 0.5 -0.5 -0.5" type="box" rgba="0 1 0 1" />
+      </body>
+      <body name="window_93b6da6a217d39315099c759b0959d2e_1_2_0">
+        <geom name="window_93b6da6a217d39315099c759b0959d2e_1_2_0_visual_2" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Glass_Detailed_Lit_High_Mat" mesh="Window_d0227e97_FP329:WindowPane2_9285ce51" />
+      </body>
+    </body>
+    <body name="floor_8f358c4f12998f07d13f7e5d8f4e11bb_1_0_0" quat="0 0 0.707107 0.707107">
+      <body name="floor_8f358c4f12998f07d13f7e5d8f4e11bb_1_1_0">
+        <geom name="floor_8f358c4f12998f07d13f7e5d8f4e11bb_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_ConcreteFloor" mesh="Floor_0cda6aa5_mesh_fcc428b9" />
+      </body>
+    </body>
+    <body name="fp329:lightfixture1_8ffe21ad633fa4275e820461a50f1d33_1_0_0" quat="0 0 0.707107 0.707107">
+      <body name="fp329:lightfixture1_8ffe21ad633fa4275e820461a50f1d33_1_1_0">
+        <geom name="fp329:lightfixture1_8ffe21ad633fa4275e820461a50f1d33_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Metal" mesh="FP329:LightFixture1_b5f59204_FP329:LightFixture1_b5f59204_0" />
+        <geom name="fp329:lightfixture1_8ffe21ad633fa4275e820461a50f1d33_1_1_0_visual_1" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_WhitePlastic" mesh="FP329:LightFixture1_b5f59204_FP329:LightFixture1_b5f59204_1" />
+        <geom name="fp329:lightfixture1_8ffe21ad633fa4275e820461a50f1d33_1_1_0_visual_2" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Light1" mesh="FP329:LightFixture1_b5f59204_FP329:LightFixture1_b5f59204_2" />
+        <geom name="fp329:lightfixture1_8ffe21ad633fa4275e820461a50f1d33_1_1_0_collision_3" class="__STRUCTURAL_MJT__" size="0.10004 0.00838339 0.10004" pos="-0.219 2.99484 -1.84597" quat="0 1 0 0" type="box" rgba="0 1 0 1" />
+      </body>
+    </body>
+    <body name="fp329:lightfixture1_9977724e42112f0406d2ea61fcb47adb_1_0_0" quat="0 0 0.707107 0.707107">
+      <body name="fp329:lightfixture1_9977724e42112f0406d2ea61fcb47adb_1_1_0">
+        <geom name="fp329:lightfixture1_9977724e42112f0406d2ea61fcb47adb_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Metal" mesh="FP329:LightFixture1_4e60d6b9_FP329:LightFixture1__4e60d6b9_0" />
+        <geom name="fp329:lightfixture1_9977724e42112f0406d2ea61fcb47adb_1_1_0_visual_1" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_WhitePlastic" mesh="FP329:LightFixture1_4e60d6b9_FP329:LightFixture1__4e60d6b9_1" />
+        <geom name="fp329:lightfixture1_9977724e42112f0406d2ea61fcb47adb_1_1_0_visual_2" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Light1" mesh="FP329:LightFixture1_4e60d6b9_FP329:LightFixture1__4e60d6b9_2" />
+        <geom name="fp329:lightfixture1_9977724e42112f0406d2ea61fcb47adb_1_1_0_collision_3" class="__STRUCTURAL_MJT__" size="0.10004 0.00838339 0.10004" pos="-0.219 2.99484 -0.015" quat="0 1 0 0" type="box" rgba="0 1 0 1" />
+      </body>
+    </body>
+    <body name="fp329:ceiling_bb89d1c7889087fe725eaa0374be8c72_1_0_0" quat="0 0 0.707107 0.707107">
+      <body name="fp329:ceiling_bb89d1c7889087fe725eaa0374be8c72_1_1_0">
+        <geom name="fp329:ceiling_bb89d1c7889087fe725eaa0374be8c72_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_DrywallEggshellTiled" mesh="FP329:Ceiling_e8578017_FP329:Ceiling_e8578017" />
+        <geom name="fp329:ceiling_bb89d1c7889087fe725eaa0374be8c72_1_1_0_collision_1" class="__STRUCTURAL_MJT__" size="3.02184 0.1 2.17896" pos="-1.22184 3.1 -0.778962" quat="0 1 0 0" type="box" rgba="0 1 0 1" />
+        <geom name="fp329:ceiling_bb89d1c7889087fe725eaa0374be8c72_1_1_0_collision_2" class="__STRUCTURAL_MJT__" size="3.02133 0.100201 2.17854" pos="-1.22017 3.09479 -0.78042" quat="0 1 0 0" type="box" rgba="0 1 0 1" />
+      </body>
+    </body>
+    <body name="fp329:standardwallsize_3916396abc76d9a002dd0a538b9a831d_1_0_0" quat="0 0 0.707107 0.707107">
+      <body name="fp329:standardwallsize_3916396abc76d9a002dd0a538b9a831d_1_1_0">
+        <geom name="fp329:standardwallsize_3916396abc76d9a002dd0a538b9a831d_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_WhiteWoodClean" mesh="FP329:StandardWallSize_f5149d25_FP329:StandardWallSize_f5149d25_0" />
+        <geom name="fp329:standardwallsize_3916396abc76d9a002dd0a538b9a831d_1_1_0_visual_1" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_Walldrywall3Tiled" mesh="FP329:StandardWallSize_f5149d25_FP329:StandardWallSize_f5149d25_1" />
+        <geom name="fp329:standardwallsize_3916396abc76d9a002dd0a538b9a831d_1_1_0_collision_2" class="__STRUCTURAL_MJT__" size="2.82375 1.50105 0.0563917" pos="-1.22173 1.50157 -2.70501" quat="0 1 0 0" type="box" rgba="0 1 0 1" />
+        <geom name="fp329:standardwallsize_3916396abc76d9a002dd0a538b9a831d_1_1_0_collision_3" class="__STRUCTURAL_MJT__" size="0.0533304 1.50105 0.802386" pos="-3.99215 1.50157 -1.95902" quat="0 1 0 0" type="box" rgba="0 1 0 1" />
+        <geom name="fp329:standardwallsize_3916396abc76d9a002dd0a538b9a831d_1_1_0_collision_4" class="__STRUCTURAL_MJT__" size="0.702565 1.50105 0.0528412" pos="-3.34291 1.50157 -1.20947" quat="0 1 0 0" type="box" rgba="0 1 0 1" />
+        <geom name="fp329:standardwallsize_3916396abc76d9a002dd0a538b9a831d_1_1_0_collision_5" class="__STRUCTURAL_MJT__" size="0.0523218 1.50105 0.25026" pos="-2.69267 1.50157 -2.45771" quat="0 1 0 0" type="box" rgba="0 1 0 1" />
+        <geom name="fp329:standardwallsize_3916396abc76d9a002dd0a538b9a831d_1_1_0_collision_6" class="__STRUCTURAL_MJT__" size="0.0523218 0.500834 0.471334" pos="-2.69267 2.50178 -1.76283" quat="0 1 0 0" type="box" rgba="0 1 0 1" />
+        <geom name="fp329:standardwallsize_3916396abc76d9a002dd0a538b9a831d_1_1_0_collision_7" class="__STRUCTURAL_MJT__" size="0.0523218 1.50105 1.27952" pos="-2.69267 1.50157 -0.0283707" quat="0 1 0 0" type="box" rgba="0 1 0 1" />
+        <geom name="fp329:standardwallsize_3916396abc76d9a002dd0a538b9a831d_1_1_0_collision_8" class="__STRUCTURAL_MJT__" size="0.672512 1.50105 0.0515096" pos="-2.07248 1.50157 1.19964" quat="0 1 0 0" type="box" rgba="0 1 0 1" />
+        <geom name="fp329:standardwallsize_3916396abc76d9a002dd0a538b9a831d_1_1_0_collision_9" class="__STRUCTURAL_MJT__" size="0.476384 0.501712 0.0515096" pos="-0.946947 2.5009 1.19964" quat="0 1 0 0" type="box" rgba="0 1 0 1" />
+        <geom name="fp329:standardwallsize_3916396abc76d9a002dd0a538b9a831d_1_1_0_collision_10" class="__STRUCTURAL_MJT__" size="1.04907 1.50105 0.0515096" pos="0.551719 1.50157 1.19964" quat="0 1 0 0" type="box" rgba="0 1 0 1" />
+        <geom name="fp329:standardwallsize_3916396abc76d9a002dd0a538b9a831d_1_1_0_collision_11" class="__STRUCTURAL_MJT__" size="0.0503556 1.50105 0.447714" pos="1.55043 1.50157 0.803437" quat="0 1 0 0" type="box" rgba="0 1 0 1" />
+        <geom name="fp329:standardwallsize_3916396abc76d9a002dd0a538b9a831d_1_1_0_collision_12" class="__STRUCTURAL_MJT__" size="0.0503554 0.414382 1.08675" pos="1.55043 2.58823 -0.69551" quat="0 1 0 0" type="box" rgba="0 1 0 1" />
+        <geom name="fp329:standardwallsize_3916396abc76d9a002dd0a538b9a831d_1_1_0_collision_13" class="__STRUCTURAL_MJT__" size="0.0503554 0.411438 1.08675" pos="1.55043 0.41196 -0.69551" quat="0 1 0 0" type="box" rgba="0 1 0 1" />
+        <geom name="fp329:standardwallsize_3916396abc76d9a002dd0a538b9a831d_1_1_0_collision_14" class="__STRUCTURAL_MJT__" size="0.0503554 0.714898 0.250677" pos="1.55043 1.50157 -0.694282" quat="0 1 0 0" type="box" rgba="0 1 0 1" />
+        <geom name="fp329:standardwallsize_3916396abc76d9a002dd0a538b9a831d_1_1_0_collision_15" class="__STRUCTURAL_MJT__" size="0.0503554 1.50105 0.506972" pos="1.55043 1.50157 -2.25102" quat="0 1 0 0" type="box" rgba="0 1 0 1" />
+      </body>
+    </body>
+    <body name="fp329:standardknob1_c6dc81fcdaf77930781569a23f1016cd_1_0_0" quat="0 0 0.707107 0.707107">
+      <body name="fp329:standardknob1_c6dc81fcdaf77930781569a23f1016cd_1_1_0">
+        <geom name="fp329:standardknob1_c6dc81fcdaf77930781569a23f1016cd_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_BrushedAluminum_AlbedoTransparency" mesh="FP329:StandardKnob1_395b51db_FP329:StandardKnob1__395b51db" />
+        <geom name="fp329:standardknob1_c6dc81fcdaf77930781569a23f1016cd_1_1_0_collision_1" class="__STRUCTURAL_MJT__" size="0.0293176 0.0825984 0.0266516" pos="-0.562151 0.888298 1.16" quat="0 1 0 0" type="box" rgba="0 1 0 1" />
+        <geom name="fp329:standardknob1_c6dc81fcdaf77930781569a23f1016cd_1_1_0_collision_2" class="__STRUCTURAL_MJT__" size="0.0122087 0.0121626 0.0459254" pos="-0.5612 0.907867 1.16" quat="0 1 0 0" type="box" rgba="0 1 0 1" />
+        <geom name="fp329:standardknob1_c6dc81fcdaf77930781569a23f1016cd_1_1_0_collision_3" class="__STRUCTURAL_MJT__" size="0.0209801 1e-05" pos="-0.561363 0.9098 1.201" quat="0.707107 0.707107 0 0" type="capsule" rgba="0 1 0 1" />
+        <geom name="fp329:standardknob1_c6dc81fcdaf77930781569a23f1016cd_1_1_0_collision_4" class="__STRUCTURAL_MJT__" size="0.0211464 1e-05" pos="-0.561665 0.907 1.1173" quat="0.707107 0.707107 0 0" type="capsule" rgba="0 1 0 1" />
+      </body>
+    </body>
+    <body name="fp329:standarddoorframe1_22b777d99a6a5b401a8f4d1289a7af14_1_0_0" quat="0 0 0.707107 0.707107">
+      <body name="fp329:standarddoorframe1_22b777d99a6a5b401a8f4d1289a7af14_1_1_0">
+        <geom name="fp329:standarddoorframe1_22b777d99a6a5b401a8f4d1289a7af14_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_WhiteWoodClean" mesh="FP329:StandardDoorFrame1_d9336239_FP329:StandardDoorFrame1__d9336239" />
+        <geom name="fp329:standarddoorframe1_22b777d99a6a5b401a8f4d1289a7af14_1_1_0_collision_1" class="__ARTICULABLE_DYNAMIC_MJT__" size="0.0214292 1.02121 0.0761283" pos="-1.39459 1.01913 1.2" quat="0 1 0 1.43051e-06" type="box" rgba="0 1 0 1" />
+        <geom name="fp329:standarddoorframe1_22b777d99a6a5b401a8f4d1289a7af14_1_1_0_collision_2" class="__ARTICULABLE_DYNAMIC_MJT__" size="0.0205668 1.02121 0.0761283" pos="-0.505399 1.01913 1.2" quat="0 1 0 1.43051e-06" type="box" rgba="0 1 0 1" />
+        <geom name="fp329:standarddoorframe1_22b777d99a6a5b401a8f4d1289a7af14_1_1_0_collision_3" class="__ARTICULABLE_DYNAMIC_MJT__" size="0.464316 0.0191226 0.0761283" pos="-0.95 2.01978 1.2" quat="0 1 0 1.43051e-06" type="box" rgba="0 1 0 1" />
+      </body>
+    </body>
+    <body name="fp329:standarddoor1_c0f8a3afd7850df27364d53830d1f3d3_1_0_0" quat="0 0 0.707107 0.707107">
+      <body name="fp329:standarddoor1_c0f8a3afd7850df27364d53830d1f3d3_1_1_0">
+        <geom name="fp329:standarddoor1_c0f8a3afd7850df27364d53830d1f3d3_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_LightWoodCounters2" mesh="FP329:StandardDoor1_2b414092_FP329:StandardDoor1__2b414092" />
+        <geom name="fp329:standarddoor1_c0f8a3afd7850df27364d53830d1f3d3_1_1_0_collision_1" class="__ARTICULABLE_DYNAMIC_MJT__" size="0.424309 0.997655 0.0240801" pos="-0.950786 1 1.16041" quat="0 1 0 0" type="box" rgba="0 1 0 1" />
+      </body>
+    </body>
+    <body name="fp329:standardknob1_4b5a0387db9d877516dc1a6043adb0aa_1_0_0" quat="0 0 0.707107 0.707107">
+      <body name="fp329:standardknob1_4b5a0387db9d877516dc1a6043adb0aa_1_1_0">
+        <geom name="fp329:standardknob1_4b5a0387db9d877516dc1a6043adb0aa_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_BrushedAluminum_AlbedoTransparency" mesh="FP329:StandardKnob1_c7d24047_FP329:StandardKnob1__c7d24047" />
+        <geom name="fp329:standardknob1_4b5a0387db9d877516dc1a6043adb0aa_1_1_0_collision_1" class="__STRUCTURAL_MJT__" size="0.0293176 0.0825984 0.0266516" pos="-2.685 0.888298 -1.37915" quat="0 0.707107 0 0.707107" type="box" rgba="0 1 0 1" />
+        <geom name="fp329:standardknob1_4b5a0387db9d877516dc1a6043adb0aa_1_1_0_collision_2" class="__STRUCTURAL_MJT__" size="0.0122087 0.0121626 0.0459254" pos="-2.685 0.907867 -1.3782" quat="0 0.707107 0 0.707107" type="box" rgba="0 1 0 1" />
+        <geom name="fp329:standardknob1_4b5a0387db9d877516dc1a6043adb0aa_1_1_0_collision_3" class="__STRUCTURAL_MJT__" size="0.0209801 1e-05" pos="-2.726 0.9098 -1.37836" quat="0.5 0.5 -0.5 0.5" type="capsule" rgba="0 1 0 1" />
+        <geom name="fp329:standardknob1_4b5a0387db9d877516dc1a6043adb0aa_1_1_0_collision_4" class="__STRUCTURAL_MJT__" size="0.0211464 1e-05" pos="-2.6423 0.907 -1.37866" quat="0.5 0.5 -0.5 0.5" type="capsule" rgba="0 1 0 1" />
+      </body>
+    </body>
+    <body name="fp329:standarddoorframe1_ec1bad24f32eac9c0c4f7390b7002605_1_0_0" quat="0 0 0.707107 0.707107">
+      <body name="fp329:standarddoorframe1_ec1bad24f32eac9c0c4f7390b7002605_1_1_0">
+        <geom name="fp329:standarddoorframe1_ec1bad24f32eac9c0c4f7390b7002605_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_WhiteWoodClean" mesh="FP329:StandardDoorFrame1_0825f728_FP329:StandardDoorFrame1_0825f728" />
+        <geom name="fp329:standarddoorframe1_ec1bad24f32eac9c0c4f7390b7002605_1_1_0_collision_1" class="__ARTICULABLE_DYNAMIC_MJT__" size="0.0214292 1.02121 0.0761283" pos="-2.694 1.01913 -2.20359" quat="0 0.707106 0 0.707108" type="box" rgba="0 1 0 1" />
+        <geom name="fp329:standarddoorframe1_ec1bad24f32eac9c0c4f7390b7002605_1_1_0_collision_2" class="__ARTICULABLE_DYNAMIC_MJT__" size="0.0205668 1.02121 0.0761283" pos="-2.694 1.01913 -1.3144" quat="0 0.707106 0 0.707108" type="box" rgba="0 1 0 1" />
+        <geom name="fp329:standarddoorframe1_ec1bad24f32eac9c0c4f7390b7002605_1_1_0_collision_3" class="__ARTICULABLE_DYNAMIC_MJT__" size="0.464316 0.0191226 0.0761283" pos="-2.694 2.01978 -1.759" quat="0 0.707106 0 0.707108" type="box" rgba="0 1 0 1" />
+      </body>
+    </body>
+    <body name="fp329:standarddoor1(1)_efe0314fc21e3a495350c54526a134ed_1_0_0" quat="0 0 0.707107 0.707107">
+      <body name="fp329:standarddoor1(1)_efe0314fc21e3a495350c54526a134ed_1_1_0">
+        <geom name="fp329:standarddoor1(1)_efe0314fc21e3a495350c54526a134ed_1_1_0_visual_0" class="__VISUAL_MJT__" type="mesh" mass="1e-08" material="material_LightWoodCounters2" mesh="FP329:StandardDoor1(1)_6c591f0b_FP329:StandardDoor1_(1)_6c591f0b" />
+        <geom name="fp329:standarddoor1(1)_efe0314fc21e3a495350c54526a134ed_1_1_0_collision_1" class="__ARTICULABLE_DYNAMIC_MJT__" size="0.424309 0.997655 0.0203493" pos="-2.68405 1 -1.76779" quat="0 0.707107 0 0.707107" type="box" rgba="0 1 0 1" />
+      </body>
+    </body>
+  </worldbody>
+
+  <contact>
+    <exclude name="mjt_pair_1" body1="box_993495f45b10f36d15adc52172c4a7ec_1_1_0" body2="box_993495f45b10f36d15adc52172c4a7ec_1_2_0" />
+    <exclude name="mjt_pair_2" body1="box_993495f45b10f36d15adc52172c4a7ec_1_1_0" body2="box_993495f45b10f36d15adc52172c4a7ec_1_3_0" />
+    <exclude name="mjt_pair_3" body1="box_993495f45b10f36d15adc52172c4a7ec_1_1_0" body2="box_993495f45b10f36d15adc52172c4a7ec_1_4_0" />
+    <exclude name="mjt_pair_4" body1="box_993495f45b10f36d15adc52172c4a7ec_1_1_0" body2="box_993495f45b10f36d15adc52172c4a7ec_1_5_0" />
+    <exclude name="mjt_pair_5" body1="box_993495f45b10f36d15adc52172c4a7ec_1_2_0" body2="box_993495f45b10f36d15adc52172c4a7ec_1_3_0" />
+    <exclude name="mjt_pair_6" body1="box_993495f45b10f36d15adc52172c4a7ec_1_2_0" body2="box_993495f45b10f36d15adc52172c4a7ec_1_4_0" />
+    <exclude name="mjt_pair_7" body1="box_993495f45b10f36d15adc52172c4a7ec_1_2_0" body2="box_993495f45b10f36d15adc52172c4a7ec_1_5_0" />
+    <exclude name="mjt_pair_8" body1="box_993495f45b10f36d15adc52172c4a7ec_1_3_0" body2="box_993495f45b10f36d15adc52172c4a7ec_1_4_0" />
+    <exclude name="mjt_pair_9" body1="box_993495f45b10f36d15adc52172c4a7ec_1_3_0" body2="box_993495f45b10f36d15adc52172c4a7ec_1_5_0" />
+    <exclude name="mjt_pair_10" body1="box_993495f45b10f36d15adc52172c4a7ec_1_4_0" body2="box_993495f45b10f36d15adc52172c4a7ec_1_5_0" />
+    <exclude name="mjt_pair_12" body1="electricswitch_f0b3ef4ce69b0f6e4ee54d8f5d5e18ff_1_1_0" body2="electricswitch_f0b3ef4ce69b0f6e4ee54d8f5d5e18ff_1_2_0" />
+    <exclude name="mjt_pair_13" body1="electricswitch_f0b3ef4ce69b0f6e4ee54d8f5d5e18ff_1_1_0" body2="electricswitch_f0b3ef4ce69b0f6e4ee54d8f5d5e18ff_1_3_0" />
+    <exclude name="mjt_pair_14" body1="electricswitch_f0b3ef4ce69b0f6e4ee54d8f5d5e18ff_1_1_0" body2="electricswitch_f0b3ef4ce69b0f6e4ee54d8f5d5e18ff_1_4_0" />
+    <exclude name="mjt_pair_15" body1="electricswitch_f0b3ef4ce69b0f6e4ee54d8f5d5e18ff_1_1_0" body2="electricswitch_f0b3ef4ce69b0f6e4ee54d8f5d5e18ff_1_5_0" />
+    <exclude name="mjt_pair_16" body1="electricswitch_f0b3ef4ce69b0f6e4ee54d8f5d5e18ff_1_2_0" body2="electricswitch_f0b3ef4ce69b0f6e4ee54d8f5d5e18ff_1_3_0" />
+    <exclude name="mjt_pair_17" body1="electricswitch_f0b3ef4ce69b0f6e4ee54d8f5d5e18ff_1_2_0" body2="electricswitch_f0b3ef4ce69b0f6e4ee54d8f5d5e18ff_1_4_0" />
+    <exclude name="mjt_pair_18" body1="electricswitch_f0b3ef4ce69b0f6e4ee54d8f5d5e18ff_1_2_0" body2="electricswitch_f0b3ef4ce69b0f6e4ee54d8f5d5e18ff_1_5_0" />
+    <exclude name="mjt_pair_19" body1="electricswitch_f0b3ef4ce69b0f6e4ee54d8f5d5e18ff_1_3_0" body2="electricswitch_f0b3ef4ce69b0f6e4ee54d8f5d5e18ff_1_4_0" />
+    <exclude name="mjt_pair_20" body1="electricswitch_f0b3ef4ce69b0f6e4ee54d8f5d5e18ff_1_3_0" body2="electricswitch_f0b3ef4ce69b0f6e4ee54d8f5d5e18ff_1_5_0" />
+    <exclude name="mjt_pair_21" body1="electricswitch_f0b3ef4ce69b0f6e4ee54d8f5d5e18ff_1_4_0" body2="electricswitch_f0b3ef4ce69b0f6e4ee54d8f5d5e18ff_1_5_0" />
+    <exclude name="mjt_pair_22" body1="stand_97b1d5461f86f5f69c9681415d63ebad_1_1_0" body2="stand_97b1d5461f86f5f69c9681415d63ebad_1_2_0" />
+    <exclude name="mjt_pair_23" body1="stand_97b1d5461f86f5f69c9681415d63ebad_1_1_0" body2="stand_97b1d5461f86f5f69c9681415d63ebad_1_3_0" />
+    <exclude name="mjt_pair_24" body1="stand_97b1d5461f86f5f69c9681415d63ebad_1_1_0" body2="stand_97b1d5461f86f5f69c9681415d63ebad_1_4_0" />
+    <exclude name="mjt_pair_25" body1="stand_97b1d5461f86f5f69c9681415d63ebad_1_1_0" body2="stand_97b1d5461f86f5f69c9681415d63ebad_1_5_0" />
+    <exclude name="mjt_pair_26" body1="stand_97b1d5461f86f5f69c9681415d63ebad_1_2_0" body2="stand_97b1d5461f86f5f69c9681415d63ebad_1_3_0" />
+    <exclude name="mjt_pair_27" body1="stand_97b1d5461f86f5f69c9681415d63ebad_1_2_0" body2="stand_97b1d5461f86f5f69c9681415d63ebad_1_4_0" />
+    <exclude name="mjt_pair_28" body1="stand_97b1d5461f86f5f69c9681415d63ebad_1_2_0" body2="stand_97b1d5461f86f5f69c9681415d63ebad_1_5_0" />
+    <exclude name="mjt_pair_29" body1="stand_97b1d5461f86f5f69c9681415d63ebad_1_3_0" body2="stand_97b1d5461f86f5f69c9681415d63ebad_1_4_0" />
+    <exclude name="mjt_pair_30" body1="stand_97b1d5461f86f5f69c9681415d63ebad_1_3_0" body2="stand_97b1d5461f86f5f69c9681415d63ebad_1_5_0" />
+    <exclude name="mjt_pair_31" body1="stand_97b1d5461f86f5f69c9681415d63ebad_1_4_0" body2="stand_97b1d5461f86f5f69c9681415d63ebad_1_5_0" />
+    <exclude name="mjt_pair_32" body1="stand_97b1d5461f86f5f69c9681415d63ebad_2_1_0" body2="stand_97b1d5461f86f5f69c9681415d63ebad_2_2_0" />
+    <exclude name="mjt_pair_33" body1="stand_97b1d5461f86f5f69c9681415d63ebad_2_1_0" body2="stand_97b1d5461f86f5f69c9681415d63ebad_2_3_0" />
+    <exclude name="mjt_pair_34" body1="stand_97b1d5461f86f5f69c9681415d63ebad_2_1_0" body2="stand_97b1d5461f86f5f69c9681415d63ebad_2_4_0" />
+    <exclude name="mjt_pair_35" body1="stand_97b1d5461f86f5f69c9681415d63ebad_2_1_0" body2="stand_97b1d5461f86f5f69c9681415d63ebad_2_5_0" />
+    <exclude name="mjt_pair_36" body1="stand_97b1d5461f86f5f69c9681415d63ebad_2_2_0" body2="stand_97b1d5461f86f5f69c9681415d63ebad_2_3_0" />
+    <exclude name="mjt_pair_37" body1="stand_97b1d5461f86f5f69c9681415d63ebad_2_2_0" body2="stand_97b1d5461f86f5f69c9681415d63ebad_2_4_0" />
+    <exclude name="mjt_pair_38" body1="stand_97b1d5461f86f5f69c9681415d63ebad_2_2_0" body2="stand_97b1d5461f86f5f69c9681415d63ebad_2_5_0" />
+    <exclude name="mjt_pair_39" body1="stand_97b1d5461f86f5f69c9681415d63ebad_2_3_0" body2="stand_97b1d5461f86f5f69c9681415d63ebad_2_4_0" />
+    <exclude name="mjt_pair_40" body1="stand_97b1d5461f86f5f69c9681415d63ebad_2_3_0" body2="stand_97b1d5461f86f5f69c9681415d63ebad_2_5_0" />
+    <exclude name="mjt_pair_41" body1="stand_97b1d5461f86f5f69c9681415d63ebad_2_4_0" body2="stand_97b1d5461f86f5f69c9681415d63ebad_2_5_0" />
+  </contact>
+</mujoco>

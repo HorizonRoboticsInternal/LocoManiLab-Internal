@@ -1,0 +1,4 @@
+task: ProcTHOROpenDrawer
+semantic_requirements:
+  fixture_categories: [Dresser, Drawer]
+  capabilities: [openable]

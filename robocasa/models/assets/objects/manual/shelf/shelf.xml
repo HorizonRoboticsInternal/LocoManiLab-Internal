@@ -1,0 +1,54 @@
+<mujoco model="shelf">
+  <compiler angle="radian"/>
+
+  <default>
+    <default class="shelf_collision">
+      <geom friction="0.8 0.03 0.01" density="500"/>
+    </default>
+  </default>
+
+  <asset>
+    <texture type="2d" name="shelf_diffuse" file="texture_pbr_20250901.png"/>
+    <texture type="2d" name="shelf_metallic" file="texture_pbr_20250901_metallic.png"/>
+    <texture type="2d" name="shelf_roughness" file="texture_pbr_20250901_roughness.png"/>
+    <texture type="2d" name="shelf_normal" file="texture_pbr_20250901_normal.png"/>
+    <material name="shelf_material" texture="shelf_diffuse" specular="0.55"
+              shininess="0.45" reflectance="0.10"/>
+    <mesh name="shelf_mesh" content_type="model/obj"
+          file="accdffcb4558b791332da606e8cdfed7.obj"
+          scale="1.54655 1.54655 1.54655"/>
+  </asset>
+
+  <worldbody>
+    <body>
+    <!-- Rotate local Y upright, then yaw 90 degrees so the shelf back is
+         parallel to and flush with the room's left wall. -->
+    <body name="object" pos="-2.15 0 0" quat="0.5 0.5 0.5 0.5">
+      <!-- The OBJ is visual only. Its collision hull would fill the shelf
+           openings, so collision is represented by the boards below. -->
+      <geom name="shelf_visual" type="mesh" material="shelf_material"
+            mesh="shelf_mesh" contype="0" conaffinity="0" group="1"/>
+
+      <!-- Four boards found in the OBJ geometry (local Y is the shelf height
+           in this asset; local Z is its depth). -->
+      <geom name="shelf_collision_board_0" class="shelf_collision" type="box"
+            pos="0 0.0093 0" size="0.464 0.0232 0.2475" group="0" rgba="0 0 0 0"/>
+      <geom name="shelf_collision_board_1" class="shelf_collision" type="box"
+            pos="0 0.2738 0" size="0.464 0.0232 0.2475" group="0" rgba="0 0 0 0"/>
+      <geom name="shelf_collision_board_2" class="shelf_collision" type="box"
+            pos="0 0.8228 0" size="0.464 0.0232 0.2475" group="0" rgba="0 0 0 0"/>
+      <geom name="shelf_collision_board_3" class="shelf_collision" type="box"
+            pos="0 1.4135 0" size="0.464 0.0232 0.2475" group="0" rgba="0 0 0 0"/>
+
+      <!-- Two narrow side supports leave the shelf bays open. -->
+      <geom name="shelf_collision_side_left" class="shelf_collision" type="box"
+            pos="-0.464 0.7114 0" size="0.0278 0.7114 0.2475" group="0" rgba="0 0 0 0"/>
+      <geom name="shelf_collision_side_right" class="shelf_collision" type="box"
+            pos="0.464 0.7114 0" size="0.0278 0.7114 0.2475" group="0" rgba="0 0 0 0"/>
+      <geom name="reg_main" type="box" pos="0 0.7114 0"
+            size="0.4918 0.7114 0.2475" group="1" contype="0"
+            conaffinity="0" rgba="0 1 0 0"/>
+    </body>
+    </body>
+  </worldbody>
+</mujoco>

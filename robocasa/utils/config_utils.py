@@ -21,7 +21,6 @@ def is_stale_controller_config(config: dict):
         "JOINT_POSITION",
         "OSC_POSITION",
         "OSC_POSE",
-        "IK_POSE",
     ]
     if (
         "body_parts" not in config or "body_parts_controller_configs" not in config
