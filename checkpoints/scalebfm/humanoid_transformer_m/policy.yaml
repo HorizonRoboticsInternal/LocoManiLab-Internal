@@ -1,0 +1,418 @@
+model_path: policy.onnx
+observation:
+  root_quat_buffer:
+    root_quat_buffer:
+      _target_: scalebfm.scalebfm_root_quat_buffer
+      joint_names: &id001
+      - left_hip_pitch_joint
+      - right_hip_pitch_joint
+      - waist_yaw_joint
+      - left_hip_roll_joint
+      - right_hip_roll_joint
+      - waist_roll_joint
+      - left_hip_yaw_joint
+      - right_hip_yaw_joint
+      - waist_pitch_joint
+      - left_knee_joint
+      - right_knee_joint
+      - left_shoulder_pitch_joint
+      - right_shoulder_pitch_joint
+      - left_ankle_pitch_joint
+      - right_ankle_pitch_joint
+      - left_shoulder_roll_joint
+      - right_shoulder_roll_joint
+      - left_ankle_roll_joint
+      - right_ankle_roll_joint
+      - left_shoulder_yaw_joint
+      - right_shoulder_yaw_joint
+      - left_elbow_joint
+      - right_elbow_joint
+      - left_wrist_roll_joint
+      - right_wrist_roll_joint
+      - left_wrist_pitch_joint
+      - right_wrist_pitch_joint
+      - left_wrist_yaw_joint
+      - right_wrist_yaw_joint
+      action_names: &id002
+      - left_hip_pitch_joint
+      - right_hip_pitch_joint
+      - waist_yaw_joint
+      - left_hip_roll_joint
+      - right_hip_roll_joint
+      - waist_roll_joint
+      - left_hip_yaw_joint
+      - right_hip_yaw_joint
+      - waist_pitch_joint
+      - left_knee_joint
+      - right_knee_joint
+      - left_shoulder_pitch_joint
+      - right_shoulder_pitch_joint
+      - left_ankle_pitch_joint
+      - right_ankle_pitch_joint
+      - left_shoulder_roll_joint
+      - right_shoulder_roll_joint
+      - left_ankle_roll_joint
+      - right_ankle_roll_joint
+      - left_shoulder_yaw_joint
+      - right_shoulder_yaw_joint
+      - left_elbow_joint
+      - right_elbow_joint
+      - left_wrist_roll_joint
+      - right_wrist_roll_joint
+      - left_wrist_pitch_joint
+      - right_wrist_pitch_joint
+      - left_wrist_yaw_joint
+      - right_wrist_yaw_joint
+      body_names: &id003
+      - pelvis
+      - left_hip_pitch_link
+      - right_hip_pitch_link
+      - waist_yaw_link
+      - left_hip_roll_link
+      - right_hip_roll_link
+      - waist_roll_link
+      - left_hip_yaw_link
+      - right_hip_yaw_link
+      - torso_link
+      - left_knee_link
+      - right_knee_link
+      - left_shoulder_pitch_link
+      - right_shoulder_pitch_link
+      - left_ankle_pitch_link
+      - right_ankle_pitch_link
+      - left_shoulder_roll_link
+      - right_shoulder_roll_link
+      - left_ankle_roll_link
+      - right_ankle_roll_link
+      - left_shoulder_yaw_link
+      - right_shoulder_yaw_link
+      - left_elbow_link
+      - right_elbow_link
+      - left_wrist_roll_link
+      - right_wrist_roll_link
+      - left_wrist_pitch_link
+      - right_wrist_pitch_link
+      - left_wrist_yaw_link
+      - right_wrist_yaw_link
+      selected_body_names: &id004
+      - pelvis
+      - left_hip_roll_link
+      - left_knee_link
+      - left_ankle_roll_link
+      - right_hip_roll_link
+      - right_knee_link
+      - right_ankle_roll_link
+      - torso_link
+      - left_shoulder_roll_link
+      - left_elbow_link
+      - left_wrist_yaw_link
+      - right_shoulder_roll_link
+      - right_elbow_link
+      - right_wrist_yaw_link
+      future_idx: &id005
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      history_buffer_size: 3
+      control_mode: 7
+      reference_forcing: true
+  base_ang_vel_buffer:
+    base_ang_vel_buffer:
+      _target_: scalebfm.scalebfm_base_ang_vel_buffer
+      joint_names: *id001
+      action_names: *id002
+      body_names: *id003
+      selected_body_names: *id004
+      future_idx: *id005
+      history_buffer_size: 3
+      control_mode: 7
+      reference_forcing: true
+  dof_pos_buffer:
+    dof_pos_buffer:
+      _target_: scalebfm.scalebfm_dof_pos_buffer
+      joint_names: *id001
+      action_names: *id002
+      body_names: *id003
+      selected_body_names: *id004
+      future_idx: *id005
+      history_buffer_size: 3
+      control_mode: 7
+      reference_forcing: true
+  dof_vel_buffer:
+    dof_vel_buffer:
+      _target_: scalebfm.scalebfm_dof_vel_buffer
+      joint_names: *id001
+      action_names: *id002
+      body_names: *id003
+      selected_body_names: *id004
+      future_idx: *id005
+      history_buffer_size: 3
+      control_mode: 7
+      reference_forcing: true
+  actions_buffer:
+    actions_buffer:
+      _target_: scalebfm.scalebfm_actions_buffer
+      joint_names: *id001
+      action_names: *id002
+      body_names: *id003
+      selected_body_names: *id004
+      future_idx: *id005
+      history_buffer_size: 3
+      control_mode: 7
+      reference_forcing: true
+  target_body_pos_future_to_robot_base:
+    target_body_pos_future_to_robot_base:
+      _target_: scalebfm.scalebfm_target_body_pos_future_to_robot_base
+      joint_names: *id001
+      action_names: *id002
+      body_names: *id003
+      selected_body_names: *id004
+      future_idx: *id005
+      history_buffer_size: 3
+      control_mode: 7
+      reference_forcing: true
+  target_body_rot_future_to_robot_base:
+    target_body_rot_future_to_robot_base:
+      _target_: scalebfm.scalebfm_target_body_rot_future_to_robot_base
+      joint_names: *id001
+      action_names: *id002
+      body_names: *id003
+      selected_body_names: *id004
+      future_idx: *id005
+      history_buffer_size: 3
+      control_mode: 7
+      reference_forcing: true
+  control_mode:
+    control_mode:
+      _target_: scalebfm.scalebfm_control_mode
+      joint_names: *id001
+      action_names: *id002
+      body_names: *id003
+      selected_body_names: *id004
+      future_idx: *id005
+      history_buffer_size: 3
+      control_mode: 7
+      reference_forcing: true
+  future_time_offsets:
+    future_time_offsets:
+      _target_: scalebfm.scalebfm_future_time_offsets
+      joint_names: *id001
+      action_names: *id002
+      body_names: *id003
+      selected_body_names: *id004
+      future_idx: *id005
+      history_buffer_size: 3
+      control_mode: 7
+      reference_forcing: true
+joint_names_simulation:
+- left_hip_pitch_joint
+- left_hip_roll_joint
+- left_hip_yaw_joint
+- left_knee_joint
+- left_ankle_pitch_joint
+- left_ankle_roll_joint
+- right_hip_pitch_joint
+- right_hip_roll_joint
+- right_hip_yaw_joint
+- right_knee_joint
+- right_ankle_pitch_joint
+- right_ankle_roll_joint
+- waist_yaw_joint
+- waist_roll_joint
+- waist_pitch_joint
+- left_shoulder_pitch_joint
+- left_shoulder_roll_joint
+- left_shoulder_yaw_joint
+- left_elbow_joint
+- left_wrist_roll_joint
+- left_wrist_pitch_joint
+- left_wrist_yaw_joint
+- right_shoulder_pitch_joint
+- right_shoulder_roll_joint
+- right_shoulder_yaw_joint
+- right_elbow_joint
+- right_wrist_roll_joint
+- right_wrist_pitch_joint
+- right_wrist_yaw_joint
+body_names_simulation:
+- pelvis
+- left_hip_pitch_link
+- left_hip_roll_link
+- left_hip_yaw_link
+- left_knee_link
+- left_ankle_pitch_link
+- left_ankle_roll_link
+- left_toe_link
+- right_hip_pitch_link
+- right_hip_roll_link
+- right_hip_yaw_link
+- right_knee_link
+- right_ankle_pitch_link
+- right_ankle_roll_link
+- right_toe_link
+- waist_yaw_link
+- waist_roll_link
+- torso_link
+- left_shoulder_pitch_link
+- left_shoulder_roll_link
+- left_shoulder_yaw_link
+- left_elbow_link
+- left_wrist_roll_link
+- left_wrist_pitch_link
+- left_wrist_yaw_link
+- right_shoulder_pitch_link
+- right_shoulder_roll_link
+- right_shoulder_yaw_link
+- right_elbow_link
+- right_wrist_roll_link
+- right_wrist_pitch_link
+- right_wrist_yaw_link
+policy_joint_names: *id002
+default_joint_pos:
+  left_hip_pitch_joint: -0.31200000643730164
+  right_hip_pitch_joint: -0.31200000643730164
+  waist_yaw_joint: 0.0
+  left_hip_roll_joint: 0.0
+  right_hip_roll_joint: 0.0
+  waist_roll_joint: 0.0
+  left_hip_yaw_joint: 0.0
+  right_hip_yaw_joint: 0.0
+  waist_pitch_joint: 0.0
+  left_knee_joint: 0.6690000295639038
+  right_knee_joint: 0.6690000295639038
+  left_shoulder_pitch_joint: 0.20000000298023224
+  right_shoulder_pitch_joint: 0.20000000298023224
+  left_ankle_pitch_joint: -0.3630000054836273
+  right_ankle_pitch_joint: -0.3630000054836273
+  left_shoulder_roll_joint: 0.20000000298023224
+  right_shoulder_roll_joint: -0.20000000298023224
+  left_ankle_roll_joint: 0.0
+  right_ankle_roll_joint: 0.0
+  left_shoulder_yaw_joint: 0.0
+  right_shoulder_yaw_joint: 0.0
+  left_elbow_joint: 0.6000000238418579
+  right_elbow_joint: 0.6000000238418579
+  left_wrist_roll_joint: 0.0
+  right_wrist_roll_joint: 0.0
+  left_wrist_pitch_joint: 0.0
+  right_wrist_pitch_joint: 0.0
+  left_wrist_yaw_joint: 0.0
+  right_wrist_yaw_joint: 0.0
+joint_kp:
+  left_hip_pitch_joint: 40.17923847137318
+  right_hip_pitch_joint: 40.17923847137318
+  waist_yaw_joint: 100.0
+  left_hip_roll_joint: 99.09842777666113
+  right_hip_roll_joint: 99.09842777666113
+  waist_roll_joint: 300.0
+  left_hip_yaw_joint: 40.17923847137318
+  right_hip_yaw_joint: 40.17923847137318
+  waist_pitch_joint: 300.0
+  left_knee_joint: 99.09842777666113
+  right_knee_joint: 99.09842777666113
+  left_shoulder_pitch_joint: 14.25062309787429
+  right_shoulder_pitch_joint: 14.25062309787429
+  left_ankle_pitch_joint: 28.50124619574858
+  right_ankle_pitch_joint: 28.50124619574858
+  left_shoulder_roll_joint: 14.25062309787429
+  right_shoulder_roll_joint: 14.25062309787429
+  left_ankle_roll_joint: 28.50124619574858
+  right_ankle_roll_joint: 28.50124619574858
+  left_shoulder_yaw_joint: 14.25062309787429
+  right_shoulder_yaw_joint: 14.25062309787429
+  left_elbow_joint: 14.25062309787429
+  right_elbow_joint: 14.25062309787429
+  left_wrist_roll_joint: 14.25062309787429
+  right_wrist_roll_joint: 14.25062309787429
+  left_wrist_pitch_joint: 16.77832748089279
+  right_wrist_pitch_joint: 16.77832748089279
+  left_wrist_yaw_joint: 16.77832748089279
+  right_wrist_yaw_joint: 16.77832748089279
+joint_kd:
+  left_hip_pitch_joint: 2.5578897650279457
+  right_hip_pitch_joint: 2.5578897650279457
+  waist_yaw_joint: 2.0
+  left_hip_roll_joint: 6.3088018534966395
+  right_hip_roll_joint: 6.3088018534966395
+  waist_roll_joint: 5.0
+  left_hip_yaw_joint: 2.5578897650279457
+  right_hip_yaw_joint: 2.5578897650279457
+  waist_pitch_joint: 5.0
+  left_knee_joint: 6.3088018534966395
+  right_knee_joint: 6.3088018534966395
+  left_shoulder_pitch_joint: 0.907222843292423
+  right_shoulder_pitch_joint: 0.907222843292423
+  left_ankle_pitch_joint: 1.814445686584846
+  right_ankle_pitch_joint: 1.814445686584846
+  left_shoulder_roll_joint: 0.907222843292423
+  right_shoulder_roll_joint: 0.907222843292423
+  left_ankle_roll_joint: 1.814445686584846
+  right_ankle_roll_joint: 1.814445686584846
+  left_shoulder_yaw_joint: 0.907222843292423
+  right_shoulder_yaw_joint: 0.907222843292423
+  left_elbow_joint: 0.907222843292423
+  right_elbow_joint: 0.907222843292423
+  left_wrist_roll_joint: 0.907222843292423
+  right_wrist_roll_joint: 0.907222843292423
+  left_wrist_pitch_joint: 1.06814150219
+  right_wrist_pitch_joint: 1.06814150219
+  left_wrist_yaw_joint: 1.06814150219
+  right_wrist_yaw_joint: 1.06814150219
+action_scale:
+  left_hip_pitch_joint: 0.5475464463233948
+  right_hip_pitch_joint: 0.5475464463233948
+  waist_yaw_joint: 0.25
+  left_hip_roll_joint: 0.3506614565849304
+  right_hip_roll_joint: 0.3506614565849304
+  waist_roll_joint: 0.25
+  left_hip_yaw_joint: 0.5475464463233948
+  right_hip_yaw_joint: 0.5475464463233948
+  waist_pitch_joint: 0.25
+  left_knee_joint: 0.3506614565849304
+  right_knee_joint: 0.3506614565849304
+  left_shoulder_pitch_joint: 0.4385773241519928
+  right_shoulder_pitch_joint: 0.4385773241519928
+  left_ankle_pitch_joint: 0.4385773241519928
+  right_ankle_pitch_joint: 0.4385773241519928
+  left_shoulder_roll_joint: 0.4385773241519928
+  right_shoulder_roll_joint: 0.4385773241519928
+  left_ankle_roll_joint: 0.4385773241519928
+  right_ankle_roll_joint: 0.4385773241519928
+  left_shoulder_yaw_joint: 0.4385773241519928
+  right_shoulder_yaw_joint: 0.4385773241519928
+  left_elbow_joint: 0.4385773241519928
+  right_elbow_joint: 0.4385773241519928
+  left_wrist_roll_joint: 0.4385773241519928
+  right_wrist_roll_joint: 0.4385773241519928
+  left_wrist_pitch_joint: 0.07450087368488312
+  right_wrist_pitch_joint: 0.07450087368488312
+  left_wrist_yaw_joint: 0.07450087368488312
+  right_wrist_yaw_joint: 0.07450087368488312
+clip_actions: 10.0
+motion:
+  motion_backend: npz
+  future_steps: *id005
+  root_body_name: pelvis
+  motion_dt_s: 0.02
+
+# --- per-controller joint dynamics -------------------------------------
+# armature / damping / frictionloss are properties of THIS controller's
+# training setup, not of the robot: the geometry MJCF is now shared by every
+# backend (assets/g1_unified/robot.xml), so these travel with the policy.
+# Extracted verbatim from this controller's own native model:
+#   zengweishuai/ScaleBFM@main:ScaleBridge/scalebridge/data/robot/g1_29dof/g1_29dof_dex3.xml
+# Patterns must be mutually exclusive -- resolve_matching_names_values()
+# rejects a joint matching two keys, so there is no catch-all + override.
+joint_armature:
+  .*_elbow_joint|.*_shoulder_pitch_joint|.*_shoulder_roll_joint|.*_shoulder_yaw_joint|.*_wrist_roll_joint: 0.003609725
+  .*_ankle_pitch_joint|.*_ankle_roll_joint|waist_pitch_joint|waist_roll_joint: 0.00721945
+  .*_hip_pitch_joint|.*_hip_yaw_joint|waist_yaw_joint: 0.01017752
+  .*_hip_roll_joint|.*_knee_joint: 0.025101925
+  .*_wrist_pitch_joint|.*_wrist_yaw_joint: 0.00425
+joint_damping:
+  .*: 0.05
+joint_frictionloss:
+  .*: 0.1

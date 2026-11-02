@@ -1,0 +1,21 @@
+{
+  "source_checkpoint": "model_10000.pt",
+  "in_keys": [
+    "obs"
+  ],
+  "in_shapes": [
+    [
+      1,
+      144
+    ]
+  ],
+  "out_keys": [
+    "action"
+  ],
+  "out_shapes": [
+    [
+      1,
+      17
+    ]
+  ]
+}

@@ -5,7 +5,7 @@ import threading
 import time
 from bisect import bisect_right
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any, Callable, Iterable
 
 import numpy as np
 import zmq
@@ -22,6 +22,29 @@ from sim2real.config.robots.base import (
 from sim2real.rl_policy.utils.motion import MotionData, _normalize_quat_batch, _quat_slerp_batch
 from sim2real.teleop.smpl_stream import DEFAULT_STANDING_SMPL_JOINT_POS_ROOT
 from sim2real.utils.math import quat_conjugate, quat_mul, quat_rotate_numpy, yaw_quat
+
+
+def _default_clock_ns() -> int:
+    """Wall clock, in nanoseconds -- the real-robot time base.
+
+    On hardware the reference stream, the observation sample point and the
+    recorded frame all share one physical clock, so wall time is exactly right
+    and is the default for every buffer.
+
+    A HEADLESS SIM runs faster (or slower, under load) than real time, and its
+    pace is not even constant -- it drifts with whatever else the machine is
+    doing. The buffer stamps frames on sim ticks (``PUBLISH_T_NS_KEY``) but,
+    with this default, sampled them at ``time.time_ns()``: the sample point
+    ``now - delay`` and the retention cutoff then wander against the buffered
+    frames by however far the two clocks have diverged this instant, so the
+    reference (and the velocities finite-differenced from it) that the tracking
+    policy sees is non-deterministic and load-dependent -- the same eval scores
+    differently depending on what else shares the GPU. The sim host installs a
+    sim-time clock via :meth:`RealtimeMotionBuffer.set_clock` so producer and
+    consumer read one monotonic clock and the loop is reproducible. See
+    docs/sim_validation.md.
+    """
+    return time.time_ns()
 
 
 class SmplMotionData:
@@ -254,8 +277,13 @@ class RealtimeMotionBuffer:
         dt_s: float = 0.02,
         tolerance_s: float = 0.04,
         root_body_name: str = "pelvis",
+        clock_ns: "Callable[[], int] | None" = None,
     ):
         self.robot_cfg = robot_cfg
+        #: The time base for stamping received frames and for the sample point
+        #: in get_obs(). Defaults to wall clock (real robot); the sim host swaps
+        #: in a sim-time clock via set_clock() -- see _default_clock_ns.
+        self._clock_ns = clock_ns or _default_clock_ns
         if dt_s <= 0.0:
             raise ValueError("dt_s must be positive")
         self.joint_names: list[str] = list(self.robot_cfg.joint_names)
@@ -401,7 +429,7 @@ class RealtimeMotionBuffer:
                     continue
 
                 try:
-                    self.__append_payload(raw, recv_time_ns=time.time_ns())
+                    self.__append_payload(raw, recv_time_ns=self._clock_ns())
                 except Exception as exc:
                     logger.warning(f"Failed to decode motion payload: {exc}")
 
@@ -507,6 +535,109 @@ class RealtimeMotionBuffer:
         body_ang_vel_w_out.fill(0.0)
         return True
 
+    def transform_root_pose(self, root_pos_w, root_quat_w):
+        """Apply the CURRENT motion-segment transform to one root pose.
+
+        Returns ``(pos, quat_wxyz)`` float32: the yaw-only rotation + xy-only
+        translation this buffer is applying to every incoming frame of the
+        current segment (``_update_segment_transform_locked``) -- identity
+        before the first stamped frame and after ``reset_stream``. z, roll and
+        pitch pass through unchanged, exactly as they do for pushed frames.
+
+        For recorders: a frame's root expressed through this is the root the
+        policy actually tracks -- continuous across a POSE re-entry or an XR
+        reconnect, where the raw operator stream jumps by however far the
+        operator moved meanwhile. Call it AFTER ``push_payload`` of that
+        frame, so a stamped frame sees the transform it just installed.
+        """
+        with self._lock:
+            yaw_off = self._segment_yaw_offset_quat.copy()
+            src = self._segment_src_root_pos_no_z.copy()
+            dst = self._segment_dst_root_pos_no_z.copy()
+        pos = np.asarray(root_pos_w, dtype=np.float32).reshape(1, 3)
+        quat = np.asarray(root_quat_w, dtype=np.float32).reshape(1, 4)
+        pos_t, quat_t = _transform_body_pose_by_xy_yaw(
+            pos, quat,
+            yaw_offset_quat_wxyz=yaw_off,
+            src_root_pos_no_z=src,
+            dst_root_pos_no_z=dst,
+        )
+        return pos_t.reshape(3), quat_t.reshape(4)
+
+    def set_clock(self, clock_ns: Callable[[], int]) -> None:
+        """Replace the time base used for stamping and sampling.
+
+        The real robot never calls this -- wall clock is correct on hardware.
+        A headless sim host installs a sim-time clock (``lambda:
+        int(sim.data.time * 1e9)``) so that the frames it pushes and the
+        ``get_obs()`` sample point read the same monotonic clock, making the
+        tracking reference reproducible regardless of how fast the sim runs or
+        what else loads the machine. See ``_default_clock_ns``.
+        """
+        self._clock_ns = clock_ns
+
+    def push_payload(
+        self,
+        payload: dict[str, Any] | str | bytes,
+        recv_time_ns: int | None = None,
+    ) -> None:
+        """Ingest one reference-motion frame from an in-process producer.
+
+        The public counterpart of the ZMQ subscriber thread: same payload
+        format (see ``sim2real/teleop/npz_pub.py``), same segment-boundary
+        semantics (``MOTION_FIRST_FRAME_KEY``), just delivered by a direct
+        call. Leave ``motion_zmq_connect`` unset and no subscriber thread ever
+        starts, so a host that already owns the reference -- a simulator tick,
+        a VLA action adapter -- can drive the buffer without a socket in
+        between.
+
+        Mixing this with a live ZMQ stream is legal but rarely what you want:
+        the two producers interleave into one timeline.
+        """
+        self.__append_payload(payload, recv_time_ns=recv_time_ns)
+
+    def reset_stream(self) -> None:
+        """Forget every frame AND the segment transform, as at construction.
+
+        There is no other reset: ``_reset_segment_transform_locked``'s only
+        caller is ``_set_layout_locked``, which early-returns when the
+        joint/body layout is unchanged -- so a producer that keeps the layout
+        constant can never clear a stale transform.
+
+        That matters when the buffer outlives the thing feeding it (a host
+        rebuilt per episode, a policy re-armed between takes): a segment
+        transform computed against the *previous* segment's reference stays in
+        force and silently rotates/translates the next one's frames. Since a
+        new segment starts from a fresh pose anyway, identity is the right
+        state.
+
+        Restores the robot-cfg default frame rather than merely dropping the
+        cache -- ``__init__`` seeds it for a reason: ``get_obs()`` on an empty
+        buffer with no cached frame returns all-zero positions with identity
+        quats, a far worse reference than a standing pose.
+        """
+        with self._lock:
+            self._clear_frames_locked()
+            self._reset_segment_transform_locked()
+            self._last_frame_timestamp_ns = None
+            default_frame = _default_frame_from_robot_cfg(
+                self.robot_cfg,
+                joint_names=self.joint_names,
+                body_names=self.body_names,
+            )
+            if default_frame is None:
+                self._last_joint_pos_frame = None
+                self._last_body_pos_w_frame = None
+                self._last_body_quat_w_frame = None
+                self._default_frame_available = False
+                return
+            (
+                self._last_joint_pos_frame,
+                self._last_body_pos_w_frame,
+                self._last_body_quat_w_frame,
+            ) = (frame.copy() for frame in default_frame)
+            self._default_frame_available = True
+
     def __append_payload(
         self,
         payload: dict[str, Any] | str | bytes,
@@ -519,7 +650,7 @@ class RealtimeMotionBuffer:
         if not isinstance(payload, dict):
             raise TypeError(f"Unsupported payload type: {type(payload)}")
 
-        recv_time_ns = int(recv_time_ns or time.time_ns())
+        recv_time_ns = int(recv_time_ns or self._clock_ns())
         timestamp_ns = int(
             payload.get(PICO_RECV_TIME_NS_KEY)
             or payload.get(PUBLISH_T_NS_KEY)
@@ -854,7 +985,7 @@ class RealtimeMotionBuffer:
                 self._body_ang_vel_w_frames.pop(0)
 
     def get_obs(self) -> MotionData:
-        current_time_ns = time.time_ns()
+        current_time_ns = self._clock_ns()
         num_steps = self.future_steps.shape[0]
         retain_cutoff_ns = current_time_ns - self._history_ns
         self.cleanup(retain_cutoff_ns)
@@ -902,8 +1033,12 @@ class RealtimeSmplMotionBuffer:
         motion_zmq_hwm: int = 1,
         dt_s: float = 0.02,
         tolerance_s: float = 0.04,
+        clock_ns: "Callable[[], int] | None" = None,
     ) -> None:
         self.robot_cfg = robot_cfg
+        #: See RealtimeMotionBuffer / _default_clock_ns. Wall clock on the real
+        #: robot; the sim host installs a sim-time clock via set_clock().
+        self._clock_ns = clock_ns or _default_clock_ns
         self.joint_names: list[str] = list(self.robot_cfg.joint_names)
         self.future_steps = np.asarray(list(future_steps), dtype=int)
         if self.future_steps.ndim != 1:
@@ -980,7 +1115,7 @@ class RealtimeSmplMotionBuffer:
                     continue
 
                 try:
-                    self.__append_payload(raw, recv_time_ns=time.time_ns())
+                    self.__append_payload(raw, recv_time_ns=self._clock_ns())
                 except Exception as exc:
                     now = time.monotonic()
                     if now - self._last_decode_warning_monotonic > 2.0:
@@ -989,6 +1124,24 @@ class RealtimeSmplMotionBuffer:
 
         self._motion_stream_thread = threading.Thread(target=_stream_loop, daemon=True)
         self._motion_stream_thread.start()
+
+    def set_clock(self, clock_ns: Callable[[], int]) -> None:
+        """Replace the time base for stamping and sampling; see
+        RealtimeMotionBuffer.set_clock. Wall clock on the real robot, sim time
+        under a headless sim host."""
+        self._clock_ns = clock_ns
+
+    def push_payload(
+        self,
+        payload: dict[str, Any] | str | bytes,
+        recv_time_ns: int | None = None,
+    ) -> None:
+        """Ingest one SMPL reference frame from an in-process producer.
+
+        The SMPL counterpart of ``RealtimeMotionBuffer.push_payload`` -- same
+        rationale, same payload format as ``sim2real/teleop/smpl_stream.py``.
+        """
+        self.__append_payload(payload, recv_time_ns=recv_time_ns)
 
     def __append_payload(
         self,
@@ -1002,7 +1155,7 @@ class RealtimeSmplMotionBuffer:
         if not isinstance(payload, dict):
             raise TypeError(f"Unsupported payload type: {type(payload)}")
 
-        recv_time_ns = int(recv_time_ns or time.time_ns())
+        recv_time_ns = int(recv_time_ns or self._clock_ns())
         timestamp_ns = int(
             _payload_scalar(payload.get(PICO_RECV_TIME_NS_KEY))
             or _payload_scalar(payload.get("pico_recv_time_ns"))
@@ -1137,7 +1290,7 @@ class RealtimeSmplMotionBuffer:
         return np.stack([frames[int(i)] for i in idx], axis=0)
 
     def get_obs(self) -> SmplMotionData:
-        current_time_ns = time.time_ns()
+        current_time_ns = self._clock_ns()
         self.cleanup(current_time_ns - self._history_ns)
         target_base_ns = current_time_ns - self._delay_ns
         target_times_ns = target_base_ns + self._future_steps_ns

@@ -16,7 +16,6 @@ from sim2real.config.robots.base import (
     PUBLISH_T_NS_KEY,
     SMPLX_T_NS_KEY,
 )
-from sim2real.rl_policy.observations.humanoid_gpt import humanoid_gpt_pns_obs
 from sim2real.rl_policy.observations.sonic import sonic_smpl_official_encoder_input
 from sim2real.rl_policy.tracking import Tracking
 from sim2real.rl_policy.utils.state_processor import StateProcessor
@@ -41,7 +40,8 @@ def test_tracking_reset_updates_motion_before_observations() -> None:
     tracking = object.__new__(Tracking)
     tracking.motion_backend = "npz"
     tracking.motion_t = np.asarray([4], dtype=int)
-    tracking.state_dict = {"paused": False}
+    tracking.num_actions = 29
+    tracking.state_dict = {"paused": False, "action": np.ones(29, dtype=np.float32)}
     events: list[str] = []
     tracking._update_motion_data = lambda *, paused: events.append(  # type: ignore[method-assign]
         f"motion:{paused}"
@@ -52,6 +52,7 @@ def test_tracking_reset_updates_motion_before_observations() -> None:
 
     np.testing.assert_array_equal(tracking.motion_t, [0])
     assert tracking.state_dict["paused"] is True
+    np.testing.assert_array_equal(tracking.state_dict["action"], np.zeros(29))
     assert events == ["motion:True", "observation"]
 
 
@@ -342,68 +343,6 @@ class NpzMotionPublisherTest(unittest.TestCase):
 
 
 class RealtimeMotionBufferTest(unittest.TestCase):
-    def test_humanoid_gpt_zmq_observation_reads_motion_data_without_motion_t(self) -> None:
-        joint_names = [f"joint_{idx}" for idx in range(29)]
-        body_names = ["pelvis", "torso"]
-        current_joint_pos = np.zeros((29,), dtype=np.float32)
-        next_joint_pos = np.linspace(-0.2, 0.2, 29, dtype=np.float32)
-        state_processor = SimpleNamespace(
-            motion_backend="zmq",
-            motion_future_steps=np.asarray([0, 1], dtype=np.int64),
-            motion_joint_names=list(joint_names),
-            motion_body_names=list(body_names),
-            joint_names=list(joint_names),
-            joint_pos=np.zeros((29,), dtype=np.float32),
-            joint_vel=np.zeros((29,), dtype=np.float32),
-            root_pos_w=np.zeros((3,), dtype=np.float32),
-            root_quat_w=np.asarray([1.0, 0.0, 0.0, 0.0], dtype=np.float32),
-            root_ang_vel_b=np.zeros((3,), dtype=np.float32),
-            motion_data=MotionData(
-                motion_id=np.zeros((1, 2), dtype=np.int64),
-                step=np.asarray([[0, 1]], dtype=np.int64),
-                timestamps_ns=np.asarray([[1_000_000_000, 1_020_000_000]], dtype=np.int64),
-                joint_pos=np.stack([current_joint_pos, next_joint_pos], axis=0)[None, :, :],
-                joint_vel=np.zeros((1, 2, 29), dtype=np.float32),
-                body_pos_w=np.asarray(
-                    [
-                        [
-                            [[0.0, 0.0, 0.8], [0.0, 0.0, 1.1]],
-                            [[0.1, 0.0, 0.8], [0.1, 0.0, 1.1]],
-                        ]
-                    ],
-                    dtype=np.float32,
-                ),
-                body_lin_vel_w=np.zeros((1, 2, 2, 3), dtype=np.float32),
-                body_quat_w=np.broadcast_to(
-                    np.asarray([1.0, 0.0, 0.0, 0.0], dtype=np.float32),
-                    (1, 2, 2, 4),
-                ).copy(),
-                body_ang_vel_w=np.zeros((1, 2, 2, 3), dtype=np.float32),
-            ),
-        )
-        env = _tracking_env(
-            state_processor,
-            policy_joint_names=list(joint_names),
-            joint_names_simulation=list(joint_names),
-            default_dof_angles=np.zeros((29,), dtype=np.float32),
-        )
-
-        obs = humanoid_gpt_pns_obs(
-            env=env,
-            joint_names=joint_names,
-            root_body_name="pelvis",
-        )
-        obs.update({"paused": True, "action": np.zeros((29,), dtype=np.float32)})
-
-        output = obs.compute()
-        self.assertEqual(output.shape, (1, humanoid_gpt_pns_obs.OBS_DIM))
-        next_joint_offset = 3 + 3 + 29 + 29 + 29
-        np.testing.assert_allclose(
-            output[0, next_joint_offset : next_joint_offset + 29],
-            next_joint_pos,
-            atol=1e-6,
-        )
-
     def test_state_processor_npz_pause_holds_motion_data_frame(self) -> None:
         class StepAwareMotionDataset:
             def get_slice(self, motion_ids, starts, steps):
@@ -455,185 +394,6 @@ class RealtimeMotionBufferTest(unittest.TestCase):
             np.asarray([5.0, 6.0, 7.0], dtype=np.float32),
         )
         np.testing.assert_allclose(tracking.motion_data.joint_vel, 1.0)
-
-    def test_humanoid_gpt_rebiases_reference_root_to_robot_initial_yaw(self) -> None:
-        joint_names = [f"joint_{idx}" for idx in range(29)]
-        body_names = ["pelvis", "torso"]
-
-        def make_motion(root_xy: tuple[float, float]) -> MotionData:
-            root_x, root_y = root_xy
-            return MotionData(
-                motion_id=np.zeros((1, 2), dtype=np.int64),
-                step=np.asarray([[0, 1]], dtype=np.int64),
-                timestamps_ns=np.asarray([[1_000_000_000, 1_020_000_000]], dtype=np.int64),
-                joint_pos=np.zeros((1, 2, 29), dtype=np.float32),
-                joint_vel=np.zeros((1, 2, 29), dtype=np.float32),
-                body_pos_w=np.asarray(
-                    [
-                        [
-                            [[root_x, root_y, 0.8], [root_x, root_y, 1.1]],
-                            [[root_x, root_y, 0.8], [root_x, root_y, 1.1]],
-                        ]
-                    ],
-                    dtype=np.float32,
-                ),
-                body_lin_vel_w=np.zeros((1, 2, 2, 3), dtype=np.float32),
-                body_quat_w=np.broadcast_to(
-                    np.asarray(_yaw_quat(0.0), dtype=np.float32),
-                    (1, 2, 2, 4),
-                ).copy(),
-                body_ang_vel_w=np.zeros((1, 2, 2, 3), dtype=np.float32),
-            )
-
-        state_processor = SimpleNamespace(
-            motion_backend="zmq",
-            motion_future_steps=np.asarray([0, 1], dtype=np.int64),
-            motion_joint_names=list(joint_names),
-            motion_body_names=list(body_names),
-            joint_names=list(joint_names),
-            joint_pos=np.zeros((29,), dtype=np.float32),
-            joint_vel=np.zeros((29,), dtype=np.float32),
-            root_pos_w=np.zeros((3,), dtype=np.float32),
-            root_quat_w=np.asarray(_yaw_quat(np.pi / 2.0), dtype=np.float32),
-            root_ang_vel_b=np.zeros((3,), dtype=np.float32),
-            motion_data=make_motion((0.0, 0.0)),
-        )
-        env = _tracking_env(
-            state_processor,
-            policy_joint_names=list(joint_names),
-            joint_names_simulation=list(joint_names),
-            default_dof_angles=np.zeros((29,), dtype=np.float32),
-        )
-        obs = humanoid_gpt_pns_obs(
-            env=env,
-            joint_names=joint_names,
-            root_body_name="pelvis",
-        )
-
-        obs.update({"paused": False, "action": np.zeros((29,), dtype=np.float32)})
-        env.motion_data = make_motion((1.0, 0.0))
-        obs.update({"paused": False, "action": np.zeros((29,), dtype=np.float32)})
-
-        output = obs.compute()
-        np.testing.assert_allclose(output[0, -4:-2], [1.0, 0.0], atol=1e-6)
-        np.testing.assert_allclose(output[0, -2:], [1.0, 0.0], atol=1e-6)
-
-    def test_humanoid_gpt_mujoco_reference_cvel_ignores_payload_velocity(self) -> None:
-        try:
-            import mujoco
-        except ImportError:
-            self.skipTest("mujoco is not installed")
-
-        joint_names = [f"joint_{idx}" for idx in range(29)]
-        body_names = ["pelvis"]
-        with tempfile.TemporaryDirectory() as temp_dir:
-            mjcf_path = Path(temp_dir) / "humanoid_gpt_toy.xml"
-            joints_xml = ""
-            for idx in range(29):
-                joints_xml += (
-                    f'<body name="link_{idx}" pos="0 0 0.01">'
-                    f'<joint name="joint_{idx}" type="hinge" axis="0 0 1"/>'
-                    '<geom type="sphere" size="0.005"/>'
-                )
-            joints_xml += "</body>" * 29
-            mjcf_path.write_text(
-                f"""
-<mujoco>
-  <worldbody>
-    <body name="pelvis">
-      <freejoint name="floating_base_joint"/>
-      {joints_xml}
-      <geom type="sphere" size="0.02"/>
-    </body>
-  </worldbody>
-</mujoco>
-""".strip(),
-                encoding="utf-8",
-            )
-
-            current_joint_pos = np.zeros((29,), dtype=np.float32)
-            next_joint_pos = np.linspace(-0.1, 0.1, 29, dtype=np.float32)
-            current_root_quat = np.asarray(_yaw_quat(0.0), dtype=np.float32)
-            next_root_quat = np.asarray(_yaw_quat(0.2), dtype=np.float32)
-            state_processor = SimpleNamespace(
-                motion_backend="zmq",
-                motion_future_steps=np.asarray([0, 1], dtype=np.int64),
-                motion_joint_names=list(joint_names),
-                motion_body_names=list(body_names),
-                joint_names=list(joint_names),
-                joint_pos=np.zeros((29,), dtype=np.float32),
-                joint_vel=np.zeros((29,), dtype=np.float32),
-                root_pos_w=np.zeros((3,), dtype=np.float32),
-                root_quat_w=np.asarray([1.0, 0.0, 0.0, 0.0], dtype=np.float32),
-                root_ang_vel_b=np.zeros((3,), dtype=np.float32),
-                motion_data=MotionData(
-                    motion_id=np.zeros((1, 2), dtype=np.int64),
-                    step=np.asarray([[0, 1]], dtype=np.int64),
-                    timestamps_ns=np.asarray([[1_000_000_000, 1_020_000_000]], dtype=np.int64),
-                    joint_pos=np.stack([current_joint_pos, next_joint_pos], axis=0)[None, :, :],
-                    joint_vel=np.zeros((1, 2, 29), dtype=np.float32),
-                    body_pos_w=np.asarray(
-                        [[[[0.0, 0.0, 0.8]], [[0.1, 0.0, 0.8]]]],
-                        dtype=np.float32,
-                    ),
-                    body_lin_vel_w=np.full((1, 2, 1, 3), 99.0, dtype=np.float32),
-                    body_quat_w=np.asarray(
-                        [[current_root_quat, next_root_quat]],
-                        dtype=np.float32,
-                    ).reshape(1, 2, 1, 4),
-                    body_ang_vel_w=np.full((1, 2, 1, 3), -77.0, dtype=np.float32),
-                ),
-            )
-            env = _tracking_env(
-                state_processor,
-                policy_joint_names=list(joint_names),
-                joint_names_simulation=list(joint_names),
-                default_dof_angles=np.zeros((29,), dtype=np.float32),
-            )
-
-            obs = humanoid_gpt_pns_obs(
-                env=env,
-                joint_names=joint_names,
-                root_body_name="pelvis",
-                reference_cvel_source="mujoco",
-                reference_mjcf_path=str(mjcf_path),
-            )
-            obs.update({"paused": False, "action": np.zeros((29,), dtype=np.float32)})
-            output = obs.compute()
-
-            model = mujoco.MjModel.from_xml_path(str(mjcf_path))
-            data = mujoco.MjData(model)
-            data.qpos[:3] = [0.1, 0.0, 0.8]
-            data.qpos[3:7] = next_root_quat
-            data.qpos[7:] = next_joint_pos
-            data.qvel[:3] = [5.0, 0.0, 0.0]
-            data.qvel[5] = 10.0
-            data.qvel[6:] = (next_joint_pos - current_joint_pos) / 0.02
-            mujoco.mj_forward(model, data)
-            root_cvel = np.asarray(data.cvel[model.body("pelvis").id], dtype=np.float32)
-            yaw = 0.2
-            c, s = np.cos(yaw), np.sin(yaw)
-            world_to_gv = np.asarray(
-                [[c, s, 0.0], [-s, c, 0.0], [0.0, 0.0, 1.0]],
-                dtype=np.float32,
-            )
-            expected_cvel = np.concatenate(
-                [world_to_gv @ root_cvel[:3], world_to_gv @ root_cvel[3:]],
-                axis=0,
-            )
-
-            cvel_offset = 3 + 3 + 29 + 29 + 29 + 29 + 1 + 3
-            np.testing.assert_allclose(
-                output[0, cvel_offset : cvel_offset + 6],
-                expected_cvel,
-                atol=1e-5,
-            )
-            self.assertFalse(
-                np.allclose(
-                    output[0, cvel_offset : cvel_offset + 6],
-                    np.asarray([-77.0, -77.0, -77.0, 99.0, 99.0, 99.0], dtype=np.float32),
-                )
-            )
 
     def test_empty_buffer_uses_robot_default_qpos_fk_when_available(self) -> None:
         try:
@@ -1275,6 +1035,169 @@ class RealtimeMotionBufferTest(unittest.TestCase):
                 [f"joint_{idx}" for idx in range(24)],
                 human_joints_info_path="/tmp/definitely_missing_smpl_human_joints_info.pkl",
             )
+
+
+class Step5HorizonTest(unittest.TestCase):
+    """The step5 reference horizon that sonic_v1_1 asks for.
+
+    A buffer can only serve future frames by holding the present back, so
+    ``future_steps=[0,5,...,45]`` costs 0.94 s of reference latency where
+    ``[0..9]`` costs 0.22 s. That is a property of the horizon, not a bug, but
+    it is a 4x change nobody would notice until a live gait felt sluggish --
+    so pin the number here rather than rediscover it in sim.
+    """
+
+    STEP5 = list(range(0, 50, 5))
+    STEP1 = list(range(10))
+
+    def test_delay_scales_with_the_farthest_future_step(self) -> None:
+        step1 = RealtimeMotionBuffer(DummyRobotCfg(), future_steps=self.STEP1)
+        step5 = RealtimeMotionBuffer(DummyRobotCfg(), future_steps=self.STEP5)
+        # max_future_step * dt_s + tolerance_s, dt 0.02 / tol 0.04
+        self.assertAlmostEqual(step1.delay_s, 0.22, places=6)
+        self.assertAlmostEqual(step5.delay_s, 0.94, places=6)
+        self.assertEqual(step5.max_future_step, 45)
+
+    def test_a_single_frame_still_fills_every_slot_with_zero_velocity(self) -> None:
+        """Why standing is unaffected by the longer horizon: the synthetic
+        default reference pushes one frame, and one frame is broadcast to all
+        10 slots with zero velocity no matter how far apart they are."""
+        buffer = RealtimeMotionBuffer(DummyRobotCfg(), future_steps=self.STEP5)
+        t0_ns = 1_000_000_000
+        buffer._RealtimeMotionBuffer__append_payload(
+            {
+                PUBLISH_T_NS_KEY: t0_ns,
+                "joint_pos": [0.3, -0.6],
+                "body_pos_w": [[0.0, 0.0, 0.5], [0.0, 0.0, 0.8]],
+                "body_quat_w": [[1.0, 0.0, 0.0, 0.0], [1.0, 0.0, 0.0, 0.0]],
+            },
+            recv_time_ns=t0_ns,
+        )
+
+        n = len(self.STEP5)
+        joint_pos = np.zeros((n, 2), dtype=np.float32)
+        joint_vel = np.empty_like(joint_pos)
+        body_pos_w = np.zeros((n, 2, 3), dtype=np.float32)
+        body_lin_vel_w = np.empty_like(body_pos_w)
+        body_quat_w = np.zeros((n, 2, 4), dtype=np.float32)
+        body_ang_vel_w = np.empty_like(body_pos_w)
+        buffer._fill_sample_frames_locked(
+            np.asarray(
+                [t0_ns + step * 20_000_000 for step in self.STEP5], dtype=np.int64
+            ),
+            joint_pos, joint_vel, body_pos_w, body_lin_vel_w,
+            body_quat_w, body_ang_vel_w,
+        )
+
+        for slot in range(n):
+            np.testing.assert_allclose(joint_pos[slot], [0.3, -0.6], atol=1e-6)
+        np.testing.assert_allclose(joint_vel, np.zeros_like(joint_vel), atol=1e-6)
+        np.testing.assert_allclose(
+            body_lin_vel_w, np.zeros_like(body_lin_vel_w), atol=1e-6
+        )
+
+
+class TestInjectableClock(unittest.TestCase):
+    """The buffer's time base is injectable so a headless sim can run it on sim
+    time instead of wall time. See motion_buffer._default_clock_ns."""
+
+    def test_default_clock_is_wall_time(self):
+        import time as _t
+
+        from sim2real.rl_policy.utils.motion_buffer import _default_clock_ns
+
+        buffer = RealtimeMotionBuffer(DummyRobotCfg(), future_steps=[0])
+        before = _t.time_ns()
+        got = buffer._clock_ns()
+        after = _t.time_ns()
+        # the default really is wall clock, and _default_clock_ns is that default
+        self.assertLessEqual(before, got)
+        self.assertLessEqual(got, after)
+        self.assertLessEqual(before, _default_clock_ns())
+
+    def test_set_clock_governs_append_default_and_sample_point(self):
+        # A fake sim clock the test advances by hand -- nothing reads wall time.
+        clock = {"ns": 10_000_000_000}
+        buffer = RealtimeMotionBuffer(DummyRobotCfg(), future_steps=[0])
+        buffer.set_clock(lambda: clock["ns"])
+
+        # An unstamped frame is stamped with the injected clock, not wall time.
+        buffer.push_payload(_payload())  # no PICO/publish timestamp
+        self.assertEqual(buffer.latest_timestamp_ns, 10_000_000_000)
+
+        # get_obs samples at (injected now - delay); with one frame it clamps to
+        # that frame and reports zero velocity -- and, crucially, does not raise
+        # or go empty just because wall time is nowhere near the injected clock.
+        clock["ns"] = 10_020_000_000
+        md = buffer.get_obs()
+        # body_pos_w is (batch, step, body, 3); one frame -> clamped, zero vel.
+        np.testing.assert_allclose(
+            md.body_pos_w[0, 0], [[0.0, 0.0, 0.5], [0.0, 0.0, 0.8]], atol=1e-6
+        )
+        np.testing.assert_allclose(md.body_lin_vel_w, 0.0, atol=1e-6)
+
+    def test_velocity_is_reproducible_under_the_injected_clock(self):
+        # Two frames 20 ms apart ON THE INJECTED CLOCK -> a fixed reference
+        # velocity, regardless of how much wall time elapsed between the pushes.
+        # This is the property the sim eval needs: same clock in, same obs out.
+        def run():
+            clock = {"ns": 5_000_000_000}
+            buf = RealtimeMotionBuffer(DummyRobotCfg(), future_steps=[0])
+            buf.set_clock(lambda: clock["ns"])
+            buf.push_payload({
+                PUBLISH_T_NS_KEY: clock["ns"],
+                "joint_pos": [0.0, 0.0],
+                "body_pos_w": [[0.0, 0.0, 0.5], [0.0, 0.0, 0.8]],
+                "body_quat_w": [[1.0, 0.0, 0.0, 0.0], [1.0, 0.0, 0.0, 0.0]],
+            })
+            clock["ns"] += 20_000_000
+            buf.push_payload({
+                PUBLISH_T_NS_KEY: clock["ns"],
+                "joint_pos": [0.0, 0.0],
+                "body_pos_w": [[0.2, 0.0, 0.5], [0.2, 0.0, 0.8]],
+                "body_quat_w": [[1.0, 0.0, 0.0, 0.0], [1.0, 0.0, 0.0, 0.0]],
+            })
+            clock["ns"] += 40_000_000  # sample strictly after the last frame
+            return buf.get_obs().body_lin_vel_w.copy()
+
+        a = run()
+        b = run()
+        np.testing.assert_allclose(a, b, atol=1e-9)  # deterministic, no wall dep
+
+    def test_smpl_buffer_clock_is_injectable_too(self):
+        from sim2real.rl_policy.utils.motion_buffer import RealtimeSmplMotionBuffer
+
+        buf = RealtimeSmplMotionBuffer(DummyRobotCfg(), future_steps=[0])
+        self.assertTrue(hasattr(buf, "set_clock"))
+        clock = {"ns": 7_000_000_000}
+        buf.set_clock(lambda: clock["ns"])
+        self.assertEqual(buf._clock_ns(), 7_000_000_000)
+
+
+class TestAdapterStampsOnBufferClock(unittest.TestCase):
+    """RefQposAdapter/SmplAdapter stamp pushed frames with the BUFFER's clock,
+    so a sim host's sim-time buffer never gets a wall-time frame."""
+
+    def test_refqpos_adapter_uses_buffer_clock(self):
+        from types import SimpleNamespace
+
+        from sim2real.config.robots.base import PUBLISH_T_NS_KEY as PK
+        from sim2real.vla.adapters import RefQposAdapter
+
+        pushed = []
+        buffer = SimpleNamespace(
+            _clock_ns=lambda: 42_000_000_000,
+            joint_names=["a", "b"],
+            push_payload=lambda p: pushed.append(p),
+        )
+        sink = SimpleNamespace(motion_buffer=buffer)
+        adapter = RefQposAdapter(frame_builder=lambda q: {"qpos": np.asarray(q).tolist()})
+        adapter.apply(sink, {
+            "ref_root_pos": np.zeros(3),
+            "ref_root_quat": np.array([1.0, 0.0, 0.0, 0.0]),
+            "ref_joint_pos": np.zeros(2),
+        })
+        self.assertEqual(pushed[0][PK], 42_000_000_000)
 
 
 if __name__ == "__main__":

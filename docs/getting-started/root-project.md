@@ -44,19 +44,23 @@ Then rerun your environment setup.
 
 ## Verify Installation
 
-### Test ankle swing
+Run a CPU unit check without weights, robot SDKs or hardware:
 
 ```bash
-uv run scripts/g1/test_ankle_swing.py
+uv run --no-sync python -m unittest discover -s tests -p test_math_helpers.py
 ```
 
-### Test inference time
+An optional inference check requires the HEFT weight from
+[Download Artifacts](/reference/artifacts):
 
 ```bash
-uv run scripts/test_policy_inference.py \
-  --policy_config checkpoints/mimic-lite/32x8192-huge/policy.yaml \
-  --inference_backend onnx-cpu
+uv run --no-sync python scripts/test_policy_inference.py \
+  --policy_config checkpoints/heft/pmg/policy.yaml \
+  --inference_backend onnx-cpu --single
 ```
+
+Motor/calibration scripts are separate hardware operations, not installation
+checks. Run them only for an explicitly requested hardware procedure.
 
 ## Next Steps
 

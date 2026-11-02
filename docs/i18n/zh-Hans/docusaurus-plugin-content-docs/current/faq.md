@@ -22,7 +22,8 @@ uv sync
 如果是在 `aarch64` 上遇到 `libGLdispatch.so.0` 错误，可以在启动 Python 前先 preload：
 
 ```bash
-export LD_PRELOAD=/home/elijah/sim2real/venv/pico/.venv/lib/python3.10/site-packages/torch/lib/libtorch.so:/lib/aarch64-linux-gnu/libGLdispatch.so.0:$LD_PRELOAD
+torch_lib=$(uv run --project venv/pico --no-sync python -c 'import importlib.util; from pathlib import Path; print(Path(importlib.util.find_spec("torch").origin).parent / "lib/libtorch.so")')
+export LD_PRELOAD="$torch_lib:/lib/aarch64-linux-gnu/libGLdispatch.so.0${LD_PRELOAD:+:$LD_PRELOAD}"
 ```
 
 也可以尝试把 `import torch` 移到 Python 脚本的最前面。

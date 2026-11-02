@@ -1,6 +1,6 @@
-# sim2real Docs
+# g1_backend Docs
 
-Chinese docs: [https://egalahad.github.io/sim2real/zh-Hans/](https://egalahad.github.io/sim2real/zh-Hans/)
+Chinese docs: [中文文档](./i18n/zh-Hans/docusaurus-plugin-content-docs/current/intro.md)
 
 ## Getting Started
 
@@ -15,6 +15,7 @@ Chinese docs: [https://egalahad.github.io/sim2real/zh-Hans/](https://egalahad.gi
 - [Offline Motion Tracking](./tutorials/offline-motion-tracking.md)
 - [Pico Teleoperation](./tutorials/pico-teleoperation.md)
 - [Motion Recording](./tutorials/motion-recording.md)
+- [Camera and LeRobot Recording](./tutorials/camera-and-lerobot-recording.md)
 - [Run External Policies](./tutorials/run-external-policies.md)
 
 ## FAQ

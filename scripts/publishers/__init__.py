@@ -1,1 +1,0 @@
-"""Publisher script modules."""

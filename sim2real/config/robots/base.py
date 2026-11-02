@@ -51,6 +51,11 @@ class RobotCfg:
     joint_armature: Mapping[str, float] = field(default_factory=dict)
     joint_frictionloss: Mapping[str, float] = field(default_factory=dict)
     mjcf_path: AssetReference | None = None
+    #: Same robot with the Dex3 hands already in the model. Separate file rather
+    #: than a runtime splice: the hand bodies are identical across every vendor's
+    #: G1 MJCF, so there is nothing to derive -- and the hand-less file has to
+    #: stay hand-less because DefaultReferenceFrame requires nq == qpos_size.
+    mjcf_path_with_hands: AssetReference | None = None
     default_qpos: tuple[float, ...] = ()
     qpos_root_size: int = 7
     publish_hz: float = 50.0
@@ -86,10 +91,22 @@ class RobotCfg:
     def joint_pos_slice(self) -> slice:
         return slice(self.qpos_root_size, self.qpos_size)
 
-    def resolve_mjcf_path(self) -> Path:
+    def resolve_mjcf_path(self, with_hands: bool = False) -> Path:
+        if with_hands:
+            if self.mjcf_path_with_hands is None:
+                raise ValueError(
+                    f"Robot '{self.name}' does not define mjcf_path_with_hands; "
+                    "cannot build a hand-ful model"
+                )
+            return resolve_asset_reference(
+                self.mjcf_path_with_hands, local_root=PROJECT_ROOT
+            )
         if self.mjcf_path is None:
             raise ValueError(f"Robot '{self.name}' does not define mjcf_path")
-        return resolve_asset_reference(self.mjcf_path)
+        # local_root anchors relative references at the repo, not the cwd -- an
+        # in-tree asset like assets/g1_unified/robot.xml must resolve the same
+        # way no matter where the process was started from.
+        return resolve_asset_reference(self.mjcf_path, local_root=PROJECT_ROOT)
 
 
 def normalize_name_list(values: Sequence[object] | None) -> list[str] | None:

@@ -33,7 +33,8 @@ For a `libGLdispatch.so.0` error on `aarch64`, preload the library before
 starting Python:
 
 ```bash
-export LD_PRELOAD=/home/elijah/sim2real/venv/pico/.venv/lib/python3.10/site-packages/torch/lib/libtorch.so:/lib/aarch64-linux-gnu/libGLdispatch.so.0:$LD_PRELOAD
+torch_lib=$(uv run --project venv/pico --no-sync python -c 'import importlib.util; from pathlib import Path; print(Path(importlib.util.find_spec("torch").origin).parent / "lib/libtorch.so")')
+export LD_PRELOAD="$torch_lib:/lib/aarch64-linux-gnu/libGLdispatch.so.0${LD_PRELOAD:+:$LD_PRELOAD}"
 ```
 
 You can also try moving `import torch` to the first import in the Python

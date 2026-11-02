@@ -6,7 +6,8 @@ sidebar_position: 1
 Start by cloning the repository:
 
 ```bash
-git clone https://github.com/EGalahad/sim2real
+git clone https://github.com/LocoManiLab/g1_backend.git
+cd g1_backend
 ```
 
 `sim2real` is split into two environments:

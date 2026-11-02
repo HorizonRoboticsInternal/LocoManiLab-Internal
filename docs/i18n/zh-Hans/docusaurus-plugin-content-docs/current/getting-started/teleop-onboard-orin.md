@@ -12,7 +12,7 @@ uv sync --project venv/pico
 
 ### JetPack 5
 
-先下载共享的 [sim2real artifacts](https://drive.google.com/drive/folders/1lrPyiiy7anyG3P4wHNIQQQlydboLPd9e)，把 `third_party/` 放到 repo 根目录。JetPack 5 onboard 路径需要 `third_party/prebuilt/jetpack5-aarch64/`。
+只准备当前平台所需的原生库。JetPack 5 的 onboard 路径使用 `third_party/prebuilt/jetpack5-aarch64/`，下方源码构建指南说明了准备方法；JetPack 6 不需要 JetPack 5 资产包。参见[下载资产](/reference/artifacts)。
 
 `XRoboToolkit PC Service` 继续从预编译包里安装：
 

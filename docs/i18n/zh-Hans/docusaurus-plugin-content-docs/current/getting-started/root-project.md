@@ -38,21 +38,23 @@ export CYCLONEDDS_HOME="$HOME/cyclonedds/install"
 
 然后重新执行环境 setup。
 
-## Verify Installation
+## 验证安装
 
-### Test ankle swing
-
-```bash
-uv run scripts/g1/test_ankle_swing.py
-```
-
-### Test inference time
+运行无需权重、机器人 SDK 或硬件的 CPU 单元检查：
 
 ```bash
-uv run scripts/test_policy_inference.py \
-  --policy_config checkpoints/mimic-lite/32x8192-huge/policy.yaml \
-  --inference_backend onnx-cpu
+uv run --no-sync python -m unittest discover -s tests -p test_math_helpers.py
 ```
+
+可选的推理检查需要先按[下载资产](/reference/artifacts)准备 HEFT 权重：
+
+```bash
+uv run --no-sync python scripts/test_policy_inference.py \
+  --policy_config checkpoints/heft/pmg/policy.yaml \
+  --inference_backend onnx-cpu --single
+```
+
+电机或校准脚本属于独立硬件操作，不作为安装检查。只有明确需要相应硬件流程时才运行。
 
 ## Next Steps
 

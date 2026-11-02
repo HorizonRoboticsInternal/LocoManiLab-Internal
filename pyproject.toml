@@ -1,9 +1,10 @@
 [project]
-name = "hdmi-sim2real"
+name = "g1_backend"
 version = "0.1.0"
-description = "HDMI sim2real development"
+description = "G1 backend: sim2sim / sim2real deployment stack"
 readme = "README.md"
-authors = [{ name = "HDMI Contributors" }]
+authors = [{ name = "sim2real Contributors" }]
+license = { text = "MIT" }
 requires-python = "==3.10.*"
 dependencies = [
     "mujoco",
@@ -16,26 +17,51 @@ dependencies = [
     "onnx==1.17.0",
     "sshkeyboard",
     "pyzmq",
+    # g1_bridge (session/recording) prints coloured operator-facing status.
+    "termcolor",
     "tqdm",
     "tyro",
     "any4hdmi @ git+https://github.com/EGalahad/any4hdmi.git@main",
 ]
 
 [project.optional-dependencies]
+# NOTE: inference-cpu and inference-gpu are mutually exclusive. Both wheels
+# install the same `onnxruntime` module, so whichever landed last wins and the
+# other's providers are simply absent -- `pip install onnxruntime-gpu` on top of
+# a CPU install leaves you with "CUDAExecutionProvider is not available".
+# Uninstall one before installing the other.
 inference-cpu = [
     "onnxruntime",
 ]
 inference-gpu = [
     "numpy<2",
     "onnxruntime-gpu==1.24.0; sys_platform == 'linux' and platform_machine == 'aarch64'",
+    # Desktop/workstation GPUs. Left unpinned like inference-cpu's wheel: the
+    # CUDA EP needs a build new enough for the card (a Blackwell sm_120 part
+    # such as the RTX 5080/5090 needs the CUDA 12.8-era builds, 1.22+).
+    "onnxruntime-gpu; sys_platform == 'linux' and platform_machine == 'x86_64'",
 ]
 inference-tensorrt = [
     "numpy<2",
     "onnxruntime-gpu==1.24.0; sys_platform == 'linux' and platform_machine == 'aarch64'",
+    "onnxruntime-gpu; sys_platform == 'linux' and platform_machine == 'x86_64'",
 ]
 robot-g1 = [
     "unitree-interface==0.1.0; sys_platform == 'linux' and platform_machine == 'aarch64'",
     "unitree-sdk2py @ git+https://github.com/EGalahad/unitree_sdk2_python.git",
+]
+camera = [
+    "pyrealsense2; sys_platform != 'darwin'",
+    "opencv-python-headless",
+    "msgpack",
+    "msgpack-numpy",
+]
+lerobot = [
+    # Pinned to the same version tele_humanoid_benchmark pins. Both repos write
+    # LeRobot v2.1 datasets that must be byte-comparable (sim-collected vs
+    # real-collected); a version skew here silently changes the on-disk layout.
+    "lerobot==0.3.3",
+    "av",
 ]
 
 [build-system]
@@ -43,7 +69,21 @@ requires = ["setuptools>=61"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
-include = ["sim2real*"]
+# Two top-level packages ship from this distribution:
+#   sim2real  -- the policy runtime / robot I/O (this repo's original content)
+#   g1_bridge -- the host-agnostic teleop + LeRobot-recording layer, moved here
+#                from tele_humanoid_benchmark so a real-robot collector and the
+#                sim benchmark drive the identical control path and write the
+#                identical dataset schema. It must stay OUTSIDE the sim2real
+#                package: g1_bridge._cuda_order has to be importable *before*
+#                anything imports sim2real, which a sim2real submodule cannot be.
+include = ["sim2real*", "g1_bridge*"]
+
+[tool.setuptools.package-data]
+"g1_bridge" = ["configs/*.json"]
+"g1_bridge.recording" = ["assets/*.json", "assets/*.urdf"]
+"g1_bridge.vendored.amo" = ["*.urdf"]
+"g1_bridge.vendored.wbt" = ["data/*.npz"]
 
 [tool.uv]
 package = true
@@ -64,8 +104,20 @@ name = "pytorch-cpu"
 url = "https://download.pytorch.org/whl/cpu"
 explicit = true
 
+[[tool.uv.index]]
+name = "pypi"
+url = "https://pypi.org/simple"
+default = true
+
 [tool.uv.sources]
+onnxruntime-gpu = { index = "jetson-ai-lab-jp6-cu126" }
 tensorrt = { index = "nvidia-pypi" }
 torch = [
     { index = "pytorch-cpu", marker = "platform_machine == 'aarch64'" },
 ]
+
+[[tool.uv.dependency-metadata]]
+name = "onnxruntime-gpu"
+version = "1.24.0"
+requires-dist = ["flatbuffers", "numpy>=1.21.6", "packaging", "protobuf", "sympy"]
+requires-python = ">=3.10"

@@ -1,6 +1,6 @@
 # Tutorials
 
-Chinese docs: [https://egalahad.github.io/sim2real/zh-Hans/](https://egalahad.github.io/sim2real/zh-Hans/)
+Chinese docs: [中文文档](../i18n/zh-Hans/docusaurus-plugin-content-docs/current/intro.md)
 
 - [Offline Motion Tracking](./offline-motion-tracking.md)
 - [Pico Teleoperation](./pico-teleoperation.md)

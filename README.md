@@ -1,95 +1,60 @@
-# sim2real
+# g1_backend
 
-A lightweight and modular sim2sim and sim2real deployment stack.
+Shared G1 controller and teleoperation runtime for [LocoManiLab](https://github.com/LocoManiLab/LocoManiLab) and [humanoid_benchmark](https://github.com/LocoManiLab/humanoid_benchmark).
 
-Chinese version: [README_zh.md](./README_zh.md)
+[中文说明](README_zh.md) · [Documentation](docs/README.md) · [Teleoperation and recording](g1_bridge/README.md)
 
-Full documentation: [https://egalahad.github.io/sim2real/](https://egalahad.github.io/sim2real/)
+- `g1_bridge/` provides the controller session, PICO input, host adapters and training-data recording shared by simulation and real-robot collection.
+- `sim2real/` provides inference, reference-motion handling, MuJoCo execution and robot I/O. The existing Python namespace is retained for compatibility.
+- `checkpoints/` contains versioned manifests; model weights are optional downloads. `assets/g1_unified/` contains the shared robot description.
+- `venv/pico/` isolates optional XRoboToolkit/GMR dependencies. Robot SDKs and camera packages are also optional.
 
-If you're looking for the HDMI deployment stack, go to [hdmi tag](https://github.com/EGalahad/sim2real/tree/hdmi).
+This repository builds on the upstream [sim2real deployment stack](https://github.com/EGalahad/sim2real). Its original citation appears below. Fork-specific installation and asset instructions are maintained here.
 
-## Runtime Artifacts
+## Install from a checkout
 
-Large runtime artifacts are not stored in git. Download the shared
-[sim2real artifacts](https://drive.google.com/drive/folders/1lrPyiiy7anyG3P4wHNIQQQlydboLPd9e)
-folder and place `checkpoints/` and `third_party/` at the repo root.
-
-See [Download Artifacts](./docs/artifacts.md) for the expected directory
-layout and onboard dependency notes.
-
-## Quick Start
+The standalone environment requires Python 3.10 and [uv](https://docs.astral.sh/uv/):
 
 ```bash
+git clone https://github.com/LocoManiLab/g1_backend.git
+cd g1_backend
 uv sync --extra inference-cpu
 ```
 
-For G1 onboard installation or repair, invoke the repository Codex skill
-`$configure-g1-sim2real` from `.agents/skills/configure-g1-sim2real`.
+Use this editable checkout for runtime execution: manifests, robot descriptions and launch scripts live beside the Python packages. This is not a self-contained wheel installation. When using LocoManiLab, follow its `lab` setup and environment instructions instead of installing another copy.
 
-Run offline motion tracking (sim2sim):
+The generic CPU environment does not require robot SDKs, PICO, camera packages or weights. After installation, run a local check:
 
 ```bash
-uv run sim2real/sim_env/base_sim.py --robot g1
-uv run sim2real/rl_policy/tracking.py --robot g1 \
-  --policy_config checkpoints/mimic-lite/32x8192-huge/policy.yaml \
-  --motion_path hf://elijahgalahad/any4hdmi-g1-lafan/motions/walk1_subject1.npz
+uv run --no-sync python -m unittest discover -s tests -p test_math_helpers.py
 ```
 
-After both processes are up, press `]` in the policy terminal to start. Open the mjviser URL printed by `base_sim.py`, then use the Elastic Band controls in the viewer UI to disable or tune the virtual gantry.
+For hardware, install only the extras needed by the selected [Robot I/O mode](docs/robot_io.md). PICO setup is documented separately for [PC](docs/getting-started/teleop-x86-64.md) and [onboard Orin](docs/getting-started/teleop-onboard-orin.md).
 
-## Migrating to sim2real
+## Select a controller and its assets
 
-This repo includes a Codex skill for adapting policies trained in external codebases into `sim2real`:
+The five shared controller families are SONIC, HEFT, ScaleBFM, AMO and ALMI:
 
-```text
-.agents/skills/adapt-policy-to-sim2real
-```
-
-Converted checkpoints are distributed through the shared
-[sim2real artifacts](https://drive.google.com/drive/folders/1lrPyiiy7anyG3P4wHNIQQQlydboLPd9e)
-folder.
-
-Currently supported adapted / distributed checkpoint families:
-
-| Policy family | Config path(s) | Notes |
+| Family / variant | Tracked manifest | Input contract |
 | --- | --- | --- |
-| Mimic-Lite | `checkpoints/mimic-lite` | Native mimic-lite tracking checkpoints. |
-| BFM-Zero | `checkpoints/bfm-zero/exp_lafan40-100style_update_z10/policy.yaml` | Latent-conditioned motion tracker. |
-| ScaleBFM | `checkpoints/scalebfm` | ScaleBFM Humanoid Transformer M and XL ONNX exports from [WeishuaiZeng/ScaleBFM](https://huggingface.co/WeishuaiZeng/ScaleBFM). |
-| SONIC release | `checkpoints/sonic/release` | Release G1 and SMPL encoder variants. |
-| SONIC low-latency | `checkpoints/sonic/low_latency` | Low-latency G1 and SMPL variants. |
-| HoloMotion v1.4.0 | `checkpoints/holomotion/v1_4_0/policy.yaml` | Uses the official unmodified ONNX from [HorizonRobotics/HoloMotion_models](https://huggingface.co/HorizonRobotics/HoloMotion_models/resolve/main/HoloMotion_motion_tracking_model_v1.4.0/exported/model_14000.onnx); place it at `checkpoints/holomotion/v1_4_0/policy.onnx`. |
-| TeleopIT | `checkpoints/teleopit/policy.yaml` | TeleopIT policy wrapper. |
-| Humanoid-GPT | `checkpoints/humanoid-gpt/policy.yaml` | Humanoid-GPT policy wrapper. |
-| HEFT | `checkpoints/heft` | PMG and compliance variants. |
-| TWIST2 | `checkpoints/twist2/policy.yaml` | TWIST2 policy wrapper. |
+| SONIC | `checkpoints/sonic/low_latency/g1/policy.yaml` | Motion reference / motion token; default SONIC variant |
+| SONIC v1.1 | `checkpoints/sonic/v1_1/g1/policy.yaml` | Separate encoder/decoder variant; tokens are not interchangeable with low-latency |
+| HEFT | `checkpoints/heft/pmg/policy.yaml` | Motion reference |
+| ScaleBFM | `checkpoints/scalebfm/humanoid_transformer_m/policy.yaml` | Motion reference |
+| AMO | `checkpoints/amo/policy.yaml` | Controller-specific commands |
+| ALMI | `checkpoints/almi/flat_dual/policy.yaml` | Dual-branch controller-specific commands |
 
-![Unified cross-codebase tracking evaluation](assets/mimic_lite_cross_codebase_tracking_eval.png)
+Keep the family, manifest and data/action schema together. Do not substitute one controller's weights or recorded actions for another's. No weights are needed for source review or the check above. Download only the chosen family's weights; see [Download Artifacts](docs/artifacts.md). The standalone HEFT repository is not required; the HEFT controller here remains supported.
 
-For a fair comparison, we report the motion-lookahead latency required by each
-policy, defined by its furthest required future-reference frame. All values use
-the shared 50 Hz reference-motion contract.
+For simulation collection, follow [humanoid_benchmark](https://github.com/LocoManiLab/humanoid_benchmark) or LocoManiLab's collection guide. For standalone collection, see [g1_bridge](g1_bridge/README.md). For offline motion playback, see the [tracking tutorial](docs/tutorials/offline-motion-tracking.md).
 
-| Policy | MimicLite | BFM-Zero | ScaleBFM | SONIC release | SONIC low-latency | HoloMotion | TeleopIT | Humanoid-GPT | HEFT | TWIST2 |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Motion-lookahead latency | 0.08 s | 0.12 s | 0.10 s | 0.90 s | 0.18 s | 0.20 s | 0.00 s | 0.02 s | 0.12 s | 0.00 s |
+## License
 
-## Real-robot Environments
+g1_backend is released under the [MIT License](LICENSE), Copyright (c) 2026 Gamma Robotics. Vendored code, robot assets, and controller configurations keep their own terms; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) and the per-directory license files. The citation below is attribution, not a license grant.
 
-Robot SDKs are kept out of the generic root environment. G1 inline deployment
-uses `uv sync --extra inference-cpu --extra robot-g1`. See
-[Robot I/O Modes](./docs/robot_io.md) for setup and deployment commands.
+## Upstream citation
 
-## Next Steps
-
-- [Docs Home](./docs/README.md)
-- [Getting Started](./docs/getting-started/README.md)
-- [Offline Motion Tracking Tutorial](./docs/tutorials/offline-motion-tracking.md)
-- [Pico Teleoperation Tutorial](./docs/tutorials/pico-teleoperation.md)
-
-## Citation
-
-If you find sim2real useful in your research, please cite:
+Retained from the original sim2real project:
 
 ```bibtex
 @misc{sim2real2026,

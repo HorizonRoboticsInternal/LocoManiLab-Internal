@@ -15,7 +15,7 @@ Choose the setup path that matches the onboard Orin image:
 
 ### JetPack 5
 
-Download the shared [sim2real artifacts](https://drive.google.com/drive/folders/1lrPyiiy7anyG3P4wHNIQQQlydboLPd9e) folder and place `third_party/` at the repo root. The JetPack 5 onboard path needs `third_party/prebuilt/jetpack5-aarch64/`.
+Prepare only the native libraries required by your platform. The JetPack 5 onboard path uses `third_party/prebuilt/jetpack5-aarch64/`; the source-build guides below explain how to prepare it. JetPack 6 does not need the JetPack 5 bundle. See [Download Artifacts](/reference/artifacts).
 
 Install `XRoboToolkit PC Service` from the prebuilt bundle:
 

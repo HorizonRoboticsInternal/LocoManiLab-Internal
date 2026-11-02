@@ -49,15 +49,30 @@ PORTS = {
     "low_cmd": 5591,
     "pico_controller": 5592,
     "hand_grip": 5593,
+    "camera": 5594,
+    "dex3_state": 5595,
 }
 
 
-_PICO_CONTROLLER_STATE_STRUCT = struct.Struct('<QBBBB')
+_PICO_CONTROLLER_STATE_STRUCT = struct.Struct('<QBBBB4f')
+#: The pre-2026-08 layout, before the joystick axes were added. Decoded for
+#: compatibility so a stale publisher (it runs from its own venv, in its own
+#: process) degrades to "sticks centred" instead of making every consumer throw.
+_PICO_CONTROLLER_STATE_STRUCT_V1 = struct.Struct('<QBBBB')
 _HAND_GRIP_STRUCT = struct.Struct('<Qff')
+_DEX3_HAND_STATE_STRUCT = struct.Struct('<Q28f')
 
 
 class PicoControllerStateMessage:
-    """Binary message containing PICO controller button states."""
+    """Binary message containing PICO controller button and joystick state.
+
+    The joystick axes are here because the GMR publisher owns the only PICO SDK
+    connection when a GMR-driven backend is running, so anything downstream that
+    needs a stick has to get it over this channel. Before they were carried, a
+    locomotion backend behind ``GMRButtonRelay`` (ALMI) could read its mode
+    chords and its hand triggers but its sticks were silently always centred --
+    the operator's body tracked and the robot would not walk.
+    """
 
     def __init__(
         self,
@@ -66,12 +81,16 @@ class PicoControllerStateMessage:
         B: bool = False,
         X: bool = False,
         Y: bool = False,
+        left_axis: tuple = (0.0, 0.0),
+        right_axis: tuple = (0.0, 0.0),
     ):
         self.timestamp_ns = int(timestamp_ns)
         self.A = bool(A)
         self.B = bool(B)
         self.X = bool(X)
         self.Y = bool(Y)
+        self.left_axis = (float(left_axis[0]), float(left_axis[1]))
+        self.right_axis = (float(right_axis[0]), float(right_axis[1]))
 
     def to_bytes(self) -> bytes:
         if self.timestamp_ns < 0:
@@ -82,24 +101,40 @@ class PicoControllerStateMessage:
             int(self.B),
             int(self.X),
             int(self.Y),
+            self.left_axis[0],
+            self.left_axis[1],
+            self.right_axis[0],
+            self.right_axis[1],
         )
 
     @classmethod
     def from_bytes(cls, data: bytes) -> 'PicoControllerStateMessage':
-        expected_size = _PICO_CONTROLLER_STATE_STRUCT.size
-        if len(data) != expected_size:
+        if len(data) == _PICO_CONTROLLER_STATE_STRUCT.size:
+            timestamp_ns, a, b, x, y, lx, ly, rx, ry = (
+                _PICO_CONTROLLER_STATE_STRUCT.unpack(data)
+            )
+        elif len(data) == _PICO_CONTROLLER_STATE_STRUCT_V1.size:
+            # Publisher predating the axes. Buttons still decode; sticks read as
+            # centred, which is the same thing the operator sees if they never
+            # touch them -- and far better than refusing every message.
+            timestamp_ns, a, b, x, y = _PICO_CONTROLLER_STATE_STRUCT_V1.unpack(data)
+            lx = ly = rx = ry = 0.0
+        else:
             raise ValueError(
-                "PicoControllerStateMessage data has invalid size: "
-                f"expected {expected_size} bytes, got {len(data)}"
+                "PicoControllerStateMessage data has invalid size: expected "
+                f"{_PICO_CONTROLLER_STATE_STRUCT.size} bytes (or "
+                f"{_PICO_CONTROLLER_STATE_STRUCT_V1.size} for the pre-axis "
+                f"layout), got {len(data)}"
             )
 
-        timestamp_ns, a, b, x, y = _PICO_CONTROLLER_STATE_STRUCT.unpack(data)
         return cls(
             timestamp_ns=timestamp_ns,
             A=bool(a),
             B=bool(b),
             X=bool(x),
             Y=bool(y),
+            left_axis=(lx, ly),
+            right_axis=(rx, ry),
         )
 
 
@@ -151,6 +186,63 @@ class HandGripMessage:
             timestamp_ns=timestamp_ns,
             left_grip=left_grip,
             right_grip=right_grip,
+        )
+
+
+class Dex3HandStateMessage:
+    """Binary message containing Dex3 target/measured joint angles (7 per hand)."""
+
+    NUM_JOINTS = 7
+
+    def __init__(
+        self,
+        timestamp_ns: int = 0,
+        left_target: np.ndarray | None = None,
+        left_measured: np.ndarray | None = None,
+        right_target: np.ndarray | None = None,
+        right_measured: np.ndarray | None = None,
+    ):
+        self.timestamp_ns = int(timestamp_ns)
+        self.left_target = self._as_joint_array(left_target)
+        self.left_measured = self._as_joint_array(left_measured)
+        self.right_target = self._as_joint_array(right_target)
+        self.right_measured = self._as_joint_array(right_measured)
+
+    @classmethod
+    def _as_joint_array(cls, values: np.ndarray | None) -> np.ndarray:
+        if values is None:
+            return np.zeros(cls.NUM_JOINTS, dtype=np.float32)
+        array = np.asarray(values, dtype=np.float32).reshape(-1)
+        if array.size != cls.NUM_JOINTS:
+            raise ValueError(f"expected {cls.NUM_JOINTS} joint values, got {array.size}")
+        return array
+
+    def to_bytes(self) -> bytes:
+        if not 0 <= self.timestamp_ns <= (2**64 - 1):
+            raise ValueError("Dex3HandStateMessage timestamp_ns must fit uint64")
+        payload = np.concatenate(
+            [self.left_target, self.left_measured, self.right_target, self.right_measured]
+        ).astype(np.float32)
+        return _DEX3_HAND_STATE_STRUCT.pack(self.timestamp_ns, *payload)
+
+    @classmethod
+    def from_bytes(cls, data: bytes) -> 'Dex3HandStateMessage':
+        expected_size = _DEX3_HAND_STATE_STRUCT.size
+        if len(data) != expected_size:
+            raise ValueError(
+                "Dex3HandStateMessage data has invalid size: "
+                f"expected {expected_size} bytes, got {len(data)}"
+            )
+        unpacked = _DEX3_HAND_STATE_STRUCT.unpack(data)
+        timestamp_ns = unpacked[0]
+        values = np.asarray(unpacked[1:], dtype=np.float32)
+        n = cls.NUM_JOINTS
+        return cls(
+            timestamp_ns=timestamp_ns,
+            left_target=values[0 * n : 1 * n],
+            left_measured=values[1 * n : 2 * n],
+            right_target=values[2 * n : 3 * n],
+            right_measured=values[3 * n : 4 * n],
         )
 
 

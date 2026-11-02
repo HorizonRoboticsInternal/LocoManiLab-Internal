@@ -3,14 +3,14 @@ import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
-  title: 'sim2real',
+  title: 'g1_backend',
   tagline: 'Documentation for sim2sim, sim2real, and teleoperation workflows',
 
-  url: 'https://egalahad.github.io',
-  baseUrl: '/sim2real/',
+  url: 'https://locomanilab.github.io',
+  baseUrl: '/g1_backend/',
 
-  organizationName: 'EGalahad',
-  projectName: 'sim2real',
+  organizationName: 'LocoManiLab',
+  projectName: 'g1_backend',
 
   onBrokenLinks: 'throw',
   markdown: {
@@ -49,7 +49,7 @@ const config: Config = {
           ],
           sidebarPath: './sidebars.ts',
           routeBasePath: '/',
-          editUrl: 'https://github.com/EGalahad/sim2real/tree/master/docs/',
+          editUrl: 'https://github.com/LocoManiLab/g1_backend/tree/main/docs/',
         },
         blog: false,
         theme: {
@@ -63,7 +63,7 @@ const config: Config = {
 
   themeConfig: {
     navbar: {
-      title: 'sim2real',
+      title: 'g1_backend',
       items: [
         {
           type: 'docSidebar',
@@ -76,7 +76,7 @@ const config: Config = {
           position: 'right',
         },
         {
-          href: 'https://github.com/EGalahad/sim2real',
+          href: 'https://github.com/LocoManiLab/g1_backend',
           label: 'GitHub',
           position: 'right',
         },
@@ -96,11 +96,11 @@ const config: Config = {
         {
           title: 'More',
           items: [
-            {label: 'GitHub', href: 'https://github.com/EGalahad/sim2real'},
+            {label: 'GitHub', href: 'https://github.com/LocoManiLab/g1_backend'},
           ],
         },
       ],
-      copyright: `Copyright ${new Date().getFullYear()} sim2real Contributors. Built with Docusaurus.`,
+      copyright: `Copyright ${new Date().getFullYear()} Gamma Robotics and sim2real Contributors. MIT License. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,

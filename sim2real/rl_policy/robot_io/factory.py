@@ -9,13 +9,20 @@ from sim2real.rl_policy.robot_io.zmq import ZMQRobotIO
 
 def create_robot_io(
     *,
-    mode: Literal["zmq", "inline"],
+    mode: Literal["zmq", "inline", "push"],
     robot_name: str,
     robot_cfg: RobotCfg,
     interface: str,
 ) -> RobotIO:
     if mode == "zmq":
         return ZMQRobotIO(robot_cfg)
+
+    if mode == "push":
+        # No robot behind it: the host pushes state in and reads the command
+        # back out. Needs neither robot_name nor interface.
+        from sim2real.rl_policy.robot_io.push import PushRobotIO
+
+        return PushRobotIO()
 
     if mode != "inline":
         raise ValueError(f"Unsupported robot_io: {mode}")

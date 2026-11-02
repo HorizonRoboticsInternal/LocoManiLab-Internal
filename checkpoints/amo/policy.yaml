@@ -1,0 +1,201 @@
+# AMO (Li/Cheng/Huang/Wang, RSS 2025) -- TorchScript checkpoint, not ONNX.
+# See sim2real_bridge/bridge_runtime.py's AmoBridgeTracking (selected
+# automatically by make_bridge_tracking() whenever amo_adapter_path is set)
+# and sim2real/rl_policy/observations/amo.py (obs computation, ported from
+# tele_humanoid_benchmark's pre-existing standalone AMOG1Composite).
+#
+# AMO only controls 15 of these 29 joints via the neural policy (legs+waist);
+# the 8 shoulder/elbow + 6 wrist joints are driven by PICO-3-point arm IK
+# teleop in sim2real_bridge/composite.py's "amo" branch, NOT by this
+# checkpoint -- their joint_kp/joint_kd/default_joint_pos below still matter
+# (PD gains + the pose held before arm teleop engages), but action_scale
+# does not (AmoBridgeTracking computes q_target directly, ignoring it).
+model_path: amo_jit.pt
+amo_adapter_path: adapter_jit.pt
+amo_norm_stats_path: adapter_norm_stats.pt
+
+observation:
+  obs:
+    amo_obs:
+      _target_: amo.amo_obs
+      joint_names: &amo_joint_names
+        - left_hip_pitch_joint
+        - left_hip_roll_joint
+        - left_hip_yaw_joint
+        - left_knee_joint
+        - left_ankle_pitch_joint
+        - left_ankle_roll_joint
+        - right_hip_pitch_joint
+        - right_hip_roll_joint
+        - right_hip_yaw_joint
+        - right_knee_joint
+        - right_ankle_pitch_joint
+        - right_ankle_roll_joint
+        - waist_yaw_joint
+        - waist_roll_joint
+        - waist_pitch_joint
+        - left_shoulder_pitch_joint
+        - left_shoulder_roll_joint
+        - left_shoulder_yaw_joint
+        - left_elbow_joint
+        - right_shoulder_pitch_joint
+        - right_shoulder_roll_joint
+        - right_shoulder_yaw_joint
+        - right_elbow_joint
+      adapter_path: &amo_adapter_path_ref adapter_jit.pt
+      norm_stats_path: &amo_norm_stats_path_ref adapter_norm_stats.pt
+  extra:
+    amo_extra:
+      _target_: amo.amo_extra
+      joint_names: *amo_joint_names
+      adapter_path: *amo_adapter_path_ref
+      norm_stats_path: *amo_norm_stats_path_ref
+
+joint_names_simulation: &isaac_joint_names
+  - left_hip_pitch_joint
+  - right_hip_pitch_joint
+  - waist_yaw_joint
+  - left_hip_roll_joint
+  - right_hip_roll_joint
+  - waist_roll_joint
+  - left_hip_yaw_joint
+  - right_hip_yaw_joint
+  - waist_pitch_joint
+  - left_knee_joint
+  - right_knee_joint
+  - left_shoulder_pitch_joint
+  - right_shoulder_pitch_joint
+  - left_ankle_pitch_joint
+  - right_ankle_pitch_joint
+  - left_shoulder_roll_joint
+  - right_shoulder_roll_joint
+  - left_ankle_roll_joint
+  - right_ankle_roll_joint
+  - left_shoulder_yaw_joint
+  - right_shoulder_yaw_joint
+  - left_elbow_joint
+  - right_elbow_joint
+  - left_wrist_roll_joint
+  - right_wrist_roll_joint
+  - left_wrist_pitch_joint
+  - right_wrist_pitch_joint
+  - left_wrist_yaw_joint
+  - right_wrist_yaw_joint
+body_names_simulation:
+  - pelvis
+  - left_hip_pitch_link
+  - right_hip_pitch_link
+  - waist_yaw_link
+  - left_hip_roll_link
+  - right_hip_roll_link
+  - waist_roll_link
+  - left_hip_yaw_link
+  - right_hip_yaw_link
+  - torso_link
+  - left_knee_link
+  - right_knee_link
+  - left_shoulder_pitch_link
+  - right_shoulder_pitch_link
+  - left_ankle_pitch_link
+  - right_ankle_pitch_link
+  - left_shoulder_roll_link
+  - right_shoulder_roll_link
+  - left_ankle_roll_link
+  - left_toe_link
+  - right_ankle_roll_link
+  - right_toe_link
+  - left_shoulder_yaw_link
+  - right_shoulder_yaw_link
+  - left_elbow_link
+  - right_elbow_link
+  - left_wrist_roll_link
+  - right_wrist_roll_link
+  - left_wrist_pitch_link
+  - right_wrist_pitch_link
+  - left_wrist_yaw_link
+  - right_wrist_yaw_link
+
+# PD gains -- AMOG1Composite._STIFFNESS/._DAMPING (legs/waist/shoulder/elbow)
+# plus its wrist AUX_KP/AUX_KD=30/1 (arm-IK-driven wrist hold).
+joint_kp:
+  .*_hip_pitch_joint|.*_hip_roll_joint|.*_hip_yaw_joint: 150.0
+  .*_knee_joint: 300.0
+  .*_ankle_pitch_joint: 80.0
+  .*_ankle_roll_joint: 20.0
+  waist_yaw_joint|waist_roll_joint|waist_pitch_joint: 400.0
+  .*_shoulder_pitch_joint|.*_shoulder_roll_joint: 80.0
+  .*_shoulder_yaw_joint: 40.0
+  .*_elbow_joint: 60.0
+  .*_wrist_roll_joint|.*_wrist_pitch_joint|.*_wrist_yaw_joint: 30.0
+joint_kd:
+  .*_hip_pitch_joint|.*_hip_roll_joint|.*_hip_yaw_joint: 2.0
+  .*_knee_joint: 4.0
+  .*_ankle_pitch_joint: 2.0
+  .*_ankle_roll_joint: 1.0
+  waist_yaw_joint|waist_roll_joint|waist_pitch_joint: 15.0
+  .*_shoulder_pitch_joint|.*_shoulder_roll_joint: 2.0
+  .*_shoulder_yaw_joint: 1.0
+  .*_elbow_joint: 1.0
+  .*_wrist_roll_joint|.*_wrist_pitch_joint|.*_wrist_yaw_joint: 1.0
+
+# AMOG1Composite._DEFAULT_DOF_POS (legs/waist/arms), wrist=0.
+default_joint_pos:
+  .*_hip_pitch_joint: -0.1
+  .*_hip_roll_joint: 0.0
+  .*_hip_yaw_joint: 0.0
+  .*_knee_joint: 0.3
+  .*_ankle_pitch_joint: -0.2
+  .*_ankle_roll_joint: 0.0
+  waist_yaw_joint: 0.0
+  waist_roll_joint: 0.0
+  waist_pitch_joint: 0.0
+  .*_shoulder_pitch_joint: 0.5
+  .*_shoulder_roll_joint: 0.0
+  left_shoulder_yaw_joint: 0.2
+  right_shoulder_yaw_joint: -0.2
+  .*_elbow_joint: 0.3
+  .*_wrist_roll_joint: 0.0
+  .*_wrist_pitch_joint: 0.0
+  .*_wrist_yaw_joint: 0.0
+
+# Unused by AmoBridgeTracking (it computes q_target directly), but
+# BasePolicy.__init__ validates the array length against policy_joint_names
+# regardless -- placeholder 1.0 for all 23.
+policy_joint_names: *amo_joint_names
+action_scale:
+  .*: 1.0
+
+# No GMR/motion reference at all for amo -- command-velocity locomotion
+# instead (see composite.py's "amo" branch). motion_backend must still be a
+# push-compatible value to satisfy BridgeTracking's own requirement; never
+# actually read by sim2real.rl_policy.observations.amo.
+motion:
+  motion_backend: zmq
+  root_body_name: pelvis
+  future_steps: [0]
+
+# --- per-controller joint dynamics -------------------------------------
+# armature / damping / frictionloss are properties of THIS controller's
+# training setup, not of the robot: the geometry MJCF is now shared by every
+# backend (assets/g1_unified/robot.xml), so these travel with the policy.
+# Extracted verbatim from this controller's own native model:
+#   OpenTeleVision/AMO@main:g1.xml
+# NOTE: that model has no wrist joints (AMO's policy is 23-DOF and drives
+# the wrists from IK). The 6 wrist entries below are the per-motor physical
+# values, so the shared model still has correct motor inertia there.
+# Patterns must be mutually exclusive -- resolve_matching_names_values()
+# rejects a joint matching two keys, so there is no catch-all + override.
+joint_armature:
+  ? .*_ankle_pitch_joint|.*_ankle_roll_joint|.*_elbow_joint|.*_shoulder_pitch_joint|.*_shoulder_roll_joint|.*_shoulder_yaw_joint
+  : 0.003597
+  .*_hip_pitch_joint|.*_hip_yaw_joint|waist_roll_joint|waist_yaw_joint: 0.0103
+  .*_hip_roll_joint|.*_knee_joint: 0.0251
+  .*_wrist_pitch_joint|.*_wrist_yaw_joint: 0.00425
+  .*_wrist_roll_joint: 0.003609725
+  waist_pitch_joint: 0.0
+joint_damping:
+  (?!(.*_wrist_pitch_joint|.*_wrist_roll_joint|.*_wrist_yaw_joint)).*: 2.0
+  .*_wrist_pitch_joint|.*_wrist_roll_joint|.*_wrist_yaw_joint: 0.05
+joint_frictionloss:
+  (?!(.*_wrist_pitch_joint|.*_wrist_roll_joint|.*_wrist_yaw_joint)).*: 0.2
+  .*_wrist_pitch_joint|.*_wrist_roll_joint|.*_wrist_yaw_joint: 0.1

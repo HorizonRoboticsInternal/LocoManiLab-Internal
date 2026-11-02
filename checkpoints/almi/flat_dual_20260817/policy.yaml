@@ -1,0 +1,288 @@
+# ALMI -- mjlab-loco `Mjlab-Velocity-Flat-Unitree-G1-Dual`,
+# run H100/20260817/model_18500.pt.
+#
+# The `half_body` observation layout (mjlab-loco 5bbaf67, 2026-08-12: "update
+# lower/upper actor obs, remove upper/lower joint obs"). Its sibling
+# checkpoints/almi/flat_dual is the older `whole_body` one and is still the
+# registered default; the two are NOT interchangeable -- each ONNX pair only
+# accepts the observation widths it was trained on.
+#
+# Two independent rsl-rl actors run in parallel every 50 Hz tick and their raw
+# outputs are concatenated into one 29-D action:
+#
+#     lower  obs(46) + history(5x46 flattened to 230)   -> 12   legs
+#     upper  obs(105)                                   -> 17   waist(3) + arms(14)
+#
+# That shape is what `upper_model_path` below selects: it routes this checkpoint
+# to DualBranchPolicyMixin (sim2real/rl_policy/tracking_factory.py) instead of
+# the default single fused-ONNX path. Both branches were exported from the
+# training .pt by scripts/export_almi_onnx.py, which verifies each ONNX against
+# a torch reimplementation of mjlab's EncoderMLPModel forward pass.
+#
+# ALMI takes *commands*, not a reference trajectory: the legs follow a PICO-stick
+# twist and the waist/arms follow whole-body GMR retargeting of the operator.
+# g1_bridge/backends/almi.py assembles both into `tracking.almi_commands` each
+# tick, and the observation terms below read them from there.
+model_path: lower.onnx
+upper_model_path: upper.onnx
+
+# --- observations -------------------------------------------------------
+# Group names are the ALMI runtime's own; DualBranchPolicyMixin maps them onto
+# the two ONNX graphs' input names explicitly, so they do not have to match.
+#
+# `layout: half_body` on every term below is what selects this vector; the
+# table lives in sim2real/rl_policy/observations/almi.py (LAYOUT_DIMS) and
+# scripts/export_almi_onnx.py prints the name it read off the .pt. All three
+# terms share one observation core, so they must all carry the same arguments --
+# setting `layout` on some and not others is refused rather than silently
+# building a history in the other layout.
+#
+# Layouts (mjlab dual_env_cfgs.py, verified term-by-term against the
+# checkpoint's obs_normalizer shapes):
+#
+#   lower_obs (46)  = ang_vel(3) | proj_gravity(3) | q-q_default(12) | qdot(12)
+#                   | prev_action(12) | twist(4)
+#   lower_history   = the same 46-D vector over 5 ticks, oldest -> newest,
+#                     flattened to 230. It bypasses the policy's obs normalizer
+#                     (mjlab normalizes only the flat 1-D group), which is why it
+#                     is a separate ONNX input rather than more of `obs`.
+#   upper_obs (105) = ang_vel(3) | proj_gravity(3) | q-q_default(17) | qdot(17)
+#                   | q_ref(17) | q_ref-q(17) | prev_action(17)
+#                   | ee_pos(6) | ee_quat(8)
+#
+# Each branch now sees only its own half of the robot and only its own slice of
+# the previous action, and neither sees `waist_rpy` any more. What they CONTROL
+# is unchanged (12 legs / 17 waist+arms), and `waist_rpy` is still commanded,
+# clipped and recorded -- it is simply no longer observed. The slices are taken
+# by NAME from the two lists below, which is why the lower list is spelled out
+# here rather than left to the legs-then-upper convention: the wrong 12 joints
+# still produce a 46-wide vector that every graph accepts.
+observation:
+  lower_obs:
+    lower_obs:
+      _target_: almi.almi_lower_obs
+      layout: &almi_layout half_body
+      lower_joint_names: &almi_lower_joint_names
+        - left_hip_pitch_joint
+        - left_hip_roll_joint
+        - left_hip_yaw_joint
+        - left_knee_joint
+        - left_ankle_pitch_joint
+        - left_ankle_roll_joint
+        - right_hip_pitch_joint
+        - right_hip_roll_joint
+        - right_hip_yaw_joint
+        - right_knee_joint
+        - right_ankle_pitch_joint
+        - right_ankle_roll_joint
+      joint_names: &almi_joint_names
+        - left_hip_pitch_joint
+        - left_hip_roll_joint
+        - left_hip_yaw_joint
+        - left_knee_joint
+        - left_ankle_pitch_joint
+        - left_ankle_roll_joint
+        - right_hip_pitch_joint
+        - right_hip_roll_joint
+        - right_hip_yaw_joint
+        - right_knee_joint
+        - right_ankle_pitch_joint
+        - right_ankle_roll_joint
+        - waist_yaw_joint
+        - waist_roll_joint
+        - waist_pitch_joint
+        - left_shoulder_pitch_joint
+        - left_shoulder_roll_joint
+        - left_shoulder_yaw_joint
+        - left_elbow_joint
+        - left_wrist_roll_joint
+        - left_wrist_pitch_joint
+        - left_wrist_yaw_joint
+        - right_shoulder_pitch_joint
+        - right_shoulder_roll_joint
+        - right_shoulder_yaw_joint
+        - right_elbow_joint
+        - right_wrist_roll_joint
+        - right_wrist_pitch_joint
+        - right_wrist_yaw_joint
+  lower_history:
+    lower_history:
+      _target_: almi.almi_lower_history
+      layout: *almi_layout
+      lower_joint_names: *almi_lower_joint_names
+      joint_names: *almi_joint_names
+      history_steps: 5
+  upper_obs:
+    upper_obs:
+      _target_: almi.almi_upper_obs
+      layout: *almi_layout
+      lower_joint_names: *almi_lower_joint_names
+      joint_names: *almi_joint_names
+      # q_ref / q_ref_error cover waist + both arms, in mjlab's
+      # UPPER_JOINT_NAMES order. This is also the order the ALMI backend must
+      # publish `upper_ref_joint_pos` in, and the order recorded into
+      # `action.upper_ref`.
+      upper_joint_names: &almi_upper_joint_names
+        - waist_yaw_joint
+        - waist_roll_joint
+        - waist_pitch_joint
+        - left_shoulder_pitch_joint
+        - left_shoulder_roll_joint
+        - left_shoulder_yaw_joint
+        - left_elbow_joint
+        - left_wrist_roll_joint
+        - left_wrist_pitch_joint
+        - left_wrist_yaw_joint
+        - right_shoulder_pitch_joint
+        - right_shoulder_roll_joint
+        - right_shoulder_yaw_joint
+        - right_elbow_joint
+        - right_wrist_roll_joint
+        - right_wrist_pitch_joint
+        - right_wrist_yaw_joint
+
+# mjlab's compiled joint order (legs, then waist yaw/roll/pitch, then arms).
+# It happens to be identical to sim2real's own RobotCfg("g1").joint_names, so
+# nothing is permuted anywhere in this backend -- but the obs terms still resolve
+# by name, so a future divergence fails loudly rather than silently transposing.
+joint_names_simulation: *almi_joint_names
+# ALMI observes no bodies at all (it is fully proprioceptive plus commands), so
+# this list only feeds recording metadata. It is the shared robot's body list,
+# which includes the two toe links mjlab's own model does not have.
+body_names_simulation:
+  - pelvis
+  - left_hip_pitch_link
+  - left_hip_roll_link
+  - left_hip_yaw_link
+  - left_knee_link
+  - left_ankle_pitch_link
+  - left_ankle_roll_link
+  - left_toe_link
+  - right_hip_pitch_link
+  - right_hip_roll_link
+  - right_hip_yaw_link
+  - right_knee_link
+  - right_ankle_pitch_link
+  - right_ankle_roll_link
+  - right_toe_link
+  - waist_yaw_link
+  - waist_roll_link
+  - torso_link
+  - left_shoulder_pitch_link
+  - left_shoulder_roll_link
+  - left_shoulder_yaw_link
+  - left_elbow_link
+  - left_wrist_roll_link
+  - left_wrist_pitch_link
+  - left_wrist_yaw_link
+  - right_shoulder_pitch_link
+  - right_shoulder_roll_link
+  - right_shoulder_yaw_link
+  - right_elbow_link
+  - right_wrist_roll_link
+  - right_wrist_pitch_link
+  - right_wrist_yaw_link
+
+# concat(lower_action[12], upper_action[17]) lands on these 29 joints in order.
+policy_joint_names: *almi_joint_names
+
+# mjlab's KNEES_BENT_KEYFRAME. Identical to the sonic checkpoint's values --
+# same G1 asset, different controller.
+default_joint_pos:
+  .*_hip_pitch_joint: -0.312
+  .*_knee_joint: 0.669
+  .*_ankle_pitch_joint: -0.363
+  .*_elbow_joint: 0.6
+  left_shoulder_roll_joint: 0.2
+  left_shoulder_pitch_joint: 0.2
+  right_shoulder_roll_joint: -0.2
+  right_shoulder_pitch_joint: 0.2
+
+# mjlab G1_ACTION_SCALE (g1_constants.py), = 0.25 * effort_limit / stiffness.
+# The training runner did not clip actions (RslRlBaseRunnerCfg.clip_actions is
+# None), but real deployment caps rare outliers before both q_target generation
+# and prev_action feedback, matching locomotion_sim2real's safety path.
+action_scale:
+  .*_hip_pitch_joint|.*_hip_yaw_joint|waist_yaw_joint: 0.5475464629911068
+  .*_hip_roll_joint|.*_knee_joint: 0.35066146637882434
+  ? .*_ankle_pitch_joint|.*_ankle_roll_joint|waist_roll_joint|waist_pitch_joint|.*_shoulder_pitch_joint|.*_shoulder_roll_joint|.*_shoulder_yaw_joint|.*_elbow_joint|.*_wrist_roll_joint
+  : 0.43857731392336724
+  .*_wrist_pitch_joint|.*_wrist_yaw_joint: 0.07450087032950714
+
+action_clip: 5.0
+# Contract every hardware joint's [lower, upper] interval about its midpoint.
+soft_joint_pos_limit_factor: 0.9
+
+# MuJoCo built-in position servos: kp = armature * w^2, kd = 2 * zeta * armature * w
+# with w = 10 * 2*pi and zeta = 2 (mjlab g1_constants.py). Same groups as sonic's
+# but the numbers come from ALMI's own training model, not copied.
+joint_kp:
+  .*_hip_pitch_joint|.*_hip_yaw_joint|waist_yaw_joint: 40.17923863450712
+  .*_hip_roll_joint|.*_knee_joint: 99.09842777666111
+  .*_ankle_pitch_joint|.*_ankle_roll_joint|waist_roll_joint|waist_pitch_joint: 28.50124619574858
+  ? .*_shoulder_pitch_joint|.*_shoulder_roll_joint|.*_shoulder_yaw_joint|.*_elbow_joint|.*_wrist_roll_joint
+  : 14.25062309787429
+  .*_wrist_pitch_joint|.*_wrist_yaw_joint: 16.77832748089279
+joint_kd:
+  .*_hip_pitch_joint|.*_hip_yaw_joint|waist_yaw_joint: 2.557889775413375
+  .*_hip_roll_joint|.*_knee_joint: 6.308801853496639
+  .*_ankle_pitch_joint|.*_ankle_roll_joint|waist_roll_joint|waist_pitch_joint: 1.814445686584846
+  ? .*_shoulder_pitch_joint|.*_shoulder_roll_joint|.*_shoulder_yaw_joint|.*_elbow_joint|.*_wrist_roll_joint
+  : 0.907222843292423
+  .*_wrist_pitch_joint|.*_wrist_yaw_joint: 1.06814150219
+
+# The command ranges ALMI was trained on. Unchanged from the whole_body
+# checkpoint, and that is a measurement, not an assumption: this checkpoint's
+# lower obs_normalizer twist block is mean [0.082, -0.000, -0.001, 0.570] /
+# std [0.435, 0.245, 0.780, 0.127] against [0.083, -0.000, -0.000, 0.570] /
+# [0.435, 0.245, 0.778, 0.127] before, and the upper ee_pos block's mean +/- 3
+# sigma reproduces the box below to the digit. The command distribution did not
+# move; only the observation did.
+# g1_bridge/backends/almi.py clips the
+# teleop stream to these before it reaches the policy: a retargeted operator
+# easily leaves the box, and out-of-distribution commands here topple the robot
+# rather than degrading gracefully.
+#
+# twist and waist_rpy are the literal UniformVelocityCommandCfg /
+# WaistRpyCommandCfg ranges from the task cfg. ee_pos has no declared range (it
+# came from a motion clip), so the box is mean +/- 3*sigma of the upper actor's
+# own obs_normalizer statistics for the ee_pos block -- i.e. read back out of the
+# weights, which is the only honest source for it.
+almi_command_limits:
+  twist_min: [-0.8, -0.5, -1.8, 0.35] # vx, vy, wz, base_height
+  twist_max: [0.8, 0.5, 1.8, 0.79]
+  waist_rpy_min: [-0.5, -0.5, -2.5] # roll, pitch, yaw
+  waist_rpy_max: [0.5, 0.5, 2.5]
+  ee_pos_min: [-0.18, -0.06, -0.40, -0.17, -0.44, -0.42] # L xyz, R xyz (torso frame)
+  ee_pos_max: [0.44, 0.45, 0.38, 0.44, 0.06, 0.40]
+
+# Placeholder, exactly as in checkpoints/amo/policy.yaml: ALMI consumes commands,
+# not a reference motion, but BridgeTracking still requires a push-compatible
+# motion_backend to construct. Nothing in observations/almi.py reads it.
+motion:
+  motion_backend: zmq
+  root_body_name: pelvis
+  future_steps: [0]
+
+# --- per-controller joint dynamics -------------------------------------
+# armature / damping / frictionloss are properties of THIS controller's
+# training setup, not of the robot: the geometry MJCF is now shared by every
+# backend (assets/g1_unified/robot.xml), so these travel with the policy.
+# Extracted verbatim from this controller's own native model by compiling
+# mjlab's G1 spec (mjlab/asset_zoo/robots/unitree_g1/g1_constants.py).
+# NOTE mjlab's G1 carries its joint damping and frictionloss as exactly zero --
+# it does not share sonic's 0.05/0.2. Copying sonic's numbers here would change
+# the plant ALMI was trained against.
+# Patterns must be mutually exclusive -- resolve_matching_names_values()
+# rejects a joint matching two keys, so there is no catch-all + override.
+joint_armature:
+  .*_hip_pitch_joint|.*_hip_yaw_joint|waist_yaw_joint: 0.01017752004132231
+  .*_hip_roll_joint|.*_knee_joint: 0.025101924999999997
+  .*_ankle_pitch_joint|.*_ankle_roll_joint|waist_roll_joint|waist_pitch_joint: 0.00721945
+  ? .*_shoulder_pitch_joint|.*_shoulder_roll_joint|.*_shoulder_yaw_joint|.*_elbow_joint|.*_wrist_roll_joint
+  : 0.003609725
+  .*_wrist_pitch_joint|.*_wrist_yaw_joint: 0.00425
+joint_damping:
+  .*: 0.0
+joint_frictionloss:
+  .*: 0.0

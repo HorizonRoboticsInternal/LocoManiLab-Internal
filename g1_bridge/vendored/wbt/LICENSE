@@ -1,0 +1,36 @@
+g1_bridge/vendored/wbt -- license and provenance
+
+This directory is NOT covered by the repository's root MIT license.
+
+Origin
+------
+The files in this directory are copied from the "wbt" (whole_body_teleop)
+project, https://github.com/TeleHuman/whole_body_teleop (see __init__.py for
+the exact list of vendored files). The upstream repository does not publish a
+license.
+
+Status: redistribution permission pending confirmation from the
+whole_body_teleop authors. Until that permission is confirmed, no license is
+granted for the files in this directory beyond what their original authors
+have granted.
+
+Third-party content inside these files
+--------------------------------------
+* controllers/wbt_controller_sonic.py, wbt_controller_sonic_teleop.py and
+  wbt_controller_sonic_smpl.py implement deployment of NVIDIA's SONIC
+  controller. Their observation layouts, constants and control logic are
+  derived from NVIDIA GR00T-WholeBodyControl
+  (https://github.com/NVlabs/GR00T-WholeBodyControl), Copyright NVIDIA
+  CORPORATION & AFFILIATES, licensed under the Apache License, Version 2.0
+  (https://www.apache.org/licenses/LICENSE-2.0). The SONIC model weights are
+  not included here; they are distributed by NVIDIA under their own terms.
+* data/smpl_human_joints_info.npz contains SMPL skeleton joint data (rest
+  joint positions and the kinematic parent chain). The SMPL body model is
+  subject to its own license (https://smpl.is.tue.mpg.de/); verify
+  redistribution terms before publishing.
+
+Modifications
+-------------
+g1_backend-specific changes to these files (for example, the SONIC
+controller's VLA motion-token path) are described in the module docstrings.
+Modifications Copyright (c) 2026 Gamma Robotics.

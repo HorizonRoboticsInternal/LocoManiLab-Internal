@@ -133,13 +133,13 @@ Configure the laptop SSH alias once:
 ```sshconfig
 Host g1-hotspot
   HostName 10.42.7.1
-  User elijah
+  User <your-g1-user>
 ```
 
 Boot G1 normally and SSH into it through the existing Wi-Fi client path, for example:
 
 ```bash
-ssh g1-rp
+ssh g1-hotspot
 cd ~/sim2real
 ```
 

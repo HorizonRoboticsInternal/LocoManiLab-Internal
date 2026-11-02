@@ -1,6 +1,6 @@
 ---
 name: configure-g1-sim2real
-description: Install, repair, and verify sim2real on G1 robot computers. Use for root uv environments and inference extras, robot-g1 dependencies, CycloneDDS builds, G1 network interfaces, Hugging Face offline assets, ONNX Runtime compatibility, inline RobotIO or MotionSwitcher DDS failures, local-to-robot sync, isolated PICO or DH116S environments, and G1 deployment bring-up.
+description: Install, repair, and verify sim2real on G1 robot computers. Use for root uv environments and inference extras, robot-g1 dependencies, CycloneDDS builds, G1 network interfaces, Hugging Face offline assets, ONNX Runtime compatibility, inline RobotIO or MotionSwitcher DDS failures, deployment checkouts, isolated PICO dependencies, and G1 deployment bring-up.
 ---
 
 # Configure G1 sim2real
@@ -11,12 +11,11 @@ interface, Python environment, or GPU runtime from its SSH alias.
 ## Operating rules
 
 1. Treat the local checkout as the source of truth. Make source edits locally,
-   then use the repository sync script. Never sync `.venv` directories.
+   then deploy a reviewed Git revision. Never transfer `.venv` directories.
 2. Run `scripts/inspect_host.sh` before installing or repairing anything.
 3. Keep these environments separate:
    - root project: policy, simulation, ZMQ RobotIO, and optional G1 inline SDK;
    - `venv/pico`: XRoboToolkit, GMR, SMPL-X, and PICO publisher;
-   - `venv/dh116s`: LHandPro/DH116S control.
 4. Default G1 deployment to CPU inference unless the user explicitly requests
    GPU inference. A listed CUDA provider is not proof that its shared libraries
    load.
@@ -51,17 +50,22 @@ Choose exactly one root profile:
 
 Do not install both inference extras in one environment.
 
-### 2. Sync code without environments or large artifacts
+### 2. Prepare the deployment checkout
 
-Use the current repository sync entry point, normally:
+Use a clean checkout of the reviewed revision on the selected host. For a new
+checkout, run on that host:
 
 ```bash
-G1_HOST=<host> SYNC_CHECKPOINTS=0 SYNC_ANY4HDMI=0 ./sync-robot.sh g1
+git clone https://github.com/LocoManiLab/g1_backend.git "$HOME/sim2real"
+cd "$HOME/sim2real"
+git checkout <reviewed-commit>
 ```
 
-Inspect the sync script before running it. Preserve remote-only checkpoints and
-exclude `.venv`, caches, logs, and large motion datasets unless the user placed
-them in scope. Transfer large assets separately and resumably.
+For an existing checkout, inspect its status before fetching or switching.
+Preserve local changes, environments and host configuration. The project no
+longer ships personal robot/workspace synchronization scripts. Transfer only
+explicitly selected weights or native artifacts to matching paths separately;
+verify their destination and size before deployment.
 
 ### 3. Configure native and shell dependencies
 
@@ -108,12 +112,12 @@ Use:
 
 ```bash
 uv sync --project venv/pico
-uv sync --project venv/dh116s
 ```
 
-Keep XRoboToolkit/GMR native dependencies out of root. Keep LHandPro libraries
-out of root. Verify PICO and DH116S with imports or dry-run modes before any
-hardware action.
+Keep XRoboToolkit/GMR native dependencies out of root. Verify PICO with imports before any hardware action. DH116S is an optional
+third-party integration; this checkout does not ship a `venv/dh116s` project
+or a DH116S control entry point. Follow the SDK provider instructions in an
+isolated environment if that hardware is needed.
 
 ### 7. Verify without commanding hardware
 

@@ -1,21 +1,33 @@
 outputs*
 
+# checkpoints/: the policy *manifests* (policy.yaml / policy.json) ARE tracked --
+# they are what each backend loads as its entry point, they encode the joint
+# order / scales / obs layout the code must agree with, and they change together
+# with that code. Only the weights they point at (ONNX / TorchScript, ~1 GiB)
+# stay out of git; those come from HuggingFace, see docs/artifacts.md.
+# The blanket rule below still ignores any *other* directory named checkpoints.
 checkpoints
+!/checkpoints/
+/checkpoints/**/*.onnx
+/checkpoints/**/*.pt
+/checkpoints/**/*.pth
+/checkpoints/.cache/
 .vscode
 stubs
 /legacy
 /g1_motion*
 /infra.drawio.png
-!/tests/
-/tests/*
-!/tests/test_robot_io.py
-!/tests/test_command_sender.py
-!/tests/test_motion_buffer.py
-!/tests/test_sonic_dict_policy.py
-!/tests/test_hand_grip.py
-!/tests/test_pico_hand_grip.py
-!/tests/test_dh116s_keyboard_control.py
-!/tests/test_bfm_zero_observations.py
+# Tests and their small, reproducible fixtures are tracked by default.
+# Only generated test outputs stay local; new tests must not need an allowlist.
+/tests/outputs/
+/tests/.pytest_cache/
+# The unified robot model is tracked whole -- XMLs and meshes. The STLs used to
+# be out-of-band (the "~106MB" that made that look unaffordable was the full
+# unitree g1_29dof_with_hand drop; two thirds of it is referenced by nothing),
+# and the copy-from-a-full-checkout step that replaced them pointed at a
+# directory no clone actually has. What robot.xml references is 49 files / 31MB
+# of official unitree description STLs that have never changed, and robot_fk.xml
+# now references none at all -- so they just live here. See assets/g1_unified/README.md.
 /third_party/*
 !/third_party/dh116s_sdk/
 /third_party/dh116s_sdk/*

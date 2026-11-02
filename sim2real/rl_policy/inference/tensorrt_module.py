@@ -33,7 +33,7 @@ def _import_tensorrt():
     prefer_system = (
         platform.machine() == "aarch64"
         and Path("/etc/nv_tegra_release").exists()
-        and os.environ.get("HDMI_PREFER_SYSTEM_TENSORRT", "1") != "0"
+        and os.environ.get("G1_BACKEND_PREFER_SYSTEM_TENSORRT", "1") != "0"
     )
     if prefer_system:
         for base in (
@@ -81,9 +81,9 @@ def _env_int(name: str, default: int) -> int:
 
 def get_tensorrt_runtime_config() -> Dict[str, Union[bool, int]]:
     return {
-        "use_fp16": _env_bool("HDMI_TRT_FP16", TRT_FP16),
-        "workspace_size": _env_int("HDMI_TRT_WORKSPACE", TRT_WORKSPACE),
-        "force_rebuild": _env_bool("HDMI_TRT_FORCE_REBUILD", TRT_FORCE_REBUILD),
+        "use_fp16": _env_bool("G1_BACKEND_TRT_FP16", TRT_FP16),
+        "workspace_size": _env_int("G1_BACKEND_TRT_WORKSPACE", TRT_WORKSPACE),
+        "force_rebuild": _env_bool("G1_BACKEND_TRT_FORCE_REBUILD", TRT_FORCE_REBUILD),
     }
 
 

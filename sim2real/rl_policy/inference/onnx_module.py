@@ -72,8 +72,23 @@ class ONNXModule:
         available = set(ort.get_available_providers())
 
         if requested[0] not in available:
+            hint = ""
+            if requested[0] == "CUDAExecutionProvider":
+                # The usual cause is the CPU-only wheel: `onnxruntime` and
+                # `onnxruntime-gpu` install the same module, so whichever is
+                # present wins and the GPU provider simply isn't compiled in.
+                # They cannot coexist -- the CPU one has to come out first.
+                hint = (
+                    "\n  This environment has the CPU-only 'onnxruntime' wheel. "
+                    "Swap it for the GPU build:\n"
+                    "    pip uninstall -y onnxruntime && pip install onnxruntime-gpu\n"
+                    "  (or pass --inference-backend onnx-cpu; on this policy the "
+                    "encoder is ~0.2 ms either way, the decoder and the SONIC "
+                    "kPlanner are what the GPU buys you)."
+                )
             raise RuntimeError(
-                f"Requested provider {requested[0]} is not available. available={available}"
+                f"Requested provider {requested[0]} is not available. "
+                f"available={available}{hint}"
             )
 
         session_options = None

@@ -280,7 +280,19 @@ G1_CFG = RobotCfg(
     },
     joint_armature=G1_MODE_15_JOINT_ARMATURE,
     joint_frictionloss=G1_MODE_15_JOINT_FRICTIONLOSS,
-    mjcf_path="hf://elijahgalahad/g1_xmls@main/g1-mode_13_15.xml",
+    # The FK/reference half of the unified model (see assets/g1_unified/README.md):
+    # 29 body joints, no hands, so nq == qpos_size == 36 as DefaultReferenceFrame
+    # requires, and it carries left/right_toe_link which RealtimeMotionBuffer's
+    # default frame looks up. Same geometry lineage as the hand-ful physics model
+    # next to it (FK agrees to 0.000mm), which is the point: this replaces
+    # hf://elijahgalahad/g1_xmls@main/g1-mode_13_15.xml, whose wrist_yaw sat 5mm
+    # off from all four controllers' native models.
+    # Relative -> anchored at the repo root by RobotCfg.resolve_mjcf_path.
+    mjcf_path="assets/g1_unified/robot_fk.xml",
+    # Same geometry with the Dex3 hands already authored in (43 DOF). Used by
+    # load_sim_model(with_dex3_hands=True); its hand bodies are byte-identical to
+    # the ones sonic and scalebfm ship.
+    mjcf_path_with_hands="assets/g1_unified/robot.xml",
     default_qpos=(
         0.0,
         0.0,

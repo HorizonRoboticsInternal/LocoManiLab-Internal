@@ -4,9 +4,9 @@ Benchmark exported policy inference with a unified backend switch.
 
 TensorRT runtime options are configured in
 `sim2real.rl_policy.inference.tensorrt_module` and can be overridden with:
-  - HDMI_TRT_FP16=0|1
-  - HDMI_TRT_WORKSPACE=<bytes>
-  - HDMI_TRT_FORCE_REBUILD=0|1
+  - G1_BACKEND_TRT_FP16=0|1
+  - G1_BACKEND_TRT_WORKSPACE=<bytes>
+  - G1_BACKEND_TRT_FORCE_REBUILD=0|1
 """
 
 import statistics

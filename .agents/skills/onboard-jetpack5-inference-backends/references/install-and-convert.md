@@ -42,10 +42,10 @@ Use a dedicated Python 3.8 venv that can import JetPack system packages:
 ```bash
 cd ~/sim2real
 python3 -m venv --system-site-packages .venv-jp5-ort
-bash -lic 'proxy_on; .venv-jp5-ort/bin/python -m pip install -U pip'
-bash -lic 'proxy_on; .venv-jp5-ort/bin/python -m pip install onnx==1.17.0 loguru pyyaml tyro cuda-python==12.3.0'
-bash -lic 'proxy_on; .venv-jp5-ort/bin/python -m pip install --no-deps "mjhub @ git+https://github.com/EGalahad/mjhub.git@py38"'
-bash -lic 'proxy_on; .venv-jp5-ort/bin/python -m pip install mujoco==3.2.3 pyzmq==25.1.2 tqdm==4.66.6 sshkeyboard==2.3.1 huggingface-hub==0.36.2 torch==2.4.1 tensordict==0.1.2'
+bash -lic '.venv-jp5-ort/bin/python -m pip install -U pip'
+bash -lic '.venv-jp5-ort/bin/python -m pip install onnx==1.17.0 loguru pyyaml tyro cuda-python==12.3.0'
+bash -lic '.venv-jp5-ort/bin/python -m pip install --no-deps "mjhub @ git+https://github.com/EGalahad/mjhub.git@py38"'
+bash -lic '.venv-jp5-ort/bin/python -m pip install mujoco==3.2.3 pyzmq==25.1.2 tqdm==4.66.6 sshkeyboard==2.3.1 huggingface-hub==0.36.2 torch==2.4.1 tensordict==0.1.2'
 ```
 
 Do not run `uv sync` into this venv. It can install incompatible Python,
@@ -63,7 +63,7 @@ Install the NVIDIA Jetson ONNX Runtime GPU wheel:
 ```bash
 cd ~/sim2real
 mkdir -p /tmp/ort-gpu
-bash -lic 'proxy_on; wget -O /tmp/ort-gpu/onnxruntime_gpu-1.16.0-cp38-cp38-linux_aarch64.whl https://nvidia.box.com/shared/static/iizg3ggrtdkqawkmebbfixo7sce6j365.whl'
+bash -lic 'wget -O /tmp/ort-gpu/onnxruntime_gpu-1.16.0-cp38-cp38-linux_aarch64.whl https://nvidia.box.com/shared/static/iizg3ggrtdkqawkmebbfixo7sce6j365.whl'
 .venv-jp5-ort/bin/python -m pip install /tmp/ort-gpu/onnxruntime_gpu-1.16.0-cp38-cp38-linux_aarch64.whl
 ```
 
@@ -173,19 +173,19 @@ TensorRT:
 
 ```bash
 cd ~/sim2real
-PYTHONPATH=$PWD:~/any4hdmi/src HDMI_TRT_FP16=1 HDMI_TRT_FORCE_REBUILD=0 .venv-jp5-ort/bin/python scripts/test_policy_inference.py \
+PYTHONPATH=$PWD:~/any4hdmi/src G1_BACKEND_TRT_FP16=1 G1_BACKEND_TRT_FORCE_REBUILD=0 .venv-jp5-ort/bin/python scripts/test_policy_inference.py \
   --policy_config /tmp/ort-test/policy-trt.yaml \
   --inference_backend tensorrt \
   --warmup 50 --runs 1000
 ```
 
-Use `HDMI_TRT_FORCE_REBUILD=1` to rebuild the `.plan` file.
+Use `G1_BACKEND_TRT_FORCE_REBUILD=1` to rebuild the `.plan` file.
 
 Tracking with TensorRT:
 
 ```bash
 cd ~/sim2real
-PYTHONPATH=$PWD:~/any4hdmi/src HDMI_TRT_FP16=1 HDMI_TRT_FORCE_REBUILD=0 .venv-jp5-ort/bin/python sim2real/rl_policy/tracking.py \
+PYTHONPATH=$PWD:~/any4hdmi/src G1_BACKEND_TRT_FP16=1 G1_BACKEND_TRT_FORCE_REBUILD=0 .venv-jp5-ort/bin/python sim2real/rl_policy/tracking.py \
   --robot g1 \
   --policy_config /tmp/ort-test/policy-trt.yaml \
   --motion_path ../any4hdmi/output/root_tracking_test/motions/forward_1.npz \

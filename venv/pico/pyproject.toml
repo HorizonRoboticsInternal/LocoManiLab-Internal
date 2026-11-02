@@ -1,5 +1,5 @@
 [project]
-name = "hdmi-sim2real-pico"
+name = "g1_backend-pico"
 version = "0.1.0"
 description = "Isolated Pico/XR teleoperation environment for sim2real"
 requires-python = "==3.10.*"

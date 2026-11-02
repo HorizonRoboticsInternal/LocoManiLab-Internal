@@ -1,0 +1,22 @@
+{
+  "source_checkpoint": "almi_model_18500.pt",
+  "layout": "half_body",
+  "in_keys": [
+    "obs"
+  ],
+  "in_shapes": [
+    [
+      1,
+      105
+    ]
+  ],
+  "out_keys": [
+    "action"
+  ],
+  "out_shapes": [
+    [
+      1,
+      17
+    ]
+  ]
+}

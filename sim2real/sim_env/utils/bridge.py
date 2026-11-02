@@ -5,7 +5,16 @@ import zmq
 from loguru import logger
 
 from sim2real.config.robots.base import RobotCfg
-from sim2real.utils.common import LowStateMessage, LowCmdMessage
+from sim2real.utils.common import LowStateMessage, LowCmdMessage, PORTS, HandGripMessage
+from sim2real.utils.dex3 import (
+    DEFAULT_KD,
+    DEFAULT_KP,
+    DEFAULT_THUMB_KD,
+    DEFAULT_THUMB_KP,
+    DEX3_JOINT_NAMES,
+    compute_pd_torques,
+    grip_to_joint_targets,
+)
 from sim2real.utils.strings import resolve_matching_names_values
 
 
@@ -198,3 +207,119 @@ class SimulationBridge:
             self.low_state_pub.send(low_state_msg.to_bytes(), flags=zmq.DONTWAIT)
         except zmq.Again:
             pass
+
+
+class Dex3SimHandBridge:
+    """Drives Dex3 hand joints in the sim via local PD control, from the same
+    ``hand_grip`` ZMQ stream the real-hardware ``Dex3HandDriver`` consumes.
+
+    Independent of ``SimulationBridge``/``RobotCfg.joint_names`` -- resolves
+    hand joint qpos/qvel/actuator addresses by name directly against the
+    loaded ``mj_model`` (populated by ``add_dex3_hands``), so it composes with
+    the 29-DOF body control without touching its protocol or joint list.
+    """
+
+    def __init__(
+        self,
+        mj_model: mujoco.MjModel,
+        *,
+        hand_grip_connect: str = f"tcp://127.0.0.1:{PORTS['hand_grip']}",
+        kp: float = DEFAULT_KP,
+        kd: float = DEFAULT_KD,
+        thumb_kp: float = DEFAULT_THUMB_KP,
+        thumb_kd: float = DEFAULT_THUMB_KD,
+    ) -> None:
+        self.mj_model = mj_model
+        self.kp = kp
+        self.kd = kd
+        self.thumb_kp = thumb_kp
+        self.thumb_kd = thumb_kd
+        joint_names_mujoco = [mj_model.joint(i).name for i in range(mj_model.njnt)]
+        actuator_names_mujoco = [mj_model.actuator(i).name for i in range(mj_model.nu)]
+
+        self.qpos_adrs: dict[str, list[int]] = {}
+        self.qvel_adrs: dict[str, list[int]] = {}
+        self.act_adrs: dict[str, list[int]] = {}
+        for side in ("left", "right"):
+            qpos_adrs: list[int] = []
+            qvel_adrs: list[int] = []
+            act_adrs: list[int] = []
+            for joint_name in DEX3_JOINT_NAMES:
+                full_name = f"{side}_hand_{joint_name}_joint"
+                if full_name not in joint_names_mujoco:
+                    break
+                # Actuator naming is not consistent across the G1 MJCFs: the
+                # hand-ful model names hand actuators without the "_joint"
+                # suffix its joints carry. Same two-candidate lookup
+                # robocasa's build_joint_mapping does for the body joints.
+                act_name = next(
+                    (
+                        candidate
+                        for candidate in (f"{side}_hand_{joint_name}", full_name)
+                        if candidate in actuator_names_mujoco
+                    ),
+                    None,
+                )
+                if act_name is None:
+                    break
+                joint_idx = joint_names_mujoco.index(full_name)
+                qpos_adrs.append(int(mj_model.jnt_qposadr[joint_idx]))
+                qvel_adrs.append(int(mj_model.jnt_dofadr[joint_idx]))
+                act_adrs.append(actuator_names_mujoco.index(act_name))
+            if len(qpos_adrs) == len(DEX3_JOINT_NAMES):
+                self.qpos_adrs[side] = qpos_adrs
+                self.qvel_adrs[side] = qvel_adrs
+                self.act_adrs[side] = act_adrs
+
+        if not self.qpos_adrs:
+            raise ValueError(
+                "No Dex3 hand joints found in mj_model; load the model with "
+                "load_sim_model(..., with_dex3_hands=True)."
+            )
+
+        self.zmq_context = zmq.Context.instance()
+        self.hand_grip_sub = self.zmq_context.socket(zmq.SUB)
+        self.hand_grip_sub.setsockopt(zmq.SUBSCRIBE, b"")
+        self.hand_grip_sub.setsockopt(zmq.CONFLATE, 1)
+        self.hand_grip_sub.setsockopt(zmq.RCVTIMEO, 0)
+        self.hand_grip_sub.setsockopt(zmq.LINGER, 0)
+        self.hand_grip_sub.connect(hand_grip_connect)
+
+        self.last_grips = {"left": 0.0, "right": 0.0}
+
+    def _poll_hand_grip(self) -> None:
+        while True:
+            try:
+                data = self.hand_grip_sub.recv(flags=zmq.DONTWAIT)
+            except zmq.Again:
+                break
+            try:
+                message = HandGripMessage.from_bytes(data)
+            except Exception as exc:
+                logger.warning(f"Failed to decode hand-grip message: {exc}")
+                continue
+            self.last_grips["left"] = message.left_grip
+            self.last_grips["right"] = message.right_grip
+
+    def apply_torques(self, mj_data: mujoco.MjData, torques: np.ndarray) -> None:
+        """Write PD torques for the hand's actuators into ``torques`` in-place."""
+        self._poll_hand_grip()
+        for side, act_adrs in self.act_adrs.items():
+            q_target = grip_to_joint_targets(self.last_grips[side], side)
+            q_measured = mj_data.qpos[self.qpos_adrs[side]]
+            qvel_measured = mj_data.qvel[self.qvel_adrs[side]]
+            torques[act_adrs] = compute_pd_torques(
+                q_target,
+                q_measured,
+                qvel_measured,
+                kp=self.kp,
+                kd=self.kd,
+                thumb_kp=self.thumb_kp,
+                thumb_kd=self.thumb_kd,
+            )
+
+    def close(self) -> None:
+        try:
+            self.hand_grip_sub.close(0)
+        except Exception as exc:
+            logger.debug(f"Failed to stop hand-grip subscriber cleanly: {exc}")

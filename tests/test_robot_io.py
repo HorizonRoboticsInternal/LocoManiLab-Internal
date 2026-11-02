@@ -280,6 +280,107 @@ def test_g1_robot_io_runs_debug_helper_before_importing_inline_sdk(
     assert events == ["debug_helper", "import_inline_sdk"]
 
 
+def test_g1_robot_io_falls_back_to_direct_sdk2(monkeypatch: pytest.MonkeyPatch) -> None:
+    channel_initializations: list[tuple[int, str]] = []
+
+    class FakeSubscriber:
+        def __init__(self, topic: str, message_type: object) -> None:
+            assert topic == "rt/lowstate"
+            self.closed = False
+            self.message = SimpleNamespace(
+                tick=1234,
+                imu_state=SimpleNamespace(
+                    quaternion=[0.0, 0.0, 0.0, 1.0],
+                    gyroscope=[1.0, 2.0, 3.0],
+                ),
+                motor_state=[
+                    SimpleNamespace(q=0.1, dq=0.3, tau_est=0.5),
+                    SimpleNamespace(q=0.2, dq=0.4, tau_est=0.6),
+                ],
+            )
+
+        def Init(self, handler=None, queueLen=0) -> None:
+            assert handler is None and queueLen == 0
+
+        def Read(self):
+            return self.message
+
+        def Close(self) -> None:
+            self.closed = True
+
+    class FakePublisher:
+        def __init__(self, topic: str, message_type: object) -> None:
+            assert topic == "rt/lowcmd"
+            self.written = []
+            self.closed = False
+
+        def Init(self) -> None:
+            pass
+
+        def Write(self, message) -> None:
+            self.written.append(message)
+
+        def Close(self) -> None:
+            self.closed = True
+
+    low_command = SimpleNamespace(
+        level_flag=0,
+        gpio=0,
+        mode_machine=0,
+        mode_pr=99,
+        crc=0,
+        motor_cmd=[SimpleNamespace() for _ in range(2)],
+    )
+    fake_channel_module = SimpleNamespace(
+        ChannelFactoryInitialize=lambda domain_id, interface: (
+            channel_initializations.append((domain_id, interface))
+        ),
+        ChannelSubscriber=FakeSubscriber,
+        ChannelPublisher=FakePublisher,
+    )
+    fake_idl_module = SimpleNamespace(LowState_=object(), LowCmd_=object())
+    fake_default_module = SimpleNamespace(
+        unitree_hg_msg_dds__LowCmd_=lambda: low_command
+    )
+    fake_crc_module = SimpleNamespace(
+        CRC=lambda: SimpleNamespace(Crc=lambda _message: 4321)
+    )
+
+    def import_module(name: str):
+        modules = {
+            "unitree_sdk2py.core.channel": fake_channel_module,
+            "unitree_sdk2py.idl.unitree_hg.msg.dds_": fake_idl_module,
+            "unitree_sdk2py.idl.default": fake_default_module,
+            "unitree_sdk2py.utils.crc": fake_crc_module,
+        }
+        if name == "unitree_interface":
+            raise ImportError(name)
+        return modules[name]
+
+    monkeypatch.setattr(g1_module.importlib, "import_module", import_module)
+    backend = G1RobotIO(
+        DummyRobotCfg(),  # type: ignore[arg-type]
+        interface="enP8p1s0",
+        motion_switcher_factory=lambda: FakeMotionSwitcherClient(
+            [(0, {"name": ""})]
+        ),
+        channel_factory_initialize=lambda domain_id, interface: None,
+        motion_release_delay_s=0.0,
+    )
+
+    assert backend._io_backend == "unitree_sdk2py-direct"
+    assert channel_initializations == [(0, "enP8p1s0")]
+    state = backend.read_state()
+    assert state is not None and state.tick == 1234
+    np.testing.assert_allclose(state.qpos[7:], [0.1, 0.2])
+    arrays = [np.array([index, index + 0.5]) for index in range(5)]
+    backend.write_command(*arrays)
+    assert low_command.mode_pr == 0
+    assert low_command.crc == 4321
+    assert low_command.motor_cmd[1].q == pytest.approx(0.5)
+    assert low_command.motor_cmd[1].kd == pytest.approx(4.5)
+
+
 def test_g1_robot_io_writes_pr_command_arrays() -> None:
     robot = FakeG1Robot()
     backend = G1RobotIO(

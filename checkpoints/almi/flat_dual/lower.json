@@ -1,0 +1,26 @@
+{
+  "source_checkpoint": "model_10000.pt",
+  "in_keys": [
+    "obs",
+    "lower_actor_history"
+  ],
+  "in_shapes": [
+    [
+      1,
+      100
+    ],
+    [
+      1,
+      500
+    ]
+  ],
+  "out_keys": [
+    "action"
+  ],
+  "out_shapes": [
+    [
+      1,
+      12
+    ]
+  ]
+}

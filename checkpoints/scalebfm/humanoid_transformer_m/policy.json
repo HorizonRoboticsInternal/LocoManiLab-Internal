@@ -1,0 +1,17 @@
+{
+  "in_keys": [
+    "root_quat_buffer",
+    "base_ang_vel_buffer",
+    "dof_pos_buffer",
+    "dof_vel_buffer",
+    "actions_buffer",
+    "target_body_pos_future_to_robot_base",
+    "target_body_rot_future_to_robot_base",
+    "control_mode",
+    "future_time_offsets"
+  ],
+  "out_keys": [
+    "tgt_dof_pos",
+    "action"
+  ]
+}

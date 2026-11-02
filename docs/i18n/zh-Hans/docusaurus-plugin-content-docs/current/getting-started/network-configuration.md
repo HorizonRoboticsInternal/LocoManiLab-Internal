@@ -128,13 +128,13 @@ flowchart LR
 ```sshconfig
 Host g1-hotspot
   HostName 10.42.7.1
-  User elijah
+  User <your-g1-user>
 ```
 
 让 G1 正常开机，然后通过已有的普通 Wi-Fi client 路径 SSH 进去，例如：
 
 ```bash
-ssh g1-rp
+ssh g1-hotspot
 cd ~/sim2real
 ```
 

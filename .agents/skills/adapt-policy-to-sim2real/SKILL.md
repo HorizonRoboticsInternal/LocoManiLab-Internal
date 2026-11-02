@@ -5,7 +5,7 @@ description: Adapt a policy trained in any external codebase into the sim2real c
 
 # Adapt Policy To sim2real
 
-Use this skill when bringing a policy checkpoint from any training repo into `/home/elijah/Documents/projects/simple-tracking/sim2real`.
+Use this skill when bringing a policy checkpoint from any training repo into `<g1_backend-checkout>`.
 
 ## Core Workflow
 
@@ -72,7 +72,7 @@ Use this skill when bringing a policy checkpoint from any training repo into `/h
   ```
 
 - The converter copies an adjacent YAML to the converted ONNX stem by default because sim2real derives the ONNX path from `--policy_config`.
-- Validate the converted YAML on G1 with `uv run --no-sync scripts/test_policy_inference.py --policy_config <converted>.yaml --inference_backend onnx-gpu --single`. For non-interactive `g1-rp` SSH, run commands through `bash -lc` so `uv` is on PATH.
+- Validate the converted YAML on G1 with `uv run --no-sync scripts/test_policy_inference.py --policy_config <converted>.yaml --inference_backend onnx-gpu --single`. For non-interactive the configured robot host SSH, run commands through `bash -lc` so `uv` is on PATH.
 - Do not only edit `ir_version`. The conversion is acceptable only when ONNX checker passes and source-vs-converted output comparison matches within tolerance.
 - CPU inference should not meaningfully slow down from this compatibility conversion, but benchmark both files if latency matters for the deployment decision.
 
@@ -183,7 +183,7 @@ Use this skill when bringing a policy checkpoint from any training repo into `/h
 - IsaacLab observation history is flattened oldest-to-newest; newest-to-oldest can have the right shape but destabilize SONIC.
 - Use IsaacLab/action order for `policy_joint_names`, `joint_names_simulation`, and motion joint observations when the exported action order comes from GR00T.
 - GR00T export paths may ignore `+exported_policy_path` and still write under the checkpoint's `exported/` directory. Check the actual log line and copy the generated ONNX into `sim2real/checkpoints/...`.
-- The canonical SONIC paths are `checkpoints/sonic/release/{g1,smpl}` and `checkpoints/sonic/low_latency/{g1,smpl}`. Release SMPL uses `smpl_input[840]`; low-latency SMPL uses `smpl_input[336]`. All four use `proprioception[930]`.
+- Historical upstream exports used `checkpoints/sonic/release/{g1,smpl}` and `checkpoints/sonic/low_latency/{g1,smpl}`. Release SMPL uses `smpl_input[840]`; low-latency SMPL uses `smpl_input[336]`; all four use `proprioception[930]`. These are adaptation examples, not distributed manifests in this fork. Current tracked SONIC manifests are `checkpoints/sonic/low_latency/g1` and `checkpoints/sonic/v1_1/g1`.
 - Canonical SONIC graphs expose `action[29]` and the encoder `token[64]`. The runtime consumes `action`; retain `token` for future consumers and verify that exposing it does not change action numerics.
 - Splitting a universal encoder and decoder after export can accidentally retain every tokenizer feature. Use the selected `g1`/`g1_dyn` or `smpl`/`g1_dyn` export, or merge only matching selected encoder/decoder graphs. Verify every named input and compare the multi-key graph numerically against the source policy before writing YAML.
 - Recent XRobot raw G1 dumps already include G1 `joint_names`, `body_names`, `root_pos`, `root_rot`, and `dof_pos`; retargeting can be skipped if order matches. Their `root_rot` is `xyzw`, so convert to `wxyz` for any4hdmi qpos.

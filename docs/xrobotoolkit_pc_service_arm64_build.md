@@ -7,7 +7,7 @@ slug: /reference/xrobotoolkit-pc-service-arm64-build
 
 Target machine:
 
-- `g1-rp`
+- the configured robot host
 - `aarch64`
 - `Ubuntu 20.04.6 LTS`
 - output `.deb`: `~/src/XRoboToolkit-PC-Service-main/RoboticsService/Package/output/XRoboToolkit-PC-Service_1.0.0.0_arm64.deb`
@@ -24,14 +24,14 @@ GLIBC_2.32 not found
 GLIBCXX_3.4.29 not found
 ```
 
-Build on `g1-rp` so the service links against Ubuntu 20.04-compatible runtime
+Build on the configured robot host so the service links against Ubuntu 20.04-compatible runtime
 libraries.
 
 ## Setup
 
 ### 1. system packages
 
-Run on `g1-rp`:
+Run on the configured robot host:
 
 ```bash
 sudo apt update
@@ -49,8 +49,7 @@ sudo apt install -y \
 Enable proxy if GitHub / Qt downloads are slow:
 
 ```bash
-source ~/.bashrc
-proxy_on
+# Set HTTPS_PROXY first if this network requires a proxy.
 ```
 
 ### 2. source
@@ -63,10 +62,10 @@ curl -L \
   https://codeload.github.com/XR-Robotics/XRoboToolkit-PC-Service/tar.gz/refs/heads/main
 
 scp /tmp/xrobotoolkit-pc-service-main.tar.gz \
-  g1-rp:/home/elijah/src/xrobotoolkit-pc-service-main.tar.gz
+  <robot-host>:~/src/xrobotoolkit-pc-service-main.tar.gz
 ```
 
-On `g1-rp`:
+On the configured robot host:
 
 ```bash
 mkdir -p ~/src
@@ -80,8 +79,7 @@ cd ~/src/XRoboToolkit-PC-Service-main/RoboticsService
 
 ```bash
 python3 -m pip install --user --upgrade pip setuptools wheel aqtinstall
-source ~/.bashrc
-proxy_on
+# Set HTTPS_PROXY first if this network requires a proxy.
 
 ~/.local/bin/aqt install-qt \
   -O ~/Qt6 \

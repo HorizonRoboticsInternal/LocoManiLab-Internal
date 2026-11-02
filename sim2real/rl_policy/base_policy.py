@@ -1,6 +1,6 @@
 import time
 import numpy as np
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Dict, Literal, Type
 import sched
@@ -12,43 +12,32 @@ from loguru import logger
 from sim2real.config.robots import get_robot_cfg
 from sim2real.rl_policy.controllers.base import ControllerBase
 from sim2real.rl_policy.controllers.keyboard import KeyboardController
+from sim2real.rl_policy.controllers.passive import PassiveController
 from sim2real.rl_policy.controllers.pico import PicoController
 from sim2real.rl_policy.controllers.unitree_joystick import UnitreeJoystickController
 from sim2real.rl_policy.inference import Timer, build_inference_module
+from sim2real.rl_policy.control_mode import (
+    EpisodeCommand,
+    resolve_keyboard_episode_command,
+)
 from sim2real.rl_policy.observations import Observation, ObsGroup, normalize_observation_array
+from sim2real.rl_policy.recording import EpisodeRecorderBase, copy_array
+from sim2real.rl_policy.recording.npz_writer import NpzEpisodeRecorder
 from sim2real.rl_policy.robot_io import create_robot_io
 from sim2real.rl_policy.utils.command_sender import ActionManager
 from sim2real.rl_policy.utils.state_processor import StateProcessor
 from sim2real.utils.common import PORTS
+from sim2real.utils.dex3 import (
+    DEFAULT_DOMAIN_ID as DEX3_DEFAULT_DOMAIN_ID,
+    DEFAULT_INTERFACE as DEX3_DEFAULT_INTERFACE,
+    DEFAULT_KD as DEX3_DEFAULT_KD,
+    DEFAULT_KP as DEX3_DEFAULT_KP,
+    DEFAULT_MAX_DELTA_Q as DEX3_DEFAULT_MAX_DELTA_Q,
+    DEFAULT_THUMB_KD as DEX3_DEFAULT_THUMB_KD,
+    DEFAULT_THUMB_KP as DEX3_DEFAULT_THUMB_KP,
+)
 from sim2real.utils.profiling import ScopedTimer
 from sim2real.utils.strings import resolve_matching_names_values
-
-
-def _record_array(values: list[Any]) -> Any:
-    if not values:
-        return np.empty((0,), dtype=np.float32)
-
-    if any(value is None for value in values):
-        return np.asarray(values, dtype=object)
-
-    try:
-        arrays = [np.asarray(value) for value in values]
-        if arrays and all(array.shape == arrays[0].shape for array in arrays):
-            if arrays[0].dtype.kind in "biufc?":
-                return np.stack(arrays, axis=0)
-    except Exception:
-        pass
-
-    try:
-        return np.asarray(values)
-    except Exception:
-        return np.asarray(values, dtype=object)
-
-
-def _copy_array(value: Any, dtype: Any | None = np.float32) -> np.ndarray:
-    if dtype is None:
-        return np.asarray(value).copy()
-    return np.asarray(value, dtype=dtype).copy()
 
 
 class BasePolicy:
@@ -167,13 +156,44 @@ class BasePolicy:
         self.use_joystick = self.controller_type == "joystick"
         self.wc_msg = None
 
+        self.dex3_driver = None
+        self._dex3_grip_client = None
+        if args.dex3_hand_dir is not None:
+            from sim2real.rl_policy.recording.hand_grip_client import HandGripClient
+
+            # Falls back to the same local default scripts/dh116s_control.py and
+            # scripts/dex3_control.py already use, so --dex3-hand-dir alone is
+            # enough when the Pico publisher runs on this machine; only pass
+            # --hand-grip-connect explicitly for a remote publisher.
+            hand_grip_connect = args.hand_grip_connect or f"tcp://127.0.0.1:{PORTS['hand_grip']}"
+            self._dex3_grip_client = HandGripClient(connect=hand_grip_connect)
+            if args.dex3_dry_run:
+                from sim2real.utils.dex3 import DryRunDex3HandDriver
+
+                self.dex3_driver = DryRunDex3HandDriver(hand_dir=args.dex3_hand_dir)
+            else:
+                from sim2real.utils.dex3 import Dex3HandDriver
+
+                self.dex3_driver = Dex3HandDriver(
+                    hand_dir=args.dex3_hand_dir,
+                    domain_id=args.dex3_domain_id,
+                    interface=args.dex3_interface,
+                    kp=args.dex3_kp,
+                    kd=args.dex3_kd,
+                    thumb_kp=args.dex3_thumb_kp,
+                    thumb_kd=args.dex3_thumb_kd,
+                    max_delta_q=args.dex3_max_delta_q,
+                )
+
         # Setup observations after state processor is initialized
         self.setup_policy(model_path)
         self.setup_observations(policy_config["observation"])
         self._record_enabled = bool(args.record)
         self._record_output = self._resolve_record_output(args.record_output)
-        self._record_frames: list[dict[str, Any]] = []
-        self._record_start_time_ns: int | None = None
+        self._recorder: EpisodeRecorderBase | None = (
+            self._build_recorder() if self._record_enabled else None
+        )
+        self._last_extra_keys: list[str] = []
 
     def prepare_policy_config(self, policy_config):
         return policy_config
@@ -202,6 +222,13 @@ class BasePolicy:
         if controller_type == "pico":
             self.pico_controller = PicoController(connect=self.args.pico_zmq_connect)
             return self.pico_controller
+
+        if controller_type == "passive":
+            # No operator input at all: mode changes come from whoever embeds
+            # this runtime (a simulator host, a VLA driver) calling
+            # set_policy_mode()/set_zero_mode() directly. Unlike "keyboard",
+            # this starts no stdin listener thread.
+            return PassiveController()
 
         raise ValueError(f"Unsupported controller_type: {controller_type}")
 
@@ -257,6 +284,23 @@ class BasePolicy:
 
     def reset(self):
         self.state_dict["paused"] = True
+        # A new episode has no previous action, and saying so is not a
+        # formality. Every prev-action observation appends state_dict["action"]
+        # in update(), which runs BEFORE inference -- so whatever is left here
+        # is the first frame of the new episode's action history. Leave the old
+        # value and episode N opens with episode N-1's final command fed back
+        # into the policy, one tick after the robot was teleported somewhere
+        # else entirely. ``run()`` rebuilds state_dict per session and never saw
+        # this; a host that drives step() directly across episodes (the
+        # g1_bridge composites) resets in place and does.
+        #
+        # Measured on gr00t bench_sonic_KitchenOpenFridge_v2 / sonic
+        # (2026-08-09): the stale action moves the first decoded target by up to
+        # 1.9 rad and costs ~30 points of task success. It is invisible in
+        # episode 1 -- which is exactly why single-episode parity tests against
+        # the vendored WBT controller (which zeroes its own action history on
+        # reset) came back bit-identical.
+        self.state_dict["action"] = np.zeros(self.num_actions, dtype=np.float32)
         [reset_callback() for reset_callback in self.reset_callbacks]
 
     def update(self):
@@ -316,12 +360,59 @@ class BasePolicy:
         elif mode == "init":
             self.set_init_mode(source=self.controller.name)
 
+        # Cached (not re-queried) so subclasses overriding process_controllers can
+        # inspect the same edge-triggered keys without double-draining the listener's
+        # pending queue (KeyboardController.get_extra_keys() clears it on each call).
+        self._last_extra_keys = self.controller.get_extra_keys()
+        episode_command: EpisodeCommand | None = None
+        for keycode in self._last_extra_keys:
+            resolved = resolve_keyboard_episode_command(keycode)
+            if resolved is not None:
+                episode_command = resolved
+
+        if self.pico_controller is not None:
+            pico_command = self.pico_controller.get_episode_command()
+            if pico_command is not None:
+                episode_command = pico_command
+
+        if episode_command == "toggle":
+            self._toggle_recording(source=self.controller.name)
+        elif episode_command == "discard":
+            self._discard_episode(source=self.controller.name)
+
+    def _toggle_recording(self, *, source: str) -> None:
+        """Start a new episode (if idle) or stop & save the in-progress one. No-op
+        with no recorder attached, or for recorder backends/settings that don't
+        support mid-run segmentation (see ``EpisodeRecorderBase.toggle``)."""
+        if self._recorder is not None:
+            self._recorder.toggle(source=source)
+
+    def _discard_episode(self, *, source: str) -> None:
+        """Drop the in-progress episode without saving it. No-op with no recorder."""
+        if self._recorder is not None:
+            self._recorder.discard(source=source)
+
     def _resolve_record_output(self, record_output: str | None) -> Path:
         if record_output:
             return Path(record_output).expanduser()
         timestamp = time.strftime("%Y%m%d_%H%M%S")
         policy_stem = Path(self.args.policy_config).stem
+        if self.args.record_format == "lerobot":
+            return Path.cwd() / f"policy_tracking_record_{policy_stem}_{timestamp}"
         return Path.cwd() / f"policy_tracking_record_{policy_stem}_{timestamp}.npz"
+
+    def _build_recorder(self) -> EpisodeRecorderBase:
+        if self.args.record_format == "npz":
+            return NpzEpisodeRecorder(
+                policy=self,
+                output_path=self._record_output,
+                episodes_enabled=self.args.record_episodes,
+            )
+        if self.args.record_format == "lerobot":
+            from sim2real.rl_policy.recording.lerobot_writer import build_lerobot_recorder
+
+            return build_lerobot_recorder(self)
+        raise ValueError(f"Unsupported record_format: {self.args.record_format}")
 
     def _append_record_frame(
         self,
@@ -334,39 +425,37 @@ class BasePolicy:
         cmd_dq: np.ndarray,
         cmd_tau: np.ndarray,
     ) -> None:
-        if not self._record_enabled:
+        if self._recorder is None:
             return
 
         now_ns = time.time_ns()
-        if self._record_start_time_ns is None:
-            self._record_start_time_ns = now_ns
 
         robot_state = self.state_processor.latest_state
         joint_torque = robot_state.joint_torque if robot_state is not None else None
         if joint_torque is None:
             joint_torque = np.full(self.num_dofs, np.nan, dtype=np.float32)
 
-        self._record_frames.append(
+        self._recorder.append_frame(
             {
                 "step_index": int(self.total_inference_cnt),
                 "time_ns": int(now_ns),
                 "robot": {
-                    "joint_pos": _copy_array(self.state_processor.joint_pos),
-                    "joint_vel": _copy_array(self.state_processor.joint_vel),
-                    "joint_torque": _copy_array(joint_torque),
-                    "root_quat_w": _copy_array(self.state_processor.root_quat_w),
-                    "root_ang_vel_b": _copy_array(self.state_processor.root_ang_vel_b),
+                    "joint_pos": copy_array(self.state_processor.joint_pos),
+                    "joint_vel": copy_array(self.state_processor.joint_vel),
+                    "joint_torque": copy_array(joint_torque),
+                    "root_quat_w": copy_array(self.state_processor.root_quat_w),
+                    "root_ang_vel_b": copy_array(self.state_processor.root_ang_vel_b),
                     "low_state_tick": int(robot_state.tick if robot_state is not None else -1),
                 },
                 "policy": {
-                    "action": _copy_array(action),
-                    "q_target": _copy_array(q_target),
-                    "cmd_q": _copy_array(cmd_q),
-                    "cmd_dq": _copy_array(cmd_dq),
-                    "cmd_tau": _copy_array(cmd_tau),
+                    "action": copy_array(action),
+                    "q_target": copy_array(q_target),
+                    "cmd_q": copy_array(cmd_q),
+                    "cmd_dq": copy_array(cmd_dq),
+                    "cmd_tau": copy_array(cmd_tau),
                     "obs": {
                         group_name: {
-                            obs_name: _copy_array(obs)
+                            obs_name: copy_array(obs)
                             for obs_name, obs in group_obs.items()
                         }
                         for group_name, group_obs in obs_components.items()
@@ -383,99 +472,17 @@ class BasePolicy:
     def _record_runtime_fields(self) -> dict[str, Any]:
         return {}
 
+    def _update_dex3_hand(self) -> None:
+        if self.dex3_driver is None:
+            return
+        grips = self._dex3_grip_client.read()
+        if grips is None:
+            return
+        left_grip, right_grip = grips
+        self.dex3_driver.apply_grips(left_grip, right_grip)
+
     def _record_metadata_fields(self) -> dict[str, Any]:
         return {}
-
-    def _build_record_data(self) -> dict[str, Any]:
-        frames = self._record_frames
-
-        def collect(group: str, key: str) -> Any:
-            return _record_array([frame[group].get(key) for frame in frames])
-
-        obs_groups = sorted(
-            {
-                group_name
-                for frame in frames
-                for group_name in frame["policy"].get("obs", {}).keys()
-            }
-        )
-        obs = {}
-        for group_name in obs_groups:
-            obs_names = sorted(
-                {
-                    obs_name
-                    for frame in frames
-                    for obs_name in frame["policy"].get("obs", {}).get(group_name, {}).keys()
-                }
-            )
-            obs[group_name] = {
-                obs_name: _record_array(
-                    [
-                        frame["policy"].get("obs", {}).get(group_name, {}).get(obs_name)
-                        for frame in frames
-                    ]
-                )
-                for obs_name in obs_names
-            }
-
-        runtime_keys = sorted(
-            {
-                key
-                for frame in frames
-                for key in frame.get("runtime", {})
-            }
-        )
-
-        return {
-            "metadata": {
-                "schema": "policy_tracking_record_v1",
-                "robot": str(self.args.robot),
-                "policy_config": str(self.args.policy_config),
-                "model_path": str(self.model_path),
-                "rl_rate": float(self.args.rl_rate),
-                "joint_names_simulation": list(self.joint_names_simulation),
-                "body_names_simulation": list(self.body_names_simulation),
-                "frame_count": int(len(frames)),
-                "recorded_at_unix_ns": int(time.time_ns()),
-                "record_start_unix_ns": int(self._record_start_time_ns or 0),
-                **self._record_metadata_fields(),
-            },
-            "robot": {
-                "joint_names": list(self.state_processor.joint_names),
-                "joint_pos": collect("robot", "joint_pos"),
-                "joint_vel": collect("robot", "joint_vel"),
-                "joint_torque": collect("robot", "joint_torque"),
-                "root_quat_w": collect("robot", "root_quat_w"),
-                "root_ang_vel_b": collect("robot", "root_ang_vel_b"),
-                "low_state_tick": collect("robot", "low_state_tick"),
-            },
-            "policy": {
-                "step_index": _record_array([frame["step_index"] for frame in frames]),
-                "time_ns": _record_array([frame["time_ns"] for frame in frames]),
-                "action": collect("policy", "action"),
-                "q_target": collect("policy", "q_target"),
-                "cmd_q": collect("policy", "cmd_q"),
-                "cmd_dq": collect("policy", "cmd_dq"),
-                "cmd_tau": collect("policy", "cmd_tau"),
-                "obs": obs,
-            },
-            "runtime": {
-                key: _record_array([frame.get("runtime", {}).get(key) for frame in frames])
-                for key in runtime_keys
-            },
-        }
-
-    def _save_recording(self) -> None:
-        if not self._record_enabled:
-            return
-        data = self._build_record_data()
-        self._record_output.parent.mkdir(parents=True, exist_ok=True)
-        np.savez_compressed(self._record_output, data=np.asarray(data, dtype=object))
-        logger.info(
-            "Saved {} policy tracking frames to {}",
-            len(self._record_frames),
-            self._record_output,
-        )
 
     def run(self):
         total_inference_cnt = 0
@@ -508,14 +515,24 @@ class BasePolicy:
             pass
         finally:
             try:
-                self._save_recording()
+                if self._recorder is not None:
+                    self._recorder.close()
             finally:
                 try:
                     self.controller.close()
                 finally:
-                    self.robot_io.close()
+                    try:
+                        if self.dex3_driver is not None:
+                            self.dex3_driver.close()
+                    finally:
+                        try:
+                            if self._dex3_grip_client is not None:
+                                self._dex3_grip_client.close()
+                        finally:
+                            self.robot_io.close()
 
     def step(self):
+        self._update_dex3_hand()
         with ScopedTimer("rl_policy.step") as step_timer:
             with ScopedTimer("rl_policy.step.prepare_low_state") as prepare_low_state_timer:
                 with Timer(self.perf_dict, "prepare_low_state"):
@@ -635,12 +652,62 @@ class BasePolicyArgs:
     robot: str = "g1"
     rl_rate: float = 50.0
     inference_backend: Literal["onnx-gpu", "onnx-cpu", "tensorrt"] = "onnx-cpu"
-    robot_io: Literal["inline", "zmq"] = "zmq"
+    robot_io: Literal["inline", "zmq", "push"] = "zmq"
+    """'push' has no robot behind it -- the embedding host pushes state in and
+    reads the command back off PushRobotIO.last_command (see robot_io/push.py)."""
     robot_interface: str = "eth0"
-    controller: Literal["keyboard", "joystick", "pico"] = "keyboard"
+    controller: Literal["keyboard", "joystick", "pico", "passive"] = "keyboard"
+    """'passive' takes no operator input and starts no listener thread; the
+    embedding host drives the control mode directly."""
     pico_zmq_connect: str = f"tcp://127.0.0.1:{PORTS['pico_controller']}"
     record: bool = False
     record_output: str | None = None
+    record_format: Literal["npz", "lerobot"] = "npz"
+    """'npz' preserves the original flat-dump behavior; 'lerobot' writes a LeRobot v2.1
+    episode dataset (state/action/image), deriving its schema from this family's own
+    `observation` config -- see rl_policy.recording.lerobot_writer."""
+    record_episodes: bool = False
+    """Segment recording into multiple episodes via the controller's toggle/discard
+    command ('c'/'x' on keyboard, Y/Y+A on pico) instead of one implicit episode
+    spanning the whole process. Always True when record_format == 'lerobot'."""
+    record_task: str | None = None
+    """LeRobot task string for recorded episodes (record_format == 'lerobot' only).
+    Defaults to the policy_config filename stem."""
+    camera_connect: str | None = None
+    """ZMQ connect address for a sim2real.camera server (e.g. tcp://127.0.0.1:5594).
+    Only used when record_format == 'lerobot'; omit to record without images."""
+    hand_grip_connect: str | None = None
+    """ZMQ connect address for the existing hand-grip channel (PORTS['hand_grip']).
+    Used for recording (record_format == 'lerobot') and, when dex3_hand_dir is set,
+    as the live source driving the in-process Dex3 hand. Omit to use the local
+    default (tcp://127.0.0.1:5593); only needed when the Pico publisher runs on a
+    different machine."""
+    record_extra: list[str] = field(default_factory=list)
+    """Extra controller-specific recording fields to enable (see
+    rl_policy.recording.extras), on top of whatever this policy_config's own
+    'recording_extras' key already declares. Only used when record_format == 'lerobot'."""
+    dex3_hand_dir: Literal["left", "right", "double"] | None = None
+    """Enable in-process Dex3 hand control (no separate scripts/dex3_control.py
+    process needed): drives the Dex3 hand over DDS every tick from the same
+    hand-grip stream Pico already publishes -- add just this one flag, everything
+    else (hand_grip_connect, domain/interface, gains) defaults to the common case.
+    When enabled with record_format == 'lerobot', the 'dex3' RecordingExtra (7x2
+    joint targets and measured angles) is added automatically -- no need to also
+    pass --record-extra dex3. Only combine with --robot-io inline after checking
+    for DDS-participant conflicts with the debug-mode handshake in
+    robot_io/g1_debug_mode.py; safe by default since robot_io defaults to 'zmq'."""
+    dex3_dry_run: bool = False
+    """Map grips to joint targets and record them (see dex3_hand_dir) without
+    touching unitree_sdk2py/DDS at all -- no domain/interface/network-card needed.
+    Use this for sim2sim/dev-machine testing where there's no real Dex3 hand or
+    matching DDS network interface (e.g. no eth0)."""
+    dex3_domain_id: int = DEX3_DEFAULT_DOMAIN_ID
+    dex3_interface: str = DEX3_DEFAULT_INTERFACE
+    dex3_kp: float = DEX3_DEFAULT_KP
+    dex3_kd: float = DEX3_DEFAULT_KD
+    dex3_thumb_kp: float = DEX3_DEFAULT_THUMB_KP
+    dex3_thumb_kd: float = DEX3_DEFAULT_THUMB_KD
+    dex3_max_delta_q: float = DEX3_DEFAULT_MAX_DELTA_Q
 
 if __name__ == "__main__":
     args = tyro.cli(BasePolicyArgs)

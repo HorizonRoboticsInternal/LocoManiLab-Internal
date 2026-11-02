@@ -1,0 +1,55 @@
+{
+    "type": "G1_BRIDGE",
+    "composite_controller_specific_configs": {
+        "_comment_backend": "sim2real_backend and sim2real_policy_config are set at runtime by collect_demos_sim2real.py (--sim2real-backend / --sim2real-policy-config). This one config file covers every non-sonic sim2real policy family (heft, scalebfm, bfm_zero, ...): they all drive full-body GMR-retargeted PICO motion via a gmr_subprocess.GMRSubprocess, consumed over ZMQ by sim2real's own unmodified RealtimeMotionBuffer -- see robocasa/g1_host/bridge.py module docstring.",
+        "_comment_mode": "Three-state PICO UX (no kPlanner, no VR-3pt, so ModeManager runs the 'tracking' chord profile and B+Y / L-stick are muted): A+B+X+Y engages into IDLE, A+X toggles POSE. POSE tracks your body; IDLE holds whatever pose POSE left off in, motionless; A+B+X+Y ramps back to the standing default and holds there. IDLE and the stop ramp are not recorded.",
+        "_comment_blend": "sim2real_pose_blend_s: seconds to ramp from the held pose onto the live stream when entering POSE (and back to standing on the stop chord), so re-entry never snaps -- see g1_bridge/reference_blend.py. 0 disables the ramp. Do not go far below 1.0 on hardware: the shorter the ramp, the higher the reference angular velocity when the held and live poses differ a lot.",
+        "sim2real_pose_blend_s": 2.0,
+        "_comment_record_idle": "sim2real_record_idle: record IDLE / stop-ramp frames too. Off by default -- those frames have no operator command behind them, so they would land in a dataset as if the robot had been told to stand still.",
+        "sim2real_record_idle": false,
+        "sim2real_inference_backend": "onnx-cpu",
+        "_comment_pico": "pico_source: 'real' on Ubuntu with XRoboToolkit, 'mock' for headless/plumbing self-checks.",
+        "pico_source": "real",
+        "pico_source_kwargs": {"verbose": false},
+        "mode_manager_verbose": true,
+        "gmr_warmup_s": 2.0
+    },
+    "body_parts": {
+        "arms": {
+            "right": {
+                "type": "JOINT_TORQUE",
+                "input_max": 1, "input_min": -1,
+                "output_max": 0.1, "output_min": -0.1,
+                "torque_limits": null,
+                "interpolation": null,
+                "ramp_ratio": 0.2,
+                "gripper": {"type": "GRIP", "use_action_scaling": false}
+            },
+            "left": {
+                "type": "JOINT_TORQUE",
+                "input_max": 1, "input_min": -1,
+                "output_max": 0.1, "output_min": -0.1,
+                "torque_limits": null,
+                "interpolation": null,
+                "ramp_ratio": 0.2,
+                "gripper": {"type": "GRIP", "use_action_scaling": false}
+            }
+        },
+        "torso": {
+            "type": "JOINT_TORQUE",
+            "input_max": 1, "input_min": -1,
+            "output_max": 0.1, "output_min": -0.1,
+            "torque_limits": null,
+            "interpolation": null,
+            "ramp_ratio": 0.2
+        },
+        "legs": {
+            "type": "JOINT_TORQUE",
+            "input_max": 1, "input_min": -1,
+            "output_max": 0.1, "output_min": -0.1,
+            "torque_limits": null,
+            "interpolation": null,
+            "ramp_ratio": 0.2
+        }
+    }
+}

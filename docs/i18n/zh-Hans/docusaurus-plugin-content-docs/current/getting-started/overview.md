@@ -3,7 +3,8 @@
 开始前先克隆仓库：
 
 ```bash
-git clone https://github.com/EGalahad/sim2real
+git clone https://github.com/LocoManiLab/g1_backend.git
+cd g1_backend
 ```
 
 `sim2real` 分成两个环境：

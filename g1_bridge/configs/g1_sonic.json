@@ -1,0 +1,65 @@
+{
+    "type": "G1_BRIDGE",
+    "composite_controller_specific_configs": {
+        "sim2real_backend": "sonic",
+        "_comment_backend": "POSE mode is driven by sim2real's own SONIC smpl/policy.yaml checkpoint (GMR-free); PLANNER mode (g1 split-onnx checkpoint flavor only) drives kPlanner-based walking, ported from WholeBodyG1Composite -- see _step_kplanner_pose. OFF/PLANNER_FROZEN_UPPER PD-hold the standing pose; VR_3PT is not yet implemented. See robocasa/g1_host/bridge.py module docstring.",
+        "_comment_policy_config": "sim2real_policy_config is injected at runtime by collect_demos_sim2real.py (resolved from --sonic-ckpt against the sim2real repo root) -- the value below is only a fallback if this config is loaded standalone.",
+        "sim2real_policy_config": "checkpoints/sonic/low_latency/smpl/policy.yaml",
+        "_comment_blend": "sim2real_pose_blend_s: seconds to ease a reference in when a mode switch would otherwise step it -- entering PLANNER (the kPlanner trajectory's first frame vs the standing pose being held) and entering POSE (the operator's live body shape vs standing). The POSE ramp anchors on the operator's pose at the A+B+X+Y engage, so it only works if you are standing in the calibration posture at that moment. 0 disables both.",
+        "sim2real_pose_blend_s": 2.0,
+        "sim2real_inference_backend": "onnx-cpu",
+        "_comment_pico": "pico_source: 'real' on Ubuntu with XRoboToolkit, 'mock' for headless/plumbing self-checks.",
+        "pico_source": "real",
+        "pico_source_kwargs": {"verbose": false},
+        "mode_manager_verbose": true,
+        "_comment_planner": "kPlanner locomotion (PLANNER mode) config -- same shape/values as robosuite_src/robosuite/controllers/config/robots/default_g1_manager.json. planner_path goes through resolve_ckpt_path: absolute paths are used as-is, relative ones are resolved against the SIM2REAL repo root ($SIM2REAL_ROOT, else the installed sim2real package) -- same convention as sim2real_policy_config above. The planner ONNX ships with the sim2real g1 checkpoint.",
+        "planner_path": "checkpoints/sonic/low_latency/g1/planner_sonic.onnx",
+        "planner_default_height": 0.78874,
+        "planner_seed": 1234,
+        "initial_movement_state": {
+            "locomotion_mode": 0,
+            "movement_direction": [0.0, 0.0, 0.0],
+            "facing_direction": [1.0, 0.0, 0.0],
+            "movement_speed": -1.0,
+            "height": -1.0
+        }
+    },
+    "body_parts": {
+        "arms": {
+            "right": {
+                "type": "JOINT_TORQUE",
+                "input_max": 1, "input_min": -1,
+                "output_max": 0.1, "output_min": -0.1,
+                "torque_limits": null,
+                "interpolation": null,
+                "ramp_ratio": 0.2,
+                "gripper": {"type": "GRIP", "use_action_scaling": false}
+            },
+            "left": {
+                "type": "JOINT_TORQUE",
+                "input_max": 1, "input_min": -1,
+                "output_max": 0.1, "output_min": -0.1,
+                "torque_limits": null,
+                "interpolation": null,
+                "ramp_ratio": 0.2,
+                "gripper": {"type": "GRIP", "use_action_scaling": false}
+            }
+        },
+        "torso": {
+            "type": "JOINT_TORQUE",
+            "input_max": 1, "input_min": -1,
+            "output_max": 0.1, "output_min": -0.1,
+            "torque_limits": null,
+            "interpolation": null,
+            "ramp_ratio": 0.2
+        },
+        "legs": {
+            "type": "JOINT_TORQUE",
+            "input_max": 1, "input_min": -1,
+            "output_max": 0.1, "output_min": -0.1,
+            "torque_limits": null,
+            "interpolation": null,
+            "ramp_ratio": 0.2
+        }
+    }
+}

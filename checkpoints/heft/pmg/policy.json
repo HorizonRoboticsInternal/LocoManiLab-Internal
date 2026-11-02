@@ -1,0 +1,35 @@
+{
+    "action_scaling": {
+        ".*elbow_joint": 1.0,
+        ".*shoulder.*": 1.0,
+        ".*wrist.*": 1.0,
+        ".*hip_roll.*": 0.5,
+        ".*hip_yaw.*": 0.5,
+        ".*hip_pitch.*": 0.5,
+        ".*knee.*": 0.5,
+        ".*waist.*": 0.5,
+        ".*ankle.*": 0.5
+    },
+    "in_keys": [
+        "context",
+        "motion_command",
+        "target_motion",
+        "proprioception"
+    ],
+    "out_keys": [
+        "policy_1",
+        "priv_pred",
+        "_actor_inp",
+        "_actor_feature",
+        "action",
+        "scale",
+        "action_alias_6",
+        "action_log_prob"
+    ],
+    "in_shapes": [
+        [[1, 1]],
+        [[1, 114]],
+        [[1, 806]],
+        [[1, 808]]
+    ]
+}

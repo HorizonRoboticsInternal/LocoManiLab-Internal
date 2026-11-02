@@ -12,7 +12,7 @@ checkout is `~/sim2real`; adjust only after verifying the actual path.
 5. Hugging Face assets
 6. ONNX Runtime validation
 7. Inline G1 validation
-8. PICO and DH116S isolation
+8. PICO and optional hand SDKs
 9. Failure map
 
 ## 1. Host and network inspection
@@ -33,31 +33,28 @@ Verify:
 - current and fresh-login values of `CYCLONEDDS_HOME`,
   `LD_LIBRARY_PATH`, `HF_HUB_OFFLINE`, and `HF_ENDPOINT`.
 
-On `g1-ygx`, the interface validated for inline control was `enP8p1s0`.
-Recheck it every time; do not turn this observation into a universal default.
+Select the control interface from the inspected host; do not infer it from an
+SSH alias.
 
 If the local workstation is on the wrong Wi-Fi, inspect saved NetworkManager
 profiles and switch to the operator-approved G1 network. Never embed the Wi-Fi
 password in scripts or documentation.
 
-## 2. Code synchronization
+## 2. Deployment checkout
 
-Make all persistent code changes in the local checkout, then inspect and run:
+Deploy a reviewed Git revision on the selected host. For a new checkout, run
+there:
 
 ```bash
-cd /path/to/local/sim2real
-G1_HOST=<host> SYNC_CHECKPOINTS=0 SYNC_ANY4HDMI=0 ./sync-robot.sh g1
+git clone https://github.com/LocoManiLab/g1_backend.git "$HOME/sim2real"
+cd "$HOME/sim2real"
+git checkout <reviewed-commit>
 ```
 
-The sync must not:
-
-- copy root, PICO, or DH116S virtual environments;
-- delete remote-only checkpoints;
-- transfer SONIC or other large datasets by default;
-- overwrite host-local credentials or shell configuration.
-
-Transfer explicitly requested large assets separately, with a resumable
-command. Verify the destination and file size after transfer.
+Inspect existing checkouts before switching revisions. Preserve local changes,
+virtual environments, downloaded checkpoints, credentials and shell settings.
+Personal robot/workspace synchronization scripts are not part of this project.
+Transfer only selected assets separately and verify their paths and sizes.
 
 ## 3. CycloneDDS and shell environment
 
@@ -175,7 +172,7 @@ uv run --no-sync python \
   .agents/skills/configure-g1-sim2real/scripts/verify_install.py \
   --profile g1-cpu \
   --asset hf://elijahgalahad/g1_xmls@main/g1-mode_13_15.xml \
-  --onnx checkpoints/mimic-lite/32x8192-huge/policy.onnx
+  --onnx checkpoints/heft/pmg/policy.onnx
 ```
 
 For GPU, use `--profile g1-gpu`. The verifier must create an
@@ -235,7 +232,7 @@ Typical DDS interpretations:
 - `Failed to create domain explicitly` after MotionSwitcher succeeds:
   the Python DDS participant is still alive when the C++ SDK starts.
 
-## 8. PICO and DH116S isolation
+## 8. PICO and optional hand SDKs
 
 Install PICO separately:
 
@@ -245,17 +242,10 @@ uv run --project venv/pico --no-sync python -c \
   'import xrobotoolkit_sdk, general_motion_retargeting, smplx'
 ```
 
-Install DH116S separately:
-
-```bash
-bash third_party/dh116s_sdk/install.sh
-uv sync --project venv/dh116s
-uv run --project venv/dh116s --no-sync \
-  scripts/dh116s_control.py --dry-run
-```
-
-Verify the expected `libLHandProLib.so` path before a hardware run. Do not home
-or enable the hand during environment verification.
+DH116S is an optional third-party integration. This checkout does not provide
+`venv/dh116s` or a DH116S control entry point; use the SDK provider's documented
+isolated installation if that hardware is needed. Verify native library paths
+without homing or enabling motors during environment setup.
 
 ## 9. Failure map
 

@@ -1,0 +1,450 @@
+joint_names_simulation: &id005
+- left_hip_pitch_joint
+- left_hip_roll_joint
+- left_hip_yaw_joint
+- left_knee_joint
+- left_ankle_pitch_joint
+- left_ankle_roll_joint
+- right_hip_pitch_joint
+- right_hip_roll_joint
+- right_hip_yaw_joint
+- right_knee_joint
+- right_ankle_pitch_joint
+- right_ankle_roll_joint
+- waist_yaw_joint
+- waist_roll_joint
+- waist_pitch_joint
+- left_shoulder_pitch_joint
+- left_shoulder_roll_joint
+- left_shoulder_yaw_joint
+- left_elbow_joint
+- left_wrist_roll_joint
+- left_wrist_pitch_joint
+- left_wrist_yaw_joint
+- right_shoulder_pitch_joint
+- right_shoulder_roll_joint
+- right_shoulder_yaw_joint
+- right_elbow_joint
+- right_wrist_roll_joint
+- right_wrist_pitch_joint
+- right_wrist_yaw_joint
+body_names_simulation: &id006
+- pelvis
+- left_hip_pitch_link
+- left_hip_roll_link
+- left_hip_yaw_link
+- left_knee_link
+- left_ankle_pitch_link
+- left_ankle_roll_link
+- left_toe_link
+- right_hip_pitch_link
+- right_hip_roll_link
+- right_hip_yaw_link
+- right_knee_link
+- right_ankle_pitch_link
+- right_ankle_roll_link
+- right_toe_link
+- waist_yaw_link
+- waist_roll_link
+- torso_link
+- left_shoulder_pitch_link
+- left_shoulder_roll_link
+- left_shoulder_yaw_link
+- left_elbow_link
+- left_wrist_roll_link
+- left_wrist_pitch_link
+- left_wrist_yaw_link
+- right_shoulder_pitch_link
+- right_shoulder_roll_link
+- right_shoulder_yaw_link
+- right_elbow_link
+- right_wrist_roll_link
+- right_wrist_pitch_link
+- right_wrist_yaw_link
+policy_joint_names:
+- left_hip_pitch_joint
+- right_hip_pitch_joint
+- waist_yaw_joint
+- left_hip_roll_joint
+- right_hip_roll_joint
+- waist_roll_joint
+- left_hip_yaw_joint
+- right_hip_yaw_joint
+- waist_pitch_joint
+- left_knee_joint
+- right_knee_joint
+- left_shoulder_pitch_joint
+- right_shoulder_pitch_joint
+- left_ankle_pitch_joint
+- right_ankle_pitch_joint
+- left_shoulder_roll_joint
+- right_shoulder_roll_joint
+- left_ankle_roll_joint
+- right_ankle_roll_joint
+- left_shoulder_yaw_joint
+- right_shoulder_yaw_joint
+- left_elbow_joint
+- right_elbow_joint
+- left_wrist_roll_joint
+- right_wrist_roll_joint
+- left_wrist_pitch_joint
+- right_wrist_pitch_joint
+- left_wrist_yaw_joint
+- right_wrist_yaw_joint
+observation:
+  context:
+    context:
+      _target_: heft.heft_component_obs
+      future_steps:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - -1
+      - -2
+      - -4
+      - -8
+      - -12
+      - -16
+      root_angvel_history_steps: &id001
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 8
+      - 12
+      - 16
+      - 20
+      projected_gravity_history_steps: *id001
+      joint_pos_history_steps: *id001
+      joint_vel_history_steps: *id001
+      prev_action_steps: 8
+      joint_names:
+      - left_hip_pitch_joint
+      - right_hip_pitch_joint
+      - waist_yaw_joint
+      - left_hip_roll_joint
+      - right_hip_roll_joint
+      - waist_roll_joint
+      - left_hip_yaw_joint
+      - right_hip_yaw_joint
+      - waist_pitch_joint
+      - left_knee_joint
+      - right_knee_joint
+      - left_shoulder_pitch_joint
+      - right_shoulder_pitch_joint
+      - left_ankle_pitch_joint
+      - right_ankle_pitch_joint
+      - left_shoulder_roll_joint
+      - right_shoulder_roll_joint
+      - left_ankle_roll_joint
+      - right_ankle_roll_joint
+      - left_shoulder_yaw_joint
+      - right_shoulder_yaw_joint
+      - left_elbow_joint
+      - right_elbow_joint
+      - left_wrist_roll_joint
+      - right_wrist_roll_joint
+      - left_wrist_pitch_joint
+      - right_wrist_pitch_joint
+      - left_wrist_yaw_joint
+      - right_wrist_yaw_joint
+      root_body_name: pelvis
+      boot_indicator_max: 25
+      component: context
+      policy_variant: pmg
+  motion_command:
+    motion_command:
+      _target_: heft.heft_component_obs
+      future_steps:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - -1
+      - -2
+      - -4
+      - -8
+      - -12
+      - -16
+      root_angvel_history_steps: &id002
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 8
+      - 12
+      - 16
+      - 20
+      projected_gravity_history_steps: *id002
+      joint_pos_history_steps: *id002
+      joint_vel_history_steps: *id002
+      prev_action_steps: 8
+      joint_names:
+      - left_hip_pitch_joint
+      - right_hip_pitch_joint
+      - waist_yaw_joint
+      - left_hip_roll_joint
+      - right_hip_roll_joint
+      - waist_roll_joint
+      - left_hip_yaw_joint
+      - right_hip_yaw_joint
+      - waist_pitch_joint
+      - left_knee_joint
+      - right_knee_joint
+      - left_shoulder_pitch_joint
+      - right_shoulder_pitch_joint
+      - left_ankle_pitch_joint
+      - right_ankle_pitch_joint
+      - left_shoulder_roll_joint
+      - right_shoulder_roll_joint
+      - left_ankle_roll_joint
+      - right_ankle_roll_joint
+      - left_shoulder_yaw_joint
+      - right_shoulder_yaw_joint
+      - left_elbow_joint
+      - right_elbow_joint
+      - left_wrist_roll_joint
+      - right_wrist_roll_joint
+      - left_wrist_pitch_joint
+      - right_wrist_pitch_joint
+      - left_wrist_yaw_joint
+      - right_wrist_yaw_joint
+      root_body_name: pelvis
+      boot_indicator_max: 25
+      component: motion_command
+      policy_variant: pmg
+  target_motion:
+    target_motion:
+      _target_: heft.heft_component_obs
+      future_steps:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - -1
+      - -2
+      - -4
+      - -8
+      - -12
+      - -16
+      root_angvel_history_steps: &id003
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 8
+      - 12
+      - 16
+      - 20
+      projected_gravity_history_steps: *id003
+      joint_pos_history_steps: *id003
+      joint_vel_history_steps: *id003
+      prev_action_steps: 8
+      joint_names:
+      - left_hip_pitch_joint
+      - right_hip_pitch_joint
+      - waist_yaw_joint
+      - left_hip_roll_joint
+      - right_hip_roll_joint
+      - waist_roll_joint
+      - left_hip_yaw_joint
+      - right_hip_yaw_joint
+      - waist_pitch_joint
+      - left_knee_joint
+      - right_knee_joint
+      - left_shoulder_pitch_joint
+      - right_shoulder_pitch_joint
+      - left_ankle_pitch_joint
+      - right_ankle_pitch_joint
+      - left_shoulder_roll_joint
+      - right_shoulder_roll_joint
+      - left_ankle_roll_joint
+      - right_ankle_roll_joint
+      - left_shoulder_yaw_joint
+      - right_shoulder_yaw_joint
+      - left_elbow_joint
+      - right_elbow_joint
+      - left_wrist_roll_joint
+      - right_wrist_roll_joint
+      - left_wrist_pitch_joint
+      - right_wrist_pitch_joint
+      - left_wrist_yaw_joint
+      - right_wrist_yaw_joint
+      root_body_name: pelvis
+      boot_indicator_max: 25
+      component: target_motion
+      policy_variant: pmg
+  proprioception:
+    proprioception:
+      _target_: heft.heft_component_obs
+      future_steps:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - -1
+      - -2
+      - -4
+      - -8
+      - -12
+      - -16
+      root_angvel_history_steps: &id004
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 8
+      - 12
+      - 16
+      - 20
+      projected_gravity_history_steps: *id004
+      joint_pos_history_steps: *id004
+      joint_vel_history_steps: *id004
+      prev_action_steps: 8
+      joint_names:
+      - left_hip_pitch_joint
+      - right_hip_pitch_joint
+      - waist_yaw_joint
+      - left_hip_roll_joint
+      - right_hip_roll_joint
+      - waist_roll_joint
+      - left_hip_yaw_joint
+      - right_hip_yaw_joint
+      - waist_pitch_joint
+      - left_knee_joint
+      - right_knee_joint
+      - left_shoulder_pitch_joint
+      - right_shoulder_pitch_joint
+      - left_ankle_pitch_joint
+      - right_ankle_pitch_joint
+      - left_shoulder_roll_joint
+      - right_shoulder_roll_joint
+      - left_ankle_roll_joint
+      - right_ankle_roll_joint
+      - left_shoulder_yaw_joint
+      - right_shoulder_yaw_joint
+      - left_elbow_joint
+      - right_elbow_joint
+      - left_wrist_roll_joint
+      - right_wrist_roll_joint
+      - left_wrist_pitch_joint
+      - right_wrist_pitch_joint
+      - left_wrist_yaw_joint
+      - right_wrist_yaw_joint
+      root_body_name: pelvis
+      boot_indicator_max: 25
+      component: proprioception
+      policy_variant: pmg
+action_clip: 10.0
+action_scale:
+  .*elbow_joint: 1.0
+  .*shoulder.*: 1.0
+  .*wrist.*: 1.0
+  .*hip_roll.*: 0.5
+  .*hip_yaw.*: 0.5
+  .*hip_pitch.*: 0.5
+  .*knee.*: 0.5
+  .*waist.*: 0.5
+  .*ankle.*: 0.5
+joint_kp:
+  .*_hip_pitch_joint: 99.09842777666113
+  .*_hip_roll_joint: 99.09842777666113
+  .*_hip_yaw_joint: 40.17923847137318
+  .*_knee_joint: 99.09842777666113
+  .*_ankle_pitch_joint: 28.50124619574858
+  .*_ankle_roll_joint: 28.50124619574858
+  waist_yaw_joint: 40.17923847137318
+  waist_roll_joint: 28.50124619574858
+  waist_pitch_joint: 28.50124619574858
+  .*_shoulder_pitch_joint: 14.25062309787429
+  .*_shoulder_roll_joint: 14.25062309787429
+  .*_shoulder_yaw_joint: 14.25062309787429
+  .*_elbow_joint: 14.25062309787429
+  .*_wrist_roll_joint: 14.25062309787429
+  .*_wrist_pitch_joint: 8.611032447370201
+  .*_wrist_yaw_joint: 8.611032447370201
+joint_kd:
+  .*_hip_pitch_joint: 6.3088018534966395
+  .*_hip_roll_joint: 6.3088018534966395
+  .*_hip_yaw_joint: 2.5578897650279457
+  .*_knee_joint: 6.3088018534966395
+  .*_ankle_pitch_joint: 1.814445686584846
+  .*_ankle_roll_joint: 1.814445686584846
+  waist_yaw_joint: 2.5578897650279457
+  waist_roll_joint: 1.814445686584846
+  waist_pitch_joint: 1.814445686584846
+  .*_shoulder_pitch_joint: 0.907222843292423
+  .*_shoulder_roll_joint: 0.907222843292423
+  .*_shoulder_yaw_joint: 0.907222843292423
+  .*_elbow_joint: 0.907222843292423
+  .*_wrist_roll_joint: 0.907222843292423
+  .*_wrist_pitch_joint: 0.548195351665136
+  .*_wrist_yaw_joint: 0.548195351665136
+default_joint_pos:
+  .*_hip_pitch_joint: -0.2800000011920929
+  .*_knee_joint: 0.5
+  .*_ankle_pitch_joint: -0.23000000417232513
+  left_shoulder_pitch_joint: 0.3499999940395355
+  left_shoulder_roll_joint: 0.1599999964237213
+  left_elbow_joint: 0.8700000047683716
+  right_shoulder_pitch_joint: 0.3499999940395355
+  right_shoulder_roll_joint: -0.1599999964237213
+  right_elbow_joint: 0.8700000047683716
+motion:
+  motion_path: ../any4hdmi/output/g1/lafan/motions/walk1_subject1.npz
+  future_steps:
+  - 0
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - -1
+  - -2
+  - -4
+  - -8
+  - -12
+  - -16
+  joint_names: *id005
+  body_names: *id006
+  root_body_name: pelvis
+  anchor_body_name: pelvis
+  motion_backend: npz
+  motion_end_behavior: hold
+
+# --- per-controller joint dynamics -------------------------------------
+# armature / damping / frictionloss are properties of THIS controller's
+# training setup, not of the robot: the geometry MJCF is now shared by every
+# backend (assets/g1_unified/robot.xml), so these travel with the policy.
+# Extracted verbatim from this controller's own native model:
+#   Axellwppr/motion_tracking@sim2real:sim2real/config/g1/assets/g1.xml
+# Patterns must be mutually exclusive -- resolve_matching_names_values()
+# rejects a joint matching two keys, so there is no catch-all + override.
+joint_armature:
+  .*_elbow_joint|.*_shoulder_pitch_joint|.*_shoulder_roll_joint|.*_shoulder_yaw_joint|.*_wrist_roll_joint: 0.003609725
+  .*_ankle_pitch_joint|.*_ankle_roll_joint|waist_pitch_joint|waist_roll_joint: 0.00721945
+  .*_hip_pitch_joint|.*_hip_yaw_joint|waist_yaw_joint: 0.01017752
+  .*_hip_roll_joint|.*_knee_joint: 0.025101925
+  .*_wrist_pitch_joint|.*_wrist_yaw_joint: 0.00425
+joint_damping:
+  .*: 0.0
+joint_frictionloss:
+  .*: 0.0

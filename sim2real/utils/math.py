@@ -199,6 +199,37 @@ def quat_mul(q1: np.ndarray, q2: np.ndarray) -> np.ndarray:
 
     return np.stack([w, x, y, z], axis=-1).reshape(shape)
 
+def quat_canonical(q: np.ndarray) -> np.ndarray:
+    """Pick the ``w >= 0`` representative of a quaternion.
+
+    ``q`` and ``-q`` are the SAME rotation (the unit quaternions double-cover
+    SO(3)), so a stream that is merely continuous will cross into the negative
+    half as soon as it turns past pi -- and then stay there. That is harmless
+    for anything that consumes the rotation, and poison for anything that
+    consumes the four numbers: a regression target sees one physical heading
+    labelled both ``q`` and ``-q``, and its least-squares answer is the mean of
+    the two, i.e. "don't turn".
+
+    Measured on the heft IThorLivingRoomBasketToSofa set (51 episodes, each a
+    ~2.8 rad turn): 44 episodes and 74.6% of all frames had ``w < 0``, which
+    inflated the recorded ``ref_root_quat`` statistics from mean/std
+    ``+0.854/0.277`` to ``-0.384/0.811``. A GR00T checkpoint trained on it
+    predicted a root that never moved more than 2 cm or turned more than
+    0.09 rad in 1800 steps.
+
+    Only the sign is touched: ``quat_canonical(q)`` and ``q`` rotate identically.
+
+    Args:
+        q: The quaternion orientation in (w, x, y, z). Shape is (..., 4).
+
+    Returns:
+        The same rotation with a non-negative real part. Shape is (..., 4).
+    """
+    shape = q.shape
+    q = np.asarray(q, dtype=np.float32).reshape(-1, 4)
+    return np.where(q[:, 0:1] < 0.0, -q, q).reshape(shape)
+
+
 def quat_conjugate(q: np.ndarray) -> np.ndarray:
     """Computes the conjugate of a quaternion.
 
@@ -211,3 +242,17 @@ def quat_conjugate(q: np.ndarray) -> np.ndarray:
     shape = q.shape
     q = q.reshape(-1, 4)
     return np.concatenate((q[:, 0:1], -q[:, 1:]), axis=-1).reshape(shape)
+
+
+def heading_yaw_offset(robot_quat_w: np.ndarray, ref_quat_w: np.ndarray) -> np.ndarray:
+    """The yaw-only rotation aligning a reference stream's heading to the robot's.
+
+    ``quat_mul(projected_yaw_quat(robot), quat_conjugate(projected_yaw_quat(ref)))``
+    -- the one-shot robot-vs-motion alignment every tracking observation
+    computes at reset (see docs/policy_yaw_alignment.md: it must be computed
+    once per episode and never recomputed mid-stream). Shapes follow the
+    inputs: both are (..., 4) wxyz quaternions, broadcast together.
+    """
+    return quat_mul(
+        projected_yaw_quat(robot_quat_w), quat_conjugate(projected_yaw_quat(ref_quat_w))
+    )

@@ -8,8 +8,8 @@ from sim2real.rl_policy.observations.base import Observation
 from sim2real.rl_policy.observations.common import _get_simulation_joint_selection
 from sim2real.rl_policy.observations.motion import TrackingObservation, motion_obs
 from sim2real.utils.math import (
+    heading_yaw_offset,
     matrix_from_quat,
-    projected_yaw_quat,
     quat_conjugate,
     quat_mul,
     quat_rotate_inverse_numpy,
@@ -34,19 +34,12 @@ class sonic_encoder_index(Observation, namespace="sonic"):
         return out
 
 
-class sonic_smpl_official_encoder_input(TrackingObservation, namespace="sonic"):
-    """Full 1762D official encoder input with SMPL-mode fields populated.
+class _WristIndexCacheMixin:
+    """Wrist-joint index lookup into ``env.motion_joint_names``, cached until
+    the name list changes. Shared by the two SMPL observations that slice
+    wrist columns out of the motion stream -- the lookup and its error live
+    once here so the two cannot drift."""
 
-    Official deployment exports one encoder input containing all enabled encoder
-    observations. In SMPL mode only a subset is semantically required; the other
-    encoder fields are left as zero.
-    """
-
-    ENCODER_DIM = 1762
-    SMPL_MODE_ID = 2.0
-    SMPL_JOINT_POS_ROOT_OFFSET = 922
-    SMPL_ANCHOR_OFFSET = 1642
-    WRIST_OFFSET = 1702
     WRIST_JOINT_NAMES = (
         "left_wrist_roll_joint",
         "right_wrist_roll_joint",
@@ -56,20 +49,9 @@ class sonic_smpl_official_encoder_input(TrackingObservation, namespace="sonic"):
         "right_wrist_yaw_joint",
     )
 
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+    def _reset_wrist_cache(self) -> None:
         self._cached_joint_names: tuple[str, ...] | None = None
         self._wrist_indices: np.ndarray | None = None
-        self._heading_offset: np.ndarray | None = None
-
-    def reset(self) -> None:
-        self._cached_joint_names = None
-        self._wrist_indices = None
-        self._heading_offset = None
-        motion_data = getattr(self.env, "motion_data", None)
-        if motion_data is not None:
-            ref_root_quat_w = np.asarray(motion_data.smpl_root_quat_w[0], dtype=np.float32)
-            self._ensure_heading_offset(ref_root_quat_w)
 
     def _refresh_wrist_indices(self) -> np.ndarray:
         joint_names = tuple(self.env.motion_joint_names)
@@ -85,6 +67,36 @@ class sonic_smpl_official_encoder_input(TrackingObservation, namespace="sonic"):
         self._cached_joint_names = joint_names
         return self._wrist_indices
 
+
+class sonic_smpl_official_encoder_input(
+    _WristIndexCacheMixin, TrackingObservation, namespace="sonic"
+):
+    """Full 1762D official encoder input with SMPL-mode fields populated.
+
+    Official deployment exports one encoder input containing all enabled encoder
+    observations. In SMPL mode only a subset is semantically required; the other
+    encoder fields are left as zero.
+    """
+
+    ENCODER_DIM = 1762
+    SMPL_MODE_ID = 2.0
+    SMPL_JOINT_POS_ROOT_OFFSET = 922
+    SMPL_ANCHOR_OFFSET = 1642
+    WRIST_OFFSET = 1702
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self._reset_wrist_cache()
+        self._heading_offset: np.ndarray | None = None
+
+    def reset(self) -> None:
+        self._reset_wrist_cache()
+        self._heading_offset = None
+        motion_data = getattr(self.env, "motion_data", None)
+        if motion_data is not None:
+            ref_root_quat_w = np.asarray(motion_data.smpl_root_quat_w[0], dtype=np.float32)
+            self._ensure_heading_offset(ref_root_quat_w)
+
     def _ensure_heading_offset(self, ref_root_quat_w: np.ndarray) -> None:
         if self._heading_offset is None:
             first_ref_root_quat_w = np.asarray(
@@ -95,9 +107,8 @@ class sonic_smpl_official_encoder_input(TrackingObservation, namespace="sonic"):
                 self.state_processor.root_quat_w,
                 dtype=np.float32,
             ).reshape(1, 4)
-            self._heading_offset = quat_mul(
-                projected_yaw_quat(robot_root_quat_w),
-                quat_conjugate(projected_yaw_quat(first_ref_root_quat_w)),
+            self._heading_offset = heading_yaw_offset(
+                robot_root_quat_w, first_ref_root_quat_w
             )[0].astype(np.float32, copy=False)
 
     def _align_root_yaw(self, ref_root_quat_w: np.ndarray) -> np.ndarray:
@@ -207,9 +218,8 @@ class sonic_smpl_root_ori_b_multi_future(
         robot_root_quat_w = np.asarray(
             self.state_processor.root_quat_w, dtype=np.float32
         ).reshape(1, 4)
-        self._heading_offset = quat_mul(
-            projected_yaw_quat(robot_root_quat_w),
-            quat_conjugate(projected_yaw_quat(ref_root_quat_w[:1])),
+        self._heading_offset = heading_yaw_offset(
+            robot_root_quat_w, ref_root_quat_w[:1]
         )[0].astype(np.float32, copy=False)
 
     def compute(self) -> np.ndarray:
@@ -235,34 +245,18 @@ class sonic_smpl_root_ori_b_multi_future(
 
 
 class sonic_joint_pos_multi_future_wrist_for_smpl(
+    _WristIndexCacheMixin,
     _SonicSmplFutureObservation,
     namespace="sonic",
 ):
     """Future G1 wrist joint targets paired with an SMPL reference."""
 
-    WRIST_JOINT_NAMES = sonic_smpl_official_encoder_input.WRIST_JOINT_NAMES
-
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self._cached_joint_names: tuple[str, ...] | None = None
-        self._wrist_indices: np.ndarray | None = None
+        self._reset_wrist_cache()
 
     def reset(self) -> None:
-        self._cached_joint_names = None
-        self._wrist_indices = None
-
-    def _refresh_wrist_indices(self) -> np.ndarray:
-        joint_names = tuple(self.env.motion_joint_names)
-        if self._cached_joint_names == joint_names and self._wrist_indices is not None:
-            return self._wrist_indices
-        missing = [name for name in self.WRIST_JOINT_NAMES if name not in joint_names]
-        if missing:
-            raise ValueError(f"SMPL motion joint_names missing wrist joints: {missing}")
-        self._wrist_indices = np.asarray(
-            [joint_names.index(name) for name in self.WRIST_JOINT_NAMES], dtype=int
-        )
-        self._cached_joint_names = joint_names
-        return self._wrist_indices
+        self._reset_wrist_cache()
 
     def compute(self) -> np.ndarray:
         motion_data = self.env.motion_data
@@ -316,9 +310,8 @@ class sonic_motion_anchor_ori_b_mf_nonflat(_SonicMotionObservation, namespace="s
         super().reset()
         ref_root_quat_w = self.ref_root_quat_w[0]
         robot_root_quat_w = self.state_processor.root_quat_w
-        self._heading_offset = quat_mul(
-            projected_yaw_quat(robot_root_quat_w[None, :]),
-            quat_conjugate(projected_yaw_quat(ref_root_quat_w[None, :])),
+        self._heading_offset = heading_yaw_offset(
+            robot_root_quat_w[None, :], ref_root_quat_w[None, :]
         )[0]
 
     def update(self, data: Dict[str, Any]) -> None:

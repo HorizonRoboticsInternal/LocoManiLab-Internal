@@ -5,7 +5,12 @@ from copy import deepcopy
 import zmq
 from loguru import logger
 
-from sim2real.rl_policy.control_mode import PicoButtonState, resolve_pico_control_mode
+from sim2real.rl_policy.control_mode import (
+    EpisodeCommand,
+    PicoButtonState,
+    resolve_pico_control_mode,
+    resolve_pico_episode_command,
+)
 from sim2real.rl_policy.controllers.base import ControllerBase
 from sim2real.utils.common import PORTS, PicoControllerStateMessage
 
@@ -20,6 +25,7 @@ class PicoController(ControllerBase):
     ) -> None:
         self._pico_msg = PicoButtonState()
         self._last_pico_msg = PicoButtonState()
+        self._last_episode_msg = PicoButtonState()
         self._available = True
         self._connect = connect
 
@@ -55,6 +61,8 @@ class PicoController(ControllerBase):
             self._pico_msg = PicoButtonState(
                 A=decoded.A,
                 B=decoded.B,
+                X=decoded.X,
+                Y=decoded.Y,
             )
 
     def get_control_mode(self):
@@ -72,6 +80,23 @@ class PicoController(ControllerBase):
         mode = resolve_pico_control_mode(pico_local, self._last_pico_msg)
         self._last_pico_msg = pico_local
         return mode
+
+    def get_episode_command(self) -> EpisodeCommand | None:
+        """Return a newly requested 'toggle'/'discard' recording command, or None."""
+        if not self._available:
+            return None
+
+        try:
+            self._receive_pico_controller()
+        except Exception as exc:
+            logger.debug(f"PICO controller ZMQ receive error from {self._connect}: {exc}")
+            return None
+
+        pico_local = deepcopy(self._pico_msg)
+
+        command = resolve_pico_episode_command(pico_local, self._last_episode_msg)
+        self._last_episode_msg = pico_local
+        return command
 
     def close(self) -> None:
         try:

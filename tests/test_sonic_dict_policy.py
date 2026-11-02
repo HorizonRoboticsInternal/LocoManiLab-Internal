@@ -5,7 +5,6 @@ from pathlib import Path
 from types import SimpleNamespace
 
 import numpy as np
-import onnx
 import yaml
 
 from sim2real.rl_policy.observations.sonic import (
@@ -25,6 +24,17 @@ class SonicDictPolicyContractTest(unittest.TestCase):
             "g1": {"g1_input": [640], "proprioception": [930]},
             "smpl": {"smpl_input": [840], "proprioception": [930]},
         }
+
+        # Historical release exports are optional; a source-only checkout still
+        # runs the numerical observation contract tests below.
+        resources = [checkpoint_root / mode / filename
+                     for mode in expected for filename in ("policy.yaml", "policy.onnx")]
+        if not all(path.is_file() for path in resources):
+            self.skipTest("optional historical SONIC release manifests/weights not installed")
+        try:
+            import onnx
+        except ImportError:
+            self.skipTest("optional ONNX checker not installed")
 
         for mode, expected_inputs in expected.items():
             with self.subTest(mode=mode):

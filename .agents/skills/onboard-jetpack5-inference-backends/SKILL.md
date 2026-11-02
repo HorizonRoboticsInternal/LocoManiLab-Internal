@@ -1,6 +1,6 @@
 ---
 name: onboard-jetpack5-inference-backends
-description: Install, convert, debug, and benchmark sim2real ONNX GPU and TensorRT inference backends on onboard JetPack 5 Orin hosts such as g1-cable. Use when a task mentions JetPack 5, L4T R35, onboard Orin, onnx-gpu, CUDAExecutionProvider, TensorRT 8.5, policy ONNX conversion, or sim2real inference benchmark failures on the robot computer.
+description: Install, convert, debug, and benchmark sim2real ONNX GPU and TensorRT inference backends on onboard JetPack 5 Orin hosts. Use when a task mentions JetPack 5, L4T R35, onboard Orin, onnx-gpu, CUDAExecutionProvider, TensorRT 8.5, policy ONNX conversion, or sim2real inference benchmark failures on the robot computer.
 ---
 
 # Onboard JetPack 5 Inference Backends
@@ -16,11 +16,11 @@ onboard Orin machines.
    - `python3 -c "import tensorrt as trt; print(trt.__version__)"`
 2. Keep the default project `uv` env separate. JetPack 5 GPU inference uses a
    dedicated Python 3.8 venv, normally `~/sim2real/.venv-jp5-ort`.
-3. Use the Python 3.8 compatibility source branches for runtime code:
-   `sim2real@py38`, `any4hdmi@py38`, and
-   `mjhub @ git+https://github.com/EGalahad/mjhub.git@py38`. A backend-only
-   inference benchmark may pass before full policy tracking works if these
-   source branches or runtime packages are missing.
+3. This fork main requires Python 3.10 and does not distribute a Python 3.8
+   compatibility branch. JetPack 5 full tracking needs a separately reviewed
+   Python 3.8-compatible runtime and dependency checkout. Confirm that source
+   exists before installing legacy GPU packages. A backend-only benchmark
+   does not prove full tracking compatibility.
 4. Do not spend time trying to force the JetPack 5 NVIDIA inference stack into
    Python 3.10 unless the user explicitly accepts unsupported source builds.
    JetPack 5 prebuilt ORT GPU and TensorRT Python bindings are Python 3.8
@@ -85,13 +85,13 @@ TensorRT:
 
 ```bash
 cd ~/sim2real
-PYTHONPATH=$PWD:~/any4hdmi/src HDMI_TRT_FP16=1 HDMI_TRT_FORCE_REBUILD=0 .venv-jp5-ort/bin/python scripts/test_policy_inference.py \
+PYTHONPATH=$PWD:~/any4hdmi/src G1_BACKEND_TRT_FP16=1 G1_BACKEND_TRT_FORCE_REBUILD=0 .venv-jp5-ort/bin/python scripts/test_policy_inference.py \
   --policy_config /tmp/ort-test/policy-trt.yaml \
   --inference_backend tensorrt \
   --warmup 50 --runs 1000
 ```
 
-Use `HDMI_TRT_FORCE_REBUILD=1` after changing the ONNX.
+Use `G1_BACKEND_TRT_FORCE_REBUILD=1` after changing the ONNX.
 
 ## Common Failure Mapping
 

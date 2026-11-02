@@ -289,7 +289,9 @@ class Tracking(BasePolicy):
     def process_controllers(self) -> None:
         super().process_controllers()
 
-        extra_keys = self.controller.get_extra_keys()
+        # Reuse the keys BasePolicy.process_controllers() already drained this tick
+        # (get_extra_keys() is destructive -- calling it again here would see nothing).
+        extra_keys = self._last_extra_keys
         if not extra_keys:
             return
 

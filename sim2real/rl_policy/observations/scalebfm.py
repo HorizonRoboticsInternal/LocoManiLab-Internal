@@ -8,7 +8,7 @@ import numpy as np
 from sim2real.rl_policy.observations.base import Observation
 from sim2real.rl_policy.utils.motion import MotionData
 from sim2real.utils.math import (
-    projected_yaw_quat,
+    heading_yaw_offset,
     quat_conjugate,
     quat_mul,
     quat_rotate_inverse_numpy,
@@ -208,9 +208,10 @@ class _ScaleBFMCore:
         )
         selected_root_pos[2] = 0.0
 
-        robot_heading = projected_yaw_quat(_safe_root_quat(self.env.state_processor.root_quat_w).reshape(1, 4))[0]
-        source_heading = projected_yaw_quat(selected_root_quat.reshape(1, 4))[0]
-        self._root_alignment_quat = quat_mul(robot_heading.reshape(1, 4), quat_conjugate(source_heading).reshape(1, 4))[0]
+        self._root_alignment_quat = heading_yaw_offset(
+            _safe_root_quat(self.env.state_processor.root_quat_w).reshape(1, 4),
+            selected_root_quat.reshape(1, 4),
+        )[0]
         self._root_alignment_pos = selected_root_pos.astype(np.float32)
 
     def _motion_data(self) -> MotionData:

@@ -1,0 +1,186 @@
+# sonic_v1_1 -- the third GEAR-SONIC variant, from
+# huggingface.co/nvidia/GEAR-SONIC@main:sonic_v1_1. "Robot-heading-normalized
+# controller trained with wrist-pose augmentation for heading-stable 3-point
+# teleoperation and SONIC-backed VLA policies."
+#
+# Encoder + decoder ONNX pair (not a single fused policy.onnx) -- see
+# sim2real_bridge/bridge_runtime.py's SplitOnnxBridgeTracking, which is
+# selected automatically by make_bridge_tracking() whenever this key is
+# present. Verified on the downloaded graphs: encoder obs_dict[1,1751] ->
+# encoded_tokens[1,64]; decoder obs_dict[1,994] -> action[1,29]. The decoder
+# and everything feeding it (proprioception, joint order, gains, action
+# scale) are unchanged from low_latency -- only the encoder differs, so
+# everything below `motion:` here is byte-identical to
+# checkpoints/sonic/low_latency/g1/policy.yaml.
+#
+# THE TOKEN IS NOT INTERCHANGEABLE WITH low_latency'S. Both encoders emit 64
+# values and both decoders accept 994, so feeding a low_latency-trained VLA's
+# motion_token to this decoder produces a valid-looking action stream that
+# means nothing -- it fails silently, exactly like the 2026-08-06 incident
+# that put the byte-size guard in soma/common/sim.py. Data collected through
+# one variant only trains policies deployed through the same variant.
+#
+# Two differences from low_latency, both inside the encoder's g1 block:
+#   * future_steps is step5 ([0,5,..,45]), not step1 -- v1_1 goes back to the
+#     release variant's 10-frame/step5 reference horizon. Note the cost:
+#     RealtimeMotionBuffer delays the reference stream by max_future_step*dt
+#     (motion_buffer.py's _delay_ns), i.e. 0.94 s here vs 0.22 s for
+#     low_latency. Harmless while standing (a single frozen frame), but
+#     kPlanner walking is that much less responsive. Shrinking exactly this
+#     is what the low_latency variant exists for.
+#   * the anchor orientations are normalized by the robot's heading (yaw-only)
+#     frame rather than its full body frame -- for the smpl block that falls to
+#     the caller, declared as POSE_ANCHOR_FRAME.
+#   * the smpl blocks are 10-frame, not 4.
+# The g1 (mode 0) and smpl (mode 2) sub-encoders are both wired up; the VR
+# 3-point teleop one (mode 1) is not, on any variant. See
+# g1_bridge/sonic_utils/encoder_obs.py's sonic_g1_v1_1_encoder_input.
+encoder_model_path: model_encoder.onnx
+model_path: model_decoder.onnx
+
+observation:
+  g1_input:
+    g1_encoder_input:
+      _target_: sonic.sonic_g1_v1_1_encoder_input
+      future_steps: &sonic_future_steps [0, 5, 10, 15, 20, 25, 30, 35, 40, 45]
+      joint_names: &isaac_joint_names
+        - left_hip_pitch_joint
+        - right_hip_pitch_joint
+        - waist_yaw_joint
+        - left_hip_roll_joint
+        - right_hip_roll_joint
+        - waist_roll_joint
+        - left_hip_yaw_joint
+        - right_hip_yaw_joint
+        - waist_pitch_joint
+        - left_knee_joint
+        - right_knee_joint
+        - left_shoulder_pitch_joint
+        - right_shoulder_pitch_joint
+        - left_ankle_pitch_joint
+        - right_ankle_pitch_joint
+        - left_shoulder_roll_joint
+        - right_shoulder_roll_joint
+        - left_ankle_roll_joint
+        - right_ankle_roll_joint
+        - left_shoulder_yaw_joint
+        - right_shoulder_yaw_joint
+        - left_elbow_joint
+        - right_elbow_joint
+        - left_wrist_roll_joint
+        - right_wrist_roll_joint
+        - left_wrist_pitch_joint
+        - right_wrist_pitch_joint
+        - left_wrist_yaw_joint
+        - right_wrist_yaw_joint
+      root_body_name: pelvis
+  proprioception:
+    base_ang_vel:
+      _target_: sonic.sonic_root_ang_vel_history
+      history_steps: &sonic_history_steps [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    joint_pos:
+      _target_: sonic.sonic_joint_pos_rel_history
+      history_steps: *sonic_history_steps
+      joint_names: *isaac_joint_names
+    joint_vel:
+      _target_: sonic.sonic_joint_vel_history
+      history_steps: *sonic_history_steps
+      joint_names: *isaac_joint_names
+    actions:
+      _target_: sonic.sonic_prev_actions_history
+      history_steps: *sonic_history_steps
+    gravity_dir:
+      _target_: sonic.sonic_projected_gravity_history
+      history_steps: *sonic_history_steps
+
+joint_names_simulation: *isaac_joint_names
+body_names_simulation: &isaac_body_names
+  - pelvis
+  - left_hip_pitch_link
+  - right_hip_pitch_link
+  - waist_yaw_link
+  - left_hip_roll_link
+  - right_hip_roll_link
+  - waist_roll_link
+  - left_hip_yaw_link
+  - right_hip_yaw_link
+  - torso_link
+  - left_knee_link
+  - right_knee_link
+  - left_shoulder_pitch_link
+  - right_shoulder_pitch_link
+  - left_ankle_pitch_link
+  - right_ankle_pitch_link
+  - left_shoulder_roll_link
+  - right_shoulder_roll_link
+  - left_ankle_roll_link
+  - left_toe_link
+  - right_ankle_roll_link
+  - right_toe_link
+  - left_shoulder_yaw_link
+  - right_shoulder_yaw_link
+  - left_elbow_link
+  - right_elbow_link
+  - left_wrist_roll_link
+  - right_wrist_roll_link
+  - left_wrist_pitch_link
+  - right_wrist_pitch_link
+  - left_wrist_yaw_link
+  - right_wrist_yaw_link
+
+joint_kp:
+  .*_hip_roll_joint|.*_knee_joint|.*_hip_pitch_joint: 99.098427782326
+  .*_hip_yaw_joint|waist_yaw_joint: 40.17923847367
+  .*_ankle_pitch_joint|.*_ankle_roll_joint|waist_pitch_joint|waist_roll_joint: 28.501246197377824
+  .*_shoulder_pitch_joint|.*_shoulder_roll_joint|.*_shoulder_yaw_joint|.*_elbow_joint|.*_wrist_roll_joint: 14.250623098688912
+  .*_wrist_pitch_joint|.*_wrist_yaw_joint: 16.77832748185191
+joint_kd:
+  .*_hip_roll_joint|.*_knee_joint|.*_hip_pitch_joint: 6.308801853676957
+  .*_hip_yaw_joint|waist_yaw_joint: 2.5578897651010553
+  .*_ankle_pitch_joint|.*_ankle_roll_joint|waist_pitch_joint|waist_roll_joint: 1.8144456866367064
+  .*_shoulder_pitch_joint|.*_shoulder_roll_joint|.*_shoulder_yaw_joint|.*_elbow_joint|.*_wrist_roll_joint: 0.9072228433183532
+  .*_wrist_pitch_joint|.*_wrist_yaw_joint: 1.0681415022205298
+default_joint_pos:
+  .*_hip_pitch_joint: -0.312
+  .*_knee_joint: 0.669
+  .*_ankle_pitch_joint: -0.363
+  .*_elbow_joint: 0.6
+  left_shoulder_roll_joint: 0.2
+  left_shoulder_pitch_joint: 0.2
+  right_shoulder_roll_joint: -0.2
+  right_shoulder_pitch_joint: 0.2
+policy_joint_names: *isaac_joint_names
+action_scale:
+  .*_hip_roll_joint|.*_knee_joint|.*_hip_pitch_joint: 0.35066146635877904
+  .*_hip_yaw_joint|waist_yaw_joint: 0.5475464651829304
+  .*_ankle_pitch_joint|.*_ankle_roll_joint|waist_pitch_joint|waist_roll_joint|.*_shoulder_pitch_joint|.*_shoulder_roll_joint|.*_shoulder_yaw_joint|.*_elbow_joint|.*_wrist_roll_joint: 0.43857731389829635
+  .*_wrist_pitch_joint|.*_wrist_yaw_joint: 0.07450087032524835
+
+# motion_backend: zmq -- no live GMR publisher/npz motion clip is wired up
+# for this checkpoint yet (unlike heft/twist2's GMRSubprocess-fed path), so
+# this always runs against RealtimeMotionBuffer's own built-in default frame
+# (a standing pose computed once from RobotCfg.default_qpos via forward
+# kinematics -- see motion_buffer.py's _default_frame_from_robot_cfg) --
+# sufficient to validate the encoder/decoder ONNX pair end-to-end, not a
+# live teleop reference. See SplitOnnxBridgeTracking / composite.py's
+# Sim2RealG1Composite._step_sonic_pose for how this gets driven.
+motion:
+  future_steps: *sonic_future_steps
+  root_body_name: pelvis
+  motion_backend: zmq
+
+# --- per-controller joint dynamics -------------------------------------
+# armature / damping / frictionloss are properties of THIS controller's
+# training setup, not of the robot: the geometry MJCF is now shared by every
+# backend (assets/g1_unified/robot.xml), so these travel with the policy.
+# Extracted verbatim from this controller's own native model:
+#   NVlabs/GR00T-WholeBodyControl@main:gear_sonic_deploy/g1/g1_29dof_with_hand.xml
+# Patterns must be mutually exclusive -- resolve_matching_names_values()
+# rejects a joint matching two keys, so there is no catch-all + override.
+joint_armature:
+  .*: 0.01
+joint_damping:
+  .*: 0.05
+joint_frictionloss:
+  (?!(.*_wrist_pitch_joint|.*_wrist_yaw_joint)).*: 0.2
+  .*_wrist_pitch_joint|.*_wrist_yaw_joint: 0.1

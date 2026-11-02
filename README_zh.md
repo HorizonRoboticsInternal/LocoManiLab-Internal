@@ -1,98 +1,60 @@
-# sim2real
+# g1_backend
 
-root project 负责 inference、tracking policy，以及 MuJoCo 的 sim / sim2real runtime。Pico / XR teleoperation 工具请使用 `venv/pico`。
+供 [LocoManiLab](https://github.com/LocoManiLab/LocoManiLab) 和 [humanoid_benchmark](https://github.com/LocoManiLab/humanoid_benchmark) 共用的 G1 控制器与遥操作运行时。
 
-English version: [README.md](./README.md)
+[English](README.md) · [中文文档](docs/i18n/zh-Hans/docusaurus-plugin-content-docs/current/intro.md) · [遥操作与录制接口](g1_bridge/README.md)
 
-Full documentation: [https://egalahad.github.io/sim2real/](https://egalahad.github.io/sim2real/)
+- `g1_bridge/`：仿真和真机采集共用的控制会话、PICO 输入、host 适配与训练数据录制。
+- `sim2real/`：策略推理、参考动作、MuJoCo 执行与机器人 I/O。为保持兼容，保留现有 Python 包名。
+- `checkpoints/`：随代码管理的 manifest；模型权重按需下载。`assets/g1_unified/` 是共用机器人描述。
+- `venv/pico/`：隔离可选的 XRoboToolkit/GMR 依赖。机器人 SDK 与相机依赖也按需安装。
 
-如果你在找 HDMI 的部署栈，请看 [hdmi tag](https://github.com/EGalahad/sim2real/tree/hdmi)。
+本仓库基于上游 [sim2real 部署栈](https://github.com/EGalahad/sim2real)，下方保留原项目引用。此 fork 的安装、资产和使用说明以本仓库为准。
 
-## Runtime Artifacts
+## 从源码安装
 
-大文件不放在 git 里。先从共享的
-[sim2real artifacts](https://drive.google.com/drive/folders/1lrPyiiy7anyG3P4wHNIQQQlydboLPd9e)
-下载，把 `checkpoints/` 和 `third_party/` 放到 repo 根目录。
-
-目录结构和 onboard 依赖说明见 [Download Artifacts](./docs/artifacts.md)。
-
-## 快速开始
+独立环境需要 Python 3.10 与 [uv](https://docs.astral.sh/uv/)：
 
 ```bash
+git clone https://github.com/LocoManiLab/g1_backend.git
+cd g1_backend
 uv sync --extra inference-cpu
 ```
 
-在 G1 上安装或修复环境时，可以调用 repo 内置的 Codex skill
-`$configure-g1-sim2real`；它位于 `.agents/skills/configure-g1-sim2real`。
+运行时使用这个 editable checkout：manifest、机器人描述和启动脚本位于 Python 包旁边，不能只安装一个 wheel 后就移走源码。通过 LocoManiLab 使用时，请按它的 `lab` 安装和环境说明操作，避免再安装另一份。
 
-运行离线动作跟踪（sim2sim）：
+通用 CPU 环境不需要机器人 SDK、PICO、相机依赖或权重。安装后可运行本地检查：
 
 ```bash
-uv run sim2real/sim_env/base_sim.py --robot g1
-uv run sim2real/rl_policy/tracking.py \
-  --robot g1 \
-  --policy_config checkpoints/mimic-lite/32x8192-huge/policy.yaml
+uv run --no-sync python -m unittest discover -s tests -p test_math_helpers.py
 ```
 
-两个进程都启动后，在 policy 终端按 `]` 开始跟踪，然后打开 `base_sim.py` 打印出来的 mjviser URL。虚拟 gantry / elastic band 的开关和长度在 viewer UI 里调。
+真机部署只安装所选 [Robot I/O 模式](docs/i18n/zh-Hans/docusaurus-plugin-content-docs/current/robot_io.md) 所需的 extra。PICO 另外提供 [PC](docs/i18n/zh-Hans/docusaurus-plugin-content-docs/current/getting-started/teleop-x86-64.md) 与 [机载 Orin](docs/i18n/zh-Hans/docusaurus-plugin-content-docs/current/getting-started/teleop-onboard-orin.md) 安装指南。
 
-## Migrating to sim2real
+## 选择控制器和资产
 
-这个 repo 内置了一个 Codex skill，用来把外部训练 codebase 里的 policy 适配到 `sim2real`：
+共用运行时的五个控制器家族为 SONIC、HEFT、ScaleBFM、AMO、ALMI：
 
-```text
-.agents/skills/adapt-policy-to-sim2real
-```
-
-已经转好的 checkpoints 统一放在共享的
-[sim2real artifacts](https://drive.google.com/drive/folders/1lrPyiiy7anyG3P4wHNIQQQlydboLPd9e)
-目录里。
-
-目前已经支持的 adapted / distributed checkpoint：
-
-| Policy family | Config path(s) | 说明 |
+| 家族 / 变体 | 已跟踪的 manifest | 输入约定 |
 | --- | --- | --- |
-| Mimic-Lite | `checkpoints/mimic-lite` | Native mimic-lite tracking checkpoints。 |
-| BFM-Zero | `checkpoints/bfm-zero/exp_lafan40-100style_update_z10/policy.yaml` | Latent-conditioned motion tracker。 |
-| SONIC release | `checkpoints/sonic/release` | Release G1 和 SMPL encoder variants。 |
-| SONIC low-latency | `checkpoints/sonic/low_latency` | Low-latency G1 和 SMPL variants。 |
-| HoloMotion v1.4.0 | `checkpoints/holomotion/v1_4_0/policy.yaml` | 使用官方未修改 ONNX：[HorizonRobotics/HoloMotion_models](https://huggingface.co/HorizonRobotics/HoloMotion_models/resolve/main/HoloMotion_motion_tracking_model_v1.4.0/exported/model_14000.onnx)，下载后放到 `checkpoints/holomotion/v1_4_0/policy.onnx`。 |
-| TeleopIT | `checkpoints/teleopit/policy.yaml` | TeleopIT policy wrapper。 |
-| Humanoid-GPT | `checkpoints/humanoid-gpt/policy.yaml` | Humanoid-GPT policy wrapper。 |
-| HEFT | `checkpoints/heft` | PMG 和 compliance 两个版本。 |
-| TWIST2 | `checkpoints/twist2/policy.yaml` | TWIST2 policy wrapper。 |
+| SONIC | `checkpoints/sonic/low_latency/g1/policy.yaml` | 参考动作 / motion token；默认 SONIC 变体 |
+| SONIC v1.1 | `checkpoints/sonic/v1_1/g1/policy.yaml` | 独立的 encoder/decoder 变体；token 与 low-latency 不通用 |
+| HEFT | `checkpoints/heft/pmg/policy.yaml` | 参考动作 |
+| ScaleBFM | `checkpoints/scalebfm/humanoid_transformer_m/policy.yaml` | 参考动作 |
+| AMO | `checkpoints/amo/policy.yaml` | 控制器专用命令 |
+| ALMI | `checkpoints/almi/flat_dual/policy.yaml` | 双分支控制器专用命令 |
 
-![统一的跨代码库动作跟踪评测](assets/mimic_lite_cross_codebase_tracking_eval.png)
+家族、manifest 与数据/action schema 必须匹配，不能混用其他控制器的权重或录制动作。代码审查和上面的检查不需要权重。运行控制器时只下载所选家族，见[资产说明](docs/i18n/zh-Hans/docusaurus-plugin-content-docs/current/artifacts.md)。本运行时不依赖独立 HEFT 仓库；这里的 HEFT 控制器继续保留。
 
-为了公平比较，我们报告每个 policy 所需的 motion-lookahead latency，并将
-其定义为最远 future reference frame 对应的时间。所有数值均采用统一的
-50 Hz reference-motion contract。
+仿真采集请按 [humanoid_benchmark](https://github.com/LocoManiLab/humanoid_benchmark) 或 LocoManiLab 采集指南操作；独立采集见 [g1_bridge](g1_bridge/README.md)，离线动作播放见[跟踪教程](docs/i18n/zh-Hans/docusaurus-plugin-content-docs/current/tutorials/offline-motion-tracking.md)。
 
-| Policy | MimicLite | BFM-Zero | SONIC release | SONIC low-latency | HoloMotion | TeleopIT | Humanoid-GPT | HEFT | TWIST2 |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Motion-lookahead latency | 0.08 s | 0.12 s | 0.90 s | 0.18 s | 0.20 s | 0.00 s | 0.02 s | 0.12 s | 0.00 s |
+## 许可证
 
-## 真机环境
+g1_backend 以 [MIT 许可证](LICENSE) 发布，Copyright (c) 2026 Gamma Robotics。vendored 代码、机器人资产与控制器配置保留各自条款，见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) 及各目录下的许可证文件。下方引用用于署名，不代表许可证授权。
 
-机器人 SDK 不安装进通用 root 环境。G1 inline 部署使用
-`uv sync --extra inference-cpu --extra robot-g1`。安装与部署命令见
-[Robot I/O 模式](./docs/robot_io.md)。
+## 上游引用
 
-Repo skills 统一放在 `.agents/skills/`，无需手动复制到
-`~/.codex/skills/`。可以在 Codex 中显式调用
-`$adapt-policy-to-sim2real`。
-
-## 下一步
-
-- [文档首页](https://egalahad.github.io/sim2real/zh-Hans/)
-- [快速上手](https://egalahad.github.io/sim2real/zh-Hans/getting-started/overview)
-- [Root Project Setup](https://egalahad.github.io/sim2real/zh-Hans/getting-started/root-project)
-- [离线动作跟踪教程](https://egalahad.github.io/sim2real/zh-Hans/tutorials/offline-motion-tracking)
-- [Pico Teleoperation 教程](https://egalahad.github.io/sim2real/zh-Hans/tutorials/pico-teleoperation)
-
-## Citation
-
-如果 sim2real 对你的研究有所帮助，请引用：
+保留原 sim2real 项目的引用：
 
 ```bibtex
 @misc{sim2real2026,

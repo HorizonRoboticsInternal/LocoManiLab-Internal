@@ -9,8 +9,10 @@ import tyro
 from sim2real.config.robots import get_robot_cfg
 from sim2real.config.robots.base import RobotCfg
 from sim2real.sim_env.utils.mjcf import load_sim_model
-from sim2real.sim_env.utils.bridge import SimulationBridge
+from sim2real.sim_env.utils.bridge import Dex3SimHandBridge, SimulationBridge
 from sim2real.sim_env.utils.elastic_band import ElasticBand
+from sim2real.utils.common import PORTS
+from sim2real.utils.dex3 import DEFAULT_KD, DEFAULT_KP, DEFAULT_THUMB_KD, DEFAULT_THUMB_KP
 from sim2real.utils.mjviser_viewer import MjviserMujocoViewer
 
 
@@ -22,11 +24,25 @@ class BaseSimulator:
         sim_dt: float = 0.005,
         decimation: int = 4,
         enable_elastic_band: bool = True,
+        with_dex3_hands: bool = False,
+        scene_xml: str | None = None,
+        hand_grip_connect: str = f"tcp://127.0.0.1:{PORTS['hand_grip']}",
+        dex3_kp: float = DEFAULT_KP,
+        dex3_kd: float = DEFAULT_KD,
+        dex3_thumb_kp: float = DEFAULT_THUMB_KP,
+        dex3_thumb_kd: float = DEFAULT_THUMB_KD,
     ):
         self.robot_cfg = robot_cfg
         self.sim_dt = float(sim_dt)
         self.decimation = int(decimation)
         self.enable_elastic_band = bool(enable_elastic_band)
+        self.with_dex3_hands = bool(with_dex3_hands)
+        self.scene_xml = scene_xml
+        self.hand_grip_connect = hand_grip_connect
+        self.dex3_kp = dex3_kp
+        self.dex3_kd = dex3_kd
+        self.dex3_thumb_kp = dex3_thumb_kp
+        self.dex3_thumb_kd = dex3_thumb_kd
         self._stop_event = Event()
         self._reset_event = Event()
         self._reset_button_timestamp = 0.0
@@ -67,7 +83,11 @@ class BaseSimulator:
         pass
     
     def init_scene(self):
-        self.mj_model = load_sim_model(self.robot_cfg)
+        self.mj_model = load_sim_model(
+            self.robot_cfg,
+            with_dex3_hands=self.with_dex3_hands,
+            scene_xml=self.scene_xml,
+        )
         self.mj_data = mujoco.MjData(self.mj_model)
         self.mj_model.opt.timestep = self.sim_dt
         # Enable the elastic band
@@ -90,6 +110,18 @@ class BaseSimulator:
 
         self.sim_bridge = SimulationBridge(
             self.mj_model, self.mj_data, self.robot_cfg
+        )
+        self.dex3_hand_bridge = (
+            Dex3SimHandBridge(
+                self.mj_model,
+                hand_grip_connect=self.hand_grip_connect,
+                kp=self.dex3_kp,
+                kd=self.dex3_kd,
+                thumb_kp=self.dex3_thumb_kp,
+                thumb_kd=self.dex3_thumb_kd,
+            )
+            if self.with_dex3_hands
+            else None
         )
 
     def _resolve_body_id(self, body_names: tuple[str, ...]) -> int:
@@ -167,6 +199,8 @@ class BaseSimulator:
                     self.elastic_band.Advance(pos, lin_vel)
                 )
         self.sim_bridge.compute_torques()
+        if self.dex3_hand_bridge is not None:
+            self.dex3_hand_bridge.apply_torques(self.mj_data, self.sim_bridge.torques)
         self.mj_data.ctrl[:] = self.sim_bridge.torques
         mujoco.mj_step(self.mj_model, self.mj_data)
 
@@ -213,6 +247,8 @@ class BaseSimulator:
 
     def stop(self) -> None:
         self._stop_event.set()
+        if self.dex3_hand_bridge is not None:
+            self.dex3_hand_bridge.close()
         if self.viewer is not None:
             self.viewer.close()
 
@@ -225,6 +261,31 @@ class Args:
     sim_dt: float = 0.005
     decimation: int = 4
     enable_elastic_band: bool = True
+    with_dex3_hands: bool = False
+    """Splice Dex3 hand bodies/joints/collision geometry onto the model and drive
+    them from the same hand_grip stream the Pico publisher and the real-hardware
+    Dex3HandDriver use (see sim2real.utils.dex3), independent of tracking.py --
+    no --dex3-hand-dir/--dex3-dry-run needed on the tracking policy side."""
+    scene_xml: str | None = None
+    """Optional extra scene MJCF to include in the sim world, e.g.
+    stair_asset.xml. Its bodies/geoms are merged into the robot scene; when the
+    file declares its own ground plane the built-in floor geom is skipped.
+    Omit to keep the plain flat-ground scene."""
+    hand_grip_connect: str = f"tcp://127.0.0.1:{PORTS['hand_grip']}"
+    """ZMQ connect address for the hand-grip stream. Only used when
+    with_dex3_hands is set; omit to use the local default."""
+    dex3_kp: float = DEFAULT_KP
+    dex3_kd: float = DEFAULT_KD
+    dex3_thumb_kp: float = DEFAULT_THUMB_KP
+    dex3_thumb_kd: float = DEFAULT_THUMB_KD
+    """Dex3 PD gains for the sim hand (same defaults as the real-hardware
+    driver, heft's Dex3HandBridge values). MuJoCo's <motor> actuators are
+    pure torque sources capped by the reference asset's own actuator
+    ctrlrange (+/-0.7 Nm for every joint but thumb_0), unlike the real
+    motor's own current loop -- checked empirically to reach the close pose
+    within about a second given that cap, with some overshoot/ringing (the
+    real kd=0.1 is tuned against damping the sim's simplified PD doesn't
+    reproduce); raise --dex3-kd/--dex3-thumb-kd if that's undesirable."""
 
 
 if __name__ == "__main__":
@@ -235,5 +296,12 @@ if __name__ == "__main__":
         sim_dt=args.sim_dt,
         decimation=args.decimation,
         enable_elastic_band=args.enable_elastic_band,
+        with_dex3_hands=args.with_dex3_hands,
+        scene_xml=args.scene_xml,
+        hand_grip_connect=args.hand_grip_connect,
+        dex3_kp=args.dex3_kp,
+        dex3_kd=args.dex3_kd,
+        dex3_thumb_kp=args.dex3_thumb_kp,
+        dex3_thumb_kd=args.dex3_thumb_kd,
     )
     simulation.sim_thread.start()

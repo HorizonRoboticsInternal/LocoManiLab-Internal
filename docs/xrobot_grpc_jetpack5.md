@@ -27,11 +27,10 @@ match JetPack 5 / Ubuntu 20.04.
 
 ## Build On Orin
 
-Run this on `g1-rp`.
+Run this on the configured robot host.
 
 ```bash
-source ~/.bashrc
-proxy_on
+# Set HTTPS_PROXY first if this network requires a proxy.
 ```
 
 ```bash
@@ -79,7 +78,7 @@ cmake --build cmake/build --target install -- -j8
 
 ## Package For Local Reuse
 
-Run this on `g1-rp` after the build succeeds.
+Run this on the configured robot host after the build succeeds.
 
 ```bash
 cd "$install_dir"
@@ -89,7 +88,7 @@ tar -czf /tmp/xrobot-grpc-jetpack5-aarch64.tar.gz .
 Copy the archive to the development machine.
 
 ```bash
-scp g1-rp:/tmp/xrobot-grpc-jetpack5-aarch64.tar.gz /tmp/
+scp <robot-host>:/tmp/xrobot-grpc-jetpack5-aarch64.tar.gz /tmp/
 ```
 
 Unpack it into a local directory on the development machine.

@@ -1,0 +1,31 @@
+g1_bridge/vendored/amo -- third-party notice
+
+This directory contains code and robot descriptions derived from:
+
+* Psi0 (https://github.com/physical-superintelligence-lab/Psi0)
+  Copyright 2026 PSI-lab, USC. Licensed under the Apache License, Version 2.0.
+  - g1_arm_ik.py: adapted from Psi0's G1_29_ArmIK
+    (real/teleop/robot_control/robot_arm_ik.py). Modified: solved with a
+    guarded damped-least-squares Gauss-Newton iteration (pinocchio) instead of
+    casadi/IPOPT (see the module docstring).
+  - multi_target_ik.py: vendored from Psi0's real-robot deployment
+    (real/teleop/robot_control/multi_target_ik.py, PinkIKSolver /
+    G1_29_BodyIK.solve_lower_ik). Modified: joint-name map inlined, URDF path
+    pointed at this directory, and the changes described in the module
+    docstring.
+
+* AMO (https://github.com/OpenTeleVision/AMO)
+  Copyright 2025 Jialong Li, Xuxin Cheng, Tianshu Huang, Xiaolong Wang.
+  Licensed under the Apache License, Version 2.0.
+  - g1_body29_hand14.urdf: Unitree G1 (29 body + 14 hand DOF) description
+    used by AMO.
+  - g1_body29_hand14_virtual.urdf: modified copy of the above with four
+    virtual joints (ik_pelvis_z_joint, ik_torso_{yaw,pitch,roll}_joint) added
+    for whole-body IK.
+
+The robot descriptions originate from Unitree Robotics' G1 model
+(BSD 3-Clause License, Copyright (c) 2016-2022 HangZhou YuShu TECHNOLOGY
+CO.,LTD. ("Unitree Robotics")).
+
+Modifications Copyright (c) 2026 Gamma Robotics, provided under the Apache
+License, Version 2.0 (see LICENSE in this directory).

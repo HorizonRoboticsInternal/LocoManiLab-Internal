@@ -1,6 +1,6 @@
 # Getting Started
 
-Chinese docs: [https://egalahad.github.io/sim2real/zh-Hans/getting-started/overview](https://egalahad.github.io/sim2real/zh-Hans/getting-started/overview)
+Chinese docs: [概览](../i18n/zh-Hans/docusaurus-plugin-content-docs/current/getting-started/overview.md)
 
 `sim2real` is split into two environments:
 

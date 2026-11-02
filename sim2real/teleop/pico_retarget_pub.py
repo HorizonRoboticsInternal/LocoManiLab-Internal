@@ -227,6 +227,31 @@ def _controller_float(
     return float(np.clip(value, 0.0, 1.0))
 
 
+def _pico_joystick_axis(side: str) -> tuple:
+    """``(x, y)`` for one thumbstick, straight from the SDK this process owns.
+
+    Read through ``xrt`` rather than out of ``get_controller_data()`` because
+    that is the same accessor ``g1_bridge.pico.vr_source._poll_xrt_buttons``
+    uses for the direct sources -- one convention, so a stick means the same
+    thing whether a backend gets it from its own SDK connection or relayed from
+    here. Wrapped like the rest of the button polling: older bindings are
+    missing accessors, and losing a stick beats killing the publisher.
+    """
+    try:
+        import xrobotoolkit_sdk as xrt
+
+        fn = getattr(xrt, f"get_{side}_axis", None)
+        if fn is None:
+            return (0.0, 0.0)
+        axis = fn()
+        return (
+            float(axis[0]) if len(axis) >= 1 else 0.0,
+            float(axis[1]) if len(axis) >= 2 else 0.0,
+        )
+    except Exception:
+        return (0.0, 0.0)
+
+
 def _pico_controller_state_from_data(controller_data: object) -> PicoControllerStateMessage:
     timestamp_ns = 0
     if isinstance(controller_data, dict):
@@ -238,6 +263,10 @@ def _pico_controller_state_from_data(controller_data: object) -> PicoControllerS
         B=_controller_button_pressed(controller_data, "RightController", "key_two"),
         X=_controller_button_pressed(controller_data, "LeftController", "key_one"),
         Y=_controller_button_pressed(controller_data, "LeftController", "key_two"),
+        # Carried so a locomotion backend behind GMRButtonRelay can steer: this
+        # process holds the only SDK connection while GMR is running.
+        left_axis=_pico_joystick_axis("left"),
+        right_axis=_pico_joystick_axis("right"),
     )
 
 
@@ -527,7 +556,10 @@ class LiveRetargetPublisher:
             self._publish_controller_state(controller_state)
             self._publish_hand_grip(hand_grip_message)
 
-            return controller_state.X
+            # A+X (not X alone) -- a solo X was too easy to trigger by
+            # accident (e.g. as part of releasing an unrelated A+B+X+Y
+            # engage chord in a different process's own button read).
+            return controller_state.A and controller_state.X
 
     def _publish_controller_state(self, controller_state: PicoControllerStateMessage) -> None:
         try:
@@ -768,14 +800,14 @@ class LiveRetargetPublisher:
         self._last_mode_hint_monotonic = now
 
         if self.paused:
-            print("[Info] mode=pause, press x to resume")
+            print("[Info] mode=pause, press a+x to resume")
             return
 
         body_pose_avg_ms = self._timer_avg_ms(BODY_POSE_TIMER_NAME)
         retarget_avg_ms = self._timer_avg_ms(RETARGET_TIMER_NAME)
         retarget_label = "self.retarget.update_targets" if self.args.skip_retarget else "self.retarget.retarget"
         print(
-            "[Info] mode=live, press x to pause, retargeting avg stats: "
+            "[Info] mode=live, press a+x to pause, retargeting avg stats: "
             f"_body_pose_dict_from_streamer={body_pose_avg_ms:.3f} ms, "
             f"{retarget_label}={retarget_avg_ms:.3f} ms"
         )
@@ -788,8 +820,8 @@ class LiveRetargetPublisher:
 
     def sample_and_retarget(self) -> Optional[dict[str, object]]:
         with ScopedTimer(SAMPLE_TIMER_NAME):
-            x_pressed = self._poll_pause_toggle()
-            if x_pressed and not self._x_button_was_pressed:
+            ax_pressed = self._poll_pause_toggle()
+            if ax_pressed and not self._x_button_was_pressed:
                 self.paused = not self.paused
 
                 if self.paused:
@@ -797,8 +829,8 @@ class LiveRetargetPublisher:
                 else:
                     self._needs_live_pelvis_init = True
                     self._needs_smpl_heading_init = True
-                print(f"[Info] paused toggled to {self.paused} via PICO X button")
-            self._x_button_was_pressed = x_pressed
+                print(f"[Info] paused toggled to {self.paused} via PICO A+X")
+            self._x_button_was_pressed = ax_pressed
 
             self._maybe_print_mode_hint()
             if self.paused:
@@ -817,23 +849,6 @@ class LiveRetargetPublisher:
 
             try:
                 smplx_data, raw_body_poses, source_smplx_t_ns, pico_recv_time_ns = _body_pose_dict_from_streamer(self.streamer)
-                if source_smplx_t_ns > 0:
-                    delay_ms = (pico_recv_time_ns - int(source_smplx_t_ns)) / 1e6
-                    print(
-                        "[pico body timestamp] "
-                        f"source_smplx_t_ns={int(source_smplx_t_ns)} "
-                        f"pico_recv_time_ns={pico_recv_time_ns} "
-                        f"delay_ms={delay_ms:.3f}",
-                        flush=True,
-                    )
-                else:
-                    print(
-                        "[pico body timestamp] "
-                        f"source_smplx_t_ns={int(source_smplx_t_ns)} "
-                        f"pico_recv_time_ns={pico_recv_time_ns} "
-                        "delay_ms=unavailable",
-                        flush=True,
-                    )
             except RuntimeError:
                 self._live_stream_disconnected = True
                 now = time.monotonic()

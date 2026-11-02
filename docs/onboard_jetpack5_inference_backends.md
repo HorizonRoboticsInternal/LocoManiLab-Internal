@@ -5,8 +5,11 @@ slug: /reference/onboard-jetpack5-inference-backends
 
 # Onboard JetPack 5 Inference Backends
 
+> Compatibility reference: this fork main requires Python 3.10 and ships no `py38` branch. Full JetPack 5 GPU tracking needs a separately reviewed Python 3.8-compatible source checkout. The commands below assume that preparation; use the standard Python 3.10 setup on JetPack 6.
+
+
 This note records the working `onnx-gpu` and `tensorrt` setup for a JetPack 5
-onboard Orin such as `g1-cable`.
+onboard Orin.
 
 ## Platform
 
@@ -35,40 +38,31 @@ Python 3.10-only typing syntax.
 
 For git-managed checkouts:
 
-```bash
-cd ~/sim2real
-git fetch origin py38
-git switch py38
+Verify your separately maintained Python 3.8 source port before continuing.
 
-cd ~/any4hdmi
-git fetch origin py38
-git switch py38
-```
-
-For rsync-managed robot copies, sync from the local `py38` branches rather than
-from the normal development branch when the target process runs inside
-`.venv-jp5-ort`.
+If maintaining a separate robot source copy, use the reviewed Python 3.8 port
+for processes in `.venv-jp5-ort`; do not copy this fork main into that environment.
 
 Create a Python 3.8 venv that can see JetPack system packages:
 
 ```bash
 cd ~/sim2real
 python3 -m venv --system-site-packages .venv-jp5-ort
-bash -lic 'proxy_on; .venv-jp5-ort/bin/python -m pip install -U pip'
+bash -lic '.venv-jp5-ort/bin/python -m pip install -U pip'
 ```
 
 Install common runtime packages:
 
 ```bash
 cd ~/sim2real
-bash -lic 'proxy_on; .venv-jp5-ort/bin/python -m pip install onnx==1.17.0 loguru pyyaml tyro cuda-python==12.3.0'
+bash -lic '.venv-jp5-ort/bin/python -m pip install onnx==1.17.0 loguru pyyaml tyro cuda-python==12.3.0'
 ```
 
 Install the Python 3.8-compatible `mjhub` branch when running full sim2real
 tracking scripts:
 
 ```bash
-bash -lic 'proxy_on; .venv-jp5-ort/bin/python -m pip install --no-deps "mjhub @ git+https://github.com/EGalahad/mjhub.git@py38"'
+bash -lic '.venv-jp5-ort/bin/python -m pip install --no-deps "mjhub @ git+https://github.com/EGalahad/mjhub.git@py38"'
 ```
 
 Policy tracking also needs the normal runtime imports that the minimal backend
@@ -76,7 +70,7 @@ benchmark may not touch:
 
 ```bash
 cd ~/sim2real
-bash -lic 'proxy_on; .venv-jp5-ort/bin/python -m pip install \
+bash -lic '.venv-jp5-ort/bin/python -m pip install \
   mujoco==3.2.3 \
   pyzmq==25.1.2 \
   tqdm==4.66.6 \
@@ -98,7 +92,7 @@ Install NVIDIA's Jetson ONNX Runtime GPU wheel:
 
 ```bash
 mkdir -p /tmp/ort-gpu
-bash -lic 'proxy_on; wget -O /tmp/ort-gpu/onnxruntime_gpu-1.16.0-cp38-cp38-linux_aarch64.whl https://nvidia.box.com/shared/static/iizg3ggrtdkqawkmebbfixo7sce6j365.whl'
+bash -lic 'wget -O /tmp/ort-gpu/onnxruntime_gpu-1.16.0-cp38-cp38-linux_aarch64.whl https://nvidia.box.com/shared/static/iizg3ggrtdkqawkmebbfixo7sce6j365.whl'
 .venv-jp5-ort/bin/python -m pip install /tmp/ort-gpu/onnxruntime_gpu-1.16.0-cp38-cp38-linux_aarch64.whl
 ```
 
@@ -171,20 +165,20 @@ Example benchmark:
 
 ```bash
 cd ~/sim2real
-PYTHONPATH=$PWD:~/any4hdmi/src HDMI_TRT_FP16=1 HDMI_TRT_FORCE_REBUILD=0 .venv-jp5-ort/bin/python scripts/test_policy_inference.py \
+PYTHONPATH=$PWD:~/any4hdmi/src G1_BACKEND_TRT_FP16=1 G1_BACKEND_TRT_FORCE_REBUILD=0 .venv-jp5-ort/bin/python scripts/test_policy_inference.py \
   --policy_config /tmp/ort-test/policy-trt.yaml \
   --inference_backend tensorrt \
   --warmup 50 --runs 1000
 ```
 
-Set `HDMI_TRT_FORCE_REBUILD=1` when changing the ONNX or when the cached
+Set `G1_BACKEND_TRT_FORCE_REBUILD=1` when changing the ONNX or when the cached
 `.plan` should be regenerated.
 
 Example tracking command:
 
 ```bash
 cd ~/sim2real
-PYTHONPATH=$PWD:~/any4hdmi/src HDMI_TRT_FP16=1 HDMI_TRT_FORCE_REBUILD=0 .venv-jp5-ort/bin/python sim2real/rl_policy/tracking.py \
+PYTHONPATH=$PWD:~/any4hdmi/src G1_BACKEND_TRT_FP16=1 G1_BACKEND_TRT_FORCE_REBUILD=0 .venv-jp5-ort/bin/python sim2real/rl_policy/tracking.py \
   --robot g1 \
   --policy_config /tmp/ort-test/policy-sonic-release-trt.yaml \
   --motion_path ../any4hdmi/output/root_tracking_test/motions/forward_1.npz \
@@ -195,7 +189,7 @@ PYTHONPATH=$PWD:~/any4hdmi/src HDMI_TRT_FP16=1 HDMI_TRT_FORCE_REBUILD=0 .venv-jp
 
 - `pip install onnxruntime-gpu` from PyPI does not provide a JetPack 5 aarch64
   wheel. Use the NVIDIA Jetson wheel above.
-- `proxy_on` is most reliable when run through `bash -lic`.
+- If a proxy is required, export standard `HTTPS_PROXY` / `HTTP_PROXY` variables before downloading.
 - Python 3.10 project venvs cannot load the `cp38` Jetson ORT wheel or Python
   3.8 TensorRT binding.
 - The JetPack 5 package indexes do not provide a supported `cp310` ONNX Runtime

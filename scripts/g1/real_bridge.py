@@ -65,6 +65,11 @@ class RealBridge:
                 print(status, result)
                 time.sleep(1)
 
+        self._diag_started_s = time.monotonic()
+        self._diag_state_s = []
+        self._diag_cmd_s = []
+        self._diag_delay_ms = []
+
     def _init_unitree_channels(self):
         domain_id = UNITREE_DOMAIN_ID
         dds_family = get_unitree_dds_family(self.robot_name)
@@ -171,6 +176,8 @@ class RealBridge:
                     self.low_state_zmq_pub.send(low_state_msg.to_bytes(), flags=zmq.DONTWAIT)
                 except zmq.Again:
                     pass
+                else:
+                    self._diag_state_s.append(time.monotonic())
 
         return {
             "total_s": total_timer.last_time,
@@ -232,6 +239,10 @@ class RealBridge:
                 with ScopedTimer("real_bridge.low_cmd.publish") as publish_timer:
                     self.low_cmd.crc = self.crc.Crc(self.low_cmd)
                     self.low_cmd_unitree_pub.Write(self.low_cmd)
+                    now = time.monotonic()
+                    self._diag_cmd_s.append(now)
+                    if self._diag_state_s:
+                        self._diag_delay_ms.append((now - self._diag_state_s[-1]) * 1000.0)
                 publish_s += publish_timer.last_time
 
                 updated = True
@@ -271,6 +282,33 @@ class RealBridge:
         with ScopedTimer("real_bridge.step") as step_timer:
             low_cmd_profile = self._low_cmd_zmq_to_unitree()
             low_state_profile = self._low_state_unitree_to_zmq()
+
+        now = time.monotonic()
+        diag_elapsed_s = now - self._diag_started_s
+        if diag_elapsed_s >= 5.0:
+            state_period_max_ms = (
+                float(np.diff(self._diag_state_s).max() * 1000.0)
+                if len(self._diag_state_s) > 1 else float("nan")
+            )
+            cmd_period_max_ms = (
+                float(np.diff(self._diag_cmd_s).max() * 1000.0)
+                if len(self._diag_cmd_s) > 1 else float("nan")
+            )
+            logger.info(
+                "[control-diag] state_hz={:.2f} cmd_hz={:.2f} "
+                "period_max_ms(state/cmd)={:.2f}/{:.2f} "
+                "state_to_dds_ms(avg/max)={:.2f}/{:.2f}",
+                len(self._diag_state_s) / diag_elapsed_s,
+                len(self._diag_cmd_s) / diag_elapsed_s,
+                state_period_max_ms,
+                cmd_period_max_ms,
+                float(np.mean(self._diag_delay_ms)) if self._diag_delay_ms else float("nan"),
+                max(self._diag_delay_ms, default=float("nan")),
+            )
+            self._diag_started_s = now
+            self._diag_state_s.clear()
+            self._diag_cmd_s.clear()
+            self._diag_delay_ms.clear()
 
         elapsed = step_timer.last_time
         if elapsed > self.dt:
