@@ -160,7 +160,7 @@ def doctor(
     stage: str = typer.Option("core", "--stage", help="core, data, collect, train, deploy, or eval."),
     sim: bool = typer.Option(False, "--sim", help="Also inspect the optional simulator prerequisites."),
     backend: Optional[str] = typer.Option(None, "--backend",
-                                          help="--sim: selected controller (sonic, amo, heft, scalebfm, almi)."),
+                                          help="--sim: selected controller (sonic, amo, heft, scalebfm, almi, holomotion)."),
     sonic_ckpt: Optional[str] = typer.Option(None, "--sonic-ckpt",
                                              help="--sim --backend sonic: selected checkpoint variant."),
     policy_config: Optional[Path] = typer.Option(None, "--policy-config",

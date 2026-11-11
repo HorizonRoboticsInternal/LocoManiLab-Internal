@@ -59,3 +59,6 @@ htmlcov/
 .venv*/
 .release/
 .qa/
+
+# User-requested integration scratch space
+/tmp/

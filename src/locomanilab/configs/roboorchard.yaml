@@ -1,0 +1,9 @@
+name: roboorchard
+repo_key: roboorchard
+embodiment: unitree_g1_revo2_holomotion_v14
+envs:
+  deploy:
+    kind: uv
+deploy:
+  checkpoint: null
+support: Revo2 unified-v1 evaluation adapter; requires saved model artifacts and HoloMotion v14 weights. GPU and physics validation are separate.

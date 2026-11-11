@@ -95,6 +95,7 @@ def detect(ctx, conda_env: str = "tele_benchmark", *, backend: str = "sonic",
     client = client_path()
     support.checks.append(("eval client", client.is_file(), str(client)))
     defaults = {
+        "holomotion": "holomotion/v14/policy.yaml",
         "sonic": "sonic/low_latency/g1/policy.yaml", "amo": "amo/policy.yaml",
         "heft": "heft/pmg/policy.yaml", "scalebfm": "scalebfm/humanoid_transformer_m/policy.yaml",
         "almi": "almi/flat_dual/policy.yaml",
@@ -122,7 +123,16 @@ def detect(ctx, conda_env: str = "tele_benchmark", *, backend: str = "sonic",
             if not all(isinstance(value, str) for value in weights):
                 raise ValueError("model paths must be strings")
             required = [Path(value) if Path(value).is_absolute() else selected.parent / value for value in weights]
-            if not required:
+            if backend == "holomotion":
+                root = Path(config.get("models_dir", "models"))
+                root = root if root.is_absolute() else selected.parent / root
+                for name in ("velocity_tracking_model", "motion_tracking_model"):
+                    folder = root / name
+                    support.checks.append((name + " config", (folder / "config.yaml").is_file(), str(folder)))
+                    exports = list((folder / "exported").glob("*.onnx"))
+                    support.checks.append((name + " ONNX", len(exports) == 1, str(folder / "exported")))
+                required = []
+            elif not required:
                 required = list(selected.parent.glob("*.onnx")) + list(selected.parent.glob("*.pt"))
                 if not required:
                     support.checks.append((f"{backend} weights", False, f"no local weights beside {selected}"))

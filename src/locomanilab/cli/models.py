@@ -180,7 +180,7 @@ def eval_(
                                 help="pi05: openpi TrainConfig name matching the checkpoint and dataset. "
                                      "Use the same recipe as conversion and training."),
     backend: str = typer.Option("sonic", "--backend",
-                                help='--sim: whole-body controller: sonic | amo | heft | scalebfm | almi (as `lab collect --sim`). MUST be the backend the training data was collected through -- it fixes the action space (sonic=motion_token, heft/scalebfm=ref_qpos, amo=velocity_cmd, almi=twist_ee); a mismatch is caught on the first policy reply.'),
+                                help='--sim: whole-body controller: sonic | amo | heft | scalebfm | almi | holomotion (evaluation only; as `lab collect --sim`). MUST be the backend the training data was collected through -- it fixes the action space (sonic=motion_token, heft/scalebfm=ref_qpos, amo=velocity_cmd, almi=twist_ee); a mismatch is caught on the first policy reply.'),
     robot: Optional[str] = typer.Option(None, "--robot",
                                 help="--sim: robosuite robot class. Default is the client's "
                                      "(G1FloatingBody). Datasets collected before the two G1 "

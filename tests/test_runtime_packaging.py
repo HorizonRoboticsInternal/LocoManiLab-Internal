@@ -13,7 +13,8 @@ from locomanilab.runtime import script_path
 
 
 RUNTIME_FILES = (
-    "sim_client.py", "infer_client.py", "headset_video.py",
+    "roboorchard/server.py", "roboorchard/evaluate.py", "roboorchard/assets.py",
+    "roboorchard/session.py", "sim_client.py", "infer_client.py", "headset_video.py",
     "lerobot/convert.py", "lerobot/server.py", "dm05/convert.py",
     "dm05/experiment.py", "dm05/server.py", "dm05/widen.py",
     "dm05/registry/locomanilab_dm05_datasets.py",

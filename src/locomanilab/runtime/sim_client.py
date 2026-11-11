@@ -45,7 +45,7 @@ def parse_args(argv=None):
     p = argparse.ArgumentParser(description=__doc__,
                                 formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("--backend", default="sonic",
-                   help="whole-body controller: sonic | amo | heft | scalebfm | almi. "
+                   help="whole-body controller: sonic | amo | heft | scalebfm | almi | holomotion. "
                         "Must match the backend the training data was collected "
                         "through -- it fixes the action space the policy has to emit.")
     p.add_argument("--policy-config", default=None,
@@ -363,9 +363,9 @@ def make_env(args, controller_config):
         has_renderer=viewer,
         has_offscreen_renderer=True,
         use_camera_obs=True,
-        camera_names=[EGO_CAMERA],
-        camera_heights=EGO_H * args.render_scale,
-        camera_widths=EGO_W * args.render_scale,
+        camera_names=["robot0_hbvcam_left_pinhole" if args.backend == "holomotion" else EGO_CAMERA],
+        camera_heights=(360 if args.backend == "holomotion" else EGO_H) * args.render_scale,
+        camera_widths=(640 if args.backend == "holomotion" else EGO_W) * args.render_scale,
         render_camera=None,
         control_freq=args.control_freq,
         ignore_done=True,
@@ -1132,6 +1132,15 @@ def run(args) -> dict:
     from sim2real.vla import VlaDriver, VlaDriverConfig, build_observation
     from g1_bridge.backends import get_backend_class
 
+    if args.backend == "holomotion":
+        if args.robot == "G1FloatingBody":
+            args.robot = "G1Revo2"
+        if args.robot != "G1Revo2" or args.control_freq != 50 or args.inference_rate != 3.125:
+            raise ValueError("HoloMotion requires G1Revo2, 50 Hz control and 3.125 Hz inference")
+        if args.ema_alpha != 1 or args.snap_hands is not None or getattr(args, "token_ema_alpha", None) is not None:
+            raise ValueError("HoloMotion references cannot use action EMA or Dex3 hand snapping")
+        if args.policy != "server":
+            raise ValueError("HoloMotion evaluation currently requires a reference-window policy server")
     command_space = get_backend_class(args.backend).vla_action_space
     if not command_space:
         raise SystemExit(
@@ -1181,15 +1190,21 @@ def run(args) -> dict:
         pathlib.Path(args.video_dir).mkdir(parents=True, exist_ok=True)
     print(f"[eval] control {args.control_freq}Hz, inference {args.inference_rate}Hz "
           f"-> re-plan every {driver.replan_steps} steps", flush=True)
-    print(f"[eval] camera render {EGO_W * args.render_scale}x{EGO_H * args.render_scale} "
-          f"-> policy {EGO_W}x{EGO_H} (area scale {args.render_scale}x)", flush=True)
+    camera_w, camera_h = (640, 360) if args.backend == "holomotion" else (EGO_W, EGO_H)
+    print(f"[eval] camera render {camera_w * args.render_scale}x{camera_h * args.render_scale} "
+          f"-> policy {camera_w}x{camera_h} (area scale {args.render_scale}x)", flush=True)
 
     zero_ac = np.zeros(env.action_dim)
     results = []
 
     def ego_image(obs) -> np.ndarray:
-        img = np.ascontiguousarray(obs[f"{EGO_CAMERA}_image"][::-1])
-        img = _downsample_image(img, args.render_scale)
+        camera = "robot0_hbvcam_left_pinhole" if args.backend == "holomotion" else EGO_CAMERA
+        img = np.ascontiguousarray(obs[f"{camera}_image"][::-1])
+        if args.backend == "holomotion" and args.render_scale != 1:
+            import cv2
+            img = cv2.resize(img, (640, 360), interpolation=cv2.INTER_AREA)
+        elif args.backend != "holomotion":
+            img = _downsample_image(img, args.render_scale)
         return rnd.image(img) if rnd is not None else img
 
     for ep in range(args.episodes):
@@ -1209,6 +1224,8 @@ def run(args) -> dict:
         composite = env.robots[0].composite_controller  # rebuilt by every reset
         prompt = args.prompt or base.get_ep_meta().get("lang", args.env)
         driver.reset()
+        if args.backend == "holomotion":
+            policy.reset()
         if hasattr(policy, "i"):
             policy.i = 0
         frames, success, t0 = [], False, time.time()
@@ -1225,17 +1242,27 @@ def run(args) -> dict:
                 obs = env.step(zero_ac)[0]
                 continue
             try:
-                joint_pos, state_slices, extra_state = state_observation(composite, obs, args.backend)
-                action = driver.step(
-                    build_observation(
-                        joint_pos=joint_pos,
-                        state_slices=state_slices,
-                        images={"ego_view": ego_image(obs)},
-                        prompt=prompt,
-                        base_quat_wxyz=base_quat_wxyz(obs),
-                        extra_state=extra_state,
+                if args.backend == "holomotion":
+                    body, _ = composite.read_joint_state()
+                    hands = composite.read_hand_state()
+                    if hands is None or any(np.shape(hands[k]) != (11,) for k in ("left", "right")):
+                        raise ValueError("HoloMotion requires measured Revo2 hand state")
+                    joints = np.concatenate((body, hands["left"], hands["right"]))
+                    quat, _ = composite.read_pelvis_state()
+                    pose = np.concatenate((composite.read_root_pos(), quat))
+                    request = build_observation(
+                        joint_pos=joints, state_slices={"joints": (0, 51)},
+                        images={"ego_view_left": ego_image(obs)}, prompt=prompt,
+                        extra_state={"base_pose": pose[None, None]},
                     )
-                )
+                else:
+                    joint_pos, state_slices, extra_state = state_observation(composite, obs, args.backend)
+                    request = build_observation(
+                        joint_pos=joint_pos, state_slices=state_slices,
+                        images={"ego_view": ego_image(obs)}, prompt=prompt,
+                        base_quat_wxyz=base_quat_wxyz(obs), extra_state=extra_state,
+                    )
+                action = driver.step(request)
             except Exception as exc:  # noqa: BLE001 -- a timeout / ERROR reply / bad payload
                 # One bad request ends THIS episode as an error, not the batch: a
                 # 20-episode sweep used to die at the first ZMQ timeout with every
@@ -1253,7 +1280,8 @@ def run(args) -> dict:
             # this experiment exists to answer, and snapping destroys the
             # evidence.
             if action is not None:
-                grip_trace.append(hand_closure(action))
+                if args.backend != "holomotion":
+                    grip_trace.append(hand_closure(action))
             if args.snap_hands is not None and action is not None:
                 action = snap_hand_action(action, args.snap_hands)
             # G1_BRIDGE routes the dict through the backend's own command space.
