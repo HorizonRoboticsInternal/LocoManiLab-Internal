@@ -119,6 +119,10 @@ class G1CompositeBase(CompositeController):
         return read_pelvis_state(self.sim, self._free_qpos_addr, self._free_qvel_addr)
 
     def _read_root_pos(self):
+        physical_root = getattr(self.robot_model, "physical_root_body", None)
+        if physical_root is not None:
+            bid = self.sim.model.body_name2id(physical_root)
+            return np.asarray(self.sim.data.body_xpos[bid], dtype=np.float32).copy()
         return read_root_pos(self.sim, self._free_qpos_addr)
 
     def _read_body_pose_w(self, body_name):

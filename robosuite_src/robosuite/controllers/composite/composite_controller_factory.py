@@ -140,6 +140,6 @@ def load_composite_controller_config(controller: Optional[str] = None, robot: Op
 
 def _get_robot_name(robot: str) -> str:
     """Helper function to get the standardized robot name."""
-    if robot in {"G1", "G1FixedLowerBody", "G1FloatingBody"}:
+    if robot in {"G1", "G1FixedLowerBody", "G1FloatingBody", "G1Revo2"}:
         return "g1"
     return robot.lower()

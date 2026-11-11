@@ -1,6 +1,6 @@
 """Robot selection for the G1 benchmark's public entry points."""
 
-G1_ROBOTS = ("G1", "G1FixedLowerBody", "G1FloatingBody")
+G1_ROBOTS = ("G1", "G1FixedLowerBody", "G1FloatingBody", "G1Revo2")
 DEFAULT_ROBOT = "G1FloatingBody"
 DEFAULT_CAMERA = "robot0_head_camera"
 

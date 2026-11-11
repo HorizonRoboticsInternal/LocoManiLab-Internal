@@ -14,6 +14,7 @@ ROBOT_CLASS_MAPPING = {
     "G1": LeggedRobot,
     "G1FixedLowerBody": LeggedRobot,
     "G1FloatingBody": LeggedRobot,
+    "G1Revo2": LeggedRobot,
 }
 
 target_type_mapping = {

@@ -7,3 +7,5 @@ def is_robosuite_robot(robot: str) -> bool:
     from .robot_model import REGISTERED_ROBOTS
 
     return robot in REGISTERED_ROBOTS
+
+from .manipulators import G1Revo2

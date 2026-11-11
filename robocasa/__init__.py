@@ -17,6 +17,8 @@ from robosuite.models.robots.manipulators.g1_robot import (
     G1FixedLowerBody,
     G1FloatingBody,
 )
+from robosuite.models.robots.manipulators.g1_revo2_robot import G1Revo2
+
 # Preserve controller names while deferring optional model/SDK imports until
 # a caller actually constructs that controller.
 from robocasa.g1_host.controller_registry import register_g1_controller_factories

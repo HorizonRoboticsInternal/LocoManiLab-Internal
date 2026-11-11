@@ -18,7 +18,7 @@ from robosuite.models.robots.robot_model import REGISTERED_ROBOTS, create_robot
 from robosuite.robots import ROBOT_CLASS_MAPPING, LeggedRobot
 
 
-G1_NAMES = {"G1", "G1FixedLowerBody", "G1FloatingBody"}
+G1_NAMES = {"G1", "G1FixedLowerBody", "G1FloatingBody", "G1Revo2"}
 
 
 def test_default_robot_registries_expose_only_concrete_g1_variants():
@@ -44,6 +44,7 @@ def test_removed_robot_is_rejected_before_reading_assets(name, monkeypatch):
     ("G1", 43, True),
     ("G1FixedLowerBody", 31, False),
     ("G1FloatingBody", 43, True),
+    ("G1Revo2", 51, True),
 ])
 def test_g1_variants_keep_joint_layout_and_complete_asset_dependencies(
     name, joint_count, floating,
@@ -86,4 +87,43 @@ def test_g1_required_base_factories_keep_bundled_resources(name):
 
 def test_distribution_has_no_retired_robot_asset_directories():
     robot_assets = Path(robosuite.__file__).resolve().parent / "models/assets/robots"
-    assert {path.name for path in robot_assets.iterdir() if path.is_dir()} == {"g1"}
+    assert {path.name for path in robot_assets.iterdir() if path.is_dir()} == {"g1", "g1_revo2"}
+
+
+def test_revo2_tactile_extensions_survive_xml_merge():
+    from robosuite.models.base import MujocoXML
+    from robosuite.utils.mjcf_utils import xml_path_completion
+    robot = create_robot("G1Revo2", idn=0)
+    arena = MujocoXML(xml_path_completion("arenas/empty_arena.xml"))
+    arena.merge(robot)
+    model = arena.get_model()
+    assert (model.nq, model.nv, model.nu, model.neq, model.nsensor) == (58, 57, 51, 10, 122)
+    assert model.nplugin > 0
+    for side in ("left", "right"):
+        index = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_BODY, f"robot0_{side}_wrist_cam_mount")
+        assert model.body_mass[index] == 0
+
+
+def test_mounted_revo2_reports_physical_pelvis_instead_of_floor_freejoint():
+    from types import SimpleNamespace
+    from robocasa.g1_host.base import G1CompositeBase
+
+    robot = create_robot("G1Revo2", idn=0)
+    robot.add_base(robot_base_factory(robot.default_base, idn=0))
+    model = robot.get_model()
+    data = mujoco.MjData(model)
+    root_id = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_BODY, robot.root_body)
+    addr = model.jnt_qposadr[model.body_jntadr[root_id]]
+    data.qpos[addr:addr + 3] = [0.1, 0.2, 0.0]
+    mujoco.mj_forward(model, data)
+    host = SimpleNamespace(
+        robot_model=robot,
+        sim=SimpleNamespace(
+            model=SimpleNamespace(body_name2id=lambda name: mujoco.mj_name2id(
+                model, mujoco.mjtObj.mjOBJ_BODY, name)),
+            data=SimpleNamespace(body_xpos=data.xpos),
+        ),
+        _free_qpos_addr=addr,
+    )
+    np.testing.assert_allclose(G1CompositeBase._read_root_pos(host), [0.1, 0.2, 0.793], atol=1e-6)
+    assert data.qpos[addr + 2] == 0.0

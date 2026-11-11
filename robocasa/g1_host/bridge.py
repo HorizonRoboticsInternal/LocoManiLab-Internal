@@ -323,7 +323,15 @@ class G1BridgeComposite(G1CompositeBase):
         # session, GMR subprocess/relay -- is guarded inside the session's
         # process-wide cache. See TeleopSession.configure.
         self._build_mappings()
-        self._hand_mapping = build_hand_mapping(self.sim, self.robot_model)
+        hand_builder = build_hand_mapping
+        self._write_hands = write_gripper_torques
+        if getattr(self.robot_model, "hand_type", None) == "revo2":
+            from robocasa.g1_host.revo2_grip import build_hand_mapping as hand_builder
+            from robocasa.g1_host.revo2_grip import write_gripper_torques as revo2_write
+            self._write_hands = revo2_write
+        elif cfg.get("sim2real_backend") == "holomotion":
+            raise ValueError("HoloMotion reference_v1 requires the G1Revo2 robot")
+        self._hand_mapping = hand_builder(self.sim, self.robot_model)
         # Geom ids are model-relative and robocasa hands out a new model every
         # reset, so this belongs with the address maps, not with the cache.
         self._foot_geom_ids = build_foot_geom_ids(self.sim, self.robot_model)
@@ -395,7 +403,9 @@ class G1BridgeComposite(G1CompositeBase):
             self._begin_settling(tick)
         self._settle_ticks += 1
         self._session.push_standing_frame()
-        out = self._session.step_policy(tick.qpos)
+        out = (self._session.step_backend(tick)
+               if getattr(self._session.backend, "owns_policy_runtime", False)
+               else self._session.step_policy(tick.qpos))
         if self._settled(tick.qvel):
             self._end_settling(tick)
         return out
@@ -576,7 +586,7 @@ class G1BridgeComposite(G1CompositeBase):
         # the trigger path would have its grasp silently replaced by a scalar.
         hands = None if vla_action is None else self._session.vla_hand_targets(vla_action)
         left, right = hands or (self._session.left_trigger, self._session.right_trigger)
-        write_gripper_torques(self.sim, self._hand_mapping, left, right)
+        self._write_hands(self.sim, self._hand_mapping, left, right)
         return {}
 
     # ------------------------------------------------------------------ #

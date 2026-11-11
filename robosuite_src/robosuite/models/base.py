@@ -40,6 +40,7 @@ class MujocoXML(object):
         self.tendon = self.create_default_element("tendon")
         self.equality = self.create_default_element("equality")
         self.contact = self.create_default_element("contact")
+        self.extension = self.create_default_element("extension")
 
         # Parse any default classes and replace them inline
         default = self.create_default_element("default")
@@ -137,6 +138,13 @@ class MujocoXML(object):
                 self.equality.append(one_equality)
             for one_contact in other.contact:
                 self.contact.append(one_contact)
+            for plugin in other.extension:
+                existing = next((p for p in self.extension if p.attrib == plugin.attrib), None)
+                if existing is None:
+                    self.extension.append(plugin)
+                else:
+                    for instance in plugin:
+                        existing.append(instance)
 
     def get_model(self, mode="mujoco"):
         """
