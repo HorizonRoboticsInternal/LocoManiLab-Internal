@@ -38,3 +38,7 @@ and the deployment wheels described in
 [third_party/wheels/README.md](third_party/wheels/README.md) are installed from
 their own sources and are not part of this repository. They are governed by
 their own licenses.
+
+## HoloMotion v1.4
+
+The frozen HoloMotion runtime and SIMPLE transport glue retain separate provenance and terms; see [SOURCE.md](g1_bridge/holomotion_v14/SOURCE.md). No controller weights are included.

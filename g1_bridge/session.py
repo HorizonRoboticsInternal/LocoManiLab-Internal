@@ -527,6 +527,8 @@ class TeleopSession:
         instead of rebuilding one, so the episode's standing reference is
         continuous through the hand-off.
         """
+        if getattr(self._backend_impl, "owns_policy_runtime", False):
+            return
         self._settle_payload = self._build_synthetic_default_payload(None)
         self._settle_qpos = default_reference_frame(
             self._tracking.robot_cfg
@@ -628,6 +630,8 @@ class TeleopSession:
         pushed. The host calls this once per episode, with the robot in its
         real pose and a reference anchored to that same pose.
         """
+        if getattr(self._backend_impl, "owns_policy_runtime", False):
+            return
         self._tracking.set_policy_mode(source="g1_bridge")
 
     # ------------------------------------------------------------------ #
@@ -781,7 +785,7 @@ class TeleopSession:
         host's startup window, on the first policy tick, once the robot is
         actually standing where the episode put it. See calibrate_alignment.
         """
-        if self._tracking is not None:
+        if self._tracking is not None and not getattr(self._backend_impl, "owns_policy_runtime", False):
             # BEFORE Tracking.reset(), which reads the buffer immediately.
             # The motion buffer is cached process-wide (see _shared) while this
             # session is rebuilt every episode, so anything left in it --

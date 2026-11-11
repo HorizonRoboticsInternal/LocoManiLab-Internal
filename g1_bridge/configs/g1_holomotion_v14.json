@@ -1,0 +1,62 @@
+{
+  "type": "G1_BRIDGE",
+  "composite_controller_specific_configs": {
+    "sim2real_backend": "holomotion",
+    "sim2real_inference_backend": "onnx-cpu",
+    "pico_source": "mock",
+    "pico_source_kwargs": {},
+    "mode_manager_verbose": false
+  },
+  "body_parts": {
+    "arms": {
+      "right": {
+        "type": "JOINT_TORQUE",
+        "input_max": 1,
+        "input_min": -1,
+        "output_max": 0.1,
+        "output_min": -0.1,
+        "torque_limits": null,
+        "interpolation": null,
+        "ramp_ratio": 0.2,
+        "gripper": {
+          "type": "GRIP",
+          "use_action_scaling": false
+        }
+      },
+      "left": {
+        "type": "JOINT_TORQUE",
+        "input_max": 1,
+        "input_min": -1,
+        "output_max": 0.1,
+        "output_min": -0.1,
+        "torque_limits": null,
+        "interpolation": null,
+        "ramp_ratio": 0.2,
+        "gripper": {
+          "type": "GRIP",
+          "use_action_scaling": false
+        }
+      }
+    },
+    "torso": {
+      "type": "JOINT_TORQUE",
+      "input_max": 1,
+      "input_min": -1,
+      "output_max": 0.1,
+      "output_min": -0.1,
+      "torque_limits": null,
+      "interpolation": null,
+      "ramp_ratio": 0.2
+    },
+    "legs": {
+      "type": "JOINT_TORQUE",
+      "input_max": 1,
+      "input_min": -1,
+      "output_max": 0.1,
+      "output_min": -0.1,
+      "torque_limits": null,
+      "interpolation": null,
+      "ramp_ratio": 0.2
+    }
+  }
+}

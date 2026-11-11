@@ -24,6 +24,7 @@ from g1_bridge.backends.base import (  # noqa: F401 — re-exported
 )
 
 _BACKEND_MODULES: dict[str, str] = {
+    "holomotion": "g1_bridge.backends.holomotion_v14:HolomotionV14Backend",
     "sonic": "g1_bridge.backends.sonic:SonicBackend",
     "amo": "g1_bridge.backends.amo:AmoBackend",
     "heft": "g1_bridge.backends.generic:GenericTrackingBackend",

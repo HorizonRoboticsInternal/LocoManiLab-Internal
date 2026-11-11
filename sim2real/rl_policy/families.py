@@ -58,6 +58,11 @@ _FAMILIES: dict[str, PolicyFamily] = {
     f.name: f
     for f in (
         PolicyFamily(
+            "holomotion", "checkpoints/holomotion/v14/policy.yaml",
+            command_space="holomotion_reference_v1", motion_backend=None,
+            notes="Frozen HoloMotion v1.4 runtime; 50 Hz Revo2 reference windows. Sim evaluation only.",
+        ),
+        PolicyFamily(
             "sonic",
             "checkpoints/sonic/low_latency/g1/policy.yaml",
             command_space="motion_token",

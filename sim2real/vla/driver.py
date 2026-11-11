@@ -94,6 +94,13 @@ class VlaDriver:
         self.adapter = adapter
         self.command_space = command_space if command_space is not None else adapter.command_space
         self.cfg = config or VlaDriverConfig()
+        self._reference_windows = self.command_space == "holomotion_reference_v1"
+        if self._reference_windows and (
+            self.cfg.control_freq != 50 or self.cfg.inference_rate != 3.125
+            or self.cfg.ema_alpha != 1 or self.cfg.async_inference
+        ):
+            raise ValueError("HoloMotion requires 50 Hz / 16-step synchronous execution without action EMA")
+        self._reference_step = 0
         self.observation_fn = observation_fn
 
         self.replan_steps = max(
@@ -121,6 +128,7 @@ class VlaDriver:
     # -- lifecycle --------------------------------------------------------
     def reset(self) -> None:
         """Drop chunk state at an episode boundary."""
+        self._reference_step = 0
         self._chunk = None
         self._chunk_len = 0
         self._idx = 0
@@ -177,6 +185,12 @@ class VlaDriver:
                  if v is not None and np.asarray(v).dtype != object}
         if not chunk:
             raise ValueError(f"policy returned no usable action arrays: {sorted(action)}")
+        if self._reference_windows:
+            reference = chunk.get("reference")
+            if reference is None or reference.shape != (50, 87) or not np.isfinite(reference).all():
+                raise ValueError("HoloMotion server must return finite reference[50,87]")
+            if np.any(np.abs(np.linalg.norm(reference[:, 61:65], axis=1) - 1) > .1):
+                raise ValueError("HoloMotion reference has invalid root quaternions")
         self._chunk = chunk
         self._chunk_len = min(len(v) for v in chunk.values())
         # Enter the chunk where the world already is, not at its start -- but
@@ -234,6 +248,18 @@ class VlaDriver:
             return None
 
         i = min(self._idx, self._chunk_len - 1)
+        if self._reference_windows:
+            current = {
+                "reference_window": self._chunk["reference"][i:i + 11].copy(),
+                "reference_step": self._reference_step,
+                "reference_new_chunk": self._new_chunk,
+            }
+            self._new_chunk = False
+            self._idx += 1
+            self._reference_step += 1
+            if apply_to is not None:
+                raise ValueError("Deliver HoloMotion reference windows through composite.set_vla_action")
+            return current
         current = {k: v[i].copy() for k, v in self._chunk.items()}
         if self._new_chunk and self._prev is not None and self.cfg.ema_alpha < 1.0:
             a = self.cfg.ema_alpha

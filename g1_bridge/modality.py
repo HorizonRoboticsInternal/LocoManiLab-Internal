@@ -345,7 +345,17 @@ ALMI_MODALITY_LAYOUT = ModalityLayout(
 # unified collection script (robocasa/scripts/collect_demos_g1.py) the same
 # way robocasa.utils.g1_data_collection's own CONTROLLER_TELEOP_KEYS drove
 # the old tele-native-only collect_demos_g1.py.
+HOLOMOTION_V14_MODALITY_LAYOUT = ModalityLayout(
+    readiness_source="reference",
+    blobs=(
+        ModalityBlob("observation.state", "state", (ModalityGroup("joints", 51, "joints"),)),
+        ModalityBlob("observation.base_pose", "state", (ModalityGroup("base_pose", 7, "base_pose"),)),
+        ModalityBlob("action.reference", "action", (ModalityGroup("reference", 87, "reference"),)),
+    ),
+)
+
 G1_BACKEND_TELEOP_KEYS = {
+    "holomotion": HOLOMOTION_V14_MODALITY_LAYOUT,
     "sonic": SONIC_TELEOP_KEYS,
     "heft": GENERIC_TRACKING_MODALITY_LAYOUT,
     "scalebfm": GENERIC_TRACKING_MODALITY_LAYOUT,

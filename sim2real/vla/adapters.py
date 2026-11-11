@@ -375,3 +375,13 @@ class TwistEeAdapter(ActionAdapter):
                 f"{type(sink).__name__} does not."
             )
         setter(cmd)
+
+
+@register
+class HolomotionReferenceAdapter(ActionAdapter):
+    """A controller reference window, assembled by VlaDriver before handoff."""
+    command_space = "holomotion_reference_v1"
+    required_keys = ("reference",)
+
+    def apply(self, sink, action):
+        raise ValueError("HoloMotion windows must be delivered through the host backend")

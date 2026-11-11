@@ -25,6 +25,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+holomotion = ["omegaconf>=2.3,<3"]
 # NOTE: inference-cpu and inference-gpu are mutually exclusive. Both wheels
 # install the same `onnxruntime` module, so whichever landed last wins and the
 # other's providers are simply absent -- `pip install onnxruntime-gpu` on top of
@@ -81,6 +82,7 @@ include = ["sim2real*", "g1_bridge*"]
 
 [tool.setuptools.package-data]
 "g1_bridge" = ["configs/*.json"]
+"g1_bridge.holomotion_v14" = ["config/*.yaml", "vendor/**/*.py", "SOURCE.json", "SOURCE.md", "LICENSE.SIMPLE"]
 "g1_bridge.recording" = ["assets/*.json", "assets/*.urdf"]
 "g1_bridge.vendored.amo" = ["*.urdf"]
 "g1_bridge.vendored.wbt" = ["data/*.npz"]

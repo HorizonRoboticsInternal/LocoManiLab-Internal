@@ -1,0 +1,8 @@
+controller: holomotion_v14
+# Explicit local bundle with velocity_tracking_model/ and motion_tracking_model/.
+models_dir: models
+# Frozen BrainCo 3.2 kg backpack bundle from SIMPLE's v1.4.1 lock.
+sha256:
+  motion_tracking_model: d79ccce759ede01f23fe49c1e7178c1e216ec754d33a9f05adadc72d86c45f9d
+  motion_tracking_model_config: f64f778aafa8951ea0bd3b3a49e11980206339801bf552158327a68a8deb194b
+  velocity_tracking_model: 574f729452d7a62a6a5cd5425d53bec96c297881a091f78777a0ab5ac7a71bd3
